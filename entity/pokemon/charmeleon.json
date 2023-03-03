@@ -1,0 +1,27 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:charmeleon",
+      "materials": { "default": "zombie" },
+      "textures": {
+        "default": "textures/entity/pokemon/charmeleon/charmeleon",
+        "shiny": "textures/entity/pokemon/charmeleon/shiny_charmeleon"
+      },
+      "geometry": { "default": "geometry.charmeleon" },
+      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
+      "animations": {
+        "walk": "animation.charmeleon.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "chill": "animation.charmeleon.chill",
+        "sit": "animation.charmeleon.sitting",
+        "ground_pokemon": "controller.animation.ground.pokemon"
+      },
+      "particle_effects": {
+        "tail_flame": "smelly:tail_flame"
+      },
+      "render_controllers": ["controller.render.pokemon"],
+      "spawn_egg": { "texture": "charmeleon", "texture_index": 0 }
+    }
+  }
+}

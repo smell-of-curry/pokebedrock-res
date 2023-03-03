@@ -1,0 +1,24 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:ho-oh",
+      "materials": { "default": "zombie" },
+      "textures": {
+        "default": "textures/entity/pokemon/ho-oh/ho-oh",
+        "shiny": "textures/entity/pokemon/ho-oh/shiny_ho-oh"
+      },
+      "geometry": { "default": "geometry.ho-oh" },
+      "scripts": { "animate": ["look_at_target", "flying_pokemon"] },
+      "animations": {
+        "walk": "animation.ho-oh.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "chill": "animation.ho-oh.chill",
+        "sit": "animation.ho-oh.sitting",
+        "flying_pokemon": "controller.animation.flying.pokemon"
+      },
+      "render_controllers": ["controller.render.pokemon"],
+      "spawn_egg": { "texture": "ho-oh", "texture_index": 0 }
+    }
+  }
+}

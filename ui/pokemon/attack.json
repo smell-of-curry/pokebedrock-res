@@ -1,0 +1,1469 @@
+{
+  "namespace": "battle",
+
+  "main": {
+    "type": "image",
+    "texture": "textures/ui/battle/white_transparency",
+    "color": [0.749, 0.168, 0.211],
+    "layer": 1,
+    "keep_ratio": true,
+    "fill": true,
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "size": ["100%", "29%"],
+
+    "controls": [
+      {
+        "main_holder": {
+          "type": "stack_panel",
+          "size": ["100%", "95%"],
+          "orientation": "horizontal",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "controls": [
+            {
+              "menu_extra": {
+                "type": "image",
+                "texture": "textures/ui/battle/white_transparency",
+                "color": [0.137, 0.125, 0.125],
+                "layer": 2,
+                "keep_ratio": true,
+                "fill": true,
+                "anchor_from": "bottom_left",
+                "anchor_to": "bottom_left",
+                "size": ["85%", "100%"],
+
+                "controls": [
+                  {
+                    "left_button_panel@battle.button_stack": {
+                      "size": ["100%", "100%"],
+                      "layer": 3,
+                      "$button": "battle.select_button"
+                    }
+                  },
+                  {
+                    "image@battle.image": {}
+                  },
+                  {
+                    "button_grid_middle": {
+                      "type": "image",
+                      "texture": "textures/ui/battle/white_transparency",
+                      "color": ["black"],
+                      "alpha": 0,
+                      "layer": 1,
+                      "keep_ratio": true,
+                      "fill": true,
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "size": ["80%", "95%"],
+                      "offset": ["9%", 0],
+                      "controls": [
+                        {
+                          "grid_panel@battle.button_stack": {
+                            "size": ["100%", "100%"],
+                            "layer": 4,
+
+                            "$button": "battle.grid_button"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "info_label": {
+                "type": "label",
+                "font_type": "default",
+                "localize": false,
+                "text": "#form_text",
+                "color": "default",
+                "alpha": 1,
+                "text_alignment": "center",
+                "font_scale_factor": 1,
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "size": ["fill", "100%"],
+                "layer": 3,
+                "shadow": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "opponent": {
+          "type": "image",
+          "texture": "textures/ui/battle/raid",
+
+          "size": ["50%", "50%"],
+          "layer": 5,
+
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": ["9%", "-48%"],
+
+          "controls": [
+            {
+              "grid_panel@battle.button_stack": {
+                "size": ["100%", "100%"],
+                "layer": 4,
+
+                "$button": "battle.mypokemon"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "inverse": {
+          "type": "image",
+          "texture": "textures/ui/battle/raid",
+          "size": ["50%", "50%"],
+          "layer": 5,
+
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+
+          "offset": ["-60%", "-230%"],
+
+          "controls": [
+            {
+              "grid_panel@battle.button_stack": {
+                "size": ["100%", "100%"],
+                "layer": 4,
+
+                "$button": "battle.otherpokemon"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "mypokemon": {
+    "type": "panel",
+    "size": ["100%", "100%c"],
+
+    "controls": [
+      {
+        "1@battle.pokemon_image": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+
+              "binding_name_override": "#form_button_text",
+
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+
+              "source_property_name": "(not((#form_button_text - '§m§y§i§m§a§g§e') \u003d #form_button_text))",
+
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "2@battle.pokemon_bar": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - '§m§y§b§a§r') \u003d #form_button_text))",
+
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "otherpokemon": {
+    "type": "panel",
+
+    "size": ["100%", "100%c"],
+    "controls": [
+      {
+        "1@battle.pokemon_image2": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - '§0§0§1') \u003d #form_button_text))",
+
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "2@battle.pokemon_bar2": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+
+              "binding_name_override": "#form_button_text",
+
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - '§0§0§2') \u003d #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pokemon_image": {
+    "type": "panel",
+
+    "size": ["100%", "7%x"],
+    "offset": ["-46.5%", "-26%"],
+
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "size": ["25%", "75%"],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": ["35%", "55%"],
+          "controls": [
+            {
+              "font": {
+                "type": "image",
+                "size": ["350%", "350%"],
+                "layer": 30000,
+                "texture": "textures/ui/battle/pokemon_warning",
+                "controls": [
+                  {
+                    "image": {
+                      "type": "image",
+                      "offset": ["0%", "-15%"],
+
+                      "bindings": [
+                        {
+                          "binding_name": "#form_button_texture",
+
+                          "binding_name_override": "#texture",
+
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons"
+                        },
+                        {
+                          "binding_name": "#form_button_texture_file_system",
+                          "binding_name_override": "#texture_file_system",
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "text": {
+                "type": "label",
+                "font_type": "default",
+                "text": "#form_button_text",
+                "line_padding": 2,
+                "color": [0.768, 0.768, 0.768],
+                "font_scale_factor": 1,
+                "anchor_from": "center_middle",
+                "anchor_to": "center_middle",
+                "text_alignment": "left",
+                "offset": ["-152%", "-18%"],
+                "layer": 5,
+                "shadow": false,
+                "bindings": [
+                  {
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_condition": "none",
+                    "binding_name": "#form_button_text",
+                    "binding_name_override": "#form_button_text"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pokemon_bar": {
+    "type": "panel",
+    "size": ["50%", "5%x"],
+
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "size": ["100%", "120%"],
+
+          "anchor_from": "bottom_center",
+          "anchor_to": "bottom_center",
+          "offset": ["49.5%", "435%"],
+
+          "$dir": "right",
+          "controls": [
+            {
+              "image": {
+                "type": "panel",
+
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_name_override": "#texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+
+                    "binding_name_override": "#texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  }
+                ]
+              }
+            },
+
+            {
+              "background": {
+                "type": "image",
+                "texture": "textures/ui/battle/white_shaded",
+                "color": [0.2, 0.2, 0.2],
+
+                "layer": 3,
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "font_type": "default",
+
+                      "text": "#form_button_text",
+                      "line_padding": 2,
+                      "color": [0.768, 0.768, 0.768],
+
+                      "font_scale_factor": 1,
+                      "anchor_from": "center_middle",
+                      "anchor_to": "center_middle",
+                      "text_alignment": "center",
+                      "offset": ["-20%", 1],
+                      "size": ["100% - 8px", "default"],
+
+                      "layer": 5,
+                      "shadow": false,
+
+                      "bindings": [
+                        {
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons",
+                          "binding_condition": "none",
+                          "binding_name": "#form_button_text",
+                          "binding_name_override": "#form_button_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "0@battle.progress_bar": {
+                "$bar": "0",
+                "clip_ratio": 1
+              }
+            },
+            {
+              "1@battle.progress_bar": {
+                "$bar": "1",
+                "clip_ratio": 0.95
+              }
+            },
+            {
+              "2@battle.progress_bar": {
+                "$bar": "2",
+                "clip_ratio": 0.9
+              }
+            },
+            {
+              "3@battle.progress_bar": {
+                "$bar": "3",
+                "clip_ratio": 0.85
+              }
+            },
+            {
+              "4@battle.progress_bar": {
+                "$bar": "4",
+                "clip_ratio": 0.8
+              }
+            },
+            {
+              "5@battle.progress_bar": {
+                "$bar": "5",
+                "clip_ratio": 0.75
+              }
+            },
+
+            {
+              "6@battle.progress_bar": {
+                "$bar": "6",
+                "clip_ratio": 0.7
+              }
+            },
+            {
+              "7@battle.progress_bar": {
+                "$bar": "7",
+                "clip_ratio": 0.65
+              }
+            },
+            {
+              "8@battle.progress_bar": {
+                "$bar": "8",
+                "clip_ratio": 0.6
+              }
+            },
+
+            {
+              "9@battle.progress_bar": {
+                "$bar": "9",
+                "clip_ratio": 0.55
+              }
+            },
+            {
+              "10@battle.progress_bar": {
+                "$bar": "10",
+                "clip_ratio": 0.5
+              }
+            },
+            {
+              "11@battle.progress_bar": {
+                "$bar": "11",
+                "clip_ratio": 0.45
+              }
+            },
+            {
+              "12@battle.progress_bar": {
+                "$bar": "12",
+                "clip_ratio": 0.4
+              }
+            },
+            {
+              "13@battle.progress_bar": {
+                "$bar": "13",
+                "clip_ratio": 0.35
+              }
+            },
+            {
+              "14@battle.progress_bar": {
+                "$bar": "14",
+                "clip_ratio": 0.3
+              }
+            },
+            {
+              "15@battle.progress_bar": {
+                "$bar": "15",
+                "clip_ratio": 0.25
+              }
+            },
+
+            {
+              "16@battle.progress_bar": {
+                "$bar": "16",
+                "clip_ratio": 0.2
+              }
+            },
+            {
+              "17@battle.progress_bar": {
+                "$bar": "17",
+                "clip_ratio": 0.15
+              }
+            },
+
+            {
+              "18@battle.progress_bar": {
+                "$bar": "18",
+                "clip_ratio": 0.1
+              }
+            },
+            {
+              "19@battle.progress_bar": {
+                "$bar": "19",
+                "clip_ratio": 0.05
+              }
+            },
+            {
+              "20@battle.progress_bar": {
+                "$bar": "20",
+                "clip_ratio": 0
+              }
+            }
+          ],
+
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pokemon_image2": {
+    "type": "panel",
+    "size": ["100%", "7%x"],
+
+    "offset": ["-96.5%", "-30%"],
+
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$hover_state|default": false,
+          "size": ["25%", "75%"],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": ["35%", "55%"],
+
+          "controls": [
+            {
+              "font": {
+                "type": "image",
+                "size": ["350%", "350%"],
+                "layer": 30000,
+                "texture": "textures/ui/battle/pokemon_healthy",
+                "controls": [
+                  {
+                    "image": {
+                      "type": "image",
+                      "offset": [0, "-15%"],
+
+                      "layer": 30001,
+                      "bindings": [
+                        {
+                          "binding_name": "#form_button_texture",
+                          "binding_name_override": "#texture",
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons"
+                        },
+                        {
+                          "binding_name": "#form_button_texture_file_system",
+                          "binding_name_override": "#texture_file_system",
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "text": {
+                "type": "label",
+                "font_type": "default",
+                "text": "#form_button_text",
+                "line_padding": 2,
+                "color": [0.768, 0.768, 0.768],
+                "font_scale_factor": 1,
+                "anchor_from": "center_middle",
+                "anchor_to": "center_middle",
+                "text_alignment": "right",
+                "offset": ["150%", -5],
+                "layer": 5,
+                "shadow": false,
+                "bindings": [
+                  {
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons",
+                    "binding_condition": "none",
+                    "binding_name": "#form_button_text",
+                    "binding_name_override": "#form_button_text"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pokemon_bar2": {
+    "type": "panel",
+    "size": ["50%", "5%x"],
+
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "size": ["100%", "120%"],
+          "anchor_from": "bottom_center",
+          "anchor_to": "bottom_center",
+          "offset": ["49.5%", "435%"],
+
+          "$dir": "left",
+          "controls": [
+            {
+              "image": {
+                "type": "panel",
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_name_override": "#texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_name_override": "#texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  }
+                ]
+              }
+            },
+            {
+              "background": {
+                "type": "image",
+                "texture": "textures/ui/battle/white_shaded",
+                "color": [0.2, 0.2, 0.2],
+
+                "layer": 3,
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "font_type": "default",
+                      "text": "#form_button_text",
+                      "line_padding": 2,
+                      "color": [0.768, 0.768, 0.768],
+
+                      "font_scale_factor": 1,
+                      "anchor_from": "center_middle",
+                      "anchor_to": "center_middle",
+                      "text_alignment": "center",
+                      "offset": ["20%", 1],
+                      "size": ["100% - 8px", "default"],
+
+                      "layer": 5,
+                      "shadow": false,
+                      "bindings": [
+                        {
+                          "binding_type": "collection",
+                          "binding_collection_name": "form_buttons",
+                          "binding_condition": "none",
+                          "binding_name": "#form_button_text",
+                          "binding_name_override": "#form_button_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "0@battle.progress_bar": {
+                "$bar": "0",
+                "clip_ratio": 1
+              }
+            },
+            {
+              "1@battle.progress_bar": {
+                "$bar": "1",
+                "clip_ratio": 0.95
+              }
+            },
+            {
+              "2@battle.progress_bar": {
+                "$bar": "2",
+                "clip_ratio": 0.9
+              }
+            },
+            {
+              "3@battle.progress_bar": {
+                "$bar": "3",
+                "clip_ratio": 0.85
+              }
+            },
+            {
+              "4@battle.progress_bar": {
+                "$bar": "4",
+                "clip_ratio": 0.8
+              }
+            },
+            {
+              "5@battle.progress_bar": {
+                "$bar": "5",
+                "clip_ratio": 0.75
+              }
+            },
+            {
+              "6@battle.progress_bar": {
+                "$bar": "6",
+                "clip_ratio": 0.7
+              }
+            },
+            {
+              "7@battle.progress_bar": {
+                "$bar": "7",
+                "clip_ratio": 0.65
+              }
+            },
+            {
+              "8@battle.progress_bar": {
+                "$bar": "8",
+                "clip_ratio": 0.6
+              }
+            },
+            {
+              "9@battle.progress_bar": {
+                "$bar": "9",
+                "clip_ratio": 0.55
+              }
+            },
+            {
+              "10@battle.progress_bar": {
+                "$bar": "10",
+                "clip_ratio": 0.5
+              }
+            },
+            {
+              "11@battle.progress_bar": {
+                "$bar": "11",
+                "clip_ratio": 0.45
+              }
+            },
+            {
+              "12@battle.progress_bar": {
+                "$bar": "12",
+                "clip_ratio": 0.4
+              }
+            },
+            {
+              "13@battle.progress_bar": {
+                "$bar": "13",
+                "clip_ratio": 0.35
+              }
+            },
+            {
+              "14@battle.progress_bar": {
+                "$bar": "14",
+                "clip_ratio": 0.3
+              }
+            },
+            {
+              "15@battle.progress_bar": {
+                "$bar": "15",
+                "clip_ratio": 0.25
+              }
+            },
+            {
+              "16@battle.progress_bar": {
+                "$bar": "16",
+                "clip_ratio": 0.2
+              }
+            },
+            {
+              "17@battle.progress_bar": {
+                "$bar": "17",
+                "clip_ratio": 0.15
+              }
+            },
+            {
+              "18@battle.progress_bar": {
+                "$bar": "18",
+                "clip_ratio": 0.1
+              }
+            },
+            {
+              "19@battle.progress_bar": {
+                "$bar": "19",
+                "clip_ratio": 0.05
+              }
+            },
+            {
+              "20@battle.progress_bar": {
+                "$bar": "20",
+                "clip_ratio": 0
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "progress_bar": {
+    "$bar|default": "",
+    "type": "image",
+    "clip_direction": "$dir",
+    "clip_pixelperfect": false,
+    "texture": "textures/ui/battle/white_shaded",
+    "color": [0.2, 1, 0.2],
+    "layer": 4,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "image",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#texture = $bar)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "image": {
+    "type": "panel",
+
+    "controls": [
+      {
+        "1@battle.color_image": {
+          "$code": "§0§1",
+          "$path": "textures/ui/battle/moveSelection_badge"
+        }
+      },
+
+      {
+        "2@battle.color_image": {
+          "$code": "§0§2",
+          "$path": "textures/ui/battle/moveSelection_badge_dynamax"
+        }
+      },
+
+      {
+        "3@battle.color_image": {
+          "$code": "§0§3",
+          "$path": "textures/ui/battle/moveSelection_badge_dynamax_grey"
+        }
+      },
+
+      {
+        "4@battle.color_image": {
+          "$code": "§0§4",
+          "$path": "textures/ui/battle/moveSelection_badge_dynamax_hollow"
+        }
+      },
+      {
+        "5@battle.color_image": {
+          "$code": "§0§5",
+          "$path": "textures/ui/battle/moveSelection_badge_mega"
+        }
+      },
+
+      {
+        "6@battle.color_image": {
+          "$code": "§0§6",
+          "$path": "textures/ui/battle/moveSelection_badge_mega_grey"
+        }
+      },
+      {
+        "7@battle.color_image": {
+          "$code": "§0§7",
+          "$path": "textures/ui/battle/moveSelection_badge_mega_hollow"
+        }
+      },
+      {
+        "7@battle.color_image": {
+          "$code": "§0§8",
+          "$path": "textures/ui/battle/moveSelection_badge_zmove"
+        }
+      },
+
+      {
+        "7@battle.color_image": {
+          "$code": "§0§9",
+          "$path": "textures/ui/battle/moveSelection_badge_zmove_grey"
+        }
+      },
+
+      {
+        "7@battle.color_image": {
+          "$code": "§1§0",
+          "$path": "textures/ui/battle/moveSelection_badge_zmove_hollow"
+        }
+      }
+    ]
+  },
+  "color_image": {
+    "type": "image",
+    "texture": "$path",
+    "alpha": 1,
+    "size": ["60%", "60%"],
+
+    "layer": 20,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "offset": ["10%", 0],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_property_name": "(not((#title_text - $code) = #title_text))",
+
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "button_stack": {
+    "type": "stack_panel",
+    "size": ["100%", "100%c"],
+
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$button|default": "default_form.button",
+    "factory": {
+      "name": "buttons",
+      "control_name": "$button"
+    },
+
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_length",
+        "binding_name_override": "#collection_length"
+      }
+    ]
+  },
+
+  "grid_button": {
+    "type": "panel",
+    "size": ["100%", "100%c"],
+
+    "controls": [
+      {
+        "1@battle.button": {
+          "$icon_offset": ["-15%", "-14%"],
+          "$offset": ["-19%", "25%"],
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'b:1_') = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "2@battle.button": {
+          "$icon_offset": ["-15%", "-14%"],
+          "$offset": ["-19%", "80%"],
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'b:2_') = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "3@battle.button": {
+          "$icon_offset": ["15%", "-14%"],
+          "$offset": ["21.5%", "-175%"],
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'b:3_') = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "4@battle.button": {
+          "$icon_offset": ["15%", "-14%"],
+          "$offset": ["21.5%", "-120%"],
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'b:4_') = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "button": {
+    "type": "panel",
+    "size": ["100%", "7%x"],
+    "offset": "$offset",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": ["40%", "150%"],
+          "offset": [0, 0],
+          "$default_button_texture": "textures/ui/battle/moveSelection",
+          "$hover_button_texture": "textures/ui/battle/moveSelection_hover",
+          "$pressed_button_texture": "textures/ui/battle/moveSelection",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      },
+      {
+        "name": {
+          "type": "label",
+          "size": ["100%", "100%"],
+          "offset": ["40%", "20%"],
+          "layer": 10,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text": "#text",
+          "color": "black",
+          "text_align": "right",
+          "bindings": [
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.15s * (#form_button_text - (%.21s * #form_button_text))) - '_')",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "layer": 10,
+          "size": [20, 20],
+          "offset": "$icon_offset",
+          "texture": "#texture",
+          "bindings": [
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('textures/ui/gui/attacks/' + (%.8s * (#form_button_text - (%.4s * #form_button_text)))) - '_')",
+              "target_property_name": "#texture"
+            }
+          ]
+        }
+      },
+      {
+        "pp": {
+          "type": "label",
+          "size": ["100%", "100%"],
+          "offset": ["45%", "89%"],
+          "layer": 11,
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text": "#text",
+          "font": "default",
+          "text_align": "center",
+          "text_vertical_align": "center",
+          "font_scale_factor": 0.8,
+          "color": "white",
+          "bindings": [
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.7s * (#form_button_text - (%.36s * #form_button_text))) - '_')",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      },
+      {
+        "0@battle.pp_bar": {
+          "$bar": "0",
+          "size": ["0%", "29%"]
+        }
+      },
+      {
+        "1@battle.pp_bar": {
+          "$bar": "1",
+          "size": ["1.965%", "29%"]
+        }
+      },
+      {
+        "2@battle.pp_bar": {
+          "$bar": "2",
+          "size": ["3.93%", "29%"]
+        }
+      },
+      {
+        "3@battle.pp_bar": {
+          "$bar": "3",
+          "size": ["5.895%", "29%"]
+        }
+      },
+      {
+        "4@battle.pp_bar": {
+          "$bar": "4",
+          "size": ["7.86%", "29%"]
+        }
+      },
+      {
+        "5@battle.pp_bar": {
+          "$bar": "5",
+          "size": ["9.825%", "29%"]
+        }
+      },
+      {
+        "6@battle.pp_bar": {
+          "$bar": "6",
+          "size": ["11.79%", "29%"]
+        }
+      },
+      {
+        "7@battle.pp_bar": {
+          "$bar": "7",
+          "size": ["13.755%", "29%"]
+        }
+      },
+      {
+        "8@battle.pp_bar": {
+          "$bar": "8",
+          "size": ["15.72%", "29%"]
+        }
+      },
+      {
+        "9@battle.pp_bar": {
+          "$bar": "9",
+          "size": ["17.685%", "29%"]
+        }
+      },
+      {
+        "10@battle.pp_bar": {
+          "$bar": "10",
+          "size": ["19.65%", "29%"]
+        }
+      },
+      {
+        "11@battle.pp_bar": {
+          "$bar": "11",
+          "size": ["21.615%", "29%"]
+        }
+      },
+      {
+        "12@battle.pp_bar": {
+          "$bar": "12",
+          "size": ["23.58%", "29%"]
+        }
+      },
+      {
+        "13@battle.pp_bar": {
+          "$bar": "13",
+          "size": ["25.545%", "29%"]
+        }
+      },
+      {
+        "14@battle.pp_bar": {
+          "$bar": "14",
+          "size": ["27.51%", "29%"]
+        }
+      },
+      {
+        "15@battle.pp_bar": {
+          "$bar": "15",
+          "size": ["29.475%", "29%"]
+        }
+      },
+      {
+        "16@battle.pp_bar": {
+          "$bar": "16",
+          "size": ["31.44%", "29%"]
+        }
+      },
+      {
+        "17@battle.pp_bar": {
+          "$bar": "17",
+          "size": ["33.405%", "29%"]
+        }
+      },
+      {
+        "18@battle.pp_bar": {
+          "$bar": "18",
+          "size": ["35.37%", "29%"]
+        }
+      },
+      {
+        "19@battle.pp_bar": {
+          "$bar": "19",
+          "size": ["37.335%", "29%"]
+        }
+      },
+      {
+        "20@battle.pp_bar": {
+          "$bar": "20",
+          "size": ["39.3%", "29%"]
+        }
+      }
+    ]
+  },
+  "pp_bar": {
+    "$bar|default": "",
+    "type": "image",
+    "texture": "textures/ui/battle/white_shaded",
+    "color": [0.1, 0.6, 1],
+    "layer": 10,
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "fill": true,
+    "size": ["40%", "29%"],
+    "offset": ["30.3%", "19%"],
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons",
+        "binding_condition": "none",
+        "binding_name": "#form_button_texture",
+        "binding_name_override": "#form_button_texture"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#form_button_texture = $bar)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "select_button": {
+    "type": "panel",
+    "size": ["100%", "100%c"],
+
+    "controls": [
+      {
+        "bag_button@battle.bag": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'bag') \u003d #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "poke_button@battle.pokemon": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'pokemon') \u003d #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "run_button@battle.run": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not((#form_button_text - 'run') \u003d #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "bag": {
+    "type": "panel",
+    "size": ["100%", "7%x"],
+    "offset": ["-45.5%", "-13%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "size": ["25%", "80%"],
+          "anchor_from": "middle_center",
+          "anchor_to": "middle_center",
+          "offset": [0, 0],
+          "$border_visible": false,
+          "$default_button_texture": "textures/ui/battle/menu_bag",
+          "$hover_button_texture": "textures/ui/battle/menu_bag_hover",
+          "$pressed_button_texture": "textures/ui/battle/menu_bag",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "run": {
+    "type": "panel",
+    "size": ["100%", "7%x"],
+    "offset": ["-45.5%", "-38%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "size": ["25%", "80%"],
+          "anchor_from": "middle_center",
+          "anchor_to": "middle_center",
+          "offset": [0, 0],
+          "$border_visible": false,
+          "$default_button_texture": "textures/ui/battle/menu_run",
+          "$hover_button_texture": "textures/ui/battle/menu_run_hover",
+          "$pressed_button_texture": "textures/ui/battle/menu_run",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "pokemon": {
+    "type": "panel",
+    "size": ["100%", "7%x"],
+    "offset": ["-45.5%", "-26%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "size": ["25%", "80%"],
+          "anchor_from": "middle_center",
+          "anchor_to": "middle_center",
+          "offset": [0, 0],
+          "$border_visible": false,
+          "$default_button_texture": "textures/ui/battle/menu_poke",
+          "$hover_button_texture": "textures/ui/battle/menu_poke_hover",
+          "$pressed_button_texture": "textures/ui/battle/menu_poke",
+          "bindings": [
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

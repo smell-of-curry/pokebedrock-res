@@ -1,0 +1,155 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.charmeleon.walk": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"hip": {
+					"rotation": {
+						"0.0": [2, 10, 0],
+						"0.5": [2, -10, 0],
+						"1.0": [2, 10, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.3333": [0, 1, 0],
+						"0.5": [0, 0, 0],
+						"0.875": [0, 1, 0],
+						"1.0": [0, 0, 0]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"0.0": [-50, 0, 0],
+						"0.5": [50, 0, 0],
+						"1.0": [-50, 0, 0]
+					}
+				},
+				"left_leg": {
+					"rotation": {
+						"0.0": [50, 0, 0],
+						"0.5": [-50, 0, 0],
+						"1.0": [50, 0, 0]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": [0, 20, 0],
+						"0.5": [0, -20, 0],
+						"1.0": [0, 20, 0]
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"0.0": [0, -50, 50],
+						"0.5": [0, 50, 50],
+						"1.0": [0, -50, 50]
+					}
+				},
+				"neck": {
+					"rotation": {
+						"0.0": [0, -10, 0],
+						"0.5": [0, 5, 0],
+						"1.0": [0, -10, 0]
+					}
+				},
+				"bone3": {
+					"rotation": {
+						"0.0": [0, 17.5, 0],
+						"0.5": [0, -17.5, 0],
+						"1.0": [0, 17.5, 0]
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"0.0": [33.40659, 12.6084, -8.19252],
+						"0.5": [33.40659, -12.60837, -8.19252],
+						"1.0": [33.40659, 12.6084, -8.19252]
+					}
+				},
+				"left_arm": {
+					"rotation": {
+						"0.0": [0, -45, -45],
+						"0.5": [0, 45, -50],
+						"1.0": [0, -45, -45]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "tail_flame",
+					"locator": "locator"
+				}
+			}
+		},
+		"animation.charmeleon.sitting": {
+			"loop": true,
+			"bones": {
+				"hip": {
+					"position": [0, -4, 0]
+				},
+				"right_leg": {
+					"rotation": [-90, 0, 0],
+					"position": [0, 0, 0]
+				},
+				"left_leg": {
+					"rotation": [-90, 0, 0]
+				},
+				"tail": {
+					"rotation": [12.5, "0+4*math.sin(q.anim_time*90*2+90)", 0]
+				},
+				"body": {
+					"rotation": ["1*math.sin(q.anim_time*90*2+90)", 0, 0]
+				},
+				"right_arm": {
+					"rotation": [0, 0, 60]
+				},
+				"bone2": {
+					"rotation": ["6+4*math.sin(q.anim_time*90*2+90)", 0, 0]
+				},
+				"bone3": {
+					"rotation": ["10+4*math.sin(q.anim_time*90*2+90)", 0, 0]
+				},
+				"left_arm": {
+					"rotation": [0, 0, -60]
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "tail_flame",
+					"locator": "locator"
+				}
+			}
+		},
+		"animation.charmeleon.chill": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": ["10+4*math.sin(q.anim_time*90*2+90)", "4*math.sin(q.anim_time*90*2+90)", 0]
+				},
+				"body": {
+					"position": [0, "-0.1*(math.sin(q.anim_time*90*4-90)*1+1)", 0]
+				},
+				"right_arm": {
+					"rotation": [0, 0, "52.5+4*math.sin(q.anim_time*90*2+90)"]
+				},
+				"bone2": {
+					"rotation": ["40-4*math.sin(q.anim_time*90*2+90)", 0, 0]
+				},
+				"bone3": {
+					"rotation": ["10-4*math.sin(q.anim_time*90*2+90)", 0, 0]
+				},
+				"left_arm": {
+					"rotation": [0, 0, "-52.5-4*math.sin(q.anim_time*90*2+90)"]
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "tail_flame",
+					"locator": "locator"
+				}
+			}
+		}
+	}
+}
