@@ -10,16 +10,17 @@
     "type": "panel",
     "size": ["100%", 30],
     "$pokemon_stats_index": 0,
-    "$pokemon_id_index": 12,
-    "$pokemon_name_index": 6,
-    "$pokemon_active_index": 18,
+    "$pokemon_id_index": 1,
+    "$pokemon_name_index": 2,
+    "$pokemon_active_index": 3,
+    "$pokemon_caughtWith_index": 4,
     "$var_index": "$pokemon_name_index",
     "controls": [
       {
         "pokemon_data@hud.variable_parser": {
           "type": "image",
           "offset": ["-7%", "0%"],
-          "texture": "textures/sidebar/data",
+          "texture": "textures/ui/sidebar/data",
           "size": ["80%", "90%"],
           "layer": 2,
           "visible": "(not($var = 'null'))",
@@ -84,7 +85,7 @@
       {
         "pokemon_icon_wrapper": {
           "type": "panel",
-          "$var_index": "$pokemon_id_index",
+          "$var_index": "$pokemon_caughtWith_index",
           "controls": [
             {
               "pokemon_icon@hud.variable_parser": {
@@ -95,12 +96,24 @@
                 "texture": "$texture",
                 "variables": [
                   {
-                    "requires": "($var = 'null')",
-                    "$texture": "textures/sidebar/poke"
+                    "requires": "($var = 'ball:pokeball')",
+                    "$texture": "textures/ui/sidebar/balls/poke"
                   },
                   {
-                    "requires": "(not($var = 'null'))",
-                    "$texture": "textures/sidebar/big"
+                    "requires": "($var = 'ball:ultraball')",
+                    "$texture": "textures/ui/sidebar/balls/ultra"
+                  },
+                  {
+                    "requires": "($var = 'ball:masterball')",
+                    "$texture": "textures/ui/sidebar/balls/master"
+                  },
+                  {
+                    "requires": "($var = 'ball:greatball')",
+                    "$texture": "textures/ui/sidebar/balls/great"
+                  },
+                  {
+                    "requires": "($var = 'null')",
+                    "$texture": "textures/ui/sidebar/empty"
                   }
                 ],
                 "controls": [
@@ -140,7 +153,7 @@
                 "type": "image",
                 "size": [40, "100%"],
                 "layer": 5,
-                "texture": "textures/sidebar/ring",
+                "texture": "textures/ui/sidebar/ring",
                 "visible": "$var"
               }
             }
@@ -152,15 +165,16 @@
 
   "pokemon_sidebar": {
     "type": "image",
-    "texture": "textures/sidebar/dock",
+    "texture": "textures/ui/sidebar/dock",
     "anchor_from": "right_middle",
     "anchor_to": "right_middle",
     "size": ["100%", "80%"],
     "offset": ["47%", "0%"],
     "layer": 1,
-    "$var_size": 31,
+    "$var_size": 61,
     "$actionbar_raw0_text": "$actionbar_text",
     "$actionbar_raw_text": "($actionbar_raw0_text - 'sidebar:')",
+    "visible": "(not($actionbar_raw0_text - 'sidebar:' = $actionbar_raw0_text))",
 
     "controls": [
       {
@@ -174,7 +188,8 @@
                 "$pokemon_stats_index": 0,
                 "$pokemon_name_index": 1,
                 "$pokemon_id_index": 2,
-                "$pokemon_active_index": 3
+                "$pokemon_active_index": 3,
+                "$pokemon_caughtWith_index": 4
               }
             },
             {
@@ -185,10 +200,11 @@
             },
             {
               "pokemon2@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 4,
-                "$pokemon_name_index": 5,
-                "$pokemon_id_index": 6,
-                "$pokemon_active_index": 7
+                "$pokemon_stats_index": 5,
+                "$pokemon_name_index": 6,
+                "$pokemon_id_index": 7,
+                "$pokemon_active_index": 8,
+                "$pokemon_caughtWith_index": 9
               }
             },
             {
@@ -199,10 +215,11 @@
             },
             {
               "pokemon3@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 8,
-                "$pokemon_name_index": 9,
-                "$pokemon_id_index": 10,
-                "$pokemon_active_index": 11
+                "$pokemon_stats_index": 10,
+                "$pokemon_name_index": 11,
+                "$pokemon_id_index": 12,
+                "$pokemon_active_index": 13,
+                "$pokemon_caughtWith_index": 14
               }
             },
             {
@@ -213,10 +230,11 @@
             },
             {
               "pokemon4@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 12,
-                "$pokemon_name_index": 13,
-                "$pokemon_id_index": 14,
-                "$pokemon_active_index": 15
+                "$pokemon_stats_index": 15,
+                "$pokemon_name_index": 16,
+                "$pokemon_id_index": 17,
+                "$pokemon_active_index": 18,
+                "$pokemon_caughtWith_index": 19
               }
             },
             {
@@ -227,10 +245,11 @@
             },
             {
               "pokemon5@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 16,
-                "$pokemon_name_index": 17,
-                "$pokemon_id_index": 18,
-                "$pokemon_active_index": 19
+                "$pokemon_stats_index": 20,
+                "$pokemon_name_index": 21,
+                "$pokemon_id_index": 22,
+                "$pokemon_active_index": 23,
+                "$pokemon_caughtWith_index": 24
               }
             },
             {
@@ -241,10 +260,11 @@
             },
             {
               "pokemon6@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 20,
-                "$pokemon_name_index": 21,
-                "$pokemon_id_index": 22,
-                "$pokemon_active_index": 23
+                "$pokemon_stats_index": 25,
+                "$pokemon_name_index": 26,
+                "$pokemon_id_index": 27,
+                "$pokemon_active_index": 28,
+                "$pokemon_caughtWith_index": 29
               }
             }
           ]
