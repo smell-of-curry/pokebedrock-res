@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server för Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -472,15 +472,12 @@ kick.fail.op=Du har försökt sparka, men du kan inte!
 starter.charmander.description=Charmander: The Flame Pokémon. Bedårande och full av eld. Med höghastighets- och attackstatistik är Charmander ett häftigt val för att starta din Pokémon-resa.
 starter.squirtle.description=Squirtle: The Tiny Turtle Pokémon. Bedårande och spänstig, Squirtle är en Pokémon av vattentyp som ger en kraft. Med hög försvarsstatistik är Squirtle ett pålitligt val för att starta din Pokémon-resa.
 starter.bulbasaur.description=Bulbasaur: The Seed Pokémon. En charmig och mångsidig Pokémon av grästyp. Med en balanserad statistikspridning är Bulbasaur ett bra val för att starta din Pokémon-resa.
-starter.cyndaquil.description=Cyndaquil: The Fire Mouse Pokémon. Denna Pokémon av eldtyp är söt och full av energi. Med höghastighets- och specialattackstatistik är Cyndaquil ett eldigt val för att starta din Pokémon-resa.
+starter.cyndaquil.description=Cyndaquil: The Fire Mouse Pokémon. Denna Fire-typ Pokémon är söt och full av energi. Med höghastighets- och specialattackstatistik är Cyndaquil ett eldigt val för att starta din Pokémon-resa.
 starter.totodile.description=Totodile: The Big Jaw Pokémon. Denna Pokémon av vattentyp är söt och hård. Med hög attackstatistik är Totodile ett kraftfullt val för att starta din Pokémon-resa.
 starter.chikorita.description=Chikorita: The Leaf Pokémon. En charmig och graciös Pokémon av grästyp. Med hög specialförsvarsstatistik är Chikorita ett pålitligt val för att starta din Pokémon-resa.
 starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Denna Fire-typ Pokémon är full av energi och spunk. Med höghastighets- och attackstatistik är Chimchar ett eldigt val för att starta din Pokémon-resa.
 starter.piplup.description=Piplup: The Penguin Pokémon. Denna Pokémon av vattentyp är söt och stolt. Med hög försvars- och specialanfallsstatistik är Piplup ett balanserat val för att starta din Pokémon-resa.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Denna Pokémon av grästyp är söt och robust. Med hög försvarsstatistik är Turtwig ett pålitligt val för att starta din Pokémon-resa.
-
-events.chatRanks.muted=§cKan inte skicka meddelanden, du är för närvarande avstängd!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§a Blocket du har valt har gjorts anspråk på av %s
 events.claimManager.interactWithStick.notClaimed=§aIngen har gjort anspråk på detta block.
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cDenna tränare är i strid och kan inte
 
 events.setStarterPokemon.chosen=§a§lDu har valt §b§l%s
 
+events.beforeChat.muted=§cKan inte skicka meddelanden, du är för närvarande avstängd!
+events.beforeChat.sendingTooFast=§cDu skickar meddelanden för snabbt. Vänligen sakta ner och försök igen.
+events.beforeChat.repeatedMessage=§cDitt tidigare meddelande verkar vara identiskt med ditt senaste meddelande. Ändra ditt meddelande och försök igen.
+events.beforeChat.zalgoMessage=§cDitt meddelande innehåller zalgo och kan inte skickas!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamning!
+
 forms.actionForm.show.timeout=§cForm Timeout: försökte visa formuläret, men du var upptagen (stäng chatten efter att ha kört kommandot)
 
-forms.crate.noDataToShow=§cDenna låda har inga data att visa!
-forms.crate.edit.itemIdDoesNotExist=Objektet "%s" finns inte i minecraft eller anslutna beteendepaket!
-forms.crate.edit.dataMustBeNumber=Data: %s, måste vara ett nummer!
+forms.crate.noDataToShow=Objektet "%s" finns inte i minecraft eller anslutna beteendepaket!
+forms.crate.edit.itemIdDoesNotExist=Data: %s, måste vara ett nummer!
 
-forms.kits.buy.confirmPurchase=Är du säker på att du vill köpa kit: %s§r för %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cDet gick inte att köpa: %s§r§c, du har inte tillräckligt med Poke Dollars!
-forms.kits.buy.success=§a Framgångsrikt köpt kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aHämta kit: %s framgångsrikt! Gör anspråk igen %s
-forms.kits.delete.success=§cRaderat kit: §e%s
 
-forms.moderate.updatedRole=§aUppdaterad roll för "${playerName}"!
-forms.moderate.updatedModerateData=§aUppdaterad måttlig data!
+forms.kits.buy.confirmPurchase=§cDet gick inte att köpa: %s§r§c, du har inte tillräckligt med Poke Dollars!
+forms.kits.buy.notEnoughMoney=§a Framgångsrikt köpt kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aHämta kit: %s framgångsrikt! Gör anspråk igen %s
+forms.kits.claim.success=§cRaderat kit: §e%s
 
-forms.party.showPokemon.body=Välj en åtgärd att utföra på denna pokemon.
-forms.party.showPokemon.location.error.pokemonFainted=§cFel: Pokémon har svimmat. Vänligen gå till healer för att återställa hälsan.
-forms.party.showPokemon.location.sentOut=§aFramgång: Skickat ut §e%s!
-forms.party.showPokemon.location.retured=§aFramgång: Returnerade §e%s!
-forms.party.showPokemon.location.notFound=§cFel: Pokémon hittades inte. Flytta dig närmare Pokémon och försök igen.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan inte släppa ut pokémon i naturen! Du måste ha 1 pokemon på dig hela tiden!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cKan inte släppa pokémon medan den skickas ut!
-forms.party.showPokemon.release.confirm=Är du säker på att du vill släppa ut den här pokémonen i naturen kan detta inte ångras!
-forms.party.showPokemon.release.success=§aSläppt §e%s§a i naturen!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKan inte överföra till PC! Du måste ha 1 pokemon på dig hela tiden!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§c Returnera denna pokemon innan du överför!
-forms.party.showPokemon.transferToPc.success=Överförde %s till din dator!
-forms.party.setNickName.fail.tooLong=§cFel: Smeknamnet är för långt. Högsta tillåtna längd är 10 tecken.
-forms.party.setNickName.fail.firstMustBeLetter=§cFel: Det första tecknet i smeknamnet måste vara en bokstav.
 
-forms.pc.preformActionOnPcPokemon.body=Välj en åtgärd att utföra på denna PC Pokémon!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cDet gick inte att överföra till Party, Du har inga öppna platser!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Lägg till fest
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Skräp Pokémon
-forms.pc.preformActionOnPcPokemon.button.goBack=Gå tillbaka
+forms.moderate.updatedRole=§aUppdaterad måttlig data!
 
-forms.serverNpc.butItemScreen.title=Köp artikel: %sx %s§r för %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§c Det gick inte att köpa artiklar
-forms.serverNpc.butItemScreen.success=§a Framgångsrikt köpt %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Sälj: %s§r för %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§c Det gick inte att sälja föremål
-forms.serverNpc.sellItemScreen.success=§a Framgångsrikt sålt %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cDet gick inte att sälja %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cAvslutad handelssökning!
-forms.tradeMachine.showWaitForm.requestDeclined=§cDin handelsförfrågan avvisades!
-forms.tradeMachine.showMain.alreadyInUse=§cKan inte interagera med maskinen, redan i bruk!
-forms.tradeMachine.showMain.playerNotFound=§cDet gick inte att starta handel, annan spelare hittades inte!
+forms.party.showPokemon.body=§cFel: Pokémon har svimmat. Vänligen gå till healer för att återställa hälsan.
+forms.party.showPokemon.location.error.pokemonFainted=§aFramgång: Skickat ut §e%s!
+forms.party.showPokemon.location.sentOut=§aFramgång: Returnerade §e%s!
+forms.party.showPokemon.location.retured=§cFel: Pokémon hittades inte. Flytta dig närmare Pokémon och försök igen.
+forms.party.showPokemon.location.notFound=§cKan inte släppa ut pokémon i naturen! Du måste ha 1 pokemon på dig hela tiden!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan inte släppa pokémon medan den skickas ut!
+forms.party.showPokemon.release.fail.pokemonSentOut=Är du säker på att du vill släppa ut den här pokémonen i naturen kan detta inte ångras!
+forms.party.showPokemon.release.confirm=§aSläppt §e%s§a i naturen!
+forms.party.showPokemon.release.success=§cKan inte överföra till PC! Du måste ha 1 pokemon på dig hela tiden!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§c Returnera denna pokemon innan du överför!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Överförde %s till din dator!
+forms.party.showPokemon.transferToPc.success=§cFel: Smeknamnet är för långt. Högsta tillåtna längd är 10 tecken.
+forms.party.setNickName.fail.tooLong=§cFel: Det första tecknet i smeknamnet måste vara en bokstav.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cDu kan inte slå om den här tränaren igen!
-forms.trainerMenu.editBasicData.updated=§aUppdaterad Grunddata för tränare!
-forms.trainerMenu.editDrops.confirmDelete=Är du säker på att du vill ta bort %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" är inte ett giltigt datanummer!
-forms.trainerMenu.editDrop.notVaildData="%s" Är inte ett giltigt objekttyp-id, det vill säga i minecraft eller anslutna beteendepaket.
-forms.trainerMenu.editDrop.notValidAmount="%s" är inte ett giltigt beloppsnummer!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Bollen saknades!
-models.battleUtils.endBattleOrPokemonForm.title=Din Pokémon har svimmat
-models.battleUtils.endBattleOrPokemonForm.body=Din pokémon har precis svimmat, för att fortsätta antingen avsluta striden eller byta pokemon.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan inte starta strid eftersom du inte har några tillgängliga pokemon!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Kan inte byta pokemon, du har inga tillgängliga pokemon!
+forms.pc.preformActionOnPcPokemon.body=§cDet gick inte att överföra till Party, Du har inga öppna platser!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Lägg till fest
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Skräp Pokémon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Gå tillbaka
+
+
+forms.serverNpc.butItemScreen.title=§c Det gick inte att köpa artiklar
+forms.serverNpc.butItemScreen.fail=§a Framgångsrikt köpt %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Sälj: %s§r för %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§c Det gick inte att sälja föremål
+forms.serverNpc.sellItemScreen.fail=§a Framgångsrikt sålt %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cDet gick inte att sälja %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cDin handelsförfrågan avvisades!
+forms.tradeMachine.showWaitForm.requestDeclined=§cKan inte interagera med maskinen, redan i bruk!
+forms.tradeMachine.showMain.alreadyInUse=§cDet gick inte att starta handel, annan spelare hittades inte!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aUppdaterad Grunddata för tränare!
+forms.trainerMenu.editBasicData.updated=Är du säker på att du vill ta bort %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" är inte ett giltigt datanummer!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Är inte ett giltigt objekttyp-id, det vill säga i minecraft eller anslutna beteendepaket.
+forms.trainerMenu.editDrop.notVaildData="%s" är inte ett giltigt beloppsnummer!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Din Pokémon har svimmat
+models.battleUtils.endBattleOrPokemonForm.title=Din pokémon har precis svimmat, för att fortsätta antingen avsluta striden eller byta pokemon.
+models.battleUtils.endBattleOrPokemonForm.body=Kan inte starta strid eftersom du inte har några tillgängliga pokemon!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan inte byta pokemon, du har inga tillgängliga pokemon!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s har utvecklats till %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle kunde inte starta. Prova en a
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s har fått §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aDu har tjänat %sx PokeDollars!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Har skickat en stridsbegäran till dig, skriv "-battle accept" för att acceptera denna begäran
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aBetalade "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s sågs senast på denna server %s
 commands.seen.lastSeen=§c%s första inloggning var %s
+
+
+commands.redeem.codeNotFound=§aLöste in koden: "%s", framgångsrikt!
+commands.redeem.success=§cKoden: "%s", har redan lösts in!
 

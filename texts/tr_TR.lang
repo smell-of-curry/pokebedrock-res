@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=Minecraft Bedrock için §aPokemon Sunucusu
 
 tile.pokeb:apricorn_log.name=kayısı kütüğü
@@ -460,7 +460,7 @@ item.spawn_egg.entity.pokemon:venusaur.name=Venüsor
 item.spawn_egg.entity.pokemon:vileplume.name=Vileplume
 item.spawn_egg.entity.pokemon:wartortle.name=siğil
 item.spawn_egg.entity.pokemon:weavile.name=Dokuma
-item.spawn_egg.entity.pokemon:weedle.name=Ot
+item.spawn_egg.entity.pokemon:weedle.name=ot
 item.spawn_egg.entity.pokemon:wigglytuff.name=Kıvırcık tüf
 item.spawn_egg.entity.pokemon:wooper.name=wooper
 item.spawn_egg.entity.pokemon:xatu.name=Xatu
@@ -478,9 +478,6 @@ starter.chikorita.description=Chikorita: Yaprak Pokémon. Büyüleyici ve zarif 
 starter.chimchar.description=Chimchar: Minik Alev Pokémon. Bu Ateş tipi Pokémon, enerji ve cesaretle doludur. Yüksek Hız ve Saldırı istatistikleriyle Chimchar, Pokémon yolculuğunuza başlamak için ateşli bir seçimdir.
 starter.piplup.description=Piplup: Penguen Pokémon. Bu Su tipi Pokémon sevimli ve gururludur. Yüksek Savunma ve Özel Saldırı istatistikleri ile Piplup, Pokémon yolculuğunuza başlamak için dengeli bir seçimdir.
 starter.turtwig.description=Turtwig: Minik Yaprak Pokémon. Bu Çim tipi Pokémon sevimli ve sağlamdır. Yüksek Savunma istatistikleri ile Turtwig, Pokémon yolculuğunuza başlamak için güvenilir bir seçimdir.
-
-events.chatRanks.muted=§cMesaj Gönderilemiyor, şu anda Sessiz durumdasınız!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§aSeçtiğiniz blok %s tarafından talep edildi
 events.claimManager.interactWithStick.notClaimed=§aKimse bu blok üzerinde hak iddia etmedi.
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cBu eğitici savaşta ve onunla etkileş
 
 events.setStarterPokemon.chosen=§a§l §b§l%s'yi seçtiniz
 
+events.beforeChat.muted=§cMesaj Gönderilemiyor, şu anda Sessiz durumdasınız!
+events.beforeChat.sendingTooFast=§cMesajları çok hızlı gönderiyorsunuz. Lütfen yavaşlayın ve tekrar deneyin.
+events.beforeChat.repeatedMessage=§cÖnceki mesajınız en son mesajınızla aynı görünüyor. Lütfen mesajınızı değiştirin ve tekrar deneyin.
+events.beforeChat.zalgoMessage=§cMesajınız zalgo içeriyor ve gönderilemiyor!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpam!
+
 forms.actionForm.show.timeout=§cForm Zaman Aşımı: formu göstermeye çalıştınız, ancak meşguldünüz (komutu çalıştırdıktan sonra sohbeti kapatın)
 
-forms.crate.noDataToShow=§cBu Sandıkta gösterilecek veri yok!
-forms.crate.edit.itemIdDoesNotExist=Minecraft veya bağlı davranış paketlerinde "%s" öğesi yok!
-forms.crate.edit.dataMustBeNumber=Veri: %s, Bir sayı olmalı!
+forms.crate.noDataToShow=Minecraft veya bağlı davranış paketlerinde "%s" öğesi yok!
+forms.crate.edit.itemIdDoesNotExist=Veri: %s, Bir sayı olmalı!
 
-forms.kits.buy.confirmPurchase=%s PokeDollars için %s§r kitini satın almak istediğinizden emin misiniz?
-forms.kits.buy.notEnoughMoney=§cSatın alınamadı: %s§r§c, Yeterli Poke Dolarınız yok!
-forms.kits.buy.success=§aBaşarıyla Satın Alınan Kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aTalep edilen kit: %s Başarıyla! Tekrar talep et %s
-forms.kits.delete.success=§cSilinen Kit: §e%s
 
-forms.moderate.updatedRole=§a"${playerName}" için Rol Güncellendi!
-forms.moderate.updatedModerateData=§aGüncellenmiş Orta Veri!
+forms.kits.buy.confirmPurchase=§cSatın alınamadı: %s§r§c, Yeterli Poke Dolarınız yok!
+forms.kits.buy.notEnoughMoney=§aBaşarıyla Satın Alınan Kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aTalep edilen kit: %s Başarıyla! Tekrar talep et %s
+forms.kits.claim.success=§cSilinen Kit: §e%s
 
-forms.party.showPokemon.body=Bu pokemonda gerçekleştirilecek bir eylem seçin.
-forms.party.showPokemon.location.error.pokemonFainted=§cError: Pokémon bayıldı. Lütfen sağlığına kavuşmak için şifacıya git.
-forms.party.showPokemon.location.sentOut=§aSuccess: §e%s gönderildi!
-forms.party.showPokemon.location.retured=§aSuccess: §e%s döndürüldü!
-forms.party.showPokemon.location.notFound=§cError: Pokémon bulunamadı. Lütfen Pokémon'a yaklaşın ve tekrar deneyin.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cPokemon vahşi doğaya bırakılamaz! Her zaman üzerinizde 1 pokemon bulunmalıdır!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cPokemon gönderilmişken serbest bırakılamaz!
-forms.party.showPokemon.release.confirm=Bu pokemonu doğaya salmak istediğinizden emin misiniz, bu geri alınamaz!
-forms.party.showPokemon.release.success=§a §e%s§a'yı doğaya saldı!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cPC'ye aktarılamıyor! Her zaman üzerinizde 1 pokemon bulunmalıdır!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cAktarmadan önce bu pokemonu iade edin!
-forms.party.showPokemon.transferToPc.success=%s bilgisayarınıza aktarıldı!
-forms.party.setNickName.fail.tooLong=§cError: Takma ad çok uzun. İzin verilen maksimum uzunluk 10 karakterdir.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: Takma adın ilk karakteri bir harf olmalıdır.
 
-forms.pc.preformActionOnPcPokemon.body=Bu PC Pokemon'da önceden oluşturmak için bir Eylem seçin!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cPartiye aktarım başarısız oldu, Açık yuvanız yok!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Partiye Ekle
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=çöp pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Geri gitmek
+forms.moderate.updatedRole=§aGüncellenmiş Orta Veri!
 
-forms.serverNpc.butItemScreen.title=Öğe Satın Al: %sx %s§r, %s PokeDollars için!
-forms.serverNpc.butItemScreen.fail=§cÖğeler Satın Alınamadı
-forms.serverNpc.butItemScreen.success=§aBaşarıyla %sx %s§r§c -%s PokeDollars Satın Alındı!
-forms.serverNpc.sellItemScreen.title=Sat: %s§r için %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cÖğe Satılamadı
-forms.serverNpc.sellItemScreen.success=§a Başarıyla Satıldı %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§c %sx %s satılamadı!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cTicaret araması sona erdi!
-forms.tradeMachine.showWaitForm.requestDeclined=§cTicaret talebiniz Reddedildi!
-forms.tradeMachine.showMain.alreadyInUse=§cMakineyle Etkileşime Giremez, Zaten Kullanımda!
-forms.tradeMachine.showMain.playerNotFound=§cTicaret başlatılamadı, Diğer Oyuncu bulunamadı!
+forms.party.showPokemon.body=§cError: Pokémon bayıldı. Lütfen sağlığına kavuşmak için şifacıya git.
+forms.party.showPokemon.location.error.pokemonFainted=§aSuccess: §e%s gönderildi!
+forms.party.showPokemon.location.sentOut=§aSuccess: §e%s döndürüldü!
+forms.party.showPokemon.location.retured=§cError: Pokémon bulunamadı. Lütfen Pokémon'a yaklaşın ve tekrar deneyin.
+forms.party.showPokemon.location.notFound=§cPokemon vahşi doğaya bırakılamaz! Her zaman üzerinizde 1 pokemon bulunmalıdır!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cPokemon gönderilmişken serbest bırakılamaz!
+forms.party.showPokemon.release.fail.pokemonSentOut=Bu pokemonu doğaya salmak istediğinizden emin misiniz, bu geri alınamaz!
+forms.party.showPokemon.release.confirm=§a §e%s§a'yı doğaya saldı!
+forms.party.showPokemon.release.success=§cPC'ye aktarılamıyor! Her zaman üzerinizde 1 pokemon bulunmalıdır!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cAktarmadan önce bu pokemonu iade edin!
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s bilgisayarınıza aktarıldı!
+forms.party.showPokemon.transferToPc.success=§cError: Takma ad çok uzun. İzin verilen maksimum uzunluk 10 karakterdir.
+forms.party.setNickName.fail.tooLong=§cError: Takma adın ilk karakteri bir harf olmalıdır.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cBu eğitmenle yeniden savaşamazsınız!
-forms.trainerMenu.editBasicData.updated=§aEğitmen için temel veriler güncellendi!
-forms.trainerMenu.editDrops.confirmDelete=%s'i silmek istediğinizden emin misiniz?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" geçerli bir veri numarası değil!
-forms.trainerMenu.editDrop.notVaildData="%s" Minecraft veya bağlı davranış paketlerinde bulunan geçerli bir öğe türü kimliği değil.
-forms.trainerMenu.editDrop.notValidAmount="%s" geçerli bir miktar numarası değil!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Top Kaçırıldı!
-models.battleUtils.endBattleOrPokemonForm.title=Pokemonunuz Bayıldı
-models.battleUtils.endBattleOrPokemonForm.body=Pokemonunuz yeni bayıldı, devam etmek için savaşı bitirin veya pokemonunuzu değiştirin.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kullanılabilir pokemonunuz olmadığı için savaş başlatılamıyor!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Pokémon değiştirilemez, müsait pokemonunuz yok!
+forms.pc.preformActionOnPcPokemon.body=§cPartiye aktarım başarısız oldu, Açık yuvanız yok!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Partiye Ekle
+forms.pc.preformActionOnPcPokemon.button.AddToParty=çöp pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Geri gitmek
+
+
+forms.serverNpc.butItemScreen.title=§cÖğeler Satın Alınamadı
+forms.serverNpc.butItemScreen.fail=§aBaşarıyla %sx %s§r§c -%s PokeDollars Satın Alındı!
+forms.serverNpc.butItemScreen.success=Sat: %s§r için %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cÖğe Satılamadı
+forms.serverNpc.sellItemScreen.fail=§a Başarıyla Satıldı %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§c %sx %s satılamadı!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cTicaret talebiniz Reddedildi!
+forms.tradeMachine.showWaitForm.requestDeclined=§cMakineyle Etkileşime Giremez, Zaten Kullanımda!
+forms.tradeMachine.showMain.alreadyInUse=§cTicaret başlatılamadı, Diğer Oyuncu bulunamadı!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aEğitmen için temel veriler güncellendi!
+forms.trainerMenu.editBasicData.updated=%s'i silmek istediğinizden emin misiniz?
+forms.trainerMenu.editDrops.confirmDelete="%s" geçerli bir veri numarası değil!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Minecraft veya bağlı davranış paketlerinde bulunan geçerli bir öğe türü kimliği değil.
+forms.trainerMenu.editDrop.notVaildData="%s" geçerli bir miktar numarası değil!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Pokemonunuz Bayıldı
+models.battleUtils.endBattleOrPokemonForm.title=Pokemonunuz yeni bayıldı, devam etmek için savaşı bitirin veya pokemonunuzu değiştirin.
+models.battleUtils.endBattleOrPokemonForm.body=Kullanılabilir pokemonunuz olmadığı için savaş başlatılamıyor!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Pokémon değiştirilemez, müsait pokemonunuz yok!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s Evrimleşerek %s Oldu!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cSavaş Başlatılamadı. Farklı bir
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s, §e%s xp Kazandı!
 models.playerVsTrainerBattle.end.gainedExp=§a %sx PokeDollar kazandınız!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" size bir savaş isteği gönderdi, bu isteği kabul etmek için "-savaş kabul et" yazın
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§a "%s" %sx PokeDollars ödedi!
 
 commands.seen.onlineRightNow=§c%s en son %s bu sunucuda görüldü
 commands.seen.lastSeen=§c%s'nin ilk oturumu %s idi
+
+
+commands.redeem.codeNotFound=§aKodu kullandı: "%s", Başarıyla!
+commands.redeem.success=§cKod: "%s" zaten kullanıldı!
 

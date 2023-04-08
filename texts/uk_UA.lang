@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aСервер Pokemon для Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Априкоронова колода
@@ -479,9 +479,6 @@ starter.chimchar.description=Чімчар: крихітний вогняний �
 starter.piplup.description=Піплап: покемон пінгвін. Цей покемон водного типу милий і гордий. Завдяки високій статистиці захисту та особливої ​​атаки Piplup є збалансованим вибором для початку вашої подорожі покемонів.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Цей покемон типу трави милий і міцний. З високою статистикою захисту Turtwig є надійним вибором для початку вашої подорожі Pokémon.
 
-events.chatRanks.muted=§cНеможливо надіслати повідомлення, ви наразі вимкнені!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aВибраний вами блок заявлений %s
 events.claimManager.interactWithStick.notClaimed=§a Ніхто не заявляв права на цей блок.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cНедійсний вибір, посада, яку ви вибрали, наразі заявлена ​​та не може бути заявлена!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cЦей тренер перебуває 
 
 events.setStarterPokemon.chosen=§a§lВи вибрали §b§l%s
 
+events.beforeChat.muted=§cНеможливо надіслати повідомлення, ви наразі вимкнені!
+events.beforeChat.sendingTooFast=§cВи надсилаєте повідомлення занадто швидко. Уповільніть темп і спробуйте ще раз.
+events.beforeChat.repeatedMessage=§cВаше попереднє повідомлення здається ідентичним останньому. Змініть своє повідомлення та повторіть спробу.
+events.beforeChat.zalgoMessage=§cВаше повідомлення містить zalgo і не може бути надіслано!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cСпам!
+
 forms.actionForm.show.timeout=§cForm Timeout: намагався показати форму, але ви були зайняті (закрийте чат після виконання команди)
 
-forms.crate.noDataToShow=§cЦей ящик не має даних для показу!
-forms.crate.edit.itemIdDoesNotExist=Предмет "%s" не існує в minecraft або підключених пакетах поведінки!
-forms.crate.edit.dataMustBeNumber=Дані: %s, має бути числом!
+forms.crate.noDataToShow=Предмет "%s" не існує в minecraft або підключених пакетах поведінки!
+forms.crate.edit.itemIdDoesNotExist=Дані: %s, має бути числом!
 
-forms.kits.buy.confirmPurchase=Ви впевнені, що бажаєте купити набір: %s§r за %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cНе вдалося купити: %s§r§c, у вас недостатньо Poke Dollars!
-forms.kits.buy.success=§aУспішно придбаний комплект %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aЗаявлений комплект: %s Успішно! Вимагайте знову %s
-forms.kits.delete.success=§cВидалений комплект: §e%s
 
-forms.moderate.updatedRole=§aОновлена ​​роль для "${playerName}"!
-forms.moderate.updatedModerateData=§aОновлені помірні дані!
+forms.kits.buy.confirmPurchase=§cНе вдалося купити: %s§r§c, у вас недостатньо Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aУспішно придбаний комплект %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aЗаявлений комплект: %s Успішно! Вимагайте знову %s
+forms.kits.claim.success=§cВидалений комплект: §e%s
 
-forms.party.showPokemon.body=Виберіть дію для цього покемона.
-forms.party.showPokemon.location.error.pokemonFainted=§cПомилка: Покемон знепритомнів. Будь ласка, зверніться до цілителя, щоб відновити здоров'я.
-forms.party.showPokemon.location.sentOut=§aУспіх: надіслано §e%s!
-forms.party.showPokemon.location.retured=§aУспіх: повернуто §e%s!
-forms.party.showPokemon.location.notFound=§cПомилка: Покемона не знайдено. Підійдіть ближче до покемона та спробуйте ще раз.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cНеможливо випустити покемонів у дику природу! У вас завжди повинен бути 1 покемон!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cНеможливо випустити покемона, поки його розіслано!
-forms.party.showPokemon.release.confirm=Ви впевнені, що хочете випустити цього покемона в дику природу, цю дію неможливо скасувати!
-forms.party.showPokemon.release.success=§aВипущено §e%s§a в дику природу!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cНеможливо перенести на ПК! У вас завжди повинен бути 1 покемон!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cПоверніть цього покемона перед передачею!
-forms.party.showPokemon.transferToPc.success=Перенесено %s на ваш ПК!
-forms.party.setNickName.fail.tooLong=§cПомилка: псевдонім задовгий. Максимальна дозволена довжина – 10 символів.
-forms.party.setNickName.fail.firstMustBeLetter=§cПомилка: перший символ псевдоніму має бути буквою.
 
-forms.pc.preformActionOnPcPokemon.body=Виберіть дію для попереднього виконання на цьому покемоні на ПК!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cНе вдалося перейти до партії, у вас немає відкритих слотів!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Додати до вечірки
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Викинь покемонів
-forms.pc.preformActionOnPcPokemon.button.goBack=Повертайся
+forms.moderate.updatedRole=§aОновлені помірні дані!
 
-forms.serverNpc.butItemScreen.title=Придбайте товар: %sx %s§r за %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cНе вдалося купити товари
-forms.serverNpc.butItemScreen.success=§aУспішно придбано %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Продайте: %s§r за %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cНе вдалося продати товари
-forms.serverNpc.sellItemScreen.success=§aУспішно продано %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cНе вдалося продати %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cПошук торгів завершено!
-forms.tradeMachine.showWaitForm.requestDeclined=§cВаш торговий запит відхилено!
-forms.tradeMachine.showMain.alreadyInUse=§cНеможливо взаємодіяти з машиною, вона вже використовується!
-forms.tradeMachine.showMain.playerNotFound=§cНе вдалося почати торгівлю, іншого гравця не знайдено!
+forms.party.showPokemon.body=§cПомилка: Покемон знепритомнів. Будь ласка, зверніться до цілителя, щоб відновити здоров'я.
+forms.party.showPokemon.location.error.pokemonFainted=§aУспіх: надіслано §e%s!
+forms.party.showPokemon.location.sentOut=§aУспіх: повернуто §e%s!
+forms.party.showPokemon.location.retured=§cПомилка: Покемона не знайдено. Підійдіть ближче до покемона та спробуйте ще раз.
+forms.party.showPokemon.location.notFound=§cНеможливо випустити покемонів у дику природу! У вас завжди повинен бути 1 покемон!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cНеможливо випустити покемона, поки його розіслано!
+forms.party.showPokemon.release.fail.pokemonSentOut=Ви впевнені, що хочете випустити цього покемона в дику природу, цю дію неможливо скасувати!
+forms.party.showPokemon.release.confirm=§aВипущено §e%s§a в дику природу!
+forms.party.showPokemon.release.success=§cНеможливо перенести на ПК! У вас завжди повинен бути 1 покемон!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cПоверніть цього покемона перед передачею!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Перенесено %s на ваш ПК!
+forms.party.showPokemon.transferToPc.success=§cПомилка: псевдонім задовгий. Максимальна дозволена довжина – 10 символів.
+forms.party.setNickName.fail.tooLong=§cПомилка: перший символ псевдоніму має бути буквою.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cВи не можете знову битися з цим тренером!
-forms.trainerMenu.editBasicData.updated=§aОновлені базові дані для тренера!
-forms.trainerMenu.editDrops.confirmDelete=Ви впевнені, що хочете видалити %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" не є дійсним номером даних!
-forms.trainerMenu.editDrop.notVaildData="%s" не є дійсним ідентифікатором типу предмета, який є в Minecraft або підключених пакетах поведінки.
-forms.trainerMenu.editDrop.notValidAmount="%s" не є дійсним числом суми!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=М'яч пропущено!
-models.battleUtils.endBattleOrPokemonForm.title=Ваш покемон знепритомнів
-models.battleUtils.endBattleOrPokemonForm.body=Ваш покемон щойно знепритомнів, щоб продовжити або завершити битву, або змінити свого покемона.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Неможливо почати бій, тому що у вас немає доступних покемонів!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Неможливо змінити покемона, у вас немає доступних покемонів!
+forms.pc.preformActionOnPcPokemon.body=§cНе вдалося перейти до партії, у вас немає відкритих слотів!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Додати до вечірки
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Викинь покемонів
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Повертайся
+
+
+forms.serverNpc.butItemScreen.title=§cНе вдалося купити товари
+forms.serverNpc.butItemScreen.fail=§aУспішно придбано %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Продайте: %s§r за %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cНе вдалося продати товари
+forms.serverNpc.sellItemScreen.fail=§aУспішно продано %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cНе вдалося продати %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cВаш торговий запит відхилено!
+forms.tradeMachine.showWaitForm.requestDeclined=§cНеможливо взаємодіяти з машиною, вона вже використовується!
+forms.tradeMachine.showMain.alreadyInUse=§cНе вдалося почати торгівлю, іншого гравця не знайдено!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aОновлені базові дані для тренера!
+forms.trainerMenu.editBasicData.updated=Ви впевнені, що хочете видалити %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" не є дійсним номером даних!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" не є дійсним ідентифікатором типу предмета, який є в Minecraft або підключених пакетах поведінки.
+forms.trainerMenu.editDrop.notVaildData="%s" не є дійсним числом суми!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Ваш покемон знепритомнів
+models.battleUtils.endBattleOrPokemonForm.title=Ваш покемон щойно знепритомнів, щоб продовжити або завершити битву, або змінити свого покемона.
+models.battleUtils.endBattleOrPokemonForm.body=Неможливо почати бій, тому що у вас немає доступних покемонів!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Неможливо змінити покемона, у вас немає доступних покемонів!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s Еволюціонував до %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cПомилка запуску бит
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s отримав §e%s досвіду!
 models.playerVsTrainerBattle.end.gainedExp=§aВи заробили %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" надіслав вам запит на бій, введіть "-battle accept", щоб прийняти цей запит
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aСплачено "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s востаннє бачили на цьому сервері %s
 commands.seen.lastSeen=Перший вхід §c%s був %s
+
+
+commands.redeem.codeNotFound=§aПогашено код: "%s", Успішно!
+commands.redeem.success=§cКод: "%s" уже використано!
 

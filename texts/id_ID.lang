@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server untuk Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Log Aprikot
@@ -117,7 +117,7 @@ item.pokeb:moon_stone_plate=Plat Batu Bulan
 item.pokeb:moon_stone_shovel=Sekop Batu Bulan
 item.pokeb:moon_stone_sword=Pedang Batu Bulan
 item.pokeb:new_running_boots=Sepatu Lari Baru
-item.pokeb:old_running_boots=Sepatu Lari Tua
+item.pokeb:old_running_boots=Sepatu Lari Lama
 item.pokeb:sun_stone_axe=Kapak Batu Matahari
 item.pokeb:sun_stone_boots=Sepatu Batu Matahari
 item.pokeb:sun_stone_hammer=Palu Batu Matahari
@@ -132,7 +132,7 @@ item.pokeb:thunder_stone_boots=Sepatu Batu Petir
 item.pokeb:thunder_stone_hammer=Palu Batu Petir
 item.pokeb:thunder_stone_helm=Helm Batu Petir
 item.pokeb:thunder_stone_legs=Kaki Batu Guntur
-item.pokeb:thunder_stone_pickaxe=Beliung Batu Petir
+item.pokeb:thunder_stone_pickaxe=Beliung Batu Guntur
 item.pokeb:thunder_stone_plate=Plat Batu Guntur
 item.pokeb:thunder_stone_shovel=Sekop Batu Guntur
 item.pokeb:thunder_stone_sword=Pedang Batu Petir
@@ -470,7 +470,7 @@ item.spawn_egg.entity.pokemon:zubat.name=Zubat
 kick.fail.op=Anda telah mencoba untuk menendang, tetapi Anda tidak bisa!
 
 starter.charmander.description=Charmander: Pokemon Api. Menggemaskan dan penuh api. Dengan statistik Kecepatan dan Serangan yang tinggi, Charmander adalah pilihan yang sengit untuk memulai perjalanan Pokemon Anda.
-starter.squirtle.description=Squirtle: Pokémon Penyu Kecil. Menggemaskan dan tangguh, Squirtle adalah Pokémon tipe Air yang sangat kuat. Dengan statistik Pertahanan yang tinggi, Squirtle adalah pilihan yang dapat diandalkan untuk memulai perjalanan Pokemon Anda.
+starter.squirtle.description=Squirtle: Pokémon Penyu Kecil. Menggemaskan dan tangguh, Squirtle adalah Pokémon tipe Air yang sangat kuat. Dengan statistik Pertahanan yang tinggi, Squirtle adalah pilihan yang dapat diandalkan untuk memulai perjalanan Pokémon Anda.
 starter.bulbasaur.description=Bulbasaur: Pokémon Benih. Pokémon tipe Rumput yang menawan dan serbaguna. Dengan penyebaran stat yang seimbang, Bulbasaur adalah pilihan yang solid untuk memulai perjalanan Pokemon Anda.
 starter.cyndaquil.description=Cyndaquil: Pokémon Tikus Api. Pokémon tipe Api ini imut dan penuh energi. Dengan statistik Kecepatan dan Serangan Khusus yang tinggi, Cyndaquil adalah pilihan yang berapi-api untuk memulai perjalanan Pokemon Anda.
 starter.totodile.description=Totodile: Pokémon Rahang Besar. Pokémon tipe Air ini lucu dan ganas. Dengan statistik Serangan yang tinggi, Totodile adalah pilihan yang kuat untuk memulai perjalanan Pokémon Anda.
@@ -478,9 +478,6 @@ starter.chikorita.description=Chikorita: Pokémon Daun. Pokémon tipe Rumput yan
 starter.chimchar.description=Chimchar: Pokémon Api Kecil. Pokémon tipe Api ini penuh energi dan keberanian. Dengan statistik Kecepatan dan Serangan yang tinggi, Chimchar adalah pilihan yang berapi-api untuk memulai perjalanan Pokémon Anda.
 starter.piplup.description=Piplup: Pokémon Penguin. Pokémon tipe Air ini imut dan bangga. Dengan statistik Pertahanan dan Serangan Khusus yang tinggi, Piplup adalah pilihan yang seimbang untuk memulai perjalanan Pokémon Anda.
 starter.turtwig.description=Turtwig: Pokémon Daun Kecil. Pokémon tipe Rumput ini lucu dan kokoh. Dengan statistik Pertahanan yang tinggi, Turtwig adalah pilihan yang dapat diandalkan untuk memulai perjalanan Pokemon Anda.
-
-events.chatRanks.muted=§cTidak Dapat Mengirim Pesan, Saat Ini Anda Dibisukan!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§aBlok yang Anda pilih diklaim oleh %s
 events.claimManager.interactWithStick.notClaimed=§aTidak ada yang mengklaim blok ini.
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cPelatih ini sedang dalam pertempuran, d
 
 events.setStarterPokemon.chosen=§a§lAnda telah memilih §b§l%s
 
+events.beforeChat.muted=§cTidak Dapat Mengirim Pesan, Saat Ini Anda Dibisukan!
+events.beforeChat.sendingTooFast=§cAnda mengirim pesan terlalu cepat. Perlambat dan coba lagi.
+events.beforeChat.repeatedMessage=§cPesan Anda sebelumnya tampaknya sama dengan pesan terbaru Anda. Harap ubah pesan Anda dan coba lagi.
+events.beforeChat.zalgoMessage=§cPesan Anda berisi zalgo dan tidak dapat dikirim!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 forms.actionForm.show.timeout=§cForm Timeout: mencoba menampilkan formulir, tetapi Anda sedang sibuk (menutup obrolan setelah menjalankan perintah)
 
-forms.crate.noDataToShow=§c Peti ini tidak memiliki data untuk ditampilkan!
-forms.crate.edit.itemIdDoesNotExist=Item "%s" tidak ada di minecraft atau paket perilaku terhubung!
-forms.crate.edit.dataMustBeNumber=Data: %s, Harus berupa angka!
+forms.crate.noDataToShow=Item "%s" tidak ada di minecraft atau paket perilaku terhubung!
+forms.crate.edit.itemIdDoesNotExist=Data: %s, Harus berupa angka!
 
-forms.kits.buy.confirmPurchase=Anda yakin ingin membeli kit: %s§r untuk %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cGagal membeli: %s§r§c, Poke Dollar Anda tidak cukup!
-forms.kits.buy.success=§aKit Berhasil Dibeli %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§a Kit yang diklaim: %s Berhasil! Klaim lagi %s
-forms.kits.delete.success=§cKit yang Dihapus: §e%s
 
-forms.moderate.updatedRole=§Peran yang Diperbarui untuk "${playerName}"!
-forms.moderate.updatedModerateData=§a Data Sedang yang Diperbarui!
+forms.kits.buy.confirmPurchase=§cGagal membeli: %s§r§c, Poke Dollar Anda tidak cukup!
+forms.kits.buy.notEnoughMoney=§aKit Berhasil Dibeli %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§a Kit yang diklaim: %s Berhasil! Klaim lagi %s
+forms.kits.claim.success=§cKit yang Dihapus: §e%s
 
-forms.party.showPokemon.body=Pilih tindakan untuk dibentuk sebelumnya di pokemon ini.
-forms.party.showPokemon.location.error.pokemonFainted=§cError: Pokemon pingsan. Silakan pergi ke tabib untuk memulihkan kesehatan.
-forms.party.showPokemon.location.sentOut=§aSukses: Terkirim §e%s!
-forms.party.showPokemon.location.retured=§aSukses: Mengembalikan §e%s!
-forms.party.showPokemon.location.notFound=§cError: Pokemon tidak ditemukan. Silakan mendekat ke Pokemon dan coba lagi.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cTidak dapat melepaskan pokemon ke alam liar! Anda harus memiliki 1 pokemon pada Anda setiap saat!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cTidak dapat melepaskan pokemon saat dikirim!
-forms.party.showPokemon.release.confirm=Apakah Anda yakin ingin melepaskan pokemon ini ke alam liar, ini tidak dapat diurungkan!
-forms.party.showPokemon.release.success=§a Dirilis §e%s§a ke alam liar!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cTidak dapat mentransfer ke PC! Anda harus memiliki 1 pokemon pada Anda setiap saat!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cKembalikan pokemon ini sebelum Mentransfer!
-forms.party.showPokemon.transferToPc.success=Mentransfer %s ke PC Anda!
-forms.party.setNickName.fail.tooLong=§cError: Nama panggilan terlalu panjang. Panjang maksimum yang diperbolehkan adalah 10 karakter.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: Karakter pertama nama panggilan harus berupa huruf.
 
-forms.pc.preformActionOnPcPokemon.body=Pilih Tindakan untuk dibentuk sebelumnya di Pokemon PC ini!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cGagal mentransfer ke Pihak, Anda tidak memiliki slot terbuka!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Tambahkan ke Pesta
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Sampah Pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Kembali
+forms.moderate.updatedRole=§a Data Sedang yang Diperbarui!
 
-forms.serverNpc.butItemScreen.title=Beli Item: %sx %s§r untuk %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cGagal Membeli Item
-forms.serverNpc.butItemScreen.success=§aBerhasil Membeli %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Jual: %s§r untuk %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cGagal Menjual Item
-forms.serverNpc.sellItemScreen.success=§aBerhasil Terjual %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cGagal menjual %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cMenyelesaikan pencarian perdagangan!
-forms.tradeMachine.showWaitForm.requestDeclined=§cPermintaan perdagangan Anda Ditolak!
-forms.tradeMachine.showMain.alreadyInUse=§cTidak Dapat Berinteraksi dengan Mesin, Sudah Digunakan!
-forms.tradeMachine.showMain.playerNotFound=§cGagal memulai Perdagangan, Pemain Lain tidak ditemukan!
+forms.party.showPokemon.body=§cError: Pokemon pingsan. Silakan pergi ke tabib untuk memulihkan kesehatan.
+forms.party.showPokemon.location.error.pokemonFainted=§aSukses: Terkirim §e%s!
+forms.party.showPokemon.location.sentOut=§aSukses: Mengembalikan §e%s!
+forms.party.showPokemon.location.retured=§cError: Pokemon tidak ditemukan. Silakan mendekat ke Pokemon dan coba lagi.
+forms.party.showPokemon.location.notFound=§cTidak dapat melepaskan pokemon ke alam liar! Anda harus memiliki 1 pokemon pada Anda setiap saat!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cTidak dapat melepaskan pokemon saat dikirim!
+forms.party.showPokemon.release.fail.pokemonSentOut=Apakah Anda yakin ingin melepaskan pokemon ini ke alam liar, ini tidak dapat diurungkan!
+forms.party.showPokemon.release.confirm=§a Dirilis §e%s§a ke alam liar!
+forms.party.showPokemon.release.success=§cTidak dapat mentransfer ke PC! Anda harus memiliki 1 pokemon pada Anda setiap saat!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKembalikan pokemon ini sebelum Mentransfer!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Mentransfer %s ke PC Anda!
+forms.party.showPokemon.transferToPc.success=§cError: Nama panggilan terlalu panjang. Panjang maksimum yang diperbolehkan adalah 10 karakter.
+forms.party.setNickName.fail.tooLong=§cError: Karakter pertama nama panggilan harus berupa huruf.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cAnda tidak dapat melawan pelatih ini lagi!
-forms.trainerMenu.editBasicData.updated=§aMemperbarui data dasar untuk pelatih!
-forms.trainerMenu.editDrops.confirmDelete=Apakah Anda yakin ingin menghapus %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" bukan nomor data yang valid!
-forms.trainerMenu.editDrop.notVaildData="%s" Bukan id jenis item yang valid, yang ada di minecraft atau paket perilaku terhubung.
-forms.trainerMenu.editDrop.notValidAmount="%s" bukan angka jumlah yang valid!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Bola Terlewatkan!
-models.battleUtils.endBattleOrPokemonForm.title=Pokemon Anda telah Pingsan
-models.battleUtils.endBattleOrPokemonForm.body=Pokemon Anda baru saja pingsan, untuk melanjutkan mengakhiri pertempuran atau mengganti pokemon Anda.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Tidak dapat memulai pertempuran karena Anda tidak memiliki pokemon yang tersedia!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Tidak dapat mengubah pokemon, Anda tidak memiliki pokemon yang tersedia!
+forms.pc.preformActionOnPcPokemon.body=§cGagal mentransfer ke Pihak, Anda tidak memiliki slot terbuka!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Tambahkan ke Pesta
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Sampah Pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Kembali
+
+
+forms.serverNpc.butItemScreen.title=§cGagal Membeli Item
+forms.serverNpc.butItemScreen.fail=§aBerhasil Membeli %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Jual: %s§r untuk %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cGagal Menjual Item
+forms.serverNpc.sellItemScreen.fail=§aBerhasil Terjual %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cGagal menjual %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cPermintaan perdagangan Anda Ditolak!
+forms.tradeMachine.showWaitForm.requestDeclined=§cTidak Dapat Berinteraksi dengan Mesin, Sudah Digunakan!
+forms.tradeMachine.showMain.alreadyInUse=§cGagal memulai Perdagangan, Pemain Lain tidak ditemukan!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aMemperbarui data dasar untuk pelatih!
+forms.trainerMenu.editBasicData.updated=Apakah Anda yakin ingin menghapus %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" bukan nomor data yang valid!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Bukan id jenis item yang valid, yang ada di minecraft atau paket perilaku terhubung.
+forms.trainerMenu.editDrop.notVaildData="%s" bukan angka jumlah yang valid!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Pokemon Anda telah Pingsan
+models.battleUtils.endBattleOrPokemonForm.title=Pokemon Anda baru saja pingsan, untuk melanjutkan mengakhiri pertempuran atau mengganti pokemon Anda.
+models.battleUtils.endBattleOrPokemonForm.body=Tidak dapat memulai pertempuran karena Anda tidak memiliki pokemon yang tersedia!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Tidak dapat mengubah pokemon, Anda tidak memiliki pokemon yang tersedia!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s Telah Berevolusi menjadi %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle Gagal Memulai. Coba pokemon l
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Telah Mendapatkan §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aAnda telah mendapatkan %sx PokeDollar!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Telah mengirimi Anda permintaan pertempuran, ketik "-battle accept" untuk menerima permintaan ini
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aPayed "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s terakhir terlihat di server ini %s
 commands.seen.lastSeen=Logon pertama §c%s adalah %s
+
+
+commands.redeem.codeNotFound=§aMenukarkan kode: "%s", Berhasil!
+commands.redeem.success=§cKode: "%s", telah ditukarkan!
 

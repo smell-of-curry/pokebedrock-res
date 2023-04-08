@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server for Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. This Fire-type P
 starter.piplup.description=Piplup: The Penguin Pokémon. This Water-type Pokémon is cute and proud. With high Defense and Special Attack stats, Piplup is a balanced choice to start your Pokémon journey.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. This Grass-type Pokémon is cute and sturdy. With high Defense stats, Turtwig is a reliable choice to start your Pokémon journey.
 
-events.chatRanks.muted=§cCannot Send Messages, you are currently Muted!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aThe block you have selected is claimed by %s
 events.claimManager.interactWithStick.notClaimed=§aNo one has claimed this block.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cInvalid Selection, the position you have selected is currently claimed, and cannot be claimed!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cThis trainer is in battle, and cannot b
 
 events.setStarterPokemon.chosen=§a§lYou have chosen §b§l%s
 
+events.beforeChat.muted=§cCannot Send Messages, you are currently Muted!
+events.beforeChat.sendingTooFast=§cYou are sending messages too quickly. Please slow down and try again.
+events.beforeChat.repeatedMessage=§cYour previous message appears to be identical to your most recent one. Please modify your message and try again.
+events.beforeChat.zalgoMessage=§cYour message contains zalgo and cannot be sent!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 forms.actionForm.show.timeout=§cForm Timeout: tried to show form, but you were busy (close chat after running command)
 
-forms.crate.noDataToShow=§cThis Crate has no data to show!
-forms.crate.edit.itemIdDoesNotExist=Item "%s" does not exist in minecraft or connected behavior packs!
-forms.crate.edit.dataMustBeNumber=Data: %s, Must be a number!
+forms.crate.noDataToShow=Item "%s" does not exist in minecraft or connected behavior packs!
+forms.crate.edit.itemIdDoesNotExist=Data: %s, Must be a number!
 
-forms.kits.buy.confirmPurchase=Are you sure you want to buy kit: %s§r for %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cFailed to buy: %s§r§c, You do not have enough Poke Dollars!
-forms.kits.buy.success=§aSuccessfully Purchased Kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aClaimed kit: %s Successfully! Claim again %s
-forms.kits.delete.success=§cDeleted Kit: §e%s
 
-forms.moderate.updatedRole=§aUpdated Role for "${playerName}"!
-forms.moderate.updatedModerateData=§aUpdated Moderate Data!
+forms.kits.buy.confirmPurchase=§cFailed to buy: %s§r§c, You do not have enough Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aSuccessfully Purchased Kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aClaimed kit: %s Successfully! Claim again %s
+forms.kits.claim.success=§cDeleted Kit: §e%s
 
-forms.party.showPokemon.body=Select a action to preform on this pokemon.
-forms.party.showPokemon.location.error.pokemonFainted=§cError: Pokémon has fainted. Please go to healer to restore health.
-forms.party.showPokemon.location.sentOut=§aSuccess: Sent out §e%s!
-forms.party.showPokemon.location.retured=§aSuccess: Returned §e%s!
-forms.party.showPokemon.location.notFound=§cError: Pokémon not found. Please move closer to the Pokémon and try again.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cCannot release pokemon into wild! You must have 1 pokemon on you at all times!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cCannot release pokemon while its sent out!
-forms.party.showPokemon.release.confirm=Are you sure you want to release this pokemon into the wild, this cannot be undone!
-forms.party.showPokemon.release.success=§aReleased §e%s§a into the wild!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cCannot transfer to PC! You must have 1 pokemon on you at all times!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cReturn this pokemon before Transferring!
-forms.party.showPokemon.transferToPc.success=Transferred %s to your Pc!
-forms.party.setNickName.fail.tooLong=§cError: Nickname too long. Maximum length allowed is 10 characters.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: The first character of the nickname must be a letter.
 
-forms.pc.preformActionOnPcPokemon.body=Select a Action to preform on this PC Pokemon!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cFailed to transfer to Party, You do not have any open slots!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Add to Party
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Trash Pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Go Back
+forms.moderate.updatedRole=§aUpdated Moderate Data!
 
-forms.serverNpc.butItemScreen.title=Buy Item: %sx %s§r for %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cFailed to Buy Items
-forms.serverNpc.butItemScreen.success=§aSuccessfully Purchased %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Sell: %s§r for %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cFailed to Sell Items
-forms.serverNpc.sellItemScreen.success=§aSuccessfully Sold %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cFailed to sell %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cEnded trade search!
-forms.tradeMachine.showWaitForm.requestDeclined=§cYour trade request was Declined!
-forms.tradeMachine.showMain.alreadyInUse=§cCannot Interact with Machine, Already in Use!
-forms.tradeMachine.showMain.playerNotFound=§cFailed to start Trade, Other Player was not found!
+forms.party.showPokemon.body=§cError: Pokémon has fainted. Please go to healer to restore health.
+forms.party.showPokemon.location.error.pokemonFainted=§aSuccess: Sent out §e%s!
+forms.party.showPokemon.location.sentOut=§aSuccess: Returned §e%s!
+forms.party.showPokemon.location.retured=§cError: Pokémon not found. Please move closer to the Pokémon and try again.
+forms.party.showPokemon.location.notFound=§cCannot release pokemon into wild! You must have 1 pokemon on you at all times!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cCannot release pokemon while its sent out!
+forms.party.showPokemon.release.fail.pokemonSentOut=Are you sure you want to release this pokemon into the wild, this cannot be undone!
+forms.party.showPokemon.release.confirm=§aReleased §e%s§a into the wild!
+forms.party.showPokemon.release.success=§cCannot transfer to PC! You must have 1 pokemon on you at all times!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cReturn this pokemon before Transferring!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Transferred %s to your Pc!
+forms.party.showPokemon.transferToPc.success=§cError: Nickname too long. Maximum length allowed is 10 characters.
+forms.party.setNickName.fail.tooLong=§cError: The first character of the nickname must be a letter.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cYou cannot re-battle this trainer again!
-forms.trainerMenu.editBasicData.updated=§aUpdated Basic data for trainer!
-forms.trainerMenu.editDrops.confirmDelete=Are You sure you want to delete %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" is not a valid data number!
-forms.trainerMenu.editDrop.notVaildData="%s" Is not a valid item type id, that is in minecraft or connected behavior packs.
-forms.trainerMenu.editDrop.notValidAmount="%s" is not a valid amount number!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Ball was Missed!
-models.battleUtils.endBattleOrPokemonForm.title=Your Pokemon has Fainted
-models.battleUtils.endBattleOrPokemonForm.body=Your pokemon has just fainted, to continue either end the battle or switch your pokemon.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Cannot start battle because you have no available pokemon!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Cannot change pokemon, you have no available pokemon!
+forms.pc.preformActionOnPcPokemon.body=§cFailed to transfer to Party, You do not have any open slots!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Add to Party
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Trash Pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Go Back
+
+
+forms.serverNpc.butItemScreen.title=§cFailed to Buy Items
+forms.serverNpc.butItemScreen.fail=§aSuccessfully Purchased %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Sell: %s§r for %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cFailed to Sell Items
+forms.serverNpc.sellItemScreen.fail=§aSuccessfully Sold %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cFailed to sell %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cYour trade request was Declined!
+forms.tradeMachine.showWaitForm.requestDeclined=§cCannot Interact with Machine, Already in Use!
+forms.tradeMachine.showMain.alreadyInUse=§cFailed to start Trade, Other Player was not found!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aUpdated Basic data for trainer!
+forms.trainerMenu.editBasicData.updated=Are You sure you want to delete %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" is not a valid data number!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Is not a valid item type id, that is in minecraft or connected behavior packs.
+forms.trainerMenu.editDrop.notVaildData="%s" is not a valid amount number!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Your Pokemon has Fainted
+models.battleUtils.endBattleOrPokemonForm.title=Your pokemon has just fainted, to continue either end the battle or switch your pokemon.
+models.battleUtils.endBattleOrPokemonForm.body=Cannot start battle because you have no available pokemon!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Cannot change pokemon, you have no available pokemon!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s Has Evolved to %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle Failed to Start. Try a differ
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Has Gained §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aYou have earned %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Has sent you a battle request, type "-battle accept" to accept this request
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aPayed "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s was last seen on this server %s
 commands.seen.lastSeen=§c%s's first logon was %s
+
+
+commands.redeem.codeNotFound=§aRedeemed the code: "%s", Successfully!
+commands.redeem.success=§cThe code: "%s", has already been redeemed!
 

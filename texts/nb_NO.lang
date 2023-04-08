@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server for Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Logg
@@ -7,7 +7,7 @@ tile.pokeb:black_apricorn_leaves.name=Svarte apricorn blader
 tile.pokeb:black_apricorn_sapling.name=Sappling av sort apricorn
 tile.pokeb:blue_apricorn_leaves.name=Blå apricorn blader
 tile.pokeb:blue_apricorn_sapling.name=Blå Apricorn Sappling
-tile.pokeb:green_apricorn_leaves.name=Grønne apricorn blader
+tile.pokeb:green_apricorn_leaves.name=Grønne apricornblader
 tile.pokeb:green_apricorn_sapling.name=Grønn apricornplante
 tile.pokeb:pink_apricorn_leaves.name=Rosa apricorn blader
 tile.pokeb:pink_apricorn_sapling.name=Rosa apricorn ungplante
@@ -92,7 +92,7 @@ item.pokeb:dusk_stone_sword=Dusk Stone Sword
 item.pokeb:fire_stone_axe=Brannsteinsøks
 item.pokeb:fire_stone_boots=Brannsteinstøvler
 item.pokeb:fire_stone_hammer=Brannsteinshammer
-item.pokeb:fire_stone_helm=Fire Stone Helm
+item.pokeb:fire_stone_helm=Brannstein Helm
 item.pokeb:fire_stone_legs=Brannsteinsbein
 item.pokeb:fire_stone_pickaxe=Fire Stone Pickaxe
 item.pokeb:fire_stone_plate=Brannsteinsplate
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Denne Fire-type 
 starter.piplup.description=Piplup: The Penguin Pokémon. Denne Pokémon-typen av vann er søt og stolt. Med høy forsvars- og spesialangrepsstatistikk er Piplup et balansert valg for å starte din Pokémon-reise.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Denne Pokémonen av gresstypen er søt og solid. Med høy forsvarsstatistikk er Turtwig et pålitelig valg for å starte din Pokémon-reise.
 
-events.chatRanks.muted=§cKan ikke sende meldinger, du er for øyeblikket dempet!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aBlokkeringen du har valgt er gjort krav på av %s
 events.claimManager.interactWithStick.notClaimed=§aIngen har gjort krav på denne blokkeringen.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cUgyldig utvalg, stillingen du har valgt er for øyeblikket gjort krav på, og kan ikke kreves!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cDenne treneren er i kamp og kan ikke sa
 
 events.setStarterPokemon.chosen=§a§lDu har valgt §b§l%s
 
+events.beforeChat.muted=§cKan ikke sende meldinger, du er for øyeblikket dempet!
+events.beforeChat.sendingTooFast=§cDu sender meldinger for raskt. Vennligst sakte ned og prøv igjen.
+events.beforeChat.repeatedMessage=§cDin forrige melding ser ut til å være identisk med den siste. Vennligst endre meldingen og prøv igjen.
+events.beforeChat.zalgoMessage=§cDin melding inneholder zalgo og kan ikke sendes!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 forms.actionForm.show.timeout=§cForm Timeout: prøvde å vise skjemaet, men du var opptatt (lukk chat etter å ha kjørt kommando)
 
-forms.crate.noDataToShow=§cDenne kassen har ingen data å vise!
-forms.crate.edit.itemIdDoesNotExist=Elementet "%s" finnes ikke i minecraft eller tilkoblede atferdspakker!
-forms.crate.edit.dataMustBeNumber=Data: %s, må være et tall!
+forms.crate.noDataToShow=Elementet "%s" finnes ikke i minecraft eller tilkoblede atferdspakker!
+forms.crate.edit.itemIdDoesNotExist=Data: %s, må være et tall!
 
-forms.kits.buy.confirmPurchase=Er du sikker på at du vil kjøpe kit: %s§r for %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cKunnet ikke kjøpe: %s§r§c, du har ikke nok Poke Dollars!
-forms.kits.buy.success=§aVellykket kjøpt kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aPåkrevd sett: %s vellykket! Gjør krav på %s igjen
-forms.kits.delete.success=§cSlettet sett: §e%s
 
-forms.moderate.updatedRole=§aOppdatert rolle for "${playerName}"!
-forms.moderate.updatedModerateData=§aOppdaterte moderate data!
+forms.kits.buy.confirmPurchase=§cKunnet ikke kjøpe: %s§r§c, du har ikke nok Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aVellykket kjøpt kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aPåkrevd sett: %s vellykket! Gjør krav på %s igjen
+forms.kits.claim.success=§cSlettet sett: §e%s
 
-forms.party.showPokemon.body=Velg en handling som skal utføres på denne pokemonen.
-forms.party.showPokemon.location.error.pokemonFainted=§cFeil: Pokémon har besvimt. Vennligst gå til healer for å gjenopprette helsen.
-forms.party.showPokemon.location.sentOut=§aSuksess: Sendt ut §e%s!
-forms.party.showPokemon.location.retured=§aSuksess: Returnerte §e%s!
-forms.party.showPokemon.location.notFound=§cFeil: Pokémon ikke funnet. Beveg deg nærmere Pokémonen og prøv igjen.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan ikke slippe pokemon ut i naturen! Du må ha 1 pokemon på deg til enhver tid!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cKan ikke gi ut pokemon mens den sendes ut!
-forms.party.showPokemon.release.confirm=Er du sikker på at du vil slippe denne pokemonen ut i naturen, kan dette ikke angres!
-forms.party.showPokemon.release.success=§aUtgitt §e%s§a i naturen!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKan ikke overføre til PC! Du må ha 1 pokemon på deg til enhver tid!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cReturner denne pokemonen før du overfører!
-forms.party.showPokemon.transferToPc.success=Overførte %s til din PC!
-forms.party.setNickName.fail.tooLong=§cFeil: Kallenavnet er for langt. Maksimal lengde tillatt er 10 tegn.
-forms.party.setNickName.fail.firstMustBeLetter=§cFeil: Det første tegnet i kallenavnet må være en bokstav.
 
-forms.pc.preformActionOnPcPokemon.body=Velg en handling som skal utføres på denne PC-Pokémonen!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cKunnet ikke overføre til Party, Du har ingen åpne spilleautomater!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Legg til fest
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Søppel Pokémon
-forms.pc.preformActionOnPcPokemon.button.goBack=Gå tilbake
+forms.moderate.updatedRole=§aOppdaterte moderate data!
 
-forms.serverNpc.butItemScreen.title=Kjøp vare: %sx %s§r for %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cKunne ikke kjøpe varer
-forms.serverNpc.butItemScreen.success=§aVellykket kjøpt %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Selg: %s§r for %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cKunne ikke selge varer
-forms.serverNpc.sellItemScreen.success=§aVellykket solgt %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cKunne ikke selge %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cAvsluttet handelssøk!
-forms.tradeMachine.showWaitForm.requestDeclined=§cDin handelsforespørsel ble avvist!
-forms.tradeMachine.showMain.alreadyInUse=§cKan ikke samhandle med maskinen, allerede i bruk!
-forms.tradeMachine.showMain.playerNotFound=§cKunne ikke starte handel, annen spiller ble ikke funnet!
+forms.party.showPokemon.body=§cFeil: Pokémon har besvimt. Vennligst gå til healer for å gjenopprette helsen.
+forms.party.showPokemon.location.error.pokemonFainted=§aSuksess: Sendt ut §e%s!
+forms.party.showPokemon.location.sentOut=§aSuksess: Returnerte §e%s!
+forms.party.showPokemon.location.retured=§cFeil: Pokémon ikke funnet. Beveg deg nærmere Pokémonen og prøv igjen.
+forms.party.showPokemon.location.notFound=§cKan ikke slippe pokemon ut i naturen! Du må ha 1 pokemon på deg til enhver tid!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan ikke gi ut pokemon mens den sendes ut!
+forms.party.showPokemon.release.fail.pokemonSentOut=Er du sikker på at du vil slippe denne pokemonen ut i naturen, kan dette ikke angres!
+forms.party.showPokemon.release.confirm=§aUtgitt §e%s§a i naturen!
+forms.party.showPokemon.release.success=§cKan ikke overføre til PC! Du må ha 1 pokemon på deg til enhver tid!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cReturner denne pokemonen før du overfører!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Overførte %s til din PC!
+forms.party.showPokemon.transferToPc.success=§cFeil: Kallenavnet er for langt. Maksimal lengde tillatt er 10 tegn.
+forms.party.setNickName.fail.tooLong=§cFeil: Det første tegnet i kallenavnet må være en bokstav.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cDu kan ikke kjempe mot denne treneren igjen!
-forms.trainerMenu.editBasicData.updated=§aOppdatert Grunndata for trener!
-forms.trainerMenu.editDrops.confirmDelete=Er du sikker på at du vil slette %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" er ikke et gyldig datanummer!
-forms.trainerMenu.editDrop.notVaildData="%s" Er ikke en gyldig elementtype-ID, som er i minecraft eller tilkoblede atferdspakker.
-forms.trainerMenu.editDrop.notValidAmount="%s" er ikke et gyldig beløpsnummer!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Ballen ble savnet!
-models.battleUtils.endBattleOrPokemonForm.title=Pokémonen din har besvimt
-models.battleUtils.endBattleOrPokemonForm.body=Pokémonen din har nettopp besvimt, for å fortsette enten å avslutte kampen eller bytte pokémon.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan ikke starte kamp fordi du ikke har noen tilgjengelig pokemon!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Kan ikke endre pokemon, du har ingen tilgjengelig pokemon!
+forms.pc.preformActionOnPcPokemon.body=§cKunnet ikke overføre til Party, Du har ingen åpne spilleautomater!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Legg til fest
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Søppel Pokémon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Gå tilbake
+
+
+forms.serverNpc.butItemScreen.title=§cKunne ikke kjøpe varer
+forms.serverNpc.butItemScreen.fail=§aVellykket kjøpt %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Selg: %s§r for %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cKunne ikke selge varer
+forms.serverNpc.sellItemScreen.fail=§aVellykket solgt %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cKunne ikke selge %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cDin handelsforespørsel ble avvist!
+forms.tradeMachine.showWaitForm.requestDeclined=§cKan ikke samhandle med maskinen, allerede i bruk!
+forms.tradeMachine.showMain.alreadyInUse=§cKunne ikke starte handel, annen spiller ble ikke funnet!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aOppdatert Grunndata for trener!
+forms.trainerMenu.editBasicData.updated=Er du sikker på at du vil slette %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" er ikke et gyldig datanummer!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Er ikke en gyldig elementtype-ID, som er i minecraft eller tilkoblede atferdspakker.
+forms.trainerMenu.editDrop.notVaildData="%s" er ikke et gyldig beløpsnummer!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Pokémonen din har besvimt
+models.battleUtils.endBattleOrPokemonForm.title=Pokémonen din har nettopp besvimt, for å fortsette enten å avslutte kampen eller bytte pokémon.
+models.battleUtils.endBattleOrPokemonForm.body=Kan ikke starte kamp fordi du ikke har noen tilgjengelig pokemon!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan ikke endre pokemon, du har ingen tilgjengelig pokemon!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s har utviklet seg til %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle kunne ikke starte. Prøv en a
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s har fått §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aDu har tjent %sx PokeDollar!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Har sendt deg en kampforespørsel, skriv "-battle accept" for å godta denne forespørselen
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aBetalte "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s ble sist sett på denne serveren %s
 commands.seen.lastSeen=§c%s sin første pålogging var %s
+
+
+commands.redeem.codeNotFound=§aLøste inn koden: "%s", vellykket!
+commands.redeem.success=§cKoden: "%s", er allerede innløst!
 

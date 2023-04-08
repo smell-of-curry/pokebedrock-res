@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§a Pokemon Server για το Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn κούτσουρο
@@ -54,7 +54,7 @@ item.pokeb:trade_panel=Πάνελ Εμπορίου
 tile.pokeb:bauxite_ore.name=Μεταλλεύματος Βωξίτη
 tile.pokeb:dawn_stone_ore.name=Dawn Stone Ore
 tile.pokeb:dusk_ore.name=σούρουπο μετάλλευμα
-tile.pokeb:fire_stone_ore.name=Φωτιά Πέτρα Μεταλλεύματος
+tile.pokeb:fire_stone_ore.name=Φωτιά Stone Ore
 tile.pokeb:lava_stone_ore.name=Λάβα Stone Ore
 tile.pokeb:leaf_stone_ore.name=Φύλλο μετάλλευμα
 tile.pokeb:moon_stone_ore.name=Moon Stone Ore
@@ -101,7 +101,7 @@ item.pokeb:fire_stone_sword=Πέτρινο ξίφος φωτιάς
 item.pokeb:leaf_stone_axe=Φύλλο Πέτρινο Τσεκούρι
 item.pokeb:leaf_stone_boots=Μπότες Leaf Stone
 item.pokeb:leaf_stone_hammer=Leaf Stone Hammer
-item.pokeb:leaf_stone_helm=Φύλλο Πέτρινο Τιμόνι
+item.pokeb:leaf_stone_helm=Φύλλο Πέτρινο Κράνι
 item.pokeb:leaf_stone_legs=Leaf Stone πόδια
 item.pokeb:leaf_stone_pickaxe=Πέτρινη αξίνα
 item.pokeb:leaf_stone_plate=Φύλλο Πέτρινο Πιάτο
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Αυτό το Π
 starter.piplup.description=Piplup: The Penguin Pokémon. Αυτό το Pokémon τύπου Water είναι χαριτωμένο και περήφανο. Με υψηλά στατιστικά άμυνας και ειδικών επιθέσεων, το Piplup είναι μια ισορροπημένη επιλογή για να ξεκινήσετε το ταξίδι σας στο Pokémon.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Αυτό το Pokémon τύπου Grass είναι χαριτωμένο και ανθεκτικό. Με υψηλά στατιστικά άμυνας, το Turtwig είναι μια αξιόπιστη επιλογή για να ξεκινήσετε το ταξίδι σας στα Pokémon.
 
-events.chatRanks.muted=§cΔεν είναι δυνατή η αποστολή μηνυμάτων, αυτή τη στιγμή είστε σε σίγαση!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§a Το μπλοκ που επιλέξατε διεκδικείται από %s
 events.claimManager.interactWithStick.notClaimed=§a Κανείς δεν έχει διεκδικήσει αυτό το μπλοκ.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cΜη έγκυρη επιλογή, η θέση που επιλέξατε διεκδικείται αυτήν τη στιγμή και δεν μπορεί να διεκδικηθεί!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cΑυτός ο εκπαιδευτής β
 
 events.setStarterPokemon.chosen=§a§lΈχετε επιλέξει §b§l%s
 
+events.beforeChat.muted=§cΔεν είναι δυνατή η αποστολή μηνυμάτων, αυτή τη στιγμή είστε σε σίγαση!
+events.beforeChat.sendingTooFast=§cΣτέλνετε μηνύματα πολύ γρήγορα. Παρακαλώ επιβραδύνετε και δοκιμάστε ξανά.
+events.beforeChat.repeatedMessage=§cΤο προηγούμενο μήνυμά σας φαίνεται να είναι πανομοιότυπο με το πιο πρόσφατο. Τροποποιήστε το μήνυμά σας και δοκιμάστε ξανά.
+events.beforeChat.zalgoMessage=§cΤο μήνυμά σας περιέχει zalgo και δεν μπορεί να σταλεί!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cΑποστολή ανεπιθύμητης αλληλογραφίας!
+
 forms.actionForm.show.timeout=§cΧρονικό όριο λήξης φόρμας: προσπάθησε να εμφανίσει τη φόρμα, αλλά ήσουν απασχολημένος (κλείσιμο συνομιλίας μετά την εκτέλεση της εντολής)
 
-forms.crate.noDataToShow=§cΑυτό το Κλουβί δεν έχει δεδομένα για εμφάνιση!
-forms.crate.edit.itemIdDoesNotExist=Το στοιχείο "%s" δεν υπάρχει στο minecraft ή σε πακέτα συνδεδεμένης συμπεριφοράς!
-forms.crate.edit.dataMustBeNumber=Δεδομένα: %s, Πρέπει να είναι αριθμός!
+forms.crate.noDataToShow=Το στοιχείο "%s" δεν υπάρχει στο minecraft ή σε πακέτα συνδεδεμένης συμπεριφοράς!
+forms.crate.edit.itemIdDoesNotExist=Δεδομένα: %s, Πρέπει να είναι αριθμός!
 
-forms.kits.buy.confirmPurchase=Είστε βέβαιοι ότι θέλετε να αγοράσετε κιτ: %s§r για %s PokeDollars;
-forms.kits.buy.notEnoughMoney=§cΑπέτυχε η αγορά: %s§r§c, δεν έχετε αρκετά Poke Dollers!
-forms.kits.buy.success=§a Επιτυχής Αγορά Kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§a Κιτ διεκδίκησης: %s Επιτυχώς! Αξίωση ξανά %s
-forms.kits.delete.success=§cΔιαγραμμένο κιτ: §e%s
 
-forms.moderate.updatedRole=§Ενημερωμένος ρόλος για το "${playerName}"!
-forms.moderate.updatedModerateData=§Ενημερωμένα Μέτρια Δεδομένα!
+forms.kits.buy.confirmPurchase=§cΑπέτυχε η αγορά: %s§r§c, δεν έχετε αρκετά Poke Dollers!
+forms.kits.buy.notEnoughMoney=§a Επιτυχής Αγορά Kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§a Κιτ διεκδίκησης: %s Επιτυχώς! Αξίωση ξανά %s
+forms.kits.claim.success=§cΔιαγραμμένο κιτ: §e%s
 
-forms.party.showPokemon.body=Επιλέξτε μια ενέργεια για προσχηματισμό σε αυτό το pokemon.
-forms.party.showPokemon.location.error.pokemonFainted=§cΣφάλμα: Το Pokémon λιποθύμησε. Παρακαλώ πηγαίνετε στον θεραπευτή για να αποκαταστήσετε την υγεία.
-forms.party.showPokemon.location.sentOut=§aSuccess: Απεστάλη §e%s!
-forms.party.showPokemon.location.retured=§aSuccess: Επέστρεψε το §e%s!
-forms.party.showPokemon.location.notFound=§cΣφάλμα: Το Pokémon δεν βρέθηκε. Πηγαίνετε πιο κοντά στο Pokémon και δοκιμάστε ξανά.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cΔεν είναι δυνατή η απελευθέρωση pokemon στο wild! Πρέπει να έχετε 1 πόκεμον πάντα πάνω σας!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cΔεν είναι δυνατή η απελευθέρωση pokemon ενώ αποστέλλεται!
-forms.party.showPokemon.release.confirm=Είστε βέβαιοι ότι θέλετε να απελευθερώσετε αυτό το pokemon στη φύση, αυτό δεν μπορεί να αναιρεθεί!
-forms.party.showPokemon.release.success=§a Απελευθερώθηκε το §e%s§a στη φύση!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cΔεν είναι δυνατή η μεταφορά σε υπολογιστή! Πρέπει να έχετε 1 πόκεμον πάντα πάνω σας!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cΕπιστρέψτε αυτό το pokemon πριν από τη μεταφορά!
-forms.party.showPokemon.transferToPc.success=Μεταφέρθηκε το %s στον υπολογιστή σας!
-forms.party.setNickName.fail.tooLong=§cΣφάλμα: Το ψευδώνυμο είναι πολύ μεγάλο. Το μέγιστο επιτρεπόμενο μήκος είναι 10 χαρακτήρες.
-forms.party.setNickName.fail.firstMustBeLetter=§cΣφάλμα: Ο πρώτος χαρακτήρας του ψευδώνυμου πρέπει να είναι γράμμα.
 
-forms.pc.preformActionOnPcPokemon.body=Επιλέξτε μια Δράση για προσχηματισμό σε αυτό το Pokemon υπολογιστή!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cΑπέτυχε η μεταφορά στο Party, Δεν έχετε ανοιχτές θέσεις!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Προσθήκη στο Party
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Trash Pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Πήγαινε πίσω
+forms.moderate.updatedRole=§Ενημερωμένα Μέτρια Δεδομένα!
 
-forms.serverNpc.butItemScreen.title=Αγορά αντικειμένου: %sx %s§r για %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cΑποτυχία αγοράς αντικειμένων
-forms.serverNpc.butItemScreen.success=§a Επιτυχής αγορά %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Πουλήστε: %s§r για %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cΑποτυχία πώλησης αντικειμένων
-forms.serverNpc.sellItemScreen.success=§a Πωλήθηκε με επιτυχία %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cΑπέτυχε η πώληση %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cΤερματίστηκε η αναζήτηση συναλλαγών!
-forms.tradeMachine.showWaitForm.requestDeclined=§cΤο αίτημα συναλλαγών σας απορρίφθηκε!
-forms.tradeMachine.showMain.alreadyInUse=§cΔεν είναι δυνατή η αλληλεπίδραση με το μηχάνημα, είναι ήδη σε χρήση!
-forms.tradeMachine.showMain.playerNotFound=§cΑπέτυχε η έναρξη του Trade, ο άλλος παίκτης δεν βρέθηκε!
+forms.party.showPokemon.body=§cΣφάλμα: Το Pokémon λιποθύμησε. Παρακαλώ πηγαίνετε στον θεραπευτή για να αποκαταστήσετε την υγεία.
+forms.party.showPokemon.location.error.pokemonFainted=§aSuccess: Απεστάλη §e%s!
+forms.party.showPokemon.location.sentOut=§aSuccess: Επέστρεψε το §e%s!
+forms.party.showPokemon.location.retured=§cΣφάλμα: Το Pokémon δεν βρέθηκε. Πηγαίνετε πιο κοντά στο Pokémon και δοκιμάστε ξανά.
+forms.party.showPokemon.location.notFound=§cΔεν είναι δυνατή η απελευθέρωση pokemon στο wild! Πρέπει να έχετε 1 πόκεμον πάντα πάνω σας!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cΔεν είναι δυνατή η απελευθέρωση pokemon ενώ αποστέλλεται!
+forms.party.showPokemon.release.fail.pokemonSentOut=Είστε βέβαιοι ότι θέλετε να απελευθερώσετε αυτό το pokemon στη φύση, αυτό δεν μπορεί να αναιρεθεί!
+forms.party.showPokemon.release.confirm=§a Απελευθερώθηκε το §e%s§a στη φύση!
+forms.party.showPokemon.release.success=§cΔεν είναι δυνατή η μεταφορά σε υπολογιστή! Πρέπει να έχετε 1 πόκεμον πάντα πάνω σας!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cΕπιστρέψτε αυτό το pokemon πριν από τη μεταφορά!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Μεταφέρθηκε το %s στον υπολογιστή σας!
+forms.party.showPokemon.transferToPc.success=§cΣφάλμα: Το ψευδώνυμο είναι πολύ μεγάλο. Το μέγιστο επιτρεπόμενο μήκος είναι 10 χαρακτήρες.
+forms.party.setNickName.fail.tooLong=§cΣφάλμα: Ο πρώτος χαρακτήρας του ψευδώνυμου πρέπει να είναι γράμμα.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cΔεν μπορείτε να παλέψετε ξανά με αυτόν τον προπονητή!
-forms.trainerMenu.editBasicData.updated=§Ενημερωμένα Βασικά δεδομένα για εκπαιδευτή!
-forms.trainerMenu.editDrops.confirmDelete=Είστε βέβαιοι ότι θέλετε να διαγράψετε %s;
-forms.trainerMenu.editDrop.typeIdDoesNotExist=Το "%s" δεν είναι έγκυρος αριθμός δεδομένων!
-forms.trainerMenu.editDrop.notVaildData=Το "%s" δεν είναι έγκυρο αναγνωριστικό τύπου στοιχείου, που βρίσκεται σε πακέτα minecraft ή συνδεδεμένων συμπεριφορών.
-forms.trainerMenu.editDrop.notValidAmount=Το "%s" δεν είναι έγκυρος αριθμός ποσού!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Η μπάλα χάθηκε!
-models.battleUtils.endBattleOrPokemonForm.title=Το Pokemon σας έχει λιποθυμήσει
-models.battleUtils.endBattleOrPokemonForm.body=Το pokemon σας μόλις λιποθύμησε, για να συνεχίσετε είτε να τερματίσετε τη μάχη είτε να αλλάξετε το pokemon σας.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Δεν μπορείτε να ξεκινήσετε τη μάχη επειδή δεν έχετε διαθέσιμα pokemon!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Δεν μπορείτε να αλλάξετε pokemon, δεν έχετε διαθέσιμο pokemon!
+forms.pc.preformActionOnPcPokemon.body=§cΑπέτυχε η μεταφορά στο Party, Δεν έχετε ανοιχτές θέσεις!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Προσθήκη στο Party
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Trash Pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Πήγαινε πίσω
+
+
+forms.serverNpc.butItemScreen.title=§cΑποτυχία αγοράς αντικειμένων
+forms.serverNpc.butItemScreen.fail=§a Επιτυχής αγορά %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Πουλήστε: %s§r για %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cΑποτυχία πώλησης αντικειμένων
+forms.serverNpc.sellItemScreen.fail=§a Πωλήθηκε με επιτυχία %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cΑπέτυχε η πώληση %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cΤο αίτημα συναλλαγών σας απορρίφθηκε!
+forms.tradeMachine.showWaitForm.requestDeclined=§cΔεν είναι δυνατή η αλληλεπίδραση με το μηχάνημα, είναι ήδη σε χρήση!
+forms.tradeMachine.showMain.alreadyInUse=§cΑπέτυχε η έναρξη του Trade, ο άλλος παίκτης δεν βρέθηκε!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§Ενημερωμένα Βασικά δεδομένα για εκπαιδευτή!
+forms.trainerMenu.editBasicData.updated=Είστε βέβαιοι ότι θέλετε να διαγράψετε %s;
+forms.trainerMenu.editDrops.confirmDelete=Το "%s" δεν είναι έγκυρος αριθμός δεδομένων!
+forms.trainerMenu.editDrop.typeIdDoesNotExist=Το "%s" δεν είναι έγκυρο αναγνωριστικό τύπου στοιχείου, που βρίσκεται σε πακέτα minecraft ή συνδεδεμένων συμπεριφορών.
+forms.trainerMenu.editDrop.notVaildData=Το "%s" δεν είναι έγκυρος αριθμός ποσού!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Το Pokemon σας έχει λιποθυμήσει
+models.battleUtils.endBattleOrPokemonForm.title=Το pokemon σας μόλις λιποθύμησε, για να συνεχίσετε είτε να τερματίσετε τη μάχη είτε να αλλάξετε το pokemon σας.
+models.battleUtils.endBattleOrPokemonForm.body=Δεν μπορείτε να ξεκινήσετε τη μάχη επειδή δεν έχετε διαθέσιμα pokemon!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Δεν μπορείτε να αλλάξετε pokemon, δεν έχετε διαθέσιμο pokemon!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=Το %s έχει εξελιχθεί σε %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cΗ Μάχη απέτυχε να ξε
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=Το §a%s έχει κερδίσει §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§a Έχετε κερδίσει %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Σας έχει στείλει αίτημα μάχης, πληκτρολογήστε "-battle accept" για να αποδεχτείτε αυτό το αίτημα
@@ -634,7 +640,7 @@ commands.moderate.formRequested=§aForm ζητήθηκε, Κλείστε τη σ
 
 
 
-commands.warp.formRequested=§aΣτρεβλώθηκε σε: %s!
+commands.warp.formRequested=§aΣτρεβλωμένο σε: %s!
 
 
 
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§a Πληρώθηκαν "%s" %sx PokeDollar
 
 commands.seen.onlineRightNow=Το §c%s εμφανίστηκε τελευταία φορά σε αυτόν τον διακομιστή %s
 commands.seen.lastSeen=Η πρώτη σύνδεση του §c%s ήταν %s
+
+
+commands.redeem.codeNotFound=§a Εξαργυρώθηκε ο κωδικός: "%s", Επιτυχώς!
+commands.redeem.success=§cΟ κωδικός: "%s", έχει ήδη εξαργυρωθεί!
 

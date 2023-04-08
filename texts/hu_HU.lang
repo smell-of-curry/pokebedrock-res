@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon szerver a Minecraft Bedrockhoz
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -472,15 +472,12 @@ kick.fail.op=Megpróbáltál rúgni, de nem tudsz!
 starter.charmander.description=Charmander: The Flame Pokémon. Imádnivaló és csupa tűz. A nagy sebesség és a támadás statisztikáival a Charmander jó választás a Pokémon utazás megkezdéséhez.
 starter.squirtle.description=Squirtle: The Tiny Turtle Pokémon. Az imádnivaló és rugalmas Squirtle egy vízi típusú Pokémon, amely remekül hat. Magas védelmi statisztikákkal a Squirtle megbízható választás a Pokémon utazás megkezdéséhez.
 starter.bulbasaur.description=Bulbasaur: The Seed Pokémon. Egy bájos és sokoldalú Grass típusú Pokémon. A kiegyensúlyozott statisztikai eloszlásnak köszönhetően a Bulbasaur jó választás a Pokémon utazás megkezdéséhez.
-starter.cyndaquil.description=Cyndaquil: A tűzegér pokémon. Ez a Fire-típusú Pokémon aranyos és tele van energiával. A nagy sebességű és speciális támadási statisztikákkal a Cyndaquil egy tüzes választás a Pokémon utazás megkezdéséhez.
+starter.cyndaquil.description=Cyndaquil: A tűzegér pokémon. Ez a tűz típusú Pokémon aranyos és tele van energiával. A nagy sebességű és speciális támadási statisztikákkal a Cyndaquil egy tüzes választás a Pokémon utazás megkezdéséhez.
 starter.totodile.description=Totodile: The Big Jaw Pokémon. Ez a víz típusú Pokémon aranyos és heves. Magas támadási statisztikáival a Totodile hatékony választás a Pokémon utazás megkezdéséhez.
 starter.chikorita.description=Chikorita: The Leaf Pokémon. Egy bájos és kecses Grass típusú Pokémon. Magas speciális védelmi statisztikáival a Chikorita megbízható választás a Pokémon utazás megkezdéséhez.
 starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Ez a Fire-típusú Pokémon tele van energiával és lendülettel. A nagy sebesség és a támadás statisztikáival a Chimchar tüzes választás a Pokémon utazás megkezdéséhez.
 starter.piplup.description=Piplup: The Penguin Pokémon. Ez a víz típusú Pokémon aranyos és büszke. Magas védelmi és különleges támadási statisztikáival a Piplup kiegyensúlyozott választás a Pokémon utazás megkezdéséhez.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Ez a Grass típusú Pokémon aranyos és erős. Magas védelmi statisztikákkal a Turtwig megbízható választás a Pokémon utazás megkezdéséhez.
-
-events.chatRanks.muted=§cNem tud üzenetet küldeni, Ön jelenleg el van némítva!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§aA kiválasztott blokkot %s igényli
 events.claimManager.interactWithStick.notClaimed=§aSenki sem igényelte ezt a blokkot.
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cEz az edző harcban áll, és nem lehet
 
 events.setStarterPokemon.chosen=§a§lÖn a §b§l%s lehetőséget választotta
 
+events.beforeChat.muted=§cNem tud üzenetet küldeni, Ön jelenleg el van némítva!
+events.beforeChat.sendingTooFast=§cTúl gyorsan küld üzeneteket. Kérjük, lassítson, és próbálja újra.
+events.beforeChat.repeatedMessage=§cAz előző üzenete megegyezik a legutóbbi üzenettel. Kérjük, módosítsa üzenetét, és próbálja újra.
+events.beforeChat.zalgoMessage=§cAz Ön üzenete zalgot tartalmaz és nem küldhető el!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamelés!
+
 forms.actionForm.show.timeout=§cForm időtúllépés: megpróbálta megjeleníteni az űrlapot, de elfoglalt volt (a csevegés bezárása a parancs futtatása után)
 
-forms.crate.noDataToShow=§cEnnek a ládának nincs megjeleníthető adata!
-forms.crate.edit.itemIdDoesNotExist=A "%s" elem nem létezik a minecraftban vagy a csatlakoztatott viselkedési csomagokban!
-forms.crate.edit.dataMustBeNumber=Adatok: %s, számnak kell lennie!
+forms.crate.noDataToShow=A "%s" elem nem létezik a minecraftban vagy a csatlakoztatott viselkedési csomagokban!
+forms.crate.edit.itemIdDoesNotExist=Adatok: %s, számnak kell lennie!
 
-forms.kits.buy.confirmPurchase=Biztosan meg szeretné vásárolni a következő készletet: %s§r %s PokeDollarsért?
-forms.kits.buy.notEnoughMoney=§cNem sikerült megvásárolni: %s§r§c, Nincs elég Poke Dollar!
-forms.kits.buy.success=§aSikeresen megvásárolt készlet %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aIgényelt készlet: %s Sikeresen! Újbóli követelés %s
-forms.kits.delete.success=§cTörölt készlet: §e%s
 
-forms.moderate.updatedRole=§aFrissítve „${playerName}” szerepkör!
-forms.moderate.updatedModerateData=§aFrissített moderált adatok!
+forms.kits.buy.confirmPurchase=§cNem sikerült megvásárolni: %s§r§c, Nincs elég Poke Dollar!
+forms.kits.buy.notEnoughMoney=§aSikeresen megvásárolt készlet %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aIgényelt készlet: %s Sikeresen! Újbóli követelés %s
+forms.kits.claim.success=§cTörölt készlet: §e%s
 
-forms.party.showPokemon.body=Válasszon ki egy műveletet, amelyet ezen a pokémonon szeretne végrehajtani.
-forms.party.showPokemon.location.error.pokemonFainted=§cError: Pokémon elájult. Kérjük, menjen a gyógyítóhoz, hogy helyreállítsa egészségét.
-forms.party.showPokemon.location.sentOut=§aSiker: Kiküldve §e%s!
-forms.party.showPokemon.location.retured=§aSiker: Visszaküldve §e%s!
-forms.party.showPokemon.location.notFound=§cError: Pokémon nem található. Kérjük, menjen közelebb a Pokémonhoz, és próbálja újra.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§c A pokémonokat nem szabad vadonba bocsátani! Mindig legyen rajtad 1 pokémon!
-forms.party.showPokemon.release.fail.pokemonSentOut=§c Nem szabad kiadni a Pokémont, amíg kiküldték!
-forms.party.showPokemon.release.confirm=Biztos, hogy ki akarja engedni ezt a pokémont a vadonba, ezt nem lehet visszavonni!
-forms.party.showPokemon.release.success=§aKiengedett §e%s§a a vadonba!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cNem lehet átvinni PC-re! Mindig legyen rajtad 1 pokémon!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cAz átvitel előtt küldje vissza ezt a pokémont!
-forms.party.showPokemon.transferToPc.success=%s átkerült a számítógépére!
-forms.party.setNickName.fail.tooLong=§cError: A becenév túl hosszú. A megengedett maximális hossz 10 karakter.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: A becenév első karakterének betűnek kell lennie.
 
-forms.pc.preformActionOnPcPokemon.body=Válasszon egy akciót, amelyet meg szeretne valósítani ezen a PC Pokémonon!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cNem sikerült átvinni a Party-ba, nincs szabad helyed!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Hozzáadás a Partyhoz
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Trash Pokémon
-forms.pc.preformActionOnPcPokemon.button.goBack=menjen vissza
+forms.moderate.updatedRole=§aFrissített moderált adatok!
 
-forms.serverNpc.butItemScreen.title=Vásároljon terméket: %sx %s§r %s PokeDollarsért!
-forms.serverNpc.butItemScreen.fail=§c Sikertelen tételek vásárlása
-forms.serverNpc.butItemScreen.success=§aSikeresen megvásárolta %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Eladás: %s§r %s PokeDollarsért!
-forms.serverNpc.sellItemScreen.fail=§cNem sikerült eladni a tételeket
-forms.serverNpc.sellItemScreen.success=§aSikeresen eladva %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cNem sikerült eladni %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cA kereskedési keresés befejeződött!
-forms.tradeMachine.showWaitForm.requestDeclined=§c Kereskedelmi kérelmét elutasították!
-forms.tradeMachine.showMain.alreadyInUse=§cNem tud együttműködni a géppel, már használatban van!
-forms.tradeMachine.showMain.playerNotFound=§cNem sikerült elindítani a kereskedést, másik játékos nem található!
+forms.party.showPokemon.body=§cError: Pokémon elájult. Kérjük, menjen a gyógyítóhoz, hogy helyreállítsa egészségét.
+forms.party.showPokemon.location.error.pokemonFainted=§aSiker: Kiküldve §e%s!
+forms.party.showPokemon.location.sentOut=§aSiker: Visszaküldve §e%s!
+forms.party.showPokemon.location.retured=§cError: Pokémon nem található. Kérjük, menjen közelebb a Pokémonhoz, és próbálja újra.
+forms.party.showPokemon.location.notFound=§c A pokémonokat nem szabad vadonba bocsátani! Mindig legyen rajtad 1 pokémon!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§c Nem szabad kiadni a Pokémont, amíg kiküldték!
+forms.party.showPokemon.release.fail.pokemonSentOut=Biztos, hogy ki akarja engedni ezt a pokémont a vadonba, ezt nem lehet visszavonni!
+forms.party.showPokemon.release.confirm=§aKiengedett §e%s§a a vadonba!
+forms.party.showPokemon.release.success=§cNem lehet átvinni PC-re! Mindig legyen rajtad 1 pokémon!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cAz átvitel előtt küldje vissza ezt a pokémont!
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s átkerült a számítógépére!
+forms.party.showPokemon.transferToPc.success=§cError: A becenév túl hosszú. A megengedett maximális hossz 10 karakter.
+forms.party.setNickName.fail.tooLong=§cError: A becenév első karakterének betűnek kell lennie.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cNem harcolhatsz újra ezzel az edzővel!
-forms.trainerMenu.editBasicData.updated=§aFrissítve Alapadatok az edző számára!
-forms.trainerMenu.editDrops.confirmDelete=Biztosan törli a következőt: %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist=A „%s” nem érvényes adatszám!
-forms.trainerMenu.editDrop.notVaildData="%s" Érvénytelen elemtípus-azonosító, amely a minecraftban vagy a csatlakoztatott viselkedési csomagokban található.
-forms.trainerMenu.editDrop.notValidAmount=A „%s” nem érvényes összegszám!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=A bál elmaradt!
-models.battleUtils.endBattleOrPokemonForm.title=A Pokémonod elájult
-models.battleUtils.endBattleOrPokemonForm.body=A pokémonod éppen elájult, hogy folytasd vagy befejezd a csatát, vagy válts a pokémonod.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Nem indíthatod el a csatát, mert nincs elérhető pokémonod!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Nem tudod megváltoztatni a pokémonokat, nincs elérhető pokémonod!
+forms.pc.preformActionOnPcPokemon.body=§cNem sikerült átvinni a Party-ba, nincs szabad helyed!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Hozzáadás a Partyhoz
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Trash Pokémon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=menjen vissza
+
+
+forms.serverNpc.butItemScreen.title=§c Sikertelen tételek vásárlása
+forms.serverNpc.butItemScreen.fail=§aSikeresen megvásárolta %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Eladás: %s§r %s PokeDollarsért!
+forms.serverNpc.sellItemScreen.title=§cNem sikerült eladni a tételeket
+forms.serverNpc.sellItemScreen.fail=§aSikeresen eladva %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cNem sikerült eladni %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§c Kereskedelmi kérelmét elutasították!
+forms.tradeMachine.showWaitForm.requestDeclined=§cNem tud együttműködni a géppel, már használatban van!
+forms.tradeMachine.showMain.alreadyInUse=§cNem sikerült elindítani a kereskedést, másik játékos nem található!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aFrissítve Alapadatok az edző számára!
+forms.trainerMenu.editBasicData.updated=Biztosan törli a következőt: %s?
+forms.trainerMenu.editDrops.confirmDelete=A „%s” nem érvényes adatszám!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Érvénytelen elemtípus-azonosító, amely a minecraftban vagy a csatlakoztatott viselkedési csomagokban található.
+forms.trainerMenu.editDrop.notVaildData=A „%s” nem érvényes összegszám!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=A Pokémonod elájult
+models.battleUtils.endBattleOrPokemonForm.title=A pokémonod éppen elájult, hogy folytasd vagy befejezd a csatát, vagy válts a pokémonod.
+models.battleUtils.endBattleOrPokemonForm.body=Nem indíthatod el a csatát, mert nincs elérhető pokémonod!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Nem tudod megváltoztatni a pokémonokat, nincs elérhető pokémonod!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s %s-ra fejlődött!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cA csata indítása nem sikerült. Pr
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Szerzett §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§a%sx PokeDollart szerzett!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Csatakérést küldött neked, a kérés elfogadásához írja be a "-battle accept" parancsot
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aKifizetett "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s volt utoljára ezen a szerveren: %s
 commands.seen.lastSeen=§c%s első bejelentkezése %s volt
+
+
+commands.redeem.codeNotFound=§aBeváltotta a kódot: "%s", Sikeresen!
+commands.redeem.success=§cA kód: "%s", már beváltva!
 

@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server voor Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Abrikoos logboek
@@ -56,7 +56,7 @@ tile.pokeb:dawn_stone_ore.name=Dawn steenerts
 tile.pokeb:dusk_ore.name=Schemering erts
 tile.pokeb:fire_stone_ore.name=Vuursteen Erts
 tile.pokeb:lava_stone_ore.name=Lavasteenerts
-tile.pokeb:leaf_stone_ore.name=Blad erts
+tile.pokeb:leaf_stone_ore.name=Blad Erts
 tile.pokeb:moon_stone_ore.name=Maansteen Erts
 tile.pokeb:ruby_block.name=Robijn blok
 tile.pokeb:ruby_ore.name=Robijn erts
@@ -83,7 +83,7 @@ item.pokeb:dawn_stone_sword=Dawn stenen zwaard
 item.pokeb:dusk_stone_axe=Schemering stenen bijl
 item.pokeb:dusk_stone_boots=Schemer stenen laarzen
 item.pokeb:dusk_stone_hammer=Schemer stenen hamer
-item.pokeb:dusk_stone_helm=Schemer stenen helm
+item.pokeb:dusk_stone_helm=Schemer stenen roer
 item.pokeb:dusk_stone_legs=Schemer stenen benen
 item.pokeb:dusk_stone_pickaxe=Schemering stenen houweel
 item.pokeb:dusk_stone_plate=Schemer stenen plaat
@@ -405,7 +405,7 @@ item.spawn_egg.entity.pokemon:raichu.name=Raichu
 item.spawn_egg.entity.pokemon:raikou.name=Raikou
 item.spawn_egg.entity.pokemon:rayquaza.name=Rayquaza
 item.spawn_egg.entity.pokemon:regice.name=Regice
-item.spawn_egg.entity.pokemon:regigigas.name=Regigiga's
+item.spawn_egg.entity.pokemon:regigigas.name=regigiga's
 item.spawn_egg.entity.pokemon:regirock.name=Regirock
 item.spawn_egg.entity.pokemon:registeel.name=Register
 item.spawn_egg.entity.pokemon:remoraid.name=Remoraid
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: de Tiny Flame-Pokémon. Deze Fire-type Po
 starter.piplup.description=Piplup: De Penguin-Pokémon. Deze Pokémon van het type Water is schattig en trots. Met hoge verdedigings- en speciale aanvalsstatistieken is Piplup een uitgebalanceerde keuze om je Pokémon-reis te beginnen.
 starter.turtwig.description=Turtwig: De Tiny Leaf-Pokémon. Deze Grass-type Pokémon is schattig en stevig. Met hoge verdedigingsstatistieken is Turtwig een betrouwbare keuze om je Pokémon-reis te beginnen.
 
-events.chatRanks.muted=§cKan geen berichten verzenden, je bent momenteel gedempt!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aHet door jou geselecteerde blok is geclaimd door %s
 events.claimManager.interactWithStick.notClaimed=§aNiemand heeft dit blok geclaimd.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cOngeldige selectie, de door u geselecteerde positie is momenteel geclaimd en kan niet worden geclaimd!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cDeze trainer is in gevecht en er kan ge
 
 events.setStarterPokemon.chosen=§a§lU hebt §b§l%s gekozen
 
+events.beforeChat.muted=§cKan geen berichten verzenden, je bent momenteel gedempt!
+events.beforeChat.sendingTooFast=§cJe verstuurt te snel berichten. Vertraag en probeer het opnieuw.
+events.beforeChat.repeatedMessage=§cUw vorige bericht lijkt identiek te zijn aan uw meest recente bericht. Pas uw bericht aan en probeer het opnieuw.
+events.beforeChat.zalgoMessage=§cUw bericht bevat zalgo en kan niet worden verzonden!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpammen!
+
 forms.actionForm.show.timeout=§cForm time-out: probeerde het formulier weer te geven, maar je was bezig (chat sluiten na het uitvoeren van de opdracht)
 
-forms.crate.noDataToShow=§cDeze kist heeft geen gegevens om te laten zien!
-forms.crate.edit.itemIdDoesNotExist=Item "%s" bestaat niet in minecraft of verbonden gedragspakketten!
-forms.crate.edit.dataMustBeNumber=Gegevens: %s, moet een getal zijn!
+forms.crate.noDataToShow=Item "%s" bestaat niet in minecraft of verbonden gedragspakketten!
+forms.crate.edit.itemIdDoesNotExist=Gegevens: %s, moet een getal zijn!
 
-forms.kits.buy.confirmPurchase=Weet je zeker dat je kit: %s§r wilt kopen voor %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cKan niet kopen: %s§r§c, je hebt niet genoeg Poke Dollars!
-forms.kits.buy.success=§aSuccesvol gekocht pakket %s§r§c -%s PokéDollars!
-forms.kits.claim.success=§aGeclaimde kit: %s succesvol! Claim opnieuw %s
-forms.kits.delete.success=§cVerwijderde kit: §e%s
 
-forms.moderate.updatedRole=§aBijgewerkte rol voor "${playerName}"!
-forms.moderate.updatedModerateData=§aBijgewerkte gematigde gegevens!
+forms.kits.buy.confirmPurchase=§cKan niet kopen: %s§r§c, je hebt niet genoeg Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aSuccesvol gekocht pakket %s§r§c -%s PokéDollars!
+forms.kits.buy.success=§aGeclaimde kit: %s succesvol! Claim opnieuw %s
+forms.kits.claim.success=§cVerwijderde kit: §e%s
 
-forms.party.showPokemon.body=Selecteer een actie die je op deze pokemon wilt uitvoeren.
-forms.party.showPokemon.location.error.pokemonFainted=§cFout: Pokémon is flauwgevallen. Ga alsjeblieft naar de genezer om de gezondheid te herstellen.
-forms.party.showPokemon.location.sentOut=§aSucces: verzonden §e%s!
-forms.party.showPokemon.location.retured=§aSucces: teruggestuurd §e%s!
-forms.party.showPokemon.location.notFound=§cFout: Pokémon niet gevonden. Ga dichter bij de Pokémon staan ​​en probeer het opnieuw.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan Pokemon niet vrijlaten in het wild! Je moet altijd 1 pokemon bij je hebben!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cKan Pokemon niet vrijgeven terwijl hij wordt uitgezonden!
-forms.party.showPokemon.release.confirm=Weet je zeker dat je deze pokemon in het wild wilt vrijlaten, dit kan niet ongedaan worden gemaakt!
-forms.party.showPokemon.release.success=§aBevrijd §e%s§a in het wild!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKan niet overzetten naar pc! Je moet altijd 1 pokemon bij je hebben!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§c Breng deze Pokemon terug voordat je hem overdraagt!
-forms.party.showPokemon.transferToPc.success=%s overgezet naar uw pc!
-forms.party.setNickName.fail.tooLong=§cFout: Bijnaam te lang. De maximaal toegestane lengte is 10 tekens.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: Het eerste teken van de bijnaam moet een letter zijn.
 
-forms.pc.preformActionOnPcPokemon.body=Selecteer een actie om uit te voeren op deze pc-Pokemon!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cKan niet overstappen naar Party, je hebt geen open slots!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Toevoegen aan feest
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Prullenbak Pokémon
-forms.pc.preformActionOnPcPokemon.button.goBack=Ga terug
+forms.moderate.updatedRole=§aBijgewerkte gematigde gegevens!
 
-forms.serverNpc.butItemScreen.title=Artikel kopen: %sx %s§r voor %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cKan geen artikelen kopen
-forms.serverNpc.butItemScreen.success=§aSuccesvol gekocht %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Verkoop: %s§r voor %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cKan items niet verkopen
-forms.serverNpc.sellItemScreen.success=§aSuccesvol verkocht %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§c Kan %sx %s niet verkopen!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cBeëindigd handelsonderzoek!
-forms.tradeMachine.showWaitForm.requestDeclined=§cUw ruilverzoek is afgewezen!
-forms.tradeMachine.showMain.alreadyInUse=§cKan niet communiceren met machine, al in gebruik!
-forms.tradeMachine.showMain.playerNotFound=§cKan ruilen niet starten, andere speler is niet gevonden!
+forms.party.showPokemon.body=§cFout: Pokémon is flauwgevallen. Ga alsjeblieft naar de genezer om de gezondheid te herstellen.
+forms.party.showPokemon.location.error.pokemonFainted=§aSucces: verzonden §e%s!
+forms.party.showPokemon.location.sentOut=§aSucces: teruggestuurd §e%s!
+forms.party.showPokemon.location.retured=§cFout: Pokémon niet gevonden. Ga dichter bij de Pokémon staan ​​en probeer het opnieuw.
+forms.party.showPokemon.location.notFound=§cKan Pokemon niet vrijlaten in het wild! Je moet altijd 1 pokemon bij je hebben!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan Pokemon niet vrijgeven terwijl hij wordt uitgezonden!
+forms.party.showPokemon.release.fail.pokemonSentOut=Weet je zeker dat je deze pokemon in het wild wilt vrijlaten, dit kan niet ongedaan worden gemaakt!
+forms.party.showPokemon.release.confirm=§aBevrijd §e%s§a in het wild!
+forms.party.showPokemon.release.success=§cKan niet overzetten naar pc! Je moet altijd 1 pokemon bij je hebben!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§c Breng deze Pokemon terug voordat je hem overdraagt!
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s overgezet naar uw pc!
+forms.party.showPokemon.transferToPc.success=§cFout: Bijnaam te lang. De maximaal toegestane lengte is 10 tekens.
+forms.party.setNickName.fail.tooLong=§cError: Het eerste teken van de bijnaam moet een letter zijn.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cJe kunt deze trainer niet opnieuw bevechten!
-forms.trainerMenu.editBasicData.updated=§aBijgewerkte basisgegevens voor trainer!
-forms.trainerMenu.editDrops.confirmDelete=Weet u zeker dat u %s wilt verwijderen?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" is geen geldig datanummer!
-forms.trainerMenu.editDrop.notVaildData="%s" Is geen geldig itemtype-ID, dat wil zeggen in minecraft of verbonden gedragspakketten.
-forms.trainerMenu.editDrop.notValidAmount="%s" is geen geldig bedrag!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Bal werd gemist!
-models.battleUtils.endBattleOrPokemonForm.title=Je Pokemon is flauwgevallen
-models.battleUtils.endBattleOrPokemonForm.body=Je pokemon is net flauwgevallen, om verder te gaan of het gevecht te beëindigen of je pokemon te wisselen.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan de strijd niet starten omdat je geen pokemon beschikbaar hebt!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Kan pokemon niet veranderen, je hebt geen pokemon beschikbaar!
+forms.pc.preformActionOnPcPokemon.body=§cKan niet overstappen naar Party, je hebt geen open slots!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Toevoegen aan feest
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Prullenbak Pokémon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Ga terug
+
+
+forms.serverNpc.butItemScreen.title=§cKan geen artikelen kopen
+forms.serverNpc.butItemScreen.fail=§aSuccesvol gekocht %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Verkoop: %s§r voor %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cKan items niet verkopen
+forms.serverNpc.sellItemScreen.fail=§aSuccesvol verkocht %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§c Kan %sx %s niet verkopen!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cUw ruilverzoek is afgewezen!
+forms.tradeMachine.showWaitForm.requestDeclined=§cKan niet communiceren met machine, al in gebruik!
+forms.tradeMachine.showMain.alreadyInUse=§cKan ruilen niet starten, andere speler is niet gevonden!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aBijgewerkte basisgegevens voor trainer!
+forms.trainerMenu.editBasicData.updated=Weet u zeker dat u %s wilt verwijderen?
+forms.trainerMenu.editDrops.confirmDelete="%s" is geen geldig datanummer!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Is geen geldig itemtype-ID, dat wil zeggen in minecraft of verbonden gedragspakketten.
+forms.trainerMenu.editDrop.notVaildData="%s" is geen geldig bedrag!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Je Pokemon is flauwgevallen
+models.battleUtils.endBattleOrPokemonForm.title=Je pokemon is net flauwgevallen, om verder te gaan of het gevecht te beëindigen of je pokemon te wisselen.
+models.battleUtils.endBattleOrPokemonForm.body=Kan de strijd niet starten omdat je geen pokemon beschikbaar hebt!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan pokemon niet veranderen, je hebt geen pokemon beschikbaar!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s is geëvolueerd naar %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cGevecht kan niet beginnen. Probeer e
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s heeft §e%s xp gewonnen!
 models.playerVsTrainerBattle.end.gainedExp=§aJe hebt %sx PokeDollar's verdiend!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Heeft je een gevechtsverzoek gestuurd, typ "-battle accept" om dit verzoek te accepteren
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aPayed "%s" %sx PokéDollars!
 
 commands.seen.onlineRightNow=§c%s is voor het laatst gezien op deze server %s
 commands.seen.lastSeen=De eerste aanmelding van §c%s was %s
+
+
+commands.redeem.codeNotFound=§aCode ingewisseld: "%s", Succesvol!
+commands.redeem.success=§cDe code: "%s", is al ingewisseld!
 

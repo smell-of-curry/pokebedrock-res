@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server til Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -6,9 +6,9 @@ tile.pokeb:stripped_apricorn_log.name=Strippet Apricorn Log
 tile.pokeb:black_apricorn_leaves.name=Sorte Apricorn blade
 tile.pokeb:black_apricorn_sapling.name=Sort Apricorn ungeplante
 tile.pokeb:blue_apricorn_leaves.name=Blå Apricorn blade
-tile.pokeb:blue_apricorn_sapling.name=Blå Apricorn ungeplante
+tile.pokeb:blue_apricorn_sapling.name=Blå Apricorn Ungplante
 tile.pokeb:green_apricorn_leaves.name=Grønne Apricorn blade
-tile.pokeb:green_apricorn_sapling.name=Grøn Apricorn Ungling
+tile.pokeb:green_apricorn_sapling.name=Grøn Apricorn ungeplante
 tile.pokeb:pink_apricorn_leaves.name=Pink Apricorn blade
 tile.pokeb:pink_apricorn_sapling.name=Pink Apricorn Ungeplante
 tile.pokeb:red_apricorn_leaves.name=Røde Apricorn blade
@@ -470,7 +470,7 @@ item.spawn_egg.entity.pokemon:zubat.name=Zubat
 kick.fail.op=Du har prøvet at sparke, men du kan ikke!
 
 starter.charmander.description=Charmander: The Flame Pokémon. Yndig og fuld af ild. Med højhastigheds- og angrebsstatistikker er Charmander et voldsomt valg til at starte din Pokémon-rejse.
-starter.squirtle.description=Squirtle: The Tiny Turtle Pokémon. Bedårende og modstandsdygtig, Squirtle er en Pokémon af vandtypen, der giver et slag. Med høje forsvarsstatistikker er Squirtle et pålideligt valg til at starte din Pokémon-rejse.
+starter.squirtle.description=Squirtle: The Tiny Turtle Pokémon. Bedårende og modstandsdygtig, Squirtle er en vand-type Pokémon, der pakker et slag. Med høje forsvarsstatistikker er Squirtle et pålideligt valg til at starte din Pokémon-rejse.
 starter.bulbasaur.description=Bulbasaur: The Seed Pokémon. En charmerende og alsidig Pokémon af græstypen. Med en afbalanceret statistikspredning er Bulbasaur et solidt valg til at starte din Pokémon-rejse.
 starter.cyndaquil.description=Cyndaquil: The Fire Mouse Pokémon. Denne Fire-type Pokémon er sød og fuld af energi. Med højhastigheds- og specialangrebsstatistikker er Cyndaquil et brændende valg til at starte din Pokémon-rejse.
 starter.totodile.description=Totodile: The Big Jaw Pokémon. Denne vand-type Pokémon er sød og hård. Med høj angrebsstatistik er Totodile et kraftfuldt valg til at starte din Pokémon-rejse.
@@ -478,9 +478,6 @@ starter.chikorita.description=Chikorita: The Leaf Pokémon. En charmerende og yn
 starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Denne Fire-type Pokémon er fuld af energi og spunk. Med højhastigheds- og angrebsstatistikker er Chimchar et brændende valg til at starte din Pokémon-rejse.
 starter.piplup.description=Piplup: Penguin Pokémon. Denne vand-type Pokémon er sød og stolt. Med høje forsvars- og specialangrebsstatistikker er Piplup et afbalanceret valg til at starte din Pokémon-rejse.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Denne græs-type Pokémon er sød og robust. Med høje forsvarsstatistikker er Turtwig et pålideligt valg til at starte din Pokémon-rejse.
-
-events.chatRanks.muted=§cKan ikke sende beskeder, du er i øjeblikket slået fra!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§aDen blok, du har valgt, er gjort krav på af %s
 events.claimManager.interactWithStick.notClaimed=§aIngen har gjort krav på denne blokering.
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cDenne træner er i kamp og kan ikke int
 
 events.setStarterPokemon.chosen=§a§lDu har valgt §b§l%s
 
+events.beforeChat.muted=§cKan ikke sende beskeder, du er i øjeblikket slået fra!
+events.beforeChat.sendingTooFast=§cDu sender beskeder for hurtigt. Sæt farten ned og prøv igen.
+events.beforeChat.repeatedMessage=§cDin forrige besked ser ud til at være identisk med din seneste. Rediger venligst din besked og prøv igen.
+events.beforeChat.zalgoMessage=§cDin besked indeholder zalgo og kan ikke sendes!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 forms.actionForm.show.timeout=§cForm Timeout: forsøgte at vise formularen, men du var optaget (luk chat efter at have kørt kommando)
 
-forms.crate.noDataToShow=§cDenne kasse har ingen data at vise!
-forms.crate.edit.itemIdDoesNotExist=Elementet "%s" findes ikke i minecraft eller forbundet adfærdspakker!
-forms.crate.edit.dataMustBeNumber=Data: %s, skal være et tal!
+forms.crate.noDataToShow=Elementet "%s" findes ikke i minecraft eller forbundet adfærdspakker!
+forms.crate.edit.itemIdDoesNotExist=Data: %s, skal være et tal!
 
-forms.kits.buy.confirmPurchase=Er du sikker på, at du vil købe kit: %s§r til %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cKøb mislykkedes: %s§r§c, Du har ikke nok Poke Dollars!
-forms.kits.buy.success=§aSuccesfuldt købt kit %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aPåkrævet kit: %s med succes! Gør krav igen %s
-forms.kits.delete.success=§cSlettet sæt: §e%s
 
-forms.moderate.updatedRole=§aOpdateret rolle for "${playerName}"!
-forms.moderate.updatedModerateData=§aOpdaterede moderate data!
+forms.kits.buy.confirmPurchase=§cKøb mislykkedes: %s§r§c, Du har ikke nok Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aSuccesfuldt købt kit %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aPåkrævet kit: %s med succes! Gør krav igen %s
+forms.kits.claim.success=§cSlettet sæt: §e%s
 
-forms.party.showPokemon.body=Vælg en handling, der skal udføres på denne pokemon.
-forms.party.showPokemon.location.error.pokemonFainted=§cFejl: Pokémon er besvimet. Gå venligst til healer for at genoprette sundheden.
-forms.party.showPokemon.location.sentOut=§aSucces: Udsendt §e%s!
-forms.party.showPokemon.location.retured=§aSucces: Returneret §e%s!
-forms.party.showPokemon.location.notFound=§cFejl: Pokémon blev ikke fundet. Flyt venligst tættere på Pokémon og prøv igen.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan ikke frigive pokemon i naturen! Du skal have 1 pokemon på dig hele tiden!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cKan ikke frigive pokemon, mens den sendes ud!
-forms.party.showPokemon.release.confirm=Er du sikker på, at du vil slippe denne pokemon ud i naturen, kan dette ikke fortrydes!
-forms.party.showPokemon.release.success=§aUdgivet §e%s§a i naturen!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKan ikke overføres til pc! Du skal have 1 pokemon på dig hele tiden!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cReturner denne pokemon før overførsel!
-forms.party.showPokemon.transferToPc.success=Overførte %s til din pc!
-forms.party.setNickName.fail.tooLong=§cFejl: Kaldenavnet er for langt. Den maksimale tilladte længde er 10 tegn.
-forms.party.setNickName.fail.firstMustBeLetter=§cFejl: Det første tegn i kaldenavnet skal være et bogstav.
 
-forms.pc.preformActionOnPcPokemon.body=Vælg en handling, der skal udføres på denne pc-pokemon!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§c Kunne ikke overføres til Party, Du har ingen åbne slots!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Tilføj til fest
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Skralde Pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Gå tilbage
+forms.moderate.updatedRole=§aOpdaterede moderate data!
 
-forms.serverNpc.butItemScreen.title=Køb vare: %sx %s§r for %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§c Kunne ikke købe varer
-forms.serverNpc.butItemScreen.success=§aSuccesfuldt købt %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Sælg: %s§r for %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§c Det lykkedes ikke at sælge varer
-forms.serverNpc.sellItemScreen.success=§aMed succes solgt %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cDet lykkedes ikke at sælge %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cAfsluttet handelssøgning!
-forms.tradeMachine.showWaitForm.requestDeclined=§cDin handelsanmodning blev afvist!
-forms.tradeMachine.showMain.alreadyInUse=§cKan ikke interagere med maskinen, allerede i brug!
-forms.tradeMachine.showMain.playerNotFound=§c Kunne ikke starte handel, anden spiller blev ikke fundet!
+forms.party.showPokemon.body=§cFejl: Pokémon er besvimet. Gå venligst til healer for at genoprette sundheden.
+forms.party.showPokemon.location.error.pokemonFainted=§aSucces: Udsendt §e%s!
+forms.party.showPokemon.location.sentOut=§aSucces: Returneret §e%s!
+forms.party.showPokemon.location.retured=§cFejl: Pokémon blev ikke fundet. Flyt venligst tættere på Pokémon og prøv igen.
+forms.party.showPokemon.location.notFound=§cKan ikke frigive pokemon i naturen! Du skal have 1 pokemon på dig hele tiden!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cKan ikke frigive pokemon, mens den sendes ud!
+forms.party.showPokemon.release.fail.pokemonSentOut=Er du sikker på, at du vil slippe denne pokemon ud i naturen, kan dette ikke fortrydes!
+forms.party.showPokemon.release.confirm=§aUdgivet §e%s§a i naturen!
+forms.party.showPokemon.release.success=§cKan ikke overføres til pc! Du skal have 1 pokemon på dig hele tiden!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cReturner denne pokemon før overførsel!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Overførte %s til din pc!
+forms.party.showPokemon.transferToPc.success=§cFejl: Kaldenavnet er for langt. Den maksimale tilladte længde er 10 tegn.
+forms.party.setNickName.fail.tooLong=§cFejl: Det første tegn i kaldenavnet skal være et bogstav.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cDu kan ikke kæmpe om denne træner igen!
-forms.trainerMenu.editBasicData.updated=§aOpdateret Grundlæggende data for træner!
-forms.trainerMenu.editDrops.confirmDelete=Er du sikker på, at du vil slette %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" er ikke et gyldigt datanummer!
-forms.trainerMenu.editDrop.notVaildData="%s" Er ikke et gyldigt elementtype-id, dvs. i minecraft eller forbundet adfærdspakker.
-forms.trainerMenu.editDrop.notValidAmount="%s" er ikke et gyldigt beløbsnummer!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Bolden blev savnet!
-models.battleUtils.endBattleOrPokemonForm.title=Din Pokemon er besvimet
-models.battleUtils.endBattleOrPokemonForm.body=Din pokemon er lige besvimet, for at fortsætte enten afslutte kampen eller skifte din pokemon.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan ikke starte kamp, ​​fordi du ikke har nogen tilgængelig pokemon!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Kan ikke ændre pokemon, du har ingen ledige pokemon!
+forms.pc.preformActionOnPcPokemon.body=§c Kunne ikke overføres til Party, Du har ingen åbne slots!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Tilføj til fest
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Skralde Pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Gå tilbage
+
+
+forms.serverNpc.butItemScreen.title=§c Kunne ikke købe varer
+forms.serverNpc.butItemScreen.fail=§aSuccesfuldt købt %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Sælg: %s§r for %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§c Det lykkedes ikke at sælge varer
+forms.serverNpc.sellItemScreen.fail=§aMed succes solgt %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cDet lykkedes ikke at sælge %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cDin handelsanmodning blev afvist!
+forms.tradeMachine.showWaitForm.requestDeclined=§cKan ikke interagere med maskinen, allerede i brug!
+forms.tradeMachine.showMain.alreadyInUse=§c Kunne ikke starte handel, anden spiller blev ikke fundet!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aOpdateret Grundlæggende data for træner!
+forms.trainerMenu.editBasicData.updated=Er du sikker på, at du vil slette %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" er ikke et gyldigt datanummer!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Er ikke et gyldigt elementtype-id, dvs. i minecraft eller forbundet adfærdspakker.
+forms.trainerMenu.editDrop.notVaildData="%s" er ikke et gyldigt beløbsnummer!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Din Pokemon er besvimet
+models.battleUtils.endBattleOrPokemonForm.title=Din pokemon er lige besvimet, for at fortsætte enten afslutte kampen eller skifte din pokemon.
+models.battleUtils.endBattleOrPokemonForm.body=Kan ikke starte kamp, ​​fordi du ikke har nogen tilgængelig pokemon!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Kan ikke ændre pokemon, du har ingen ledige pokemon!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s har udviklet sig til %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle kunne ikke starte. Prøv en a
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s har fået §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aDu har optjent %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Har sendt dig en kampanmodning, skriv "-battle accept" for at acceptere denne anmodning
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aBetalte "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s blev sidst set på denne server %s
 commands.seen.lastSeen=§c%s' første logon var %s
+
+
+commands.redeem.codeNotFound=§aIndløst koden: "%s", med succes!
+commands.redeem.success=§cKoden: "%s", er allerede blevet indløst!
 

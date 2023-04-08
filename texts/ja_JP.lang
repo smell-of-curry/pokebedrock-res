@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aMinecraft Bedrock のポケモン サーバー
 
 tile.pokeb:apricorn_log.name=アプリコーンログ
@@ -473,14 +473,11 @@ starter.charmander.description=ヒトカゲ：炎のポケモン。可憐で火�
 starter.squirtle.description=ゼニガメ：小さなカメのポケモン。可愛くて弾力のあるゼニガメは、パンチの効いたみずタイプのポケモンです。高い防御統計を備えたゼニガメは、ポケモンの旅を始めるための信頼できる選択肢です。
 starter.bulbasaur.description=フシギダネ：たねポケモン。魅力的で万能な草タイプのポケモン。バランスの取れた統計スプレッドを持つフシギダネは、ポケモンの旅を始めるのに最適な選択です.
 starter.cyndaquil.description=シンダキル：ファイアマウスポケモン。かわいくて元気いっぱいのほのおタイプのポケモン。スピードと特殊攻撃のステータスが高いシンダキルは、ポケモンの旅を始めるのに最適な選択肢です。
-starter.totodile.description=トトダイル：ビッグジョーポケモン。かわいくて獰猛なみずタイプのポケモン。攻撃ステータスが高いトトダイルは、ポケモンの旅を始めるための強力な選択肢です。
+starter.totodile.description=トトダイル：ビッグジョーポケモン。かわいくて獰猛なみずタイプのポケモン。攻撃統計が高いトトダイルは、ポケモンの旅を始めるための強力な選択肢です。
 starter.chikorita.description=チコリータ：葉っぱのポケモン。愛嬌のあるおしとやかさのあるくさタイプのポケモン。高い特防ステータスを持つチコリータは、ポケモンの旅を始めるための信頼できる選択肢です。
 starter.chimchar.description=チムチャー：小さな炎のポケモン。このほのおタイプのポケモンは、エネルギーと勇気に満ちています。スピードと攻撃の統計が高いチムチャーは、ポケモンの旅を始めるのに最適な選択肢です。
 starter.piplup.description=ポッチャマ：ペンギンポケモン。このみずタイプのポケモンは、かわいくて誇り高い。防御力と特攻能力が高いポッチャマは、ポケモンの旅を始めるのにバランスの取れた選択肢です。
 starter.turtwig.description=タートウィグ：小さな葉っぱのポケモン。このくさタイプのポケモンはかわいくて丈夫です。防御力が高いタートウィグは、ポケモンの旅を始めるための信頼できる選択肢です。
-
-events.chatRanks.muted=§cメッセージを送信できません。あなたは現在ミュートされています!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
 
 events.claimManager.interactWithStick.isClaimed=§a選択したブロックは %s によって要求されています
 events.claimManager.interactWithStick.notClaimed=§a誰もこのブロックを主張していません。
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cこのトレーナーは戦闘中のた
 
 events.setStarterPokemon.chosen=§a§l§b§l%s を選択しました
 
+events.beforeChat.muted=§cメッセージを送信できません。あなたは現在ミュートされています!
+events.beforeChat.sendingTooFast=§cメッセージの送信が速すぎます。速度を落として、もう一度お試しください。
+events.beforeChat.repeatedMessage=§cあなたの前のメッセージは、あなたの最新のメッセージと同一のようです.メッセージを変更して、もう一度お試しください。
+events.beforeChat.zalgoMessage=§cメッセージに zalgo が含まれているため、送信できません!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cスパム！
+
 forms.actionForm.show.timeout=§cForm Timeout: フォームを表示しようとしましたが、あなたは忙しかったです (コマンドを実行した後にチャットを閉じてください)
 
-forms.crate.noDataToShow=§cこのクレートには表示するデータがありません!
-forms.crate.edit.itemIdDoesNotExist=アイテム「%s」は、Minecraft または接続された動作パックに存在しません!
-forms.crate.edit.dataMustBeNumber=データ: %s、数値でなければなりません!
+forms.crate.noDataToShow=アイテム「%s」は、Minecraft または接続された動作パックに存在しません!
+forms.crate.edit.itemIdDoesNotExist=データ: %s、数値でなければなりません!
 
-forms.kits.buy.confirmPurchase=キット: %s§r を %s PokeDollars で購入してもよろしいですか?
-forms.kits.buy.notEnoughMoney=§c購入に失敗しました: %s§r§c, ポケドルが足りません!
-forms.kits.buy.success=§aキット %s の購入に成功しました§r§c - %s PokeDollars!
-forms.kits.claim.success=§a要求されたキット: %s 成功! %s を再度請求する
-forms.kits.delete.success=§c削除されたキット: §e%s
 
-forms.moderate.updatedRole=§a「${playerName}」の役割を更新しました!
-forms.moderate.updatedModerateData=§aモデレートデータ更新！
+forms.kits.buy.confirmPurchase=§c購入に失敗しました: %s§r§c, ポケドルが足りません!
+forms.kits.buy.notEnoughMoney=§aキット %s の購入に成功しました§r§c - %s PokeDollars!
+forms.kits.buy.success=§a要求されたキット: %s 成功! %s を再度請求する
+forms.kits.claim.success=§c削除されたキット: §e%s
 
-forms.party.showPokemon.body=このポケモンに行うアクションを選択します。
-forms.party.showPokemon.location.error.pokemonFainted=§cエラー: ポケモンが気絶しました。健康を回復するためにヒーラーに行ってください。
-forms.party.showPokemon.location.sentOut=§aSuccess: §e%s を送信しました!
-forms.party.showPokemon.location.retured=§aSuccess: 返された §e%s!
-forms.party.showPokemon.location.notFound=§cエラー: ポケモンが見つかりません。ポケモンに近づいて、もう一度試してください。
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cポケモンを野放しにできない！常に1匹のポケモンを持っている必要があります！
-forms.party.showPokemon.release.fail.pokemonSentOut=§cポケモンを出している間はポケモンをリリースできない！
-forms.party.showPokemon.release.confirm=このポケモンを野生に放してもよろしいですか。これは元に戻すことはできません!
-forms.party.showPokemon.release.success=§a§e%s§a を野生に放ちました!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cPCに転送できません！常に1匹のポケモンを持っている必要があります！
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cこのポケモンを引き継ぎ前に戻して！
-forms.party.showPokemon.transferToPc.success=%s を PC に転送しました!
-forms.party.setNickName.fail.tooLong=§cエラー: ニックネームが長すぎます。許可される最大長は 10 文字です。
-forms.party.setNickName.fail.firstMustBeLetter=§cエラー: ニックネームの最初の文字は文字でなければなりません。
 
-forms.pc.preformActionOnPcPokemon.body=このPCポケモンで実行するアクションを選択してください！
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cパーティーへの転送に失敗しました。空いているスロットがありません!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=パーティーに加える
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=トラッシュポケモン
-forms.pc.preformActionOnPcPokemon.button.goBack=戻る
+forms.moderate.updatedRole=§aモデレートデータ更新！
 
-forms.serverNpc.butItemScreen.title=アイテムを購入: %sx %s§r で %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cアイテムを購入できませんでした
-forms.serverNpc.butItemScreen.success=§a%sx %s の購入に成功しました§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=売却: %s§r を %s PokeDollars で！
-forms.serverNpc.sellItemScreen.fail=§cアイテムの販売に失敗しました
-forms.serverNpc.sellItemScreen.success=§a%sx %s の販売成功§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§c%sx %s の販売に失敗しました!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cトレード検索終了！
-forms.tradeMachine.showWaitForm.requestDeclined=§cあなたの取引リクエストは拒否されました!
-forms.tradeMachine.showMain.alreadyInUse=§cすでに使用中のマシンと対話できません!
-forms.tradeMachine.showMain.playerNotFound=§cトレードの開始に失敗しました。他のプレイヤーが見つかりませんでした!
+forms.party.showPokemon.body=§cエラー: ポケモンが気絶しました。健康を回復するためにヒーラーに行ってください。
+forms.party.showPokemon.location.error.pokemonFainted=§aSuccess: §e%s を送信しました!
+forms.party.showPokemon.location.sentOut=§aSuccess: 返された §e%s!
+forms.party.showPokemon.location.retured=§cエラー: ポケモンが見つかりません。ポケモンに近づいて、もう一度試してください。
+forms.party.showPokemon.location.notFound=§cポケモンを野放しにできない！常に1匹のポケモンを持っている必要があります！
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cポケモンを出している間はポケモンをリリースできない！
+forms.party.showPokemon.release.fail.pokemonSentOut=このポケモンを野生に放してもよろしいですか。これは元に戻すことはできません!
+forms.party.showPokemon.release.confirm=§a§e%s§a を野生に放ちました!
+forms.party.showPokemon.release.success=§cPCに転送できません！常に1匹のポケモンを持っている必要があります！
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cこのポケモンを引き継ぎ前に戻して！
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s を PC に転送しました!
+forms.party.showPokemon.transferToPc.success=§cエラー: ニックネームが長すぎます。許可される最大長は 10 文字です。
+forms.party.setNickName.fail.tooLong=§cエラー: ニックネームの最初の文字は文字でなければなりません。
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cこのトレーナーと再戦することはできません!
-forms.trainerMenu.editBasicData.updated=§aトレーナーの基礎データを更新！
-forms.trainerMenu.editDrops.confirmDelete=%s を削除してもよろしいですか?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" は有効なデータ番号ではありません!
-forms.trainerMenu.editDrop.notVaildData=「%s」は有効なアイテム タイプ ID ではありません。これは、Minecraft または接続されたビヘイビアー パックにあります。
-forms.trainerMenu.editDrop.notValidAmount="%s" は有効な数値ではありません!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=ボールを逃した！
-models.battleUtils.endBattleOrPokemonForm.title=あなたのポケモンが気絶した
-models.battleUtils.endBattleOrPokemonForm.body=あなたのポケモンが気絶したばかりです。続行するには、バトルを終了するか、ポケモンを切り替えます。
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=使用できるポケモンがいないため、バトルを開始できません!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=ポケモンを変更できません。使用できるポケモンがありません。
+forms.pc.preformActionOnPcPokemon.body=§cパーティーへの転送に失敗しました。空いているスロットがありません!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=パーティーに加える
+forms.pc.preformActionOnPcPokemon.button.AddToParty=トラッシュポケモン
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=戻る
+
+
+forms.serverNpc.butItemScreen.title=§cアイテムを購入できませんでした
+forms.serverNpc.butItemScreen.fail=§a%sx %s の購入に成功しました§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=売却: %s§r を %s PokeDollars で！
+forms.serverNpc.sellItemScreen.title=§cアイテムの販売に失敗しました
+forms.serverNpc.sellItemScreen.fail=§a%sx %s の販売成功§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§c%sx %s の販売に失敗しました!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cあなたのトレードリクエストは拒否されました!
+forms.tradeMachine.showWaitForm.requestDeclined=§cすでに使用中のマシンと対話できません!
+forms.tradeMachine.showMain.alreadyInUse=§cトレードの開始に失敗しました。他のプレイヤーが見つかりませんでした!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aトレーナーの基礎データを更新！
+forms.trainerMenu.editBasicData.updated=%s を削除してもよろしいですか?
+forms.trainerMenu.editDrops.confirmDelete="%s" は有効なデータ番号ではありません!
+forms.trainerMenu.editDrop.typeIdDoesNotExist=「%s」は有効なアイテム タイプ ID ではありません。これは、Minecraft または接続されたビヘイビアー パックにあります。
+forms.trainerMenu.editDrop.notVaildData="%s" は有効な数値ではありません!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=あなたのポケモンが気絶した
+models.battleUtils.endBattleOrPokemonForm.title=あなたのポケモンが気絶したばかりです。続行するには、バトルを終了するか、ポケモンを切り替えます。
+models.battleUtils.endBattleOrPokemonForm.body=使用できるポケモンがいないため、バトルを開始できません!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=ポケモンを変更できません。使用できるポケモンがありません。
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s が %s に進化しました!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§c戦闘開始に失敗しました。
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s が §e%s の経験値を獲得しました!
 models.playerVsTrainerBattle.end.gainedExp=§a%sx ポケダラーを獲得しました!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" があなたに戦闘要求を送信しました。この要求を受け入れるには、"-battle accept" と入力してください
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§a「%s」%sx PokeDollars を支払いま�
 
 commands.seen.onlineRightNow=§c%s はこのサーバー %s で最後に確認されました
 commands.seen.lastSeen=§c%s の最初のログオンは %s でした
+
+
+commands.redeem.codeNotFound=§aコードを引き換えました: "%s", 成功しました!
+commands.redeem.success=§cコード: "%s" は既に引き換えられています!
 

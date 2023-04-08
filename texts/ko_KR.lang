@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aMinecraft Bedrock용 포켓몬 서버
 
 tile.pokeb:apricorn_log.name=살구나무 통나무
@@ -102,7 +102,7 @@ item.pokeb:leaf_stone_axe=리프 스톤 액스
 item.pokeb:leaf_stone_boots=리프 스톤 부츠
 item.pokeb:leaf_stone_hammer=리프 스톤 해머
 item.pokeb:leaf_stone_helm=리프스톤 투구
-item.pokeb:leaf_stone_legs=나뭇잎 돌다리
+item.pokeb:leaf_stone_legs=나뭇잎 돌 다리
 item.pokeb:leaf_stone_pickaxe=나뭇잎 돌 곡괭이
 item.pokeb:leaf_stone_plate=리프 스톤 플레이트
 item.pokeb:leaf_stone_shovel=나뭇잎 돌 삽
@@ -116,7 +116,7 @@ item.pokeb:moon_stone_pickaxe=월석 곡괭이
 item.pokeb:moon_stone_plate=달의 돌판
 item.pokeb:moon_stone_shovel=달의 돌 삽
 item.pokeb:moon_stone_sword=문 스톤 소드
-item.pokeb:new_running_boots=새로운 러닝화
+item.pokeb:new_running_boots=새로운 러닝 부츠
 item.pokeb:old_running_boots=올드 러닝 부츠
 item.pokeb:sun_stone_axe=태양석 도끼
 item.pokeb:sun_stone_boots=태양석 장화
@@ -148,7 +148,7 @@ item.pokeb:water_stone_sword=워터 스톤 소드
 
 item.ball:greatball=그레이트볼
 item.ball:greatball_lid=그레이트볼 뚜껑
-item.pokeb:iron_base=아이언베이스
+item.pokeb:iron_base=아이언 베이스
 item.ball:masterball=마스터볼
 item.ball:pokeball=포켓볼
 item.ball:pokeball_lid=포켓볼 뚜껑
@@ -194,7 +194,7 @@ item.pokeb:moon_stone_shard=달의 돌 파편
 item.pokeb:shiny-stone=빛나는 돌
 item.pokeb:shiny_stone_shard=빛나는 돌 조각
 item.pokeb:sun-stone=썬 스톤
-item.pokeb:sun_stone_shard=태양석 조각
+item.pokeb:sun_stone_shard=태양석 파편
 item.pokeb:thunder-stone=천둥의 돌
 item.pokeb:thunder_stone_shard=천둥의 돌 조각
 item.pokeb:water-stone=물의 돌
@@ -310,7 +310,7 @@ item.spawn_egg.entity.pokemon:haunter.name=유령
 item.spawn_egg.entity.pokemon:heracross.name=헤라크로스
 item.spawn_egg.entity.pokemon:hitmonchan.name=힛몬짱
 item.spawn_egg.entity.pokemon:hitmonlee.name=히트몬리
-item.spawn_egg.entity.pokemon:hitmontop.name=히트몬탑
+item.spawn_egg.entity.pokemon:hitmontop.name=히트몬톱
 item.spawn_egg.entity.pokemon:ho-oh.name=오호
 item.spawn_egg.entity.pokemon:honchkrow.name=혼치크로우
 item.spawn_egg.entity.pokemon:hoothoot.name=훗훗
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: 작은 화염 포켓몬. 이 불꽃 타�
 starter.piplup.description=Piplup: 펭귄 포켓몬. 귀엽고 자랑스러운 물타입 포켓몬입니다. 높은 방어 및 특수 공격 통계를 갖춘 Piplup은 Pokémon 여행을 시작하기 위한 균형 잡힌 선택입니다.
 starter.turtwig.description=Turtwig: 작은 잎사귀 포켓몬. 귀엽고 튼튼한 풀타입 포켓몬입니다. 방어력이 높은 Turtwig는 Pokémon 여정을 시작할 수 있는 신뢰할 수 있는 선택입니다.
 
-events.chatRanks.muted=§c메시지를 보낼 수 없습니다. 현재 음소거 상태입니다!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§a선택한 블록은 %s이(가) 소유권을 주장합니다.
 events.claimManager.interactWithStick.notClaimed=§a아무도 이 블록을 주장하지 않았습니다.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§c잘못된 선택, 선택한 직책은 현재 청구되어 청구할 수 없습니다!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§c이 트레이너는 전투 중이며 �
 
 events.setStarterPokemon.chosen=§a§l선택한 §b§l%s
 
+events.beforeChat.muted=§c메시지를 보낼 수 없습니다. 현재 음소거 상태입니다!
+events.beforeChat.sendingTooFast=§c메시지를 너무 빨리 보내고 있습니다. 속도를 늦추고 다시 시도하십시오.
+events.beforeChat.repeatedMessage=§c이전 메시지가 가장 최근 메시지와 동일한 것 같습니다. 메시지를 수정하고 다시 시도하십시오.
+events.beforeChat.zalgoMessage=§c메시지에 zalgo가 포함되어 있어 보낼 수 없습니다!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§c스팸!
+
 forms.actionForm.show.timeout=§cForm Timeout: 양식을 보여주려고 했지만, 바빴습니다(명령 실행 후 채팅 종료).
 
-forms.crate.noDataToShow=§c이 상자에는 표시할 데이터가 없습니다!
-forms.crate.edit.itemIdDoesNotExist=아이템 "%s"은(는) 마인크래프트 또는 연결된 행동 팩에 존재하지 않습니다!
-forms.crate.edit.dataMustBeNumber=데이터: %s, 숫자여야 합니다!
+forms.crate.noDataToShow=아이템 "%s"은(는) 마인크래프트 또는 연결된 행동 팩에 존재하지 않습니다!
+forms.crate.edit.itemIdDoesNotExist=데이터: %s, 숫자여야 합니다!
 
-forms.kits.buy.confirmPurchase=%s PokeDollars에 %s§r 키트를 구매하시겠습니까?
-forms.kits.buy.notEnoughMoney=§c구매 실패: %s§r§c, Poke Dollars가 충분하지 않습니다!
-forms.kits.buy.success=§a성공적으로 구입한 키트 %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§a청구된 키트: %s 성공! 다시 신청하세요 %s
-forms.kits.delete.success=§c삭제된 키트: §e%s
 
-forms.moderate.updatedRole=§a"${playerName}"의 업데이트된 역할!
-forms.moderate.updatedModerateData=§a업데이트된 보통 데이터!
+forms.kits.buy.confirmPurchase=§c구매 실패: %s§r§c, Poke Dollars가 충분하지 않습니다!
+forms.kits.buy.notEnoughMoney=§a성공적으로 구입한 키트 %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§a청구된 키트: %s 성공! 다시 신청하세요 %s
+forms.kits.claim.success=§c삭제된 키트: §e%s
 
-forms.party.showPokemon.body=이 포켓몬에 대해 수행할 작업을 선택합니다.
-forms.party.showPokemon.location.error.pokemonFainted=§c오류: 포켓몬이 기절했습니다. 건강을 회복하려면 치료사에게 가십시오.
-forms.party.showPokemon.location.sentOut=§a성공: §e%s 보냈습니다!
-forms.party.showPokemon.location.retured=§a성공: 반환됨 §e%s!
-forms.party.showPokemon.location.notFound=§c오류: 포켓몬을 찾을 수 없습니다. 포켓몬에게 더 가까이 다가가서 다시 시도해 주세요.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§c포켓몬을 야생으로 방출할 수 없습니다! 당신은 항상 1 포켓몬을 가지고 있어야합니다!
-forms.party.showPokemon.release.fail.pokemonSentOut=§c포켓몬을 내보내는 동안에는 포켓몬을 풀어줄 수 없습니다!
-forms.party.showPokemon.release.confirm=이 포켓몬을 야생으로 내보내시겠습니까? 이 작업은 취소할 수 없습니다!
-forms.party.showPokemon.release.success=§a야생으로 §e%s§a를 출시했습니다!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cPC로 전송할 수 없습니다! 당신은 항상 1 포켓몬을 가지고 있어야합니다!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§c이 포켓몬을 옮기기 전에 돌려주세요!
-forms.party.showPokemon.transferToPc.success=%s을(를) PC로 전송했습니다!
-forms.party.setNickName.fail.tooLong=§c오류: 닉네임이 너무 깁니다. 허용되는 최대 길이는 10자입니다.
-forms.party.setNickName.fail.firstMustBeLetter=§c오류: 닉네임의 첫 번째 문자는 문자여야 합니다.
 
-forms.pc.preformActionOnPcPokemon.body=이 PC 포켓몬에서 수행할 작업을 선택하세요!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§c파티로 전송 실패, 빈 슬롯이 없습니다!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=파티에 추가
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=쓰레기 포켓몬
-forms.pc.preformActionOnPcPokemon.button.goBack=돌아가기
+forms.moderate.updatedRole=§a업데이트된 보통 데이터!
 
-forms.serverNpc.butItemScreen.title=아이템 구매: %sx %s§r을 %s PokeDollars로!
-forms.serverNpc.butItemScreen.fail=§c아이템 구매 실패
-forms.serverNpc.butItemScreen.success=§a%sx %s을(를) 성공적으로 구입했습니다§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=매도: %s§r을 %s PokeDollars로!
-forms.serverNpc.sellItemScreen.fail=§c아이템 판매 실패
-forms.serverNpc.sellItemScreen.success=§a성공적으로 판매된 %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§c%sx %s 판매 실패!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§c거래 검색 종료!
-forms.tradeMachine.showWaitForm.requestDeclined=§c귀하의 거래 요청이 거절되었습니다!
-forms.tradeMachine.showMain.alreadyInUse=§c이미 사용 중인 기계와 상호 작용할 수 없습니다!
-forms.tradeMachine.showMain.playerNotFound=§c거래 시작 실패, 다른 플레이어를 찾을 수 없습니다!
+forms.party.showPokemon.body=§c오류: 포켓몬이 기절했습니다. 건강을 회복하려면 치료사에게 가십시오.
+forms.party.showPokemon.location.error.pokemonFainted=§a성공: §e%s 보냈습니다!
+forms.party.showPokemon.location.sentOut=§a성공: 반환됨 §e%s!
+forms.party.showPokemon.location.retured=§c오류: 포켓몬을 찾을 수 없습니다. 포켓몬에게 더 가까이 다가가서 다시 시도해 주세요.
+forms.party.showPokemon.location.notFound=§c포켓몬을 야생으로 방출할 수 없습니다! 당신은 항상 1 포켓몬을 가지고 있어야합니다!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§c포켓몬을 내보내는 동안에는 포켓몬을 풀어줄 수 없습니다!
+forms.party.showPokemon.release.fail.pokemonSentOut=이 포켓몬을 야생으로 내보내시겠습니까? 이 작업은 취소할 수 없습니다!
+forms.party.showPokemon.release.confirm=§a야생으로 §e%s§a를 출시했습니다!
+forms.party.showPokemon.release.success=§cPC로 전송할 수 없습니다! 당신은 항상 1 포켓몬을 가지고 있어야합니다!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§c이 포켓몬을 옮기기 전에 돌려주세요!
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s을(를) PC로 전송했습니다!
+forms.party.showPokemon.transferToPc.success=§c오류: 닉네임이 너무 깁니다. 허용되는 최대 길이는 10자입니다.
+forms.party.setNickName.fail.tooLong=§c오류: 닉네임의 첫 번째 문자는 문자여야 합니다.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§c이 트레이너와 다시 전투할 수 없습니다!
-forms.trainerMenu.editBasicData.updated=§a트레이너 기본 데이터 업데이트!
-forms.trainerMenu.editDrops.confirmDelete=%s을(를) 삭제하시겠습니까?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s"은(는) 유효한 데이터 번호가 아닙니다!
-forms.trainerMenu.editDrop.notVaildData="%s"는 마인크래프트 또는 연결된 동작 팩에 있는 유효한 항목 유형 ID가 아닙니다.
-forms.trainerMenu.editDrop.notValidAmount="%s"은(는) 유효한 금액이 아닙니다!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=공을 놓쳤다!
-models.battleUtils.endBattleOrPokemonForm.title=당신의 포켓몬은 기절했습니다
-models.battleUtils.endBattleOrPokemonForm.body=전투를 계속하거나 포켓몬을 바꾸려면 포켓몬이 방금 기절했습니다.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=사용 가능한 포켓몬이 없기 때문에 전투를 시작할 수 없습니다!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=포켓몬을 변경할 수 없습니다. 사용 가능한 포켓몬이 없습니다!
+forms.pc.preformActionOnPcPokemon.body=§c파티로 전송 실패, 빈 슬롯이 없습니다!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=파티에 추가
+forms.pc.preformActionOnPcPokemon.button.AddToParty=쓰레기 포켓몬
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=돌아가기
+
+
+forms.serverNpc.butItemScreen.title=§c아이템 구매 실패
+forms.serverNpc.butItemScreen.fail=§a%sx %s을(를) 성공적으로 구입했습니다§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=매도: %s§r을 %s PokeDollars로!
+forms.serverNpc.sellItemScreen.title=§c아이템 판매 실패
+forms.serverNpc.sellItemScreen.fail=§a성공적으로 판매된 %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§c%sx %s 판매 실패!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§c귀하의 거래 요청이 거절되었습니다!
+forms.tradeMachine.showWaitForm.requestDeclined=§c이미 사용 중인 기계와 상호 작용할 수 없습니다!
+forms.tradeMachine.showMain.alreadyInUse=§c거래 시작 실패, 다른 플레이어를 찾을 수 없습니다!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§a트레이너 기본 데이터 업데이트!
+forms.trainerMenu.editBasicData.updated=%s을(를) 삭제하시겠습니까?
+forms.trainerMenu.editDrops.confirmDelete="%s"은(는) 유효한 데이터 번호가 아닙니다!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s"는 마인크래프트 또는 연결된 동작 팩에 있는 유효한 항목 유형 ID가 아닙니다.
+forms.trainerMenu.editDrop.notVaildData="%s"은(는) 유효한 금액이 아닙니다!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=당신의 포켓몬은 기절했습니다
+models.battleUtils.endBattleOrPokemonForm.title=전투를 계속하거나 포켓몬을 바꾸려면 포켓몬이 방금 기절했습니다.
+models.battleUtils.endBattleOrPokemonForm.body=사용 가능한 포켓몬이 없기 때문에 전투를 시작할 수 없습니다!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=포켓몬을 변경할 수 없습니다. 사용 가능한 포켓몬이 없습니다!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s이(가) %s로 진화했습니다!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§c전투 시작 실패. 다른 포켓�
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s가 §e%s xp를 얻었습니다!
 models.playerVsTrainerBattle.end.gainedExp=§a%sx PokeDollar를 획득했습니다!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" 전투 요청을 보냈습니다. 이 요청을 수락하려면 "-battle accept"를 입력하십시오.
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§a지불된 "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s이(가) 이 서버 %s에서 마지막으로 확인되었습니다.
 commands.seen.lastSeen=§c%s의 첫 번째 로그온은 %s였습니다.
+
+
+commands.redeem.codeNotFound=§a코드를 사용했습니다: "%s", 성공적으로!
+commands.redeem.success=§c코드: "%s"는 이미 사용되었습니다!
 

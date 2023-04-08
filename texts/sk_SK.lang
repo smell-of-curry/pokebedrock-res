@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server pre Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: Tiny Flame Pokémon. Tento Pokémon typu 
 starter.piplup.description=Piplup: Penguin Pokémon. Tento vodný Pokémon je roztomilý a hrdý. Vďaka vysokým štatistikám obrany a špeciálnych útokov je Piplup vyváženou voľbou na začatie vašej cesty Pokémonom.
 starter.turtwig.description=Turtwig: Pokémon Tiny Leaf. Tento Pokémon trávového typu je roztomilý a robustný. Vďaka vysokým štatistikám obrany je Turtwig spoľahlivou voľbou na začatie vašej cesty Pokémonom.
 
-events.chatRanks.muted=§cNemožno odosielať správy, momentálne ste stlmení!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aVami vybraný blok si nárokuje %s
 events.claimManager.interactWithStick.notClaimed=§aNikto si tento blok neuplatnil.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cNeplatný výber, pozícia, ktorú ste vybrali, je momentálne nárokovaná a nie je možné ju nárokovať!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cTento tréner je v boji a nedá sa s n�
 
 events.setStarterPokemon.chosen=§a§lVybrali ste §b§l%s
 
+events.beforeChat.muted=§cNemožno odosielať správy, momentálne ste stlmení!
+events.beforeChat.sendingTooFast=§cOdosielate správy príliš rýchlo. Spomaľte a skúste to znova.
+events.beforeChat.repeatedMessage=§cVaša predchádzajúca správa sa zdá byť totožná s vašou najnovšou. Upravte svoju správu a skúste to znova.
+events.beforeChat.zalgoMessage=§cVaša správa obsahuje zalgo a nemožno ju odoslať!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamovanie!
+
 forms.actionForm.show.timeout=§cČasový limit formulára: pokúsili ste sa zobraziť formulár, ale boli ste zaneprázdnení (zatvorte chat po spustení príkazu)
 
-forms.crate.noDataToShow=§cTáto prepravka nemá žiadne údaje na zobrazenie!
-forms.crate.edit.itemIdDoesNotExist=Položka "%s" neexistuje v minecraft alebo pripojených balíkoch správania!
-forms.crate.edit.dataMustBeNumber=Údaje: %s, musí to byť číslo!
+forms.crate.noDataToShow=Položka "%s" neexistuje v minecraft alebo pripojených balíkoch správania!
+forms.crate.edit.itemIdDoesNotExist=Údaje: %s, musí to byť číslo!
 
-forms.kits.buy.confirmPurchase=Si si istý, že si chceš kúpiť súpravu: %s§r za %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cNepodarilo sa kúpiť: %s§r§c, Nemáte dostatok Poke Dollars!
-forms.kits.buy.success=§aÚspešne zakúpená súprava %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aNárokovaná súprava: %s Úspešne! Nárokovať znova %s
-forms.kits.delete.success=§cVymazaná súprava: §e%s
 
-forms.moderate.updatedRole=§aAktualizovaná rola pre „${playerName}“!
-forms.moderate.updatedModerateData=§aAktualizované stredné údaje!
+forms.kits.buy.confirmPurchase=§cNepodarilo sa kúpiť: %s§r§c, Nemáte dostatok Poke Dollars!
+forms.kits.buy.notEnoughMoney=§aÚspešne zakúpená súprava %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aNárokovaná súprava: %s Úspešne! Nárokovať znova %s
+forms.kits.claim.success=§cVymazaná súprava: §e%s
 
-forms.party.showPokemon.body=Vyberte akciu na vykonanie tohto pokémona.
-forms.party.showPokemon.location.error.pokemonFainted=§cChyba: Pokémon omdlel. Choďte k liečiteľovi, aby ste obnovili zdravie.
-forms.party.showPokemon.location.sentOut=§aÚspech: Odoslané §e%s!
-forms.party.showPokemon.location.retured=§aÚspech: Vrátené §e%s!
-forms.party.showPokemon.location.notFound=§cChyba: Pokémon sa nenašiel. Presuňte sa bližšie k Pokémonovi a skúste to znova.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cNemožno vypustiť pokémonov do divočiny! Vždy musíte mať pri sebe 1 pokémona!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cNemôžem uvoľniť pokémona, kým je odoslaný!
-forms.party.showPokemon.release.confirm=Si si istý, že chceš vypustiť tohto pokémona do divočiny, to sa nedá vrátiť späť!
-forms.party.showPokemon.release.success=§aVypustené §e%s§a do voľnej prírody!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cNedá sa preniesť do PC! Vždy musíte mať pri sebe 1 pokémona!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cVráťte tohto pokémona pred prenosom!
-forms.party.showPokemon.transferToPc.success=Prenesené %s do vášho PC!
-forms.party.setNickName.fail.tooLong=§cChyba: Prezývka je príliš dlhá. Maximálna povolená dĺžka je 10 znakov.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: Prvý znak prezývky musí byť písmeno.
 
-forms.pc.preformActionOnPcPokemon.body=Vyberte akciu na vykonanie tohto PC Pokémona!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cNepodarilo sa preniesť do strany, nemáte žiadne voľné sloty!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Pridať do strany
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Odpadnite pokémonov
-forms.pc.preformActionOnPcPokemon.button.goBack=Vráť sa
+forms.moderate.updatedRole=§aAktualizované stredné údaje!
 
-forms.serverNpc.butItemScreen.title=Kúpiť položku: %sx %s§r za %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cNepodarilo sa kúpiť položky
-forms.serverNpc.butItemScreen.success=§aÚspešne zakúpené %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Predaj: %s§r za %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cNepodarilo sa predať položky
-forms.serverNpc.sellItemScreen.success=§aÚspešne predané %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cNepodarilo sa predať %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cUkončené obchodné vyhľadávanie!
-forms.tradeMachine.showWaitForm.requestDeclined=§cVaša žiadosť o obchod bola odmietnutá!
-forms.tradeMachine.showMain.alreadyInUse=§cNedá sa interagovať so strojom, ktorý sa už používa!
-forms.tradeMachine.showMain.playerNotFound=§cNepodarilo sa spustiť obchod, iný hráč sa nenašiel!
+forms.party.showPokemon.body=§cChyba: Pokémon omdlel. Choďte k liečiteľovi, aby ste obnovili zdravie.
+forms.party.showPokemon.location.error.pokemonFainted=§aÚspech: Odoslané §e%s!
+forms.party.showPokemon.location.sentOut=§aÚspech: Vrátené §e%s!
+forms.party.showPokemon.location.retured=§cChyba: Pokémon sa nenašiel. Presuňte sa bližšie k Pokémonovi a skúste to znova.
+forms.party.showPokemon.location.notFound=§cNemožno vypustiť pokémonov do divočiny! Vždy musíte mať pri sebe 1 pokémona!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cNemôžem uvoľniť pokémona, kým je odoslaný!
+forms.party.showPokemon.release.fail.pokemonSentOut=Si si istý, že chceš vypustiť tohto pokémona do divočiny, to sa nedá vrátiť späť!
+forms.party.showPokemon.release.confirm=§aVypustené §e%s§a do voľnej prírody!
+forms.party.showPokemon.release.success=§cNedá sa preniesť do PC! Vždy musíte mať pri sebe 1 pokémona!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cVráťte tohto pokémona pred prenosom!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Prenesené %s do vášho PC!
+forms.party.showPokemon.transferToPc.success=§cChyba: Prezývka je príliš dlhá. Maximálna povolená dĺžka je 10 znakov.
+forms.party.setNickName.fail.tooLong=§cError: Prvý znak prezývky musí byť písmeno.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cNemôžete znova bojovať s týmto trénerom!
-forms.trainerMenu.editBasicData.updated=§aAktualizované Základné údaje pre trénera!
-forms.trainerMenu.editDrops.confirmDelete=Naozaj chcete odstrániť %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" nie je platné dátové číslo!
-forms.trainerMenu.editDrop.notVaildData="%s" Nie je platné ID typu položky, ktoré sa nachádza v minecraft alebo pripojených balíčkoch správania.
-forms.trainerMenu.editDrop.notValidAmount="%s" nie je platné číslo sumy!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Lopta sa minula!
-models.battleUtils.endBattleOrPokemonForm.title=Váš Pokémon omdlel
-models.battleUtils.endBattleOrPokemonForm.body=Váš pokémon práve omdlel, aby ste mohli pokračovať, buď ukončíte bitku, alebo prepnite svojho pokémona.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Nemôžete začať bitku, pretože nemáte k dispozícii žiadneho pokémona!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Pokémona nemôžete zmeniť, nemáte žiadneho dostupného pokémona!
+forms.pc.preformActionOnPcPokemon.body=§cNepodarilo sa preniesť do strany, nemáte žiadne voľné sloty!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Pridať do strany
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Odpadnite pokémonov
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Vráť sa
+
+
+forms.serverNpc.butItemScreen.title=§cNepodarilo sa kúpiť položky
+forms.serverNpc.butItemScreen.fail=§aÚspešne zakúpené %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Predaj: %s§r za %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cNepodarilo sa predať položky
+forms.serverNpc.sellItemScreen.fail=§aÚspešne predané %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cNepodarilo sa predať %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cVaša žiadosť o obchod bola odmietnutá!
+forms.tradeMachine.showWaitForm.requestDeclined=§cNedá sa interagovať so strojom, ktorý sa už používa!
+forms.tradeMachine.showMain.alreadyInUse=§cNepodarilo sa spustiť obchod, iný hráč sa nenašiel!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aAktualizované Základné údaje pre trénera!
+forms.trainerMenu.editBasicData.updated=Naozaj chcete odstrániť %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" nie je platné dátové číslo!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" Nie je platné ID typu položky, ktoré sa nachádza v minecraft alebo pripojených balíčkoch správania.
+forms.trainerMenu.editDrop.notVaildData="%s" nie je platné číslo sumy!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Váš Pokémon omdlel
+models.battleUtils.endBattleOrPokemonForm.title=Váš pokémon práve omdlel, aby ste mohli pokračovať, buď ukončíte bitku, alebo prepnite svojho pokémona.
+models.battleUtils.endBattleOrPokemonForm.body=Nemôžete začať bitku, pretože nemáte k dispozícii žiadneho pokémona!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Pokémona nemôžete zmeniť, nemáte žiadneho dostupného pokémona!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s sa vyvinul na %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cBattle sa nepodarilo spustiť. Skús
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s získal §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aZískali ste %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" vám poslal žiadosť o boj, napíšte "-battle accept" pre prijatie tejto žiadosti
@@ -613,7 +619,7 @@ commands.claim.unTrust.playerName.fail.notOwnAnyClaims=§cChyba nemôže zmeniť
 commands.claim.unTrust.playerName.fail.doNotOwnClaim=§cChyba, "%s" momentálne nie je dôveryhodný!
 commands.claim.unTrust.playerName.fail.playerNotTrusted=§aNedôveryhodné „%s“ nároku, v ktorom ste.
 commands.claim.unTrust.playerName.success.toClaimIn=§aNedôveryhodné "%s" pre všetky vaše nároky.
-commands.claim.unTrust.playerName.success.toAllClaims=§cChyba, musíte byť v nároku, aby ste sa ho vzdali!
+commands.claim.unTrust.playerName.success.toAllClaims=§cChyba, musíte mať nárok na to, aby ste sa ho vzdali!
 commands.claim.abandon.fail.notInClaim=§cChyba nemôže upustiť od tohto nároku, nevlastníte tento nárok!
 commands.claim.abandon.fail.doNotOwn=Ste si istí, že chcete odstrániť nárok, v ktorom momentálne stojíte, túto akciu nie je možné vrátiť späť!
 commands.claim.abandon.confirm=§aÚspešne ste sa vzdali nároku, v ktorom ste sa práve nachádzali.
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aZaplatili ste "%s" %sx Pokédolárov!
 
 commands.seen.onlineRightNow=§c%s bol naposledy videný na tomto serveri %s
 commands.seen.lastSeen=Prvé prihlásenie §c%s bolo %s
+
+
+commands.redeem.codeNotFound=§aUplatnený kód: "%s", Úspešne!
+commands.redeem.success=§cKód: "%s", už bol uplatnený!
 

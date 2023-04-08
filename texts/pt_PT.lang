@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon Server para Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Tronco de Apricórnio
@@ -35,7 +35,7 @@ item.pokeb:black_apricorn=Apricórnio Negro
 item.pokeb:blue_apricorn=Apricorn azul
 item.pokeb:green_apricorn=Apricorn verde
 item.pokeb:pink_apricorn=Apricórnio Rosa
-item.pokeb:red_apricorn=Apricorn Vermelho
+item.pokeb:red_apricorn=Apricorn vermelho
 item.pokeb:white_apricorn=Apricórnio branco
 item.pokeb:yellow_apricorn=Apricórnio amarelo
 
@@ -163,7 +163,7 @@ item.pokeb:sitrus_berry=Sitrus Berry
 item.pokeb:bug_gem=Gema de Inseto
 item.pokeb:dark_gem=Gema Negra
 item.pokeb:dragon_gem=Gema do Dragão
-item.pokeb:electric_gem=Gema Elétrica
+item.pokeb:electric_gem=Gema elétrica
 item.pokeb:fairy_gem=gema de fada
 item.pokeb:fighting_gem=gema de luta
 item.pokeb:fire_gem=Gema de Fogo
@@ -203,7 +203,7 @@ item.pokeb:water_stone_shard=Estilhaço de Pedra de Água
 item.pokeb:fullrestore=Restauração completa
 item.pokeb:hyper_potion=Hiper Poção
 item.pokeb:max_potion=Poção máxima
-item.pokeb:potion=Poção
+item.pokeb:potion=poção
 item.pokeb:super_potion=Super Poção
 item.pokeb:rare_candy=doces raros
 item.pokeb:fresh_water=Água fresca
@@ -306,7 +306,7 @@ item.spawn_egg.entity.pokemon:grotle.name=Grotle
 item.spawn_egg.entity.pokemon:groudon.name=Groudon
 item.spawn_egg.entity.pokemon:growlithe.name=Growlithe
 item.spawn_egg.entity.pokemon:gyarados.name=Gyarados
-item.spawn_egg.entity.pokemon:haunter.name=assombrador
+item.spawn_egg.entity.pokemon:haunter.name=assombrado
 item.spawn_egg.entity.pokemon:heracross.name=Heracross
 item.spawn_egg.entity.pokemon:hitmonchan.name=hitmonchan
 item.spawn_egg.entity.pokemon:hitmonlee.name=Hitmonlee
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: O Pokémon Minúsculo Chama. Este Pokémo
 starter.piplup.description=Piplup: O Pokémon Pinguim. Este Pokémon do tipo Água é fofo e orgulhoso. Com altas estatísticas de Defesa e Ataque Especial, Piplup é uma escolha equilibrada para começar sua jornada Pokémon.
 starter.turtwig.description=Turtwig: O Pokémon Folha Minúscula. Este Pokémon do tipo Grama é fofo e resistente. Com altas estatísticas de defesa, Turtwig é uma escolha confiável para iniciar sua jornada Pokémon.
 
-events.chatRanks.muted=§cNão é possível enviar mensagens, você está silenciado no momento!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aO bloco que você selecionou é reivindicado por %s
 events.claimManager.interactWithStick.notClaimed=§aNinguém reivindicou este bloco.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cSeleção inválida, a posição que você selecionou está atualmente reivindicada e não pode ser reivindicada!
@@ -502,73 +499,80 @@ events.entityHit.getId=Identificação da entidade de ocorrência: "%s"
 events.lagClear.announce=[§fServer§r]§um servidor foi limpo de itens e Pokémon indomáveis!
 events.lagClear.announce.startingIn=[§fServer§r]§a Lag Clear Iniciando em %s!
 
-events.moderate.frozen.alert=§bVocê está congelado, Motivo: %s
+events.moderate.frozen.alert=§bVocê está congelado, Razão: %s
 
 events.interact_with_trainer.inBattle=§cEste treinador está em batalha e não pode ser interagido!
 
 events.setStarterPokemon.chosen=§a§lVocê escolheu §b§l%s
 
+events.beforeChat.muted=§cNão é possível enviar mensagens, você está silenciado no momento!
+events.beforeChat.sendingTooFast=§cVocê está enviando mensagens muito rapidamente. Por favor, diminua a velocidade e tente novamente.
+events.beforeChat.repeatedMessage=§cSua mensagem anterior parece ser idêntica à mais recente. Modifique sua mensagem e tente novamente.
+events.beforeChat.zalgoMessage=§cSua mensagem contém zalgo e não pode ser enviada!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 forms.actionForm.show.timeout=§cForm Timeout: tentou mostrar o formulário, mas você estava ocupado (feche o chat após executar o comando)
 
-forms.crate.noDataToShow=§cEsta caixa não tem dados para mostrar!
-forms.crate.edit.itemIdDoesNotExist=O item "%s" não existe no minecraft ou nos pacotes de comportamento conectado!
-forms.crate.edit.dataMustBeNumber=Dados: %s, Deve ser um número!
+forms.crate.noDataToShow=O item "%s" não existe no minecraft ou nos pacotes de comportamento conectado!
+forms.crate.edit.itemIdDoesNotExist=Dados: %s, Deve ser um número!
 
-forms.kits.buy.confirmPurchase=Tem certeza de que deseja comprar o kit: %s§r por %s PokeDollars?
-forms.kits.buy.notEnoughMoney=§cFalha ao comprar: %s§r§c, você não tem Poke Dollars suficientes!
-forms.kits.buy.success=§aKit comprado com sucesso %s§r§c -%s PokeDollars!
-forms.kits.claim.success=§aKit reivindicado: %s com sucesso! Reivindique novamente %s
-forms.kits.delete.success=§cKit excluído: §e%s
 
-forms.moderate.updatedRole=§aFunção atualizada para "${playerName}"!
-forms.moderate.updatedModerateData=§aDados moderados atualizados!
+forms.kits.buy.confirmPurchase=§cFalha ao comprar: %s§r§c, você não tem Poke Dollars suficientes!
+forms.kits.buy.notEnoughMoney=§aKit comprado com sucesso %s§r§c -%s PokeDollars!
+forms.kits.buy.success=§aKit reivindicado: %s com sucesso! Reivindique novamente %s
+forms.kits.claim.success=§cKit excluído: §e%s
 
-forms.party.showPokemon.body=Selecione uma ação para executar neste pokémon.
-forms.party.showPokemon.location.error.pokemonFainted=§cErro: Pokémon desmaiou. Por favor, vá ao curador para restaurar a saúde.
-forms.party.showPokemon.location.sentOut=§aSucesso: Enviado §e%s!
-forms.party.showPokemon.location.retured=§aSucesso: Retornado §e%s!
-forms.party.showPokemon.location.notFound=§cErro: Pokémon não encontrado. Por favor, aproxime-se do Pokémon e tente novamente.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cNão é possível liberar pokémon na natureza! Você deve ter 1 pokémon em você o tempo todo!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cNão é possível liberar pokémon enquanto ele é enviado!
-forms.party.showPokemon.release.confirm=Tem certeza de que deseja liberar este pokémon na natureza, isso não pode ser desfeito!
-forms.party.showPokemon.release.success=§aLançado §e%s§a na natureza!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cNão é possível transferir para o PC! Você deve ter 1 pokémon em você o tempo todo!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cDevolva este pokémon antes de transferir!
-forms.party.showPokemon.transferToPc.success=Transferiu %s para o seu PC!
-forms.party.setNickName.fail.tooLong=§cErro: Apelido muito longo. O comprimento máximo permitido é de 10 caracteres.
-forms.party.setNickName.fail.firstMustBeLetter=§cErro: O primeiro caractere do apelido deve ser uma letra.
 
-forms.pc.preformActionOnPcPokemon.body=Selecione uma ação para executar neste Pokémon para PC!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cFalha ao transferir para o grupo, você não tem nenhum slot aberto!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Adicionar à festa
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=pokémon lixo
-forms.pc.preformActionOnPcPokemon.button.goBack=Volte
+forms.moderate.updatedRole=§aDados moderados atualizados!
 
-forms.serverNpc.butItemScreen.title=Compre o item: %sx %s§r por %s PokeDollars!
-forms.serverNpc.butItemScreen.fail=§cFalha ao comprar itens
-forms.serverNpc.butItemScreen.success=§aComprado com sucesso %sx %s§r§c -%s PokeDollars!
-forms.serverNpc.sellItemScreen.title=Venda: %s§r por %s PokeDollars!
-forms.serverNpc.sellItemScreen.fail=§cFalha ao vender itens
-forms.serverNpc.sellItemScreen.success=§aVendido com sucesso %sx %s§r§a +%s PokeDollars!
-forms.serverNpc.sellItemScreen.fail.item=§cFalha ao vender %sx %s!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§cPesquisa comercial encerrada!
-forms.tradeMachine.showWaitForm.requestDeclined=§cSua solicitação de troca foi recusada!
-forms.tradeMachine.showMain.alreadyInUse=§cNão é possível interagir com a máquina, já em uso!
-forms.tradeMachine.showMain.playerNotFound=§cFalha ao iniciar a troca, outro jogador não foi encontrado!
+forms.party.showPokemon.body=§cErro: Pokémon desmaiou. Por favor, vá ao curador para restaurar a saúde.
+forms.party.showPokemon.location.error.pokemonFainted=§aSucesso: Enviado §e%s!
+forms.party.showPokemon.location.sentOut=§aSucesso: Retornado §e%s!
+forms.party.showPokemon.location.retured=§cErro: Pokémon não encontrado. Por favor, aproxime-se do Pokémon e tente novamente.
+forms.party.showPokemon.location.notFound=§cNão é possível liberar pokémon na natureza! Você deve ter 1 pokémon em você o tempo todo!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cNão é possível liberar pokémon enquanto ele é enviado!
+forms.party.showPokemon.release.fail.pokemonSentOut=Tem certeza de que deseja liberar este pokémon na natureza, isso não pode ser desfeito!
+forms.party.showPokemon.release.confirm=§aLançado §e%s§a na natureza!
+forms.party.showPokemon.release.success=§cNão é possível transferir para o PC! Você deve ter 1 pokémon em você o tempo todo!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cDevolva este pokémon antes de transferir!
+forms.party.showPokemon.transferToPc.pokemonSentOut=Transferiu %s para o seu PC!
+forms.party.showPokemon.transferToPc.success=§cErro: Apelido muito longo. O comprimento máximo permitido é de 10 caracteres.
+forms.party.setNickName.fail.tooLong=§cErro: O primeiro caractere do apelido deve ser uma letra.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cVocê não pode lutar contra este treinador novamente!
-forms.trainerMenu.editBasicData.updated=§aDados básicos atualizados para o treinador!
-forms.trainerMenu.editDrops.confirmDelete=Tem certeza de que deseja excluir %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" não é um número de dados válido!
-forms.trainerMenu.editDrop.notVaildData="%s" não é um id de tipo de item válido, que está em minecraft ou pacotes de comportamento conectados.
-forms.trainerMenu.editDrop.notValidAmount="%s" não é um valor válido!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Bola fez falta!
-models.battleUtils.endBattleOrPokemonForm.title=Seu Pokémon Desmaiou
-models.battleUtils.endBattleOrPokemonForm.body=Seu pokémon acabou de desmaiar, para continuar termine a batalha ou troque de pokémon.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Não é possível iniciar a batalha porque você não tem nenhum pokémon disponível!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Não é possível trocar de pokémon, você não tem pokémon disponível!
+forms.pc.preformActionOnPcPokemon.body=§cFalha ao transferir para o grupo, você não tem nenhum slot aberto!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Adicionar à festa
+forms.pc.preformActionOnPcPokemon.button.AddToParty=pokémon lixo
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Volte
+
+
+forms.serverNpc.butItemScreen.title=§cFalha ao comprar itens
+forms.serverNpc.butItemScreen.fail=§aComprado com sucesso %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.butItemScreen.success=Venda: %s§r por %s PokeDollars!
+forms.serverNpc.sellItemScreen.title=§cFalha ao vender itens
+forms.serverNpc.sellItemScreen.fail=§aVendido com sucesso %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.success=§cFalha ao vender %sx %s!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cSua solicitação de troca foi recusada!
+forms.tradeMachine.showWaitForm.requestDeclined=§cNão é possível interagir com a máquina, já em uso!
+forms.tradeMachine.showMain.alreadyInUse=§cFalha ao iniciar a troca, outro jogador não foi encontrado!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aDados básicos atualizados para o treinador!
+forms.trainerMenu.editBasicData.updated=Tem certeza de que deseja excluir %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" não é um número de dados válido!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" não é um id de tipo de item válido, que está em minecraft ou pacotes de comportamento conectados.
+forms.trainerMenu.editDrop.notVaildData="%s" não é um valor válido!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Seu Pokémon Desmaiou
+models.battleUtils.endBattleOrPokemonForm.title=Seu pokémon acabou de desmaiar, para continuar termine a batalha ou troque de pokémon.
+models.battleUtils.endBattleOrPokemonForm.body=Não é possível iniciar a batalha porque você não tem nenhum pokémon disponível!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Não é possível trocar de pokémon, você não tem pokémon disponível!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s evoluiu para %s!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cFalha ao iniciar a batalha. Experime
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s ganhou §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aVocê ganhou %sx PokeDollar's!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" enviou a você uma solicitação de batalha, digite "-battle accept" para aceitar esta solicitação
@@ -651,7 +657,7 @@ commands.tpaccept.fail.playerNotInGame=§aRequisição Tp aceita de "%s"!
 commands.tpaccept.success.sender=§a"%s" aceitou seu pedido Tp!
 commands.tpaccept.success.fromPlayer=§cFalha ao negar solicitação, você não tem solicitações In-Bound!
 commands.tpdeny.fail=§aNegou sua solicitação Tp de entrada!
-commands.tpdeny.success=Pedidos de teletransporte §a"%s" para você agora estão definidos para %s.
+commands.tpdeny.success=Pedidos de teletransporte §a"%s" para você agora estão definidos como %s.
 commands.tpatoggle.success=§cVocê não tem localização anterior anterior!
 commands.back.fail=§aTeleportou você de volta!
 
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aPagou "%s" %sx PokeDollars!
 
 commands.seen.onlineRightNow=§c%s foi visto pela última vez neste servidor %s
 commands.seen.lastSeen=§o primeiro logon de c%s foi %s
+
+
+commands.redeem.codeNotFound=§aResgatado o código: "%s", com sucesso!
+commands.redeem.success=§cO código: "%s", já foi resgatado!
 

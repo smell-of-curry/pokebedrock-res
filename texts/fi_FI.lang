@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§aPokemon-palvelin Minecraft Bedrockille
 
 tile.pokeb:apricorn_log.name=Apricorn loki
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Tämä Fire-tyyp
 starter.piplup.description=Piplup: The Penguin Pokémon. Tämä vesityyppinen Pokémon on söpö ja ylpeä. Korkeiden puolustus- ja erikoishyökkäystilastojen ansiosta Piplup on tasapainoinen valinta aloittaa Pokémon-matkasi.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Tämä Grass-tyyppinen Pokémon on söpö ja tukeva. Korkeiden puolustustilastojen ansiosta Turtwig on luotettava valinta aloittaa Pokémon-matkasi.
 
-events.chatRanks.muted=§cEi voi lähettää viestejä, olet tällä hetkellä mykistetty!
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§aValitsemaasi lohkoa vaatii %s
 events.claimManager.interactWithStick.notClaimed=§aKukaan ei ole lunastanut tätä estoa.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cVirheellinen valinta, valitsemasi työpaikka on tällä hetkellä vaadittu, eikä sitä voi lunastaa!
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§cTämä kouluttaja on taistelussa, eikä
 
 events.setStarterPokemon.chosen=§a§lOlet valinnut §b§l%s
 
+events.beforeChat.muted=§cEi voi lähettää viestejä, olet tällä hetkellä mykistetty!
+events.beforeChat.sendingTooFast=§cLähetät viestejä liian nopeasti. Hidasta ja yritä uudelleen.
+events.beforeChat.repeatedMessage=§cEdellinen viestisi näyttää olevan identtinen viimeisimmän viestisi kanssa. Muokkaa viestiäsi ja yritä uudelleen.
+events.beforeChat.zalgoMessage=§cViestisi sisältää zalgoa eikä sitä voi lähettää!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cRoskapostitus!
+
 forms.actionForm.show.timeout=§cForm Timeout: yritti näyttää lomaketta, mutta olit kiireinen (sulje keskustelu komennon suorittamisen jälkeen)
 
-forms.crate.noDataToShow=§cTällä laatikolla ei ole näytettävää dataa!
-forms.crate.edit.itemIdDoesNotExist=Kohdetta "%s" ei ole minecraftissa tai yhdistetyissä käyttäytymispaketeissa!
-forms.crate.edit.dataMustBeNumber=Tiedot: %s, täytyy olla numero!
+forms.crate.noDataToShow=Kohdetta "%s" ei ole minecraftissa tai yhdistetyissä käyttäytymispaketeissa!
+forms.crate.edit.itemIdDoesNotExist=Tiedot: %s, täytyy olla numero!
 
-forms.kits.buy.confirmPurchase=Oletko varma, että haluat ostaa sarjan: %s§r %s PokeDollarsille?
-forms.kits.buy.notEnoughMoney=§cOstaminen epäonnistui: %s§r§c, Sinulla ei ole tarpeeksi Poke Dollareja!
-forms.kits.buy.success=§aOnnistuneesti ostettu paketti %s§r§c -%s PokeDollaria!
-forms.kits.claim.success=§aVaatittu sarja: %s Onnistuneesti! Tee vaatimus uudelleen %s
-forms.kits.delete.success=§cPoistettu sarja: §e%s
 
-forms.moderate.updatedRole=§aPäivitetty rooli pelaajalle ${playerName}!
-forms.moderate.updatedModerateData=§aPäivitetty keskitason tiedot!
+forms.kits.buy.confirmPurchase=§cOstaminen epäonnistui: %s§r§c, Sinulla ei ole tarpeeksi Poke Dollareja!
+forms.kits.buy.notEnoughMoney=§aOnnistuneesti ostettu paketti %s§r§c -%s PokeDollaria!
+forms.kits.buy.success=§aVaatittu sarja: %s Onnistuneesti! Tee vaatimus uudelleen %s
+forms.kits.claim.success=§cPoistettu sarja: §e%s
 
-forms.party.showPokemon.body=Valitse tässä pokemonissa suoritettava toiminto.
-forms.party.showPokemon.location.error.pokemonFainted=§cVirhe: Pokémon on pyörtynyt. Mene parantajaan palauttamaan terveys.
-forms.party.showPokemon.location.sentOut=§aOnnistuminen: Lähetetty §e%s!
-forms.party.showPokemon.location.retured=§aOnnistuminen: Palautettu §e%s!
-forms.party.showPokemon.location.notFound=§cError: Pokémonia ei löydy. Siirry lähemmäs Pokémonia ja yritä uudelleen.
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§cPokemoneja ei voi vapauttaa villiin! Sinulla on oltava aina 1 pokemon mukanasi!
-forms.party.showPokemon.release.fail.pokemonSentOut=§cPokemonia ei voi vapauttaa sen lähetyksen aikana!
-forms.party.showPokemon.release.confirm=Oletko varma, että haluat vapauttaa tämän pokemonin luontoon, tätä ei voi peruuttaa!
-forms.party.showPokemon.release.success=§aJulkaistu §e%s§a luontoon!
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cEi voi siirtää PC:lle! Sinulla on oltava aina 1 pokemon mukanasi!
-forms.party.showPokemon.transferToPc.pokemonSentOut=§cPalauta tämä pokemon ennen siirtoa!
-forms.party.showPokemon.transferToPc.success=%s siirretty tietokoneellesi!
-forms.party.setNickName.fail.tooLong=§cError: Lempinimi liian pitkä. Suurin sallittu pituus on 10 merkkiä.
-forms.party.setNickName.fail.firstMustBeLetter=§cError: Lempinimen ensimmäisen merkin on oltava kirjain.
 
-forms.pc.preformActionOnPcPokemon.body=Valitse tässä PC Pokemonissa suoritettava toiminto!
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§c Siirtyminen puolueeseen epäonnistui, sinulla ei ole avoimia paikkoja!
-forms.pc.preformActionOnPcPokemon.button.AddToParty=Lisää juhliin
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=Roskakori Pokemon
-forms.pc.preformActionOnPcPokemon.button.goBack=Mene takaisin
+forms.moderate.updatedRole=§aPäivitetty keskitason tiedot!
 
-forms.serverNpc.butItemScreen.title=Osta tuote: %sx %s§r %s PokeDollarsilla!
-forms.serverNpc.butItemScreen.fail=§c Tuotteiden ostaminen epäonnistui
-forms.serverNpc.butItemScreen.success=§aOnnistuneesti ostettu %sx %s§r§c -%s PokeDollaria!
-forms.serverNpc.sellItemScreen.title=Myy: %s§r %s PokeDollarilla!
-forms.serverNpc.sellItemScreen.fail=§cTavaroiden myynti epäonnistui
-forms.serverNpc.sellItemScreen.success=§aOnnistuneesti myyty %sx %s§r§a +%s PokeDollaria!
-forms.serverNpc.sellItemScreen.fail.item=§c %sx %s myyminen epäonnistui!
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§c Kaupan haku päättynyt!
-forms.tradeMachine.showWaitForm.requestDeclined=§c Kauppapyyntösi hylättiin!
-forms.tradeMachine.showMain.alreadyInUse=§cEi voi olla vuorovaikutuksessa koneen kanssa, jo käytössä!
-forms.tradeMachine.showMain.playerNotFound=§c Kaupan aloittaminen epäonnistui, toista pelaajaa ei löytynyt!
+forms.party.showPokemon.body=§cVirhe: Pokémon on pyörtynyt. Mene parantajaan palauttamaan terveys.
+forms.party.showPokemon.location.error.pokemonFainted=§aOnnistuminen: Lähetetty §e%s!
+forms.party.showPokemon.location.sentOut=§aOnnistuminen: Palautettu §e%s!
+forms.party.showPokemon.location.retured=§cError: Pokémonia ei löydy. Siirry lähemmäs Pokémonia ja yritä uudelleen.
+forms.party.showPokemon.location.notFound=§cPokemoneja ei voi vapauttaa villiin! Sinulla on oltava aina 1 pokemon mukanasi!
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cPokemonia ei voi vapauttaa sen lähetyksen aikana!
+forms.party.showPokemon.release.fail.pokemonSentOut=Oletko varma, että haluat vapauttaa tämän pokemonin luontoon, tätä ei voi peruuttaa!
+forms.party.showPokemon.release.confirm=§aJulkaistu §e%s§a luontoon!
+forms.party.showPokemon.release.success=§cEi voi siirtää PC:lle! Sinulla on oltava aina 1 pokemon mukanasi!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cPalauta tämä pokemon ennen siirtoa!
+forms.party.showPokemon.transferToPc.pokemonSentOut=%s siirretty tietokoneellesi!
+forms.party.showPokemon.transferToPc.success=§cError: Lempinimi liian pitkä. Suurin sallittu pituus on 10 merkkiä.
+forms.party.setNickName.fail.tooLong=§cError: Lempinimen ensimmäisen merkin on oltava kirjain.
 
-forms.trainerMenu.main.cannotReBattleTrainer=§cEt voi taistella uudelleen tätä valmentajaa vastaan!
-forms.trainerMenu.editBasicData.updated=§aPäivitetty Perustiedot valmentajalle!
-forms.trainerMenu.editDrops.confirmDelete=Haluatko varmasti poistaa kohteen %s?
-forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" ei ole kelvollinen datanumero!
-forms.trainerMenu.editDrop.notVaildData="%s" ei ole kelvollinen nimiketyypin tunnus, joka on minecraftissa tai yhdistetyissä toimintapaketeissa.
-forms.trainerMenu.editDrop.notValidAmount="%s" ei ole kelvollinen summa!
 
-models.battleUtils.runPokemonCatch.ballWasMissed=Pallo jäi väliin!
-models.battleUtils.endBattleOrPokemonForm.title=Pokémonisi on pyörtynyt
-models.battleUtils.endBattleOrPokemonForm.body=Pokemonisi on juuri pyörtynyt. Voit jatkaa joko lopettaaksesi taistelun tai vaihdaksesi pokemonisi.
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Et voi aloittaa taistelua, koska sinulla ei ole saatavilla pokémoneja!
-models.battleUtils.choosePokemonForm.noAvailablePokemon=Pokemonia ei voi vaihtaa, sinulla ei ole saatavilla pokemoneja!
+forms.pc.preformActionOnPcPokemon.body=§c Siirtyminen puolueeseen epäonnistui, sinulla ei ole avoimia paikkoja!
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=Lisää juhliin
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Roskakori Pokemon
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Mene takaisin
+
+
+forms.serverNpc.butItemScreen.title=§c Tuotteiden ostaminen epäonnistui
+forms.serverNpc.butItemScreen.fail=§aOnnistuneesti ostettu %sx %s§r§c -%s PokeDollaria!
+forms.serverNpc.butItemScreen.success=Myy: %s§r %s PokeDollarilla!
+forms.serverNpc.sellItemScreen.title=§cTavaroiden myynti epäonnistui
+forms.serverNpc.sellItemScreen.fail=§aOnnistuneesti myyty %sx %s§r§a +%s PokeDollaria!
+forms.serverNpc.sellItemScreen.success=§c %sx %s myyminen epäonnistui!
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§c Kauppapyyntösi hylättiin!
+forms.tradeMachine.showWaitForm.requestDeclined=§cEi voi olla vuorovaikutuksessa koneen kanssa, jo käytössä!
+forms.tradeMachine.showMain.alreadyInUse=§c Kaupan aloittaminen epäonnistui, toista pelaajaa ei löytynyt!
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§aPäivitetty Perustiedot valmentajalle!
+forms.trainerMenu.editBasicData.updated=Haluatko varmasti poistaa kohteen %s?
+forms.trainerMenu.editDrops.confirmDelete="%s" ei ole kelvollinen datanumero!
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" ei ole kelvollinen nimiketyypin tunnus, joka on minecraftissa tai yhdistetyissä toimintapaketeissa.
+forms.trainerMenu.editDrop.notVaildData="%s" ei ole kelvollinen summa!
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=Pokémonisi on pyörtynyt
+models.battleUtils.endBattleOrPokemonForm.title=Pokemonisi on juuri pyörtynyt. Voit jatkaa joko lopettaaksesi taistelun tai vaihdaksesi pokemonisi.
+models.battleUtils.endBattleOrPokemonForm.body=Et voi aloittaa taistelua, koska sinulla ei ole saatavilla pokémoneja!
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Pokemonia ei voi vaihtaa, sinulla ei ole saatavilla pokemoneja!
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s on kehittynyt %s:ksi!
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§cTaistelu ei käynnistynyt. Kokeile t
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s on saavuttanut §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aOlet ansainnut %sx PokeDollaria!
+
+
 
 
 commands.battle.player.fail.self=§a"%s" Lähetti sinulle taistelupyynnön, kirjoita "-battle accept" hyväksyäksesi tämän pyynnön
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§aMaksettu "%s" %sx PokeDollaria!
 
 commands.seen.onlineRightNow=§c%s nähtiin viimeksi tällä palvelimella %s
 commands.seen.lastSeen=§c%s:n ensimmäinen kirjautuminen oli %s
+
+
+commands.redeem.codeNotFound=§aLunastettu koodi: "%s", Onnistuneesti!
+commands.redeem.success=§cKoodi: "%s", on jo lunastettu!
 

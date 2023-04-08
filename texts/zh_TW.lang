@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.6 RES
+pack.name=§lPokeBedrock v1.1.7 RES
 pack.description=§a用于 Minecraft Bedrock 的口袋妖怪服务器
 
 tile.pokeb:apricorn_log.name=杏圆木
@@ -479,9 +479,6 @@ starter.chimchar.description=Chimchar：微小的火焰神奇宝贝。这只火�
 starter.piplup.description=Piplup：企鹅宝可梦。这只水属性宝可梦可爱又骄傲。凭借高防御和特殊攻击统计数据，Piplup 是开始您的神奇宝贝之旅的平衡选择。
 starter.turtwig.description=龟龟：小叶宝可梦。这种草系神奇宝贝既可爱又结实。凭借高防御属性，Turtwig 是开始神奇宝贝之旅的可靠选择。
 
-events.chatRanks.muted=§c无法发送消息，您目前处于静音状态！
-events.chatRanks.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-
 events.claimManager.interactWithStick.isClaimed=§a您选择的区块已被 %s 占用
 events.claimManager.interactWithStick.notClaimed=§a没有人声称这个区块。
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§c无效选择，您所选择的职位目前已被认领，无法认领！
@@ -508,67 +505,74 @@ events.interact_with_trainer.inBattle=§c此训练师正在战斗中，无法与
 
 events.setStarterPokemon.chosen=§a§l你选择了§b§l%s
 
+events.beforeChat.muted=§c无法发送消息，您目前处于静音状态！
+events.beforeChat.sendingTooFast=§c你发送信息的速度太快了。请放慢速度，然后重试。
+events.beforeChat.repeatedMessage=§c你之前的消息似乎与你最近的消息相同。请修改您的消息，然后重试。
+events.beforeChat.zalgoMessage=§c您的消息包含 zalgo，无法发送！
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§c垃圾邮件！
+
 forms.actionForm.show.timeout=§c表格超时：试图显示表格，但你很忙（运行命令后关闭聊天）
 
-forms.crate.noDataToShow=§c这个箱子没有数据可以显示！
-forms.crate.edit.itemIdDoesNotExist=我的世界或连接的行为包中不存在项目“%s”！
-forms.crate.edit.dataMustBeNumber=数据：%s，必须是数字！
+forms.crate.noDataToShow=我的世界或连接的行为包中不存在项目“%s”！
+forms.crate.edit.itemIdDoesNotExist=数据：%s，必须是数字！
 
-forms.kits.buy.confirmPurchase=您确定要用 %s PokeDollars 购买工具包：%s§r 吗？
-forms.kits.buy.notEnoughMoney=§c购买失败：%s§r§c，您没有足够的 Poke Dollars！
-forms.kits.buy.success=§a成功购买套件 %s§r§c -%s PokeDollars！
-forms.kits.claim.success=§a领取工具包：%s 成功！再次声明 %s
-forms.kits.delete.success=§c已删除套件：§e%s
 
-forms.moderate.updatedRole=§a更新了“${playerName}”的角色！
-forms.moderate.updatedModerateData=§a更新中等数据！
+forms.kits.buy.confirmPurchase=§c购买失败：%s§r§c，您没有足够的 Poke Dollars！
+forms.kits.buy.notEnoughMoney=§a成功购买套件 %s§r§c -%s PokeDollars！
+forms.kits.buy.success=§a领取工具包：%s 成功！再次声明 %s
+forms.kits.claim.success=§c已删除套件：§e%s
 
-forms.party.showPokemon.body=选择要对此口袋妖怪执行的动作。
-forms.party.showPokemon.location.error.pokemonFainted=§c错误：神奇宝贝晕倒了。请去治疗师恢复健康。
-forms.party.showPokemon.location.sentOut=§a成功：发出§e%s！
-forms.party.showPokemon.location.retured=§a成功：返回 §e%s！
-forms.party.showPokemon.location.notFound=§c错误：未找到神奇宝贝。请靠近神奇宝贝再试一次。
-forms.party.showPokemon.release.fail.mustHave1Pokemon=§c无法将宝可梦放生！您必须始终携带 1 只神奇宝贝！
-forms.party.showPokemon.release.fail.pokemonSentOut=§c发出时无法释放宠物小精灵！
-forms.party.showPokemon.release.confirm=您确定要将这只神奇宝贝放生到野外吗，这是无法撤消的！
-forms.party.showPokemon.release.success=§a已将 §e%s§a 释放到野外！
-forms.party.showPokemon.transferToPc.mustHave1Pokemon=§c无法传输到PC！您必须始终携带 1 只神奇宝贝！
-forms.party.showPokemon.transferToPc.pokemonSentOut=§c在传送前归还这只宝可梦！
-forms.party.showPokemon.transferToPc.success=已将 %s 传输到您的电脑！
-forms.party.setNickName.fail.tooLong=§c错误：昵称太长。允许的最大长度为 10 个字符。
-forms.party.setNickName.fail.firstMustBeLetter=§c错误：昵称的第一个字符必须是字母。
 
-forms.pc.preformActionOnPcPokemon.body=选择要在此 PC 口袋妖怪上执行的动作！
-forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§c转移到派对失败，您没有任何空位！
-forms.pc.preformActionOnPcPokemon.button.AddToParty=添加到派对
-forms.pc.preformActionOnPcPokemon.button.trashPokemon=垃圾宝可梦
-forms.pc.preformActionOnPcPokemon.button.goBack=回去
+forms.moderate.updatedRole=§a更新中等数据！
 
-forms.serverNpc.butItemScreen.title=用 %s PokeDollars 购买物品：%sx %s§r！
-forms.serverNpc.butItemScreen.fail=§c购买物品失败
-forms.serverNpc.butItemScreen.success=§a已成功购买 %sx %s§r§c -%s PokeDollars！
-forms.serverNpc.sellItemScreen.title=卖出：%s§r 获得 %s PokeDollars！
-forms.serverNpc.sellItemScreen.fail=§c未能出售物品
-forms.serverNpc.sellItemScreen.success=§a成功售出 %sx %s§r§a +%s PokeDollars！
-forms.serverNpc.sellItemScreen.fail.item=§c未能出售 %sx %s！
 
-forms.tradeMachine.showWaitForm.endTradeSearch=§c结束贸易搜索！
-forms.tradeMachine.showWaitForm.requestDeclined=§c您的交易请求被拒绝了！
-forms.tradeMachine.showMain.alreadyInUse=§c无法与机器交互，已经在使用中！
-forms.tradeMachine.showMain.playerNotFound=§c无法开始交易，未找到其他玩家！
+forms.party.showPokemon.body=§c错误：神奇宝贝晕倒了。请去治疗师恢复健康。
+forms.party.showPokemon.location.error.pokemonFainted=§a成功：发出§e%s！
+forms.party.showPokemon.location.sentOut=§a成功：返回 §e%s！
+forms.party.showPokemon.location.retured=§c错误：未找到神奇宝贝。请靠近神奇宝贝再试一次。
+forms.party.showPokemon.location.notFound=§c无法将宝可梦放生！您必须始终携带 1 只神奇宝贝！
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§c发出时无法释放宠物小精灵！
+forms.party.showPokemon.release.fail.pokemonSentOut=您确定要将这只神奇宝贝放生到野外吗，这是无法撤消的！
+forms.party.showPokemon.release.confirm=§a已将 §e%s§a 释放到野外！
+forms.party.showPokemon.release.success=§c无法传输到PC！您必须始终携带 1 只神奇宝贝！
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§c在传送前归还这只宝可梦！
+forms.party.showPokemon.transferToPc.pokemonSentOut=已将 %s 传输到您的电脑！
+forms.party.showPokemon.transferToPc.success=§c错误：昵称太长。允许的最大长度为 10 个字符。
+forms.party.setNickName.fail.tooLong=§c错误：昵称的第一个字符必须是字母。
 
-forms.trainerMenu.main.cannotReBattleTrainer=§c你不能再次与这个训练师战斗！
-forms.trainerMenu.editBasicData.updated=§a更新了培训师的基本数据！
-forms.trainerMenu.editDrops.confirmDelete=您确定要删除 %s 吗？
-forms.trainerMenu.editDrop.typeIdDoesNotExist=“%s”不是有效的数据编号！
-forms.trainerMenu.editDrop.notVaildData=“%s”不是一个有效的项目类型 ID，它在 Minecraft 或连接的行为包中。
-forms.trainerMenu.editDrop.notValidAmount=“%s”不是一个有效的金额数字！
 
-models.battleUtils.runPokemonCatch.ballWasMissed=球丢了！
-models.battleUtils.endBattleOrPokemonForm.title=你的宝可梦晕倒了
-models.battleUtils.endBattleOrPokemonForm.body=您的神奇宝贝刚刚晕倒，继续结束战斗或更换您的神奇宝贝。
-models.battleUtils.choosePokemonForm.noAvailablePokemon.first=无法开始战斗，因为您没有可用的神奇宝贝！
-models.battleUtils.choosePokemonForm.noAvailablePokemon=无法更换宝可梦，您没有可用的宝可梦！
+forms.pc.preformActionOnPcPokemon.body=§c转移到派对失败，您没有任何空位！
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=添加到派对
+forms.pc.preformActionOnPcPokemon.button.AddToParty=垃圾宝可梦
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=回去
+
+
+forms.serverNpc.butItemScreen.title=§c购买物品失败
+forms.serverNpc.butItemScreen.fail=§a已成功购买 %sx %s§r§c -%s PokeDollars！
+forms.serverNpc.butItemScreen.success=卖出：%s§r 获得 %s PokeDollars！
+forms.serverNpc.sellItemScreen.title=§c未能出售物品
+forms.serverNpc.sellItemScreen.fail=§a成功售出 %sx %s§r§a +%s PokeDollars！
+forms.serverNpc.sellItemScreen.success=§c未能出售 %sx %s！
+
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§c您的交易请求被拒绝了！
+forms.tradeMachine.showWaitForm.requestDeclined=§c无法与机器交互，已经在使用中！
+forms.tradeMachine.showMain.alreadyInUse=§c无法开始交易，未找到其他玩家！
+
+
+forms.trainerMenu.main.cannotReBattleTrainer=§a更新了培训师的基本数据！
+forms.trainerMenu.editBasicData.updated=您确定要删除 %s 吗？
+forms.trainerMenu.editDrops.confirmDelete=“%s”不是有效的数据编号！
+forms.trainerMenu.editDrop.typeIdDoesNotExist=“%s”不是一个有效的项目类型 ID，它在 Minecraft 或连接的行为包中。
+forms.trainerMenu.editDrop.notVaildData=“%s”不是一个有效的金额数字！
+
+
+models.battleUtils.runPokemonCatch.ballWasMissed=你的宝可梦晕倒了
+models.battleUtils.endBattleOrPokemonForm.title=您的神奇宝贝刚刚晕倒，继续结束战斗或更换您的神奇宝贝。
+models.battleUtils.endBattleOrPokemonForm.body=无法开始战斗，因为您没有可用的神奇宝贝！
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=无法更换宝可梦，您没有可用的宝可梦！
+
 
 models.playersPokemon.checkForLevelUp.levelUp=%s 已经进化为 %s！
 
@@ -586,6 +590,8 @@ models.playerVsPokemonBattle.pokemonDied=§c战斗未能开始。尝试不同的
 
 models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s 已获得 §e%s xp！
 models.playerVsTrainerBattle.end.gainedExp=§a您已赢得 %sx PokeDollar！
+
+
 
 
 commands.battle.player.fail.self=§a"%s" 已向您发送战斗请求，输入“-battle accept”接受此请求
@@ -681,4 +687,8 @@ commands.pay.fail.insufficientFunds=§a已支付 "%s" %sx PokeDollars！
 
 commands.seen.onlineRightNow=§c%s 最后一次出现在此服务器 %s 上
 commands.seen.lastSeen=§c%s 的第一次登录是 %s
+
+
+commands.redeem.codeNotFound=§a兑换代码：“%s”，成功！
+commands.redeem.success=§c代码：“%s”，已被兑换！
 
