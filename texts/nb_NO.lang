@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server for Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Logg
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Denne Fire-type 
 starter.piplup.description=Piplup: The Penguin Pokémon. Denne Pokémon-typen av vann er søt og stolt. Med høy forsvars- og spesialangrepsstatistikk er Piplup et balansert valg for å starte din Pokémon-reise.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Denne Pokémonen av gresstypen er søt og solid. Med høy forsvarsstatistikk er Turtwig et pålitelig valg for å starte din Pokémon-reise.
 
+events.beforeChat.muted=§cKan ikke sende meldinger, du er for øyeblikket dempet!
+events.beforeChat.sendingTooFast=§cDu sender meldinger for raskt. Vennligst sakte ned og prøv igjen.
+events.beforeChat.repeatedMessage=§cDin forrige melding ser ut til å være identisk med den siste. Vennligst endre meldingen og prøv igjen.
+events.beforeChat.zalgoMessage=§cDin melding inneholder zalgo og kan ikke sendes!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 events.claimManager.interactWithStick.isClaimed=§aBlokkeringen du har valgt er gjort krav på av %s
 events.claimManager.interactWithStick.notClaimed=§aIngen har gjort krav på denne blokkeringen.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cUgyldig utvalg, stillingen du har valgt er for øyeblikket gjort krav på, og kan ikke kreves!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bDu er frosset, Årsak: %s
 events.interact_with_trainer.inBattle=§cDenne treneren er i kamp og kan ikke samhandles med!
 
 events.setStarterPokemon.chosen=§a§lDu har valgt §b§l%s
-
-events.beforeChat.muted=§cKan ikke sende meldinger, du er for øyeblikket dempet!
-events.beforeChat.sendingTooFast=§cDu sender meldinger for raskt. Vennligst sakte ned og prøv igjen.
-events.beforeChat.repeatedMessage=§cDin forrige melding ser ut til å være identisk med den siste. Vennligst endre meldingen og prøv igjen.
-events.beforeChat.zalgoMessage=§cDin melding inneholder zalgo og kan ikke sendes!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamming!
 
 forms.actionForm.show.timeout=§cForm Timeout: prøvde å vise skjemaet, men du var opptatt (lukk chat etter å ha kjørt kommando)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s har fått §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aDu har tjent %sx PokeDollar!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Har sendt deg en kampforespørsel, skriv "-battle accept" for å godta denne forespørselen
 commands.battle.player.success=§c Kunne ikke godta forespørselen, du har ingen inngående forespørsler!
 commands.battle.accept.fail.noInBoundRequests=§cKunnet ikke godta forespørselen, spilleren som sendte denne forespørselen er ikke med i spillet!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Er du sikker på at du vil forlat
 commands.claim.abandonAll.confirm=§a Har forlatt alle kravene dine.
 commands.claim.abandonAll.success=§cFeil, du må stå i et krav for å forlate det!
 commands.claim.delete.fail.notInClaim=§aSlettet kravet du var inne i.
+commands.claim.delete.success=§aDu har %sx tilgjengelige kravblokker!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s ble sist sett på denne serveren %s
 commands.seen.lastSeen=§c%s sin første pålogging var %s
 
 
-commands.redeem.codeNotFound=§aLøste inn koden: "%s", vellykket!
 commands.redeem.success=§cKoden: "%s", er allerede innløst!
+commands.redeem.alreadyRedeemed=§cKoden: "%s", ble ikke funnet!
 

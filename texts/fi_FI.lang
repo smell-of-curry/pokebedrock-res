@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon-palvelin Minecraft Bedrockille
 
 tile.pokeb:apricorn_log.name=Apricorn loki
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Tämä Fire-tyyp
 starter.piplup.description=Piplup: The Penguin Pokémon. Tämä vesityyppinen Pokémon on söpö ja ylpeä. Korkeiden puolustus- ja erikoishyökkäystilastojen ansiosta Piplup on tasapainoinen valinta aloittaa Pokémon-matkasi.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Tämä Grass-tyyppinen Pokémon on söpö ja tukeva. Korkeiden puolustustilastojen ansiosta Turtwig on luotettava valinta aloittaa Pokémon-matkasi.
 
+events.beforeChat.muted=§cEi voi lähettää viestejä, olet tällä hetkellä mykistetty!
+events.beforeChat.sendingTooFast=§cLähetät viestejä liian nopeasti. Hidasta ja yritä uudelleen.
+events.beforeChat.repeatedMessage=§cEdellinen viestisi näyttää olevan identtinen viimeisimmän viestisi kanssa. Muokkaa viestiäsi ja yritä uudelleen.
+events.beforeChat.zalgoMessage=§cViestisi sisältää zalgoa eikä sitä voi lähettää!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cRoskapostitus!
+
 events.claimManager.interactWithStick.isClaimed=§aValitsemaasi lohkoa vaatii %s
 events.claimManager.interactWithStick.notClaimed=§aKukaan ei ole lunastanut tätä estoa.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cVirheellinen valinta, valitsemasi työpaikka on tällä hetkellä vaadittu, eikä sitä voi lunastaa!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bOlet jumissa, Syy: %s
 events.interact_with_trainer.inBattle=§cTämä kouluttaja on taistelussa, eikä hänen kanssaan voi olla vuorovaikutuksessa!
 
 events.setStarterPokemon.chosen=§a§lOlet valinnut §b§l%s
-
-events.beforeChat.muted=§cEi voi lähettää viestejä, olet tällä hetkellä mykistetty!
-events.beforeChat.sendingTooFast=§cLähetät viestejä liian nopeasti. Hidasta ja yritä uudelleen.
-events.beforeChat.repeatedMessage=§cEdellinen viestisi näyttää olevan identtinen viimeisimmän viestisi kanssa. Muokkaa viestiäsi ja yritä uudelleen.
-events.beforeChat.zalgoMessage=§cViestisi sisältää zalgoa eikä sitä voi lähettää!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cRoskapostitus!
 
 forms.actionForm.show.timeout=§cForm Timeout: yritti näyttää lomaketta, mutta olit kiireinen (sulje keskustelu komennon suorittamisen jälkeen)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s on saavuttanut §e%s 
 models.playerVsTrainerBattle.end.gainedExp=§aOlet ansainnut %sx PokeDollaria!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Lähetti sinulle taistelupyynnön, kirjoita "-battle accept" hyväksyäksesi tämän pyynnön
 commands.battle.player.success=§cPyynnön hyväksyminen epäonnistui, sinulla ei ole sisäisiä pyyntöjä!
 commands.battle.accept.fail.noInBoundRequests=§c Pyynnön hyväksyminen epäonnistui. Tämän pyynnön lähettänyt pelaaja ei ole pelissä!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Oletko varma, että haluat hylät
 commands.claim.abandonAll.confirm=§a Hylkäsi kaikki vaatimukset onnistuneesti.
 commands.claim.abandonAll.success=§cError, sinun on asetettava vaatimus hylätäksesi sen!
 commands.claim.delete.fail.notInClaim=§aPoisti vaatimuksen, jossa olit tällä hetkellä.
+commands.claim.delete.success=§aSinulla on %sx käytettävissä olevaa vaatimuslohkoa!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s nähtiin viimeksi tällä palvelimella %s
 commands.seen.lastSeen=§c%s:n ensimmäinen kirjautuminen oli %s
 
 
-commands.redeem.codeNotFound=§aLunastettu koodi: "%s", Onnistuneesti!
 commands.redeem.success=§cKoodi: "%s", on jo lunastettu!
+commands.redeem.alreadyRedeemed=§cKoodia: "%s", ei löytynyt!
 

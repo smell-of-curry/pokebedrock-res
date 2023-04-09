@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server pre Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: Tiny Flame Pokémon. Tento Pokémon typu 
 starter.piplup.description=Piplup: Penguin Pokémon. Tento vodný Pokémon je roztomilý a hrdý. Vďaka vysokým štatistikám obrany a špeciálnych útokov je Piplup vyváženou voľbou na začatie vašej cesty Pokémonom.
 starter.turtwig.description=Turtwig: Pokémon Tiny Leaf. Tento Pokémon trávového typu je roztomilý a robustný. Vďaka vysokým štatistikám obrany je Turtwig spoľahlivou voľbou na začatie vašej cesty Pokémonom.
 
+events.beforeChat.muted=§cNemožno odosielať správy, momentálne ste stlmení!
+events.beforeChat.sendingTooFast=§cOdosielate správy príliš rýchlo. Spomaľte a skúste to znova.
+events.beforeChat.repeatedMessage=§cVaša predchádzajúca správa sa zdá byť totožná s vašou najnovšou. Upravte svoju správu a skúste to znova.
+events.beforeChat.zalgoMessage=§cVaša správa obsahuje zalgo a nemožno ju odoslať!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamovanie!
+
 events.claimManager.interactWithStick.isClaimed=§aVami vybraný blok si nárokuje %s
 events.claimManager.interactWithStick.notClaimed=§aNikto si tento blok neuplatnil.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cNeplatný výber, pozícia, ktorú ste vybrali, je momentálne nárokovaná a nie je možné ju nárokovať!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bZamrzol si, Dôvod: %s
 events.interact_with_trainer.inBattle=§cTento tréner je v boji a nedá sa s ním komunikovať!
 
 events.setStarterPokemon.chosen=§a§lVybrali ste §b§l%s
-
-events.beforeChat.muted=§cNemožno odosielať správy, momentálne ste stlmení!
-events.beforeChat.sendingTooFast=§cOdosielate správy príliš rýchlo. Spomaľte a skúste to znova.
-events.beforeChat.repeatedMessage=§cVaša predchádzajúca správa sa zdá byť totožná s vašou najnovšou. Upravte svoju správu a skúste to znova.
-events.beforeChat.zalgoMessage=§cVaša správa obsahuje zalgo a nemožno ju odoslať!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamovanie!
 
 forms.actionForm.show.timeout=§cČasový limit formulára: pokúsili ste sa zobraziť formulár, ale boli ste zaneprázdnení (zatvorte chat po spustení príkazu)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s získal §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aZískali ste %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" vám poslal žiadosť o boj, napíšte "-battle accept" pre prijatie tejto žiadosti
 commands.battle.player.success=§cNepodarilo sa prijať žiadosť, nemáte žiadne prichádzajúce žiadosti!
 commands.battle.accept.fail.noInBoundRequests=§cNepodarilo sa prijať žiadosť, hráč, ktorý poslal túto žiadosť, nie je v hre!
@@ -626,8 +624,9 @@ commands.claim.abandon.confirm=§aÚspešne ste sa vzdali nároku, v ktorom ste 
 commands.claim.abandon.success=§cNevlastníte žiadne nároky na odstránenie
 commands.claim.abandonAll.fail.notOwnAnyClaims=Naozaj sa chcete vzdať všetkých nárokov, ktoré momentálne máte?
 commands.claim.abandonAll.confirm=§aÚspešne ste sa vzdali všetkých vašich nárokov.
-commands.claim.abandonAll.success=§cChyba, musíte byť v nároku, aby ste sa ho vzdali!
+commands.claim.abandonAll.success=§cChyba, musíte mať nárok na to, aby ste sa ho vzdali!
 commands.claim.delete.fail.notInClaim=§aOdstránili ste nárok, v ktorom ste sa práve nachádzali.
+commands.claim.delete.success=§aMáte %sx dostupných blokov nárokov!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s bol naposledy videný na tomto serveri %s
 commands.seen.lastSeen=Prvé prihlásenie §c%s bolo %s
 
 
-commands.redeem.codeNotFound=§aUplatnený kód: "%s", Úspešne!
 commands.redeem.success=§cKód: "%s", už bol uplatnený!
+commands.redeem.alreadyRedeemed=§cKód: "%s", nebol nájdený!
 

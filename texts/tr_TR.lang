@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=Minecraft Bedrock için §aPokemon Sunucusu
 
 tile.pokeb:apricorn_log.name=kayısı kütüğü
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: Minik Alev Pokémon. Bu Ateş tipi Pokém
 starter.piplup.description=Piplup: Penguen Pokémon. Bu Su tipi Pokémon sevimli ve gururludur. Yüksek Savunma ve Özel Saldırı istatistikleri ile Piplup, Pokémon yolculuğunuza başlamak için dengeli bir seçimdir.
 starter.turtwig.description=Turtwig: Minik Yaprak Pokémon. Bu Çim tipi Pokémon sevimli ve sağlamdır. Yüksek Savunma istatistikleri ile Turtwig, Pokémon yolculuğunuza başlamak için güvenilir bir seçimdir.
 
+events.beforeChat.muted=§cMesaj Gönderilemiyor, şu anda Sessiz durumdasınız!
+events.beforeChat.sendingTooFast=§cMesajları çok hızlı gönderiyorsunuz. Lütfen yavaşlayın ve tekrar deneyin.
+events.beforeChat.repeatedMessage=§cÖnceki mesajınız en son mesajınızla aynı görünüyor. Lütfen mesajınızı değiştirin ve tekrar deneyin.
+events.beforeChat.zalgoMessage=§cMesajınız zalgo içeriyor ve gönderilemiyor!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpam!
+
 events.claimManager.interactWithStick.isClaimed=§aSeçtiğiniz blok %s tarafından talep edildi
 events.claimManager.interactWithStick.notClaimed=§aKimse bu blok üzerinde hak iddia etmedi.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cGeçersiz Seçim, seçtiğiniz konum şu anda talep ediliyor ve talep edilemez!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bDonduruldunuz, Sebep: %s
 events.interact_with_trainer.inBattle=§cBu eğitici savaşta ve onunla etkileşim kurulamaz!
 
 events.setStarterPokemon.chosen=§a§l §b§l%s'yi seçtiniz
-
-events.beforeChat.muted=§cMesaj Gönderilemiyor, şu anda Sessiz durumdasınız!
-events.beforeChat.sendingTooFast=§cMesajları çok hızlı gönderiyorsunuz. Lütfen yavaşlayın ve tekrar deneyin.
-events.beforeChat.repeatedMessage=§cÖnceki mesajınız en son mesajınızla aynı görünüyor. Lütfen mesajınızı değiştirin ve tekrar deneyin.
-events.beforeChat.zalgoMessage=§cMesajınız zalgo içeriyor ve gönderilemiyor!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpam!
 
 forms.actionForm.show.timeout=§cForm Zaman Aşımı: formu göstermeye çalıştınız, ancak meşguldünüz (komutu çalıştırdıktan sonra sohbeti kapatın)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s, §e%s xp Kazandı!
 models.playerVsTrainerBattle.end.gainedExp=§a %sx PokeDollar kazandınız!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" size bir savaş isteği gönderdi, bu isteği kabul etmek için "-savaş kabul et" yazın
 commands.battle.player.success=§cİstek kabul edilemedi, Bağlı isteğiniz yok!
 commands.battle.accept.fail.noInBoundRequests=§cİstek kabul edilemedi, Bu isteği gönderen oyuncu oyunda değil!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Şu anda sahip olduğunuz tüm ha
 commands.claim.abandonAll.confirm=§aTüm iddialarınızdan başarıyla vazgeçti.
 commands.claim.abandonAll.success=§cError, Onu terk etmek için bir hak talebinde bulunmanız gerekir!
 commands.claim.delete.fail.notInClaim=§aŞu anda içinde bulunduğunuz iddiayı sildi.
+commands.claim.delete.success=§aKullanılabilir %sx Talep Bloğunuz var!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s en son %s bu sunucuda görüldü
 commands.seen.lastSeen=§c%s'nin ilk oturumu %s idi
 
 
-commands.redeem.codeNotFound=§aKodu kullandı: "%s", Başarıyla!
 commands.redeem.success=§cKod: "%s" zaten kullanıldı!
+commands.redeem.alreadyRedeemed=§cKod: "%s" bulunamadı!
 

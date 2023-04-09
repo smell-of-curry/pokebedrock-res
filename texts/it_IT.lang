@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server per Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Tronco di ghicorno
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: il Pokémon Fiammeggiante. Questo Pokémo
 starter.piplup.description=Piplup: il Pokémon Pinguino. Questo Pokémon di tipo Acqua è carino e orgoglioso. Con alte statistiche di Difesa e Attacco Speciale, Piplup è una scelta equilibrata per iniziare il tuo viaggio Pokémon.
 starter.turtwig.description=Turtwig: il Pokémon Fogliolina. Questo Pokémon di tipo Erba è carino e robusto. Con alte statistiche di Difesa, Turtwig è una scelta affidabile per iniziare il tuo viaggio Pokémon.
 
+events.beforeChat.muted=§cImpossibile inviare messaggi, al momento sei disattivato!
+events.beforeChat.sendingTooFast=§cStai inviando messaggi troppo velocemente. Si prega di rallentare e riprovare.
+events.beforeChat.repeatedMessage=§cIl tuo messaggio precedente sembra essere identico a quello più recente. Si prega di modificare il messaggio e riprovare.
+events.beforeChat.zalgoMessage=§cIl tuo messaggio contiene zalgo e non può essere inviato!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 events.claimManager.interactWithStick.isClaimed=§aIl blocco che hai selezionato è rivendicato da %s
 events.claimManager.interactWithStick.notClaimed=§aNessuno ha rivendicato questo blocco.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cSelezione non valida, la posizione che hai selezionato è attualmente rivendicata e non può essere rivendicata!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bSei bloccato, Motivo: %s
 events.interact_with_trainer.inBattle=§cQuesto allenatore è in battaglia e non è possibile interagire con esso!
 
 events.setStarterPokemon.chosen=§a§lHai scelto §b§l%s
-
-events.beforeChat.muted=§cImpossibile inviare messaggi, al momento sei disattivato!
-events.beforeChat.sendingTooFast=§cStai inviando messaggi troppo velocemente. Si prega di rallentare e riprovare.
-events.beforeChat.repeatedMessage=§cIl tuo messaggio precedente sembra essere identico a quello più recente. Si prega di modificare il messaggio e riprovare.
-events.beforeChat.zalgoMessage=§cIl tuo messaggio contiene zalgo e non può essere inviato!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamming!
 
 forms.actionForm.show.timeout=§cForm Timeout: provato a mostrare il modulo, ma eri occupato (chiudi la chat dopo aver eseguito il comando)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s ha guadagnato §e%s x
 models.playerVsTrainerBattle.end.gainedExp=§aHai guadagnato %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Ti ha inviato una richiesta di battaglia, digita "-battle accept" per accettare questa richiesta
 commands.battle.player.success=§cImpossibile accettare la richiesta, non hai richieste in entrata!
 commands.battle.accept.fail.noInBoundRequests=§cImpossibile accettare la richiesta, il giocatore che ha inviato questa richiesta non è nel gioco!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Sei sicuro di voler abbandonare t
 commands.claim.abandonAll.confirm=§aHa abbandonato con successo tutte le tue richieste.
 commands.claim.abandonAll.success=§cErrore, devi presentare un reclamo per abbandonarlo!
 commands.claim.delete.fail.notInClaim=§a Eliminato il reclamo in cui ti trovavi attualmente.
+commands.claim.delete.success=§aHai %sx blocchi di richiesta disponibili!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s è stato visto l'ultima volta su questo serve
 commands.seen.lastSeen=Il primo accesso di §c%s è stato %s
 
 
-commands.redeem.codeNotFound=§aRiscattato il codice: "%s", con successo!
 commands.redeem.success=§cIl codice: "%s", è già stato riscattato!
+commands.redeem.alreadyRedeemed=§cIl codice: "%s", non è stato trovato!
 

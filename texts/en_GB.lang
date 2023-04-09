@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server for Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. This Fire-type P
 starter.piplup.description=Piplup: The Penguin Pokémon. This Water-type Pokémon is cute and proud. With high Defense and Special Attack stats, Piplup is a balanced choice to start your Pokémon journey.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. This Grass-type Pokémon is cute and sturdy. With high Defense stats, Turtwig is a reliable choice to start your Pokémon journey.
 
+events.beforeChat.muted=§cCannot Send Messages, you are currently Muted!
+events.beforeChat.sendingTooFast=§cYou are sending messages too quickly. Please slow down and try again.
+events.beforeChat.repeatedMessage=§cYour previous message appears to be identical to your most recent one. Please modify your message and try again.
+events.beforeChat.zalgoMessage=§cYour message contains zalgo and cannot be sent!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 events.claimManager.interactWithStick.isClaimed=§aThe block you have selected is claimed by %s
 events.claimManager.interactWithStick.notClaimed=§aNo one has claimed this block.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cInvalid Selection, the position you have selected is currently claimed, and cannot be claimed!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bYou are frozen, Reason: %s
 events.interact_with_trainer.inBattle=§cThis trainer is in battle, and cannot be interacted with!
 
 events.setStarterPokemon.chosen=§a§lYou have chosen §b§l%s
-
-events.beforeChat.muted=§cCannot Send Messages, you are currently Muted!
-events.beforeChat.sendingTooFast=§cYou are sending messages too quickly. Please slow down and try again.
-events.beforeChat.repeatedMessage=§cYour previous message appears to be identical to your most recent one. Please modify your message and try again.
-events.beforeChat.zalgoMessage=§cYour message contains zalgo and cannot be sent!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamming!
 
 forms.actionForm.show.timeout=§cForm Timeout: tried to show form, but you were busy (close chat after running command)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Has Gained §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aYou have earned %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Has sent you a battle request, type "-battle accept" to accept this request
 commands.battle.player.success=§cFailed to accept request, You have no In-Bound requests!
 commands.battle.accept.fail.noInBoundRequests=§cFailed to accept request, The player who sent this request is not in the game!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Are you sure you want to abandon 
 commands.claim.abandonAll.confirm=§aAbandoned all of your claims successfully.
 commands.claim.abandonAll.success=§cError, You need to be standing in a claim to abandon it!
 commands.claim.delete.fail.notInClaim=§aDeleted the claim you were currently in.
+commands.claim.delete.success=§aYou have %sx Available Claim Blocks!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s was last seen on this server %s
 commands.seen.lastSeen=§c%s's first logon was %s
 
 
-commands.redeem.codeNotFound=§aRedeemed the code: "%s", Successfully!
 commands.redeem.success=§cThe code: "%s", has already been redeemed!
+commands.redeem.alreadyRedeemed=§cThe code: "%s", was not found!
 

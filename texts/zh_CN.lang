@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§a用于 Minecraft Bedrock 的口袋妖怪服务器
 
 tile.pokeb:apricorn_log.name=杏圆木
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar：微小的火焰神奇宝贝。这只火�
 starter.piplup.description=Piplup：企鹅宝可梦。这只水属性宝可梦可爱又骄傲。凭借高防御和特殊攻击统计数据，Piplup 是开始您的神奇宝贝之旅的平衡选择。
 starter.turtwig.description=龟龟：小叶宝可梦。这种草系神奇宝贝既可爱又结实。凭借高防御属性，Turtwig 是开始神奇宝贝之旅的可靠选择。
 
+events.beforeChat.muted=§c无法发送消息，您目前处于静音状态！
+events.beforeChat.sendingTooFast=§c你发送信息的速度太快了。请放慢速度，然后重试。
+events.beforeChat.repeatedMessage=§c你之前的消息似乎与你最近的消息相同。请修改您的消息，然后重试。
+events.beforeChat.zalgoMessage=§c您的消息包含 zalgo，无法发送！
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§c垃圾邮件！
+
 events.claimManager.interactWithStick.isClaimed=§a您选择的区块已被 %s 占用
 events.claimManager.interactWithStick.notClaimed=§a没有人声称这个区块。
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§c无效选择，您所选择的职位目前已被认领，无法认领！
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§b你被冻结了，原因：%s
 events.interact_with_trainer.inBattle=§c此训练师正在战斗中，无法与之互动！
 
 events.setStarterPokemon.chosen=§a§l你选择了§b§l%s
-
-events.beforeChat.muted=§c无法发送消息，您目前处于静音状态！
-events.beforeChat.sendingTooFast=§c你发送信息的速度太快了。请放慢速度，然后重试。
-events.beforeChat.repeatedMessage=§c你之前的消息似乎与你最近的消息相同。请修改您的消息，然后重试。
-events.beforeChat.zalgoMessage=§c您的消息包含 zalgo，无法发送！
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§c垃圾邮件！
 
 forms.actionForm.show.timeout=§c表格超时：试图显示表格，但你很忙（运行命令后关闭聊天）
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s 已获得 §e%s xp！
 models.playerVsTrainerBattle.end.gainedExp=§a您已赢得 %sx PokeDollar！
 
 
-
-
 commands.battle.player.fail.self=§a"%s" 已向您发送战斗请求，输入“-battle accept”接受此请求
 commands.battle.player.success=§c无法接受请求，您没有入站请求！
 commands.battle.accept.fail.noInBoundRequests=§c接受请求失败，发送此请求的玩家不在游戏中！
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=您确定要放弃您目前拥有
 commands.claim.abandonAll.confirm=§a已成功放弃所有索赔。
 commands.claim.abandonAll.success=§c错误，你需要站在声明中才能放弃它！
 commands.claim.delete.fail.notInClaim=§a删除了您当前所在的声明。
+commands.claim.delete.success=§a你有 %sx 个可用的声明块！
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s 最后一次出现在此服务器 %s 上
 commands.seen.lastSeen=§c%s 的第一次登录是 %s
 
 
-commands.redeem.codeNotFound=§a兑换代码：“%s”，成功！
 commands.redeem.success=§c代码：“%s”，已被兑换！
+commands.redeem.alreadyRedeemed=§c代码：“%s”，未找到！
 

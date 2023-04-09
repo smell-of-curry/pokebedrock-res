@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§Serwer Pokemon dla Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Dziennik Apricorn
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: Mały Płomienny Pokémon. Ten ognisty Po
 starter.piplup.description=Piplup: Pokémon Pingwin. Ten wodny Pokémon jest uroczy i dumny. Dzięki wysokim statystykom Obrony i Ataku Specjalnego, Piplup jest zrównoważonym wyborem na rozpoczęcie przygody z Pokémonami.
 starter.turtwig.description=Turtwig: Pokémon Mały Liść. Ten trawiasty Pokémon jest uroczy i wytrzymały. Dzięki wysokim statystykom Obrony Turtwig jest niezawodnym wyborem na rozpoczęcie przygody z Pokémonami.
 
+events.beforeChat.muted=§cNie można wysyłać wiadomości, aktualnie jesteś wyciszony!
+events.beforeChat.sendingTooFast=§cZa szybko wysyłasz wiadomości. Zwolnij i spróbuj ponownie.
+events.beforeChat.repeatedMessage=§cTwoja poprzednia wiadomość wydaje się być identyczna z ostatnią. Zmodyfikuj wiadomość i spróbuj ponownie.
+events.beforeChat.zalgoMessage=§cTwoja wiadomość zawiera zalgo i nie może zostać wysłana!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamowanie!
+
 events.claimManager.interactWithStick.isClaimed=§aWybrany blok jest przejęty przez %s
 events.claimManager.interactWithStick.notClaimed=§aNikt nie zgłosił roszczenia do tego bloku.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cNieprawidłowy wybór, stanowisko, które wybrałeś jest aktualnie zajęte i nie można się nim zająć!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bJesteś zawieszony, powód: %s
 events.interact_with_trainer.inBattle=§cTen trener bierze udział w bitwie i nie można z nim wchodzić w interakcje!
 
 events.setStarterPokemon.chosen=§a§lWybrałeś §b§l%s
-
-events.beforeChat.muted=§cNie można wysyłać wiadomości, aktualnie jesteś wyciszony!
-events.beforeChat.sendingTooFast=§cZa szybko wysyłasz wiadomości. Zwolnij i spróbuj ponownie.
-events.beforeChat.repeatedMessage=§cTwoja poprzednia wiadomość wydaje się być identyczna z ostatnią. Zmodyfikuj wiadomość i spróbuj ponownie.
-events.beforeChat.zalgoMessage=§cTwoja wiadomość zawiera zalgo i nie może zostać wysłana!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamowanie!
 
 forms.actionForm.show.timeout=§cForm Timeout: próbowałeś pokazać formularz, ale byłeś zajęty (zamknij czat po uruchomieniu polecenia)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s zdobył §e%s PD!
 models.playerVsTrainerBattle.end.gainedExp=§aZarobiłeś %sx PokeDollara!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" wysłał Ci prośbę o bitwę, wpisz "-battle accept", aby zaakceptować tę prośbę
 commands.battle.player.success=§cNie udało się zaakceptować prośby, nie masz żadnych żądań przychodzących!
 commands.battle.accept.fail.noInBoundRequests=§cNie udało się zaakceptować prośby. Gracz, który wysłał tę prośbę, nie jest w grze!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Czy na pewno chcesz zrezygnować 
 commands.claim.abandonAll.confirm=§aPomyślnie porzuciłeś wszystkie roszczenia.
 commands.claim.abandonAll.success=§cBłąd, musisz złożyć wniosek, aby go porzucić!
 commands.claim.delete.fail.notInClaim=§aUsunięto roszczenie, którego aktualnie dotyczyłeś.
+commands.claim.delete.success=§aMasz %sx dostępnych blokad roszczeń!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s był ostatnio widziany na tym serwerze %s
 commands.seen.lastSeen=Pierwszym logowaniem §c%s był %s
 
 
-commands.redeem.codeNotFound=§aZrezygnowano z kodu: „%s”, Pomyślnie!
 commands.redeem.success=§cKod: „%s” został już wykorzystany!
+commands.redeem.alreadyRedeemed=§cKod: „%s” nie został znaleziony!
 

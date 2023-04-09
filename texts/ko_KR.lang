@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aMinecraft Bedrock용 포켓몬 서버
 
 tile.pokeb:apricorn_log.name=살구나무 통나무
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: 작은 화염 포켓몬. 이 불꽃 타�
 starter.piplup.description=Piplup: 펭귄 포켓몬. 귀엽고 자랑스러운 물타입 포켓몬입니다. 높은 방어 및 특수 공격 통계를 갖춘 Piplup은 Pokémon 여행을 시작하기 위한 균형 잡힌 선택입니다.
 starter.turtwig.description=Turtwig: 작은 잎사귀 포켓몬. 귀엽고 튼튼한 풀타입 포켓몬입니다. 방어력이 높은 Turtwig는 Pokémon 여정을 시작할 수 있는 신뢰할 수 있는 선택입니다.
 
+events.beforeChat.muted=§c메시지를 보낼 수 없습니다. 현재 음소거 상태입니다!
+events.beforeChat.sendingTooFast=§c메시지를 너무 빨리 보내고 있습니다. 속도를 늦추고 다시 시도하십시오.
+events.beforeChat.repeatedMessage=§c이전 메시지가 가장 최근 메시지와 동일한 것 같습니다. 메시지를 수정하고 다시 시도하십시오.
+events.beforeChat.zalgoMessage=§c메시지에 zalgo가 포함되어 있어 보낼 수 없습니다!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§c스팸!
+
 events.claimManager.interactWithStick.isClaimed=§a선택한 블록은 %s이(가) 소유권을 주장합니다.
 events.claimManager.interactWithStick.notClaimed=§a아무도 이 블록을 주장하지 않았습니다.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§c잘못된 선택, 선택한 직책은 현재 청구되어 청구할 수 없습니다!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§b당신은 얼어붙었습니다. 이유: %s
 events.interact_with_trainer.inBattle=§c이 트레이너는 전투 중이며 상호 작용할 수 없습니다!
 
 events.setStarterPokemon.chosen=§a§l선택한 §b§l%s
-
-events.beforeChat.muted=§c메시지를 보낼 수 없습니다. 현재 음소거 상태입니다!
-events.beforeChat.sendingTooFast=§c메시지를 너무 빨리 보내고 있습니다. 속도를 늦추고 다시 시도하십시오.
-events.beforeChat.repeatedMessage=§c이전 메시지가 가장 최근 메시지와 동일한 것 같습니다. 메시지를 수정하고 다시 시도하십시오.
-events.beforeChat.zalgoMessage=§c메시지에 zalgo가 포함되어 있어 보낼 수 없습니다!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§c스팸!
 
 forms.actionForm.show.timeout=§cForm Timeout: 양식을 보여주려고 했지만, 바빴습니다(명령 실행 후 채팅 종료).
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s가 §e%s xp를 얻었
 models.playerVsTrainerBattle.end.gainedExp=§a%sx PokeDollar를 획득했습니다!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" 전투 요청을 보냈습니다. 이 요청을 수락하려면 "-battle accept"를 입력하십시오.
 commands.battle.player.success=§c요청 수락 실패, 인바운드 요청이 없습니다!
 commands.battle.accept.fail.noInBoundRequests=§c요청 수락 실패, 이 요청을 보낸 플레이어가 게임에 없습니다!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=현재 가지고 있는 모든 �
 commands.claim.abandonAll.confirm=§a귀하의 모든 청구를 성공적으로 포기했습니다.
 commands.claim.abandonAll.success=§c오류, 포기하려면 주장에 서야 합니다!
 commands.claim.delete.fail.notInClaim=§a귀하가 현재 속한 청구를 삭제했습니다.
+commands.claim.delete.success=§a사용 가능한 클레임 블록이 %sx개 있습니다!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s이(가) 이 서버 %s에서 마지막으로 �
 commands.seen.lastSeen=§c%s의 첫 번째 로그온은 %s였습니다.
 
 
-commands.redeem.codeNotFound=§a코드를 사용했습니다: "%s", 성공적으로!
 commands.redeem.success=§c코드: "%s"는 이미 사용되었습니다!
+commands.redeem.alreadyRedeemed=§c코드: "%s"를 찾을 수 없습니다!
 

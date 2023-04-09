@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aMinecraft Bedrock のポケモン サーバー
 
 tile.pokeb:apricorn_log.name=アプリコーンログ
@@ -479,6 +479,13 @@ starter.chimchar.description=チムチャー：小さな炎のポケモン。こ
 starter.piplup.description=ポッチャマ：ペンギンポケモン。このみずタイプのポケモンは、かわいくて誇り高い。防御力と特攻能力が高いポッチャマは、ポケモンの旅を始めるのにバランスの取れた選択肢です。
 starter.turtwig.description=タートウィグ：小さな葉っぱのポケモン。このくさタイプのポケモンはかわいくて丈夫です。防御力が高いタートウィグは、ポケモンの旅を始めるための信頼できる選択肢です。
 
+events.beforeChat.muted=§cメッセージを送信できません。あなたは現在ミュートされています!
+events.beforeChat.sendingTooFast=§cメッセージの送信が速すぎます。速度を落として、もう一度お試しください。
+events.beforeChat.repeatedMessage=§cあなたの前のメッセージは、あなたの最新のメッセージと同一のようです.メッセージを変更して、もう一度お試しください。
+events.beforeChat.zalgoMessage=§cメッセージに zalgo が含まれているため、送信できません!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cスパム！
+
 events.claimManager.interactWithStick.isClaimed=§a選択したブロックは %s によって要求されています
 events.claimManager.interactWithStick.notClaimed=§a誰もこのブロックを主張していません。
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§c無効な選択です。選択した位置は現在要求されており、要求できません!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bフリーズしています。理由: %s
 events.interact_with_trainer.inBattle=§cこのトレーナーは戦闘中のため、操作できません!
 
 events.setStarterPokemon.chosen=§a§l§b§l%s を選択しました
-
-events.beforeChat.muted=§cメッセージを送信できません。あなたは現在ミュートされています!
-events.beforeChat.sendingTooFast=§cメッセージの送信が速すぎます。速度を落として、もう一度お試しください。
-events.beforeChat.repeatedMessage=§cあなたの前のメッセージは、あなたの最新のメッセージと同一のようです.メッセージを変更して、もう一度お試しください。
-events.beforeChat.zalgoMessage=§cメッセージに zalgo が含まれているため、送信できません!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cスパム！
 
 forms.actionForm.show.timeout=§cForm Timeout: フォームを表示しようとしましたが、あなたは忙しかったです (コマンドを実行した後にチャットを閉じてください)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s が §e%s の経験�
 models.playerVsTrainerBattle.end.gainedExp=§a%sx ポケダラーを獲得しました!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" があなたに戦闘要求を送信しました。この要求を受け入れるには、"-battle accept" と入力してください
 commands.battle.player.success=§cリクエストの受け入れに失敗しました。インバウンドのリクエストはありません!
 commands.battle.accept.fail.noInBoundRequests=§cリクエストの受け入れに失敗しました。このリクエストを送信したプレイヤーはゲームに参加していません!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=現在所有しているすべて
 commands.claim.abandonAll.confirm=§aすべての申し立てを放棄しました。
 commands.claim.abandonAll.success=§cエラー、それを放棄するには、クレームに立っている必要があります!
 commands.claim.delete.fail.notInClaim=§a現在の主張を削除しました。
+commands.claim.delete.success=§a%sx 個のクレーム ブロックが利用可能です!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s はこのサーバー %s で最後に確認�
 commands.seen.lastSeen=§c%s の最初のログオンは %s でした
 
 
-commands.redeem.codeNotFound=§aコードを引き換えました: "%s", 成功しました!
 commands.redeem.success=§cコード: "%s" は既に引き換えられています!
+commands.redeem.alreadyRedeemed=§cコード: "%s" が見つかりません!
 

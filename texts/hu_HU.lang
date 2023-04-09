@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon szerver a Minecraft Bedrockhoz
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Ez a Fire-típus
 starter.piplup.description=Piplup: The Penguin Pokémon. Ez a víz típusú Pokémon aranyos és büszke. Magas védelmi és különleges támadási statisztikáival a Piplup kiegyensúlyozott választás a Pokémon utazás megkezdéséhez.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Ez a Grass típusú Pokémon aranyos és erős. Magas védelmi statisztikákkal a Turtwig megbízható választás a Pokémon utazás megkezdéséhez.
 
+events.beforeChat.muted=§cNem tud üzenetet küldeni, Ön jelenleg el van némítva!
+events.beforeChat.sendingTooFast=§cTúl gyorsan küld üzeneteket. Kérjük, lassítson, és próbálja újra.
+events.beforeChat.repeatedMessage=§cAz előző üzenete megegyezik a legutóbbi üzenettel. Kérjük, módosítsa üzenetét, és próbálja újra.
+events.beforeChat.zalgoMessage=§cAz Ön üzenete zalgot tartalmaz és nem küldhető el!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamelés!
+
 events.claimManager.interactWithStick.isClaimed=§aA kiválasztott blokkot %s igényli
 events.claimManager.interactWithStick.notClaimed=§aSenki sem igényelte ezt a blokkot.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cÉrvénytelen kiválasztás, az Ön által kiválasztott pozíció jelenleg foglalt, és nem igényelhető!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bLefagyott, ok: %s
 events.interact_with_trainer.inBattle=§cEz az edző harcban áll, és nem lehet vele kommunikálni!
 
 events.setStarterPokemon.chosen=§a§lÖn a §b§l%s lehetőséget választotta
-
-events.beforeChat.muted=§cNem tud üzenetet küldeni, Ön jelenleg el van némítva!
-events.beforeChat.sendingTooFast=§cTúl gyorsan küld üzeneteket. Kérjük, lassítson, és próbálja újra.
-events.beforeChat.repeatedMessage=§cAz előző üzenete megegyezik a legutóbbi üzenettel. Kérjük, módosítsa üzenetét, és próbálja újra.
-events.beforeChat.zalgoMessage=§cAz Ön üzenete zalgot tartalmaz és nem küldhető el!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamelés!
 
 forms.actionForm.show.timeout=§cForm időtúllépés: megpróbálta megjeleníteni az űrlapot, de elfoglalt volt (a csevegés bezárása a parancs futtatása után)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Szerzett §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§a%sx PokeDollart szerzett!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Csatakérést küldött neked, a kérés elfogadásához írja be a "-battle accept" parancsot
 commands.battle.player.success=§c Nem sikerült elfogadni a kérést, nincs befelé irányuló kérelme!
 commands.battle.accept.fail.noInBoundRequests=§c Nem sikerült elfogadni a kérést, A játékos, aki ezt a kérést küldte, nincs a játékban!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Biztos, hogy el akarja hagyni az 
 commands.claim.abandonAll.confirm=§a Sikeresen lemondott minden követeléséről.
 commands.claim.abandonAll.success=§cError, az elálláshoz keresetben kell állnia!
 commands.claim.delete.fail.notInClaim=§aTörölte azt a követelést, amelyben éppen szerepelt.
+commands.claim.delete.success=§a%sx elérhető követelésblokkja van!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s volt utoljára ezen a szerveren: %s
 commands.seen.lastSeen=§c%s első bejelentkezése %s volt
 
 
-commands.redeem.codeNotFound=§aBeváltotta a kódot: "%s", Sikeresen!
 commands.redeem.success=§cA kód: "%s", már beváltva!
+commands.redeem.alreadyRedeemed=§cA kód: "%s", nem található!
 

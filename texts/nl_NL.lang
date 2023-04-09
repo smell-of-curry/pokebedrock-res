@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server voor Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Abrikoos logboek
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: de Tiny Flame-Pokémon. Deze Fire-type Po
 starter.piplup.description=Piplup: De Penguin-Pokémon. Deze Pokémon van het type Water is schattig en trots. Met hoge verdedigings- en speciale aanvalsstatistieken is Piplup een uitgebalanceerde keuze om je Pokémon-reis te beginnen.
 starter.turtwig.description=Turtwig: De Tiny Leaf-Pokémon. Deze Grass-type Pokémon is schattig en stevig. Met hoge verdedigingsstatistieken is Turtwig een betrouwbare keuze om je Pokémon-reis te beginnen.
 
+events.beforeChat.muted=§cKan geen berichten verzenden, je bent momenteel gedempt!
+events.beforeChat.sendingTooFast=§cJe verstuurt te snel berichten. Vertraag en probeer het opnieuw.
+events.beforeChat.repeatedMessage=§cUw vorige bericht lijkt identiek te zijn aan uw meest recente bericht. Pas uw bericht aan en probeer het opnieuw.
+events.beforeChat.zalgoMessage=§cUw bericht bevat zalgo en kan niet worden verzonden!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpammen!
+
 events.claimManager.interactWithStick.isClaimed=§aHet door jou geselecteerde blok is geclaimd door %s
 events.claimManager.interactWithStick.notClaimed=§aNiemand heeft dit blok geclaimd.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cOngeldige selectie, de door u geselecteerde positie is momenteel geclaimd en kan niet worden geclaimd!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bJe bent geblokkeerd, Reden: %s
 events.interact_with_trainer.inBattle=§cDeze trainer is in gevecht en er kan geen interactie mee zijn!
 
 events.setStarterPokemon.chosen=§a§lU hebt §b§l%s gekozen
-
-events.beforeChat.muted=§cKan geen berichten verzenden, je bent momenteel gedempt!
-events.beforeChat.sendingTooFast=§cJe verstuurt te snel berichten. Vertraag en probeer het opnieuw.
-events.beforeChat.repeatedMessage=§cUw vorige bericht lijkt identiek te zijn aan uw meest recente bericht. Pas uw bericht aan en probeer het opnieuw.
-events.beforeChat.zalgoMessage=§cUw bericht bevat zalgo en kan niet worden verzonden!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpammen!
 
 forms.actionForm.show.timeout=§cForm time-out: probeerde het formulier weer te geven, maar je was bezig (chat sluiten na het uitvoeren van de opdracht)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s heeft §e%s xp gewonn
 models.playerVsTrainerBattle.end.gainedExp=§aJe hebt %sx PokeDollar's verdiend!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Heeft je een gevechtsverzoek gestuurd, typ "-battle accept" om dit verzoek te accepteren
 commands.battle.player.success=§cKan verzoek niet accepteren, u heeft geen inkomende verzoeken!
 commands.battle.accept.fail.noInBoundRequests=§cKan verzoek niet accepteren. De speler die dit verzoek heeft verzonden, is niet in het spel!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Weet je zeker dat je alle claims 
 commands.claim.abandonAll.confirm=§a Al uw vorderingen met succes opgegeven.
 commands.claim.abandonAll.success=§cError, je moet in een claim staan ​​om het te verlaten!
 commands.claim.delete.fail.notInClaim=§aDe claim verwijderd waar je momenteel in zat.
+commands.claim.delete.success=§aJe hebt %sx beschikbare claimblokken!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s is voor het laatst gezien op deze server %s
 commands.seen.lastSeen=De eerste aanmelding van §c%s was %s
 
 
-commands.redeem.codeNotFound=§aCode ingewisseld: "%s", Succesvol!
 commands.redeem.success=§cDe code: "%s", is al ingewisseld!
+commands.redeem.alreadyRedeemed=§cDe code: "%s", is niet gevonden!
 

@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§a Pokemon Server για το Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn κούτσουρο
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Αυτό το Π
 starter.piplup.description=Piplup: The Penguin Pokémon. Αυτό το Pokémon τύπου Water είναι χαριτωμένο και περήφανο. Με υψηλά στατιστικά άμυνας και ειδικών επιθέσεων, το Piplup είναι μια ισορροπημένη επιλογή για να ξεκινήσετε το ταξίδι σας στο Pokémon.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Αυτό το Pokémon τύπου Grass είναι χαριτωμένο και ανθεκτικό. Με υψηλά στατιστικά άμυνας, το Turtwig είναι μια αξιόπιστη επιλογή για να ξεκινήσετε το ταξίδι σας στα Pokémon.
 
+events.beforeChat.muted=§cΔεν είναι δυνατή η αποστολή μηνυμάτων, αυτή τη στιγμή είστε σε σίγαση!
+events.beforeChat.sendingTooFast=§cΣτέλνετε μηνύματα πολύ γρήγορα. Παρακαλώ επιβραδύνετε και δοκιμάστε ξανά.
+events.beforeChat.repeatedMessage=§cΤο προηγούμενο μήνυμά σας φαίνεται να είναι πανομοιότυπο με το πιο πρόσφατο. Τροποποιήστε το μήνυμά σας και δοκιμάστε ξανά.
+events.beforeChat.zalgoMessage=§cΤο μήνυμά σας περιέχει zalgo και δεν μπορεί να σταλεί!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cΑποστολή ανεπιθύμητης αλληλογραφίας!
+
 events.claimManager.interactWithStick.isClaimed=§a Το μπλοκ που επιλέξατε διεκδικείται από %s
 events.claimManager.interactWithStick.notClaimed=§a Κανείς δεν έχει διεκδικήσει αυτό το μπλοκ.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cΜη έγκυρη επιλογή, η θέση που επιλέξατε διεκδικείται αυτήν τη στιγμή και δεν μπορεί να διεκδικηθεί!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bΕίστε παγωμένοι, Αιτία: %s
 events.interact_with_trainer.inBattle=§cΑυτός ο εκπαιδευτής βρίσκεται σε μάχη και δεν μπορεί να αλληλεπιδράσει!
 
 events.setStarterPokemon.chosen=§a§lΈχετε επιλέξει §b§l%s
-
-events.beforeChat.muted=§cΔεν είναι δυνατή η αποστολή μηνυμάτων, αυτή τη στιγμή είστε σε σίγαση!
-events.beforeChat.sendingTooFast=§cΣτέλνετε μηνύματα πολύ γρήγορα. Παρακαλώ επιβραδύνετε και δοκιμάστε ξανά.
-events.beforeChat.repeatedMessage=§cΤο προηγούμενο μήνυμά σας φαίνεται να είναι πανομοιότυπο με το πιο πρόσφατο. Τροποποιήστε το μήνυμά σας και δοκιμάστε ξανά.
-events.beforeChat.zalgoMessage=§cΤο μήνυμά σας περιέχει zalgo και δεν μπορεί να σταλεί!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cΑποστολή ανεπιθύμητης αλληλογραφίας!
 
 forms.actionForm.show.timeout=§cΧρονικό όριο λήξης φόρμας: προσπάθησε να εμφανίσει τη φόρμα, αλλά ήσουν απασχολημένος (κλείσιμο συνομιλίας μετά την εκτέλεση της εντολής)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=Το §a%s έχει κερ�
 models.playerVsTrainerBattle.end.gainedExp=§a Έχετε κερδίσει %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Σας έχει στείλει αίτημα μάχης, πληκτρολογήστε "-battle accept" για να αποδεχτείτε αυτό το αίτημα
 commands.battle.player.success=§cΑποτυχία αποδοχής του αιτήματος, Δεν έχετε αιτήματα Εισερχόμενων!
 commands.battle.accept.fail.noInBoundRequests=§cΑπέτυχε η αποδοχή του αιτήματος, Ο παίκτης που έστειλε αυτό το αίτημα δεν είναι στο παιχνίδι!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Είστε βέβαιοι ότι 
 commands.claim.abandonAll.confirm=§a Εγκατέλειψε όλες τις αξιώσεις σας με επιτυχία.
 commands.claim.abandonAll.success=§cΣφάλμα, πρέπει να διεκδικήσετε να το εγκαταλείψετε!
 commands.claim.delete.fail.notInClaim=§aΔιαγράφηκε η αξίωση στην οποία ήσασταν αυτήν τη στιγμή.
+commands.claim.delete.success=§aΈχετε %sx Διαθέσιμα Μπλοκ αξιώσεων!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=Το §c%s εμφανίστηκε τελευταί�
 commands.seen.lastSeen=Η πρώτη σύνδεση του §c%s ήταν %s
 
 
-commands.redeem.codeNotFound=§a Εξαργυρώθηκε ο κωδικός: "%s", Επιτυχώς!
 commands.redeem.success=§cΟ κωδικός: "%s", έχει ήδη εξαργυρωθεί!
+commands.redeem.alreadyRedeemed=§cΟ κωδικός: "%s", δεν βρέθηκε!
 

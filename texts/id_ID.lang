@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server untuk Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Log Aprikot
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: Pokémon Api Kecil. Pokémon tipe Api ini
 starter.piplup.description=Piplup: Pokémon Penguin. Pokémon tipe Air ini imut dan bangga. Dengan statistik Pertahanan dan Serangan Khusus yang tinggi, Piplup adalah pilihan yang seimbang untuk memulai perjalanan Pokémon Anda.
 starter.turtwig.description=Turtwig: Pokémon Daun Kecil. Pokémon tipe Rumput ini lucu dan kokoh. Dengan statistik Pertahanan yang tinggi, Turtwig adalah pilihan yang dapat diandalkan untuk memulai perjalanan Pokemon Anda.
 
+events.beforeChat.muted=§cTidak Dapat Mengirim Pesan, Saat Ini Anda Dibisukan!
+events.beforeChat.sendingTooFast=§cAnda mengirim pesan terlalu cepat. Perlambat dan coba lagi.
+events.beforeChat.repeatedMessage=§cPesan Anda sebelumnya tampaknya sama dengan pesan terbaru Anda. Harap ubah pesan Anda dan coba lagi.
+events.beforeChat.zalgoMessage=§cPesan Anda berisi zalgo dan tidak dapat dikirim!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 events.claimManager.interactWithStick.isClaimed=§aBlok yang Anda pilih diklaim oleh %s
 events.claimManager.interactWithStick.notClaimed=§aTidak ada yang mengklaim blok ini.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cPilihan Tidak Sah, posisi yang Anda pilih sedang diklaim, dan tidak dapat diklaim!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bAnda dibekukan, Alasan: %s
 events.interact_with_trainer.inBattle=§cPelatih ini sedang dalam pertempuran, dan tidak dapat diajak berinteraksi!
 
 events.setStarterPokemon.chosen=§a§lAnda telah memilih §b§l%s
-
-events.beforeChat.muted=§cTidak Dapat Mengirim Pesan, Saat Ini Anda Dibisukan!
-events.beforeChat.sendingTooFast=§cAnda mengirim pesan terlalu cepat. Perlambat dan coba lagi.
-events.beforeChat.repeatedMessage=§cPesan Anda sebelumnya tampaknya sama dengan pesan terbaru Anda. Harap ubah pesan Anda dan coba lagi.
-events.beforeChat.zalgoMessage=§cPesan Anda berisi zalgo dan tidak dapat dikirim!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamming!
 
 forms.actionForm.show.timeout=§cForm Timeout: mencoba menampilkan formulir, tetapi Anda sedang sibuk (menutup obrolan setelah menjalankan perintah)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s Telah Mendapatkan §e
 models.playerVsTrainerBattle.end.gainedExp=§aAnda telah mendapatkan %sx PokeDollar!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Telah mengirimi Anda permintaan pertempuran, ketik "-battle accept" untuk menerima permintaan ini
 commands.battle.player.success=§cGagal menerima permintaan, Anda tidak memiliki permintaan Masuk!
 commands.battle.accept.fail.noInBoundRequests=§cGagal menerima permintaan, Pemain yang mengirimkan permintaan ini tidak ada dalam permainan!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Apakah Anda yakin ingin mengabaik
 commands.claim.abandonAll.confirm=§aMeninggalkan semua klaim Anda dengan sukses.
 commands.claim.abandonAll.success=§cError, Anda harus berdiri dalam klaim untuk mengabaikannya!
 commands.claim.delete.fail.notInClaim=§aMenghapus klaim yang Anda gunakan saat ini.
+commands.claim.delete.success=§aAnda memiliki %sx Blok Klaim yang Tersedia!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s terakhir terlihat di server ini %s
 commands.seen.lastSeen=Logon pertama §c%s adalah %s
 
 
-commands.redeem.codeNotFound=§aMenukarkan kode: "%s", Berhasil!
 commands.redeem.success=§cKode: "%s", telah ditukarkan!
+commands.redeem.alreadyRedeemed=§cKode: "%s", tidak ditemukan!
 

@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server para Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Tronco de Apricórnio
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: O Pokémon Minúsculo Chama. Este Pokémo
 starter.piplup.description=Piplup: O Pokémon Pinguim. Este Pokémon do tipo Água é fofo e orgulhoso. Com altas estatísticas de Defesa e Ataque Especial, Piplup é uma escolha equilibrada para começar sua jornada Pokémon.
 starter.turtwig.description=Turtwig: O Pokémon Folha Minúscula. Este Pokémon do tipo Grama é fofo e resistente. Com altas estatísticas de defesa, Turtwig é uma escolha confiável para iniciar sua jornada Pokémon.
 
+events.beforeChat.muted=§cNão é possível enviar mensagens, você está silenciado no momento!
+events.beforeChat.sendingTooFast=§cVocê está enviando mensagens muito rapidamente. Por favor, diminua a velocidade e tente novamente.
+events.beforeChat.repeatedMessage=§cSua mensagem anterior parece ser idêntica à mais recente. Modifique sua mensagem e tente novamente.
+events.beforeChat.zalgoMessage=§cSua mensagem contém zalgo e não pode ser enviada!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
 events.claimManager.interactWithStick.isClaimed=§aO bloco que você selecionou é reivindicado por %s
 events.claimManager.interactWithStick.notClaimed=§aNinguém reivindicou este bloco.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cSeleção inválida, a posição que você selecionou está atualmente reivindicada e não pode ser reivindicada!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bVocê está congelado, Razão: %s
 events.interact_with_trainer.inBattle=§cEste treinador está em batalha e não pode ser interagido!
 
 events.setStarterPokemon.chosen=§a§lVocê escolheu §b§l%s
-
-events.beforeChat.muted=§cNão é possível enviar mensagens, você está silenciado no momento!
-events.beforeChat.sendingTooFast=§cVocê está enviando mensagens muito rapidamente. Por favor, diminua a velocidade e tente novamente.
-events.beforeChat.repeatedMessage=§cSua mensagem anterior parece ser idêntica à mais recente. Modifique sua mensagem e tente novamente.
-events.beforeChat.zalgoMessage=§cSua mensagem contém zalgo e não pode ser enviada!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamming!
 
 forms.actionForm.show.timeout=§cForm Timeout: tentou mostrar o formulário, mas você estava ocupado (feche o chat após executar o comando)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s ganhou §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aVocê ganhou %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" enviou a você uma solicitação de batalha, digite "-battle accept" para aceitar esta solicitação
 commands.battle.player.success=§cFalha ao aceitar solicitação, você não tem solicitações In-Bound!
 commands.battle.accept.fail.noInBoundRequests=§cFalha ao aceitar solicitação, O jogador que enviou esta solicitação não está no jogo!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Tem certeza de que deseja abandon
 commands.claim.abandonAll.confirm=§aAbandonou todas as suas reivindicações com sucesso.
 commands.claim.abandonAll.success=§cErro, você precisa estar em uma reivindicação para abandoná-lo!
 commands.claim.delete.fail.notInClaim=§aExcluiu a reivindicação em que você estava atualmente.
+commands.claim.delete.success=§aVocê tem %sx Blocos de Reivindicação Disponíveis!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s foi visto pela última vez neste servidor %s
 commands.seen.lastSeen=§o primeiro logon de c%s foi %s
 
 
-commands.redeem.codeNotFound=§aResgatado o código: "%s", com sucesso!
 commands.redeem.success=§cO código: "%s", já foi resgatado!
+commands.redeem.alreadyRedeemed=§cO código: "%s", não foi encontrado!
 

@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server för Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: The Tiny Flame Pokémon. Denna Fire-typ P
 starter.piplup.description=Piplup: The Penguin Pokémon. Denna Pokémon av vattentyp är söt och stolt. Med hög försvars- och specialanfallsstatistik är Piplup ett balanserat val för att starta din Pokémon-resa.
 starter.turtwig.description=Turtwig: The Tiny Leaf Pokémon. Denna Pokémon av grästyp är söt och robust. Med hög försvarsstatistik är Turtwig ett pålitligt val för att starta din Pokémon-resa.
 
+events.beforeChat.muted=§cKan inte skicka meddelanden, du är för närvarande avstängd!
+events.beforeChat.sendingTooFast=§cDu skickar meddelanden för snabbt. Vänligen sakta ner och försök igen.
+events.beforeChat.repeatedMessage=§cDitt tidigare meddelande verkar vara identiskt med ditt senaste meddelande. Ändra ditt meddelande och försök igen.
+events.beforeChat.zalgoMessage=§cDitt meddelande innehåller zalgo och kan inte skickas!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamning!
+
 events.claimManager.interactWithStick.isClaimed=§a Blocket du har valt har gjorts anspråk på av %s
 events.claimManager.interactWithStick.notClaimed=§aIngen har gjort anspråk på detta block.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cOgiltigt urval, positionen du har valt är för närvarande anspråkad och kan inte göras anspråk på!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bDu är frusen, Orsak: %s
 events.interact_with_trainer.inBattle=§cDenna tränare är i strid och kan inte interageras med!
 
 events.setStarterPokemon.chosen=§a§lDu har valt §b§l%s
-
-events.beforeChat.muted=§cKan inte skicka meddelanden, du är för närvarande avstängd!
-events.beforeChat.sendingTooFast=§cDu skickar meddelanden för snabbt. Vänligen sakta ner och försök igen.
-events.beforeChat.repeatedMessage=§cDitt tidigare meddelande verkar vara identiskt med ditt senaste meddelande. Ändra ditt meddelande och försök igen.
-events.beforeChat.zalgoMessage=§cDitt meddelande innehåller zalgo och kan inte skickas!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamning!
 
 forms.actionForm.show.timeout=§cForm Timeout: försökte visa formuläret, men du var upptagen (stäng chatten efter att ha kört kommandot)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s har fått §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aDu har tjänat %sx PokeDollars!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" Har skickat en stridsbegäran till dig, skriv "-battle accept" för att acceptera denna begäran
 commands.battle.player.success=§c Det gick inte att acceptera begäran, du har inga inkommande förfrågningar!
 commands.battle.accept.fail.noInBoundRequests=§cDet gick inte att acceptera begäran. Spelaren som skickade denna begäran är inte med i spelet!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Är du säker på att du vill öv
 commands.claim.abandonAll.confirm=§a Har övergett alla dina anspråk.
 commands.claim.abandonAll.success=§cFel, du måste stå i ett anspråk för att överge det!
 commands.claim.delete.fail.notInClaim=§a tog bort anspråket du för närvarande var med i.
+commands.claim.delete.success=§aDu har %sx tillgängliga anspråksblock!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s sågs senast på denna server %s
 commands.seen.lastSeen=§c%s första inloggning var %s
 
 
-commands.redeem.codeNotFound=§aLöste in koden: "%s", framgångsrikt!
 commands.redeem.success=§cKoden: "%s", har redan lösts in!
+commands.redeem.alreadyRedeemed=§cKoden: "%s", hittades inte!
 

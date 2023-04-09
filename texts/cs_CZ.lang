@@ -1,10 +1,10 @@
-pack.name=§lPokeBedrock v1.1.7 RES
+pack.name=§lPokeBedrock v1.1.8 RES
 pack.description=§aPokemon Server pro Minecraft Bedrock
 
 tile.pokeb:apricorn_log.name=Apricorn Log
 tile.pokeb:stripped_apricorn_log.name=Svlékl Apricorn Log
 tile.pokeb:black_apricorn_leaves.name=Listy Black Apricorn
-tile.pokeb:black_apricorn_sapling.name=Černý meruňkový stromek
+tile.pokeb:black_apricorn_sapling.name=Černý apricorn stromek
 tile.pokeb:blue_apricorn_leaves.name=Listy Blue Apricorn
 tile.pokeb:blue_apricorn_sapling.name=Modrý apricorn stromek
 tile.pokeb:green_apricorn_leaves.name=Listy zeleného Apricornu
@@ -479,6 +479,13 @@ starter.chimchar.description=Chimchar: Tiny Flame Pokémon. Tento Pokémon ohniv
 starter.piplup.description=Piplup: Penguin Pokémon. Tento Pokémon vodního typu je roztomilý a hrdý. Díky vysokým statistikám obrany a speciálních útoků je Piplup vyváženou volbou pro zahájení vaší cesty Pokémonem.
 starter.turtwig.description=Turtwig: Pokémon Tiny Leaf. Tento Pokémon travního typu je roztomilý a robustní. Díky vysokým statistikám obrany je Turtwig spolehlivou volbou pro zahájení vaší cesty Pokémonem.
 
+events.beforeChat.muted=§cNelze odesílat zprávy, momentálně jste ztlumeni!
+events.beforeChat.sendingTooFast=§cPosíláte zprávy příliš rychle. Zpomalte a zkuste to znovu.
+events.beforeChat.repeatedMessage=§cVaše předchozí zpráva se zdá být totožná s vaší nejnovější. Upravte prosím svou zprávu a zkuste to znovu.
+events.beforeChat.zalgoMessage=§cVaše zpráva obsahuje zalgo a nelze ji odeslat!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamování!
+
 events.claimManager.interactWithStick.isClaimed=§aVybraný blok je nárokován %s
 events.claimManager.interactWithStick.notClaimed=§aNikdo si tento blok nenárokoval.
 events.claimManager.interactWithGoldShovel.fail.isClaimed=§cNeplatný výběr, pozice, kterou jste vybrali, je aktuálně nárokována a nelze ji nárokovat!
@@ -504,13 +511,6 @@ events.moderate.frozen.alert=§bJsi zamrzlý, Důvod: %s
 events.interact_with_trainer.inBattle=§cTento trenér je v bitvě a nelze s ním komunikovat!
 
 events.setStarterPokemon.chosen=§a§lVybrali jste §b§l%s
-
-events.beforeChat.muted=§cNelze odesílat zprávy, momentálně jste ztlumeni!
-events.beforeChat.sendingTooFast=§cPosíláte zprávy příliš rychle. Zpomalte a zkuste to znovu.
-events.beforeChat.repeatedMessage=§cVaše předchozí zpráva se zdá být totožná s vaší nejnovější. Upravte prosím svou zprávu a zkuste to znovu.
-events.beforeChat.zalgoMessage=§cVaše zpráva obsahuje zalgo a nelze ji odeslat!
-events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
-events.beforeChat.kick=§cSpamování!
 
 forms.actionForm.show.timeout=§cForm Timeout: pokusil se zobrazit formulář, ale byl jste zaneprázdněn (zavřít chat po spuštění příkazu)
 
@@ -592,8 +592,6 @@ models.playerVsTrainerBattle.fail.noAvailablePokemon=§a%s získal §e%s xp!
 models.playerVsTrainerBattle.end.gainedExp=§aVydělali jste %sx PokeDollar's!
 
 
-
-
 commands.battle.player.fail.self=§a"%s" vám poslal žádost o bitvu, zadejte "-battle accept" pro přijetí této žádosti
 commands.battle.player.success=§cNepodařilo se přijmout požadavek, nemáte žádné příchozí požadavky!
 commands.battle.accept.fail.noInBoundRequests=§cNepodařilo se přijmout požadavek, hráč, který poslal tento požadavek, není ve hře!
@@ -628,6 +626,7 @@ commands.claim.abandonAll.fail.notOwnAnyClaims=Opravdu se chcete vzdát všech n
 commands.claim.abandonAll.confirm=§aÚspěšně jste se vzdali všech vašich nároků.
 commands.claim.abandonAll.success=§cChyba, musíte být v žalobě, abyste ji mohli opustit!
 commands.claim.delete.fail.notInClaim=§aOdstranil nárok, ve kterém jste aktuálně byli.
+commands.claim.delete.success=§aMáte %sx volných bloků nároků!
 
 
 
@@ -689,6 +688,6 @@ commands.seen.onlineRightNow=§c%s byl naposledy viděn na tomto serveru %s
 commands.seen.lastSeen=První přihlášení §c%s bylo %s
 
 
-commands.redeem.codeNotFound=§aUplatněn kód: "%s", Úspěšně!
 commands.redeem.success=§cKód: "%s", již byl uplatněn!
+commands.redeem.alreadyRedeemed=§cKód: "%s", nebyl nalezen!
 
