@@ -1,0 +1,129 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.swadloon",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-3, 0, -3], "size": [6, 8, 6], "uv": [0, 0]},
+						{"origin": [-2, 1.5, -3.5], "size": [1, 1, 1], "uv": [24, 9]},
+						{"origin": [1, 1.5, -3.5], "size": [1, 1, 1], "uv": [24, 9]}
+					]
+				},
+				{
+					"name": "Leafbody",
+					"parent": "Body",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 4, -3], "size": [6, 4, 0], "pivot": [0, 8, -3], "rotation": [-7.5, 0, 0], "uv": [8, 22]}
+					]
+				},
+				{
+					"name": "Leafonhead1",
+					"parent": "Leafbody",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-2, 8, 0], "size": [2, 6, 0], "pivot": [0, 8, 0], "rotation": [-7.43656, -0.9762, -7.43656], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Leafonhead2",
+					"parent": "Leafbody",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [0, 8, 0], "size": [2, 6, 0], "pivot": [0, 8, 0], "rotation": [-7.43656, 0.9762, 7.43656], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "Leafonside",
+					"parent": "Leafbody",
+					"pivot": [-3, 8, 0],
+					"cubes": [
+						{"origin": [-3, 0, -3], "size": [0, 8, 6], "pivot": [-3, 8, 0], "rotation": [0, 0, 2.5], "uv": [0, 8]}
+					]
+				},
+				{
+					"name": "Leavfarms1",
+					"parent": "Leafonside",
+					"pivot": [-3, 3, -2],
+					"cubes": [
+						{"origin": [-3, -0.01522, -6.5], "size": [0, 5, 4], "pivot": [-3, 4, -3], "rotation": [-6.28987, -67.16025, 10.83102], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "LeafUnder",
+					"parent": "Leafonside",
+					"pivot": [-3, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, -2], "size": [5, 0, 4], "uv": [14, 0]},
+						{"origin": [-6, 0, 1], "size": [3, 0, 2], "pivot": [-3, 0, 2], "rotation": [0, 25, 0], "uv": [22, 7]},
+						{"origin": [-6, 0, -3], "size": [3, 0, 2], "pivot": [-3, 0, -2], "rotation": [0, -25, 0], "uv": [16, 4]}
+					]
+				},
+				{
+					"name": "Leafonback",
+					"parent": "Leafbody",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 0, 3], "size": [6, 8, 0], "pivot": [0, 8, 3], "rotation": [5, 0, 0], "uv": [12, 14]},
+						{"origin": [-3, 0, 2.5], "size": [0, 8, 1], "pivot": [-3, 8, 3], "rotation": [3.25353, 52.42899, 4.10228], "uv": [20, 21]},
+						{"origin": [2.5, 0, 3], "size": [1, 8, 0], "pivot": [3, 8, 3], "rotation": [2.42817, 32.50231, -0.12926], "uv": [22, 22]}
+					]
+				},
+				{
+					"name": "Leaftail",
+					"parent": "Leafonback",
+					"pivot": [0, 0, 3],
+					"cubes": [
+						{"origin": [-2, 0, 3.3], "size": [2, 0, 3], "pivot": [0, 0, 3], "rotation": [0, -12.5, 0], "uv": [21, 4]}
+					]
+				},
+				{
+					"name": "Leaftail2",
+					"parent": "Leafonback",
+					"pivot": [0, 0, 3],
+					"cubes": [
+						{"origin": [0, 0, 3.3], "size": [2, 0, 3], "pivot": [0, 0, 3], "rotation": [0, 12.5, 0], "uv": [21, 4], "mirror": true}
+					]
+				},
+				{
+					"name": "Leafonside2",
+					"parent": "Leafbody",
+					"pivot": [3, 8, 0],
+					"rotation": [-180, 0, 180],
+					"cubes": [
+						{"origin": [3, 0, -3], "size": [0, 8, 6], "pivot": [3, 8, 0], "rotation": [180, 0, -177.5], "uv": [0, 8], "mirror": true}
+					]
+				},
+				{
+					"name": "Leavfarms2",
+					"parent": "Leafonside2",
+					"pivot": [3, 2, 2],
+					"cubes": [
+						{"origin": [3, -0.01522, -0.5], "size": [0, 5, 4], "pivot": [3, 4, 3], "rotation": [178.92114, -64.81849, -175.52196], "uv": [0, 18], "mirror": true}
+					]
+				},
+				{
+					"name": "LeafUnder2",
+					"parent": "Leafonside2",
+					"pivot": [3, 0, 0],
+					"cubes": [
+						{"origin": [-2, 0, -2], "size": [5, 0, 4], "uv": [14, 0]},
+						{"origin": [0, 0, 1], "size": [3, 0, 2], "pivot": [3, 0, 2], "rotation": [0, 25, 0], "uv": [22, 7]},
+						{"origin": [0, 0, -3], "size": [3, 0, 2], "pivot": [3, 0, -2], "rotation": [0, -25, 0], "uv": [16, 4]}
+					]
+				}
+			]
+		}
+	]
+}

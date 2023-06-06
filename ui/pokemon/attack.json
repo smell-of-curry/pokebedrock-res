@@ -110,7 +110,7 @@
                 "size": ["100%", "100%"],
                 "layer": 4,
 
-                "$button": "battle.mypokemon"
+                "$button": "battle.user_pokemon"
               }
             }
           ]
@@ -134,7 +134,7 @@
                 "size": ["100%", "100%"],
                 "layer": 4,
 
-                "$button": "battle.otherpokemon"
+                "$button": "battle.opponent_pokemon"
               }
             }
           ]
@@ -143,7 +143,7 @@
     ]
   },
 
-  "mypokemon": {
+  "user_pokemon": {
     "type": "panel",
     "size": ["100%", "100%c"],
 
@@ -171,6 +171,7 @@
       },
       {
         "2@battle.pokemon_bar": {
+          "$dir": "right",
           "bindings": [
             {
               "binding_name": "#form_button_text",
@@ -190,7 +191,7 @@
       }
     ]
   },
-  "otherpokemon": {
+  "opponent_pokemon": {
     "type": "panel",
 
     "size": ["100%", "100%c"],
@@ -215,7 +216,8 @@
         }
       },
       {
-        "2@battle.pokemon_bar2": {
+        "2@battle.pokemon_bar": {
+          "$dir": "left",
           "bindings": [
             {
               "binding_name": "#form_button_text",
@@ -249,6 +251,8 @@
         "form_button@common.button": {
           "$default_state|default": false,
           "$hover_state|default": false,
+          "$pressed_button_name": "button.form_button_click",
+          "enabled": false,
           "size": ["25%", "75%"],
           "anchor_from": "top_right",
           "anchor_to": "top_right",
@@ -334,13 +338,13 @@
         "form_button@common.button": {
           "$default_state|default": false,
           "$hover_state|default": false,
+          "$pressed_button_name": "button.form_button_click",
           "size": ["100%", "120%"],
 
           "anchor_from": "bottom_center",
           "anchor_to": "bottom_center",
           "offset": ["49.5%", "435%"],
 
-          "$dir": "right",
           "controls": [
             {
               "image": {
@@ -559,6 +563,8 @@
       {
         "form_button@common.button": {
           "$hover_state|default": false,
+          "$pressed_button_name": "button.form_button_click",
+          "enabled": false,
           "size": ["25%", "75%"],
           "anchor_from": "top_right",
           "anchor_to": "top_right",
@@ -633,220 +639,6 @@
       }
     ]
   },
-  "pokemon_bar2": {
-    "type": "panel",
-    "size": ["50%", "5%x"],
-
-    "anchor_from": "bottom_left",
-    "anchor_to": "bottom_left",
-    "controls": [
-      {
-        "form_button@common.button": {
-          "$default_state|default": false,
-          "$hover_state|default": false,
-          "size": ["100%", "120%"],
-          "anchor_from": "bottom_center",
-          "anchor_to": "bottom_center",
-          "offset": ["49.5%", "435%"],
-
-          "$dir": "left",
-          "controls": [
-            {
-              "image": {
-                "type": "panel",
-                "bindings": [
-                  {
-                    "binding_name": "#form_button_texture",
-                    "binding_name_override": "#texture",
-                    "binding_type": "collection",
-                    "binding_collection_name": "form_buttons"
-                  },
-                  {
-                    "binding_name": "#form_button_texture_file_system",
-                    "binding_name_override": "#texture_file_system",
-                    "binding_type": "collection",
-                    "binding_collection_name": "form_buttons"
-                  }
-                ]
-              }
-            },
-            {
-              "background": {
-                "type": "image",
-                "texture": "textures/ui/battle/white_shaded",
-                "color": [0.2, 0.2, 0.2],
-
-                "layer": 3,
-                "controls": [
-                  {
-                    "text": {
-                      "type": "label",
-                      "font_type": "default",
-                      "text": "#form_button_text",
-                      "line_padding": 2,
-                      "color": [0.768, 0.768, 0.768],
-
-                      "font_scale_factor": 1,
-                      "anchor_from": "center_middle",
-                      "anchor_to": "center_middle",
-                      "text_alignment": "center",
-                      "offset": ["20%", 1],
-                      "size": ["100% - 8px", "default"],
-
-                      "layer": 5,
-                      "shadow": false,
-                      "bindings": [
-                        {
-                          "binding_type": "collection",
-                          "binding_collection_name": "form_buttons",
-                          "binding_condition": "none",
-                          "binding_name": "#form_button_text",
-                          "binding_name_override": "#form_button_text"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "0@battle.progress_bar": {
-                "$bar": "0",
-                "clip_ratio": 1
-              }
-            },
-            {
-              "1@battle.progress_bar": {
-                "$bar": "1",
-                "clip_ratio": 0.95
-              }
-            },
-            {
-              "2@battle.progress_bar": {
-                "$bar": "2",
-                "clip_ratio": 0.9
-              }
-            },
-            {
-              "3@battle.progress_bar": {
-                "$bar": "3",
-                "clip_ratio": 0.85
-              }
-            },
-            {
-              "4@battle.progress_bar": {
-                "$bar": "4",
-                "clip_ratio": 0.8
-              }
-            },
-            {
-              "5@battle.progress_bar": {
-                "$bar": "5",
-                "clip_ratio": 0.75
-              }
-            },
-            {
-              "6@battle.progress_bar": {
-                "$bar": "6",
-                "clip_ratio": 0.7
-              }
-            },
-            {
-              "7@battle.progress_bar": {
-                "$bar": "7",
-                "clip_ratio": 0.65
-              }
-            },
-            {
-              "8@battle.progress_bar": {
-                "$bar": "8",
-                "clip_ratio": 0.6
-              }
-            },
-            {
-              "9@battle.progress_bar": {
-                "$bar": "9",
-                "clip_ratio": 0.55
-              }
-            },
-            {
-              "10@battle.progress_bar": {
-                "$bar": "10",
-                "clip_ratio": 0.5
-              }
-            },
-            {
-              "11@battle.progress_bar": {
-                "$bar": "11",
-                "clip_ratio": 0.45
-              }
-            },
-            {
-              "12@battle.progress_bar": {
-                "$bar": "12",
-                "clip_ratio": 0.4
-              }
-            },
-            {
-              "13@battle.progress_bar": {
-                "$bar": "13",
-                "clip_ratio": 0.35
-              }
-            },
-            {
-              "14@battle.progress_bar": {
-                "$bar": "14",
-                "clip_ratio": 0.3
-              }
-            },
-            {
-              "15@battle.progress_bar": {
-                "$bar": "15",
-                "clip_ratio": 0.25
-              }
-            },
-            {
-              "16@battle.progress_bar": {
-                "$bar": "16",
-                "clip_ratio": 0.2
-              }
-            },
-            {
-              "17@battle.progress_bar": {
-                "$bar": "17",
-                "clip_ratio": 0.15
-              }
-            },
-            {
-              "18@battle.progress_bar": {
-                "$bar": "18",
-                "clip_ratio": 0.1
-              }
-            },
-            {
-              "19@battle.progress_bar": {
-                "$bar": "19",
-                "clip_ratio": 0.05
-              }
-            },
-            {
-              "20@battle.progress_bar": {
-                "$bar": "20",
-                "clip_ratio": 0
-              }
-            }
-          ],
-          "bindings": [
-            {
-              "binding_type": "collection_details",
-              "binding_collection_name": "form_buttons"
-            }
-          ]
-        }
-      }
-    ]
-  },
-
   "progress_bar": {
     "$bar|default": "",
     "type": "image",
@@ -996,7 +788,6 @@
               "binding_type": "collection",
               "binding_collection_name": "form_buttons"
             },
-
             {
               "binding_type": "view",
               "source_property_name": "(not((#form_button_text - 'b:1_') = #form_button_text))",
@@ -1081,10 +872,23 @@
           "$default_button_texture": "textures/ui/battle/moveSelection",
           "$hover_button_texture": "textures/ui/battle/moveSelection_hover",
           "$pressed_button_texture": "textures/ui/battle/moveSelection",
+          "$locked_button_texture": "textures/ui/battle/moveSelection_locked",
           "bindings": [
             {
               "binding_type": "collection_details",
               "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_texture",
+              "binding_name_override": "#form_button_texture"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.1s * #form_button_texture) = 't')",
+              "target_property_name": "#enabled"
             }
           ]
         }
@@ -1099,7 +903,6 @@
           "anchor_to": "center",
           "text": "#text",
           "color": "black",
-          "text_align": "right",
           "bindings": [
             {
               "binding_type": "collection",
@@ -1148,9 +951,6 @@
           "anchor_from": "center",
           "anchor_to": "center",
           "text": "#text",
-          "font": "default",
-          "text_align": "center",
-          "text_vertical_align": "center",
           "font_scale_factor": 0.8,
           "color": "white",
           "bindings": [
@@ -1170,128 +970,134 @@
         }
       },
       {
+        "null@battle.pp_bar": {
+          "$bar": "_null",
+          "size": ["0%", "29%"]
+        }
+      },
+      {
         "0@battle.pp_bar": {
-          "$bar": "0",
+          "$bar": "_0",
           "size": ["0%", "29%"]
         }
       },
       {
         "1@battle.pp_bar": {
-          "$bar": "1",
+          "$bar": "_1",
           "size": ["1.965%", "29%"]
         }
       },
       {
         "2@battle.pp_bar": {
-          "$bar": "2",
+          "$bar": "_2",
           "size": ["3.93%", "29%"]
         }
       },
       {
         "3@battle.pp_bar": {
-          "$bar": "3",
+          "$bar": "_3",
           "size": ["5.895%", "29%"]
         }
       },
       {
         "4@battle.pp_bar": {
-          "$bar": "4",
+          "$bar": "_4",
           "size": ["7.86%", "29%"]
         }
       },
       {
         "5@battle.pp_bar": {
-          "$bar": "5",
+          "$bar": "_5",
           "size": ["9.825%", "29%"]
         }
       },
       {
         "6@battle.pp_bar": {
-          "$bar": "6",
+          "$bar": "_6",
           "size": ["11.79%", "29%"]
         }
       },
       {
         "7@battle.pp_bar": {
-          "$bar": "7",
+          "$bar": "_7",
           "size": ["13.755%", "29%"]
         }
       },
       {
         "8@battle.pp_bar": {
-          "$bar": "8",
+          "$bar": "_8",
           "size": ["15.72%", "29%"]
         }
       },
       {
         "9@battle.pp_bar": {
-          "$bar": "9",
+          "$bar": "_9",
           "size": ["17.685%", "29%"]
         }
       },
       {
         "10@battle.pp_bar": {
-          "$bar": "10",
+          "$bar": "_10",
           "size": ["19.65%", "29%"]
         }
       },
       {
         "11@battle.pp_bar": {
-          "$bar": "11",
+          "$bar": "_11",
           "size": ["21.615%", "29%"]
         }
       },
       {
         "12@battle.pp_bar": {
-          "$bar": "12",
+          "$bar": "_12",
           "size": ["23.58%", "29%"]
         }
       },
       {
         "13@battle.pp_bar": {
-          "$bar": "13",
+          "$bar": "_13",
           "size": ["25.545%", "29%"]
         }
       },
       {
         "14@battle.pp_bar": {
-          "$bar": "14",
+          "$bar": "_14",
           "size": ["27.51%", "29%"]
         }
       },
       {
         "15@battle.pp_bar": {
-          "$bar": "15",
+          "$bar": "_15",
           "size": ["29.475%", "29%"]
         }
       },
       {
         "16@battle.pp_bar": {
-          "$bar": "16",
+          "$bar": "_16",
           "size": ["31.44%", "29%"]
         }
       },
       {
         "17@battle.pp_bar": {
-          "$bar": "17",
+          "$bar": "_17",
           "size": ["33.405%", "29%"]
         }
       },
       {
         "18@battle.pp_bar": {
-          "$bar": "18",
+          "$bar": "_18",
           "size": ["35.37%", "29%"]
         }
       },
       {
         "19@battle.pp_bar": {
-          "$bar": "19",
+          "$bar": "_19",
           "size": ["37.335%", "29%"]
         }
       },
       {
         "20@battle.pp_bar": {
-          "$bar": "20",
+          "$bar": "_20",
           "size": ["39.3%", "29%"]
         }
       }
@@ -1318,7 +1124,7 @@
       },
       {
         "binding_type": "view",
-        "source_property_name": "(#form_button_texture = $bar)",
+        "source_property_name": "((#form_button_texture - (%.2s * #form_button_texture)) = $bar)",
         "target_property_name": "#visible"
       }
     ]
@@ -1400,10 +1206,23 @@
           "$default_button_texture": "textures/ui/battle/menu_bag",
           "$hover_button_texture": "textures/ui/battle/menu_bag_hover",
           "$pressed_button_texture": "textures/ui/battle/menu_bag",
+          "$locked_button_texture": "textures/ui/battle/menu_bag_disabled",
           "bindings": [
             {
               "binding_type": "collection_details",
               "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.1s * #form_button_text) = 't')",
+              "target_property_name": "#enabled"
             }
           ]
         }
@@ -1428,10 +1247,23 @@
           "$default_button_texture": "textures/ui/battle/menu_run",
           "$hover_button_texture": "textures/ui/battle/menu_run_hover",
           "$pressed_button_texture": "textures/ui/battle/menu_run",
+          "$locked_button_texture": "textures/ui/battle/menu_run_disabled",
           "bindings": [
             {
               "binding_type": "collection_details",
               "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.1s * #form_button_text) = 't')",
+              "target_property_name": "#enabled"
             }
           ]
         }
@@ -1456,10 +1288,23 @@
           "$default_button_texture": "textures/ui/battle/menu_poke",
           "$hover_button_texture": "textures/ui/battle/menu_poke_hover",
           "$pressed_button_texture": "textures/ui/battle/menu_poke",
+          "$locked_button_texture": "textures/ui/battle/menu_poke_disabled",
           "bindings": [
             {
               "binding_type": "collection_details",
               "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((%.1s * #form_button_text) = 't')",
+              "target_property_name": "#enabled"
             }
           ]
         }

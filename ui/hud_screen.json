@@ -193,7 +193,7 @@
               }
             },
             {
-              "padding": {
+              "padding_1": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -208,7 +208,7 @@
               }
             },
             {
-              "padding": {
+              "padding_2": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -223,7 +223,7 @@
               }
             },
             {
-              "padding": {
+              "padding_3": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -238,7 +238,7 @@
               }
             },
             {
-              "padding": {
+              "padding_4": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -253,7 +253,7 @@
               }
             },
             {
-              "padding": {
+              "padding_5": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -285,33 +285,77 @@
     "size": ["100%", "30%"],
     "controls": [
       {
-        "holder": {
-          "type": "image",
-          "texture": "textures/ui/battle/white_transparency",
-          "color": [0.137, 0.125, 0.125],
-          "layer": 1001,
-          "keep_ratio": true,
-          "fill": true,
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "size": ["65%", "80%"],
+        "main_holder": {
+          "type": "stack_panel",
+          "size": ["100%", "95%"],
+          "orientation": "horizontal",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
           "controls": [
             {
-              "text": {
+              "menu_extra": {
+                "type": "image",
+                "texture": "textures/ui/battle/white_transparency",
+                "color": [0.137, 0.125, 0.125],
+                "layer": 2,
+                "keep_ratio": true,
+                "fill": true,
+                "anchor_from": "bottom_left",
+                "anchor_to": "bottom_left",
+                "size": ["85%", "100%"],
+
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "text": "#log_text",
+                      "layer": 1002,
+                      "localize": true,
+                      "font_size": "normal",
+                      "text_alignment": "center",
+                      "offset": [0, 0],
+                      "bindings": [
+                        {
+                          "binding_type": "global",
+                          "binding_name": "#hud_title_text_string"
+                        },
+                        {
+                          "binding_type": "view",
+                          "source_property_name": "(#hud_title_text_string - (%.60s * #hud_title_text_string)))",
+                          "target_property_name": "#log_text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "info_label": {
                 "type": "label",
-                "anchor_from": "top_middle",
-                "anchor_to": "top_middle",
-                "text": "#text",
-                "layer": 1002,
-                "localize": true,
-                "font_size": "normal",
+                "font_type": "default",
+                "localize": false,
+                "text": "#info_label",
+                "color": "default",
+                "alpha": 1,
                 "text_alignment": "center",
-                "offset": [0, 0],
+                "font_scale_factor": 1,
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "size": ["fill", "100%"],
+                "layer": 3,
+                "shadow": false,
                 "bindings": [
                   {
-                    "binding_name": "#hud_title_text_string",
-                    "binding_name_override": "#text",
-                    "binding_type": "global"
+                    "binding_type": "global",
+                    "binding_name": "#hud_title_text_string"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((%.60s * #hud_title_text_string) - '_'))",
+                    "target_property_name": "#info_label"
                   }
                 ]
               }
