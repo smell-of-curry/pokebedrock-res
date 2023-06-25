@@ -1,27 +1,38 @@
 {
-  "format_version": "1.19.62",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:charmander",
-      "materials": { "default": "charged_creeper" },
-      "textures": {
-        "default": "textures/entity/pokemon/charmander/charmander",
-        "shiny": "textures/entity/pokemon/charmander/shiny_charmander"
-      },
-      "geometry": { "default": "geometry.charmander" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.charmander.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.charmander.chill",
-        "sit": "animation.charmander.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "particle_effects": {
-        "tail_flame": "smelly:tail_flame"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "charmander", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:charmander",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/charmander/charmander",
+                "shiny": "textures/entity/pokemon/charmander/shiny_charmander"
+            },
+            "geometry": {
+                "default": "geometry.charmander"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.charmander.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.charmander.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "charmander",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

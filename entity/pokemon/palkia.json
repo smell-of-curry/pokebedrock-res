@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:palkia",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/palkia/palkia",
-        "shiny": "textures/entity/pokemon/palkia/shiny_palkia"
-      },
-      "geometry": { "default": "geometry.palkia" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.palkia.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.palkia.chill",
-        "sit": "animation.palkia.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "palkia", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:palkia",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/palkia/palkia",
+                "shiny": "textures/entity/pokemon/palkia/shiny_palkia"
+            },
+            "geometry": {
+                "default": "geometry.palkia"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.palkia.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.palkia.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "palkia",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

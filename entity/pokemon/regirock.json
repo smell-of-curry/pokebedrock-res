@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:regirock",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/regirock/regirock",
-        "shiny": "textures/entity/pokemon/regirock/shiny_regirock"
-      },
-      "geometry": { "default": "geometry.regirock" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.regirock.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.regirock.chill",
-        "sit": "animation.regirock.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "regirock", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:regirock",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/regirock/regirock",
+                "shiny": "textures/entity/pokemon/regirock/shiny_regirock"
+            },
+            "geometry": {
+                "default": "geometry.regirock"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.regirock.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.regirock.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "regirock",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

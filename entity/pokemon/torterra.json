@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:torterra",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/torterra/torterra",
-        "shiny": "textures/entity/pokemon/torterra/shiny_torterra"
-      },
-      "geometry": { "default": "geometry.torterra" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.torterra.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.torterra.chill",
-        "sit": "animation.torterra.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "torterra", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:torterra",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/torterra/torterra",
+                "shiny": "textures/entity/pokemon/torterra/shiny_torterra"
+            },
+            "geometry": {
+                "default": "geometry.torterra"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.torterra.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.torterra.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "torterra",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:honchkrow",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/honchkrow/honchkrow",
-        "shiny": "textures/entity/pokemon/honchkrow/shiny_honchkrow"
-      },
-      "geometry": { "default": "geometry.honchkrow" },
-      "scripts": { "animate": ["look_at_target", "flying_pokemon"] },
-      "animations": {
-        "walk": "animation.honchkrow.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.honchkrow.chill",
-        "sit": "animation.honchkrow.sitting",
-        "flying_pokemon": "controller.animation.flying.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "honchkrow", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:honchkrow",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/honchkrow/honchkrow",
+                "shiny": "textures/entity/pokemon/honchkrow/shiny_honchkrow"
+            },
+            "geometry": {
+                "default": "geometry.honchkrow"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "flying_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.honchkrow.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.honchkrow.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "honchkrow",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

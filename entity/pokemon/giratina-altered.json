@@ -1,24 +1,37 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:giratina-altered",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/giratina-altered/giratina-altered",
-        "shiny": "textures/entity/pokemon/giratina-altered/shiny_giratina-altered"
-      },
-      "geometry": { "default": "geometry.giratina-altered" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.giratina-altered.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.giratina-altered.chill",
-        "sit": "animation.giratina-altered.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "giratina-altered", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:giratina-altered",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/giratina-altered/giratina-altered",
+                "shiny": "textures/entity/pokemon/giratina-altered/shiny_giratina-altered"
+            },
+            "geometry": {
+                "default": "geometry.giratina-altered"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "flying_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.giratina-altered.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.giratina-altered.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "giratina-altered",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

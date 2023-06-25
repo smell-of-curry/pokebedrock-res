@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:wartortle",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/wartortle/wartortle",
-        "shiny": "textures/entity/pokemon/wartortle/shiny_wartortle"
-      },
-      "geometry": { "default": "geometry.wartortle" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.wartortle.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.wartortle.chill",
-        "sit": "animation.wartortle.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "wartortle", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:wartortle",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/wartortle/wartortle",
+                "shiny": "textures/entity/pokemon/wartortle/shiny_wartortle"
+            },
+            "geometry": {
+                "default": "geometry.wartortle"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.wartortle.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.wartortle.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "wartortle",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

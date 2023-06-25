@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:sylveon",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/sylveon/sylveon",
-        "shiny": "textures/entity/pokemon/sylveon/shiny_sylveon"
-      },
-      "geometry": { "default": "geometry.sylveon" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.sylveon.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.sylveon.chill",
-        "sit": "animation.sylveon.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "sylveon", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:sylveon",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/sylveon/sylveon",
+                "shiny": "textures/entity/pokemon/sylveon/shiny_sylveon"
+            },
+            "geometry": {
+                "default": "geometry.sylveon"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.sylveon.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.sylveon.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "sylveon",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

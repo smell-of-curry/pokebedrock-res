@@ -13,9 +13,6 @@
           "transitions": [
             {
               "walk": "query.modified_move_speed  >= 0.01"
-            },
-            {
-              "sit": "query.is_sitting"
             }
           ],
           "blend_transition": 0.3
@@ -25,15 +22,6 @@
           "transitions": [
             {
               "default": "query.modified_move_speed  <= 0.01"
-            }
-          ],
-          "blend_transition": 0.3
-        },
-        "sit": {
-          "animations": ["sit"],
-          "transitions": [
-            {
-              "default": "!query.is_sitting"
             }
           ],
           "blend_transition": 0.3

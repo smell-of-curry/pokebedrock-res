@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:chimchar",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/chimchar/chimchar",
-        "shiny": "textures/entity/pokemon/chimchar/shiny_chimchar"
-      },
-      "geometry": { "default": "geometry.chimchar" },
-      "scripts": { "animate": ["look_at_target", "ground_pokemon"] },
-      "animations": {
-        "walk": "animation.chimchar.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.chimchar.chill",
-        "sit": "animation.chimchar.sitting",
-        "ground_pokemon": "controller.animation.ground.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "chimchar", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:chimchar",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/chimchar/chimchar",
+                "shiny": "textures/entity/pokemon/chimchar/shiny_chimchar"
+            },
+            "geometry": {
+                "default": "geometry.chimchar"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.chimchar.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.chimchar.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "chimchar",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }

@@ -1,24 +1,38 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:togekiss",
-      "materials": { "default": "zombie" },
-      "textures": {
-        "default": "textures/entity/pokemon/togekiss/togekiss",
-        "shiny": "textures/entity/pokemon/togekiss/shiny_togekiss"
-      },
-      "geometry": { "default": "geometry.togekiss" },
-      "scripts": { "animate": ["look_at_target", "flying_pokemon"] },
-      "animations": {
-        "walk": "animation.togekiss.walk",
-        "look_at_target": "animation.common.look_at_target",
-        "chill": "animation.togekiss.chill",
-        "sit": "animation.togekiss.sitting",
-        "flying_pokemon": "controller.animation.flying.pokemon"
-      },
-      "render_controllers": ["controller.render.pokemon"],
-      "spawn_egg": { "texture": "togekiss", "texture_index": 0 }
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:togekiss",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/togekiss/togekiss",
+                "shiny": "textures/entity/pokemon/togekiss/shiny_togekiss"
+            },
+            "geometry": {
+                "default": "geometry.togekiss"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "flying_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.togekiss.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.togekiss.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "togekiss",
+                "texture_index": 0
+            }
+        }
     }
-  }
 }
