@@ -23,33 +23,33 @@
 		},
 		"animation.steelix.walk": {
 			"loop": true,
-			"animation_length": 1,
+			"animation_length": 1.5,
 			"bones": {
-				"Body": {
+				"head": {
 					"position": {
-						"0.0": [0, -1, 0],
-						"0.24": [0, 0, 0],
-						"0.52": [0, -1, 0],
-						"0.76": [0, 0, 0],
-						"1.0": [0, -1, 0]
+						"0.0": [0, 0, 0],
+						"0.75": [0, 3, 0],
+						"1.5": [0, 0, 0]
 					}
 				},
-				"Bottom": {
-					"position": {
-						"0.0": [0, 1, 0],
-						"0.24": [0, 0, 0],
-						"0.52": [0, 1, 0],
-						"0.76": [0, 0, 0],
-						"1.0": [0, 1, 0]
-					}
-				},
-				"Head": {
-					"position": {
-						"0.0": [0, -1, 0],
-						"0.24": [0, 0, 0],
-						"0.52": [0, -1, 0],
-						"0.76": [0, 0, 0],
-						"1.0": [0, -1, 0]
+				"onix": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [7.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [-7.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5417": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
 					}
 				}
 			}
@@ -67,6 +67,19 @@
 				},
 				"Head": {
 					"position": [0, -10, 0]
+				}
+			}
+		},
+		"animation.steelix.idle": {
+			"loop": true,
+			"animation_length": 1.5,
+			"bones": {
+				"head": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.75": [0, 3, 0],
+						"1.5": [0, 0, 0]
+					}
 				}
 			}
 		}
