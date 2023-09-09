@@ -1,0 +1,38 @@
+{
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:porygonz",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/porygonz/porygonz",
+                "shiny": "textures/entity/pokemon/porygonz/shiny_porygonz"
+            },
+            "geometry": {
+                "default": "geometry.porygonz"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.porygonz.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.porygonz.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "porygonz",
+                "texture_index": 0
+            }
+        }
+    }
+}

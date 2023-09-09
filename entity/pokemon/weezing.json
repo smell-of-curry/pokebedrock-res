@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/weezing",
-                "shiny": "textures/sprites/weezing"
+                "default": "textures/entity/pokemon/weezing/weezing",
+                "shiny": "textures/entity/pokemon/weezing/shiny_weezing"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.weezing"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.weezing.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.weezing.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

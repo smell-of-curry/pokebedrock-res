@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/kadabra",
-                "shiny": "textures/sprites/kadabra"
+                "default": "textures/entity/pokemon/kadabra/kadabra",
+                "shiny": "textures/entity/pokemon/kadabra/shiny_kadabra"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.kadabra"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.kadabra.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.kadabra.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

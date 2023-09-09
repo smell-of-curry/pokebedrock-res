@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/kangaskhan",
-                "shiny": "textures/sprites/kangaskhan"
+                "default": "textures/entity/pokemon/kangaskhan/kangaskhan",
+                "shiny": "textures/entity/pokemon/kangaskhan/shiny_kangaskhan"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.kangaskhan"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.kangaskhan.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.kangaskhan.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

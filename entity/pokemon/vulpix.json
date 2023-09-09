@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/vulpix",
-                "shiny": "textures/sprites/vulpix"
+                "default": "textures/entity/pokemon/vulpix/vulpix",
+                "shiny": "textures/entity/pokemon/vulpix/shiny_vulpix"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.vulpix"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.vulpix.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.vulpix.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

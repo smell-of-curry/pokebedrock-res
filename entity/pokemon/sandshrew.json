@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/sandshrew",
-                "shiny": "textures/sprites/sandshrew"
+                "default": "textures/entity/pokemon/sandshrew/sandshrew",
+                "shiny": "textures/entity/pokemon/sandshrew/shiny_sandshrew"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.sandshrew"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.sandshrew.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.sandshrew.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"
