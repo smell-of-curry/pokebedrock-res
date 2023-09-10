@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/venonat",
-                "shiny": "textures/sprites/venonat"
+                "default": "textures/entity/pokemon/venonat/venonat",
+                "shiny": "textures/entity/pokemon/venonat/shiny_venonat"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.venonat"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.venonat.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.venonat.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

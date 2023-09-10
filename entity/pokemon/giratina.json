@@ -1,0 +1,38 @@
+{
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokemon:giratina",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/pokemon/giratina/giratina",
+                "shiny": "textures/entity/pokemon/giratina/shiny_giratina"
+            },
+            "geometry": {
+                "default": "geometry.giratina"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.giratina.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.giratina.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
+            },
+            "render_controllers": [
+                "controller.render.pokemon"
+            ],
+            "spawn_egg": {
+                "texture": "giratina",
+                "texture_index": 0
+            }
+        }
+    }
+}

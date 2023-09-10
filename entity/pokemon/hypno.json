@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/hypno",
-                "shiny": "textures/sprites/hypno"
+                "default": "textures/entity/pokemon/hypno/hypno",
+                "shiny": "textures/entity/pokemon/hypno/shiny_hypno"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.hypno"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.hypno.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.hypno.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

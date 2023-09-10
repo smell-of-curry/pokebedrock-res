@@ -3,54 +3,409 @@
 	"animations": {
 		"animation.cloyster.chill": {
 			"loop": true,
-			"animation_length": 1,
 			"bones": {
-				"Cloyster": {
-					"rotation": {
-						"0.0": [0, 0, -2.5],
-						"0.52": [0, 0, 2.5],
-						"1.0": [0, 0, -2.5]
-					}
+				"body": {
+					"rotation": [
+						"1+6*math.cos(q.life_time*100)",
+						"1+5*math.cos(q.life_time*50+3*math.cos(q.life_time*50))",
+						"1+7*math.cos(q.life_time*50+4*math.cos(q.life_time*10))"
+					],
+					"position": [0, 0.5, 0]
+				},
+				"rightShell": {
+					"rotation": [0, "1+5*math.cos(q.life_time*20+3*math.cos(q.life_time*50))", "1+4*math.cos(q.life_time*30+4*math.cos(q.life_time*10))"]
+				},
+				"leftShell": {
+					"rotation": [0, "-1-5*math.cos(q.life_time*20+3*math.cos(q.life_time*50))", "-1-4*math.cos(q.life_time*30+4*math.cos(q.life_time*10))"]
+				},
+				"water_blast": {
+					"scale": 0
 				}
 			}
 		},
 		"animation.cloyster.walk": {
 			"loop": true,
-			"animation_length": 1,
+			"animation_length": 1.5,
 			"bones": {
-				"Cloyster": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"post": [-7.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [12.36442, 3.15635, 10.92091],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0417": {
+							"post": [12.36442, -3.15635, -10.92091],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": {
+							"post": [-7.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					},
 					"position": {
-						"0.0": [0, 1, 0],
-						"0.52": [0, 0.5, 0],
-						"1.0": [0, 1, 0]
+						"0.0": {
+							"post": [0, 1.1, 0.7],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 1.1, -3.3],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0417": {
+							"post": [0, 1.1, -3.3],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": {
+							"post": [0, 1.1, 0.7],
+							"lerp_mode": "catmullrom"
+						}
 					}
 				},
-				"Body": {
+				"rightShell": {
 					"rotation": {
-						"0.0": [0, 2.5, 0],
-						"0.24": [0, 0, 0],
-						"0.52": [0, 2.5, 0],
-						"0.76": [0, 0, 0],
-						"1.0": [0, 2.5, 0]
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [10, 12.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [-11.59733, 13.02195, 2.6062],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
 					}
 				},
-				"Body2": {
+				"leftShell": {
 					"rotation": {
-						"0.0": [0, -2.5, 0],
-						"0.24": [0, 0, 0],
-						"0.52": [0, -2.5, 0],
-						"0.76": [0, 0, 0],
-						"1.0": [0, -2.5, 0]
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [10, -12.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [-11.59733, -13.02195, -2.6062],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water_blast": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.cloyster.attack_hit": {
+			"loop": true,
+			"animation_length": 0.5,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [-10, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [15, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"position": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, 0, 3],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [0, 0, -5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"rightShell": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, -5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [0, 12.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"leftShell": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, 7.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [0, -5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water_blast": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.cloyster.attack_water_blast": {
+			"loop": true,
+			"animation_length": 1.08333,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [-14.94548, -1.29256, -4.83045],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [-15.00815, -7.7275, 9.82599],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [-2.5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7917": {
+							"post": [-4.91716, -1.84395, 15.2006],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"position": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, 0, 3],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 1, -5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"rightShell": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, -12.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [0, -17.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [3.28457, 17.84837, -5.00847],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7917": {
+							"post": [-1.4627, 15.08645, 2.70525],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"leftShell": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.1667": {
+							"post": [0, 5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.3333": {
+							"post": [0, 7.5, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [-1.4627, -15.08645, -2.70525],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7917": {
+							"post": [-4.91716, 1.84395, -15.2006],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water_blast": {
+					"scale": {
+						"0.0": [0, 0, 0],
+						"0.375": {
+							"pre": [0, 0, 0],
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [1, 1, 1],
+							"lerp_mode": "catmullrom"
+						},
+						"0.8333": {
+							"post": [1, 1, 1],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0833": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"aaaatt": {
+					"rotation": {
+						"0.4583": {
+							"pre": [0, 0, -40],
+							"post": [0, 0, -40],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7083": {
+							"post": [0, 0, 40],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"scale": {
+						"0.4167": {
+							"pre": [1, 1, 1],
+							"post": [1, 1, 1],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7083": {
+							"post": [1, 1, 2.2],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [1, 1, 1],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"waterbb": {
+					"rotation": {
+						"0.4167": {
+							"pre": [0, 0, 30],
+							"post": [0, 0, 30],
+							"lerp_mode": "catmullrom"
+						},
+						"0.75": {
+							"post": [0, 0, -17.5],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0833": {
+							"post": [0, 0, 32.5],
+							"lerp_mode": "catmullrom"
+						}
+					},
+					"scale": {
+						"0.4167": {
+							"pre": [1, 1, 3.3],
+							"post": [1, 1, 3.3],
+							"lerp_mode": "catmullrom"
+						},
+						"0.7083": {
+							"post": [1, 1, 0.7],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [1, 1, 2.8],
+							"lerp_mode": "catmullrom"
+						}
 					}
 				}
 			}
 		},
 		"animation.cloyster.sitting": {
 			"loop": true,
-			"animation_length": 1,
 			"bones": {
-				"Cloyster": {
-					"rotation": [-10, 0, 0]
+				"body": {
+					"rotation": [-17.5, "1+5*math.cos(q.life_time*50+3*math.cos(q.life_time*50))", "1+5*math.cos(q.life_time*50+3*math.cos(q.life_time*50))"],
+					"position": [0, -3.7, 0]
+				},
+				"rightShell": {
+					"rotation": [0, -10, 0]
+				},
+				"leftShell": {
+					"rotation": [0, 10, 0]
+				},
+				"water_blast": {
+					"scale": 0
 				}
 			}
 		}

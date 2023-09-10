@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/parasect",
-                "shiny": "textures/sprites/parasect"
+                "default": "textures/entity/pokemon/parasect/parasect",
+                "shiny": "textures/entity/pokemon/parasect/shiny_parasect"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.parasect"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.parasect.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.parasect.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/exeggutor",
-                "shiny": "textures/sprites/exeggutor"
+                "default": "textures/entity/pokemon/exeggutor/exeggutor",
+                "shiny": "textures/entity/pokemon/exeggutor/shiny_exeggutor"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.exeggutor"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.exeggutor.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.exeggutor.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

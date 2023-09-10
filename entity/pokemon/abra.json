@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/abra",
-                "shiny": "textures/sprites/abra"
+                "default": "textures/entity/pokemon/abra/abra",
+                "shiny": "textures/entity/pokemon/abra/shiny_abra"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.abra"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.abra.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.abra.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/farfetchd",
-                "shiny": "textures/sprites/farfetchd"
+                "default": "textures/entity/pokemon/farfetchd/farfetchd",
+                "shiny": "textures/entity/pokemon/farfetchd/shiny_farfetchd"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.farfetchd"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.farfetchd.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.farfetchd.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"
