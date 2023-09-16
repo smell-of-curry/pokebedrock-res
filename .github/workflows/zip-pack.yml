@@ -41,8 +41,8 @@ jobs:
         name: "v${{ steps.get_version.outputs.version }}"
         tag_name: "v${{ steps.get_version.outputs.version }}"
         files: |
-          pokebedrock-${{ steps.get_version.outputs.version }}.mcpack
-          pokebedrock-${{ steps.get_version.outputs.version }}.zip
+          PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack
+          PokeBedrock RES ${{ steps.get_version.outputs.version }}.zip
           
         draft: false
 
@@ -59,6 +59,6 @@ jobs:
         webhook-url: ${{ secrets.WEBHOOK_URL  }}
         embed-title: "[RES] Update v${{ steps.get_version.outputs.version }}"
         embed-description: "${{ steps.read_changelog.outputs.changelog }}"
-        embed-url: "https://github.com/Pokebedrock/pokebedrock-res"
+        embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
       
