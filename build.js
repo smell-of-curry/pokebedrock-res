@@ -22,7 +22,7 @@ try {
   const manifestData = fs.readFileSync("manifest.json", "utf8");
   const manifest = JSON.parse(manifestData);
   const version = manifest.header.version.join(".");
-  const fileName = `pokebedrock-${version}`;
+  const fileName = `PokeBedrock RES ${version}`;
   const filePath = `${fileName}.mcpack`;
 
   if (fs.existsSync(filePath)) {
