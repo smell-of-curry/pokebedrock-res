@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/torchic",
-                "shiny": "textures/sprites/torchic"
+                "default": "textures/entity/pokemon/torchic/torchic",
+                "shiny": "textures/entity/pokemon/torchic/shiny_torchic"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.torchic"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.torchic.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.torchic.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

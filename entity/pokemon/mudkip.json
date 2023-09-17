@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/mudkip",
-                "shiny": "textures/sprites/mudkip"
+                "default": "textures/entity/pokemon/mudkip/mudkip",
+                "shiny": "textures/entity/pokemon/mudkip/shiny_mudkip"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.mudkip"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.mudkip.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.mudkip.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

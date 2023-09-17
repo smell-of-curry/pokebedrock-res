@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/tyrunt",
-                "shiny": "textures/sprites/tyrunt"
+                "default": "textures/entity/pokemon/tyrunt/tyrunt",
+                "shiny": "textures/entity/pokemon/tyrunt/shiny_tyrunt"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.tyrunt"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.tyrunt.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.tyrunt.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.pokestop": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            {
+              "chill": "query.mark_variant == 0"
+            }
+          ],
+          "transitions": [
+            {
+              "spin": "query.mark_variant == 1"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "spin": {
+          "animations": ["spin"],
+          "transitions": [
+            {
+              "default": "query.anim_time > 5"
+            }
+          ],
+          "blend_transition": 1
+        }
+      }
+    }
+  }
+}

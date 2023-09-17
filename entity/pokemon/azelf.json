@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/azelf",
-                "shiny": "textures/sprites/azelf"
+                "default": "textures/entity/pokemon/azelf/azelf",
+                "shiny": "textures/entity/pokemon/azelf/shiny_azelf"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.azelf"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.azelf.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.azelf.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

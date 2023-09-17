@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/combusken",
-                "shiny": "textures/sprites/combusken"
+                "default": "textures/entity/pokemon/combusken/combusken",
+                "shiny": "textures/entity/pokemon/combusken/shiny_combusken"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.combusken"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.combusken.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.combusken.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

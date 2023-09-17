@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/blaziken",
-                "shiny": "textures/sprites/blaziken"
+                "default": "textures/entity/pokemon/blaziken/blaziken",
+                "shiny": "textures/entity/pokemon/blaziken/shiny_blaziken"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.blaziken"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.blaziken.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.blaziken.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

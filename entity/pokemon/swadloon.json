@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/swadloon",
-                "shiny": "textures/sprites/swadloon"
+                "default": "textures/entity/pokemon/swadloon/swadloon",
+                "shiny": "textures/entity/pokemon/swadloon/shiny_swadloon"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.swadloon"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.swadloon.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.swadloon.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/grovyle",
-                "shiny": "textures/sprites/grovyle"
+                "default": "textures/entity/pokemon/grovyle/grovyle",
+                "shiny": "textures/entity/pokemon/grovyle/shiny_grovyle"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.grovyle"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.grovyle.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.grovyle.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

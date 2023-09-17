@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/petilil",
-                "shiny": "textures/sprites/petilil"
+                "default": "textures/entity/pokemon/petilil/petilil",
+                "shiny": "textures/entity/pokemon/petilil/shiny_petilil"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.petilil"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.petilil.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.petilil.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/jirachi",
-                "shiny": "textures/sprites/jirachi"
+                "default": "textures/entity/pokemon/jirachi/jirachi",
+                "shiny": "textures/entity/pokemon/jirachi/shiny_jirachi"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.jirachi"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.jirachi.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.jirachi.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"
