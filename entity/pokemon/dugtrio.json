@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/dugtrio",
-                "shiny": "textures/sprites/dugtrio"
+                "default": "textures/entity/pokemon/dugtrio/dugtrio",
+                "shiny": "textures/entity/pokemon/dugtrio/shiny_dugtrio"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.dugtrio"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.dugtrio.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.dugtrio.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

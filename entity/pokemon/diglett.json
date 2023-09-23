@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/diglett",
-                "shiny": "textures/sprites/diglett"
+                "default": "textures/entity/pokemon/diglett/diglett",
+                "shiny": "textures/entity/pokemon/diglett/shiny_diglett"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.diglett"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.diglett.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.diglett.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"

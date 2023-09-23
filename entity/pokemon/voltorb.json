@@ -7,11 +7,24 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/sprites/voltorb",
-                "shiny": "textures/sprites/voltorb"
+                "default": "textures/entity/pokemon/voltorb/voltorb",
+                "shiny": "textures/entity/pokemon/voltorb/shiny_voltorb"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.voltorb"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "ground_pokemon"
+                ]
+            },
+            "animations": {
+                "walk": "animation.voltorb.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "chill": "animation.voltorb.chill",
+                "flying_pokemon": "controller.animation.flying.pokemon",
+                "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
                 "controller.render.pokemon"
