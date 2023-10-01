@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:murkrow",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/murkrow/murkrow",
-                "shiny": "textures/entity/pokemon/murkrow/shiny_murkrow"
+                "shiny": "textures/entity/pokemon/murkrow/shiny_murkrow",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.murkrow"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "murkrow",

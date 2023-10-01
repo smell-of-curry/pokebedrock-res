@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:groudon",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/groudon/groudon",
-                "shiny": "textures/entity/pokemon/groudon/shiny_groudon"
+                "shiny": "textures/entity/pokemon/groudon/shiny_groudon",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.groudon"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "groudon",

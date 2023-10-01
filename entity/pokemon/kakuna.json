@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:kakuna",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/kakuna/kakuna",
-                "shiny": "textures/entity/pokemon/kakuna/shiny_kakuna"
+                "shiny": "textures/entity/pokemon/kakuna/shiny_kakuna",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.kakuna"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "kakuna",

@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:luxray",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/luxray/luxray",
-                "shiny": "textures/entity/pokemon/luxray/shiny_luxray"
+                "shiny": "textures/entity/pokemon/luxray/shiny_luxray",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.luxray"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "luxray",

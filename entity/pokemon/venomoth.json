@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:venomoth",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/venomoth/venomoth",
-                "shiny": "textures/entity/pokemon/venomoth/shiny_venomoth"
+                "shiny": "textures/entity/pokemon/venomoth/shiny_venomoth",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.venomoth"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "venomoth",

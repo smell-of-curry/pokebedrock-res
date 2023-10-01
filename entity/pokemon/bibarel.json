@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:bibarel",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/bibarel/bibarel",
-                "shiny": "textures/entity/pokemon/bibarel/shiny_bibarel"
+                "shiny": "textures/entity/pokemon/bibarel/shiny_bibarel",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.bibarel"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "bibarel",

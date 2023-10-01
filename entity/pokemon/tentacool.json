@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:tentacool",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/tentacool/tentacool",
-                "shiny": "textures/entity/pokemon/tentacool/shiny_tentacool"
+                "shiny": "textures/entity/pokemon/tentacool/shiny_tentacool",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.tentacool"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "tentacool",

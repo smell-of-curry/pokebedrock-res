@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:blastoise",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/blastoise/blastoise",
-                "shiny": "textures/entity/pokemon/blastoise/shiny_blastoise"
+                "shiny": "textures/entity/pokemon/blastoise/shiny_blastoise",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.blastoise"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "blastoise",

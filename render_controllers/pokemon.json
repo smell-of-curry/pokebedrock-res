@@ -10,6 +10,20 @@
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
       "textures": ["Array.variants[query.skin_id]"]
+    },
+    "controller.render.evolve": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.aura" }],
+      "textures": ["Texture.evo_aura"],
+      "uv_anim": {
+        "offset": [
+          "(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0",
+          "(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0"
+        ],
+        "scale": [1.0, 1.0]
+      },
+      "light_color_multiplier": 1,
+      "ignore_lighting": true
     }
   }
 }

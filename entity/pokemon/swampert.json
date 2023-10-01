@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:swampert",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/swampert/swampert",
-                "shiny": "textures/entity/pokemon/swampert/shiny_swampert"
+                "shiny": "textures/entity/pokemon/swampert/shiny_swampert",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.swampert"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "swampert",

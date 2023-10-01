@@ -4,11 +4,13 @@
         "description": {
             "identifier": "pokemon:scyther",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
                 "default": "textures/entity/pokemon/scyther/scyther",
-                "shiny": "textures/entity/pokemon/scyther/shiny_scyther"
+                "shiny": "textures/entity/pokemon/scyther/shiny_scyther",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
                 "default": "geometry.scyther"
@@ -27,7 +29,12 @@
                 "ground_pokemon": "controller.animation.ground.pokemon"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "scyther",
