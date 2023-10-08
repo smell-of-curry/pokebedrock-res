@@ -1,6 +1,47 @@
 {
   "namespace": "hud",
 
+  "anim_actionbar_text_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "in_expo",
+    "duration": 3,
+    "from": 1.0,
+    "to": 0,
+    "destroy_at_end": "custom_hud_actionbar_text"
+  },
+
+  "anim_actionbar_text_background_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "in_expo",
+    "duration": 3,
+    "from": 0.6,
+    "to": 0,
+    "destroy_at_end": "custom_hud_actionbar_text"
+  },
+
+  "anim_title_text_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "duration": "$title_fade_out_time",
+    "from": 1,
+    "to": 0,
+    "destroy_at_end": "custom_hud_title_text",
+    "end_event": "hud_title_text_complete"
+  },
+
+  "anim_title_background_alpha_out": {
+    "anim_type": "alpha",
+    "easing": "linear",
+    "duration": "$title_fade_out_time",
+    "from": "$title_alpha",
+    "to": 0,
+    "destroy_at_end": "custom_hud_title_text",
+    "end_event": "hud_title_text_complete"
+  },
+
+  "custom_hud_actionbar_text@hud.hud_actionbar_text": {},
+  "custom_hud_title_text@hud.hud_title_text": {},
+
   "variable_parser": {
     "$var_index": 0,
     "$var": "((('%.' + $var_size + 's') * ($actionbar_raw_text - (('%.' + ($var_size * $var_index) + 's') * $actionbar_raw_text))) - '_')"
@@ -86,6 +127,7 @@
         "pokemon_icon_wrapper": {
           "type": "panel",
           "$var_index": "$pokemon_caughtWith_index",
+          "$texture": "textures/ui/sidebar/empty",
           "controls": [
             {
               "pokemon_icon@hud.variable_parser": {
@@ -202,11 +244,11 @@
                   {
                     "requires": "($var = 'pokeb:timerball')",
                     "$texture": "textures/ui/sidebar/balls/timer"
-                  },  
+                  },
                   {
                     "requires": "($var = 'pokeb:diveball')",
                     "$texture": "textures/ui/sidebar/balls/dive"
-                  },                 
+                  },
                   {
                     "requires": "($var = 'null')",
                     "$texture": "textures/ui/sidebar/empty"
@@ -268,9 +310,9 @@
     "offset": ["47%", "0%"],
     "layer": 1,
     "$var_size": 61,
+    "alpha": 1,
     "$actionbar_raw0_text": "$actionbar_text",
     "$actionbar_raw_text": "($actionbar_raw0_text - 'sidebar:')",
-    "visible": "(not($actionbar_raw0_text - 'sidebar:' = $actionbar_raw0_text))",
 
     "controls": [
       {
@@ -419,7 +461,7 @@
                         },
                         {
                           "binding_type": "view",
-                          "source_property_name": "(#hud_title_text_string - (%.60s * #hud_title_text_string)))",
+                          "source_property_name": "(#hud_title_text_string - (%.72s * #hud_title_text_string))",
                           "target_property_name": "#log_text"
                         }
                       ]
@@ -450,7 +492,7 @@
                   },
                   {
                     "binding_type": "view",
-                    "source_property_name": "((%.60s * #hud_title_text_string) - '_'))",
+                    "source_property_name": "(((%.71s * #hud_title_text_string) - 'battleWait:') - '_')",
                     "target_property_name": "#info_label"
                   }
                 ]
@@ -462,57 +504,144 @@
     ]
   },
 
-  "hud_actionbar_text": {
-    "type": "image",
-    "anchor_from": "center",
-    "anchor_to": "center",
-    "layer": 1,
-    "visible": false
-  },
-
-  "hud_title_text": {
-    "type": "label",
-    "anchor_from": "center",
-    "anchor_to": "center",
-    "layer": 1,
-    "text": "hey",
-    "visible": false
-  },
-
-  "pokemon_sidebar_factory": {
+  "pokeb_hud_title_text_display": {
     "type": "panel",
-    "factory": {
-      "name": "hud_actionbar_text_factory",
-      "control_ids": {
-        "hud_actionbar_text": "pokemon_sidebar@hud.pokemon_sidebar"
+    "$flag_battleWait": "battleWait:",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "default@hud.custom_hud_title_text": {
+          "enabled": false,
+          "visible": false,
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_condition": "none",
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#hud_title_text_string"
+            },
+            {
+              "source_property_name": "(((#hud_title_text_string - $flag_battleWait ) = #hud_title_text_string) )",
+              "binding_type": "view",
+              "target_property_name": "#visible"
+            },
+            {
+              "source_property_name": "(((#hud_title_text_string - $flag_battleWait ) = #hud_title_text_string) )",
+              "binding_type": "view",
+              "target_property_name": "#enabled"
+            }
+          ]
+        }
+      },
+      {
+        "battleWait@hud.battle_wait": {
+          "enabled": false,
+          "visible": false,
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_condition": "none",
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#hud_title_text_string"
+            },
+            {
+              "source_property_name": "(not ((#hud_title_text_string - $flag_battleWait) = #hud_title_text_string))",
+              "binding_type": "view",
+              "target_property_name": "#visible"
+            },
+            {
+              "source_property_name": "(not ((#hud_title_text_string - $flag_battleWait) = #hud_title_text_string))",
+              "binding_type": "view",
+              "target_property_name": "#enabled"
+            }
+          ]
+        }
       }
-    }
+    ]
   },
 
-  "battle_wait_factory": {
+  "pokeb_actionbar_text_display": {
     "type": "panel",
-    "factory": {
-      "name": "hud_title_text_factory",
-      "control_ids": {
-        "hud_title_text": "battle_wait@hud.battle_wait"
+    "$flag_sidebar": "sidebar:",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "default@hud.custom_hud_actionbar_text": {
+          "$actionbar_raw0_text": "$actionbar_text",
+          "visible": "(($actionbar_raw0_text - $flag_sidebar) = $actionbar_raw0_text)"
+        }
+      },
+      {
+        "sidebar@hud.pokemon_sidebar": {
+          "$actionbar_raw0_text": "$actionbar_text",
+          "visible": "(not(($actionbar_raw0_text - $flag_sidebar) = $actionbar_raw0_text))"
+        }
       }
-    }
+    ]
   },
 
   "root_panel": {
     "modifications": [
       {
         "array_name": "controls",
-        "operation": "insert_front",
+        "operation": "replace",
+        "where": {
+          "hud_actionbar_text_area": {
+            "type": "panel",
+            "factory": {
+              "name": "hud_actionbar_text_factory",
+              "control_ids": {
+                "hud_actionbar_text": "hud_actionbar_text@hud.hud_actionbar_text"
+              }
+            }
+          }
+        },
         "value": {
-          "pokemon_sidebar_factory@hud.pokemon_sidebar_factory": {}
+          "hud_actionbar_text_area": {
+            "type": "panel",
+            "size": ["100%", "100%"],
+            "controls": [
+              {
+                "hud_actionbar_text_factory": {
+                  "type": "factory",
+                  "control_ids": {
+                    "hud_actionbar_text": "@hud.pokeb_actionbar_text_display"
+                  }
+                }
+              }
+            ]
+          }
         }
       },
       {
         "array_name": "controls",
-        "operation": "insert_front",
+        "operation": "replace",
+        "where": {
+          "hud_title_text_area": {
+            "type": "panel",
+            "factory": {
+              "name": "hud_title_text_factory",
+              "control_ids": {
+                "hud_title_text": "hud_title_text@hud.hud_title_text"
+              }
+            }
+          }
+        },
         "value": {
-          "battle_wait_factory@hud.battle_wait_factory": {}
+          "hud_title_text_area": {
+            "type": "panel",
+            "size": ["100%", "100%"],
+            "controls": [
+              {
+                "hud_title_text_factory": {
+                  "type": "factory",
+                  "control_ids": {
+                    "hud_title_text": "@hud.pokeb_hud_title_text_display"
+                  }
+                }
+              }
+            ]
+          }
         }
       }
     ]

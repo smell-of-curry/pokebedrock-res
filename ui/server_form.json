@@ -39,7 +39,7 @@
     "type": "panel",
     "$flag_pokemon": "§p§o§k§e",
     "$flag_battle": "§b§a§t§l§e",
-    "$flag_chestgui": "§c§h§e§s§t",
+    "$flag_chestGui": "§c§h§e§s§t",
     "size": ["100%", "100%"],
 
     "controls": [
@@ -52,21 +52,16 @@
               "binding_type": "global",
               "binding_condition": "none",
               "binding_name": "#title_text",
-
               "binding_name_override": "#title_text"
             },
             {
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestgui ) = #title_text) )",
-
+              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestGui ) = #title_text) )",
               "binding_type": "view",
-
               "target_property_name": "#visible"
             },
             {
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestgui ) = #title_text) )",
-
+              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestGui ) = #title_text) )",
               "binding_type": "view",
-
               "target_property_name": "#enabled"
             }
           ]
@@ -80,20 +75,16 @@
             {
               "binding_type": "global",
               "binding_condition": "none",
-
               "binding_name": "#title_text",
               "binding_name_override": "#title_text"
             },
             {
               "source_property_name": "(not ((#title_text - $flag_battle) = #title_text))",
-
               "binding_type": "view",
-
               "target_property_name": "#visible"
             },
             {
               "source_property_name": "(not ((#title_text - $flag_battle) = #title_text))",
-
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -109,20 +100,16 @@
               "binding_type": "global",
               "binding_condition": "none",
               "binding_name": "#title_text",
-
               "binding_name_override": "#title_text"
             },
             {
               "source_property_name": "(not ((#title_text - $flag_pokemon) = #title_text))",
-
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "source_property_name": "(not ((#title_text - $flag_pokemon) = #title_text))",
-
               "binding_type": "view",
-
               "target_property_name": "#enabled"
             }
           ]
@@ -140,12 +127,12 @@
               "binding_name_override": "#title_text"
             },
             {
-              "source_property_name": "(not ((#title_text - $flag_chestgui) = #title_text))",
+              "source_property_name": "(not ((#title_text - $flag_chestGui) = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
-              "source_property_name": "(not ((#title_text - $flag_chestgui) = #title_text))",
+              "source_property_name": "(not ((#title_text - $flag_chestGui) = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }

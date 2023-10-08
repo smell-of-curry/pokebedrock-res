@@ -1,0 +1,74 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.pokemon": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            {
+              "chill": "query.modified_move_speed <= 0.01"
+            }
+          ],
+          "transitions": [
+            {
+              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+            },
+            {
+              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "walk": {
+          "animations": ["walk"],
+          "transitions": [
+            {
+              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+            },
+            {
+              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "fly": {
+          "animations": ["fly"],
+          "transitions": [
+            {
+              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+            },
+            {
+              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "swim": {
+          "animations": ["swim"],
+          "transitions": [
+            {
+              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        }
+      }
+    }
+  }
+}
