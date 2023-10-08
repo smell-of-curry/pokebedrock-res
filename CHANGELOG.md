@@ -1,6 +1,9 @@
-**Update v2.5.5**
+**Update v2.5.7**
 
-- Fixed UI Glitch where if the first Pokémon on the sidebar was missing it would look broken 
-- New Pikachu Model by @Brunodltt#6092 
-- Added Diglett & Dugtrio Model by @lehyperjay 
-- Added Electrode and Voltorb Model by @lehyperjay 
+- Updated Battle Wait ui system, now it will allow normal title text, and battle wait text.
+- Updated Pokemon sidebar to enable actionbar text without the sidebar.
+- Changed Animations for Pokémon, and redid animation controllers to support flying, and swimming, also to smooth the transitions between states.
+- Added Skins, and implemented Male, and Female Skins to some Pokémon
+- Added 20 New Skin types to all Pokémon, although not all Pokémon have skins for them yet.
+- New Snorlax Model by @Brunodltt#6092 
+- Added Hex Mania for new quest System made by @liltangy .
