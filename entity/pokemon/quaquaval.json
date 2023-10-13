@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:quaquaval",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/quaquaval",
-                "shiny": "textures/sprites/quaquaval",
-                "default_male": "textures/sprites/quaquaval",
-                "default_female": "textures/sprites/quaquaval",
-                "shiny_male": "textures/sprites/quaquaval",
-                "shiny_female": "textures/sprites/quaquaval",
-                "halloween": "textures/sprites/quaquaval",
-                "shiny_halloween": "textures/sprites/quaquaval",
-                "doll_female": "textures/sprites/quaquaval",
-                "doll_male": "textures/sprites/quaquaval",
-                "witch_female": "textures/sprites/quaquaval",
-                "witch_male": "textures/sprites/quaquaval",
-                "cap_female": "textures/sprites/quaquaval",
-                "cap_male": "textures/sprites/quaquaval",
-                "santa_female": "textures/sprites/quaquaval",
-                "santa_male": "textures/sprites/quaquaval",
-                "tophat_female": "textures/sprites/quaquaval",
-                "tophat_male": "textures/sprites/quaquaval",
-                "tophat_stpatricks_female": "textures/sprites/quaquaval",
-                "tophat_stpatricks_male": "textures/sprites/quaquaval",
-                "tophat_4thjuly_female": "textures/sprites/quaquaval",
-                "tophat_4thjuly_male": "textures/sprites/quaquaval",
-                "detective": "textures/sprites/quaquaval"
+                "default": "textures/entity/pokemon/quaquaval/quaquaval",
+                "default_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "default_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "shiny": "textures/entity/pokemon/quaquaval/shiny_quaquaval",
+                "shiny_male": "textures/entity/pokemon/quaquaval/shiny_quaquaval",
+                "shiny_female": "textures/entity/pokemon/quaquaval/shiny_quaquaval",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/quaquaval/quaquaval",
+                "shiny_halloween": "textures/entity/pokemon/quaquaval/quaquaval",
+                "doll_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "doll_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "witch_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "witch_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "cap_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "cap_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "santa_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "santa_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_stpatricks_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_stpatricks_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_4thjuly_female": "textures/entity/pokemon/quaquaval/quaquaval",
+                "tophat_4thjuly_male": "textures/entity/pokemon/quaquaval/quaquaval",
+                "detective": "textures/entity/pokemon/quaquaval/quaquaval"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.quaquaval"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.quaquaval.walk",
+                "chill": "animation.quaquaval.chill",
+                "fly": "animation.quaquaval.walk",
+                "swim": "animation.quaquaval.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "quaquaval",

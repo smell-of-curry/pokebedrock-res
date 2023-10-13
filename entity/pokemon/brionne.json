@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:brionne",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/brionne",
-                "shiny": "textures/sprites/brionne",
-                "default_male": "textures/sprites/brionne",
-                "default_female": "textures/sprites/brionne",
-                "shiny_male": "textures/sprites/brionne",
-                "shiny_female": "textures/sprites/brionne",
-                "halloween": "textures/sprites/brionne",
-                "shiny_halloween": "textures/sprites/brionne",
-                "doll_female": "textures/sprites/brionne",
-                "doll_male": "textures/sprites/brionne",
-                "witch_female": "textures/sprites/brionne",
-                "witch_male": "textures/sprites/brionne",
-                "cap_female": "textures/sprites/brionne",
-                "cap_male": "textures/sprites/brionne",
-                "santa_female": "textures/sprites/brionne",
-                "santa_male": "textures/sprites/brionne",
-                "tophat_female": "textures/sprites/brionne",
-                "tophat_male": "textures/sprites/brionne",
-                "tophat_stpatricks_female": "textures/sprites/brionne",
-                "tophat_stpatricks_male": "textures/sprites/brionne",
-                "tophat_4thjuly_female": "textures/sprites/brionne",
-                "tophat_4thjuly_male": "textures/sprites/brionne",
-                "detective": "textures/sprites/brionne"
+                "default": "textures/entity/pokemon/brionne/brionne",
+                "default_male": "textures/entity/pokemon/brionne/brionne",
+                "default_female": "textures/entity/pokemon/brionne/brionne",
+                "shiny": "textures/entity/pokemon/brionne/shiny_brionne",
+                "shiny_male": "textures/entity/pokemon/brionne/shiny_brionne",
+                "shiny_female": "textures/entity/pokemon/brionne/shiny_brionne",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/brionne/brionne",
+                "shiny_halloween": "textures/entity/pokemon/brionne/brionne",
+                "doll_female": "textures/entity/pokemon/brionne/brionne",
+                "doll_male": "textures/entity/pokemon/brionne/brionne",
+                "witch_female": "textures/entity/pokemon/brionne/brionne",
+                "witch_male": "textures/entity/pokemon/brionne/brionne",
+                "cap_female": "textures/entity/pokemon/brionne/brionne",
+                "cap_male": "textures/entity/pokemon/brionne/brionne",
+                "santa_female": "textures/entity/pokemon/brionne/brionne",
+                "santa_male": "textures/entity/pokemon/brionne/brionne",
+                "tophat_female": "textures/entity/pokemon/brionne/brionne",
+                "tophat_male": "textures/entity/pokemon/brionne/brionne",
+                "tophat_stpatricks_female": "textures/entity/pokemon/brionne/brionne",
+                "tophat_stpatricks_male": "textures/entity/pokemon/brionne/brionne",
+                "tophat_4thjuly_female": "textures/entity/pokemon/brionne/brionne",
+                "tophat_4thjuly_male": "textures/entity/pokemon/brionne/brionne",
+                "detective": "textures/entity/pokemon/brionne/brionne"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.brionne"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.brionne.walk",
+                "chill": "animation.brionne.chill",
+                "fly": "animation.brionne.walk",
+                "swim": "animation.brionne.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "brionne",

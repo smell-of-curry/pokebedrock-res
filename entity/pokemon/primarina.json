@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:primarina",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/primarina",
-                "shiny": "textures/sprites/primarina",
-                "default_male": "textures/sprites/primarina",
-                "default_female": "textures/sprites/primarina",
-                "shiny_male": "textures/sprites/primarina",
-                "shiny_female": "textures/sprites/primarina",
-                "halloween": "textures/sprites/primarina",
-                "shiny_halloween": "textures/sprites/primarina",
-                "doll_female": "textures/sprites/primarina",
-                "doll_male": "textures/sprites/primarina",
-                "witch_female": "textures/sprites/primarina",
-                "witch_male": "textures/sprites/primarina",
-                "cap_female": "textures/sprites/primarina",
-                "cap_male": "textures/sprites/primarina",
-                "santa_female": "textures/sprites/primarina",
-                "santa_male": "textures/sprites/primarina",
-                "tophat_female": "textures/sprites/primarina",
-                "tophat_male": "textures/sprites/primarina",
-                "tophat_stpatricks_female": "textures/sprites/primarina",
-                "tophat_stpatricks_male": "textures/sprites/primarina",
-                "tophat_4thjuly_female": "textures/sprites/primarina",
-                "tophat_4thjuly_male": "textures/sprites/primarina",
-                "detective": "textures/sprites/primarina"
+                "default": "textures/entity/pokemon/primarina/primarina",
+                "default_male": "textures/entity/pokemon/primarina/primarina",
+                "default_female": "textures/entity/pokemon/primarina/primarina",
+                "shiny": "textures/entity/pokemon/primarina/shiny_primarina",
+                "shiny_male": "textures/entity/pokemon/primarina/shiny_primarina",
+                "shiny_female": "textures/entity/pokemon/primarina/shiny_primarina",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/primarina/primarina",
+                "shiny_halloween": "textures/entity/pokemon/primarina/primarina",
+                "doll_female": "textures/entity/pokemon/primarina/primarina",
+                "doll_male": "textures/entity/pokemon/primarina/primarina",
+                "witch_female": "textures/entity/pokemon/primarina/primarina",
+                "witch_male": "textures/entity/pokemon/primarina/primarina",
+                "cap_female": "textures/entity/pokemon/primarina/primarina",
+                "cap_male": "textures/entity/pokemon/primarina/primarina",
+                "santa_female": "textures/entity/pokemon/primarina/primarina",
+                "santa_male": "textures/entity/pokemon/primarina/primarina",
+                "tophat_female": "textures/entity/pokemon/primarina/primarina",
+                "tophat_male": "textures/entity/pokemon/primarina/primarina",
+                "tophat_stpatricks_female": "textures/entity/pokemon/primarina/primarina",
+                "tophat_stpatricks_male": "textures/entity/pokemon/primarina/primarina",
+                "tophat_4thjuly_female": "textures/entity/pokemon/primarina/primarina",
+                "tophat_4thjuly_male": "textures/entity/pokemon/primarina/primarina",
+                "detective": "textures/entity/pokemon/primarina/primarina"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.primarina"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.primarina.walk",
+                "chill": "animation.primarina.chill",
+                "fly": "animation.primarina.walk",
+                "swim": "animation.primarina.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "primarina",

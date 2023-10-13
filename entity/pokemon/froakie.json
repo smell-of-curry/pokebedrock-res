@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:froakie",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/froakie",
-                "shiny": "textures/sprites/froakie",
-                "default_male": "textures/sprites/froakie",
-                "default_female": "textures/sprites/froakie",
-                "shiny_male": "textures/sprites/froakie",
-                "shiny_female": "textures/sprites/froakie",
-                "halloween": "textures/sprites/froakie",
-                "shiny_halloween": "textures/sprites/froakie",
-                "doll_female": "textures/sprites/froakie",
-                "doll_male": "textures/sprites/froakie",
-                "witch_female": "textures/sprites/froakie",
-                "witch_male": "textures/sprites/froakie",
-                "cap_female": "textures/sprites/froakie",
-                "cap_male": "textures/sprites/froakie",
-                "santa_female": "textures/sprites/froakie",
-                "santa_male": "textures/sprites/froakie",
-                "tophat_female": "textures/sprites/froakie",
-                "tophat_male": "textures/sprites/froakie",
-                "tophat_stpatricks_female": "textures/sprites/froakie",
-                "tophat_stpatricks_male": "textures/sprites/froakie",
-                "tophat_4thjuly_female": "textures/sprites/froakie",
-                "tophat_4thjuly_male": "textures/sprites/froakie",
-                "detective": "textures/sprites/froakie"
+                "default": "textures/entity/pokemon/froakie/froakie",
+                "default_male": "textures/entity/pokemon/froakie/froakie",
+                "default_female": "textures/entity/pokemon/froakie/froakie",
+                "shiny": "textures/entity/pokemon/froakie/shiny_froakie",
+                "shiny_male": "textures/entity/pokemon/froakie/shiny_froakie",
+                "shiny_female": "textures/entity/pokemon/froakie/shiny_froakie",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/froakie/froakie",
+                "shiny_halloween": "textures/entity/pokemon/froakie/froakie",
+                "doll_female": "textures/entity/pokemon/froakie/froakie",
+                "doll_male": "textures/entity/pokemon/froakie/froakie",
+                "witch_female": "textures/entity/pokemon/froakie/froakie",
+                "witch_male": "textures/entity/pokemon/froakie/froakie",
+                "cap_female": "textures/entity/pokemon/froakie/froakie",
+                "cap_male": "textures/entity/pokemon/froakie/froakie",
+                "santa_female": "textures/entity/pokemon/froakie/froakie",
+                "santa_male": "textures/entity/pokemon/froakie/froakie",
+                "tophat_female": "textures/entity/pokemon/froakie/froakie",
+                "tophat_male": "textures/entity/pokemon/froakie/froakie",
+                "tophat_stpatricks_female": "textures/entity/pokemon/froakie/froakie",
+                "tophat_stpatricks_male": "textures/entity/pokemon/froakie/froakie",
+                "tophat_4thjuly_female": "textures/entity/pokemon/froakie/froakie",
+                "tophat_4thjuly_male": "textures/entity/pokemon/froakie/froakie",
+                "detective": "textures/entity/pokemon/froakie/froakie"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.froakie"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.froakie.walk",
+                "chill": "animation.froakie.chill",
+                "fly": "animation.froakie.walk",
+                "swim": "animation.froakie.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "froakie",

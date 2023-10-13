@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:torracat",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/torracat",
-                "shiny": "textures/sprites/torracat",
-                "default_male": "textures/sprites/torracat",
-                "default_female": "textures/sprites/torracat",
-                "shiny_male": "textures/sprites/torracat",
-                "shiny_female": "textures/sprites/torracat",
-                "halloween": "textures/sprites/torracat",
-                "shiny_halloween": "textures/sprites/torracat",
-                "doll_female": "textures/sprites/torracat",
-                "doll_male": "textures/sprites/torracat",
-                "witch_female": "textures/sprites/torracat",
-                "witch_male": "textures/sprites/torracat",
-                "cap_female": "textures/sprites/torracat",
-                "cap_male": "textures/sprites/torracat",
-                "santa_female": "textures/sprites/torracat",
-                "santa_male": "textures/sprites/torracat",
-                "tophat_female": "textures/sprites/torracat",
-                "tophat_male": "textures/sprites/torracat",
-                "tophat_stpatricks_female": "textures/sprites/torracat",
-                "tophat_stpatricks_male": "textures/sprites/torracat",
-                "tophat_4thjuly_female": "textures/sprites/torracat",
-                "tophat_4thjuly_male": "textures/sprites/torracat",
-                "detective": "textures/sprites/torracat"
+                "default": "textures/entity/pokemon/torracat/torracat",
+                "default_male": "textures/entity/pokemon/torracat/torracat",
+                "default_female": "textures/entity/pokemon/torracat/torracat",
+                "shiny": "textures/entity/pokemon/torracat/shiny_torracat",
+                "shiny_male": "textures/entity/pokemon/torracat/shiny_torracat",
+                "shiny_female": "textures/entity/pokemon/torracat/shiny_torracat",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/torracat/torracat",
+                "shiny_halloween": "textures/entity/pokemon/torracat/torracat",
+                "doll_female": "textures/entity/pokemon/torracat/torracat",
+                "doll_male": "textures/entity/pokemon/torracat/torracat",
+                "witch_female": "textures/entity/pokemon/torracat/torracat",
+                "witch_male": "textures/entity/pokemon/torracat/torracat",
+                "cap_female": "textures/entity/pokemon/torracat/torracat",
+                "cap_male": "textures/entity/pokemon/torracat/torracat",
+                "santa_female": "textures/entity/pokemon/torracat/torracat",
+                "santa_male": "textures/entity/pokemon/torracat/torracat",
+                "tophat_female": "textures/entity/pokemon/torracat/torracat",
+                "tophat_male": "textures/entity/pokemon/torracat/torracat",
+                "tophat_stpatricks_female": "textures/entity/pokemon/torracat/torracat",
+                "tophat_stpatricks_male": "textures/entity/pokemon/torracat/torracat",
+                "tophat_4thjuly_female": "textures/entity/pokemon/torracat/torracat",
+                "tophat_4thjuly_male": "textures/entity/pokemon/torracat/torracat",
+                "detective": "textures/entity/pokemon/torracat/torracat"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.torracat"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.torracat.walk",
+                "chill": "animation.torracat.chill",
+                "fly": "animation.torracat.walk",
+                "swim": "animation.torracat.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "torracat",

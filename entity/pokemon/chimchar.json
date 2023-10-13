@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:chimchar",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/chimchar",
-                "shiny": "textures/sprites/chimchar",
-                "default_male": "textures/sprites/chimchar",
-                "default_female": "textures/sprites/chimchar",
-                "shiny_male": "textures/sprites/chimchar",
-                "shiny_female": "textures/sprites/chimchar",
-                "halloween": "textures/sprites/chimchar",
-                "shiny_halloween": "textures/sprites/chimchar",
-                "doll_female": "textures/sprites/chimchar",
-                "doll_male": "textures/sprites/chimchar",
-                "witch_female": "textures/sprites/chimchar",
-                "witch_male": "textures/sprites/chimchar",
-                "cap_female": "textures/sprites/chimchar",
-                "cap_male": "textures/sprites/chimchar",
-                "santa_female": "textures/sprites/chimchar",
-                "santa_male": "textures/sprites/chimchar",
-                "tophat_female": "textures/sprites/chimchar",
-                "tophat_male": "textures/sprites/chimchar",
-                "tophat_stpatricks_female": "textures/sprites/chimchar",
-                "tophat_stpatricks_male": "textures/sprites/chimchar",
-                "tophat_4thjuly_female": "textures/sprites/chimchar",
-                "tophat_4thjuly_male": "textures/sprites/chimchar",
-                "detective": "textures/sprites/chimchar"
+                "default": "textures/entity/pokemon/chimchar/chimchar",
+                "default_male": "textures/entity/pokemon/chimchar/chimchar",
+                "default_female": "textures/entity/pokemon/chimchar/chimchar",
+                "shiny": "textures/entity/pokemon/chimchar/shiny_chimchar",
+                "shiny_male": "textures/entity/pokemon/chimchar/shiny_chimchar",
+                "shiny_female": "textures/entity/pokemon/chimchar/shiny_chimchar",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/chimchar/chimchar",
+                "shiny_halloween": "textures/entity/pokemon/chimchar/chimchar",
+                "doll_female": "textures/entity/pokemon/chimchar/chimchar",
+                "doll_male": "textures/entity/pokemon/chimchar/chimchar",
+                "witch_female": "textures/entity/pokemon/chimchar/chimchar",
+                "witch_male": "textures/entity/pokemon/chimchar/chimchar",
+                "cap_female": "textures/entity/pokemon/chimchar/chimchar",
+                "cap_male": "textures/entity/pokemon/chimchar/chimchar",
+                "santa_female": "textures/entity/pokemon/chimchar/chimchar",
+                "santa_male": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_female": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_male": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_stpatricks_female": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_stpatricks_male": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_4thjuly_female": "textures/entity/pokemon/chimchar/chimchar",
+                "tophat_4thjuly_male": "textures/entity/pokemon/chimchar/chimchar",
+                "detective": "textures/entity/pokemon/chimchar/chimchar"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.chimchar"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.chimchar.walk",
+                "chill": "animation.chimchar.chill",
+                "fly": "animation.chimchar.walk",
+                "swim": "animation.chimchar.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "chimchar",

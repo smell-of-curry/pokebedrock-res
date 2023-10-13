@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:piplup",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/piplup",
-                "shiny": "textures/sprites/piplup",
-                "default_male": "textures/sprites/piplup",
-                "default_female": "textures/sprites/piplup",
-                "shiny_male": "textures/sprites/piplup",
-                "shiny_female": "textures/sprites/piplup",
-                "halloween": "textures/sprites/piplup",
-                "shiny_halloween": "textures/sprites/piplup",
-                "doll_female": "textures/sprites/piplup",
-                "doll_male": "textures/sprites/piplup",
-                "witch_female": "textures/sprites/piplup",
-                "witch_male": "textures/sprites/piplup",
-                "cap_female": "textures/sprites/piplup",
-                "cap_male": "textures/sprites/piplup",
-                "santa_female": "textures/sprites/piplup",
-                "santa_male": "textures/sprites/piplup",
-                "tophat_female": "textures/sprites/piplup",
-                "tophat_male": "textures/sprites/piplup",
-                "tophat_stpatricks_female": "textures/sprites/piplup",
-                "tophat_stpatricks_male": "textures/sprites/piplup",
-                "tophat_4thjuly_female": "textures/sprites/piplup",
-                "tophat_4thjuly_male": "textures/sprites/piplup",
-                "detective": "textures/sprites/piplup"
+                "default": "textures/entity/pokemon/piplup/piplup",
+                "default_male": "textures/entity/pokemon/piplup/piplup",
+                "default_female": "textures/entity/pokemon/piplup/piplup",
+                "shiny": "textures/entity/pokemon/piplup/shiny_piplup",
+                "shiny_male": "textures/entity/pokemon/piplup/shiny_piplup",
+                "shiny_female": "textures/entity/pokemon/piplup/shiny_piplup",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/piplup/piplup",
+                "shiny_halloween": "textures/entity/pokemon/piplup/piplup",
+                "doll_female": "textures/entity/pokemon/piplup/piplup",
+                "doll_male": "textures/entity/pokemon/piplup/piplup",
+                "witch_female": "textures/entity/pokemon/piplup/piplup",
+                "witch_male": "textures/entity/pokemon/piplup/piplup",
+                "cap_female": "textures/entity/pokemon/piplup/piplup",
+                "cap_male": "textures/entity/pokemon/piplup/piplup",
+                "santa_female": "textures/entity/pokemon/piplup/piplup",
+                "santa_male": "textures/entity/pokemon/piplup/piplup",
+                "tophat_female": "textures/entity/pokemon/piplup/piplup",
+                "tophat_male": "textures/entity/pokemon/piplup/piplup",
+                "tophat_stpatricks_female": "textures/entity/pokemon/piplup/piplup",
+                "tophat_stpatricks_male": "textures/entity/pokemon/piplup/piplup",
+                "tophat_4thjuly_female": "textures/entity/pokemon/piplup/piplup",
+                "tophat_4thjuly_male": "textures/entity/pokemon/piplup/piplup",
+                "detective": "textures/entity/pokemon/piplup/piplup"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.piplup"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.piplup.walk",
+                "chill": "animation.piplup.chill",
+                "fly": "animation.piplup.walk",
+                "swim": "animation.piplup.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "piplup",

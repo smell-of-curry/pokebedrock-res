@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:sprigatito",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/sprigatito",
-                "shiny": "textures/sprites/sprigatito",
-                "default_male": "textures/sprites/sprigatito",
-                "default_female": "textures/sprites/sprigatito",
-                "shiny_male": "textures/sprites/sprigatito",
-                "shiny_female": "textures/sprites/sprigatito",
-                "halloween": "textures/sprites/sprigatito",
-                "shiny_halloween": "textures/sprites/sprigatito",
-                "doll_female": "textures/sprites/sprigatito",
-                "doll_male": "textures/sprites/sprigatito",
-                "witch_female": "textures/sprites/sprigatito",
-                "witch_male": "textures/sprites/sprigatito",
-                "cap_female": "textures/sprites/sprigatito",
-                "cap_male": "textures/sprites/sprigatito",
-                "santa_female": "textures/sprites/sprigatito",
-                "santa_male": "textures/sprites/sprigatito",
-                "tophat_female": "textures/sprites/sprigatito",
-                "tophat_male": "textures/sprites/sprigatito",
-                "tophat_stpatricks_female": "textures/sprites/sprigatito",
-                "tophat_stpatricks_male": "textures/sprites/sprigatito",
-                "tophat_4thjuly_female": "textures/sprites/sprigatito",
-                "tophat_4thjuly_male": "textures/sprites/sprigatito",
-                "detective": "textures/sprites/sprigatito"
+                "default": "textures/entity/pokemon/sprigatito/sprigatito",
+                "default_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "default_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "shiny": "textures/entity/pokemon/sprigatito/shiny_sprigatito",
+                "shiny_male": "textures/entity/pokemon/sprigatito/shiny_sprigatito",
+                "shiny_female": "textures/entity/pokemon/sprigatito/shiny_sprigatito",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/sprigatito/sprigatito",
+                "shiny_halloween": "textures/entity/pokemon/sprigatito/sprigatito",
+                "doll_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "doll_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "witch_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "witch_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "cap_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "cap_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "santa_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "santa_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_stpatricks_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_stpatricks_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_4thjuly_female": "textures/entity/pokemon/sprigatito/sprigatito",
+                "tophat_4thjuly_male": "textures/entity/pokemon/sprigatito/sprigatito",
+                "detective": "textures/entity/pokemon/sprigatito/sprigatito"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.sprigatito"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.sprigatito.walk",
+                "chill": "animation.sprigatito.chill",
+                "fly": "animation.sprigatito.walk",
+                "swim": "animation.sprigatito.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "sprigatito",

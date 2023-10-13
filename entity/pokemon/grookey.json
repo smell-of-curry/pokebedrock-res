@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:grookey",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/grookey",
-                "shiny": "textures/sprites/grookey",
-                "default_male": "textures/sprites/grookey",
-                "default_female": "textures/sprites/grookey",
-                "shiny_male": "textures/sprites/grookey",
-                "shiny_female": "textures/sprites/grookey",
-                "halloween": "textures/sprites/grookey",
-                "shiny_halloween": "textures/sprites/grookey",
-                "doll_female": "textures/sprites/grookey",
-                "doll_male": "textures/sprites/grookey",
-                "witch_female": "textures/sprites/grookey",
-                "witch_male": "textures/sprites/grookey",
-                "cap_female": "textures/sprites/grookey",
-                "cap_male": "textures/sprites/grookey",
-                "santa_female": "textures/sprites/grookey",
-                "santa_male": "textures/sprites/grookey",
-                "tophat_female": "textures/sprites/grookey",
-                "tophat_male": "textures/sprites/grookey",
-                "tophat_stpatricks_female": "textures/sprites/grookey",
-                "tophat_stpatricks_male": "textures/sprites/grookey",
-                "tophat_4thjuly_female": "textures/sprites/grookey",
-                "tophat_4thjuly_male": "textures/sprites/grookey",
-                "detective": "textures/sprites/grookey"
+                "default": "textures/entity/pokemon/grookey/grookey",
+                "default_male": "textures/entity/pokemon/grookey/grookey",
+                "default_female": "textures/entity/pokemon/grookey/grookey",
+                "shiny": "textures/entity/pokemon/grookey/shiny_grookey",
+                "shiny_male": "textures/entity/pokemon/grookey/shiny_grookey",
+                "shiny_female": "textures/entity/pokemon/grookey/shiny_grookey",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/grookey/grookey",
+                "shiny_halloween": "textures/entity/pokemon/grookey/grookey",
+                "doll_female": "textures/entity/pokemon/grookey/grookey",
+                "doll_male": "textures/entity/pokemon/grookey/grookey",
+                "witch_female": "textures/entity/pokemon/grookey/grookey",
+                "witch_male": "textures/entity/pokemon/grookey/grookey",
+                "cap_female": "textures/entity/pokemon/grookey/grookey",
+                "cap_male": "textures/entity/pokemon/grookey/grookey",
+                "santa_female": "textures/entity/pokemon/grookey/grookey",
+                "santa_male": "textures/entity/pokemon/grookey/grookey",
+                "tophat_female": "textures/entity/pokemon/grookey/grookey",
+                "tophat_male": "textures/entity/pokemon/grookey/grookey",
+                "tophat_stpatricks_female": "textures/entity/pokemon/grookey/grookey",
+                "tophat_stpatricks_male": "textures/entity/pokemon/grookey/grookey",
+                "tophat_4thjuly_female": "textures/entity/pokemon/grookey/grookey",
+                "tophat_4thjuly_male": "textures/entity/pokemon/grookey/grookey",
+                "detective": "textures/entity/pokemon/grookey/grookey"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.grookey"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.grookey.walk",
+                "chill": "animation.grookey.chill",
+                "fly": "animation.grookey.walk",
+                "swim": "animation.grookey.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "grookey",

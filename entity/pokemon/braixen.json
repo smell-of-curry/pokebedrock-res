@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:braixen",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/braixen",
-                "shiny": "textures/sprites/braixen",
-                "default_male": "textures/sprites/braixen",
-                "default_female": "textures/sprites/braixen",
-                "shiny_male": "textures/sprites/braixen",
-                "shiny_female": "textures/sprites/braixen",
-                "halloween": "textures/sprites/braixen",
-                "shiny_halloween": "textures/sprites/braixen",
-                "doll_female": "textures/sprites/braixen",
-                "doll_male": "textures/sprites/braixen",
-                "witch_female": "textures/sprites/braixen",
-                "witch_male": "textures/sprites/braixen",
-                "cap_female": "textures/sprites/braixen",
-                "cap_male": "textures/sprites/braixen",
-                "santa_female": "textures/sprites/braixen",
-                "santa_male": "textures/sprites/braixen",
-                "tophat_female": "textures/sprites/braixen",
-                "tophat_male": "textures/sprites/braixen",
-                "tophat_stpatricks_female": "textures/sprites/braixen",
-                "tophat_stpatricks_male": "textures/sprites/braixen",
-                "tophat_4thjuly_female": "textures/sprites/braixen",
-                "tophat_4thjuly_male": "textures/sprites/braixen",
-                "detective": "textures/sprites/braixen"
+                "default": "textures/entity/pokemon/braixen/braixen",
+                "default_male": "textures/entity/pokemon/braixen/braixen",
+                "default_female": "textures/entity/pokemon/braixen/braixen",
+                "shiny": "textures/entity/pokemon/braixen/shiny_braixen",
+                "shiny_male": "textures/entity/pokemon/braixen/shiny_braixen",
+                "shiny_female": "textures/entity/pokemon/braixen/shiny_braixen",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/braixen/braixen",
+                "shiny_halloween": "textures/entity/pokemon/braixen/braixen",
+                "doll_female": "textures/entity/pokemon/braixen/braixen",
+                "doll_male": "textures/entity/pokemon/braixen/braixen",
+                "witch_female": "textures/entity/pokemon/braixen/braixen",
+                "witch_male": "textures/entity/pokemon/braixen/braixen",
+                "cap_female": "textures/entity/pokemon/braixen/braixen",
+                "cap_male": "textures/entity/pokemon/braixen/braixen",
+                "santa_female": "textures/entity/pokemon/braixen/braixen",
+                "santa_male": "textures/entity/pokemon/braixen/braixen",
+                "tophat_female": "textures/entity/pokemon/braixen/braixen",
+                "tophat_male": "textures/entity/pokemon/braixen/braixen",
+                "tophat_stpatricks_female": "textures/entity/pokemon/braixen/braixen",
+                "tophat_stpatricks_male": "textures/entity/pokemon/braixen/braixen",
+                "tophat_4thjuly_female": "textures/entity/pokemon/braixen/braixen",
+                "tophat_4thjuly_male": "textures/entity/pokemon/braixen/braixen",
+                "detective": "textures/entity/pokemon/braixen/braixen"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.braixen"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.braixen.walk",
+                "chill": "animation.braixen.chill",
+                "fly": "animation.braixen.walk",
+                "swim": "animation.braixen.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "braixen",

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:fennekin",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/fennekin",
-                "shiny": "textures/sprites/fennekin",
-                "default_male": "textures/sprites/fennekin",
-                "default_female": "textures/sprites/fennekin",
-                "shiny_male": "textures/sprites/fennekin",
-                "shiny_female": "textures/sprites/fennekin",
-                "halloween": "textures/sprites/fennekin",
-                "shiny_halloween": "textures/sprites/fennekin",
-                "doll_female": "textures/sprites/fennekin",
-                "doll_male": "textures/sprites/fennekin",
-                "witch_female": "textures/sprites/fennekin",
-                "witch_male": "textures/sprites/fennekin",
-                "cap_female": "textures/sprites/fennekin",
-                "cap_male": "textures/sprites/fennekin",
-                "santa_female": "textures/sprites/fennekin",
-                "santa_male": "textures/sprites/fennekin",
-                "tophat_female": "textures/sprites/fennekin",
-                "tophat_male": "textures/sprites/fennekin",
-                "tophat_stpatricks_female": "textures/sprites/fennekin",
-                "tophat_stpatricks_male": "textures/sprites/fennekin",
-                "tophat_4thjuly_female": "textures/sprites/fennekin",
-                "tophat_4thjuly_male": "textures/sprites/fennekin",
-                "detective": "textures/sprites/fennekin"
+                "default": "textures/entity/pokemon/fennekin/fennekin",
+                "default_male": "textures/entity/pokemon/fennekin/fennekin",
+                "default_female": "textures/entity/pokemon/fennekin/fennekin",
+                "shiny": "textures/entity/pokemon/fennekin/shiny_fennekin",
+                "shiny_male": "textures/entity/pokemon/fennekin/shiny_fennekin",
+                "shiny_female": "textures/entity/pokemon/fennekin/shiny_fennekin",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/fennekin/fennekin",
+                "shiny_halloween": "textures/entity/pokemon/fennekin/fennekin",
+                "doll_female": "textures/entity/pokemon/fennekin/fennekin",
+                "doll_male": "textures/entity/pokemon/fennekin/fennekin",
+                "witch_female": "textures/entity/pokemon/fennekin/fennekin",
+                "witch_male": "textures/entity/pokemon/fennekin/fennekin",
+                "cap_female": "textures/entity/pokemon/fennekin/fennekin",
+                "cap_male": "textures/entity/pokemon/fennekin/fennekin",
+                "santa_female": "textures/entity/pokemon/fennekin/fennekin",
+                "santa_male": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_female": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_male": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_stpatricks_female": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_stpatricks_male": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_4thjuly_female": "textures/entity/pokemon/fennekin/fennekin",
+                "tophat_4thjuly_male": "textures/entity/pokemon/fennekin/fennekin",
+                "detective": "textures/entity/pokemon/fennekin/fennekin"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.fennekin"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.fennekin.walk",
+                "chill": "animation.fennekin.chill",
+                "fly": "animation.fennekin.walk",
+                "swim": "animation.fennekin.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "fennekin",

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:chespin",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/chespin",
-                "shiny": "textures/sprites/chespin",
-                "default_male": "textures/sprites/chespin",
-                "default_female": "textures/sprites/chespin",
-                "shiny_male": "textures/sprites/chespin",
-                "shiny_female": "textures/sprites/chespin",
-                "halloween": "textures/sprites/chespin",
-                "shiny_halloween": "textures/sprites/chespin",
-                "doll_female": "textures/sprites/chespin",
-                "doll_male": "textures/sprites/chespin",
-                "witch_female": "textures/sprites/chespin",
-                "witch_male": "textures/sprites/chespin",
-                "cap_female": "textures/sprites/chespin",
-                "cap_male": "textures/sprites/chespin",
-                "santa_female": "textures/sprites/chespin",
-                "santa_male": "textures/sprites/chespin",
-                "tophat_female": "textures/sprites/chespin",
-                "tophat_male": "textures/sprites/chespin",
-                "tophat_stpatricks_female": "textures/sprites/chespin",
-                "tophat_stpatricks_male": "textures/sprites/chespin",
-                "tophat_4thjuly_female": "textures/sprites/chespin",
-                "tophat_4thjuly_male": "textures/sprites/chespin",
-                "detective": "textures/sprites/chespin"
+                "default": "textures/entity/pokemon/chespin/chespin",
+                "default_male": "textures/entity/pokemon/chespin/chespin",
+                "default_female": "textures/entity/pokemon/chespin/chespin",
+                "shiny": "textures/entity/pokemon/chespin/shiny_chespin",
+                "shiny_male": "textures/entity/pokemon/chespin/shiny_chespin",
+                "shiny_female": "textures/entity/pokemon/chespin/shiny_chespin",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/chespin/chespin",
+                "shiny_halloween": "textures/entity/pokemon/chespin/chespin",
+                "doll_female": "textures/entity/pokemon/chespin/chespin",
+                "doll_male": "textures/entity/pokemon/chespin/chespin",
+                "witch_female": "textures/entity/pokemon/chespin/chespin",
+                "witch_male": "textures/entity/pokemon/chespin/chespin",
+                "cap_female": "textures/entity/pokemon/chespin/chespin",
+                "cap_male": "textures/entity/pokemon/chespin/chespin",
+                "santa_female": "textures/entity/pokemon/chespin/chespin",
+                "santa_male": "textures/entity/pokemon/chespin/chespin",
+                "tophat_female": "textures/entity/pokemon/chespin/chespin",
+                "tophat_male": "textures/entity/pokemon/chespin/chespin",
+                "tophat_stpatricks_female": "textures/entity/pokemon/chespin/chespin",
+                "tophat_stpatricks_male": "textures/entity/pokemon/chespin/chespin",
+                "tophat_4thjuly_female": "textures/entity/pokemon/chespin/chespin",
+                "tophat_4thjuly_male": "textures/entity/pokemon/chespin/chespin",
+                "detective": "textures/entity/pokemon/chespin/chespin"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.chespin"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.chespin.walk",
+                "chill": "animation.chespin.chill",
+                "fly": "animation.chespin.walk",
+                "swim": "animation.chespin.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "chespin",

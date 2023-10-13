@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:fuecoco",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/fuecoco",
-                "shiny": "textures/sprites/fuecoco",
-                "default_male": "textures/sprites/fuecoco",
-                "default_female": "textures/sprites/fuecoco",
-                "shiny_male": "textures/sprites/fuecoco",
-                "shiny_female": "textures/sprites/fuecoco",
-                "halloween": "textures/sprites/fuecoco",
-                "shiny_halloween": "textures/sprites/fuecoco",
-                "doll_female": "textures/sprites/fuecoco",
-                "doll_male": "textures/sprites/fuecoco",
-                "witch_female": "textures/sprites/fuecoco",
-                "witch_male": "textures/sprites/fuecoco",
-                "cap_female": "textures/sprites/fuecoco",
-                "cap_male": "textures/sprites/fuecoco",
-                "santa_female": "textures/sprites/fuecoco",
-                "santa_male": "textures/sprites/fuecoco",
-                "tophat_female": "textures/sprites/fuecoco",
-                "tophat_male": "textures/sprites/fuecoco",
-                "tophat_stpatricks_female": "textures/sprites/fuecoco",
-                "tophat_stpatricks_male": "textures/sprites/fuecoco",
-                "tophat_4thjuly_female": "textures/sprites/fuecoco",
-                "tophat_4thjuly_male": "textures/sprites/fuecoco",
-                "detective": "textures/sprites/fuecoco"
+                "default": "textures/entity/pokemon/fuecoco/fuecoco",
+                "default_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "default_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "shiny": "textures/entity/pokemon/fuecoco/shiny_fuecoco",
+                "shiny_male": "textures/entity/pokemon/fuecoco/shiny_fuecoco",
+                "shiny_female": "textures/entity/pokemon/fuecoco/shiny_fuecoco",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/fuecoco/fuecoco",
+                "shiny_halloween": "textures/entity/pokemon/fuecoco/fuecoco",
+                "doll_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "doll_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "witch_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "witch_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "cap_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "cap_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "santa_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "santa_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_stpatricks_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_stpatricks_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_4thjuly_female": "textures/entity/pokemon/fuecoco/fuecoco",
+                "tophat_4thjuly_male": "textures/entity/pokemon/fuecoco/fuecoco",
+                "detective": "textures/entity/pokemon/fuecoco/fuecoco"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.fuecoco"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.fuecoco.walk",
+                "chill": "animation.fuecoco.chill",
+                "fly": "animation.fuecoco.walk",
+                "swim": "animation.fuecoco.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "fuecoco",

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:emboar",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/emboar",
-                "shiny": "textures/sprites/emboar",
-                "default_male": "textures/sprites/emboar",
-                "default_female": "textures/sprites/emboar",
-                "shiny_male": "textures/sprites/emboar",
-                "shiny_female": "textures/sprites/emboar",
-                "halloween": "textures/sprites/emboar",
-                "shiny_halloween": "textures/sprites/emboar",
-                "doll_female": "textures/sprites/emboar",
-                "doll_male": "textures/sprites/emboar",
-                "witch_female": "textures/sprites/emboar",
-                "witch_male": "textures/sprites/emboar",
-                "cap_female": "textures/sprites/emboar",
-                "cap_male": "textures/sprites/emboar",
-                "santa_female": "textures/sprites/emboar",
-                "santa_male": "textures/sprites/emboar",
-                "tophat_female": "textures/sprites/emboar",
-                "tophat_male": "textures/sprites/emboar",
-                "tophat_stpatricks_female": "textures/sprites/emboar",
-                "tophat_stpatricks_male": "textures/sprites/emboar",
-                "tophat_4thjuly_female": "textures/sprites/emboar",
-                "tophat_4thjuly_male": "textures/sprites/emboar",
-                "detective": "textures/sprites/emboar"
+                "default": "textures/entity/pokemon/emboar/emboar",
+                "default_male": "textures/entity/pokemon/emboar/emboar",
+                "default_female": "textures/entity/pokemon/emboar/emboar",
+                "shiny": "textures/entity/pokemon/emboar/shiny_emboar",
+                "shiny_male": "textures/entity/pokemon/emboar/shiny_emboar",
+                "shiny_female": "textures/entity/pokemon/emboar/shiny_emboar",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/emboar/emboar",
+                "shiny_halloween": "textures/entity/pokemon/emboar/emboar",
+                "doll_female": "textures/entity/pokemon/emboar/emboar",
+                "doll_male": "textures/entity/pokemon/emboar/emboar",
+                "witch_female": "textures/entity/pokemon/emboar/emboar",
+                "witch_male": "textures/entity/pokemon/emboar/emboar",
+                "cap_female": "textures/entity/pokemon/emboar/emboar",
+                "cap_male": "textures/entity/pokemon/emboar/emboar",
+                "santa_female": "textures/entity/pokemon/emboar/emboar",
+                "santa_male": "textures/entity/pokemon/emboar/emboar",
+                "tophat_female": "textures/entity/pokemon/emboar/emboar",
+                "tophat_male": "textures/entity/pokemon/emboar/emboar",
+                "tophat_stpatricks_female": "textures/entity/pokemon/emboar/emboar",
+                "tophat_stpatricks_male": "textures/entity/pokemon/emboar/emboar",
+                "tophat_4thjuly_female": "textures/entity/pokemon/emboar/emboar",
+                "tophat_4thjuly_male": "textures/entity/pokemon/emboar/emboar",
+                "detective": "textures/entity/pokemon/emboar/emboar"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.emboar"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.emboar.walk",
+                "chill": "animation.emboar.chill",
+                "fly": "animation.emboar.walk",
+                "swim": "animation.emboar.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "emboar",

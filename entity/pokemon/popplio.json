@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:popplio",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/popplio",
-                "shiny": "textures/sprites/popplio",
-                "default_male": "textures/sprites/popplio",
-                "default_female": "textures/sprites/popplio",
-                "shiny_male": "textures/sprites/popplio",
-                "shiny_female": "textures/sprites/popplio",
-                "halloween": "textures/sprites/popplio",
-                "shiny_halloween": "textures/sprites/popplio",
-                "doll_female": "textures/sprites/popplio",
-                "doll_male": "textures/sprites/popplio",
-                "witch_female": "textures/sprites/popplio",
-                "witch_male": "textures/sprites/popplio",
-                "cap_female": "textures/sprites/popplio",
-                "cap_male": "textures/sprites/popplio",
-                "santa_female": "textures/sprites/popplio",
-                "santa_male": "textures/sprites/popplio",
-                "tophat_female": "textures/sprites/popplio",
-                "tophat_male": "textures/sprites/popplio",
-                "tophat_stpatricks_female": "textures/sprites/popplio",
-                "tophat_stpatricks_male": "textures/sprites/popplio",
-                "tophat_4thjuly_female": "textures/sprites/popplio",
-                "tophat_4thjuly_male": "textures/sprites/popplio",
-                "detective": "textures/sprites/popplio"
+                "default": "textures/entity/pokemon/popplio/popplio",
+                "default_male": "textures/entity/pokemon/popplio/popplio",
+                "default_female": "textures/entity/pokemon/popplio/popplio",
+                "shiny": "textures/entity/pokemon/popplio/shiny_popplio",
+                "shiny_male": "textures/entity/pokemon/popplio/shiny_popplio",
+                "shiny_female": "textures/entity/pokemon/popplio/shiny_popplio",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/popplio/popplio",
+                "shiny_halloween": "textures/entity/pokemon/popplio/popplio",
+                "doll_female": "textures/entity/pokemon/popplio/popplio",
+                "doll_male": "textures/entity/pokemon/popplio/popplio",
+                "witch_female": "textures/entity/pokemon/popplio/popplio",
+                "witch_male": "textures/entity/pokemon/popplio/popplio",
+                "cap_female": "textures/entity/pokemon/popplio/popplio",
+                "cap_male": "textures/entity/pokemon/popplio/popplio",
+                "santa_female": "textures/entity/pokemon/popplio/popplio",
+                "santa_male": "textures/entity/pokemon/popplio/popplio",
+                "tophat_female": "textures/entity/pokemon/popplio/popplio",
+                "tophat_male": "textures/entity/pokemon/popplio/popplio",
+                "tophat_stpatricks_female": "textures/entity/pokemon/popplio/popplio",
+                "tophat_stpatricks_male": "textures/entity/pokemon/popplio/popplio",
+                "tophat_4thjuly_female": "textures/entity/pokemon/popplio/popplio",
+                "tophat_4thjuly_male": "textures/entity/pokemon/popplio/popplio",
+                "detective": "textures/entity/pokemon/popplio/popplio"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.popplio"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.popplio.walk",
+                "chill": "animation.popplio.chill",
+                "fly": "animation.popplio.walk",
+                "swim": "animation.popplio.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "popplio",

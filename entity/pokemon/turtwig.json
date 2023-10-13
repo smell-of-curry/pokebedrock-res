@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:turtwig",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/turtwig",
-                "shiny": "textures/sprites/turtwig",
-                "default_male": "textures/sprites/turtwig",
-                "default_female": "textures/sprites/turtwig",
-                "shiny_male": "textures/sprites/turtwig",
-                "shiny_female": "textures/sprites/turtwig",
-                "halloween": "textures/sprites/turtwig",
-                "shiny_halloween": "textures/sprites/turtwig",
-                "doll_female": "textures/sprites/turtwig",
-                "doll_male": "textures/sprites/turtwig",
-                "witch_female": "textures/sprites/turtwig",
-                "witch_male": "textures/sprites/turtwig",
-                "cap_female": "textures/sprites/turtwig",
-                "cap_male": "textures/sprites/turtwig",
-                "santa_female": "textures/sprites/turtwig",
-                "santa_male": "textures/sprites/turtwig",
-                "tophat_female": "textures/sprites/turtwig",
-                "tophat_male": "textures/sprites/turtwig",
-                "tophat_stpatricks_female": "textures/sprites/turtwig",
-                "tophat_stpatricks_male": "textures/sprites/turtwig",
-                "tophat_4thjuly_female": "textures/sprites/turtwig",
-                "tophat_4thjuly_male": "textures/sprites/turtwig",
-                "detective": "textures/sprites/turtwig"
+                "default": "textures/entity/pokemon/turtwig/turtwig",
+                "default_male": "textures/entity/pokemon/turtwig/turtwig",
+                "default_female": "textures/entity/pokemon/turtwig/turtwig",
+                "shiny": "textures/entity/pokemon/turtwig/shiny_turtwig",
+                "shiny_male": "textures/entity/pokemon/turtwig/shiny_turtwig",
+                "shiny_female": "textures/entity/pokemon/turtwig/shiny_turtwig",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/turtwig/turtwig",
+                "shiny_halloween": "textures/entity/pokemon/turtwig/turtwig",
+                "doll_female": "textures/entity/pokemon/turtwig/turtwig",
+                "doll_male": "textures/entity/pokemon/turtwig/turtwig",
+                "witch_female": "textures/entity/pokemon/turtwig/turtwig",
+                "witch_male": "textures/entity/pokemon/turtwig/turtwig",
+                "cap_female": "textures/entity/pokemon/turtwig/turtwig",
+                "cap_male": "textures/entity/pokemon/turtwig/turtwig",
+                "santa_female": "textures/entity/pokemon/turtwig/turtwig",
+                "santa_male": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_female": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_male": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_stpatricks_female": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_stpatricks_male": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_4thjuly_female": "textures/entity/pokemon/turtwig/turtwig",
+                "tophat_4thjuly_male": "textures/entity/pokemon/turtwig/turtwig",
+                "detective": "textures/entity/pokemon/turtwig/turtwig"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.turtwig"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.turtwig.walk",
+                "chill": "animation.turtwig.chill",
+                "fly": "animation.turtwig.walk",
+                "swim": "animation.turtwig.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "turtwig",

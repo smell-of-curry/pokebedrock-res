@@ -1,8 +1,6 @@
-**Update v2.5.8**
+**Update v2.6.0**
 
-- Removed Unused Animations
-- Fixed Ho-Oh Texture
-- Fixed Koffing & Weezing Not having particles in there animations
-- Fixed Charmander Not having particle in its animation
-- Converted `smelly:tail_flame` to `pokeb:tail_flame`
-- Added Halloween Skins for Gastly, Gengar, and Haunter
+- Added Crate Rotation
+- Added 44 New Models
+- Added System to handle wrong clicks in battle GUI
+- Added new type icons by mankind

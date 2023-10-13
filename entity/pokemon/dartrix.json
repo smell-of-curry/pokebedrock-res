@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:dartrix",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/dartrix",
-                "shiny": "textures/sprites/dartrix",
-                "default_male": "textures/sprites/dartrix",
-                "default_female": "textures/sprites/dartrix",
-                "shiny_male": "textures/sprites/dartrix",
-                "shiny_female": "textures/sprites/dartrix",
-                "halloween": "textures/sprites/dartrix",
-                "shiny_halloween": "textures/sprites/dartrix",
-                "doll_female": "textures/sprites/dartrix",
-                "doll_male": "textures/sprites/dartrix",
-                "witch_female": "textures/sprites/dartrix",
-                "witch_male": "textures/sprites/dartrix",
-                "cap_female": "textures/sprites/dartrix",
-                "cap_male": "textures/sprites/dartrix",
-                "santa_female": "textures/sprites/dartrix",
-                "santa_male": "textures/sprites/dartrix",
-                "tophat_female": "textures/sprites/dartrix",
-                "tophat_male": "textures/sprites/dartrix",
-                "tophat_stpatricks_female": "textures/sprites/dartrix",
-                "tophat_stpatricks_male": "textures/sprites/dartrix",
-                "tophat_4thjuly_female": "textures/sprites/dartrix",
-                "tophat_4thjuly_male": "textures/sprites/dartrix",
-                "detective": "textures/sprites/dartrix"
+                "default": "textures/entity/pokemon/dartrix/dartrix",
+                "default_male": "textures/entity/pokemon/dartrix/dartrix",
+                "default_female": "textures/entity/pokemon/dartrix/dartrix",
+                "shiny": "textures/entity/pokemon/dartrix/shiny_dartrix",
+                "shiny_male": "textures/entity/pokemon/dartrix/shiny_dartrix",
+                "shiny_female": "textures/entity/pokemon/dartrix/shiny_dartrix",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/dartrix/dartrix",
+                "shiny_halloween": "textures/entity/pokemon/dartrix/dartrix",
+                "doll_female": "textures/entity/pokemon/dartrix/dartrix",
+                "doll_male": "textures/entity/pokemon/dartrix/dartrix",
+                "witch_female": "textures/entity/pokemon/dartrix/dartrix",
+                "witch_male": "textures/entity/pokemon/dartrix/dartrix",
+                "cap_female": "textures/entity/pokemon/dartrix/dartrix",
+                "cap_male": "textures/entity/pokemon/dartrix/dartrix",
+                "santa_female": "textures/entity/pokemon/dartrix/dartrix",
+                "santa_male": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_female": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_male": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_stpatricks_female": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_stpatricks_male": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_4thjuly_female": "textures/entity/pokemon/dartrix/dartrix",
+                "tophat_4thjuly_male": "textures/entity/pokemon/dartrix/dartrix",
+                "detective": "textures/entity/pokemon/dartrix/dartrix"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.dartrix"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.dartrix.walk",
+                "chill": "animation.dartrix.chill",
+                "fly": "animation.dartrix.flying",
+                "swim": "animation.dartrix.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "dartrix",

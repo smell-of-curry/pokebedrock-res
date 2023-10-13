@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:crocalor",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/crocalor",
-                "shiny": "textures/sprites/crocalor",
-                "default_male": "textures/sprites/crocalor",
-                "default_female": "textures/sprites/crocalor",
-                "shiny_male": "textures/sprites/crocalor",
-                "shiny_female": "textures/sprites/crocalor",
-                "halloween": "textures/sprites/crocalor",
-                "shiny_halloween": "textures/sprites/crocalor",
-                "doll_female": "textures/sprites/crocalor",
-                "doll_male": "textures/sprites/crocalor",
-                "witch_female": "textures/sprites/crocalor",
-                "witch_male": "textures/sprites/crocalor",
-                "cap_female": "textures/sprites/crocalor",
-                "cap_male": "textures/sprites/crocalor",
-                "santa_female": "textures/sprites/crocalor",
-                "santa_male": "textures/sprites/crocalor",
-                "tophat_female": "textures/sprites/crocalor",
-                "tophat_male": "textures/sprites/crocalor",
-                "tophat_stpatricks_female": "textures/sprites/crocalor",
-                "tophat_stpatricks_male": "textures/sprites/crocalor",
-                "tophat_4thjuly_female": "textures/sprites/crocalor",
-                "tophat_4thjuly_male": "textures/sprites/crocalor",
-                "detective": "textures/sprites/crocalor"
+                "default": "textures/entity/pokemon/crocalor/crocalor",
+                "default_male": "textures/entity/pokemon/crocalor/crocalor",
+                "default_female": "textures/entity/pokemon/crocalor/crocalor",
+                "shiny": "textures/entity/pokemon/crocalor/shiny_crocalor",
+                "shiny_male": "textures/entity/pokemon/crocalor/shiny_crocalor",
+                "shiny_female": "textures/entity/pokemon/crocalor/shiny_crocalor",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/crocalor/crocalor",
+                "shiny_halloween": "textures/entity/pokemon/crocalor/crocalor",
+                "doll_female": "textures/entity/pokemon/crocalor/crocalor",
+                "doll_male": "textures/entity/pokemon/crocalor/crocalor",
+                "witch_female": "textures/entity/pokemon/crocalor/crocalor",
+                "witch_male": "textures/entity/pokemon/crocalor/crocalor",
+                "cap_female": "textures/entity/pokemon/crocalor/crocalor",
+                "cap_male": "textures/entity/pokemon/crocalor/crocalor",
+                "santa_female": "textures/entity/pokemon/crocalor/crocalor",
+                "santa_male": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_female": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_male": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_stpatricks_female": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_stpatricks_male": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_4thjuly_female": "textures/entity/pokemon/crocalor/crocalor",
+                "tophat_4thjuly_male": "textures/entity/pokemon/crocalor/crocalor",
+                "detective": "textures/entity/pokemon/crocalor/crocalor"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.crocalor"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.crocalor.walk",
+                "chill": "animation.crocalor.chill",
+                "fly": "animation.crocalor.walk",
+                "swim": "animation.crocalor.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "crocalor",

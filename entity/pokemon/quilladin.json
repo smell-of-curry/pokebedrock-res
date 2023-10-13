@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:quilladin",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/quilladin",
-                "shiny": "textures/sprites/quilladin",
-                "default_male": "textures/sprites/quilladin",
-                "default_female": "textures/sprites/quilladin",
-                "shiny_male": "textures/sprites/quilladin",
-                "shiny_female": "textures/sprites/quilladin",
-                "halloween": "textures/sprites/quilladin",
-                "shiny_halloween": "textures/sprites/quilladin",
-                "doll_female": "textures/sprites/quilladin",
-                "doll_male": "textures/sprites/quilladin",
-                "witch_female": "textures/sprites/quilladin",
-                "witch_male": "textures/sprites/quilladin",
-                "cap_female": "textures/sprites/quilladin",
-                "cap_male": "textures/sprites/quilladin",
-                "santa_female": "textures/sprites/quilladin",
-                "santa_male": "textures/sprites/quilladin",
-                "tophat_female": "textures/sprites/quilladin",
-                "tophat_male": "textures/sprites/quilladin",
-                "tophat_stpatricks_female": "textures/sprites/quilladin",
-                "tophat_stpatricks_male": "textures/sprites/quilladin",
-                "tophat_4thjuly_female": "textures/sprites/quilladin",
-                "tophat_4thjuly_male": "textures/sprites/quilladin",
-                "detective": "textures/sprites/quilladin"
+                "default": "textures/entity/pokemon/quilladin/quilladin",
+                "default_male": "textures/entity/pokemon/quilladin/quilladin",
+                "default_female": "textures/entity/pokemon/quilladin/quilladin",
+                "shiny": "textures/entity/pokemon/quilladin/shiny_quilladin",
+                "shiny_male": "textures/entity/pokemon/quilladin/shiny_quilladin",
+                "shiny_female": "textures/entity/pokemon/quilladin/shiny_quilladin",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/quilladin/quilladin",
+                "shiny_halloween": "textures/entity/pokemon/quilladin/quilladin",
+                "doll_female": "textures/entity/pokemon/quilladin/quilladin",
+                "doll_male": "textures/entity/pokemon/quilladin/quilladin",
+                "witch_female": "textures/entity/pokemon/quilladin/quilladin",
+                "witch_male": "textures/entity/pokemon/quilladin/quilladin",
+                "cap_female": "textures/entity/pokemon/quilladin/quilladin",
+                "cap_male": "textures/entity/pokemon/quilladin/quilladin",
+                "santa_female": "textures/entity/pokemon/quilladin/quilladin",
+                "santa_male": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_female": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_male": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_stpatricks_female": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_stpatricks_male": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_4thjuly_female": "textures/entity/pokemon/quilladin/quilladin",
+                "tophat_4thjuly_male": "textures/entity/pokemon/quilladin/quilladin",
+                "detective": "textures/entity/pokemon/quilladin/quilladin"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.quilladin"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.quilladin.walk",
+                "chill": "animation.quilladin.chill",
+                "fly": "animation.quilladin.walk",
+                "swim": "animation.quilladin.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "quilladin",

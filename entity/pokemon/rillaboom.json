@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:rillaboom",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/rillaboom",
-                "shiny": "textures/sprites/rillaboom",
-                "default_male": "textures/sprites/rillaboom",
-                "default_female": "textures/sprites/rillaboom",
-                "shiny_male": "textures/sprites/rillaboom",
-                "shiny_female": "textures/sprites/rillaboom",
-                "halloween": "textures/sprites/rillaboom",
-                "shiny_halloween": "textures/sprites/rillaboom",
-                "doll_female": "textures/sprites/rillaboom",
-                "doll_male": "textures/sprites/rillaboom",
-                "witch_female": "textures/sprites/rillaboom",
-                "witch_male": "textures/sprites/rillaboom",
-                "cap_female": "textures/sprites/rillaboom",
-                "cap_male": "textures/sprites/rillaboom",
-                "santa_female": "textures/sprites/rillaboom",
-                "santa_male": "textures/sprites/rillaboom",
-                "tophat_female": "textures/sprites/rillaboom",
-                "tophat_male": "textures/sprites/rillaboom",
-                "tophat_stpatricks_female": "textures/sprites/rillaboom",
-                "tophat_stpatricks_male": "textures/sprites/rillaboom",
-                "tophat_4thjuly_female": "textures/sprites/rillaboom",
-                "tophat_4thjuly_male": "textures/sprites/rillaboom",
-                "detective": "textures/sprites/rillaboom"
+                "default": "textures/entity/pokemon/rillaboom/rillaboom",
+                "default_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "default_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "shiny": "textures/entity/pokemon/rillaboom/shiny_rillaboom",
+                "shiny_male": "textures/entity/pokemon/rillaboom/shiny_rillaboom",
+                "shiny_female": "textures/entity/pokemon/rillaboom/shiny_rillaboom",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/rillaboom/rillaboom",
+                "shiny_halloween": "textures/entity/pokemon/rillaboom/rillaboom",
+                "doll_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "doll_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "witch_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "witch_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "cap_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "cap_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "santa_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "santa_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_stpatricks_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_stpatricks_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_4thjuly_female": "textures/entity/pokemon/rillaboom/rillaboom",
+                "tophat_4thjuly_male": "textures/entity/pokemon/rillaboom/rillaboom",
+                "detective": "textures/entity/pokemon/rillaboom/rillaboom"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.rillaboom"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.rillaboom.walk",
+                "chill": "animation.rillaboom.chill",
+                "fly": "animation.rillaboom.walk",
+                "swim": "animation.rillaboom.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "rillaboom",

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:skeledirge",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/skeledirge",
-                "shiny": "textures/sprites/skeledirge",
-                "default_male": "textures/sprites/skeledirge",
-                "default_female": "textures/sprites/skeledirge",
-                "shiny_male": "textures/sprites/skeledirge",
-                "shiny_female": "textures/sprites/skeledirge",
-                "halloween": "textures/sprites/skeledirge",
-                "shiny_halloween": "textures/sprites/skeledirge",
-                "doll_female": "textures/sprites/skeledirge",
-                "doll_male": "textures/sprites/skeledirge",
-                "witch_female": "textures/sprites/skeledirge",
-                "witch_male": "textures/sprites/skeledirge",
-                "cap_female": "textures/sprites/skeledirge",
-                "cap_male": "textures/sprites/skeledirge",
-                "santa_female": "textures/sprites/skeledirge",
-                "santa_male": "textures/sprites/skeledirge",
-                "tophat_female": "textures/sprites/skeledirge",
-                "tophat_male": "textures/sprites/skeledirge",
-                "tophat_stpatricks_female": "textures/sprites/skeledirge",
-                "tophat_stpatricks_male": "textures/sprites/skeledirge",
-                "tophat_4thjuly_female": "textures/sprites/skeledirge",
-                "tophat_4thjuly_male": "textures/sprites/skeledirge",
-                "detective": "textures/sprites/skeledirge"
+                "default": "textures/entity/pokemon/skeledirge/skeledirge",
+                "default_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "default_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "shiny": "textures/entity/pokemon/skeledirge/shiny_skeledirge",
+                "shiny_male": "textures/entity/pokemon/skeledirge/shiny_skeledirge",
+                "shiny_female": "textures/entity/pokemon/skeledirge/shiny_skeledirge",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/skeledirge/skeledirge",
+                "shiny_halloween": "textures/entity/pokemon/skeledirge/skeledirge",
+                "doll_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "doll_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "witch_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "witch_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "cap_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "cap_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "santa_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "santa_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_stpatricks_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_stpatricks_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_4thjuly_female": "textures/entity/pokemon/skeledirge/skeledirge",
+                "tophat_4thjuly_male": "textures/entity/pokemon/skeledirge/skeledirge",
+                "detective": "textures/entity/pokemon/skeledirge/skeledirge"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.skeledirge"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.skeledirge.walk",
+                "chill": "animation.skeledirge.chill",
+                "fly": "animation.skeledirge.walk",
+                "swim": "animation.skeledirge.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "skeledirge",

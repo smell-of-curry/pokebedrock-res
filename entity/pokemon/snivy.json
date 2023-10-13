@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:snivy",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/snivy",
-                "shiny": "textures/sprites/snivy",
-                "default_male": "textures/sprites/snivy",
-                "default_female": "textures/sprites/snivy",
-                "shiny_male": "textures/sprites/snivy",
-                "shiny_female": "textures/sprites/snivy",
-                "halloween": "textures/sprites/snivy",
-                "shiny_halloween": "textures/sprites/snivy",
-                "doll_female": "textures/sprites/snivy",
-                "doll_male": "textures/sprites/snivy",
-                "witch_female": "textures/sprites/snivy",
-                "witch_male": "textures/sprites/snivy",
-                "cap_female": "textures/sprites/snivy",
-                "cap_male": "textures/sprites/snivy",
-                "santa_female": "textures/sprites/snivy",
-                "santa_male": "textures/sprites/snivy",
-                "tophat_female": "textures/sprites/snivy",
-                "tophat_male": "textures/sprites/snivy",
-                "tophat_stpatricks_female": "textures/sprites/snivy",
-                "tophat_stpatricks_male": "textures/sprites/snivy",
-                "tophat_4thjuly_female": "textures/sprites/snivy",
-                "tophat_4thjuly_male": "textures/sprites/snivy",
-                "detective": "textures/sprites/snivy"
+                "default": "textures/entity/pokemon/snivy/snivy",
+                "default_male": "textures/entity/pokemon/snivy/snivy",
+                "default_female": "textures/entity/pokemon/snivy/snivy",
+                "shiny": "textures/entity/pokemon/snivy/shiny_snivy",
+                "shiny_male": "textures/entity/pokemon/snivy/shiny_snivy",
+                "shiny_female": "textures/entity/pokemon/snivy/shiny_snivy",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/snivy/snivy",
+                "shiny_halloween": "textures/entity/pokemon/snivy/snivy",
+                "doll_female": "textures/entity/pokemon/snivy/snivy",
+                "doll_male": "textures/entity/pokemon/snivy/snivy",
+                "witch_female": "textures/entity/pokemon/snivy/snivy",
+                "witch_male": "textures/entity/pokemon/snivy/snivy",
+                "cap_female": "textures/entity/pokemon/snivy/snivy",
+                "cap_male": "textures/entity/pokemon/snivy/snivy",
+                "santa_female": "textures/entity/pokemon/snivy/snivy",
+                "santa_male": "textures/entity/pokemon/snivy/snivy",
+                "tophat_female": "textures/entity/pokemon/snivy/snivy",
+                "tophat_male": "textures/entity/pokemon/snivy/snivy",
+                "tophat_stpatricks_female": "textures/entity/pokemon/snivy/snivy",
+                "tophat_stpatricks_male": "textures/entity/pokemon/snivy/snivy",
+                "tophat_4thjuly_female": "textures/entity/pokemon/snivy/snivy",
+                "tophat_4thjuly_male": "textures/entity/pokemon/snivy/snivy",
+                "detective": "textures/entity/pokemon/snivy/snivy"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.snivy"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.snivy.walk",
+                "chill": "animation.snivy.chill",
+                "fly": "animation.snivy.walk",
+                "swim": "animation.snivy.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "snivy",

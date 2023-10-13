@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:quaxly",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/quaxly",
-                "shiny": "textures/sprites/quaxly",
-                "default_male": "textures/sprites/quaxly",
-                "default_female": "textures/sprites/quaxly",
-                "shiny_male": "textures/sprites/quaxly",
-                "shiny_female": "textures/sprites/quaxly",
-                "halloween": "textures/sprites/quaxly",
-                "shiny_halloween": "textures/sprites/quaxly",
-                "doll_female": "textures/sprites/quaxly",
-                "doll_male": "textures/sprites/quaxly",
-                "witch_female": "textures/sprites/quaxly",
-                "witch_male": "textures/sprites/quaxly",
-                "cap_female": "textures/sprites/quaxly",
-                "cap_male": "textures/sprites/quaxly",
-                "santa_female": "textures/sprites/quaxly",
-                "santa_male": "textures/sprites/quaxly",
-                "tophat_female": "textures/sprites/quaxly",
-                "tophat_male": "textures/sprites/quaxly",
-                "tophat_stpatricks_female": "textures/sprites/quaxly",
-                "tophat_stpatricks_male": "textures/sprites/quaxly",
-                "tophat_4thjuly_female": "textures/sprites/quaxly",
-                "tophat_4thjuly_male": "textures/sprites/quaxly",
-                "detective": "textures/sprites/quaxly"
+                "default": "textures/entity/pokemon/quaxly/quaxly",
+                "default_male": "textures/entity/pokemon/quaxly/quaxly",
+                "default_female": "textures/entity/pokemon/quaxly/quaxly",
+                "shiny": "textures/entity/pokemon/quaxly/shiny_quaxly",
+                "shiny_male": "textures/entity/pokemon/quaxly/shiny_quaxly",
+                "shiny_female": "textures/entity/pokemon/quaxly/shiny_quaxly",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/quaxly/quaxly",
+                "shiny_halloween": "textures/entity/pokemon/quaxly/quaxly",
+                "doll_female": "textures/entity/pokemon/quaxly/quaxly",
+                "doll_male": "textures/entity/pokemon/quaxly/quaxly",
+                "witch_female": "textures/entity/pokemon/quaxly/quaxly",
+                "witch_male": "textures/entity/pokemon/quaxly/quaxly",
+                "cap_female": "textures/entity/pokemon/quaxly/quaxly",
+                "cap_male": "textures/entity/pokemon/quaxly/quaxly",
+                "santa_female": "textures/entity/pokemon/quaxly/quaxly",
+                "santa_male": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_female": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_male": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_stpatricks_female": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_stpatricks_male": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_4thjuly_female": "textures/entity/pokemon/quaxly/quaxly",
+                "tophat_4thjuly_male": "textures/entity/pokemon/quaxly/quaxly",
+                "detective": "textures/entity/pokemon/quaxly/quaxly"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.quaxly"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.quaxly.walk",
+                "chill": "animation.quaxly.chill",
+                "fly": "animation.quaxly.walk",
+                "swim": "animation.quaxly.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "quaxly",

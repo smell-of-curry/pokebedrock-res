@@ -1,69 +1,71 @@
 {
-	"format_version": "1.10.0",
-	"minecraft:client_entity": {
-		"description": {
-			"identifier": "pokeb:crate",
-			"materials": {
-				"default": "entity_alphatest"
-			},
-			"textures": {
-				"default": "textures/entity/chest/ender",
-				"normal": "textures/entity/chest/normal"
-			},
-			"geometry": {
-				"default": "geometry.crate"
-			},
-			"animations": {
-				"stay": "animation.crate.stay",
-				"rotate": "animation.crate.rotate",
-				"short": "animation.crate.short",
-				"showcase": "animation.crate.showcase",
-				"open":"animation.crate.open",
-				"close":"animation.crate.close",
-				"halo0": "animation.crate.halo0",
-				"halo1": "animation.crate.halo1",
-				"halo2": "animation.crate.halo2",
-				"halo3": "animation.crate.halo3",
-				"rotate0": "animation.crate.rotate0",
-				"rotate90": "animation.crate.rotate90",
-				"rotate180": "animation.crate.rotate180",
-				"rotate270": "animation.crate.rotate270"	
-			},
-			"particle_effects": {
-				"falling_dust": "je:updraft",
-				"halo1": "je:redflame",
-				"halo2": "je:blueflame",
-				"halo3": "je:green",
-				"vortex": "je:vortex",
-				"absorbw": "je:absorbw",
-				"absorby": "je:absorby",
-				"explode": "minecraft:dragon_destroy_block",
-				"bang": "je:bang"
-			},
-			"sound_effects": {
-                "open": "random.enderchestopen",
-				"open1": "respawn_anchor.set_spawn",
-				"beacon": "beacon.activate",
-				"close": "random.enderchestclosed",
-				"spin": "portal.portal",
-				"spin1":"block.end_portal.spawn",
-				"spin2": "respawn_anchor.ambient",
-				"lava": "liquid.lava",
-				"reward": "random.levelup",
-				"explode": "mob.wither.break_block",
-				"firework": "firework.launch",
-				"firework2": "firework.large_blast",
-				"twinkle": "firework.twinkle",
-				"mood": "ambient.crimson_forest.mood"
-            },
-			"render_controllers": [
-				"controller.render.crate"
-			],
-			"enable_attachables": false,
-			"spawn_egg": {
-				"texture": "crate_spawn_egg",
-				"texture_index": 0
-			}
-		}
-	}
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:crate",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/chest/ender",
+        "normal": "textures/entity/chest/normal"
+      },
+      "geometry": {
+        "default": "geometry.crate"
+      },
+      "scripts": {
+        "animate": ["rotates"]
+      },
+      "animations": {
+		"rotates": "controller.animation.crate",
+        "stay": "animation.crate.stay",
+        "rotate": "animation.crate.rotate",
+        "short": "animation.crate.short",
+        "showcase": "animation.crate.showcase",
+        "open": "animation.crate.open",
+        "close": "animation.crate.close",
+        "halo0": "animation.crate.halo0",
+        "halo1": "animation.crate.halo1",
+        "halo2": "animation.crate.halo2",
+        "halo3": "animation.crate.halo3",
+        "rotate_0": "animation.crate.rotate_0",
+        "rotate_90": "animation.crate.rotate_90",
+        "rotate_180": "animation.crate.rotate_180",
+        "rotate_270": "animation.crate.rotate_270"
+      },
+      "particle_effects": {
+        "falling_dust": "je:updraft",
+        "halo1": "je:redflame",
+        "halo2": "je:blueflame",
+        "halo3": "je:green",
+        "vortex": "je:vortex",
+        "absorbw": "je:absorbw",
+        "absorby": "je:absorby",
+        "explode": "minecraft:dragon_destroy_block",
+        "bang": "je:bang"
+      },
+      "sound_effects": {
+        "open": "random.enderchestopen",
+        "open1": "respawn_anchor.set_spawn",
+        "beacon": "beacon.activate",
+        "close": "random.enderchestclosed",
+        "spin": "portal.portal",
+        "spin1": "block.end_portal.spawn",
+        "spin2": "respawn_anchor.ambient",
+        "lava": "liquid.lava",
+        "reward": "random.levelup",
+        "explode": "mob.wither.break_block",
+        "firework": "firework.launch",
+        "firework2": "firework.large_blast",
+        "twinkle": "firework.twinkle",
+        "mood": "ambient.crimson_forest.mood"
+      },
+      "render_controllers": ["controller.render.crate"],
+      "enable_attachables": false,
+      "spawn_egg": {
+        "texture": "crate_spawn_egg",
+        "texture_index": 0
+      }
+    }
+  }
 }

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:servine",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/servine",
-                "shiny": "textures/sprites/servine",
-                "default_male": "textures/sprites/servine",
-                "default_female": "textures/sprites/servine",
-                "shiny_male": "textures/sprites/servine",
-                "shiny_female": "textures/sprites/servine",
-                "halloween": "textures/sprites/servine",
-                "shiny_halloween": "textures/sprites/servine",
-                "doll_female": "textures/sprites/servine",
-                "doll_male": "textures/sprites/servine",
-                "witch_female": "textures/sprites/servine",
-                "witch_male": "textures/sprites/servine",
-                "cap_female": "textures/sprites/servine",
-                "cap_male": "textures/sprites/servine",
-                "santa_female": "textures/sprites/servine",
-                "santa_male": "textures/sprites/servine",
-                "tophat_female": "textures/sprites/servine",
-                "tophat_male": "textures/sprites/servine",
-                "tophat_stpatricks_female": "textures/sprites/servine",
-                "tophat_stpatricks_male": "textures/sprites/servine",
-                "tophat_4thjuly_female": "textures/sprites/servine",
-                "tophat_4thjuly_male": "textures/sprites/servine",
-                "detective": "textures/sprites/servine"
+                "default": "textures/entity/pokemon/servine/servine",
+                "default_male": "textures/entity/pokemon/servine/servine",
+                "default_female": "textures/entity/pokemon/servine/servine",
+                "shiny": "textures/entity/pokemon/servine/shiny_servine",
+                "shiny_male": "textures/entity/pokemon/servine/shiny_servine",
+                "shiny_female": "textures/entity/pokemon/servine/shiny_servine",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/servine/servine",
+                "shiny_halloween": "textures/entity/pokemon/servine/servine",
+                "doll_female": "textures/entity/pokemon/servine/servine",
+                "doll_male": "textures/entity/pokemon/servine/servine",
+                "witch_female": "textures/entity/pokemon/servine/servine",
+                "witch_male": "textures/entity/pokemon/servine/servine",
+                "cap_female": "textures/entity/pokemon/servine/servine",
+                "cap_male": "textures/entity/pokemon/servine/servine",
+                "santa_female": "textures/entity/pokemon/servine/servine",
+                "santa_male": "textures/entity/pokemon/servine/servine",
+                "tophat_female": "textures/entity/pokemon/servine/servine",
+                "tophat_male": "textures/entity/pokemon/servine/servine",
+                "tophat_stpatricks_female": "textures/entity/pokemon/servine/servine",
+                "tophat_stpatricks_male": "textures/entity/pokemon/servine/servine",
+                "tophat_4thjuly_female": "textures/entity/pokemon/servine/servine",
+                "tophat_4thjuly_male": "textures/entity/pokemon/servine/servine",
+                "detective": "textures/entity/pokemon/servine/servine"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.servine"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.servine.walk",
+                "chill": "animation.servine.chill",
+                "fly": "animation.servine.walk",
+                "swim": "animation.servine.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "servine",

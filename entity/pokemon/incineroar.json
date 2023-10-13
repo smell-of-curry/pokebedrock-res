@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:incineroar",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/incineroar",
-                "shiny": "textures/sprites/incineroar",
-                "default_male": "textures/sprites/incineroar",
-                "default_female": "textures/sprites/incineroar",
-                "shiny_male": "textures/sprites/incineroar",
-                "shiny_female": "textures/sprites/incineroar",
-                "halloween": "textures/sprites/incineroar",
-                "shiny_halloween": "textures/sprites/incineroar",
-                "doll_female": "textures/sprites/incineroar",
-                "doll_male": "textures/sprites/incineroar",
-                "witch_female": "textures/sprites/incineroar",
-                "witch_male": "textures/sprites/incineroar",
-                "cap_female": "textures/sprites/incineroar",
-                "cap_male": "textures/sprites/incineroar",
-                "santa_female": "textures/sprites/incineroar",
-                "santa_male": "textures/sprites/incineroar",
-                "tophat_female": "textures/sprites/incineroar",
-                "tophat_male": "textures/sprites/incineroar",
-                "tophat_stpatricks_female": "textures/sprites/incineroar",
-                "tophat_stpatricks_male": "textures/sprites/incineroar",
-                "tophat_4thjuly_female": "textures/sprites/incineroar",
-                "tophat_4thjuly_male": "textures/sprites/incineroar",
-                "detective": "textures/sprites/incineroar"
+                "default": "textures/entity/pokemon/incineroar/incineroar",
+                "default_male": "textures/entity/pokemon/incineroar/incineroar",
+                "default_female": "textures/entity/pokemon/incineroar/incineroar",
+                "shiny": "textures/entity/pokemon/incineroar/shiny_incineroar",
+                "shiny_male": "textures/entity/pokemon/incineroar/shiny_incineroar",
+                "shiny_female": "textures/entity/pokemon/incineroar/shiny_incineroar",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/incineroar/incineroar",
+                "shiny_halloween": "textures/entity/pokemon/incineroar/incineroar",
+                "doll_female": "textures/entity/pokemon/incineroar/incineroar",
+                "doll_male": "textures/entity/pokemon/incineroar/incineroar",
+                "witch_female": "textures/entity/pokemon/incineroar/incineroar",
+                "witch_male": "textures/entity/pokemon/incineroar/incineroar",
+                "cap_female": "textures/entity/pokemon/incineroar/incineroar",
+                "cap_male": "textures/entity/pokemon/incineroar/incineroar",
+                "santa_female": "textures/entity/pokemon/incineroar/incineroar",
+                "santa_male": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_female": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_male": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_stpatricks_female": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_stpatricks_male": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_4thjuly_female": "textures/entity/pokemon/incineroar/incineroar",
+                "tophat_4thjuly_male": "textures/entity/pokemon/incineroar/incineroar",
+                "detective": "textures/entity/pokemon/incineroar/incineroar"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.incineroar"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.incineroar.walk",
+                "chill": "animation.incineroar.chill",
+                "fly": "animation.incineroar.walk",
+                "swim": "animation.incineroar.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "incineroar",

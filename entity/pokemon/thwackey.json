@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:thwackey",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/thwackey",
-                "shiny": "textures/sprites/thwackey",
-                "default_male": "textures/sprites/thwackey",
-                "default_female": "textures/sprites/thwackey",
-                "shiny_male": "textures/sprites/thwackey",
-                "shiny_female": "textures/sprites/thwackey",
-                "halloween": "textures/sprites/thwackey",
-                "shiny_halloween": "textures/sprites/thwackey",
-                "doll_female": "textures/sprites/thwackey",
-                "doll_male": "textures/sprites/thwackey",
-                "witch_female": "textures/sprites/thwackey",
-                "witch_male": "textures/sprites/thwackey",
-                "cap_female": "textures/sprites/thwackey",
-                "cap_male": "textures/sprites/thwackey",
-                "santa_female": "textures/sprites/thwackey",
-                "santa_male": "textures/sprites/thwackey",
-                "tophat_female": "textures/sprites/thwackey",
-                "tophat_male": "textures/sprites/thwackey",
-                "tophat_stpatricks_female": "textures/sprites/thwackey",
-                "tophat_stpatricks_male": "textures/sprites/thwackey",
-                "tophat_4thjuly_female": "textures/sprites/thwackey",
-                "tophat_4thjuly_male": "textures/sprites/thwackey",
-                "detective": "textures/sprites/thwackey"
+                "default": "textures/entity/pokemon/thwackey/thwackey",
+                "default_male": "textures/entity/pokemon/thwackey/thwackey",
+                "default_female": "textures/entity/pokemon/thwackey/thwackey",
+                "shiny": "textures/entity/pokemon/thwackey/shiny_thwackey",
+                "shiny_male": "textures/entity/pokemon/thwackey/shiny_thwackey",
+                "shiny_female": "textures/entity/pokemon/thwackey/shiny_thwackey",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/thwackey/thwackey",
+                "shiny_halloween": "textures/entity/pokemon/thwackey/thwackey",
+                "doll_female": "textures/entity/pokemon/thwackey/thwackey",
+                "doll_male": "textures/entity/pokemon/thwackey/thwackey",
+                "witch_female": "textures/entity/pokemon/thwackey/thwackey",
+                "witch_male": "textures/entity/pokemon/thwackey/thwackey",
+                "cap_female": "textures/entity/pokemon/thwackey/thwackey",
+                "cap_male": "textures/entity/pokemon/thwackey/thwackey",
+                "santa_female": "textures/entity/pokemon/thwackey/thwackey",
+                "santa_male": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_female": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_male": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_stpatricks_female": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_stpatricks_male": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_4thjuly_female": "textures/entity/pokemon/thwackey/thwackey",
+                "tophat_4thjuly_male": "textures/entity/pokemon/thwackey/thwackey",
+                "detective": "textures/entity/pokemon/thwackey/thwackey"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.thwackey"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.thwackey.walk",
+                "chill": "animation.thwackey.chill",
+                "fly": "animation.thwackey.walk",
+                "swim": "animation.thwackey.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "thwackey",

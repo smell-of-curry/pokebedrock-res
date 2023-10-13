@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:chesnaught",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/chesnaught",
-                "shiny": "textures/sprites/chesnaught",
-                "default_male": "textures/sprites/chesnaught",
-                "default_female": "textures/sprites/chesnaught",
-                "shiny_male": "textures/sprites/chesnaught",
-                "shiny_female": "textures/sprites/chesnaught",
-                "halloween": "textures/sprites/chesnaught",
-                "shiny_halloween": "textures/sprites/chesnaught",
-                "doll_female": "textures/sprites/chesnaught",
-                "doll_male": "textures/sprites/chesnaught",
-                "witch_female": "textures/sprites/chesnaught",
-                "witch_male": "textures/sprites/chesnaught",
-                "cap_female": "textures/sprites/chesnaught",
-                "cap_male": "textures/sprites/chesnaught",
-                "santa_female": "textures/sprites/chesnaught",
-                "santa_male": "textures/sprites/chesnaught",
-                "tophat_female": "textures/sprites/chesnaught",
-                "tophat_male": "textures/sprites/chesnaught",
-                "tophat_stpatricks_female": "textures/sprites/chesnaught",
-                "tophat_stpatricks_male": "textures/sprites/chesnaught",
-                "tophat_4thjuly_female": "textures/sprites/chesnaught",
-                "tophat_4thjuly_male": "textures/sprites/chesnaught",
-                "detective": "textures/sprites/chesnaught"
+                "default": "textures/entity/pokemon/chesnaught/chesnaught",
+                "default_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "default_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "shiny": "textures/entity/pokemon/chesnaught/shiny_chesnaught",
+                "shiny_male": "textures/entity/pokemon/chesnaught/shiny_chesnaught",
+                "shiny_female": "textures/entity/pokemon/chesnaught/shiny_chesnaught",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/chesnaught/chesnaught",
+                "shiny_halloween": "textures/entity/pokemon/chesnaught/chesnaught",
+                "doll_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "doll_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "witch_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "witch_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "cap_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "cap_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "santa_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "santa_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_stpatricks_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_stpatricks_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_4thjuly_female": "textures/entity/pokemon/chesnaught/chesnaught",
+                "tophat_4thjuly_male": "textures/entity/pokemon/chesnaught/chesnaught",
+                "detective": "textures/entity/pokemon/chesnaught/chesnaught"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.chesnaught"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.chesnaught.walk",
+                "chill": "animation.chesnaught.chill",
+                "fly": "animation.chesnaught.walk",
+                "swim": "animation.chesnaught.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "chesnaught",

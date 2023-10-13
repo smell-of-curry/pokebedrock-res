@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:greninja",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/greninja",
-                "shiny": "textures/sprites/greninja",
-                "default_male": "textures/sprites/greninja",
-                "default_female": "textures/sprites/greninja",
-                "shiny_male": "textures/sprites/greninja",
-                "shiny_female": "textures/sprites/greninja",
-                "halloween": "textures/sprites/greninja",
-                "shiny_halloween": "textures/sprites/greninja",
-                "doll_female": "textures/sprites/greninja",
-                "doll_male": "textures/sprites/greninja",
-                "witch_female": "textures/sprites/greninja",
-                "witch_male": "textures/sprites/greninja",
-                "cap_female": "textures/sprites/greninja",
-                "cap_male": "textures/sprites/greninja",
-                "santa_female": "textures/sprites/greninja",
-                "santa_male": "textures/sprites/greninja",
-                "tophat_female": "textures/sprites/greninja",
-                "tophat_male": "textures/sprites/greninja",
-                "tophat_stpatricks_female": "textures/sprites/greninja",
-                "tophat_stpatricks_male": "textures/sprites/greninja",
-                "tophat_4thjuly_female": "textures/sprites/greninja",
-                "tophat_4thjuly_male": "textures/sprites/greninja",
-                "detective": "textures/sprites/greninja"
+                "default": "textures/entity/pokemon/greninja/greninja",
+                "default_male": "textures/entity/pokemon/greninja/greninja",
+                "default_female": "textures/entity/pokemon/greninja/greninja",
+                "shiny": "textures/entity/pokemon/greninja/shiny_greninja",
+                "shiny_male": "textures/entity/pokemon/greninja/shiny_greninja",
+                "shiny_female": "textures/entity/pokemon/greninja/shiny_greninja",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/greninja/greninja",
+                "shiny_halloween": "textures/entity/pokemon/greninja/greninja",
+                "doll_female": "textures/entity/pokemon/greninja/greninja",
+                "doll_male": "textures/entity/pokemon/greninja/greninja",
+                "witch_female": "textures/entity/pokemon/greninja/greninja",
+                "witch_male": "textures/entity/pokemon/greninja/greninja",
+                "cap_female": "textures/entity/pokemon/greninja/greninja",
+                "cap_male": "textures/entity/pokemon/greninja/greninja",
+                "santa_female": "textures/entity/pokemon/greninja/greninja",
+                "santa_male": "textures/entity/pokemon/greninja/greninja",
+                "tophat_female": "textures/entity/pokemon/greninja/greninja",
+                "tophat_male": "textures/entity/pokemon/greninja/greninja",
+                "tophat_stpatricks_female": "textures/entity/pokemon/greninja/greninja",
+                "tophat_stpatricks_male": "textures/entity/pokemon/greninja/greninja",
+                "tophat_4thjuly_female": "textures/entity/pokemon/greninja/greninja",
+                "tophat_4thjuly_male": "textures/entity/pokemon/greninja/greninja",
+                "detective": "textures/entity/pokemon/greninja/greninja"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.greninja"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.greninja.walk",
+                "chill": "animation.greninja.chill",
+                "fly": "animation.greninja.walk",
+                "swim": "animation.greninja.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "greninja",
