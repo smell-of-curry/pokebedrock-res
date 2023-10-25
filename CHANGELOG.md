@@ -1,6 +1,27 @@
-**Update v2.6.0**
+**Update v2.7.0**
 
-- Added Crate Rotation
-- Added 44 New Models
-- Added System to handle wrong clicks in battle GUI
-- Added new type icons by mankind
+- Removed Nurse Joy Animation Controller
+- Added Better Pokemon Animation Controller Molang
+- Added New Beedrill Model
+- Added new Ditto Model
+- Added new Feraligatr Animations
+- Added new Golduck Model
+- Added new Kakuna Model
+- Added new Krabby Model
+- Added new Aerodactyl Model
+- Added new Kingler Model
+- Added new persian Model
+- Added new Meowth Model
+- Added new Metapod Model
+- Added new Nidoking/queen Line
+- Fixed some Pidgey Line Animations
+- Fixed rayquaza animations
+- Added new Weedle Model
+- Added new Client Rendering for PokeStops
+- Added new Trapdoor Model
+- Updated Shiny Sparkle Particle
+- Added new Battle Music
+- Added 5 new ambient battle sounds
+- Added Gym Badges
+- Added name and description translations for all pokemon
+- Added new Quest UI and new images

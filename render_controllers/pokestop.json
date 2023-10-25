@@ -2,14 +2,9 @@
   "format_version": "1.8.0",
   "render_controllers": {
     "controller.render.pokestop": {
-      "arrays": {
-        "textures": {
-          "Array.variants": ["Texture.default", "Texture.used"]
-        }
-      },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
-      "textures": ["Array.variants[query.skin_id]"]
+      "textures": ["v.client_variant == 0 ? Texture.default : Texture.used"]
     }
   }
 }

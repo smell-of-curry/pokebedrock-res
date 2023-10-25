@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:meowth",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/meowth",
-                "shiny": "textures/sprites/meowth",
-                "default_male": "textures/sprites/meowth",
-                "default_female": "textures/sprites/meowth",
-                "shiny_male": "textures/sprites/meowth",
-                "shiny_female": "textures/sprites/meowth",
-                "halloween": "textures/sprites/meowth",
-                "shiny_halloween": "textures/sprites/meowth",
-                "doll_female": "textures/sprites/meowth",
-                "doll_male": "textures/sprites/meowth",
-                "witch_female": "textures/sprites/meowth",
-                "witch_male": "textures/sprites/meowth",
-                "cap_female": "textures/sprites/meowth",
-                "cap_male": "textures/sprites/meowth",
-                "santa_female": "textures/sprites/meowth",
-                "santa_male": "textures/sprites/meowth",
-                "tophat_female": "textures/sprites/meowth",
-                "tophat_male": "textures/sprites/meowth",
-                "tophat_stpatricks_female": "textures/sprites/meowth",
-                "tophat_stpatricks_male": "textures/sprites/meowth",
-                "tophat_4thjuly_female": "textures/sprites/meowth",
-                "tophat_4thjuly_male": "textures/sprites/meowth",
-                "detective": "textures/sprites/meowth"
+                "default": "textures/entity/pokemon/meowth/meowth",
+                "default_male": "textures/entity/pokemon/meowth/meowth",
+                "default_female": "textures/entity/pokemon/meowth/meowth",
+                "shiny": "textures/entity/pokemon/meowth/shiny_meowth",
+                "shiny_male": "textures/entity/pokemon/meowth/shiny_meowth",
+                "shiny_female": "textures/entity/pokemon/meowth/shiny_meowth",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/meowth/meowth",
+                "shiny_halloween": "textures/entity/pokemon/meowth/meowth",
+                "doll_female": "textures/entity/pokemon/meowth/meowth",
+                "doll_male": "textures/entity/pokemon/meowth/meowth",
+                "witch_female": "textures/entity/pokemon/meowth/meowth",
+                "witch_male": "textures/entity/pokemon/meowth/meowth",
+                "cap_female": "textures/entity/pokemon/meowth/meowth",
+                "cap_male": "textures/entity/pokemon/meowth/meowth",
+                "santa_female": "textures/entity/pokemon/meowth/meowth",
+                "santa_male": "textures/entity/pokemon/meowth/meowth",
+                "tophat_female": "textures/entity/pokemon/meowth/meowth",
+                "tophat_male": "textures/entity/pokemon/meowth/meowth",
+                "tophat_stpatricks_female": "textures/entity/pokemon/meowth/meowth",
+                "tophat_stpatricks_male": "textures/entity/pokemon/meowth/meowth",
+                "tophat_4thjuly_female": "textures/entity/pokemon/meowth/meowth",
+                "tophat_4thjuly_male": "textures/entity/pokemon/meowth/meowth",
+                "detective": "textures/entity/pokemon/meowth/meowth"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.meowth"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.meowth.walk",
+                "chill": "animation.meowth.chill",
+                "fly": "animation.meowth.walk",
+                "swim": "animation.meowth.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "meowth",

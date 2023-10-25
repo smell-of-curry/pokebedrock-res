@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:nidoqueen",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/nidoqueen",
-                "shiny": "textures/sprites/nidoqueen",
-                "default_male": "textures/sprites/nidoqueen",
-                "default_female": "textures/sprites/nidoqueen",
-                "shiny_male": "textures/sprites/nidoqueen",
-                "shiny_female": "textures/sprites/nidoqueen",
-                "halloween": "textures/sprites/nidoqueen",
-                "shiny_halloween": "textures/sprites/nidoqueen",
-                "doll_female": "textures/sprites/nidoqueen",
-                "doll_male": "textures/sprites/nidoqueen",
-                "witch_female": "textures/sprites/nidoqueen",
-                "witch_male": "textures/sprites/nidoqueen",
-                "cap_female": "textures/sprites/nidoqueen",
-                "cap_male": "textures/sprites/nidoqueen",
-                "santa_female": "textures/sprites/nidoqueen",
-                "santa_male": "textures/sprites/nidoqueen",
-                "tophat_female": "textures/sprites/nidoqueen",
-                "tophat_male": "textures/sprites/nidoqueen",
-                "tophat_stpatricks_female": "textures/sprites/nidoqueen",
-                "tophat_stpatricks_male": "textures/sprites/nidoqueen",
-                "tophat_4thjuly_female": "textures/sprites/nidoqueen",
-                "tophat_4thjuly_male": "textures/sprites/nidoqueen",
-                "detective": "textures/sprites/nidoqueen"
+                "default": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "default_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "default_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "shiny": "textures/entity/pokemon/nidoqueen/shiny_nidoqueen",
+                "shiny_male": "textures/entity/pokemon/nidoqueen/shiny_nidoqueen",
+                "shiny_female": "textures/entity/pokemon/nidoqueen/shiny_nidoqueen",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "shiny_halloween": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "doll_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "doll_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "witch_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "witch_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "cap_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "cap_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "santa_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "santa_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_stpatricks_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_stpatricks_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_4thjuly_female": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "tophat_4thjuly_male": "textures/entity/pokemon/nidoqueen/nidoqueen",
+                "detective": "textures/entity/pokemon/nidoqueen/nidoqueen"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.nidoqueen"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.nidoqueen.walk",
+                "chill": "animation.nidoqueen.chill",
+                "fly": "animation.nidoqueen.walk",
+                "swim": "animation.nidoqueen.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "nidoqueen",

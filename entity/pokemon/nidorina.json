@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:nidorina",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/nidorina",
-                "shiny": "textures/sprites/nidorina",
-                "default_male": "textures/sprites/nidorina",
-                "default_female": "textures/sprites/nidorina",
-                "shiny_male": "textures/sprites/nidorina",
-                "shiny_female": "textures/sprites/nidorina",
-                "halloween": "textures/sprites/nidorina",
-                "shiny_halloween": "textures/sprites/nidorina",
-                "doll_female": "textures/sprites/nidorina",
-                "doll_male": "textures/sprites/nidorina",
-                "witch_female": "textures/sprites/nidorina",
-                "witch_male": "textures/sprites/nidorina",
-                "cap_female": "textures/sprites/nidorina",
-                "cap_male": "textures/sprites/nidorina",
-                "santa_female": "textures/sprites/nidorina",
-                "santa_male": "textures/sprites/nidorina",
-                "tophat_female": "textures/sprites/nidorina",
-                "tophat_male": "textures/sprites/nidorina",
-                "tophat_stpatricks_female": "textures/sprites/nidorina",
-                "tophat_stpatricks_male": "textures/sprites/nidorina",
-                "tophat_4thjuly_female": "textures/sprites/nidorina",
-                "tophat_4thjuly_male": "textures/sprites/nidorina",
-                "detective": "textures/sprites/nidorina"
+                "default": "textures/entity/pokemon/nidorina/nidorina",
+                "default_male": "textures/entity/pokemon/nidorina/nidorina",
+                "default_female": "textures/entity/pokemon/nidorina/nidorina",
+                "shiny": "textures/entity/pokemon/nidorina/shiny_nidorina",
+                "shiny_male": "textures/entity/pokemon/nidorina/shiny_nidorina",
+                "shiny_female": "textures/entity/pokemon/nidorina/shiny_nidorina",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/nidorina/nidorina",
+                "shiny_halloween": "textures/entity/pokemon/nidorina/nidorina",
+                "doll_female": "textures/entity/pokemon/nidorina/nidorina",
+                "doll_male": "textures/entity/pokemon/nidorina/nidorina",
+                "witch_female": "textures/entity/pokemon/nidorina/nidorina",
+                "witch_male": "textures/entity/pokemon/nidorina/nidorina",
+                "cap_female": "textures/entity/pokemon/nidorina/nidorina",
+                "cap_male": "textures/entity/pokemon/nidorina/nidorina",
+                "santa_female": "textures/entity/pokemon/nidorina/nidorina",
+                "santa_male": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_female": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_male": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_stpatricks_female": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_stpatricks_male": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_4thjuly_female": "textures/entity/pokemon/nidorina/nidorina",
+                "tophat_4thjuly_male": "textures/entity/pokemon/nidorina/nidorina",
+                "detective": "textures/entity/pokemon/nidorina/nidorina"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.nidorina"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.nidorina.walk",
+                "chill": "animation.nidorina.chill",
+                "fly": "animation.nidorina.walk",
+                "swim": "animation.nidorina.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "nidorina",

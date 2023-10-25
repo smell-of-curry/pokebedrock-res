@@ -5,20 +5,16 @@
       "initial_state": "default",
       "states": {
         "default": {
-          "animations": [
-            {
-              "chill": "query.modified_move_speed <= 0.01"
-            }
-          ],
+          "animations": ["chill"],
           "transitions": [
             {
-              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+              "walk": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+              "swim": "q.can_swim && query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
             },
             {
-              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+              "fly": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
             }
           ],
           "blend_transition": 0.3
@@ -30,10 +26,10 @@
               "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+              "swim": "q.can_swim && query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
             },
             {
-              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+              "fly": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
             }
           ],
           "blend_transition": 0.3
@@ -45,10 +41,10 @@
               "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "swim": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+              "swim": "q.can_swim && query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
             },
             {
-              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+              "walk": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
             }
           ],
           "blend_transition": 0.3
@@ -60,10 +56,10 @@
               "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "walk": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+              "walk": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "fly": "query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+              "fly": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
             }
           ],
           "blend_transition": 0.3

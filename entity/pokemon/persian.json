@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:persian",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/persian",
-                "shiny": "textures/sprites/persian",
-                "default_male": "textures/sprites/persian",
-                "default_female": "textures/sprites/persian",
-                "shiny_male": "textures/sprites/persian",
-                "shiny_female": "textures/sprites/persian",
-                "halloween": "textures/sprites/persian",
-                "shiny_halloween": "textures/sprites/persian",
-                "doll_female": "textures/sprites/persian",
-                "doll_male": "textures/sprites/persian",
-                "witch_female": "textures/sprites/persian",
-                "witch_male": "textures/sprites/persian",
-                "cap_female": "textures/sprites/persian",
-                "cap_male": "textures/sprites/persian",
-                "santa_female": "textures/sprites/persian",
-                "santa_male": "textures/sprites/persian",
-                "tophat_female": "textures/sprites/persian",
-                "tophat_male": "textures/sprites/persian",
-                "tophat_stpatricks_female": "textures/sprites/persian",
-                "tophat_stpatricks_male": "textures/sprites/persian",
-                "tophat_4thjuly_female": "textures/sprites/persian",
-                "tophat_4thjuly_male": "textures/sprites/persian",
-                "detective": "textures/sprites/persian"
+                "default": "textures/entity/pokemon/persian/persian",
+                "default_male": "textures/entity/pokemon/persian/persian",
+                "default_female": "textures/entity/pokemon/persian/persian",
+                "shiny": "textures/entity/pokemon/persian/shiny_persian",
+                "shiny_male": "textures/entity/pokemon/persian/shiny_persian",
+                "shiny_female": "textures/entity/pokemon/persian/shiny_persian",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/persian/persian",
+                "shiny_halloween": "textures/entity/pokemon/persian/persian",
+                "doll_female": "textures/entity/pokemon/persian/persian",
+                "doll_male": "textures/entity/pokemon/persian/persian",
+                "witch_female": "textures/entity/pokemon/persian/persian",
+                "witch_male": "textures/entity/pokemon/persian/persian",
+                "cap_female": "textures/entity/pokemon/persian/persian",
+                "cap_male": "textures/entity/pokemon/persian/persian",
+                "santa_female": "textures/entity/pokemon/persian/persian",
+                "santa_male": "textures/entity/pokemon/persian/persian",
+                "tophat_female": "textures/entity/pokemon/persian/persian",
+                "tophat_male": "textures/entity/pokemon/persian/persian",
+                "tophat_stpatricks_female": "textures/entity/pokemon/persian/persian",
+                "tophat_stpatricks_male": "textures/entity/pokemon/persian/persian",
+                "tophat_4thjuly_female": "textures/entity/pokemon/persian/persian",
+                "tophat_4thjuly_male": "textures/entity/pokemon/persian/persian",
+                "detective": "textures/entity/pokemon/persian/persian"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.persian"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.persian.walk",
+                "chill": "animation.persian.chill",
+                "fly": "animation.persian.walk",
+                "swim": "animation.persian.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "persian",

@@ -4,48 +4,71 @@
 		"description": {
 			"identifier": "pokeb:shiny_sparkle",
 			"basic_render_parameters": {
-				"material": "particles_alpha",
-				"texture": "textures/particle/particles"
+				"material": "particles_blend",
+				"texture": "textures/particle/sparkle"
+			}
+		},
+		"curves": {
+			"variable.size": {
+				"type": "bezier_chain",
+				"input": "v.particle_age/v.particle_lifetime",
+				"nodes": {
+					"0.0": {
+						"value": 0,
+						"slope": 0
+					},
+					"1.0": {
+						"value": 0,
+						"slope": -3.25
+					},
+					"0.22": {
+						"value": 1,
+						"slope": 0
+					}
+				}
 			}
 		},
 		"components": {
 			"minecraft:emitter_rate_steady": {
-				"spawn_rate": 2,
+				"spawn_rate": 3,
 				"max_particles": 100
 			},
-			"minecraft:emitter_lifetime_looping": {
-				"active_time": 1
+			"minecraft:emitter_lifetime_once": {
+				"active_time": 2.5
 			},
-			"minecraft:emitter_shape_point": {
-				"offset": ["math.random(-0.75,0.75)*2", "math.random(0,1.5)*2", "math.random(-0.75,0.75)*2"]
+			"minecraft:emitter_shape_box": {
+				"offset": [0, 1, 0],
+				"half_dimensions": [1, 1, 1],
+				"direction": "outwards"
 			},
 			"minecraft:particle_lifetime_expression": {
-				"max_lifetime": 2
+				"max_lifetime": 0.5
 			},
 			"minecraft:particle_initial_spin": {
-				"rotation": "math.random(0,360)",
-				"rotation_rate": "math.random(-200,200)"
+				"rotation": "math.random(-45,45)"
 			},
 			"minecraft:particle_initial_speed": 0,
 			"minecraft:particle_motion_dynamic": {},
 			"minecraft:particle_appearance_billboard": {
-				"size": ["0.2*math.sin(v.particle_age*180)", "0.2*math.sin(v.particle_age*180)"],
+				"size": ["0.2*variable.size", "0.2*variable.size"],
 				"facing_camera_mode": "rotate_xyz",
 				"uv": {
-					"texture_width": 16,
-					"texture_height": 16,
-					"uv": [7, 9],
-					"uv_size": [1, 1]
-				}
-			},
-			"minecraft:particle_appearance_tinting": {
-				"color": {
-					"interpolant": "v.particle_random_1",
-					"gradient": {
-						"0.0": "#FFFFCD00",
-						"1.0": "#FF9F7B20"
+					"texture_width": 84,
+					"texture_height": 12,
+					"flipbook": {
+						"base_UV": [0, 0],
+						"size_UV": [12, 12],
+						"step_UV": [12, 0],
+						"frames_per_second": 16,
+						"max_frame": 7,
+						"stretch_to_lifetime": true
 					}
 				}
+			},
+			"minecraft:particle_motion_collision": {
+				"collision_drag": 0.25,
+				"coefficient_of_restitution": 0.3,
+				"collision_radius": 0.1
 			}
 		}
 	}

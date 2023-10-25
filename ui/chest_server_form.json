@@ -31,9 +31,9 @@
               }
             },
             {
-              "single_chest_grid@chest_ui.button_stack": {
+              "single_chest_grid": {
                 "type": "grid",
-                "grid_dimensions": [9, 6],
+                "grid_dimensions": [9, 5],
                 "size": ["100% - 14px", "100% - 27px"],
                 "offset": [7, 21],
                 "anchor_from": "top_left",
@@ -93,7 +93,7 @@
                 "offset": [7, 21],
                 "anchor_from": "top_left",
                 "anchor_to": "top_left",
-                "grid_item_template": "chest_ui.inventory_item",
+                "grid_item_template": "chest_ui.chest_item",
                 "collection_name": "form_buttons",
                 "layer": 1
               }
@@ -201,7 +201,7 @@
                 "offset": [7, 21],
                 "anchor_from": "top_left",
                 "anchor_to": "top_left",
-                "grid_item_template": "chest_ui.inventory_item",
+                "grid_item_template": "chest_ui.chest_item",
                 "collection_name": "form_buttons",
                 "layer": 1
               }
@@ -230,6 +230,86 @@
             }
           ]
         }
+      },
+      {
+        "quests_grid_image": {
+          "type": "image",
+          "size": [185, 128],
+          "offset": [0, -5],
+          "texture": "textures/ui/quests/chest_screen",
+          "$quest_chest_flag": "§c§h§e§s§t§s§q§u§e§s§t§s",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-10, 52]
+              }
+            },
+            {
+              "quest_chest_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 3],
+                "size": ["100% - 32px", "100% - 80px"],
+                "offset": [17, 67],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $quest_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "quests_grid_large_image": {
+          "type": "image",
+          "size": [185, 179],
+          "offset": [0, -5],
+          "texture": "textures/ui/quests/chest_screen_large",
+          "$quest_chest_flag": "§c§h§e§s§t§s§l§u§e§s§t§s",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-10, 52]
+              }
+            },
+            {
+              "quest_chest_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 6],
+                "size": ["100% - 32px", "100% - 80px"],
+                "offset": [17, 67],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $quest_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
       }
     ]
   },
@@ -245,7 +325,6 @@
         "binding_type": "collection",
         "binding_collection_name": "form_buttons"
       },
-      // --- Verifys if texture is a icon path ---
       {
         "binding_type": "view",
         "source_property_name": "(not (('%.8s' * #form_button_texture) = 'textures'))",
@@ -256,10 +335,9 @@
         "source_property_name": "(not ((#form_button_texture = '') or (#form_button_texture = 'loading')))",
         "target_property_name": "#visible"
       },
-      // ---                                   ---
       {
         "binding_type": "view",
-        "source_property_name": "(#form_button_texture * 1)", // Converts string to number
+        "source_property_name": "(#form_button_texture * 1)",
         "target_property_name": "#item_id_aux"
       }
     ],
@@ -524,7 +602,7 @@
   },
   "chest_item": {
     "type": "stack_panel",
-    "size": [18, 18],
+    "size": [16, 16],
     "layer": 2,
     "controls": [
       {
