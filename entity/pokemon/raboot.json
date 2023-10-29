@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:raboot",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/raboot",
-                "shiny": "textures/sprites/raboot",
-                "default_male": "textures/sprites/raboot",
-                "default_female": "textures/sprites/raboot",
-                "shiny_male": "textures/sprites/raboot",
-                "shiny_female": "textures/sprites/raboot",
-                "halloween": "textures/sprites/raboot",
-                "shiny_halloween": "textures/sprites/raboot",
-                "doll_female": "textures/sprites/raboot",
-                "doll_male": "textures/sprites/raboot",
-                "witch_female": "textures/sprites/raboot",
-                "witch_male": "textures/sprites/raboot",
-                "cap_female": "textures/sprites/raboot",
-                "cap_male": "textures/sprites/raboot",
-                "santa_female": "textures/sprites/raboot",
-                "santa_male": "textures/sprites/raboot",
-                "tophat_female": "textures/sprites/raboot",
-                "tophat_male": "textures/sprites/raboot",
-                "tophat_stpatricks_female": "textures/sprites/raboot",
-                "tophat_stpatricks_male": "textures/sprites/raboot",
-                "tophat_4thjuly_female": "textures/sprites/raboot",
-                "tophat_4thjuly_male": "textures/sprites/raboot",
-                "detective": "textures/sprites/raboot"
+                "default": "textures/entity/pokemon/raboot/raboot",
+                "default_male": "textures/entity/pokemon/raboot/raboot",
+                "default_female": "textures/entity/pokemon/raboot/raboot",
+                "shiny": "textures/entity/pokemon/raboot/shiny_raboot",
+                "shiny_male": "textures/entity/pokemon/raboot/shiny_raboot",
+                "shiny_female": "textures/entity/pokemon/raboot/shiny_raboot",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/raboot/raboot",
+                "shiny_halloween": "textures/entity/pokemon/raboot/raboot",
+                "doll_female": "textures/entity/pokemon/raboot/raboot",
+                "doll_male": "textures/entity/pokemon/raboot/raboot",
+                "witch_female": "textures/entity/pokemon/raboot/raboot",
+                "witch_male": "textures/entity/pokemon/raboot/raboot",
+                "cap_female": "textures/entity/pokemon/raboot/raboot",
+                "cap_male": "textures/entity/pokemon/raboot/raboot",
+                "santa_female": "textures/entity/pokemon/raboot/raboot",
+                "santa_male": "textures/entity/pokemon/raboot/raboot",
+                "tophat_female": "textures/entity/pokemon/raboot/raboot",
+                "tophat_male": "textures/entity/pokemon/raboot/raboot",
+                "tophat_stpatricks_female": "textures/entity/pokemon/raboot/raboot",
+                "tophat_stpatricks_male": "textures/entity/pokemon/raboot/raboot",
+                "tophat_4thjuly_female": "textures/entity/pokemon/raboot/raboot",
+                "tophat_4thjuly_male": "textures/entity/pokemon/raboot/raboot",
+                "detective": "textures/entity/pokemon/raboot/raboot"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.raboot"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.raboot.walk",
+                "chill": "animation.raboot.chill",
+                "fly": "animation.raboot.walk",
+                "swim": "animation.raboot.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "raboot",

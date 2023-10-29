@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:scorbunny",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/scorbunny",
-                "shiny": "textures/sprites/scorbunny",
-                "default_male": "textures/sprites/scorbunny",
-                "default_female": "textures/sprites/scorbunny",
-                "shiny_male": "textures/sprites/scorbunny",
-                "shiny_female": "textures/sprites/scorbunny",
-                "halloween": "textures/sprites/scorbunny",
-                "shiny_halloween": "textures/sprites/scorbunny",
-                "doll_female": "textures/sprites/scorbunny",
-                "doll_male": "textures/sprites/scorbunny",
-                "witch_female": "textures/sprites/scorbunny",
-                "witch_male": "textures/sprites/scorbunny",
-                "cap_female": "textures/sprites/scorbunny",
-                "cap_male": "textures/sprites/scorbunny",
-                "santa_female": "textures/sprites/scorbunny",
-                "santa_male": "textures/sprites/scorbunny",
-                "tophat_female": "textures/sprites/scorbunny",
-                "tophat_male": "textures/sprites/scorbunny",
-                "tophat_stpatricks_female": "textures/sprites/scorbunny",
-                "tophat_stpatricks_male": "textures/sprites/scorbunny",
-                "tophat_4thjuly_female": "textures/sprites/scorbunny",
-                "tophat_4thjuly_male": "textures/sprites/scorbunny",
-                "detective": "textures/sprites/scorbunny"
+                "default": "textures/entity/pokemon/scorbunny/scorbunny",
+                "default_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "default_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "shiny": "textures/entity/pokemon/scorbunny/shiny_scorbunny",
+                "shiny_male": "textures/entity/pokemon/scorbunny/shiny_scorbunny",
+                "shiny_female": "textures/entity/pokemon/scorbunny/shiny_scorbunny",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/scorbunny/scorbunny",
+                "shiny_halloween": "textures/entity/pokemon/scorbunny/scorbunny",
+                "doll_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "doll_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "witch_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "witch_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "cap_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "cap_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "santa_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "santa_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_stpatricks_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_stpatricks_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_4thjuly_female": "textures/entity/pokemon/scorbunny/scorbunny",
+                "tophat_4thjuly_male": "textures/entity/pokemon/scorbunny/scorbunny",
+                "detective": "textures/entity/pokemon/scorbunny/scorbunny"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.scorbunny"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.scorbunny.walk",
+                "chill": "animation.scorbunny.chill",
+                "fly": "animation.scorbunny.walk",
+                "swim": "animation.scorbunny.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "scorbunny",

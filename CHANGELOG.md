@@ -1,4 +1,4 @@
-**Update v2.7.0**
+**Update v2.7.1**
 
 - Removed Nurse Joy Animation Controller
 - Added Better Pokemon Animation Controller Molang
@@ -15,7 +15,7 @@
 - Added new Metapod Model
 - Added new Nidoking/queen Line
 - Fixed some Pidgey Line Animations
-- Fixed rayquaza animations
+- Fixed Rayquaza animations
 - Added new Weedle Model
 - Added new Client Rendering for PokeStops
 - Added new Trapdoor Model
@@ -25,3 +25,7 @@
 - Added Gym Badges
 - Added name and description translations for all pokemon
 - Added new Quest UI and new images
+- Added Scorebunny Line
+- FIxed Clefairy Model
+- Fixed Quazwell Model
+- Added new Venomoth Animations

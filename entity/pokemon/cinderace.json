@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:cinderace",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/cinderace",
-                "shiny": "textures/sprites/cinderace",
-                "default_male": "textures/sprites/cinderace",
-                "default_female": "textures/sprites/cinderace",
-                "shiny_male": "textures/sprites/cinderace",
-                "shiny_female": "textures/sprites/cinderace",
-                "halloween": "textures/sprites/cinderace",
-                "shiny_halloween": "textures/sprites/cinderace",
-                "doll_female": "textures/sprites/cinderace",
-                "doll_male": "textures/sprites/cinderace",
-                "witch_female": "textures/sprites/cinderace",
-                "witch_male": "textures/sprites/cinderace",
-                "cap_female": "textures/sprites/cinderace",
-                "cap_male": "textures/sprites/cinderace",
-                "santa_female": "textures/sprites/cinderace",
-                "santa_male": "textures/sprites/cinderace",
-                "tophat_female": "textures/sprites/cinderace",
-                "tophat_male": "textures/sprites/cinderace",
-                "tophat_stpatricks_female": "textures/sprites/cinderace",
-                "tophat_stpatricks_male": "textures/sprites/cinderace",
-                "tophat_4thjuly_female": "textures/sprites/cinderace",
-                "tophat_4thjuly_male": "textures/sprites/cinderace",
-                "detective": "textures/sprites/cinderace"
+                "default": "textures/entity/pokemon/cinderace/cinderace",
+                "default_male": "textures/entity/pokemon/cinderace/cinderace",
+                "default_female": "textures/entity/pokemon/cinderace/cinderace",
+                "shiny": "textures/entity/pokemon/cinderace/shiny_cinderace",
+                "shiny_male": "textures/entity/pokemon/cinderace/shiny_cinderace",
+                "shiny_female": "textures/entity/pokemon/cinderace/shiny_cinderace",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/cinderace/cinderace",
+                "shiny_halloween": "textures/entity/pokemon/cinderace/cinderace",
+                "doll_female": "textures/entity/pokemon/cinderace/cinderace",
+                "doll_male": "textures/entity/pokemon/cinderace/cinderace",
+                "witch_female": "textures/entity/pokemon/cinderace/cinderace",
+                "witch_male": "textures/entity/pokemon/cinderace/cinderace",
+                "cap_female": "textures/entity/pokemon/cinderace/cinderace",
+                "cap_male": "textures/entity/pokemon/cinderace/cinderace",
+                "santa_female": "textures/entity/pokemon/cinderace/cinderace",
+                "santa_male": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_female": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_male": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_stpatricks_female": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_stpatricks_male": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_4thjuly_female": "textures/entity/pokemon/cinderace/cinderace",
+                "tophat_4thjuly_male": "textures/entity/pokemon/cinderace/cinderace",
+                "detective": "textures/entity/pokemon/cinderace/cinderace"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.cinderace"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.cinderace.walk",
+                "chill": "animation.cinderace.chill",
+                "fly": "animation.cinderace.walk",
+                "swim": "animation.cinderace.walk",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "cinderace",

@@ -4,38 +4,63 @@
         "description": {
             "identifier": "pokemon:quaxwell",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/quaxwell",
-                "shiny": "textures/sprites/quaxwell",
-                "default_male": "textures/sprites/quaxwell",
-                "default_female": "textures/sprites/quaxwell",
-                "shiny_male": "textures/sprites/quaxwell",
-                "shiny_female": "textures/sprites/quaxwell",
-                "halloween": "textures/sprites/quaxwell",
-                "shiny_halloween": "textures/sprites/quaxwell",
-                "doll_female": "textures/sprites/quaxwell",
-                "doll_male": "textures/sprites/quaxwell",
-                "witch_female": "textures/sprites/quaxwell",
-                "witch_male": "textures/sprites/quaxwell",
-                "cap_female": "textures/sprites/quaxwell",
-                "cap_male": "textures/sprites/quaxwell",
-                "santa_female": "textures/sprites/quaxwell",
-                "santa_male": "textures/sprites/quaxwell",
-                "tophat_female": "textures/sprites/quaxwell",
-                "tophat_male": "textures/sprites/quaxwell",
-                "tophat_stpatricks_female": "textures/sprites/quaxwell",
-                "tophat_stpatricks_male": "textures/sprites/quaxwell",
-                "tophat_4thjuly_female": "textures/sprites/quaxwell",
-                "tophat_4thjuly_male": "textures/sprites/quaxwell",
-                "detective": "textures/sprites/quaxwell"
+                "default": "textures/entity/pokemon/quaxwell/quaxwell",
+                "default_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "default_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "shiny": "textures/entity/pokemon/quaxwell/shiny_quaxwell",
+                "shiny_male": "textures/entity/pokemon/quaxwell/shiny_quaxwell",
+                "shiny_female": "textures/entity/pokemon/quaxwell/shiny_quaxwell",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/quaxwell/quaxwell",
+                "shiny_halloween": "textures/entity/pokemon/quaxwell/quaxwell",
+                "doll_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "doll_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "witch_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "witch_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "cap_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "cap_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "santa_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "santa_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_stpatricks_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_stpatricks_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_4thjuly_female": "textures/entity/pokemon/quaxwell/quaxwell",
+                "tophat_4thjuly_male": "textures/entity/pokemon/quaxwell/quaxwell",
+                "detective": "textures/entity/pokemon/quaxwell/quaxwell"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.quaxwell"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "walk": "animation.quaxwell.walk",
+                "chill": "animation.quaxwell.chill",
+                "fly": "animation.quaxwell.walk",
+                "swim": "animation.quaxwell.swim",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "quaxwell",
