@@ -1,31 +1,4 @@
-**Update v2.7.1**
+**Update v2.7.2**
 
-- Removed Nurse Joy Animation Controller
-- Added Better Pokemon Animation Controller Molang
-- Added New Beedrill Model
-- Added new Ditto Model
-- Added new Feraligatr Animations
-- Added new Golduck Model
-- Added new Kakuna Model
-- Added new Krabby Model
-- Added new Aerodactyl Model
-- Added new Kingler Model
-- Added new persian Model
-- Added new Meowth Model
-- Added new Metapod Model
-- Added new Nidoking/queen Line
-- Fixed some Pidgey Line Animations
-- Fixed Rayquaza animations
-- Added new Weedle Model
-- Added new Client Rendering for PokeStops
-- Added new Trapdoor Model
-- Updated Shiny Sparkle Particle
-- Added new Battle Music
-- Added 5 new ambient battle sounds
-- Added Gym Badges
-- Added name and description translations for all pokemon
-- Added new Quest UI and new images
-- Added Scorebunny Line
-- FIxed Clefairy Model
-- Fixed Quazwell Model
-- Added new Venomoth Animations
+- Fixed Animations for trainers
+- Added new Paralyzed Particle
