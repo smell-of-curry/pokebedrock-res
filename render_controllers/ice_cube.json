@@ -1,0 +1,19 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.ice_cube": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.default"],
+      "uv_anim": {
+        "offset": [
+          0.0,
+          "(query.variant == 1)?(math.mod(math.floor(q.life_time * 20), 16) / 16):0.0"
+        ],
+        "scale": [1.0, "1 / 16"]
+      },
+      "light_color_multiplier": 1,
+      "ignore_lighting": true
+    }
+  }
+}
