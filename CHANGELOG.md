@@ -1,4 +1,4 @@
-**Update v2.7.5**
+**Update v2.7.6**
 
 - Animation names have changed
     - `walk` -> `walking`
@@ -18,3 +18,7 @@
 - Implemented many sound effects
 - Compressed many sound files
 - Added new Search server form
+- Added Azumarill Line
+- Added Farfetched Fly Animation
+- Added Icons for thumbtack
+- Added rotom Phone basics

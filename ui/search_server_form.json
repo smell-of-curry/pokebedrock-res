@@ -124,9 +124,10 @@
       },
       {
         "binding_type": "collection",
-        "binding_name": "#form_button_text",
         "binding_collection_name": "form_buttons",
-        "binding_condition": "always"
+        "binding_condition": "none",
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text"
       },
       {
         "binding_type": "view",
@@ -136,8 +137,13 @@
       },
       {
         "binding_type": "view",
-        "source_property_name": "(not ((#form_button_text - #search_em) = #form_button_text))",
+        "source_property_name": "(((%.1s * #search_em) = '') or ((%.4s * #form_button_text) = 'Back') or (not ((#form_button_text - #search_em) = #form_button_text)))",
         "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not((%.1s * #form_button_text) = ' '))",
+        "target_property_name": "#enabled"
       }
     ]
   }
