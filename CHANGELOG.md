@@ -1,24 +1,4 @@
-**Update v2.7.6**
+**Update v2.7.7**
 
-- Animation names have changed
-    - `walk` -> `walking`
-    - `fly` -> `flying`
-    - `swim` -> `swimming`
-    - `chill` -> `idle`
-- Added new animation requirements to models
-    - `idle`
-    - `walking`
-    - `flying`
-    - `swimming`
-    - `sleeping`
-    - `fall_asleep`
-    - `wake_up`
-- Added Togepi sound effects
-- Added 10 new Battle Musics
-- Implemented many sound effects
-- Compressed many sound files
-- Added new Search server form
-- Added Azumarill Line
-- Added Farfetched Fly Animation
-- Added Icons for thumbtack
-- Added rotom Phone basics
+- Added new Aerodactyl Model
+- Added new trade machine sounds
