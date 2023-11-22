@@ -50,11 +50,12 @@
   "pokemon_sidebar_pokemon": {
     "type": "panel",
     "size": ["100%", 30],
-    "$pokemon_stats_index": 0,
-    "$pokemon_id_index": 1,
-    "$pokemon_name_index": 2,
-    "$pokemon_active_index": 3,
-    "$pokemon_caughtWith_index": 4,
+    "$pokemon_stats_index|default": 0,
+    "$pokemon_id_index|default": 1,
+    "$pokemon_name_index|default": 2,
+    "$pokemon_active_index|default": 3,
+    "$pokemon_caughtWith_index|default": 4,
+    "$pokemon_icon_index|default": 5,
     "$var_index": "$pokemon_id_index",
     "controls": [
       {
@@ -127,133 +128,14 @@
         "pokemon_icon_wrapper": {
           "type": "panel",
           "$var_index": "$pokemon_caughtWith_index",
-          "$texture": "textures/ui/sidebar/empty",
           "controls": [
             {
               "pokemon_icon@hud.variable_parser": {
                 "type": "image",
                 "size": [40, "100%"],
                 "layer": 3,
-                "$var_index": "$pokemon_id_index",
-                "texture": "$texture",
-                "variables": [
-                  {
-                    "requires": "($var = 'pokeb:pokeball')",
-                    "$texture": "textures/ui/sidebar/balls/poke"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:ultraball')",
-                    "$texture": "textures/ui/sidebar/balls/ultra"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:masterball')",
-                    "$texture": "textures/ui/sidebar/balls/master"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:greatball')",
-                    "$texture": "textures/ui/sidebar/balls/great"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:beastball')",
-                    "$texture": "textures/ui/sidebar/balls/beast"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:cherishball')",
-                    "$texture": "textures/ui/sidebar/balls/cherish"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:dreamball')",
-                    "$texture": "textures/ui/sidebar/balls/dream"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:duskball')",
-                    "$texture": "textures/ui/sidebar/balls/dusk"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:fastball')",
-                    "$texture": "textures/ui/sidebar/balls/fast"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:friendball')",
-                    "$texture": "textures/ui/sidebar/balls/friend"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:gsball')",
-                    "$texture": "textures/ui/sidebar/balls/gs"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:healball')",
-                    "$texture": "textures/ui/sidebar/balls/heal"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:heavyball')",
-                    "$texture": "textures/ui/sidebar/balls/heavy"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:levelball')",
-                    "$texture": "textures/ui/sidebar/balls/level"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:loveball')",
-                    "$texture": "textures/ui/sidebar/balls/love"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:lureball')",
-                    "$texture": "textures/ui/sidebar/balls/lure"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:luxuryball')",
-                    "$texture": "textures/ui/sidebar/balls/luxury"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:moonball')",
-                    "$texture": "textures/ui/sidebar/balls/moon"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:nestball')",
-                    "$texture": "textures/ui/sidebar/balls/nest"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:netball')",
-                    "$texture": "textures/ui/sidebar/balls/net"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:parkball')",
-                    "$texture": "textures/ui/sidebar/balls/park"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:premierball')",
-                    "$texture": "textures/ui/sidebar/balls/premier"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:quickball')",
-                    "$texture": "textures/ui/sidebar/balls/quick"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:repeatball')",
-                    "$texture": "textures/ui/sidebar/balls/repeat"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:safariball')",
-                    "$texture": "textures/ui/sidebar/balls/safari"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:sportball')",
-                    "$texture": "textures/ui/sidebar/balls/sport"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:timerball')",
-                    "$texture": "textures/ui/sidebar/balls/timer"
-                  },
-                  {
-                    "requires": "($var = 'pokeb:diveball')",
-                    "$texture": "textures/ui/sidebar/balls/dive"
-                  },
-                  {
-                    "requires": "($var = 'null')",
-                    "$texture": "textures/ui/sidebar/empty"
-                  }
-                ],
+                "$var_index": "$pokemon_icon_index",
+                "texture": "('textures/ui/sidebar/balls/' + $var)",
                 "controls": [
                   {
                     "pokemon_icon@hud.variable_parser": {
@@ -261,7 +143,7 @@
                       "offset": ["0%", "-15%"],
                       "size": [40, "100%"],
                       "layer": 4,
-                      "texture": "('textures/sprites/' + $var)",
+                      "texture": "$var",
                       "alpha": "$alpha",
                       "variables": [
                         {
@@ -327,7 +209,8 @@
                 "$pokemon_name_index": 1,
                 "$pokemon_id_index": 2,
                 "$pokemon_active_index": 3,
-                "$pokemon_caughtWith_index": 4
+                "$pokemon_caughtWith_index": 4,
+                "$pokemon_icon_index": 5
               }
             },
             {
@@ -338,11 +221,12 @@
             },
             {
               "pokemon2@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 5,
-                "$pokemon_name_index": 6,
-                "$pokemon_id_index": 7,
-                "$pokemon_active_index": 8,
-                "$pokemon_caughtWith_index": 9
+                "$pokemon_stats_index": 6,
+                "$pokemon_name_index": 7,
+                "$pokemon_id_index": 8,
+                "$pokemon_active_index": 9,
+                "$pokemon_caughtWith_index": 10,
+                "$pokemon_icon_index": 11
               }
             },
             {
@@ -353,11 +237,12 @@
             },
             {
               "pokemon3@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 10,
-                "$pokemon_name_index": 11,
-                "$pokemon_id_index": 12,
-                "$pokemon_active_index": 13,
-                "$pokemon_caughtWith_index": 14
+                "$pokemon_stats_index": 12,
+                "$pokemon_name_index": 13,
+                "$pokemon_id_index": 14,
+                "$pokemon_active_index": 15,
+                "$pokemon_caughtWith_index": 16,
+                "$pokemon_icon_index": 17
               }
             },
             {
@@ -368,11 +253,12 @@
             },
             {
               "pokemon4@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 15,
-                "$pokemon_name_index": 16,
-                "$pokemon_id_index": 17,
-                "$pokemon_active_index": 18,
-                "$pokemon_caughtWith_index": 19
+                "$pokemon_stats_index": 18,
+                "$pokemon_name_index": 19,
+                "$pokemon_id_index": 20,
+                "$pokemon_active_index": 21,
+                "$pokemon_caughtWith_index": 22,
+                "$pokemon_icon_index": 23
               }
             },
             {
@@ -383,11 +269,12 @@
             },
             {
               "pokemon5@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 20,
-                "$pokemon_name_index": 21,
-                "$pokemon_id_index": 22,
-                "$pokemon_active_index": 23,
-                "$pokemon_caughtWith_index": 24
+                "$pokemon_stats_index": 24,
+                "$pokemon_name_index": 25,
+                "$pokemon_id_index": 26,
+                "$pokemon_active_index": 27,
+                "$pokemon_caughtWith_index": 28,
+                "$pokemon_icon_index": 29
               }
             },
             {
@@ -398,11 +285,12 @@
             },
             {
               "pokemon6@hud.pokemon_sidebar_pokemon": {
-                "$pokemon_stats_index": 25,
-                "$pokemon_name_index": 26,
-                "$pokemon_id_index": 27,
-                "$pokemon_active_index": 28,
-                "$pokemon_caughtWith_index": 29
+                "$pokemon_stats_index": 30,
+                "$pokemon_name_index": 31,
+                "$pokemon_id_index": 32,
+                "$pokemon_active_index": 33,
+                "$pokemon_caughtWith_index": 34,
+                "$pokemon_icon_index": 35
               }
             }
           ]
