@@ -8,13 +8,16 @@
           "animations": ["idle"],
           "transitions": [
             {
-              "walking": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+              "walking": "q.can_walk && q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "swimming": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
+              "swimming": "q.is_in_water"
             },
             {
               "flying": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "sleeping": "q.is_sleeping"
             }
           ],
           "blend_transition": 0.3
@@ -23,13 +26,7 @@
           "animations": ["walking"],
           "transitions": [
             {
-              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
-            },
-            {
-              "swimming": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
-            },
-            {
-              "flying": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+              "default": "query.modified_move_speed <= 0.01"
             }
           ],
           "blend_transition": 0.3
@@ -38,13 +35,7 @@
           "animations": ["flying"],
           "transitions": [
             {
-              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
-            },
-            {
-              "swimming": "query.modified_move_speed >= 0.01 && !query.is_on_ground && query.is_in_water"
-            },
-            {
-              "walking": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+              "default": "query.is_on_ground"
             }
           ],
           "blend_transition": 0.3
@@ -53,13 +44,16 @@
           "animations": ["swimming"],
           "transitions": [
             {
-              "default": "query.modified_move_speed <= 0.01 && query.is_on_ground && !query.is_in_water"
-            },
+              "default": "!query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "sleeping": {
+          "animations": ["sleeping"],
+          "transitions": [
             {
-              "walking": "q.can_walk && query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
-            },
-            {
-              "flying": "q.can_fly && query.modified_move_speed >= 0.01 && !query.is_on_ground && !query.is_in_water"
+              "default": "!q.is_sleeping"
             }
           ],
           "blend_transition": 0.3

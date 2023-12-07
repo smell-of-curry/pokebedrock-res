@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:larvesta",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/larvesta",
-                "shiny": "textures/sprites/larvesta",
-                "default_male": "textures/sprites/larvesta",
-                "default_female": "textures/sprites/larvesta",
-                "shiny_male": "textures/sprites/larvesta",
-                "shiny_female": "textures/sprites/larvesta",
-                "halloween": "textures/sprites/larvesta",
-                "shiny_halloween": "textures/sprites/larvesta",
-                "doll_female": "textures/sprites/larvesta",
-                "doll_male": "textures/sprites/larvesta",
-                "witch_female": "textures/sprites/larvesta",
-                "witch_male": "textures/sprites/larvesta",
-                "cap_female": "textures/sprites/larvesta",
-                "cap_male": "textures/sprites/larvesta",
-                "santa_female": "textures/sprites/larvesta",
-                "santa_male": "textures/sprites/larvesta",
-                "tophat_female": "textures/sprites/larvesta",
-                "tophat_male": "textures/sprites/larvesta",
-                "tophat_stpatricks_female": "textures/sprites/larvesta",
-                "tophat_stpatricks_male": "textures/sprites/larvesta",
-                "tophat_4thjuly_female": "textures/sprites/larvesta",
-                "tophat_4thjuly_male": "textures/sprites/larvesta",
-                "detective": "textures/sprites/larvesta"
+                "default": "textures/entity/pokemon/larvesta/larvesta",
+                "default_male": "textures/entity/pokemon/larvesta/larvesta",
+                "default_female": "textures/entity/pokemon/larvesta/larvesta",
+                "shiny": "textures/entity/pokemon/larvesta/shiny_larvesta",
+                "shiny_male": "textures/entity/pokemon/larvesta/shiny_larvesta",
+                "shiny_female": "textures/entity/pokemon/larvesta/shiny_larvesta",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/larvesta/larvesta",
+                "shiny_halloween": "textures/entity/pokemon/larvesta/larvesta",
+                "doll_female": "textures/entity/pokemon/larvesta/larvesta",
+                "doll_male": "textures/entity/pokemon/larvesta/larvesta",
+                "witch_female": "textures/entity/pokemon/larvesta/larvesta",
+                "witch_male": "textures/entity/pokemon/larvesta/larvesta",
+                "cap_female": "textures/entity/pokemon/larvesta/larvesta",
+                "cap_male": "textures/entity/pokemon/larvesta/larvesta",
+                "santa_female": "textures/entity/pokemon/larvesta/larvesta",
+                "santa_male": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_female": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_male": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_stpatricks_female": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_stpatricks_male": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_4thjuly_female": "textures/entity/pokemon/larvesta/larvesta",
+                "tophat_4thjuly_male": "textures/entity/pokemon/larvesta/larvesta",
+                "detective": "textures/entity/pokemon/larvesta/larvesta"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.larvesta"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.larvesta.idle",
+                "walking": "animation.larvesta.walking",
+                "flying": "animation.larvesta.walking",
+                "swimming": "animation.larvesta.swimming",
+                "sleeping": "animation.larvesta.sleeping",
+                "fall_asleep": "animation.larvesta.fall_asleep",
+                "wake_up": "animation.larvesta.wake_up",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "larvesta",

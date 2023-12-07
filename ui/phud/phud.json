@@ -1,0 +1,115 @@
+{
+  "namespace": "phud",
+  "main": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [{ "renderers@renderers": {} }, { "elements@elements": {} }]
+  },
+  "data_control": {
+    "type": "panel",
+    "size": [0, 0],
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#preserved_text",
+        "binding_condition": "visibility_changed"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "renderers": {
+    "type": "panel",
+    "controls": [
+      {
+        "currency_data_control@data_control": {
+          "$update_string": "&_currency:"
+        }
+      },
+      {
+        "phone_data_control@data_control": {
+          "$update_string": "&_phone:"
+        }
+      },
+      {
+        "battle_wait_control@data_control": {
+          "$update_string": "&_battleWait:"
+        }
+      },
+      {
+        "sidebar_control@data_control": {
+          "$update_string": "&_sidebar:"
+        }
+      }
+    ]
+  },
+  "elements": {
+    "type": "panel",
+    "$offset": [0, 0],
+    "offset": "$offset",
+    "variables": [{ "requires": "$pocket_screen", "$offset": [0, 10] }],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "phone_data_control",
+        "source_property_name": "(#preserved_text - '&_phone:')",
+        "target_property_name": "#phone",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "currency_data_control",
+        "source_property_name": "(#preserved_text - '&_currency:')",
+        "target_property_name": "#level_number",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "battle_wait_control",
+        "source_property_name": "(#preserved_text - '&_battleWait:')",
+        "target_property_name": "#battleLog",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "sidebar_control",
+        "source_property_name": "(#preserved_text - '&_sidebar:')",
+        "target_property_name": "#sidebar",
+        "resolve_sibling_scope": true
+      }
+    ],
+    "controls": [
+      {
+        "currency@phud_currency.main": {
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [0, 8],
+          "$font_scale": 1,
+          "$color": [1, 1, 0.52, 1]
+        }
+      },
+      {
+        "phone@phud_phone.main": {
+          "size": [64, 64],
+          "offset": [8, 0],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle"
+        }
+      },
+      {
+        "battle_wait@phud_battleWait.main": {}
+      },
+      {
+        "sidebar@phud_sidebar.main": {
+          "$color": "white"
+        }
+      }
+    ]
+  }
+}

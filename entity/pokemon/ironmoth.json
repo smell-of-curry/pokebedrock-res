@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:ironmoth",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/ironmoth",
-                "shiny": "textures/sprites/ironmoth",
-                "default_male": "textures/sprites/ironmoth",
-                "default_female": "textures/sprites/ironmoth",
-                "shiny_male": "textures/sprites/ironmoth",
-                "shiny_female": "textures/sprites/ironmoth",
-                "halloween": "textures/sprites/ironmoth",
-                "shiny_halloween": "textures/sprites/ironmoth",
-                "doll_female": "textures/sprites/ironmoth",
-                "doll_male": "textures/sprites/ironmoth",
-                "witch_female": "textures/sprites/ironmoth",
-                "witch_male": "textures/sprites/ironmoth",
-                "cap_female": "textures/sprites/ironmoth",
-                "cap_male": "textures/sprites/ironmoth",
-                "santa_female": "textures/sprites/ironmoth",
-                "santa_male": "textures/sprites/ironmoth",
-                "tophat_female": "textures/sprites/ironmoth",
-                "tophat_male": "textures/sprites/ironmoth",
-                "tophat_stpatricks_female": "textures/sprites/ironmoth",
-                "tophat_stpatricks_male": "textures/sprites/ironmoth",
-                "tophat_4thjuly_female": "textures/sprites/ironmoth",
-                "tophat_4thjuly_male": "textures/sprites/ironmoth",
-                "detective": "textures/sprites/ironmoth"
+                "default": "textures/entity/pokemon/ironmoth/ironmoth",
+                "default_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "default_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "shiny": "textures/entity/pokemon/ironmoth/shiny_ironmoth",
+                "shiny_male": "textures/entity/pokemon/ironmoth/shiny_ironmoth",
+                "shiny_female": "textures/entity/pokemon/ironmoth/shiny_ironmoth",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/ironmoth/ironmoth",
+                "shiny_halloween": "textures/entity/pokemon/ironmoth/ironmoth",
+                "doll_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "doll_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "witch_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "witch_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "cap_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "cap_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "santa_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "santa_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_stpatricks_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_stpatricks_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_4thjuly_female": "textures/entity/pokemon/ironmoth/ironmoth",
+                "tophat_4thjuly_male": "textures/entity/pokemon/ironmoth/ironmoth",
+                "detective": "textures/entity/pokemon/ironmoth/ironmoth"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.ironmoth"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.ironmoth.idle",
+                "walking": "animation.ironmoth.walking",
+                "flying": "animation.ironmoth.walking",
+                "swimming": "animation.ironmoth.walking",
+                "sleeping": "animation.ironmoth.sleeping",
+                "fall_asleep": "animation.ironmoth.fall_asleep",
+                "wake_up": "animation.ironmoth.wake_up",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "ironmoth",

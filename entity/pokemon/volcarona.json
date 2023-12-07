@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:volcarona",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/volcarona",
-                "shiny": "textures/sprites/volcarona",
-                "default_male": "textures/sprites/volcarona",
-                "default_female": "textures/sprites/volcarona",
-                "shiny_male": "textures/sprites/volcarona",
-                "shiny_female": "textures/sprites/volcarona",
-                "halloween": "textures/sprites/volcarona",
-                "shiny_halloween": "textures/sprites/volcarona",
-                "doll_female": "textures/sprites/volcarona",
-                "doll_male": "textures/sprites/volcarona",
-                "witch_female": "textures/sprites/volcarona",
-                "witch_male": "textures/sprites/volcarona",
-                "cap_female": "textures/sprites/volcarona",
-                "cap_male": "textures/sprites/volcarona",
-                "santa_female": "textures/sprites/volcarona",
-                "santa_male": "textures/sprites/volcarona",
-                "tophat_female": "textures/sprites/volcarona",
-                "tophat_male": "textures/sprites/volcarona",
-                "tophat_stpatricks_female": "textures/sprites/volcarona",
-                "tophat_stpatricks_male": "textures/sprites/volcarona",
-                "tophat_4thjuly_female": "textures/sprites/volcarona",
-                "tophat_4thjuly_male": "textures/sprites/volcarona",
-                "detective": "textures/sprites/volcarona"
+                "default": "textures/entity/pokemon/volcarona/volcarona",
+                "default_male": "textures/entity/pokemon/volcarona/volcarona",
+                "default_female": "textures/entity/pokemon/volcarona/volcarona",
+                "shiny": "textures/entity/pokemon/volcarona/shiny_volcarona",
+                "shiny_male": "textures/entity/pokemon/volcarona/shiny_volcarona",
+                "shiny_female": "textures/entity/pokemon/volcarona/shiny_volcarona",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/volcarona/volcarona",
+                "shiny_halloween": "textures/entity/pokemon/volcarona/volcarona",
+                "doll_female": "textures/entity/pokemon/volcarona/volcarona",
+                "doll_male": "textures/entity/pokemon/volcarona/volcarona",
+                "witch_female": "textures/entity/pokemon/volcarona/volcarona",
+                "witch_male": "textures/entity/pokemon/volcarona/volcarona",
+                "cap_female": "textures/entity/pokemon/volcarona/volcarona",
+                "cap_male": "textures/entity/pokemon/volcarona/volcarona",
+                "santa_female": "textures/entity/pokemon/volcarona/volcarona",
+                "santa_male": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_female": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_male": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_stpatricks_female": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_stpatricks_male": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_4thjuly_female": "textures/entity/pokemon/volcarona/volcarona",
+                "tophat_4thjuly_male": "textures/entity/pokemon/volcarona/volcarona",
+                "detective": "textures/entity/pokemon/volcarona/volcarona"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.volcarona"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.volcarona.idle",
+                "walking": "animation.volcarona.walking",
+                "flying": "animation.volcarona.flying",
+                "swimming": "animation.volcarona.walking",
+                "sleeping": "animation.volcarona.sleeping",
+                "fall_asleep": "animation.volcarona.fall_asleep",
+                "wake_up": "animation.volcarona.wake_up",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "volcarona",

@@ -1,0 +1,155 @@
+{
+  "namespace": "phud_phone",
+  "main": {
+    "type": "panel",
+    "controls": [{ "icons@icons": {} }, { "backgrounds@backgrounds": {} }]
+  },
+  "backgrounds": {
+    "type": "panel",
+    "controls": [
+      { "phone@phone_background": {} },
+      { "jeb_background@jeb_background": {} }
+    ]
+  },
+  "icons": {
+    "type": "panel",
+    "controls": [
+      {
+        "ringing@icon": {
+          "$condition": "(#value = 'ring')",
+          "$name": "ringing",
+          "uv": "@phud_phone.anim__ringing",
+          "uv_size": [64, 64]
+        }
+      },
+      { "jeb_icon_wrapper@jeb_icon_wrapper": {} }
+    ],
+    "layer": 1
+  },
+
+  "phone_background@abstract_phone_conditional": {
+    "texture": "textures/ui/phud/box_small",
+    "$condition": "(#value = 'ring')"
+  },
+  "jeb_background@abstract_phone_conditional": {
+    "type": "image",
+    "$condition": "(#value = 'loop')",
+    "size": ["100%", "100%"],
+    "texture": "textures/ui/phud/box_wide",
+    "alpha": 0,
+    "anims": ["@phud_phone.anim__jeb_loop_show__0"]
+  },
+  "icon@abstract_phone_conditional": {
+    "texture": "('textures/ui/phud/' + $name)"
+  },
+  "jeb_icon_wrapper@abstract_phone_conditional": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$condition": "(#value = 'loop')",
+    "controls": [
+      {
+        "start@jeb_icon": {
+          "uv": "@phud_phone.anim__jeb_start_flipbook",
+          "anims": ["@phud_phone.anim__jeb_start_destroy"],
+          "$name": "jeb_start"
+        }
+      },
+      {
+        "loop@jeb_icon": {
+          "uv": "@phud_phone.anim__jeb_loop_flipbook",
+          "anims": ["@phud_phone.anim__jeb_loop_show__0"],
+          "alpha": 0,
+          "$name": "jeb_loop"
+        }
+      }
+    ]
+  },
+  "jeb_icon": {
+    "type": "image",
+    "texture": "('textures/ui/phud/' + $name)",
+    "uv_size": [64, 64]
+  },
+  "abstract_phone_conditional": {
+    "type": "image",
+    "size": ["100%", "100%"],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#phone",
+        "target_property_name": "#value"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$condition",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$condition",
+        "target_property_name": "#enabled"
+      }
+    ],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "text": "#text",
+          "size": ["100%", "100%"],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "elements",
+              "source_property_name": "#phone",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "anim__ringing": {
+    "anim_type": "flip_book",
+    "initial_uv": [0, 0],
+    "frame_count": 11,
+    "fps": 11,
+    "frame_step": 64
+  },
+  "anim__active": {
+    "anim_type": "flip_book",
+    "initial_uv": [0, 0],
+    "frame_count": 4,
+    "fps": 4,
+    "frame_step": 64
+  },
+  "anim__jeb_start_flipbook": {
+    "anim_type": "flip_book",
+    "initial_uv": [0, 0],
+    "frame_count": 12,
+    "fps": 12,
+    "frame_step": 64
+  },
+  "anim__jeb_start_destroy": {
+    "anim_type": "wait",
+    "duration": 0.97,
+    "destroy_at_end": "start"
+  },
+  "anim__jeb_loop_flipbook": {
+    "anim_type": "flip_book",
+    "initial_uv": [0, 0],
+    "frame_count": 8,
+    "fps": 12,
+    "frame_step": 64
+  },
+  "anim__jeb_loop_show__0": {
+    "anim_type": "wait",
+    "duration": 0.97,
+    "next": "@phud_phone.anim__jeb_loop_show__1"
+  },
+  "anim__jeb_loop_show__1": {
+    "anim_type": "alpha",
+    "duration": 0,
+    "from": 1,
+    "to": 1
+  }
+}

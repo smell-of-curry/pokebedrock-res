@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:xurkitree",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/xurkitree",
-                "shiny": "textures/sprites/xurkitree",
-                "default_male": "textures/sprites/xurkitree",
-                "default_female": "textures/sprites/xurkitree",
-                "shiny_male": "textures/sprites/xurkitree",
-                "shiny_female": "textures/sprites/xurkitree",
-                "halloween": "textures/sprites/xurkitree",
-                "shiny_halloween": "textures/sprites/xurkitree",
-                "doll_female": "textures/sprites/xurkitree",
-                "doll_male": "textures/sprites/xurkitree",
-                "witch_female": "textures/sprites/xurkitree",
-                "witch_male": "textures/sprites/xurkitree",
-                "cap_female": "textures/sprites/xurkitree",
-                "cap_male": "textures/sprites/xurkitree",
-                "santa_female": "textures/sprites/xurkitree",
-                "santa_male": "textures/sprites/xurkitree",
-                "tophat_female": "textures/sprites/xurkitree",
-                "tophat_male": "textures/sprites/xurkitree",
-                "tophat_stpatricks_female": "textures/sprites/xurkitree",
-                "tophat_stpatricks_male": "textures/sprites/xurkitree",
-                "tophat_4thjuly_female": "textures/sprites/xurkitree",
-                "tophat_4thjuly_male": "textures/sprites/xurkitree",
-                "detective": "textures/sprites/xurkitree"
+                "default": "textures/entity/pokemon/xurkitree/xurkitree",
+                "default_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "default_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "shiny": "textures/entity/pokemon/xurkitree/shiny_xurkitree",
+                "shiny_male": "textures/entity/pokemon/xurkitree/shiny_xurkitree",
+                "shiny_female": "textures/entity/pokemon/xurkitree/shiny_xurkitree",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/xurkitree/xurkitree",
+                "shiny_halloween": "textures/entity/pokemon/xurkitree/xurkitree",
+                "doll_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "doll_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "witch_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "witch_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "cap_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "cap_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "santa_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "santa_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_stpatricks_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_stpatricks_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_4thjuly_female": "textures/entity/pokemon/xurkitree/xurkitree",
+                "tophat_4thjuly_male": "textures/entity/pokemon/xurkitree/xurkitree",
+                "detective": "textures/entity/pokemon/xurkitree/xurkitree"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.xurkitree"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.xurkitree.idle",
+                "walking": "animation.xurkitree.walking",
+                "flying": "animation.xurkitree.walking",
+                "swimming": "animation.xurkitree.walking",
+                "sleeping": "animation.xurkitree.idle",
+                "fall_asleep": "animation.xurkitree.fall_asleep",
+                "wake_up": "animation.xurkitree.wake_up",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "xurkitree",

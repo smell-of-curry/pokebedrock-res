@@ -1,0 +1,32 @@
+{
+  "namespace": "phud_currency",
+  "main": {
+    "type": "image",
+    "size": ["100%c + 12px", "100%c + 5px"],
+    "texture": "textures/ui/hud_tip_text_background",
+    "alpha": 0.6,
+    "controls": [
+      {
+        "value": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "font_scale_factor": "$font_scale",
+          "color": "$color",
+          "text": "#text",
+          "layer": 3,
+          "localize": false,
+          "alpha": 1,
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "elements",
+              "source_property_name": "#level_number",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
