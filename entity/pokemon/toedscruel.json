@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:toedscruel",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/toedscruel",
-                "shiny": "textures/sprites/toedscruel",
-                "default_male": "textures/sprites/toedscruel",
-                "default_female": "textures/sprites/toedscruel",
-                "shiny_male": "textures/sprites/toedscruel",
-                "shiny_female": "textures/sprites/toedscruel",
-                "halloween": "textures/sprites/toedscruel",
-                "shiny_halloween": "textures/sprites/toedscruel",
-                "doll_female": "textures/sprites/toedscruel",
-                "doll_male": "textures/sprites/toedscruel",
-                "witch_female": "textures/sprites/toedscruel",
-                "witch_male": "textures/sprites/toedscruel",
-                "cap_female": "textures/sprites/toedscruel",
-                "cap_male": "textures/sprites/toedscruel",
-                "santa_female": "textures/sprites/toedscruel",
-                "santa_male": "textures/sprites/toedscruel",
-                "tophat_female": "textures/sprites/toedscruel",
-                "tophat_male": "textures/sprites/toedscruel",
-                "tophat_stpatricks_female": "textures/sprites/toedscruel",
-                "tophat_stpatricks_male": "textures/sprites/toedscruel",
-                "tophat_4thjuly_female": "textures/sprites/toedscruel",
-                "tophat_4thjuly_male": "textures/sprites/toedscruel",
-                "detective": "textures/sprites/toedscruel"
+                "default": "textures/entity/pokemon/toedscruel/toedscruel",
+                "default_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "default_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "shiny": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+                "shiny_male": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+                "shiny_female": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/toedscruel/toedscruel",
+                "shiny_halloween": "textures/entity/pokemon/toedscruel/toedscruel",
+                "doll_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "doll_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "witch_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "witch_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "cap_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "cap_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "santa_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "santa_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_stpatricks_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_stpatricks_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_4thjuly_female": "textures/entity/pokemon/toedscruel/toedscruel",
+                "tophat_4thjuly_male": "textures/entity/pokemon/toedscruel/toedscruel",
+                "detective": "textures/entity/pokemon/toedscruel/toedscruel"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.toedscruel"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.toedscruel.idle",
+                "walking": "animation.toedscruel.walking",
+                "flying": "animation.toedscruel.walking",
+                "swimming": "animation.toedscruel.walking",
+                "sleeping": "animation.toedscruel.sleeping",
+                "fall_asleep": "animation.toedscruel.fall_asleep",
+                "wake_up": "animation.toedscruel.wake_up",
+                "attack": "animation.toedscruel.idle",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "toedscruel",

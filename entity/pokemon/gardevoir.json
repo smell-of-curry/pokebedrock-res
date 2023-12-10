@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:gardevoir",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/gardevoir",
-                "shiny": "textures/sprites/gardevoir",
-                "default_male": "textures/sprites/gardevoir",
-                "default_female": "textures/sprites/gardevoir",
-                "shiny_male": "textures/sprites/gardevoir",
-                "shiny_female": "textures/sprites/gardevoir",
-                "halloween": "textures/sprites/gardevoir",
-                "shiny_halloween": "textures/sprites/gardevoir",
-                "doll_female": "textures/sprites/gardevoir",
-                "doll_male": "textures/sprites/gardevoir",
-                "witch_female": "textures/sprites/gardevoir",
-                "witch_male": "textures/sprites/gardevoir",
-                "cap_female": "textures/sprites/gardevoir",
-                "cap_male": "textures/sprites/gardevoir",
-                "santa_female": "textures/sprites/gardevoir",
-                "santa_male": "textures/sprites/gardevoir",
-                "tophat_female": "textures/sprites/gardevoir",
-                "tophat_male": "textures/sprites/gardevoir",
-                "tophat_stpatricks_female": "textures/sprites/gardevoir",
-                "tophat_stpatricks_male": "textures/sprites/gardevoir",
-                "tophat_4thjuly_female": "textures/sprites/gardevoir",
-                "tophat_4thjuly_male": "textures/sprites/gardevoir",
-                "detective": "textures/sprites/gardevoir"
+                "default": "textures/entity/pokemon/gardevoir/gardevoir",
+                "default_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "default_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "shiny": "textures/entity/pokemon/gardevoir/shiny_gardevoir",
+                "shiny_male": "textures/entity/pokemon/gardevoir/shiny_gardevoir",
+                "shiny_female": "textures/entity/pokemon/gardevoir/shiny_gardevoir",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/gardevoir/gardevoir",
+                "shiny_halloween": "textures/entity/pokemon/gardevoir/gardevoir",
+                "doll_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "doll_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "witch_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "witch_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "cap_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "cap_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "santa_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "santa_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_stpatricks_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_stpatricks_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_4thjuly_female": "textures/entity/pokemon/gardevoir/gardevoir",
+                "tophat_4thjuly_male": "textures/entity/pokemon/gardevoir/gardevoir",
+                "detective": "textures/entity/pokemon/gardevoir/gardevoir"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.gardevoir"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.gardevoir.idle",
+                "walking": "animation.gardevoir.walking",
+                "flying": "animation.gardevoir.walking",
+                "swimming": "animation.gardevoir.walking",
+                "sleeping": "animation.gardevoir.sleeping",
+                "fall_asleep": "animation.gardevoir.fall_asleep",
+                "wake_up": "animation.gardevoir.wake_up",
+                "attack": "animation.gardevoir.attack",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "gardevoir",

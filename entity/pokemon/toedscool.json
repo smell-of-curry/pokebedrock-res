@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:toedscool",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/toedscool",
-                "shiny": "textures/sprites/toedscool",
-                "default_male": "textures/sprites/toedscool",
-                "default_female": "textures/sprites/toedscool",
-                "shiny_male": "textures/sprites/toedscool",
-                "shiny_female": "textures/sprites/toedscool",
-                "halloween": "textures/sprites/toedscool",
-                "shiny_halloween": "textures/sprites/toedscool",
-                "doll_female": "textures/sprites/toedscool",
-                "doll_male": "textures/sprites/toedscool",
-                "witch_female": "textures/sprites/toedscool",
-                "witch_male": "textures/sprites/toedscool",
-                "cap_female": "textures/sprites/toedscool",
-                "cap_male": "textures/sprites/toedscool",
-                "santa_female": "textures/sprites/toedscool",
-                "santa_male": "textures/sprites/toedscool",
-                "tophat_female": "textures/sprites/toedscool",
-                "tophat_male": "textures/sprites/toedscool",
-                "tophat_stpatricks_female": "textures/sprites/toedscool",
-                "tophat_stpatricks_male": "textures/sprites/toedscool",
-                "tophat_4thjuly_female": "textures/sprites/toedscool",
-                "tophat_4thjuly_male": "textures/sprites/toedscool",
-                "detective": "textures/sprites/toedscool"
+                "default": "textures/entity/pokemon/toedscool/toedscool",
+                "default_male": "textures/entity/pokemon/toedscool/toedscool",
+                "default_female": "textures/entity/pokemon/toedscool/toedscool",
+                "shiny": "textures/entity/pokemon/toedscool/shiny_toedscool",
+                "shiny_male": "textures/entity/pokemon/toedscool/shiny_toedscool",
+                "shiny_female": "textures/entity/pokemon/toedscool/shiny_toedscool",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/toedscool/toedscool",
+                "shiny_halloween": "textures/entity/pokemon/toedscool/toedscool",
+                "doll_female": "textures/entity/pokemon/toedscool/toedscool",
+                "doll_male": "textures/entity/pokemon/toedscool/toedscool",
+                "witch_female": "textures/entity/pokemon/toedscool/toedscool",
+                "witch_male": "textures/entity/pokemon/toedscool/toedscool",
+                "cap_female": "textures/entity/pokemon/toedscool/toedscool",
+                "cap_male": "textures/entity/pokemon/toedscool/toedscool",
+                "santa_female": "textures/entity/pokemon/toedscool/toedscool",
+                "santa_male": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_female": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_male": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_stpatricks_female": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_stpatricks_male": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_4thjuly_female": "textures/entity/pokemon/toedscool/toedscool",
+                "tophat_4thjuly_male": "textures/entity/pokemon/toedscool/toedscool",
+                "detective": "textures/entity/pokemon/toedscool/toedscool"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.toedscool"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.toedscool.idle",
+                "walking": "animation.toedscool.walking",
+                "flying": "animation.toedscool.walking",
+                "swimming": "animation.toedscool.walking",
+                "sleeping": "animation.toedscool.sleeping",
+                "fall_asleep": "animation.toedscool.fall_asleep",
+                "wake_up": "animation.toedscool.wake_up",
+                "attack": "animation.toedscool.idle",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "toedscool",

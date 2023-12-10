@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:ralts",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/ralts",
-                "shiny": "textures/sprites/ralts",
-                "default_male": "textures/sprites/ralts",
-                "default_female": "textures/sprites/ralts",
-                "shiny_male": "textures/sprites/ralts",
-                "shiny_female": "textures/sprites/ralts",
-                "halloween": "textures/sprites/ralts",
-                "shiny_halloween": "textures/sprites/ralts",
-                "doll_female": "textures/sprites/ralts",
-                "doll_male": "textures/sprites/ralts",
-                "witch_female": "textures/sprites/ralts",
-                "witch_male": "textures/sprites/ralts",
-                "cap_female": "textures/sprites/ralts",
-                "cap_male": "textures/sprites/ralts",
-                "santa_female": "textures/sprites/ralts",
-                "santa_male": "textures/sprites/ralts",
-                "tophat_female": "textures/sprites/ralts",
-                "tophat_male": "textures/sprites/ralts",
-                "tophat_stpatricks_female": "textures/sprites/ralts",
-                "tophat_stpatricks_male": "textures/sprites/ralts",
-                "tophat_4thjuly_female": "textures/sprites/ralts",
-                "tophat_4thjuly_male": "textures/sprites/ralts",
-                "detective": "textures/sprites/ralts"
+                "default": "textures/entity/pokemon/ralts/ralts",
+                "default_male": "textures/entity/pokemon/ralts/ralts",
+                "default_female": "textures/entity/pokemon/ralts/ralts",
+                "shiny": "textures/entity/pokemon/ralts/shiny_ralts",
+                "shiny_male": "textures/entity/pokemon/ralts/shiny_ralts",
+                "shiny_female": "textures/entity/pokemon/ralts/shiny_ralts",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/ralts/ralts",
+                "shiny_halloween": "textures/entity/pokemon/ralts/ralts",
+                "doll_female": "textures/entity/pokemon/ralts/ralts",
+                "doll_male": "textures/entity/pokemon/ralts/ralts",
+                "witch_female": "textures/entity/pokemon/ralts/ralts",
+                "witch_male": "textures/entity/pokemon/ralts/ralts",
+                "cap_female": "textures/entity/pokemon/ralts/ralts",
+                "cap_male": "textures/entity/pokemon/ralts/ralts",
+                "santa_female": "textures/entity/pokemon/ralts/ralts",
+                "santa_male": "textures/entity/pokemon/ralts/ralts",
+                "tophat_female": "textures/entity/pokemon/ralts/ralts",
+                "tophat_male": "textures/entity/pokemon/ralts/ralts",
+                "tophat_stpatricks_female": "textures/entity/pokemon/ralts/ralts",
+                "tophat_stpatricks_male": "textures/entity/pokemon/ralts/ralts",
+                "tophat_4thjuly_female": "textures/entity/pokemon/ralts/ralts",
+                "tophat_4thjuly_male": "textures/entity/pokemon/ralts/ralts",
+                "detective": "textures/entity/pokemon/ralts/ralts"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.ralts"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "idle": "animation.ralts.idle",
+                "walking": "animation.ralts.walking",
+                "flying": "animation.ralts.walking",
+                "swimming": "animation.ralts.walking",
+                "sleeping": "animation.ralts.sleeping",
+                "fall_asleep": "animation.ralts.fall_asleep",
+                "wake_up": "animation.ralts.wake_up",
+                "attack": "animation.ralts.attack",
+                "look_at_target": "animation.common.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "ralts",

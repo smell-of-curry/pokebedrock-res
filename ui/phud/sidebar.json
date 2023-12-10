@@ -188,9 +188,8 @@
     "size": ["100%", "80%"],
     "offset": ["47%", "0%"],
     "layer": 1,
-    "$var_size": 61,
+    "$var_size": 71,
     "alpha": 1,
-
     "controls": [
       {
         "pokemon_holder": {
@@ -290,6 +289,24 @@
             }
           ]
         }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#sidebar",
+        "target_property_name": "#sidebar"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#sidebar = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#sidebar = ''))",
+        "target_property_name": "#enabled"
       }
     ]
   }
