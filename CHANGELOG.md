@@ -1,52 +1,12 @@
-**Update v2.8.1**
+**Update v2.8.3**
 
-- Updated Pokemon Animation Controller, to correctly animate per pokemon.
-- Added new Backpack Model and animation
-- Added new Applin Model
-- Added new Arceus Animations
-- Fixed Blaziken Animations
-- Fixed Clefairy Animations
-- New Eevee Model
-- Fixed Ho-Oh Animations
-- Added new Iron Moth Model
-- Added new Jolteon Model
-- Added new larvesta Model
-- Added new Latios Model
-- Added new Magcargo Model
-- Added new Mankey Model
-- Added new Quaquaval Model
-- Added new Munchlax Model
-- Added new Primeape Model
-- Added new Pikachu Model
-- Added new Mankey Model
-- Added new Slither Wing Model
-- Added new Vaporeon Model
-- Added new Volcarona Model
-- Added new Xurkitree Model
-- Added new Professor Oak Model
-- Pokemon now have dynamic animation rendering
-- Added new icons to FontGlyph
-- Added 3 new Bird shrines
-- Added some new sounds and replaced broken ones
-- Added new orb textures
-- Added lots of new Shiny textures
-- Redone the entire previous UI Rendering for the hud screen. Now is dynamic and has property saving.
-- Added toedscool, tapukoko, toedscruel
-- New ampharos Model
-- new Chinchou model
-- New electrode model
-- new Gardevoir Model
-- New kiela Model
-- New Lanturn Model
-- New Moltres model
-- New Pidgey fly animation
-- New ralts animation
-- New tapukoko Model
-- New voltorb Model
-- New zapdos Model
-- Fixed Zubat model
-- Fixed battle logs text
-- Fixed currency render
-- Removed text on phone
-- Changed var size for sidebar
-- Added attack animations to pokemon
+- Added new Ground Idle, Air Idle, and Water Idle Animations
+- Update animations for all pokemon.
+- Added Flaffy Model
+- Added Mareep Model
+- Added Miltank Model
+- Added Natu Model
+- Added Shiny Butterfree texture
+- Added detective Pikachu texture
+- Added shiny Quxly and shiny Quaxwell texture
+- Fixed some offsets for chest server form
