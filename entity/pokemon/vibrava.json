@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:vibrava",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/vibrava",
-                "shiny": "textures/sprites/vibrava",
-                "default_male": "textures/sprites/vibrava",
-                "default_female": "textures/sprites/vibrava",
-                "shiny_male": "textures/sprites/vibrava",
-                "shiny_female": "textures/sprites/vibrava",
-                "halloween": "textures/sprites/vibrava",
-                "shiny_halloween": "textures/sprites/vibrava",
-                "doll_female": "textures/sprites/vibrava",
-                "doll_male": "textures/sprites/vibrava",
-                "witch_female": "textures/sprites/vibrava",
-                "witch_male": "textures/sprites/vibrava",
-                "cap_female": "textures/sprites/vibrava",
-                "cap_male": "textures/sprites/vibrava",
-                "santa_female": "textures/sprites/vibrava",
-                "santa_male": "textures/sprites/vibrava",
-                "tophat_female": "textures/sprites/vibrava",
-                "tophat_male": "textures/sprites/vibrava",
-                "tophat_stpatricks_female": "textures/sprites/vibrava",
-                "tophat_stpatricks_male": "textures/sprites/vibrava",
-                "tophat_4thjuly_female": "textures/sprites/vibrava",
-                "tophat_4thjuly_male": "textures/sprites/vibrava",
-                "detective": "textures/sprites/vibrava"
+                "default": "textures/entity/pokemon/vibrava/vibrava",
+                "default_male": "textures/entity/pokemon/vibrava/vibrava",
+                "default_female": "textures/entity/pokemon/vibrava/vibrava",
+                "shiny": "textures/entity/pokemon/vibrava/shiny_vibrava",
+                "shiny_male": "textures/entity/pokemon/vibrava/shiny_vibrava",
+                "shiny_female": "textures/entity/pokemon/vibrava/shiny_vibrava",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/vibrava/vibrava",
+                "shiny_halloween": "textures/entity/pokemon/vibrava/vibrava",
+                "doll_female": "textures/entity/pokemon/vibrava/vibrava",
+                "doll_male": "textures/entity/pokemon/vibrava/vibrava",
+                "witch_female": "textures/entity/pokemon/vibrava/vibrava",
+                "witch_male": "textures/entity/pokemon/vibrava/vibrava",
+                "cap_female": "textures/entity/pokemon/vibrava/vibrava",
+                "cap_male": "textures/entity/pokemon/vibrava/vibrava",
+                "santa_female": "textures/entity/pokemon/vibrava/vibrava",
+                "santa_male": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_female": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_male": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_stpatricks_female": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_stpatricks_male": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_4thjuly_female": "textures/entity/pokemon/vibrava/vibrava",
+                "tophat_4thjuly_male": "textures/entity/pokemon/vibrava/vibrava",
+                "detective": "textures/entity/pokemon/vibrava/vibrava"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.vibrava"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.vibrava.ground_idle",
+                "air_idle": "animation.vibrava.air_idle",
+                "water_idle": "animation.vibrava.air_idle",
+                "walking": "animation.vibrava.walking",
+                "flying": "animation.vibrava.walking",
+                "swimming": "animation.vibrava.walking",
+                "sleeping": "animation.vibrava.sleeping",
+                "attack": "animation.vibrava.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "vibrava",

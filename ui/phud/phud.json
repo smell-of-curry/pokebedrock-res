@@ -43,6 +43,16 @@
         }
       },
       {
+        "loading_screen_control@data_control": {
+          "$update_string": "&_loadingScreen:"
+        }
+      },
+      {
+        "evolution_wait_control@data_control": {
+          "$update_string": "&_evolutionWait:"
+        }
+      },
+      {
         "sidebar_control@data_control": {
           "$update_string": "&_sidebar:"
         }
@@ -78,6 +88,20 @@
       },
       {
         "binding_type": "view",
+        "source_control_name": "loading_screen_control",
+        "source_property_name": "(#preserved_text - '&_loadingScreen:')",
+        "target_property_name": "#loadingScreen",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "evolution_wait_control",
+        "source_property_name": "(#preserved_text - '&_evolutionWait:')",
+        "target_property_name": "#evolutionWait",
+        "resolve_sibling_scope": true
+      },
+      {
+        "binding_type": "view",
         "source_control_name": "sidebar_control",
         "source_property_name": "(#preserved_text - '&_sidebar:')",
         "target_property_name": "#sidebar",
@@ -104,6 +128,12 @@
       // },
       {
         "battle_wait@phud_battleWait.main": {}
+      },
+      {
+        "loadingScreen@phud_loadingScreen.main": {}
+      },
+      {
+        "evolutionWait@phud_evolutionWait.main": {}
       },
       {
         "sidebar@phud_sidebar.main": {

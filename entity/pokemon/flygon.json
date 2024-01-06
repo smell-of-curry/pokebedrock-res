@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:flygon",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/flygon",
-                "shiny": "textures/sprites/flygon",
-                "default_male": "textures/sprites/flygon",
-                "default_female": "textures/sprites/flygon",
-                "shiny_male": "textures/sprites/flygon",
-                "shiny_female": "textures/sprites/flygon",
-                "halloween": "textures/sprites/flygon",
-                "shiny_halloween": "textures/sprites/flygon",
-                "doll_female": "textures/sprites/flygon",
-                "doll_male": "textures/sprites/flygon",
-                "witch_female": "textures/sprites/flygon",
-                "witch_male": "textures/sprites/flygon",
-                "cap_female": "textures/sprites/flygon",
-                "cap_male": "textures/sprites/flygon",
-                "santa_female": "textures/sprites/flygon",
-                "santa_male": "textures/sprites/flygon",
-                "tophat_female": "textures/sprites/flygon",
-                "tophat_male": "textures/sprites/flygon",
-                "tophat_stpatricks_female": "textures/sprites/flygon",
-                "tophat_stpatricks_male": "textures/sprites/flygon",
-                "tophat_4thjuly_female": "textures/sprites/flygon",
-                "tophat_4thjuly_male": "textures/sprites/flygon",
-                "detective": "textures/sprites/flygon"
+                "default": "textures/entity/pokemon/flygon/flygon",
+                "default_male": "textures/entity/pokemon/flygon/flygon",
+                "default_female": "textures/entity/pokemon/flygon/flygon",
+                "shiny": "textures/entity/pokemon/flygon/shiny_flygon",
+                "shiny_male": "textures/entity/pokemon/flygon/shiny_flygon",
+                "shiny_female": "textures/entity/pokemon/flygon/shiny_flygon",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/flygon/flygon",
+                "shiny_halloween": "textures/entity/pokemon/flygon/flygon",
+                "doll_female": "textures/entity/pokemon/flygon/flygon",
+                "doll_male": "textures/entity/pokemon/flygon/flygon",
+                "witch_female": "textures/entity/pokemon/flygon/flygon",
+                "witch_male": "textures/entity/pokemon/flygon/flygon",
+                "cap_female": "textures/entity/pokemon/flygon/flygon",
+                "cap_male": "textures/entity/pokemon/flygon/flygon",
+                "santa_female": "textures/entity/pokemon/flygon/flygon",
+                "santa_male": "textures/entity/pokemon/flygon/flygon",
+                "tophat_female": "textures/entity/pokemon/flygon/flygon",
+                "tophat_male": "textures/entity/pokemon/flygon/flygon",
+                "tophat_stpatricks_female": "textures/entity/pokemon/flygon/flygon",
+                "tophat_stpatricks_male": "textures/entity/pokemon/flygon/flygon",
+                "tophat_4thjuly_female": "textures/entity/pokemon/flygon/flygon",
+                "tophat_4thjuly_male": "textures/entity/pokemon/flygon/flygon",
+                "detective": "textures/entity/pokemon/flygon/flygon"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.flygon"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.flygon.ground_idle",
+                "air_idle": "animation.flygon.air_idle",
+                "water_idle": "animation.flygon.ground_idle",
+                "walking": "animation.flygon.walking",
+                "flying": "animation.flygon.flying",
+                "swimming": "animation.flygon.walking",
+                "sleeping": "animation.flygon.sleeping",
+                "attack": "animation.flygon.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "flygon",

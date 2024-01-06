@@ -4,38 +4,67 @@
         "description": {
             "identifier": "pokemon:trapinch",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/trapinch",
-                "shiny": "textures/sprites/trapinch",
-                "default_male": "textures/sprites/trapinch",
-                "default_female": "textures/sprites/trapinch",
-                "shiny_male": "textures/sprites/trapinch",
-                "shiny_female": "textures/sprites/trapinch",
-                "halloween": "textures/sprites/trapinch",
-                "shiny_halloween": "textures/sprites/trapinch",
-                "doll_female": "textures/sprites/trapinch",
-                "doll_male": "textures/sprites/trapinch",
-                "witch_female": "textures/sprites/trapinch",
-                "witch_male": "textures/sprites/trapinch",
-                "cap_female": "textures/sprites/trapinch",
-                "cap_male": "textures/sprites/trapinch",
-                "santa_female": "textures/sprites/trapinch",
-                "santa_male": "textures/sprites/trapinch",
-                "tophat_female": "textures/sprites/trapinch",
-                "tophat_male": "textures/sprites/trapinch",
-                "tophat_stpatricks_female": "textures/sprites/trapinch",
-                "tophat_stpatricks_male": "textures/sprites/trapinch",
-                "tophat_4thjuly_female": "textures/sprites/trapinch",
-                "tophat_4thjuly_male": "textures/sprites/trapinch",
-                "detective": "textures/sprites/trapinch"
+                "default": "textures/entity/pokemon/trapinch/trapinch",
+                "default_male": "textures/entity/pokemon/trapinch/trapinch",
+                "default_female": "textures/entity/pokemon/trapinch/trapinch",
+                "shiny": "textures/entity/pokemon/trapinch/shiny_trapinch",
+                "shiny_male": "textures/entity/pokemon/trapinch/shiny_trapinch",
+                "shiny_female": "textures/entity/pokemon/trapinch/shiny_trapinch",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/trapinch/trapinch",
+                "shiny_halloween": "textures/entity/pokemon/trapinch/trapinch",
+                "doll_female": "textures/entity/pokemon/trapinch/trapinch",
+                "doll_male": "textures/entity/pokemon/trapinch/trapinch",
+                "witch_female": "textures/entity/pokemon/trapinch/trapinch",
+                "witch_male": "textures/entity/pokemon/trapinch/trapinch",
+                "cap_female": "textures/entity/pokemon/trapinch/trapinch",
+                "cap_male": "textures/entity/pokemon/trapinch/trapinch",
+                "santa_female": "textures/entity/pokemon/trapinch/trapinch",
+                "santa_male": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_female": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_male": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_stpatricks_female": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_stpatricks_male": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_4thjuly_female": "textures/entity/pokemon/trapinch/trapinch",
+                "tophat_4thjuly_male": "textures/entity/pokemon/trapinch/trapinch",
+                "detective": "textures/entity/pokemon/trapinch/trapinch"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.trapinch"
+            },
+            "scripts": {
+                "animate": [
+                    "look_at_target",
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.trapinch.ground_idle",
+                "air_idle": "animation.trapinch.ground_idle",
+                "water_idle": "animation.trapinch.water_idle",
+                "walking": "animation.trapinch.walking",
+                "flying": "animation.trapinch.walking",
+                "swimming": "animation.trapinch.swimming",
+                "sleeping": "animation.trapinch.sleeping",
+                "attack": "animation.trapinch.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "trapinch",

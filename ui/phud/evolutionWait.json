@@ -1,0 +1,57 @@
+{
+  "namespace": "phud_evolutionWait",
+
+  "main": {
+    "type": "image",
+    "texture": "textures/ui/evolution_box",
+    "layer": 1000,
+    "keep_ratio": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": ["70%", "100%"],
+    "offset": [0, "32%"],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text": "#text",
+          "color": [0.502, 0.502, 0.502],
+          "layer": 1002,
+          "localize": true,
+          "font_size": "normal",
+          "font_type": "MinecraftTen",
+          "text_alignment": "center",
+          "offset": [0, 0],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "elements",
+              "source_property_name": "#evolutionWait",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#evolutionWait",
+        "target_property_name": "#evolutionWait"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#evolutionWait = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#evolutionWait = ''))",
+        "target_property_name": "#enabled"
+      }
+    ]
+  }
+}
