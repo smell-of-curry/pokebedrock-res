@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:pawmot",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/pawmot",
-                "shiny": "textures/sprites/pawmot",
-                "default_male": "textures/sprites/pawmot",
-                "default_female": "textures/sprites/pawmot",
-                "shiny_male": "textures/sprites/pawmot",
-                "shiny_female": "textures/sprites/pawmot",
-                "halloween": "textures/sprites/pawmot",
-                "shiny_halloween": "textures/sprites/pawmot",
-                "doll_female": "textures/sprites/pawmot",
-                "doll_male": "textures/sprites/pawmot",
-                "witch_female": "textures/sprites/pawmot",
-                "witch_male": "textures/sprites/pawmot",
-                "cap_female": "textures/sprites/pawmot",
-                "cap_male": "textures/sprites/pawmot",
-                "santa_female": "textures/sprites/pawmot",
-                "santa_male": "textures/sprites/pawmot",
-                "tophat_female": "textures/sprites/pawmot",
-                "tophat_male": "textures/sprites/pawmot",
-                "tophat_stpatricks_female": "textures/sprites/pawmot",
-                "tophat_stpatricks_male": "textures/sprites/pawmot",
-                "tophat_4thjuly_female": "textures/sprites/pawmot",
-                "tophat_4thjuly_male": "textures/sprites/pawmot",
-                "detective": "textures/sprites/pawmot"
+                "default": "textures/entity/pokemon/pawmot/pawmot",
+                "default_male": "textures/entity/pokemon/pawmot/pawmot",
+                "default_female": "textures/entity/pokemon/pawmot/pawmot",
+                "shiny": "textures/entity/pokemon/pawmot/shiny_pawmot",
+                "shiny_male": "textures/entity/pokemon/pawmot/shiny_pawmot",
+                "shiny_female": "textures/entity/pokemon/pawmot/shiny_pawmot",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/pawmot/pawmot",
+                "shiny_halloween": "textures/entity/pokemon/pawmot/pawmot",
+                "doll_female": "textures/entity/pokemon/pawmot/pawmot",
+                "doll_male": "textures/entity/pokemon/pawmot/pawmot",
+                "witch_female": "textures/entity/pokemon/pawmot/pawmot",
+                "witch_male": "textures/entity/pokemon/pawmot/pawmot",
+                "cap_female": "textures/entity/pokemon/pawmot/pawmot",
+                "cap_male": "textures/entity/pokemon/pawmot/pawmot",
+                "santa_female": "textures/entity/pokemon/pawmot/pawmot",
+                "santa_male": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_female": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_male": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_stpatricks_female": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_stpatricks_male": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_4thjuly_female": "textures/entity/pokemon/pawmot/pawmot",
+                "tophat_4thjuly_male": "textures/entity/pokemon/pawmot/pawmot",
+                "detective": "textures/entity/pokemon/pawmot/pawmot"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.pawmot"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.pawmot.ground_idle",
+                "air_idle": "animation.pawmot.ground_idle",
+                "water_idle": "animation.pawmot.ground_idle",
+                "walking": "animation.pawmot.walking",
+                "flying": "animation.pawmot.walking",
+                "swimming": "animation.pawmot.walking",
+                "sleeping": "animation.pawmot.sleeping",
+                "attack": "animation.pawmot.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "pawmot",
