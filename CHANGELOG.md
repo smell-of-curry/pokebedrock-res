@@ -1,4 +1,4 @@
-**Update v2.8.7**
+**Update v2.8.8**
 
 - Added Breloom, Cinccino, Minccino, and Misdreavus Models.
 - Implemented 500+ New sprites
