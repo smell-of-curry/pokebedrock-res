@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:misdreavus",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/misdreavus",
-                "shiny": "textures/sprites/misdreavus",
-                "default_male": "textures/sprites/misdreavus",
-                "default_female": "textures/sprites/misdreavus",
-                "shiny_male": "textures/sprites/misdreavus",
-                "shiny_female": "textures/sprites/misdreavus",
-                "halloween": "textures/sprites/misdreavus",
-                "shiny_halloween": "textures/sprites/misdreavus",
-                "doll_female": "textures/sprites/misdreavus",
-                "doll_male": "textures/sprites/misdreavus",
-                "witch_female": "textures/sprites/misdreavus",
-                "witch_male": "textures/sprites/misdreavus",
-                "cap_female": "textures/sprites/misdreavus",
-                "cap_male": "textures/sprites/misdreavus",
-                "santa_female": "textures/sprites/misdreavus",
-                "santa_male": "textures/sprites/misdreavus",
-                "tophat_female": "textures/sprites/misdreavus",
-                "tophat_male": "textures/sprites/misdreavus",
-                "tophat_stpatricks_female": "textures/sprites/misdreavus",
-                "tophat_stpatricks_male": "textures/sprites/misdreavus",
-                "tophat_4thjuly_female": "textures/sprites/misdreavus",
-                "tophat_4thjuly_male": "textures/sprites/misdreavus",
-                "detective": "textures/sprites/misdreavus"
+                "default": "textures/entity/pokemon/misdreavus/misdreavus",
+                "default_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "default_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "shiny": "textures/entity/pokemon/misdreavus/shiny_misdreavus",
+                "shiny_male": "textures/entity/pokemon/misdreavus/shiny_misdreavus",
+                "shiny_female": "textures/entity/pokemon/misdreavus/shiny_misdreavus",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/misdreavus/misdreavus",
+                "shiny_halloween": "textures/entity/pokemon/misdreavus/misdreavus",
+                "doll_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "doll_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "witch_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "witch_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "cap_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "cap_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "santa_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "santa_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_stpatricks_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_stpatricks_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_4thjuly_female": "textures/entity/pokemon/misdreavus/misdreavus",
+                "tophat_4thjuly_male": "textures/entity/pokemon/misdreavus/misdreavus",
+                "detective": "textures/entity/pokemon/misdreavus/misdreavus"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.misdreavus"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.misdreavus.ground_idle",
+                "air_idle": "animation.misdreavus.air_idle",
+                "water_idle": "animation.misdreavus.ground_idle",
+                "walking": "animation.misdreavus.flying",
+                "flying": "animation.misdreavus.flying",
+                "swimming": "animation.misdreavus.flying",
+                "sleeping": "animation.misdreavus.sleeping",
+                "attack": "animation.misdreavus.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "misdreavus",

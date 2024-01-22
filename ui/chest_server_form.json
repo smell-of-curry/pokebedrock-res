@@ -2,7 +2,8 @@
   "namespace": "chest_ui",
   "chest_label": {
     "type": "label",
-    "offset": [7, 10],
+    "$offset|default": [7, 10],
+    "offset": "$offset",
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "text": "#title_text",
@@ -14,6 +15,51 @@
     "type": "panel",
     "size": ["100%c", "100%c"],
     "controls": [
+      {
+        "inventory_chest_grid_image": {
+          "type": "image",
+          "size": [176, 96],
+          "texture": "textures/ui/gui/inventory",
+          "$single_chest_flag": "§c§h§e§s§t§s§i§n§v§e§n§t",
+          "layer": 0,
+          "controls": [
+            {
+              "title_label@chest_ui.chest_label": {
+                "$offset": [7, 5]
+              }
+            },
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-2, 1]
+              }
+            },
+            {
+              "inventory_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 4],
+                "size": ["100% - 17px", "100% - 22px"],
+                "offset": [8, 9],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "$button": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $single_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
       {
         "single_chest_grid_image": {
           "type": "image",
@@ -189,7 +235,7 @@
               "chest_label@chest_ui.chest_label": {}
             },
             {
-              "close_button@common.close_button": {
+              "close_button@common.light_close_button": {
                 "$close_button_offset": [-2, 2]
               }
             },
@@ -197,7 +243,7 @@
               "large_chest_grid": {
                 "type": "grid",
                 "grid_dimensions": [9, 6],
-                "size": ["100% - 14px", "100% - 112px"],
+                "size": ["100% - 17px", "100% - 112px"],
                 "offset": [7, 21],
                 "anchor_from": "top_left",
                 "anchor_to": "top_left",
@@ -291,6 +337,46 @@
                 "grid_dimensions": [9, 6],
                 "size": ["100% - 32px", "100% - 80px"],
                 "offset": [17, 67],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $quest_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "backpack_grid": {
+          "type": "image",
+          "size": [245, 216],
+          "offset": [0, -5],
+          "texture": "textures/ui/gui/backpack",
+          "$quest_chest_flag": "§c§h§e§s§t§s§b§a§c§k§p§a",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-20, 10]
+              }
+            },
+            {
+              "quest_chest_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 10],
+                "size": ["100% - 83px", "100% - 36px"],
+                "offset": [33, 41],
                 "anchor_from": "top_left",
                 "anchor_to": "top_left",
                 "grid_item_template": "chest_ui.chest_item",

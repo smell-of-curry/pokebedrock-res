@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:cinccino",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/cinccino",
-                "shiny": "textures/sprites/cinccino",
-                "default_male": "textures/sprites/cinccino",
-                "default_female": "textures/sprites/cinccino",
-                "shiny_male": "textures/sprites/cinccino",
-                "shiny_female": "textures/sprites/cinccino",
-                "halloween": "textures/sprites/cinccino",
-                "shiny_halloween": "textures/sprites/cinccino",
-                "doll_female": "textures/sprites/cinccino",
-                "doll_male": "textures/sprites/cinccino",
-                "witch_female": "textures/sprites/cinccino",
-                "witch_male": "textures/sprites/cinccino",
-                "cap_female": "textures/sprites/cinccino",
-                "cap_male": "textures/sprites/cinccino",
-                "santa_female": "textures/sprites/cinccino",
-                "santa_male": "textures/sprites/cinccino",
-                "tophat_female": "textures/sprites/cinccino",
-                "tophat_male": "textures/sprites/cinccino",
-                "tophat_stpatricks_female": "textures/sprites/cinccino",
-                "tophat_stpatricks_male": "textures/sprites/cinccino",
-                "tophat_4thjuly_female": "textures/sprites/cinccino",
-                "tophat_4thjuly_male": "textures/sprites/cinccino",
-                "detective": "textures/sprites/cinccino"
+                "default": "textures/entity/pokemon/cinccino/cinccino",
+                "default_male": "textures/entity/pokemon/cinccino/cinccino",
+                "default_female": "textures/entity/pokemon/cinccino/cinccino",
+                "shiny": "textures/entity/pokemon/cinccino/shiny_cinccino",
+                "shiny_male": "textures/entity/pokemon/cinccino/shiny_cinccino",
+                "shiny_female": "textures/entity/pokemon/cinccino/shiny_cinccino",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/cinccino/cinccino",
+                "shiny_halloween": "textures/entity/pokemon/cinccino/cinccino",
+                "doll_female": "textures/entity/pokemon/cinccino/cinccino",
+                "doll_male": "textures/entity/pokemon/cinccino/cinccino",
+                "witch_female": "textures/entity/pokemon/cinccino/cinccino",
+                "witch_male": "textures/entity/pokemon/cinccino/cinccino",
+                "cap_female": "textures/entity/pokemon/cinccino/cinccino",
+                "cap_male": "textures/entity/pokemon/cinccino/cinccino",
+                "santa_female": "textures/entity/pokemon/cinccino/cinccino",
+                "santa_male": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_female": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_male": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_stpatricks_female": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_stpatricks_male": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_4thjuly_female": "textures/entity/pokemon/cinccino/cinccino",
+                "tophat_4thjuly_male": "textures/entity/pokemon/cinccino/cinccino",
+                "detective": "textures/entity/pokemon/cinccino/cinccino"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.cinccino"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.cinccino.ground_idle",
+                "air_idle": "animation.cinccino.ground_idle",
+                "water_idle": "animation.cinccino.water_idle",
+                "walking": "animation.cinccino.walking",
+                "flying": "animation.cinccino.walking",
+                "swimming": "animation.cinccino.swimming",
+                "sleeping": "animation.cinccino.sleeping",
+                "attack": "animation.cinccino.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "cinccino",

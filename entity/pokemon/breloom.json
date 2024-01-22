@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:breloom",
             "materials": {
-                "default": "zombie"
+                "default": "zombie",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/breloom",
-                "shiny": "textures/sprites/breloom",
-                "default_male": "textures/sprites/breloom",
-                "default_female": "textures/sprites/breloom",
-                "shiny_male": "textures/sprites/breloom",
-                "shiny_female": "textures/sprites/breloom",
-                "halloween": "textures/sprites/breloom",
-                "shiny_halloween": "textures/sprites/breloom",
-                "doll_female": "textures/sprites/breloom",
-                "doll_male": "textures/sprites/breloom",
-                "witch_female": "textures/sprites/breloom",
-                "witch_male": "textures/sprites/breloom",
-                "cap_female": "textures/sprites/breloom",
-                "cap_male": "textures/sprites/breloom",
-                "santa_female": "textures/sprites/breloom",
-                "santa_male": "textures/sprites/breloom",
-                "tophat_female": "textures/sprites/breloom",
-                "tophat_male": "textures/sprites/breloom",
-                "tophat_stpatricks_female": "textures/sprites/breloom",
-                "tophat_stpatricks_male": "textures/sprites/breloom",
-                "tophat_4thjuly_female": "textures/sprites/breloom",
-                "tophat_4thjuly_male": "textures/sprites/breloom",
-                "detective": "textures/sprites/breloom"
+                "default": "textures/entity/pokemon/breloom/breloom",
+                "default_male": "textures/entity/pokemon/breloom/breloom",
+                "default_female": "textures/entity/pokemon/breloom/breloom",
+                "shiny": "textures/entity/pokemon/breloom/shiny_breloom",
+                "shiny_male": "textures/entity/pokemon/breloom/shiny_breloom",
+                "shiny_female": "textures/entity/pokemon/breloom/shiny_breloom",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/breloom/breloom",
+                "shiny_halloween": "textures/entity/pokemon/breloom/breloom",
+                "doll_female": "textures/entity/pokemon/breloom/breloom",
+                "doll_male": "textures/entity/pokemon/breloom/breloom",
+                "witch_female": "textures/entity/pokemon/breloom/breloom",
+                "witch_male": "textures/entity/pokemon/breloom/breloom",
+                "cap_female": "textures/entity/pokemon/breloom/breloom",
+                "cap_male": "textures/entity/pokemon/breloom/breloom",
+                "santa_female": "textures/entity/pokemon/breloom/breloom",
+                "santa_male": "textures/entity/pokemon/breloom/breloom",
+                "tophat_female": "textures/entity/pokemon/breloom/breloom",
+                "tophat_male": "textures/entity/pokemon/breloom/breloom",
+                "tophat_stpatricks_female": "textures/entity/pokemon/breloom/breloom",
+                "tophat_stpatricks_male": "textures/entity/pokemon/breloom/breloom",
+                "tophat_4thjuly_female": "textures/entity/pokemon/breloom/breloom",
+                "tophat_4thjuly_male": "textures/entity/pokemon/breloom/breloom",
+                "detective": "textures/entity/pokemon/breloom/breloom"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.breloom"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.breloom.ground_idle",
+                "air_idle": "animation.breloom.ground_idle",
+                "water_idle": "animation.breloom.ground_idle",
+                "walking": "animation.breloom.walking",
+                "flying": "animation.breloom.walking",
+                "swimming": "animation.breloom.swimming",
+                "sleeping": "animation.breloom.sleeping",
+                "attack": "animation.breloom.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "breloom",
