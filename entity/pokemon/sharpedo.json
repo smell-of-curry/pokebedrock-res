@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:sharpedo",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/sharpedo",
-                "shiny": "textures/sprites/sharpedo",
-                "default_male": "textures/sprites/sharpedo",
-                "default_female": "textures/sprites/sharpedo",
-                "shiny_male": "textures/sprites/sharpedo",
-                "shiny_female": "textures/sprites/sharpedo",
-                "halloween": "textures/sprites/sharpedo",
-                "shiny_halloween": "textures/sprites/sharpedo",
-                "doll_female": "textures/sprites/sharpedo",
-                "doll_male": "textures/sprites/sharpedo",
-                "witch_female": "textures/sprites/sharpedo",
-                "witch_male": "textures/sprites/sharpedo",
-                "cap_female": "textures/sprites/sharpedo",
-                "cap_male": "textures/sprites/sharpedo",
-                "santa_female": "textures/sprites/sharpedo",
-                "santa_male": "textures/sprites/sharpedo",
-                "tophat_female": "textures/sprites/sharpedo",
-                "tophat_male": "textures/sprites/sharpedo",
-                "tophat_stpatricks_female": "textures/sprites/sharpedo",
-                "tophat_stpatricks_male": "textures/sprites/sharpedo",
-                "tophat_4thjuly_female": "textures/sprites/sharpedo",
-                "tophat_4thjuly_male": "textures/sprites/sharpedo",
-                "detective": "textures/sprites/sharpedo"
+                "default": "textures/entity/pokemon/sharpedo/sharpedo",
+                "default_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "default_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "shiny": "textures/entity/pokemon/sharpedo/shiny_sharpedo",
+                "shiny_male": "textures/entity/pokemon/sharpedo/shiny_sharpedo",
+                "shiny_female": "textures/entity/pokemon/sharpedo/shiny_sharpedo",
+                "evo_aura": "textures/entity/evolving",
+                "halloween": "textures/entity/pokemon/sharpedo/sharpedo",
+                "shiny_halloween": "textures/entity/pokemon/sharpedo/sharpedo",
+                "doll_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "doll_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "witch_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "witch_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "cap_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "cap_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "santa_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "santa_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_stpatricks_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_stpatricks_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_4thjuly_female": "textures/entity/pokemon/sharpedo/sharpedo",
+                "tophat_4thjuly_male": "textures/entity/pokemon/sharpedo/sharpedo",
+                "detective": "textures/entity/pokemon/sharpedo/sharpedo"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.sharpedo"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.sharpedo.ground_idle",
+                "air_idle": "animation.sharpedo.ground_idle",
+                "water_idle": "animation.sharpedo.water_idle",
+                "walking": "animation.sharpedo.walking",
+                "flying": "animation.sharpedo.walking",
+                "swimming": "animation.sharpedo.swimming",
+                "sleeping": "animation.sharpedo.sleeping",
+                "attack": "animation.sharpedo.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "sharpedo",

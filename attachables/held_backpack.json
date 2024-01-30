@@ -19,7 +19,7 @@
         "third_person_main_hand": "animation.backpack.hold_third_person"
       },
       "scripts": {
-        "pre_animation": ["v.main_hand = c.item_slot == 'main_hand';"],
+        "pre_animation": ["v.main_hand = c.item_slot == 'main_hand' || c.item_slot == 'off_hand';"],
         "animate": [
           {
             "first_person_main_hand": "v.main_hand && c.is_first_person"
