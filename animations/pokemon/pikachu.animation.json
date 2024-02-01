@@ -5,6 +5,19 @@
 			"loop": true,
 			"animation_length": 1.54167,
 			"bones": {
+				"head": {
+					"position": {
+						"0.0": {
+							"post": [0, 0, -0.5],
+							"lerp_mode": "catmullrom"
+						},
+						"0.75": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": [0, 0, -0.5]
+					}
+				},
 				"ears1": {
 					"rotation": {
 						"0.0": {
@@ -55,14 +68,14 @@
 				"thigh1": {
 					"rotation": {
 						"0.0": {
-							"post": [-45, 0, 0],
+							"post": [-10, 0, 0],
 							"lerp_mode": "catmullrom"
 						},
 						"0.75": {
 							"post": [10, 0, 0],
 							"lerp_mode": "catmullrom"
 						},
-						"1.5": [-47.5, 0, 0]
+						"1.5": [-10, 0, 0]
 					}
 				},
 				"foot1": {
@@ -83,7 +96,7 @@
 							"lerp_mode": "catmullrom"
 						},
 						"0.75": {
-							"post": [0, 0, 0],
+							"post": [0, 0, 1],
 							"lerp_mode": "catmullrom"
 						},
 						"1.5": [0, 0, 0]
@@ -96,7 +109,7 @@
 							"lerp_mode": "catmullrom"
 						},
 						"0.7083": {
-							"post": [-45, 0, 0],
+							"post": [-10, 0, 0],
 							"lerp_mode": "catmullrom"
 						},
 						"1.5": [10, 0, 0]
@@ -116,14 +129,14 @@
 					},
 					"position": {
 						"0.0": {
-							"post": [0, 0, 0],
+							"post": [0, 0, 1],
 							"lerp_mode": "catmullrom"
 						},
 						"0.75": {
 							"post": [0, 0, 0],
 							"lerp_mode": "catmullrom"
 						},
-						"1.5": [0, 0, 0]
+						"1.5": [0, 0, 1]
 					}
 				},
 				"eye1": {
@@ -192,54 +205,72 @@
 			}
 		},
 		"animation.pikachu.attack": {
-			"loop": "hold_on_last_frame",
 			"animation_length": 0.70833,
 			"bones": {
 				"Pikachu": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.25": [0, -25, 0]
+						"0.5": [0, -20, 0]
+					}
+				},
+				"head": {
+					"rotation": {
+						"0.0": [2.5, 0, 0],
+						"0.5": [5, 0, 0]
 					}
 				},
 				"eye1": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.25": [0, 0, -10]
+						"0.5": [0, 0, -7.5]
+					},
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.5": [1, 0.7, 1]
 					}
 				},
 				"eye2": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.25": [0, 0, 10]
+						"0.5": [0, 0, 7.5]
+					},
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.5": [1, 0.7, 1]
+					}
+				},
+				"ears1": {
+					"rotation": {
+						"0.0": [0, 0, 5],
+						"0.5": [0, 0, 10]
+					}
+				},
+				"ears2": {
+					"rotation": {
+						"0.0": [0, 0, -5],
+						"0.5": [0, 0, -10]
 					}
 				},
 				"arm1": {
 					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.25": [0, -120, 0]
-					}
+						"0.0": [0, -100, 0],
+						"0.5": [136.19973, -53.03591, -137.91014]
+					},
+					"position": [0, 0, 1]
 				},
 				"arm2": {
 					"rotation": {
-						"0.0": [-74.24163, -2.39965, -51.4428],
-						"0.25": [25.75837, -2.39965, -51.4428]
+						"0.0": [-42.5, 0, -50],
+						"0.5": [62.5, 0, -50]
+					},
+					"position": {
+						"0.0": [0, 0.5, 0],
+						"0.5": [0, -0.5, 0]
 					}
 				},
 				"partneritems": {
 					"position": [0, 1, 0],
 					"scale": [0.1, 0.1, 0]
-				},
-				"thigh1": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.25": [0, -20, 0]
-					}
-				},
-				"thigh2": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.25": [0, 17.5, 0]
-					}
 				}
 			}
 		},
@@ -310,6 +341,19 @@
 			"loop": true,
 			"animation_length": 1.33333,
 			"bones": {
+				"head": {
+					"position": {
+						"0.0": {
+							"post": [0, 0.2, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5833": {
+							"post": [0, -0.1, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.2083": [0, 0, 0]
+					}
+				},
 				"ears1": {
 					"rotation": {
 						"0.0": {
@@ -717,7 +761,7 @@
 				}
 			}
 		},
-		"animation.pikachu.droopy_eared_sleep": {
+		"animation.pikachu.sleeping": {
 			"loop": true,
 			"animation_length": 3.75,
 			"bones": {
