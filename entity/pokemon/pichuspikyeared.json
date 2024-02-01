@@ -4,38 +4,49 @@
         "description": {
             "identifier": "pokemon:pichuspikyeared",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/pichuspikyeared",
-                "shiny": "textures/sprites/pichuspikyeared",
-                "default_male": "textures/sprites/pichuspikyeared",
-                "default_female": "textures/sprites/pichuspikyeared",
-                "shiny_male": "textures/sprites/pichuspikyeared",
-                "shiny_female": "textures/sprites/pichuspikyeared",
-                "halloween": "textures/sprites/pichuspikyeared",
-                "shiny_halloween": "textures/sprites/pichuspikyeared",
-                "doll_female": "textures/sprites/pichuspikyeared",
-                "doll_male": "textures/sprites/pichuspikyeared",
-                "witch_female": "textures/sprites/pichuspikyeared",
-                "witch_male": "textures/sprites/pichuspikyeared",
-                "cap_female": "textures/sprites/pichuspikyeared",
-                "cap_male": "textures/sprites/pichuspikyeared",
-                "santa_female": "textures/sprites/pichuspikyeared",
-                "santa_male": "textures/sprites/pichuspikyeared",
-                "tophat_female": "textures/sprites/pichuspikyeared",
-                "tophat_male": "textures/sprites/pichuspikyeared",
-                "tophat_stpatricks_female": "textures/sprites/pichuspikyeared",
-                "tophat_stpatricks_male": "textures/sprites/pichuspikyeared",
-                "tophat_4thjuly_female": "textures/sprites/pichuspikyeared",
-                "tophat_4thjuly_male": "textures/sprites/pichuspikyeared",
-                "detective": "textures/sprites/pichuspikyeared"
+                "default": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+                "default_male": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+                "default_female": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+                "shiny": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+                "shiny_male": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+                "shiny_female": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.pichuspikyeared"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.pichuspikyeared.ground_idle",
+                "air_idle": "animation.pichuspikyeared.ground_idle",
+                "water_idle": "animation.pichuspikyeared.water_idle",
+                "walking": "animation.pichuspikyeared.walking",
+                "flying": "animation.pichuspikyeared.walking",
+                "swimming": "animation.pichuspikyeared.swimming",
+                "sleeping": "animation.pichuspikyeared.sleeping",
+                "attack": "animation.pichuspikyeared.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "pichuspikyeared",

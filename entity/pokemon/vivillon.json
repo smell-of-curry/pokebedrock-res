@@ -4,38 +4,66 @@
         "description": {
             "identifier": "pokemon:vivillon",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/vivillon",
-                "shiny": "textures/sprites/vivillon",
-                "default_male": "textures/sprites/vivillon",
-                "default_female": "textures/sprites/vivillon",
-                "shiny_male": "textures/sprites/vivillon",
-                "shiny_female": "textures/sprites/vivillon",
-                "halloween": "textures/sprites/vivillon",
-                "shiny_halloween": "textures/sprites/vivillon",
-                "doll_female": "textures/sprites/vivillon",
-                "doll_male": "textures/sprites/vivillon",
-                "witch_female": "textures/sprites/vivillon",
-                "witch_male": "textures/sprites/vivillon",
-                "cap_female": "textures/sprites/vivillon",
-                "cap_male": "textures/sprites/vivillon",
-                "santa_female": "textures/sprites/vivillon",
-                "santa_male": "textures/sprites/vivillon",
-                "tophat_female": "textures/sprites/vivillon",
-                "tophat_male": "textures/sprites/vivillon",
-                "tophat_stpatricks_female": "textures/sprites/vivillon",
-                "tophat_stpatricks_male": "textures/sprites/vivillon",
-                "tophat_4thjuly_female": "textures/sprites/vivillon",
-                "tophat_4thjuly_male": "textures/sprites/vivillon",
-                "detective": "textures/sprites/vivillon"
+                "default": "textures/entity/pokemon/vivillon/vivillon",
+                "default_male": "textures/entity/pokemon/vivillon/vivillon",
+                "default_female": "textures/entity/pokemon/vivillon/vivillon",
+                "shiny": "textures/entity/pokemon/vivillon/shiny_vivillon",
+                "shiny_male": "textures/entity/pokemon/vivillon/shiny_vivillon",
+                "shiny_female": "textures/entity/pokemon/vivillon/shiny_vivillon",
+                "evo_aura": "textures/entity/evolving",
+                "vivillon_archipelago": "textures/entity/pokemon/vivillon/vivillon_archipelago",
+                "vivillon_continental": "textures/entity/pokemon/vivillon/vivillon_continental",
+                "vivillon_elegant": "textures/entity/pokemon/vivillon/vivillon_elegant",
+                "vivillon_garden": "textures/entity/pokemon/vivillon/vivillon_garden",
+                "vivillon_high_plains": "textures/entity/pokemon/vivillon/vivillon_high_plains",
+                "vivillon_icy_snow": "textures/entity/pokemon/vivillon/vivillon_icy_snow",
+                "vivillon_jungle": "textures/entity/pokemon/vivillon/vivillon_jungle",
+                "vivillon_marine": "textures/entity/pokemon/vivillon/vivillon_marine",
+                "vivillon_modern": "textures/entity/pokemon/vivillon/vivillon_modern",
+                "vivillon_monsoon": "textures/entity/pokemon/vivillon/vivillon_monsoon",
+                "vivillon_ocean": "textures/entity/pokemon/vivillon/vivillon_ocean",
+                "vivillon_polar": "textures/entity/pokemon/vivillon/vivillon_polar",
+                "vivillon_river": "textures/entity/pokemon/vivillon/vivillon_river",
+                "vivillon_sandstorm": "textures/entity/pokemon/vivillon/vivillon_sandstorm",
+                "vivillon_savanna": "textures/entity/pokemon/vivillon/vivillon_savanna",
+                "vivillon_sun": "textures/entity/pokemon/vivillon/vivillon_sun",
+                "vivillon_tundra": "textures/entity/pokemon/vivillon/vivillon_tundra"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.vivillon"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.vivillon.ground_idle",
+                "air_idle": "animation.vivillon.ground_idle",
+                "water_idle": "animation.vivillon.ground_idle",
+                "walking": "animation.vivillon.flying",
+                "flying": "animation.vivillon.flying",
+                "swimming": "animation.vivillon.flying",
+                "sleeping": "animation.vivillon.sleeping",
+                "attack": "animation.vivillon.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "vivillon",
