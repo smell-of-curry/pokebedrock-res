@@ -1,28 +1,80 @@
 {
   "namespace": "phud_currency",
+
   "main": {
-    "type": "image",
-    "size": ["100%c + 12px", "100%c + 5px"],
-    "texture": "textures/ui/hud_tip_text_background",
-    "alpha": 0.6,
+    "type": "panel",
+    "size": ["100%cm", "100%cm"],
     "controls": [
       {
-        "value": {
-          "type": "label",
+        "stack_panel": {
+          "type": "stack_panel",
+          "size": ["100%c", "100%c"],
+          "orientation": "horizontal",
           "anchor_from": "center",
           "anchor_to": "center",
-          "font_scale_factor": "$font_scale",
-          "color": "$color",
-          "text": "#text",
-          "layer": 3,
-          "localize": false,
-          "alpha": 1,
-          "bindings": [
+          "controls": [
             {
-              "binding_type": "view",
-              "source_control_name": "elements",
-              "source_property_name": "#level_number",
-              "target_property_name": "#text"
+              "quest": {
+                "type": "image",
+                "size": ["100%c + 12px", "100%c + 5px"],
+                "texture": "textures/ui/hud_tip_text_background",
+                "alpha": 0.6,
+                "controls": [
+                  {
+                    "label": {
+                      "type": "label",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "font_scale_factor": "$font_scale",
+                      "color": "$color",
+                      "text": "#text",
+                      "layer": 3,
+                      "localize": false,
+                      "alpha": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "elements",
+                          "source_property_name": "((%.80s * #level_number) - '_')",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            { "separator": { "type": "panel", "size": [3, 0] } },
+            {
+              "currency": {
+                "type": "image",
+                "size": ["100%c + 12px", "100%c + 5px"],
+                "texture": "textures/ui/hud_tip_text_background",
+                "alpha": 0.6,
+                "controls": [
+                  {
+                    "label": {
+                      "type": "label",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "font_scale_factor": "$font_scale",
+                      "color": "$color",
+                      "text": "#text",
+                      "layer": 3,
+                      "localize": false,
+                      "alpha": 1,
+                      "bindings": [
+                        {
+                          "binding_type": "view",
+                          "source_control_name": "elements",
+                          "source_property_name": "((#level_number - (%.80s * #level_number)) - '_')",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
             }
           ]
         }
