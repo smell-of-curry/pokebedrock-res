@@ -21,10 +21,10 @@
               "walking": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
             },
             {
-              "swimming": "query.modified_move_speed >= 0.01 && q.is_in_water"
+              "swimming": "query.is_swimming"
             },
             {
-              "flying": "query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water"
+              "flying": "query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping"
             },
             {
               "sleeping": "q.is_sleeping"

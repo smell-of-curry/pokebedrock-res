@@ -1,6 +1,6 @@
-**Update v2.9.2**
+**Update v2.9.4**
 
-- Added new Poke dollars glyph
-- The top UI bar now displays how much poke dollars you have
-- New custom door model
-- fixed apricorn doors
+- Added Beldum, Metang, and Metagross
+- Added Max revive and revive
+- Pokémon animation controllers have been updated to just look if the Pokémon is swimming to play animation
+- Pokémon animation controllers have been updated to not trigger fly animation if jumping

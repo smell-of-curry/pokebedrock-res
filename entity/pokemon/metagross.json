@@ -4,21 +4,49 @@
         "description": {
             "identifier": "pokemon:metagross",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/metagross",
-                "shiny": "textures/sprites/metagross",
-                "default_male": "textures/sprites/metagross",
-                "default_female": "textures/sprites/metagross",
-                "shiny_male": "textures/sprites/metagross",
-                "shiny_female": "textures/sprites/metagross"
+                "default": "textures/entity/pokemon/metagross/metagross",
+                "default_male": "textures/entity/pokemon/metagross/metagross",
+                "default_female": "textures/entity/pokemon/metagross/metagross",
+                "shiny": "textures/entity/pokemon/metagross/shiny_metagross",
+                "shiny_male": "textures/entity/pokemon/metagross/shiny_metagross",
+                "shiny_female": "textures/entity/pokemon/metagross/shiny_metagross",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.metagross"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "ground_idle": "animation.metagross.ground_idle",
+                "air_idle": "animation.metagross.air_idle",
+                "water_idle": "animation.metagross.water_idle",
+                "walking": "animation.metagross.walking",
+                "flying": "animation.metagross.flying",
+                "swimming": "animation.metagross.swimming",
+                "sleeping": "animation.metagross.ground_idle",
+                "attack": "animation.metagross.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "metagross",
