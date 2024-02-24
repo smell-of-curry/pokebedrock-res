@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:meowsticf",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/meowsticf",
-                "shiny": "textures/sprites/meowsticf",
-                "default_male": "textures/sprites/meowsticf",
-                "default_female": "textures/sprites/meowsticf",
-                "shiny_male": "textures/sprites/meowsticf",
-                "shiny_female": "textures/sprites/meowsticf"
+                "default": "textures/entity/pokemon/meowsticf/meowsticf",
+                "default_male": "textures/entity/pokemon/meowsticf/meowsticf",
+                "default_female": "textures/entity/pokemon/meowsticf/meowsticf",
+                "shiny": "textures/entity/pokemon/meowsticf/shiny_meowsticf",
+                "shiny_male": "textures/entity/pokemon/meowsticf/shiny_meowsticf",
+                "shiny_female": "textures/entity/pokemon/meowsticf/shiny_meowsticf",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.meowsticf"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.meowsticf.blink",
+                "ground_idle": "animation.meowsticf.ground_idle",
+                "air_idle": "animation.meowsticf.ground_idle",
+                "water_idle": "animation.meowsticf.water_idle",
+                "walking": "animation.meowsticf.walking",
+                "flying": "animation.meowsticf.walking",
+                "swimming": "animation.meowsticf.swimming",
+                "sleeping": "animation.meowsticf.sleeping",
+                "attack": "animation.meowsticf.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "meowsticf",

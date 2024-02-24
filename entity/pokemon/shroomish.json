@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:shroomish",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/shroomish",
-                "shiny": "textures/sprites/shroomish",
-                "default_male": "textures/sprites/shroomish",
-                "default_female": "textures/sprites/shroomish",
-                "shiny_male": "textures/sprites/shroomish",
-                "shiny_female": "textures/sprites/shroomish"
+                "default": "textures/entity/pokemon/shroomish/shroomish",
+                "default_male": "textures/entity/pokemon/shroomish/shroomish",
+                "default_female": "textures/entity/pokemon/shroomish/shroomish",
+                "shiny": "textures/entity/pokemon/shroomish/shiny_shroomish",
+                "shiny_male": "textures/entity/pokemon/shroomish/shiny_shroomish",
+                "shiny_female": "textures/entity/pokemon/shroomish/shiny_shroomish",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.shroomish"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.shroomish.blink",
+                "ground_idle": "animation.shroomish.ground_idle",
+                "air_idle": "animation.shroomish.ground_idle",
+                "water_idle": "animation.shroomish.water_idle",
+                "walking": "animation.shroomish.walking",
+                "flying": "animation.shroomish.walking",
+                "swimming": "animation.shroomish.swimming",
+                "sleeping": "animation.shroomish.sleeping",
+                "attack": "animation.shroomish.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "shroomish",

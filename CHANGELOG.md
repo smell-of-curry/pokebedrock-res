@@ -1,6 +1,4 @@
-**Update v2.9.4**
+**Update v2.9.5**
 
-- Added Beldum, Metang, and Metagross
-- Added Max revive and revive
-- Pokémon animation controllers have been updated to just look if the Pokémon is swimming to play animation
-- Pokémon animation controllers have been updated to not trigger fly animation if jumping
+- Removed extra Bike Animation
+- Added Meowstic, Meowstic-Female, and Shroomish
