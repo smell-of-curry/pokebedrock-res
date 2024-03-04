@@ -38,6 +38,8 @@
   "ng_long_form": {
     "type": "panel",
     "$flag_pokemon": "§p§o§k§e",
+    "$flag_pokedex": "§d§e§k§x",
+    "$flag_pokedex_details": "§d§e§d§e§t§k",
     "$flag_battle": "§b§a§t§l§e",
     "$flag_chestGui": "§c§h§e§s§t",
     "$flag_searchUi": "§s§e§a§r§c",
@@ -59,12 +61,12 @@
               "binding_name_override": "#title_text"
             },
             {
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
+              "source_property_name": "(((#title_text - $flag_pokemon - $flag_pokedex - $flag_pokedex_details - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
+              "source_property_name": "(((#title_text - $flag_pokemon - $flag_pokedex - $flag_pokedex_details - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -113,6 +115,54 @@
             },
             {
               "source_property_name": "(not ((#title_text - $flag_pokemon) = #title_text))",
+              "binding_type": "view",
+              "target_property_name": "#enabled"
+            }
+          ]
+        }
+      },
+      {
+        "pokedex@pokedex.main_grid": {
+          "enabled": false,
+          "visible": false,
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_condition": "none",
+              "binding_name": "#title_text",
+              "binding_name_override": "#title_text"
+            },
+            {
+              "source_property_name": "(not ((#title_text - $flag_pokedex) = #title_text))",
+              "binding_type": "view",
+              "target_property_name": "#visible"
+            },
+            {
+              "source_property_name": "(not ((#title_text - $flag_pokedex) = #title_text))",
+              "binding_type": "view",
+              "target_property_name": "#enabled"
+            }
+          ]
+        }
+      },
+      {
+        "pokedex_details@pokedex.pokemon_details": {
+          "enabled": false,
+          "visible": false,
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_condition": "none",
+              "binding_name": "#title_text",
+              "binding_name_override": "#title_text"
+            },
+            {
+              "source_property_name": "(not ((#title_text - $flag_pokedex_details) = #title_text))",
+              "binding_type": "view",
+              "target_property_name": "#visible"
+            },
+            {
+              "source_property_name": "(not ((#title_text - $flag_pokedex_details) = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
