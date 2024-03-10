@@ -1,4 +1,5 @@
-**Update v2.9.5**
+**Update v2.9.7**
 
-- Removed extra Bike Animation
-- Added Meowstic, Meowstic-Female, and Shroomish
+- Implemented models for Wailord, Wailmer, Qwilfish Hisui, Corsola Galar, Marenie, Toxapex, and Yveltal
+- Added new Glaceon, Qwilfish, Octillery, Remoraid, Corsola
+- Added Beta UI for Pokedex

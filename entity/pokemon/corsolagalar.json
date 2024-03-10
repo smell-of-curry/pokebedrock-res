@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:corsolagalar",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/corsolagalar",
-                "shiny": "textures/sprites/default/corsolagalar",
-                "default_male": "textures/sprites/default/corsolagalar",
-                "default_female": "textures/sprites/default/corsolagalar",
-                "shiny_male": "textures/sprites/default/corsolagalar",
-                "shiny_female": "textures/sprites/default/corsolagalar"
+                "default": "textures/entity/pokemon/corsolagalar/corsolagalar",
+                "default_male": "textures/entity/pokemon/corsolagalar/corsolagalar",
+                "default_female": "textures/entity/pokemon/corsolagalar/corsolagalar",
+                "shiny": "textures/entity/pokemon/corsolagalar/shiny_corsolagalar",
+                "shiny_male": "textures/entity/pokemon/corsolagalar/shiny_corsolagalar",
+                "shiny_female": "textures/entity/pokemon/corsolagalar/shiny_corsolagalar",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.corsolagalar"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.corsolagalar.blink",
+                "ground_idle": "animation.corsolagalar.ground_idle",
+                "air_idle": "animation.corsolagalar.air_idle",
+                "water_idle": "animation.corsolagalar.ground_idle",
+                "walking": "animation.corsolagalar.walking",
+                "flying": "animation.corsolagalar.flying",
+                "swimming": "animation.corsolagalar.walking",
+                "sleeping": "animation.corsolagalar.sleeping",
+                "attack": "animation.corsolagalar.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "corsolagalar",

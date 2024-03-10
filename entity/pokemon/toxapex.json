@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:toxapex",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/toxapex",
-                "shiny": "textures/sprites/default/toxapex",
-                "default_male": "textures/sprites/default/toxapex",
-                "default_female": "textures/sprites/default/toxapex",
-                "shiny_male": "textures/sprites/default/toxapex",
-                "shiny_female": "textures/sprites/default/toxapex"
+                "default": "textures/entity/pokemon/toxapex/toxapex",
+                "default_male": "textures/entity/pokemon/toxapex/toxapex",
+                "default_female": "textures/entity/pokemon/toxapex/toxapex",
+                "shiny": "textures/entity/pokemon/toxapex/shiny_toxapex",
+                "shiny_male": "textures/entity/pokemon/toxapex/shiny_toxapex",
+                "shiny_female": "textures/entity/pokemon/toxapex/shiny_toxapex",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.toxapex"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.toxapex.blink",
+                "ground_idle": "animation.toxapex.ground_idle",
+                "air_idle": "animation.toxapex.ground_idle",
+                "water_idle": "animation.toxapex.water_idle",
+                "walking": "animation.toxapex.walking",
+                "flying": "animation.toxapex.walking",
+                "swimming": "animation.toxapex.swimming",
+                "sleeping": "animation.toxapex.sleeping",
+                "attack": "animation.toxapex.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "toxapex",

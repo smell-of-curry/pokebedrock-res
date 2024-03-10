@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:yveltal",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/yveltal",
-                "shiny": "textures/sprites/default/yveltal",
-                "default_male": "textures/sprites/default/yveltal",
-                "default_female": "textures/sprites/default/yveltal",
-                "shiny_male": "textures/sprites/default/yveltal",
-                "shiny_female": "textures/sprites/default/yveltal"
+                "default": "textures/entity/pokemon/yveltal/yveltal",
+                "default_male": "textures/entity/pokemon/yveltal/yveltal",
+                "default_female": "textures/entity/pokemon/yveltal/yveltal",
+                "shiny": "textures/entity/pokemon/yveltal/shiny_yveltal",
+                "shiny_male": "textures/entity/pokemon/yveltal/shiny_yveltal",
+                "shiny_female": "textures/entity/pokemon/yveltal/shiny_yveltal",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.yveltal"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.yveltal.blink",
+                "ground_idle": "animation.yveltal.ground_idle",
+                "air_idle": "animation.yveltal.air_idle",
+                "water_idle": "animation.yveltal.ground_idle",
+                "walking": "animation.yveltal.walking",
+                "flying": "animation.yveltal.flying",
+                "swimming": "animation.yveltal.walking",
+                "sleeping": "animation.yveltal.sleeping",
+                "attack": "animation.yveltal.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "yveltal",

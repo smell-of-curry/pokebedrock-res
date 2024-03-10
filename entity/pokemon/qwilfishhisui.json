@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:qwilfishhisui",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/qwilfishhisui",
-                "shiny": "textures/sprites/default/qwilfishhisui",
-                "default_male": "textures/sprites/default/qwilfishhisui",
-                "default_female": "textures/sprites/default/qwilfishhisui",
-                "shiny_male": "textures/sprites/default/qwilfishhisui",
-                "shiny_female": "textures/sprites/default/qwilfishhisui"
+                "default": "textures/entity/pokemon/qwilfishhisui/qwilfishhisui",
+                "default_male": "textures/entity/pokemon/qwilfishhisui/qwilfishhisui",
+                "default_female": "textures/entity/pokemon/qwilfishhisui/qwilfishhisui",
+                "shiny": "textures/entity/pokemon/qwilfishhisui/shiny_qwilfishhisui",
+                "shiny_male": "textures/entity/pokemon/qwilfishhisui/shiny_qwilfishhisui",
+                "shiny_female": "textures/entity/pokemon/qwilfishhisui/shiny_qwilfishhisui",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.qwilfishhisui"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.qwilfishhisui.blink",
+                "ground_idle": "animation.qwilfishhisui.ground_idle",
+                "air_idle": "animation.qwilfishhisui.ground_idle",
+                "water_idle": "animation.qwilfishhisui.water_idle",
+                "walking": "animation.qwilfishhisui.walking",
+                "flying": "animation.qwilfishhisui.walking",
+                "swimming": "animation.qwilfishhisui.swimming",
+                "sleeping": "animation.qwilfishhisui.sleeping",
+                "attack": "animation.qwilfishhisui.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "qwilfishhisui",
