@@ -1,5 +1,5 @@
-**Update v2.9.7**
+**Update v2.9.8**
 
-- Implemented models for Wailord, Wailmer, Qwilfish Hisui, Corsola Galar, Marenie, Toxapex, and Yveltal
-- Added new Glaceon, Qwilfish, Octillery, Remoraid, Corsola
-- Added Beta UI for Pokedex
+- Updated Pokedex on all devices
+- Added armaldo model
+- Removed unused blocks in blocks.json
