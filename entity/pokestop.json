@@ -14,13 +14,7 @@
         "default": "geometry.pokestop"
       },
       "scripts": {
-        // q.variant holds Entity.id
-        // We need to test if Entity.id exists in player.mark_variant
-        // (player.mark_variant >> Entity.id) % 2 === 0;
-        "pre_animation": [
-          "v.client_variant = 0;",
-          "for_each(v.player, q.get_nearby_entities_except_self(100, 'minecraft:player'), { v.player->q.is_local_player ? {v.client_variant=(math.mod(math.floor(v.player->q.mark_variant / math.pow(2, q.skin_id)), 2)) == 1 ? 1 : 0; break;}; });"
-        ],
+        "pre_animation": ["v.client_variant = 0;"],
         "animate": ["default"]
       },
       "animations": {
