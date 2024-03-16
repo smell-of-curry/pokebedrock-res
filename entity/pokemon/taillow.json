@@ -4,21 +4,50 @@
         "description": {
             "identifier": "pokemon:taillow",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/taillow",
-                "shiny": "textures/sprites/default/taillow",
-                "default_male": "textures/sprites/default/taillow",
-                "default_female": "textures/sprites/default/taillow",
-                "shiny_male": "textures/sprites/default/taillow",
-                "shiny_female": "textures/sprites/default/taillow"
+                "default": "textures/entity/pokemon/taillow/taillow",
+                "default_male": "textures/entity/pokemon/taillow/taillow",
+                "default_female": "textures/entity/pokemon/taillow/taillow",
+                "shiny": "textures/entity/pokemon/taillow/shiny_taillow",
+                "shiny_male": "textures/entity/pokemon/taillow/shiny_taillow",
+                "shiny_female": "textures/entity/pokemon/taillow/shiny_taillow",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.taillow"
+            },
+            "scripts": {
+                "animate": [
+                    "controller"
+                ]
+            },
+            "animations": {
+                "blink": "animation.taillow.blink",
+                "ground_idle": "animation.taillow.ground_idle",
+                "air_idle": "animation.taillow.air_idle",
+                "water_idle": "animation.taillow.water_idle",
+                "walking": "animation.taillow.walking",
+                "flying": "animation.taillow.flying",
+                "swimming": "animation.taillow.swimming",
+                "sleeping": "animation.taillow.sleeping",
+                "attack": "animation.taillow.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "taillow",
