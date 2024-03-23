@@ -21,7 +21,10 @@
             },
             "scripts": {
                 "animate": [
-                    "controller"
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
                 ]
             },
             "animations": {
@@ -43,7 +46,7 @@
             },
             "render_controllers": [
                 {
-                    "controller.render.pokemon": "query.variant==0"
+                    "controller.render.pokemon:torracat": "query.variant==0"
                 },
                 {
                     "controller.render.evolve": "query.variant==1"
