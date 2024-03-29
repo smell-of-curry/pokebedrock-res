@@ -1,0 +1,37 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "pokeb:mega_ring",
+      "materials": {
+        "default": "entity_alphatest",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/attachables/mega_ring",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.mega_ring"
+      },
+      "animations": {
+        "first_person_main_hand": "animation.mega_ring.hold_third_person",
+        "third_person_main_hand": "animation.mega_ring.hold_third_person"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.main_hand = c.item_slot == 'main_hand' || c.item_slot == 'off_hand';"
+        ],
+        "animate": [
+          {
+            "first_person_main_hand": "v.main_hand && c.is_first_person"
+          },
+          {
+            "third_person_main_hand": "v.main_hand && !c.is_first_person"
+          }
+        ]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

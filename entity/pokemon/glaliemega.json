@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:glaliemega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/glaliemega",
-                "shiny": "textures/sprites/default/glaliemega",
-                "default_male": "textures/sprites/default/glaliemega",
-                "default_female": "textures/sprites/default/glaliemega",
-                "shiny_male": "textures/sprites/default/glaliemega",
-                "shiny_female": "textures/sprites/default/glaliemega"
+                "default": "textures/entity/pokemon/glaliemega/glaliemega",
+                "default_male": "textures/entity/pokemon/glaliemega/glaliemega",
+                "default_female": "textures/entity/pokemon/glaliemega/glaliemega",
+                "shiny": "textures/entity/pokemon/glaliemega/shiny_glaliemega",
+                "shiny_male": "textures/entity/pokemon/glaliemega/shiny_glaliemega",
+                "shiny_female": "textures/entity/pokemon/glaliemega/shiny_glaliemega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.glaliemega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.glaliemega.blink",
+                "ground_idle": "animation.glaliemega.ground_idle",
+                "air_idle": "animation.glaliemega.ground_idle",
+                "water_idle": "animation.glaliemega.ground_idle",
+                "walking": "animation.glaliemega.walking",
+                "flying": "animation.glaliemega.walking",
+                "swimming": "animation.glaliemega.walking",
+                "sleeping": "animation.glaliemega.ground_idle",
+                "attack": "animation.glaliemega.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:glaliemega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "glaliemega",

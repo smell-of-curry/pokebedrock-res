@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:rayquazamega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/rayquazamega",
-                "shiny": "textures/sprites/default/rayquazamega",
-                "default_male": "textures/sprites/default/rayquazamega",
-                "default_female": "textures/sprites/default/rayquazamega",
-                "shiny_male": "textures/sprites/default/rayquazamega",
-                "shiny_female": "textures/sprites/default/rayquazamega"
+                "default": "textures/entity/pokemon/rayquazamega/rayquazamega",
+                "default_male": "textures/entity/pokemon/rayquazamega/rayquazamega",
+                "default_female": "textures/entity/pokemon/rayquazamega/rayquazamega",
+                "shiny": "textures/entity/pokemon/rayquazamega/shiny_rayquazamega",
+                "shiny_male": "textures/entity/pokemon/rayquazamega/shiny_rayquazamega",
+                "shiny_female": "textures/entity/pokemon/rayquazamega/shiny_rayquazamega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.rayquazamega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.rayquazamega.blink",
+                "ground_idle": "animation.rayquazamega.ground_idle",
+                "air_idle": "animation.rayquazamega.air_idle",
+                "water_idle": "animation.rayquazamega.ground_idle",
+                "walking": "animation.rayquazamega.flying",
+                "flying": "animation.rayquazamega.flying",
+                "swimming": "animation.rayquazamega.flying",
+                "sleeping": "animation.rayquazamega.ground_idle",
+                "attack": "animation.rayquazamega.flying",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:rayquazamega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "rayquazamega",

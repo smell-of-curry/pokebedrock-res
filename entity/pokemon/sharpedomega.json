@@ -4,21 +4,52 @@
         "description": {
             "identifier": "pokemon:sharpedomega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/sharpedomega",
-                "shiny": "textures/sprites/default/sharpedomega",
-                "default_male": "textures/sprites/default/sharpedomega",
-                "default_female": "textures/sprites/default/sharpedomega",
-                "shiny_male": "textures/sprites/default/sharpedomega",
-                "shiny_female": "textures/sprites/default/sharpedomega"
+                "default": "textures/entity/pokemon/sharpedomega/sharpedomega",
+                "default_male": "textures/entity/pokemon/sharpedomega/sharpedomega",
+                "default_female": "textures/entity/pokemon/sharpedomega/sharpedomega",
+                "shiny": "textures/entity/pokemon/sharpedomega/shiny_sharpedomega",
+                "shiny_male": "textures/entity/pokemon/sharpedomega/shiny_sharpedomega",
+                "shiny_female": "textures/entity/pokemon/sharpedomega/shiny_sharpedomega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.sharpedomega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.sharpedomega.blink",
+                "ground_idle": "animation.sharpedomega.ground_idle",
+                "air_idle": "animation.sharpedomega.ground_idle",
+                "water_idle": "animation.sharpedomega.water_idle",
+                "walking": "animation.sharpedomega.walking",
+                "flying": "animation.sharpedomega.walking",
+                "swimming": "animation.sharpedomega.walking",
+                "sleeping": "animation.sharpedomega.ground_idle",
+                "attack": "animation.sharpedomega.walking",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:sharpedomega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "sharpedomega",

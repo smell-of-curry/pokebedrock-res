@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:pidgeotmega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/pidgeotmega",
-                "shiny": "textures/sprites/default/pidgeotmega",
-                "default_male": "textures/sprites/default/pidgeotmega",
-                "default_female": "textures/sprites/default/pidgeotmega",
-                "shiny_male": "textures/sprites/default/pidgeotmega",
-                "shiny_female": "textures/sprites/default/pidgeotmega"
+                "default": "textures/entity/pokemon/pidgeotmega/pidgeotmega",
+                "default_male": "textures/entity/pokemon/pidgeotmega/pidgeotmega",
+                "default_female": "textures/entity/pokemon/pidgeotmega/pidgeotmega",
+                "shiny": "textures/entity/pokemon/pidgeotmega/shiny_pidgeotmega",
+                "shiny_male": "textures/entity/pokemon/pidgeotmega/shiny_pidgeotmega",
+                "shiny_female": "textures/entity/pokemon/pidgeotmega/shiny_pidgeotmega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.pidgeotmega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.pidgeotmega.blink",
+                "ground_idle": "animation.pidgeotmega.ground_idle",
+                "air_idle": "animation.pidgeotmega.air_idle",
+                "water_idle": "animation.pidgeotmega.ground_idle",
+                "walking": "animation.pidgeotmega.flying",
+                "flying": "animation.pidgeotmega.flying",
+                "swimming": "animation.pidgeotmega.flying",
+                "sleeping": "animation.pidgeotmega.ground_idle",
+                "attack": "animation.pidgeotmega.flying",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:pidgeotmega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "pidgeotmega",

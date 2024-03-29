@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:mewtwomegay",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/mewtwomegay",
-                "shiny": "textures/sprites/default/mewtwomegay",
-                "default_male": "textures/sprites/default/mewtwomegay",
-                "default_female": "textures/sprites/default/mewtwomegay",
-                "shiny_male": "textures/sprites/default/mewtwomegay",
-                "shiny_female": "textures/sprites/default/mewtwomegay"
+                "default": "textures/entity/pokemon/mewtwomegay/mewtwomegay",
+                "default_male": "textures/entity/pokemon/mewtwomegay/mewtwomegay",
+                "default_female": "textures/entity/pokemon/mewtwomegay/mewtwomegay",
+                "shiny": "textures/entity/pokemon/mewtwomegay/shiny_mewtwomegay",
+                "shiny_male": "textures/entity/pokemon/mewtwomegay/shiny_mewtwomegay",
+                "shiny_female": "textures/entity/pokemon/mewtwomegay/shiny_mewtwomegay",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.mewtwomegay"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.mewtwomegay.blink",
+                "ground_idle": "animation.mewtwomegay.ground_idle",
+                "air_idle": "animation.mewtwomegay.ground_idle",
+                "water_idle": "animation.mewtwomegay.ground_idle",
+                "walking": "animation.mewtwomegay.walking",
+                "flying": "animation.mewtwomegay.walking",
+                "swimming": "animation.mewtwomegay.walking",
+                "sleeping": "animation.mewtwomegay.ground_idle",
+                "attack": "animation.mewtwomegay.walking",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:mewtwomegay": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "mewtwomegay",

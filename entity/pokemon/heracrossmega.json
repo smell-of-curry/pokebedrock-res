@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:heracrossmega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/heracrossmega",
-                "shiny": "textures/sprites/default/heracrossmega",
-                "default_male": "textures/sprites/default/heracrossmega",
-                "default_female": "textures/sprites/default/heracrossmega",
-                "shiny_male": "textures/sprites/default/heracrossmega",
-                "shiny_female": "textures/sprites/default/heracrossmega"
+                "default": "textures/entity/pokemon/heracrossmega/heracrossmega",
+                "default_male": "textures/entity/pokemon/heracrossmega/heracrossmega",
+                "default_female": "textures/entity/pokemon/heracrossmega/heracrossmega",
+                "shiny": "textures/entity/pokemon/heracrossmega/shiny_heracrossmega",
+                "shiny_male": "textures/entity/pokemon/heracrossmega/shiny_heracrossmega",
+                "shiny_female": "textures/entity/pokemon/heracrossmega/shiny_heracrossmega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.heracrossmega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.heracrossmega.blink",
+                "ground_idle": "animation.heracrossmega.ground_idle",
+                "air_idle": "animation.heracrossmega.air_idle",
+                "water_idle": "animation.heracrossmega.ground_idle",
+                "walking": "animation.heracrossmega.walking",
+                "flying": "animation.heracrossmega.flying",
+                "swimming": "animation.heracrossmega.walking",
+                "sleeping": "animation.heracrossmega.sleeping",
+                "attack": "animation.heracrossmega.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:heracrossmega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "heracrossmega",

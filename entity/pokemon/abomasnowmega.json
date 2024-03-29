@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:abomasnowmega",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/abomasnowmega",
-                "shiny": "textures/sprites/default/abomasnowmega",
-                "default_male": "textures/sprites/default/abomasnowmega",
-                "default_female": "textures/sprites/default/abomasnowmega",
-                "shiny_male": "textures/sprites/default/abomasnowmega",
-                "shiny_female": "textures/sprites/default/abomasnowmega"
+                "default": "textures/entity/pokemon/abomasnowmega/abomasnowmega",
+                "default_male": "textures/entity/pokemon/abomasnowmega/abomasnowmega",
+                "default_female": "textures/entity/pokemon/abomasnowmega/abomasnowmega",
+                "shiny": "textures/entity/pokemon/abomasnowmega/shiny_abomasnowmega",
+                "shiny_male": "textures/entity/pokemon/abomasnowmega/shiny_abomasnowmega",
+                "shiny_female": "textures/entity/pokemon/abomasnowmega/shiny_abomasnowmega",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.abomasnowmega"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.abomasnowmega.blink",
+                "ground_idle": "animation.abomasnowmega.ground_idle",
+                "air_idle": "animation.abomasnowmega.ground_idle",
+                "water_idle": "animation.abomasnowmega.ground_idle",
+                "walking": "animation.abomasnowmega.ground_idle",
+                "flying": "animation.abomasnowmega.ground_idle",
+                "swimming": "animation.abomasnowmega.ground_idle",
+                "sleeping": "animation.abomasnowmega.ground_idle",
+                "attack": "animation.abomasnowmega.ground_idle",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:abomasnowmega": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "abomasnowmega",

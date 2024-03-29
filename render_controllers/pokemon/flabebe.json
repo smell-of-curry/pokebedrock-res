@@ -25,7 +25,7 @@
                 }
             ],
             "textures": [
-                "Array.variants[query.skin_id]"
+                "Array.variants[query.skin_id == 0 ? query.property('pokeb:shiny') == true ? query.property('pokeb:gender') == 'male' ? 4 : query.property('pokeb:gender') == 'female' ? 5 : 1 : query.property('pokeb:gender') == 'male' ? 2 : query.property('pokeb:gender') == 'female' ? 3 : 0 : query.skin_id]"
             ]
         }
     }
