@@ -4,21 +4,55 @@
         "description": {
             "identifier": "pokemon:mimikyu",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/mimikyu",
-                "shiny": "textures/sprites/default/mimikyu",
-                "default_male": "textures/sprites/default/mimikyu",
-                "default_female": "textures/sprites/default/mimikyu",
-                "shiny_male": "textures/sprites/default/mimikyu",
-                "shiny_female": "textures/sprites/default/mimikyu"
+                "default": "textures/entity/pokemon/mimikyu/mimikyu",
+                "default_male": "textures/entity/pokemon/mimikyu/mimikyu",
+                "default_female": "textures/entity/pokemon/mimikyu/mimikyu",
+                "shiny": "textures/entity/pokemon/mimikyu/shiny_mimikyu",
+                "shiny_male": "textures/entity/pokemon/mimikyu/shiny_mimikyu",
+                "shiny_female": "textures/entity/pokemon/mimikyu/shiny_mimikyu",
+                "evo_aura": "textures/entity/evolving",
+                "raichu_mimikyu": "textures/entity/pokemon/mimikyu/raichu_mimikyu",
+                "riolu_mimikyu": "textures/entity/pokemon/mimikyu/riolu_mimikyu"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.mimikyu"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.mimikyu.blink",
+                "ground_idle": "animation.mimikyu.ground_idle",
+                "air_idle": "animation.mimikyu.ground_idle",
+                "water_idle": "animation.mimikyu.ground_idle",
+                "walking": "animation.mimikyu.walking",
+                "flying": "animation.mimikyu.walking",
+                "swimming": "animation.mimikyu.walking",
+                "sleeping": "animation.mimikyu.ground_idle",
+                "attack": "animation.mimikyu.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:mimikyu": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "mimikyu",

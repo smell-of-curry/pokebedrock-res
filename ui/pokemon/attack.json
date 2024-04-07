@@ -107,26 +107,33 @@
       },
       {
         "actors_details_selection": {
-          "type": "panel",
-          "size": ["100%", "70%"],
-          "offset": ["0%", "30%"],
-          "anchor_from": "bottom_left",
-          "anchor_to": "bottom_left",
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%", "71%"],
+          "offset": ["0%", "25%"],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
           "controls": [
             {
               "opponent_actors@battle.button_stack": {
-                "size": ["100%", "100%"],
+                "size": ["25%", "100%"],
                 "layer": 21,
 
-                "$button": "battle.ally_actor_details_button"
+                "$button": "battle.opponent_actor_details_button"
+              }
+            },
+            {
+              "spacing": {
+                "type": "panel",
+                "size": ["50%", "100%"]
               }
             },
             {
               "ally_actors@battle.button_stack": {
-                "size": ["100%", "100%"],
+                "size": ["25%", "100%"],
                 "layer": 21,
 
-                "$button": "battle.opponent_actor_details_button"
+                "$button": "battle.ally_actor_details_button"
               }
             }
           ]
@@ -805,30 +812,28 @@
   },
 
   "opponent_actor_details_button": {
-    "type": "panel",
+    "type": "stack_panel",
+    "orientation": "vertical",
     "size": ["100%", "100%c"],
+    "offset": ["-50%", "10%"],
     "controls": [
       {
         "1@battle.opponent_actor_details_button_check_id": {
-          "offset": ["-41%", "-33%"],
           "$button_id": "§0§0§1"
         }
       },
       {
         "2@battle.opponent_actor_details_button_check_id": {
-          "offset": ["-41%", "-13%"],
           "$button_id": "§0§0§2"
         }
       },
       {
         "3@battle.opponent_actor_details_button_check_id": {
-          "offset": ["-41%", "13%"],
           "$button_id": "§0§0§3"
         }
       },
       {
         "4@battle.opponent_actor_details_button_check_id": {
-          "offset": ["-41%", "33%"],
           "$button_id": "§0§0§4"
         }
       }
@@ -836,30 +841,28 @@
   },
 
   "ally_actor_details_button": {
-    "type": "panel",
+    "type": "stack_panel",
+    "orientation": "vertical",
     "size": ["100%", "100%c"],
+    "offset": ["50%", "10%"],
     "controls": [
       {
         "1@battle.ally_actor_details_button_check_id": {
-          "offset": ["32%", "-33%"],
           "$button_id": "§0§a§1"
         }
       },
       {
         "2@battle.ally_actor_details_button_check_id": {
-          "offset": ["32%", "-13%"],
           "$button_id": "§0§a§2"
         }
       },
       {
         "3@battle.ally_actor_details_button_check_id": {
-          "offset": ["32%", "13%"],
           "$button_id": "§0§a§3"
         }
       },
       {
         "4@battle.ally_actor_details_button_check_id": {
-          "offset": ["32%", "33%"],
           "$button_id": "§0§a§4"
         }
       }
@@ -873,13 +876,14 @@
     "$pressed_button_texture": "textures/ui/battle/opponent",
     "$locked_button_texture": "textures/ui/battle/opponent",
     "enabled": false,
-    "size": [90, 23]
+    "size": [90, 42]
   },
 
   "battle_actor_entity_icon_overlay": {
     "type": "image",
     "size": [40, 40],
-    "texture": "textures/ui/battle/pokemon_warning",
+    "$actor_icon_overlay_texture|default": "textures/ui/battle/pokemon_warning",
+    "texture": "$actor_icon_overlay_texture",
     "$actor_icon_offset|default": [0, 0],
     "offset": "$actor_icon_offset",
     "controls": [
@@ -1080,7 +1084,9 @@
               }
             },
             {
-              "entity_icon_overlay@battle.battle_actor_entity_icon_overlay": {}
+              "entity_icon_overlay@battle.battle_actor_entity_icon_overlay": {
+                "$actor_icon_overlay_texture": "textures/ui/battle/pokemon_healthy"
+              }
             }
           ]
         }
