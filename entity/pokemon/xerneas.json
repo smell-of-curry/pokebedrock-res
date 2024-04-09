@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:xerneas",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/xerneas",
-                "shiny": "textures/sprites/default/xerneas",
-                "default_male": "textures/sprites/default/xerneas",
-                "default_female": "textures/sprites/default/xerneas",
-                "shiny_male": "textures/sprites/default/xerneas",
-                "shiny_female": "textures/sprites/default/xerneas"
+                "default": "textures/entity/pokemon/xerneas/xerneas",
+                "default_male": "textures/entity/pokemon/xerneas/xerneas",
+                "default_female": "textures/entity/pokemon/xerneas/xerneas",
+                "shiny": "textures/entity/pokemon/xerneas/shiny_xerneas",
+                "shiny_male": "textures/entity/pokemon/xerneas/shiny_xerneas",
+                "shiny_female": "textures/entity/pokemon/xerneas/shiny_xerneas",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.xerneas"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 1.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.xerneas.blink",
+                "ground_idle": "animation.xerneas.ground_idle",
+                "air_idle": "animation.xerneas.ground_idle",
+                "water_idle": "animation.xerneas.water_idle",
+                "walking": "animation.xerneas.walking",
+                "flying": "animation.xerneas.walking",
+                "swimming": "animation.xerneas.swimming",
+                "sleeping": "animation.xerneas.sleeping",
+                "attack": "animation.xerneas.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:xerneas": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "xerneas",
