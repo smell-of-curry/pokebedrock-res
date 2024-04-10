@@ -1,5 +1,5 @@
-**Update v2.9.14**
+**Update v2.9.15**
 
-- Added new Spheal Model
-- Added new Xerneas Model
-- Added new Xerneas Neutral Model
+- Added Pikipek Model
+- Added Toucannon Model
+- Added Trumbeak Model
