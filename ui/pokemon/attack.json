@@ -548,6 +548,7 @@
           "anchor_from": "center",
           "anchor_to": "center",
           "text": "#text",
+          "localize": true,
           "color": "black",
           "bindings": [
             {
@@ -559,7 +560,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((%.15s * (#form_button_text - (%.21s * #form_button_text))) - '_')",
+              "source_property_name": "((( 'showdown.moves.' + (%.15s * (#form_button_text - (%.21s * #form_button_text)))) - '_') + '.name')",
               "target_property_name": "#text"
             }
           ]
