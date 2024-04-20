@@ -1,19 +1,11 @@
-**Update v2.9.16**
+**Update v2.10.0**
 
-- Updated Alakazam Mega Animations
-- Added Applin Model
-- Added Decidueye Hisui Model
-- Added Mimikyu Busted Totem Model
-- Added Scatter Bug Model
-- Added Spewpa Model
-- Added Vivilon Fancy Model
-- Added Vivilon PokeBall Model
-- Updated blink chance from 0.25 percent to 0.25 / 25
-- Added Santa Snorlax Skin
-- Vivillon Valentine Skin
-- Added Yamper Mimikyu Skin
-- Updated alot of lang file entires
-- Fixed Shiny Floatzel
-- Fixed Shiny Glaceon
-- Fixed Shiny Leafeon
-- Fixed texture locations for berries
+- Added Dudrio Model
+- Added Doduo Model
+- Updated Mew Animations
+- Added Zekrom Model
+- Updated Alakazam Mega Animations 
+- Subtitle will no longer display
+- Battle Wait now uses both subtitle and title to display
+- Attack screen logs now localize and interpret based on .lang
+- en_US.lang now hws over 30k Additions
