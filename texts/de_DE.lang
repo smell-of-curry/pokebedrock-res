@@ -4110,8 +4110,6 @@ pokemon.walkingwake.desc=Ökologie in der Forschung.
 pokemon.ironleaves.name=Eisenblatt
 pokemon.ironleaves.desc=Ökologie in Analyse.
 
-## R.I.P 300 og lines: Events Forms Models Auction House Model Claim Model Player Model Commands
-
 ## Dismout Messages
 ### These are required per pokemon because of Minecrafts Interpretation
 action.hint.exit.pokemon:bulbasaur=Tippe "Schleichen" an, um abzusteigen
@@ -8015,6 +8013,238 @@ action.hint.exit.pokemon:ironleaves=Tippe "Schleichen" an, um abzusteigen
 action.hint.exit.sceme.pokemon:ironleaves=Tippe auf Absteigen, um abzusteigen
 action.hint.exit.console.pokemon:ironleaves=Drücke :_input_key.sneak:, um abzusteigen
 
+## Events
+events.beforeChat.muted=§cKann keine Nachrichten senden, Sie sind derzeit stummgeschaltet!
+events.beforeChat.sendingTooFast=§cie senden Nachrichten zu schnell. Bitte seien Sie langsamer und versuchen Sie es erneut.
+events.beforeChat.repeatedMessage=§cIhre vorherige Nachricht scheint mit Ihrer letzten identisch zu sein. Bitte ändern Sie Ihre Nachricht und versuchen Sie es erneut.
+events.beforeChat.zalgoMessage=§cIhre Nachricht enthält Zalgo und kann nicht gesendet werden!
+events.beforeChat.send=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+events.beforeChat.kick=§cSpamming!
+
+events.claimManager.interactWithStick.isClaimed=§aDer von Ihnen ausgewählte Block wird von %s beansprucht
+events.claimManager.interactWithStick.notClaimed=§aNiemand hat diesen Block beansprucht.
+events.claimManager.interactWithGoldShovel.fail.isClaimed=§cUngültige Auswahl, die von Ihnen ausgewählte Position ist derzeit beansprucht und kann nicht beansprucht werden!
+events.claimManager.interactWithGoldShovel.success.selectedPos1=§aPosition eins bei §eX: %s, Z: %s ausgewählt
+events.claimManager.interactWithGoldShovel.fail.selectionTooSmall=§cUngültige Auswahl, Anspruchsgröße muss größer oder gleich 10 sein!
+events.claimManager.interactWithGoldShovel.fail.selectionTooBig=§cUngültige Auswahl, diese Auswahl ist zu groß! Sie haben %s Blöcke ausgewählt, Sie können jedoch nur %s Blöcke beanspruchen!
+events.claimManager.interactWithGoldShovel.fail.selectionInvalid=§cUngültige Auswahl. Ihre Auswahl umfasst Blöcke, die bereits beansprucht wurden.
+events.claimManager.interactWithGoldShovel.confirm=Sind Sie sicher, dass Sie die Blöcke von %s bis %s beanspruchen möchten?
+events.claimManager.interactWithGoldShovel.success=§a§aErfolg!, Sie haben %s Blöcke beansprucht!
+events.claimManager.interact.invalidPermission=§cSie können mit diesem Anspruch nicht interagieren!
+
+events.entityHit.ball.pokemonInBattle=§cFehler: Dieses Pokémon kann nicht gefangen werden. Es befindet sich derzeit im Kampf!
+events.entityHit.ball.pokemonSentOut=§cFehler: Dieses Pokémon kann nicht gefangen werden. Dieses Pokémon wurde ausgesendet.
+events.entityHit.battle.pokemonInBattle=§cFehler: Der Kampf mit diesem Pokémon kann nicht gestartet werden. Es befindet sich derzeit im Kampf!
+events.entityHit.battle.pokemonSentOut=§cFehler: Der Kampf mit diesem Pokémon kann nicht gestartet werden. Es wurde verschickt und kann nicht an Kämpfen teilnehmen.
+events.entityHit.getId=ID der getroffenen Entität: "%s"
+
+events.lagClear.announce=[§fServer§r]§a Der Server wurde von Gegenständen und ungezähmten Pokémon befreit!
+events.lagClear.announce.startingIn=[§fServer§r]§a Lag Clear startet in %s!
+
+events.moderate.frozen.alert=§bSie wurden eingefroren, Grund: %s
+
+events.interact_with_trainer.inBattle=§cDieser Trainer ist im Kampf und kann nicht interaktiert werden!
+
+events.setStarterPokemon.chosen=§a§lSie haben §b§l%s §a§lausgewählt
+
+## Forms
+forms.actionForm.show.timeout=§cFormular Timeout: Formular wurde versucht anzuzeigen, aber Sie waren beschäftigt (schließen Sie den Chat nachdem Sie den Befehl durchführen)
+
+forms.crate.noDataToShow=§cDiese Crate hat keine Daten zum zeigen!
+forms.crate.edit.itemIdDoesNotExist=Der Gegenstand „%s“ existiert nicht in Minecraft oder in den verbundenen Verhaltenspaketen!
+forms.crate.edit.dataMustBeNumber=Daten: %s, Muss eine Zahl sein!
+
+forms.kits.buy.confirmPurchase=Sind Sie sich sicher, das Sie den Kit: %s§r für %s PokeDollars kaufen möchtest?
+forms.kits.buy.notEnoughMoney=§cKauf fehlgeschlagen: %s§r§c, Sie haben nicht genügend PokeDollars!
+forms.kits.buy.success=§aErfolgreich gekauftes Kit %s§r§c -%s PokeDollars!
+forms.kits.claim.success=§aBeanspruchtes Kit: %s Erfolgreich! Erneut anfordern %s
+forms.kits.delete.success=§cGelöschtes Kit: §e%s
+
+forms.moderate.updatedRole=§aRolle für "%s" aktualisiert!
+forms.moderate.updatedModerateData=§aAktualisierte moderate Daten!
+
+forms.party.showPokemon.body=Wählen Sie eine Aktion, um es an diesen Pokemon anzuwenden.
+forms.party.showPokemon.location.error.pokemonFainted=§cFehler: Pokémon ist ohnmächtig geworden. Bitte gehen Sie zum Heiler, um die Gesundheit wiederherzustellen.
+forms.party.showPokemon.location.sentOut=§aErfolg: §e%s ausgesendet!
+forms.party.showPokemon.location.returned=§aErfolg: §e%s zurückgeholt!
+forms.party.showPokemon.location.notFound=§cFehler: Pokémon nicht gefunden. Bitte gehen Sie näher an das Pokémon heran und versuchen Sie es erneut.
+forms.party.showPokemon.release.fail.mustHave1Pokemon=§cPokémon kann nicht in die Wildnis entlassen werden! Sie müssen immer 1 Pokémon bei sich haben!
+forms.party.showPokemon.release.fail.pokemonSentOut=§cPokémon kann nicht entlassen werden, während es ausgesendet ist!
+forms.party.showPokemon.release.confirm=Sind Sie sicher, dass Sie dieses Pokémon in die Wildnis entlassen möchten? Dies kann nicht rückgängig gemacht werden!
+forms.party.showPokemon.release.success=§e%s§a wurde in die Wildnis entlassen!
+forms.party.showPokemon.transferToPc.mustHave1Pokemon=§cKann nicht auf den PC übertragen werden! Sie müssen immer 1 Pokémon bei sich haben!
+forms.party.showPokemon.transferToPc.pokemonSentOut=§cHolen Sie dieses Pokémon zurück, bevor Sie es übertragen!
+forms.party.showPokemon.transferToPc.success=%s§r wurde auf Ihren PC übertragen!
+forms.party.setNickName.fail.tooLong=§cFehler: Spitzname zu lang. Die maximal zulässige Länge beträgt 10 Zeichen.
+forms.party.setNickName.fail.firstMustBeLetter=§cFehler: Das erste Zeichen des Spitznamens muss ein Buchstabe sein.
+
+forms.pc.preformActionOnPcPokemon.body=Wählen Sie eine Aktion, um es an diesen PC-Pokemon anzuwenden.
+forms.pc.preformActionOnPcPokemon.fail.noOpenSlots=§cÜbertragung zur Party fehlgeschlagen, Sie haben keine freien Plätze!
+forms.pc.preformActionOnPcPokemon.button.AddToParty=Zur Party hinzufügen
+forms.pc.preformActionOnPcPokemon.button.trashPokemon=Trash-Pokémon
+forms.pc.preformActionOnPcPokemon.button.goBack=Zurück
+
+forms.serverNpc.butItemScreen.title=Gegenstand kaufen: %sx %s§r für %s PokeDollars!
+forms.serverNpc.butItemScreen.fail=§cItems konnten nicht gekauft werden
+forms.serverNpc.butItemScreen.success=§aErfolgreich gekauft %sx %s§r§c -%s PokeDollars!
+forms.serverNpc.sellItemScreen.title=Verkaufen: %s§r für %s PokeDollars!
+forms.serverNpc.sellItemScreen.fail=§cItems konnten nicht verkauft werden
+forms.serverNpc.sellItemScreen.success=§aErfolgreich verkauft %sx %s§r§a +%s PokeDollars!
+forms.serverNpc.sellItemScreen.fail.item=§cFehler beim Verkauf von %sx %s!
+
+forms.tradeMachine.showWaitForm.endTradeSearch=§cHandelssuche beendet!
+forms.tradeMachine.showWaitForm.requestDeclined=§cIhre Handelsanfrage wurde abgelehnt!
+forms.tradeMachine.showMain.alreadyInUse=§cKann nicht mit der Maschine interagieren, da sie bereits verwendet wird!
+forms.tradeMachine.showMain.playerNotFound=§cHandel konnte nicht gestartet werden, anderer Spieler wurde nicht gefunden!
+
+forms.trainerMenu.main.cannotReBattleTrainer=§cSie können diesen Trainer nicht wieder herausfordern!
+forms.trainerMenu.editBasicData.updated=§aGrunddaten für Trainer aktualisiert!
+forms.trainerMenu.editDrops.confirmDelete=Sind Sie sicher, dass Sie %s löschen möchten?
+forms.trainerMenu.editDrop.typeIdDoesNotExist="%s" ist keine gültige Datennummer!
+forms.trainerMenu.editDrop.notVaildData="%s" ist keine gültige Gegenstands-ID, die in Minecraft oder verbundenen Verhaltenspaketen enthalten ist.
+forms.trainerMenu.editDrop.notValidAmount="%s" ist keine gültige Betragszahl!
+
+## Models
+models.battleUtils.runPokemonCatch.ballWasMissed=Ball verfehlt!
+models.battleUtils.endBattleOrPokemonForm.title=Ihr Pokémon ist ohnmächtig geworden
+models.battleUtils.endBattleOrPokemonForm.body=Ihr Pokémon ist gerade ohnmächtig geworden. Um fortzufahren, beenden Sie entweder den Kampf oder tauschen Sie ihr Pokémon.
+models.battleUtils.choosePokemonForm.noAvailablePokemon.first=Der Kampf kann nicht gestartet werden, da kein Pokémon verfügbar ist!
+models.battleUtils.choosePokemonForm.noAvailablePokemon=Pokémon kann nicht geändert werden, Sie haben kein verfügbares Pokémon!
+
+models.playersPokemon.checkForLevelUp.levelUp=§e%s§r§e hat sich aufgelevelt zu %s!
+models.playersPokemon.evolveSlot.alert=%s§r§e hat sich zu %s§r entwickelt!
+
+models.playerVsPlayerBattle.fail.noAvailablePokemon=§cSie können nicht "%s" bekämpfen, da Sie kein Pokemon verfügbar haben!
+models.playerVsPlayerBattle.stop.ranFromBattle=Sie sind von den Kampf geflohen!
+models.playerVsPlayerBattle.stop.playerRanFromBattle=Sie sind von den Kampf geflohen!
+models.playerVsPlayerBattle.stop.playerLost=Sie haben verloren!
+models.playerVsPlayerBattle.stop.playerWon=Sie haben gewonnen!
+
+models.playerVsPokemonBattle.fail.noAvailablePokemon=§cSie können nicht dieses Pokemon bekämpfen, da Sie kein Pokemon verfügbar haben!
+models.playerVsPokemonBattle.end=Der Kampf wurde beendet
+models.playerVsPokemonBattle.pokemonDied=§a%s§r§e hat §e%s XP erhalten!
+models.choosePokemonForm.battleFailedToStart=§cKampf konnte nicht gestartet werden. Probieren Sie ein anderes Pokémon aus!
+
+models.playerVsTrainerBattle.fail.noAvailablePokemon=§cSie können nicht diesen Trainer bekämpfen, da Sie kein Pokemon verfügbar haben!
+models.playerVsTrainerBattle.end.gainedExp=§a%s hat §e%s XP erhalten!
+models.playerVsTrainerBattle.end.earnedPokeDollars=§aSie haben %sx PokeDollars verdient!
+
+### Auction House Model
+models.auctionHouse.hasExpired.sold=§cIhre Versteigerung für %s ist abgelaufen und Sie bekommen: %s %s!
+models.auctionHouse.hasExpired.notSold=§cIhre Versteigerung für %s ist abgelaufen und Sie bekommen: %s %s!
+models.auctionHouse.addBid.outbid=§a%s hat mehr geboten, als Sie und Sie bekommen %sx %s zurück von %s!
+
+### Claim Model
+models.claimModel.failedToDisplayBorder=§cKonnte nicht ganzen Rahmen anzeigen: %s!
+
+### Player Model
+model.playerModel.questProgress.increment=§a[QUEST]: §f%s§a Fortschritt: %s / %s!
+model.playerModel.questProgress.tierComplete=§aDerzeitige Quest-Stuffe beendet: %s!
+model.playerModel.questProgress.questComplete=§aQuest Beendet: %s!
+model.playerModel.questProgress.nextTierStarted=§aNächste Stuffe: %s gestartet, %s.
+
+## Commands
+commands.default.cooldown=§cIhre Versteigerung für %s ist abgelaufen ohne Gebote!
+commands.battle.player.fail.self=§cSie können sich selbst keine Kampfanfrage senden!
+commands.battle.player.success=§a"%s" hat Ihnen eine Kampfanfrage gesendet, interagieren Sie um diese anzunehmen.
+commands.battle.accept.fail.noInBoundRequests=§cAnfrage konnte nicht angenommen werden, Sie haben keine eingehenden Anfragen!
+commands.battle.accept.fail.playerNotInGame=§cAnfrage konnte nicht angenommen werden. Der Spieler, der diese Anfrage gesendet hat, ist nicht im Spiel!
+commands.battle.accept.fail.playerInBattle=§cFehler: Der Kampf mit diesem Spieler kann nicht gestartet werden. Der Spieler befindet sich derzeit im Kampf!
+commands.battle.accept.success.sender=§aKampfanfrage von „%s“ angenommen!
+commands.battle.accept.success.fromPlayer=§a"%s" hat deine Kampfanfrage angenommen!
+commands.battle.deny.fail.noInBoundRequests=§cAnfrage konnte nicht abgelehnt werden. Sie haben keine eingehenden Anfragen!
+commands.battle.deny.success=§aIhre eingehende Kanmpfanfrage wurde abgelehnt!
+commands.battle.toggle.success=§a"%s" Kampfanfragen an Sie sind jetzt auf %s gesetzt
+commands.battle.leave.fail.notInBattle=§cKampf konnte nicht verlassen werden. Sie befinden sich derzeit nicht in einem Kampf!
+commands.battle.leave.success=§aDer Kampf, in dem Sie waren, wurde beendet!
+
+commands.chatRank.set.success=§aSetze "%s" Ränge zu %s!
+commands.chatRank.add.success=§aRang hinzugefügt: %s zu "%s"!
+
+commands.claim.trust.player.fail.notOwnAnyClaims=§cFehler, kann nicht diesem Spieler, weil Ihnen dieses Anspruch nicht gehört!
+commands.claim.trust.player.fail.doNotOwnClaim=§cFehler, kann nicht Vertrauen für dieses Anspruch ändern, Ihnen gehört dieses Anspruch nicht!
+commands.claim.trust.player.fail.playerAlreadyTrusted=§cFehler, "%s" wird an den Anspruch, in dem Sie sich gerade befanden, bereits vertraut!
+commands.claim.trust.player.success.toClaimIn=§a"%s" an den Anspruch, in dem Sie sich gerade befanden, vertraut.
+commands.claim.trust.player.success.toAllClaims=§a"%s" an alle Ihre Ansprüche vertraut.
+commands.claim.unTrust.playerName.fail.notOwnAnyClaims=§cFehler, Sie vertrauen diesem Spieler keine Ansprüche??? was denken Sie sich? Ich sollte diese Nachricht nicht schreiben, aber ich habe es für Sie gamacht, ich weiß nicht wie du es so schlecht vermasseln konntest.
+commands.claim.unTrust.playerName.fail.doNotOwnClaim=§cFehler, kann nicht Vertrauen für dieses Anspruch ändern, Ihnen gehört dieses Anspruch nicht!
+commands.claim.unTrust.playerName.fail.playerNotTrusted=§cFehler, "%s" wird gerade nicht vertraut!
+commands.claim.unTrust.playerName.success.toClaimIn=§a"%s" als nicht vertrauenswürdig für den Anspruch, in den Sie sich gerade befinden, gesetzt.
+commands.claim.unTrust.playerName.success.toAllClaims=§a"%s" als nicht vertrauenswürdig für alle Ihre Ansprüche gesetzt.
+commands.claim.abandon.fail.notInClaim=§cFehler, Sie müssen in einem Anspruch stehen, um es zu verlassen!
+commands.claim.abandon.fail.doNotOwn=§cFehler kann diesen Anspruch nicht verlassen, Sie besitzen diesen Anspruch nicht!
+commands.claim.abandon.confirm=Sind Sie sicher, dass Sie den Anspruch, auf den Sie sich gerade beziehen, verlassen möchten? Dies kann nicht rückgängig gemacht werden!
+commands.claim.abandon.success=§aDen Anspruch, in dem Sie sich gerade befanden, erfolgreich verlassen.
+commands.claim.abandonAll.fail.notOwnAnyClaims=§cSie haben keinen Anspruch zum Entfernen
+commands.claim.abandonAll.confirm=Sind Sie sicher, dass Sie alle Ansprüche, die Sie derzeit haben, verlassen möchten?
+commands.claim.abandonAll.success=§aAlle Ihre Ansprüche erfolgreich verlassen.
+commands.claim.delete.fail.notInClaim=§cFehler, Sie müssen in einem Anspruch stehen, um es zu verlassen!
+commands.claim.delete.success=§aDer Anspruch, in dem Sie sich gerade befanden, wurde gelöscht.
+commands.claim.balance=§aSie haben %sx verfügbare Anspruchsblöcke!
+
+commands.home.formRequested=§aFormular angefordert, Chat schließen, um den Hausmanager anzusehen.
+
+commands.kits.formRequested=§aFormular angefordert, Chat schließen, um die Kits anzusehen.
+commands.kits.make.formRequested=§aFormular angefordert, Chat schließen, um ein Kit zu erstellen.
+
+commands.moderate.formRequested=§aFormular angefordert, Chat schließen, um den Moderatormenü zu öffnen.
+commands.moderate.setPermission.formRequested=§aFormular angefordert, Chat schließen, um Spielerberechtigungen festzulegen.
+
+commands.rules.formRequested=§aFormular angefordert, Chat schließen, um die Regeln zu sehen.
+
+commands.warp.formRequested=§aFormular angefordert, Chat schließen, um den Warp-Menü zu öffnen.
+commands.warp.success=§aTeleportiert zu: %s!
+
+commands.wild.success=§aTeleportiert zur Wildniss!
+
+commands.serverWarp.set.success=§aServer-Warp %s an Ihrer Position gesetzt!
+commands.serverWarp.set.formRequested=§aFormular angefordert, Chat schließen, um Warp festzulegen.
+commands.serverWarp.delete.success=§aServer-Warp gelöscht: „%s“ erfolgreich!
+commands.serverWarp.delete.failed=§cServer-Warp konnte nicht gelöscht werden: „%s“!
+
+commands.tpa.player.failed.self=§cSie können sich selber keine Teleportanfrage senden!
+commands.tpa.player.success=§a„%s“ hat Ihnen eine Teleportanfrage gesendet. Geben Sie „%s“ ein, um diese Anfrage anzunehmen
+commands.tpaccept.fail.noInBoundRequests=§cAnfrage konnte nicht angenommen werden. Sie haben keine eingehenden Anfragen!
+commands.tpaccept.fail.playerNotInGame=§cAnfrage konnte nicht angenommen werden. Der Spieler, der diese Anfrage gesendet hat, ist nicht im Spiel!
+commands.tpaccept.success.sender=§aTp-Anfrage von „%s“ angenommen!
+commands.tpaccept.success.fromPlayer=§a"%s" hat Ihre Tp-Anfrage angenommen!
+commands.tpdeny.fail=§cDie Anfrage konnte nicht abgelehnt werden. Sie haben keine eingehenden Anfragen!
+commands.tpdeny.success=§aIhre eingehende Tp-Anfrage wurde abgelehnt!
+commands.tpatoggle.success=§a"%s" Teleportationsanfragen an Sie sind jetzt auf %s eingestellt.
+commands.back.fail=§cSie haben keinen vorherigen Back-Standort!
+commands.back.success=§aSie wurden zurück teleportiert!
+
+commands.balance.success=§aSie haben %sx PokeDollars!
+commands.balance.set.success=§a„%s“ PokeDollars auf %s aktualisiert!
+commands.balance.add.success=§a„%s“ PokeDollars auf %s aktualisiert!
+
+commands.lag.request.fail=§cSie haben bereits eine Anfrage gestellt, Status: %s/%s.
+commands.lag.request.success=§cSie haben bereits eine Anfrage gestellt, Status: %s/%s.
+
+commands.floatingText.spawn.success=§aErstellte schwebenden Text an ihrem Standort!
+commands.floatingText.despawn.success=§cDer gesamte schwebende Text an Ihrem Standort wurde entfernt!
+commands.floatingText.despawn.fail=§cDer gesamte schwebende Text an Ihrem Standort konnte nicht entfernt werden! %s
+
+commands.leaderboard.create.success=§aErstellte Bestenliste für %s an Ihrem Standort!
+commands.leaderboard.update.success=§aAlle Bestenlisten aktualisiert!
+
+commands.pay.fail.payYourSelf=§cKann nicht selbst bezahlen!
+commands.pay.fail.lessThanZero=§cKann nicht Betrag von weniger oder gleich zu 0 zahlen!
+commands.pay.fail.insufficientFunds=§cSie haben nicht genug Geld, um %s PokeDollars zu senden!
+commands.pay.success=§a„%s“ %sx PokeDollars bezahlt!
+
+commands.pokeheal.fail=§cPokémon konnte nicht geheilt werden. Sie befinden sich gerade im Kampf!
+
+commands.reset.success=§a%s Pokemon-Daten zurücksetzen!
+
+commands.seen.onlineRightNow=§a%s ist gerade online! Sag Hallo!
+commands.seen.lastSeen=§c%s wurde zu zuletzt am %s gesehen
+commands.seen.firstLogon=§c%s' erste Anmeldung war %s
+
+commands.redeem.success=§aCode eingelöst: "%s", Erfolgreich!
+commands.redeem.alreadyRedeemed=§cDer Code: "%s", wurde bereits eingelöst!
+commands.redeem.codeNotFound=§cDer Code: "%s", wurde nicht gefunden!
+
 ## Send Message Parsing
 src.pokebedrock.database.models.PokemonModel.createFromWild.0=Pokemon: %s war kaputt und wir konnten seine Daten nicht holen!
 src.pokebedrock.database.models.PokemonModel.checkForShedEvolution.0=%s hat eine %s!
@@ -8397,7 +8627,7 @@ battle.gui.battleSideText.timer.null=Keinen Rundentimer
 battle.gui.battleSideText.timer.waiting=Warte%s
 battle.gui.battleSideText.weather=Wetter 
 battle.gui.battleSideText.weather.clear=Klar
-battle.gui.battleSideText.terrain.none=Kein Terrain                 ## 20.04.2024:13.04 #######################################
+battle.gui.battleSideText.terrain.none=Kein Terrain                 ## 20.04.2024:13.04 
 ### Showdown Battle Text                                                
 
 showdown.abilities.noability.name=No Ability
