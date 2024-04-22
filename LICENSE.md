@@ -28,6 +28,7 @@ Models/Textures and User Interface:
 - smellawella
 - ShadeKinoSoul
 - N1ghtb3ast
+- Joker00666
 
 Special Thanks:
 
