@@ -1,11 +1,9 @@
-**Update v2.10.0**
+**Update v2.10.1**
 
-- Added Dudrio Model
-- Added Doduo Model
-- Updated Mew Animations
-- Added Zekrom Model
-- Updated Alakazam Mega Animations 
-- Subtitle will no longer display
-- Battle Wait now uses both subtitle and title to display
-- Attack screen logs now localize and interpret based on .lang
-- en_US.lang now hws over 30k Additions
+- Added Translations for missing Berries
+- Fixed Gardevoir Shiny Texture
+- Fixed Bad Badge Icons
+- Fixed Bad Berry Icons
+- Fixed Oversized held items
+- Removed Friendship Stone
+- Fixed bad stone textures
