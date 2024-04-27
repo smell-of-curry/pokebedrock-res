@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:pikachurockstar",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/pikachurockstar",
-                "shiny": "textures/sprites/default/pikachurockstar",
-                "default_male": "textures/sprites/default/pikachurockstar",
-                "default_female": "textures/sprites/default/pikachurockstar",
-                "shiny_male": "textures/sprites/default/pikachurockstar",
-                "shiny_female": "textures/sprites/default/pikachurockstar"
+                "default": "textures/entity/pokemon/pikachurockstar/pikachurockstar",
+                "default_male": "textures/entity/pokemon/pikachurockstar/pikachurockstar",
+                "default_female": "textures/entity/pokemon/pikachurockstar/pikachurockstar",
+                "shiny": "textures/entity/pokemon/pikachurockstar/shiny_pikachurockstar",
+                "shiny_male": "textures/entity/pokemon/pikachurockstar/shiny_pikachurockstar",
+                "shiny_female": "textures/entity/pokemon/pikachurockstar/shiny_pikachurockstar",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.pikachurockstar"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.pikachurockstar.blink",
+                "ground_idle": "animation.pikachurockstar.ground_idle",
+                "air_idle": "animation.pikachurockstar.ground_idle",
+                "water_idle": "animation.pikachurockstar.water_idle",
+                "walking": "animation.pikachurockstar.walking",
+                "flying": "animation.pikachurockstar.walking",
+                "swimming": "animation.pikachurockstar.swimming",
+                "sleeping": "animation.pikachurockstar.sleeping",
+                "attack": "animation.pikachurockstar.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:pikachurockstar": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "pikachurockstar",
