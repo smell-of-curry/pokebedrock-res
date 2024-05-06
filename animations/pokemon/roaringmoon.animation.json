@@ -1,6 +1,17 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
+		"animation.pokemon.look_at_target": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+				}
+			}
+		},
 		"animation.roaringmoon.ground_idle": {
 			"loop": true,
 			"animation_length": 2,

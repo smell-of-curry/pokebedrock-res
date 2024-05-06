@@ -1,12 +1,9 @@
-**Update v2.10.3**
+**Update v2.10.4**
 
-- Added Reshiram Model by @joker
-- Added Raichu Alola Model by @bruno
-- Added Pikachu Popstar, Rockstar, PHD, Belle & Libre Formes by @bruno
-- Added new Pikachu Captin and Pikachu Doll Skins by @bruno
-- Added new Hoppip Model by @joker
-- Added new Jumpluff Model by @joker
-- Added new Pikachu Model by @bruno
-- Added new Raichu Model by @bruno
-- Added new Skiploom Model by @joker
-- Fixed Beedrill from not facing north, also updated animations by @isme
+- Added Nursery Aide Model
+- Added Amaura Model
+- Added Linoone Model
+- Updated Roaring Moon Animations
+- Updated Syther Animations, Model, and Shiny texture.
+- Added lang interpretation for "showdown.default.charge.start"
+- Updated Bug Badge
