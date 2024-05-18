@@ -1,0 +1,70 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "pokeb:snow_1",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particle/weather/snow_1"
+			}
+		},
+		"curves": {
+			"variable.size1": {
+				"type": "linear",
+				"input": "v.particle_age",
+				"horizontal_range": "v.particle_lifetime",
+				"nodes": [0.64, 1, 0.62]
+			}
+		},
+		"components": {
+			"minecraft:emitter_rate_steady": {
+				"spawn_rate": 40,
+				"max_particles": 300
+			},
+			"minecraft:emitter_lifetime_looping": {
+				"active_time": 10
+			},
+			"minecraft:emitter_shape_box": {
+				"offset": [0, 15, 0],
+				"half_dimensions": [10, 2, 10],
+				"direction": ["math.random(-0.3,0.3)", -1, "math.random(-0.3,0.3)"]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "math.random(3,4)"
+			},
+			"minecraft:particle_initial_spin": {
+				"rotation": "math.random(0,360)",
+				"rotation_rate": "math.random(80,-80)"
+			},
+			"minecraft:particle_initial_speed": "math.random(4,8)",
+			"minecraft:particle_motion_dynamic": {},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["0.5*variable.particle_random_1*variable.size1+0.1", "0.5*variable.particle_random_1*variable.size1+0.1"],
+				"facing_camera_mode": "rotate_xyz",
+				"uv": {
+					"texture_width": 16,
+					"texture_height": 16,
+					"uv": [0, 0],
+					"uv_size": [16, 16]
+				}
+			},
+			"minecraft:particle_motion_collision": {
+				"collision_drag": 0.1,
+				"coefficient_of_restitution": 0.1,
+				"collision_radius": 0.1,
+				"expire_on_contact": true
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": {
+					"interpolant": "v.particle_age / v.particle_lifetime",
+					"gradient": {
+						"0.0": "#00FFFFFF",
+						"0.11": "#FFC4E4FF",
+						"0.72": "#8ADAF2FF",
+						"1.0": "#00FFFFFF"
+					}
+				}
+			}
+		}
+	}
+}
