@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:raichualola",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/raichualola",
-                "shiny": "textures/sprites/default/raichualola",
-                "default_male": "textures/sprites/default/raichualola",
-                "default_female": "textures/sprites/default/raichualola",
-                "shiny_male": "textures/sprites/default/raichualola",
-                "shiny_female": "textures/sprites/default/raichualola"
+                "default": "textures/entity/pokemon/raichualola/raichualola",
+                "default_male": "textures/entity/pokemon/raichualola/raichualola",
+                "default_female": "textures/entity/pokemon/raichualola/raichualola",
+                "shiny": "textures/entity/pokemon/raichualola/shiny_raichualola",
+                "shiny_male": "textures/entity/pokemon/raichualola/shiny_raichualola",
+                "shiny_female": "textures/entity/pokemon/raichualola/shiny_raichualola",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.raichualola"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.raichualola.blink",
+                "ground_idle": "animation.raichualola.ground_idle",
+                "air_idle": "animation.raichualola.ground_idle",
+                "water_idle": "animation.raichualola.water_idle",
+                "walking": "animation.raichualola.walking",
+                "flying": "animation.raichualola.walking",
+                "swimming": "animation.raichualola.swimming",
+                "sleeping": "animation.raichualola.sleeping",
+                "attack": "animation.raichualola.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:raichualola": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "raichualola",
