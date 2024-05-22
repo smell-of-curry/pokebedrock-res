@@ -1,0 +1,51 @@
+{
+	"format_version": "1.10.0",
+	"particle_effect": {
+		"description": {
+			"identifier": "pokeb:primordialsea_1",
+			"basic_render_parameters": {
+				"material": "particles_blend",
+				"texture": "textures/particle/weather/primordialsea_1"
+			}
+		},
+		"events": {
+			"event": {}
+		},
+		"components": {
+			"minecraft:emitter_rate_steady": {
+				"spawn_rate": 400,
+				"max_particles": 800
+			},
+			"minecraft:emitter_lifetime_looping": {
+				"active_time": 10
+			},
+			"minecraft:emitter_shape_box": {
+				"offset": [0, 15, 0],
+				"half_dimensions": [10, 2, 10],
+				"direction": ["math.random(0.3,0.1)", -1, 0]
+			},
+			"minecraft:particle_lifetime_expression": {
+				"max_lifetime": "math.random(0.5,0.8)"
+			},
+			"minecraft:particle_initial_speed": "math.random(20,30)",
+			"minecraft:particle_motion_dynamic": {},
+			"minecraft:particle_appearance_billboard": {
+				"size": ["math.random(3,2)", "math.random(0.1,0.05)"],
+				"facing_camera_mode": "lookat_direction",
+				"uv": {
+					"texture_width": 16,
+					"texture_height": 16,
+					"uv": [0, 0],
+					"uv_size": [16, 16]
+				}
+			},
+			"minecraft:particle_motion_collision": {
+				"collision_radius": 0.1,
+				"expire_on_contact": true
+			},
+			"minecraft:particle_appearance_tinting": {
+				"color": [1, 1, 1, 0.16863]
+			}
+		}
+	}
+}
