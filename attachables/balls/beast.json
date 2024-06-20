@@ -1,0 +1,39 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "pokeb:beastball",
+            "materials": {
+                "default": "zombie",
+                "enchanted": "entity_alphatest_glint"
+            },
+            "textures": {
+                "default": "textures/entity/ball/beast",
+                "enchanted": "textures/misc/enchanted_item_glint"
+            },
+            "geometry": {
+                "default": "geometry.ball"
+            },
+            "animations": {
+                "first_person_main_hand": "animation.ball.hold_first_person",
+                "third_person_main_hand": "animation.ball.hold_third_person"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.main_hand = c.item_slot == 'main_hand' || c.item_slot == 'off_hand';"
+                ],
+                "animate": [
+                    {
+                        "first_person_main_hand": "v.main_hand && c.is_first_person"
+                    },
+                    {
+                        "third_person_main_hand": "v.main_hand && !c.is_first_person"
+                    }
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}
