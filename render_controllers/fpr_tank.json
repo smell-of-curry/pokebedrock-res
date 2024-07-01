@@ -1,0 +1,24 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.fpr_tank": {
+      "arrays": {
+        "textures": {
+          "Array.variants": [
+            "Texture.default",
+            "Texture.no_water_red_lights",
+            "Texture.water_no_lights_green_blinking",
+            "Texture.water_no_lights"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.variants[query.skin_id]"],
+      "uv_anim": {
+        "offset": [0.0, "math.mod(math.floor(q.life_time * 8),8) / 8"],
+        "scale": [1.0, "1 / 8"]
+      }
+    }
+  }
+}

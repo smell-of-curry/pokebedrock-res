@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.data_monitor": {
+      "arrays": {
+        "textures": {
+          "Array.variants": [
+            "Texture.default",
+            "Texture.data_monitor_loading_1",
+            "Texture.data_monitor_loading_2",
+            "Texture.data_monitor_loading_3",
+            "Texture.data_monitor_loading_4",
+            "Texture.data_monitor_loading_5",
+            "Texture.data_monitor_loading_6",
+            "Texture.data_monitor_loading_7",
+            "Texture.data_monitor_loading_8",
+            "Texture.data_monitor_loading_9",
+            "Texture.data_monitor_completed"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.variants[query.skin_id]"],
+      "uv_anim": {
+        "offset": [0.0, "math.mod(math.floor(q.life_time * 8),10) / 10"],
+        "scale": [1.0, "1 / 10"]
+      }
+    }
+  }
+}
