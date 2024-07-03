@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:tyrantrum",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/tyrantrum",
-                "shiny": "textures/sprites/default/tyrantrum",
-                "default_male": "textures/sprites/default/tyrantrum",
-                "default_female": "textures/sprites/default/tyrantrum",
-                "shiny_male": "textures/sprites/default/tyrantrum",
-                "shiny_female": "textures/sprites/default/tyrantrum"
+                "default": "textures/entity/pokemon/tyrantrum/tyrantrum",
+                "default_male": "textures/entity/pokemon/tyrantrum/tyrantrum",
+                "default_female": "textures/entity/pokemon/tyrantrum/tyrantrum",
+                "shiny": "textures/entity/pokemon/tyrantrum/shiny_tyrantrum",
+                "shiny_male": "textures/entity/pokemon/tyrantrum/shiny_tyrantrum",
+                "shiny_female": "textures/entity/pokemon/tyrantrum/shiny_tyrantrum",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.tyrantrum"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.tyrantrum.blink",
+                "ground_idle": "animation.tyrantrum.ground_idle",
+                "air_idle": "animation.tyrantrum.ground_idle",
+                "water_idle": "animation.tyrantrum.water_idle",
+                "walking": "animation.tyrantrum.walking",
+                "flying": "animation.tyrantrum.walking",
+                "swimming": "animation.tyrantrum.swimming",
+                "sleeping": "animation.tyrantrum.sleeping",
+                "attack": "animation.tyrantrum.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:tyrantrum": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "tyrantrum",

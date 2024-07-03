@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:oricorio",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/oricorio",
-                "shiny": "textures/sprites/default/oricorio",
-                "default_male": "textures/sprites/default/oricorio",
-                "default_female": "textures/sprites/default/oricorio",
-                "shiny_male": "textures/sprites/default/oricorio",
-                "shiny_female": "textures/sprites/default/oricorio"
+                "default": "textures/entity/pokemon/oricorio/oricorio",
+                "default_male": "textures/entity/pokemon/oricorio/oricorio",
+                "default_female": "textures/entity/pokemon/oricorio/oricorio",
+                "shiny": "textures/entity/pokemon/oricorio/shiny_oricorio",
+                "shiny_male": "textures/entity/pokemon/oricorio/shiny_oricorio",
+                "shiny_female": "textures/entity/pokemon/oricorio/shiny_oricorio",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.oricorio"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.oricorio.blink",
+                "ground_idle": "animation.oricorio.ground_idle",
+                "air_idle": "animation.oricorio.air_idle",
+                "water_idle": "animation.oricorio.water_idle",
+                "walking": "animation.oricorio.swimming",
+                "flying": "animation.oricorio.flying",
+                "swimming": "animation.oricorio.swimming",
+                "sleeping": "animation.oricorio.ground_idle",
+                "attack": "animation.oricorio.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:oricorio": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "oricorio",

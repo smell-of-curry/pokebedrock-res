@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:boldore",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/boldore",
-                "shiny": "textures/sprites/default/boldore",
-                "default_male": "textures/sprites/default/boldore",
-                "default_female": "textures/sprites/default/boldore",
-                "shiny_male": "textures/sprites/default/boldore",
-                "shiny_female": "textures/sprites/default/boldore"
+                "default": "textures/entity/pokemon/boldore/boldore",
+                "default_male": "textures/entity/pokemon/boldore/boldore",
+                "default_female": "textures/entity/pokemon/boldore/boldore",
+                "shiny": "textures/entity/pokemon/boldore/shiny_boldore",
+                "shiny_male": "textures/entity/pokemon/boldore/shiny_boldore",
+                "shiny_female": "textures/entity/pokemon/boldore/shiny_boldore",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.boldore"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.boldore.blink",
+                "ground_idle": "animation.boldore.ground_idle",
+                "air_idle": "animation.boldore.ground_idle",
+                "water_idle": "animation.boldore.water_idle",
+                "walking": "animation.boldore.walking",
+                "flying": "animation.boldore.walking",
+                "swimming": "animation.boldore.swimming",
+                "sleeping": "animation.boldore.sleeping",
+                "attack": "animation.boldore.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:boldore": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "boldore",

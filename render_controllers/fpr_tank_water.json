@@ -1,0 +1,19 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.fpr_tank_water": {
+      "arrays": {
+        "textures": {
+          "Array.variants": ["Texture.default"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.variants[query.skin_id]"],
+      "uv_anim": {
+        "offset": [0.0, "math.mod(math.floor(q.life_time * 8),64) / 64"],
+        "scale": [1.0, "1 / 64"]
+      }
+    }
+  }
+}

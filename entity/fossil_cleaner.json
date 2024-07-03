@@ -12,8 +12,26 @@
       "geometry": {
         "default": "geometry.fossil_cleaner"
       },
+      "scripts": {
+        "animate": ["controller"]
+      },
+      "animations": {
+        "stay": "animation.fossil_cleaner.stay_open",
+        "open": "animation.fossil_cleaner.open",
+        "close": "animation.fossil_cleaner.close",
+        "shake": "animation.fossil_cleaner.shake",
+        "rotating": "animation.fossil_cleaner.rotating",
+        "controller": "controller.animation.fossil_cleaner"
+      },
       "render_controllers": ["controller.render.default"],
       "enable_attachables": false,
+      "particle_effects": {
+        "fossil_cleaner_water": "pokeb:fossil_cleaner_water"
+      },
+      "sound_effects": {
+        "fossil_cleaner_opening": "fossil_cleaner_opening",
+        "fossil_cleaner_closing": "fossil_cleaner_closing"
+      },
       "spawn_egg": {
         "texture": "fossil_machine",
         "texture_index": 0

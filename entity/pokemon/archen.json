@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:archen",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/archen",
-                "shiny": "textures/sprites/default/archen",
-                "default_male": "textures/sprites/default/archen",
-                "default_female": "textures/sprites/default/archen",
-                "shiny_male": "textures/sprites/default/archen",
-                "shiny_female": "textures/sprites/default/archen"
+                "default": "textures/entity/pokemon/archen/archen",
+                "default_male": "textures/entity/pokemon/archen/archen",
+                "default_female": "textures/entity/pokemon/archen/archen",
+                "shiny": "textures/entity/pokemon/archen/shiny_archen",
+                "shiny_male": "textures/entity/pokemon/archen/shiny_archen",
+                "shiny_female": "textures/entity/pokemon/archen/shiny_archen",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.archen"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.archen.blink",
+                "ground_idle": "animation.archen.ground_idle",
+                "air_idle": "animation.archen.ground_idle",
+                "water_idle": "animation.archen.water_idle",
+                "walking": "animation.archen.walking",
+                "flying": "animation.archen.walking",
+                "swimming": "animation.archen.swimming",
+                "sleeping": "animation.archen.sleeping",
+                "attack": "animation.archen.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:archen": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "archen",
