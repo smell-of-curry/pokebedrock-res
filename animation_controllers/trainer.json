@@ -1,0 +1,188 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.trainer": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": [
+            {
+              "aquaboss_idle": "(query.skin_id == 0)"
+            },
+            {
+              "blacksmith_idle": "(query.skin_id == 1)"
+            },
+            {
+              "bugcatcher_idle": "(query.skin_id == 2)"
+            },
+            {
+              "bugmaniac_idle": "(query.skin_id == 3)"
+            },
+            {
+              "femaleaquagrunt_idle": "(query.skin_id == 4)"
+            },
+            {
+              "femalemagmagrunt_idle": "(query.skin_id == 5)"
+            },
+            {
+              "femalerocketgrunt_idle": "(query.skin_id == 6)"
+            },
+            {
+              "firebreather_idle": "(query.skin_id == 7)"
+            },
+            {
+              "flaregruntfemale_idle": "(query.skin_id == 8)"
+            },
+            {
+              "flaregruntmale_idle": "(query.skin_id == 9)"
+            },
+            {
+              "galacticboss_idle": "(query.skin_id == 10)"
+            },
+            {
+              "galacticgruntfemale_idle": "(query.skin_id == 11)"
+            },
+            {
+              "galacticgruntmale_idle": "(query.skin_id == 12)"
+            },
+            {
+              "gardener_idle": "(query.skin_id == 13)"
+            },
+            {
+              "gentleman_idle": "(query.skin_id == 14)"
+            },
+            {
+              "giovanni_idle": "(query.skin_id == 15)"
+            },
+            {
+              "guzma_idle": "(query.skin_id == 16)"
+            },
+            {
+              "magmaboss_idle": "(query.skin_id == 17)"
+            },
+            {
+              "maleaquagrunt_idle": "(query.skin_id == 18)"
+            },
+            {
+              "malemagmagrunt_idle": "(query.skin_id == 19)"
+            },
+            {
+              "malerocketgrunt_idle": "(query.skin_id == 20)"
+            },
+            {
+              "mountaineer_idle": "(query.skin_id == 21)"
+            },
+            {
+              "ornithologist_idle": "(query.skin_id == 22)"
+            },
+            {
+              "pkmnbreeder_idle": "(query.skin_id == 23)"
+            },
+            {
+              "plasmagruntfemale_idle": "(query.skin_id == 24)"
+            },
+            {
+              "plasmagruntmale_idle": "(query.skin_id == 25)"
+            },
+            {
+              "pokemaniacgirl_idle": "(query.skin_id == 26)"
+            },
+            {
+              "pokemaniac_idle": "(query.skin_id == 27)"
+            },
+            {
+              "policeman_idle": "(query.skin_id == 28)"
+            },
+            {
+              "preschoolergirl_idle": "(query.skin_id == 29)"
+            },
+            {
+              "rancher_idle": "(query.skin_id == 30)"
+            },
+            {
+              "richboy_idle": "(query.skin_id == 31)"
+            },
+            {
+              "scientistwoman_idle": "(query.skin_id == 32)"
+            },
+            {
+              "scientist_idle": "(query.skin_id == 33)"
+            },
+            {
+              "skullgruntfemale_idle": "(query.skin_id == 34)"
+            },
+            {
+              "skullgruntmale_idle": "(query.skin_id == 35)"
+            },
+            {
+              "sport_idle": "(query.skin_id == 36)"
+            },
+            {
+              "swimmer_idle": "(query.skin_id == 37)"
+            },
+            {
+              "teamyellgruntfemale_idle": "(query.skin_id == 38)"
+            },
+            {
+              "teamyellgruntmale_idle": "(query.skin_id == 39)"
+            },
+            {
+              "youngster_idle": "(query.skin_id == 40)"
+            },
+            {
+              "smellofcurry_idle": "(query.skin_id == 41)"
+            },
+            {
+              "darkLeader_idle": "(query.skin_id == 42)"
+            },
+            {
+              "fireLeader_idle": "(query.skin_id == 43)"
+            },
+            {
+              "grassLeader_idle": "(query.skin_id == 44)"
+            },
+            {
+              "groundLeader_idle": "(query.skin_id == 45)"
+            },
+            {
+              "normalLeader_idle": "(query.skin_id == 46)"
+            },
+            {
+              "poisonLeader_idle": "(query.skin_id == 47)"
+            },
+            {
+              "steelLeader_idle": "(query.skin_id == 48)"
+            }
+          ],
+          "transitions": [
+            {
+              "walking": "query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water"
+            },
+            {
+              "swimming": "query.is_swimming"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "walking": {
+          "animations": ["walking"],
+          "transitions": [
+            {
+              "default": "query.modified_move_speed <= 0.01 || !query.is_on_ground || query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "swimming": {
+          "animations": ["swimming"],
+          "transitions": [
+            {
+              "default": "!query.is_in_water"
+            }
+          ],
+          "blend_transition": 0.3
+        }
+      }
+    }
+  }
+}
