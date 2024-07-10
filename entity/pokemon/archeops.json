@@ -4,21 +4,53 @@
         "description": {
             "identifier": "pokemon:archeops",
             "materials": {
-                "default": "zombie"
+                "default": "entity_emissive_alpha",
+                "aura": "charged_creeper"
             },
             "textures": {
-                "default": "textures/sprites/default/archeops",
-                "shiny": "textures/sprites/default/archeops",
-                "default_male": "textures/sprites/default/archeops",
-                "default_female": "textures/sprites/default/archeops",
-                "shiny_male": "textures/sprites/default/archeops",
-                "shiny_female": "textures/sprites/default/archeops"
+                "default": "textures/entity/pokemon/archeops/archeops",
+                "default_male": "textures/entity/pokemon/archeops/archeops",
+                "default_female": "textures/entity/pokemon/archeops/archeops",
+                "shiny": "textures/entity/pokemon/archeops/shiny_archeops",
+                "shiny_male": "textures/entity/pokemon/archeops/shiny_archeops",
+                "shiny_female": "textures/entity/pokemon/archeops/shiny_archeops",
+                "evo_aura": "textures/entity/evolving"
             },
             "geometry": {
-                "default": "geometry.substitute"
+                "default": "geometry.archeops"
+            },
+            "scripts": {
+                "animate": [
+                    "controller",
+                    {
+                        "blink": "math.random(0.0, 25.0) <= 0.25"
+                    }
+                ]
+            },
+            "animations": {
+                "blink": "animation.archeops.blink",
+                "ground_idle": "animation.archeops.ground_idle",
+                "air_idle": "animation.archeops.air_idle",
+                "water_idle": "animation.archeops.ground_idle",
+                "walking": "animation.archeops.walking",
+                "flying": "animation.archeops.flying",
+                "swimming": "animation.archeops.walking",
+                "sleeping": "animation.archeops.sleeping",
+                "attack": "animation.archeops.attack",
+                "look_at_target": "animation.pokemon.look_at_target",
+                "controller": "controller.animation.pokemon"
+            },
+            "particle_effects": {
+                "poison_smoke": "pokeb:posion_smoke",
+                "tail_flame": "pokeb:tail_flame"
             },
             "render_controllers": [
-                "controller.render.pokemon"
+                {
+                    "controller.render.pokemon:archeops": "query.variant==0"
+                },
+                {
+                    "controller.render.evolve": "query.variant==1"
+                }
             ],
             "spawn_egg": {
                 "texture": "archeops",
