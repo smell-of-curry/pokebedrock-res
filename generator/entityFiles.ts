@@ -7,170 +7,199 @@ import type {
   GeometryFile,
   PokemonJsonContent,
 } from "./types";
-import { Debugger } from "./utils";
+import { Logger } from "./utils";
 
-/**
- * All Pokemon in this addon.
- */
-const pokemonJson: PokemonJsonContent = JSON.parse(
-  fs.readFileSync("pokemon.json", "utf8")
-);
+// Set up the Logger
+const logDirectory = process.cwd(); // You can change this to another directory if needed
+Logger.setLogDirectory(logDirectory);
 
-const pokemonEntityFileTemplate: EntityFile = JSON.parse(
-  fs.readFileSync("generator/templates/pokemon.entity.json", "utf8")
-);
-const pokemonSubstituteEntityFileTemplate: EntityFile = JSON.parse(
-  fs.readFileSync("generator/templates/pokemonSubstitute.entity.json", "utf8")
-);
+// Paths and Variables
+const pokemonJsonPath = path.join(process.cwd(), "pokemon.json");
+const pokemonEntityFileTemplatePath = path.join("generator", "templates", "pokemon.entity.json");
+const pokemonSubstituteEntityFileTemplatePath = path.join("generator", "templates", "pokemonSubstitute.entity.json");
+const pokemonEntityFilesDir = path.join("entity", "pokemon");
+const markdownLogPath = path.join(process.cwd(), "missing_info.md");
 
-const pokemonEntityFilesDir = path.join("entity/pokemon");
+// Initialize directories
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
 fsExtra.emptyDirSync(pokemonEntityFilesDir);
 
+// Markdown file content
+let markdownContent = `# Missing Information Report\n\n## Summary\nThis report contains details about missing or problematic elements found during the Pokémon processing.\n\n`;
+
+// Read and parse the Pokemon JSON content
+const pokemonJson: PokemonJsonContent = JSON.parse(fs.readFileSync(pokemonJsonPath, "utf8"));
+
+// Read the templates
+const pokemonEntityFileTemplate: EntityFile = JSON.parse(fs.readFileSync(pokemonEntityFileTemplatePath, "utf8"));
+const pokemonSubstituteEntityFileTemplate: EntityFile = JSON.parse(fs.readFileSync(pokemonSubstituteEntityFileTemplatePath, "utf8"));
+
 /**
- * If this pokemon has a valid geometry file.
- * @param pokemonTypeId
- * @returns
+ * Checks if a valid geometry file exists for the given Pokemon type.
+ * @param pokemonTypeId - The ID of the Pokemon type.
+ * @returns `true` if the geometry file is valid, `false` otherwise.
  */
 function hasValidGeometryFile(pokemonTypeId: string): boolean {
-  const filePath = path.join(
-    "models",
-    "entity",
-    "pokemon",
-    pokemonTypeId + ".geo.json"
-  );
-  if (!fs.existsSync(filePath)) return false;
-  // Check identifier
+  const filePath = path.join("models", "entity", "pokemon", `${pokemonTypeId}.geo.json`);
+  if (!fs.existsSync(filePath)) {
+    markdownContent += `## Missing Geometry File\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: No geometry file found for Pokémon type ${pokemonTypeId}.\n\n`;
+    return false;
+  }
+
   const geometryFile: GeometryFile = fsExtra.readJSONSync(filePath);
-  const hasValidIdentifier = geometryFile["minecraft:geometry"].find(
+  const valid = geometryFile["minecraft:geometry"].some(
     (g) => g.description.identifier === `geometry.${pokemonTypeId}`
   );
-  if (hasValidIdentifier) return true;
-  return false;
+
+  if (!valid) {
+    markdownContent += `## Invalid Geometry File\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: The geometry file for Pokémon type ${pokemonTypeId} is invalid.\n\n`;
+  }
+
+  return valid;
 }
 
 /**
- * Gets this pokemon's defined animations as present in the matching animation file.
- * @param pokemonTypeId
- * @returns Defined animations or undefined if no animation file found.
+ * Retrieves defined animations for the given Pokemon type.
+ * @param pokemonTypeId - The ID of the Pokemon type.
+ * @returns An array of animation names, or `undefined` if no animations are found.
  */
 function getDefinedAnimations(pokemonTypeId: string): string[] | undefined {
-  const filePath = path.join(
-    "animations",
-    "pokemon",
-    pokemonTypeId + ".animation.json"
-  );
-  if (!fs.existsSync(filePath)) return undefined;
+  const filePath = path.join("animations", "pokemon", `${pokemonTypeId}.animation.json`);
+  if (!fs.existsSync(filePath)) {
+    markdownContent += `## Missing Animation File\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: No animation file found for Pokémon type ${pokemonTypeId}.\n\n`;
+    return undefined;
+  }
+
   try {
     const animationFile: AnimationFile = fsExtra.readJSONSync(filePath);
-    const animationNames = Object.keys(animationFile.animations).map(
-      (a) => a.split(".")[2] ?? "INVALID_ANIMATION_NAME"
-    );
-    return animationNames.filter((a) => a !== "INVALID_ANIMATION_NAME");
+    return Object.keys(animationFile.animations)
+      .map((a) => a.split(".")[2] ?? "INVALID_ANIMATION_NAME")
+      .filter((a) => a !== "INVALID_ANIMATION_NAME");
   } catch (error) {
-    Debugger.error(`Error reading animation file for ${pokemonTypeId}`);
+    markdownContent += `## Error Reading Animation File\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: Error occurred while reading animation file for Pokémon type ${pokemonTypeId}.\n\n`;
     return undefined;
   }
 }
 
-for (const pokemonTypeId in pokemonJson.pokemon) {
-  const pokemon = pokemonJson.pokemon[pokemonTypeId];
-  if (!pokemon) continue; // should not happen but just in case
+/**
+ * Updates the entity file with missing animations based on the Pokemon's behavior.
+ * @param pokemonTypeId - The ID of the Pokemon type.
+ * @param entityFile - The entity file to update.
+ * @param animations - The list of defined animations.
+ */
+function updateEntityFileWithAnimations(
+  pokemonTypeId: string,
+  entityFile: EntityFile,
+  animations: string[]
+) {
+  const entityDescription = entityFile["minecraft:client_entity"].description;
+  const defaultAnimation = `animation.${pokemonTypeId}.ground_idle`;
 
-  const hasModel = pokemonJson.pokemonWithModels.includes(pokemonTypeId);
-  let templateFile = hasModel
-    ? pokemonEntityFileTemplate
-    : pokemonSubstituteEntityFileTemplate;
-  let newTemplate = JSON.stringify(templateFile, null, 2);
-  newTemplate = newTemplate.replace(/\{speciesId\}/g, pokemonTypeId);
-  let entityFile: EntityFile = JSON.parse(newTemplate);
+  const requiredAnimations: Record<string, string> = {
+    flying: `animation.${pokemonTypeId}.flying`,
+    air_idle: `animation.${pokemonTypeId}.air_idle`,
+    swimming: `animation.${pokemonTypeId}.swimming`,
+    water_idle: `animation.${pokemonTypeId}.water_idle`,
+    walking: `animation.${pokemonTypeId}.walking`,
+    sleeping: `animation.${pokemonTypeId}.sleeping`,
+  };
 
-  if (hasModel) {
-    // Verify Pokemon Geometry
-    if (!hasValidGeometryFile(pokemonTypeId)) {
-      Debugger.error(`Pokemon ${pokemonTypeId} has no valid geometry file.`);
+  const behavior = pokemonJson.pokemon[pokemonTypeId].behavior as {
+    canMove: boolean;
+    canWalk: boolean;
+    canSwim: boolean;
+    canFly: boolean;
+    canLook: boolean;
+    canSleep: boolean;
+  };
+
+  Object.entries(requiredAnimations).forEach(([behaviorKey, animationKey]) => {
+    const behaviorProperty = `can${capitalize(behaviorKey)}` as keyof typeof behavior;
+    if (behavior[behaviorProperty] && !animations.includes(behaviorKey)) {
+      markdownContent += `## Missing Animation\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Animation Type**: ${behaviorKey}\n- **Description**: Animation ${behaviorKey} is missing for Pokémon type ${pokemonTypeId}.\n\n`;
+      entityDescription.animations[animationKey] = defaultAnimation;
     }
-    // Verify Pokemon Animations
-    const animations = getDefinedAnimations(pokemonTypeId);
-    if (!animations) {
-      Debugger.error(`Pokemon ${pokemonTypeId} has no defined animations.`);
-    } else {
-      if (!animations.includes("ground_idle")) {
-        Debugger.error(
-          `Pokemon ${pokemonTypeId} has no 'ground_idle' animation!`
-        );
+  });
+}
+
+/**
+ * Verifies and updates textures for the given Pokemon type.
+ * @param pokemonTypeId - The ID of the Pokemon type.
+ * @param entityFile - The entity file to update.
+ */
+function verifyAndUpdateTextures(pokemonTypeId: string, entityFile: EntityFile) {
+  const textureDir = path.join("textures", "entity", "pokemon", pokemonTypeId);
+  const textures = fs.readdirSync(textureDir);
+
+  if (!textures.includes(`${pokemonTypeId}.png`)) {
+    markdownContent += `## Missing Default Texture\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: No default texture found for Pokémon type ${pokemonTypeId}.\n\n`;
+  }
+  if (!textures.includes(`shiny_${pokemonTypeId}.png`)) {
+    markdownContent += `## Missing Shiny Texture\n\n- **Pokémon Type ID**: ${pokemonTypeId}\n- **Description**: No shiny texture found for Pokémon type ${pokemonTypeId}.\n\n`;
+    const defaultTexturePath = `textures/entity/pokemon/${pokemonTypeId}/${pokemonTypeId}.png`;
+    const entityTextures = entityFile["minecraft:client_entity"].description.textures;
+    entityTextures["shiny"] = defaultTexturePath;
+    entityTextures["shiny_male"] = defaultTexturePath;
+    entityTextures["shiny_female"] = defaultTexturePath;
+    entityFile["minecraft:client_entity"].description.textures = entityTextures;
+  }
+}
+
+/**
+ * Capitalizes the first letter of a string.
+ * @param str - The string to capitalize.
+ * @returns The capitalized string.
+ */
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Main function to process all Pokemon and generate entity files.
+ */
+function processPokemon() {
+  Logger.info("Starting Pokémon processing...");
+
+  for (const pokemonTypeId in pokemonJson.pokemon) {
+    const pokemon = pokemonJson.pokemon[pokemonTypeId];
+    if (!pokemon) continue; // should not happen but just in case
+
+    const hasModel = pokemonJson.pokemonWithModels.includes(pokemonTypeId);
+    let templateFile = hasModel
+      ? pokemonEntityFileTemplate
+      : pokemonSubstituteEntityFileTemplate;
+
+    let newTemplate = JSON.stringify(templateFile, null, 2).replace(/\{speciesId\}/g, pokemonTypeId);
+    let entityFile: EntityFile = JSON.parse(newTemplate);
+
+    if (hasModel) {
+      if (!hasValidGeometryFile(pokemonTypeId)) {
+        Logger.error(`Pokemon ${pokemonTypeId} has no valid geometry file.`);
       }
-      if (pokemon.behavior.canFly && !animations.includes("flying")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can fly but has no 'flying' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.flying`
-        ] = "animation.${pokemonTypeId}.ground_idle";
+
+      const animations = getDefinedAnimations(pokemonTypeId);
+      if (animations) {
+        updateEntityFileWithAnimations(pokemonTypeId, entityFile, animations);
+      } else {
+        Logger.error(`Pokemon ${pokemonTypeId} has no defined animations.`);
       }
-      if (pokemon.behavior.canFly && !animations.includes("air_idle")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can fly but has no 'air_idle' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.air_idle`
-        ] = "animation.${pokemonTypeId}.ground_idle";
-      }
-      if (pokemon.behavior.canSwim && !animations.includes("swimming")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can swim but has no 'swimming' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.swimming`
-        ] = "animation.${pokemonTypeId}.ground_idle";
-      }
-      if (pokemon.behavior.canSwim && !animations.includes("water_idle")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can swim but has no 'water_idle' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.water_idle`
-        ] = "animation.${pokemonTypeId}.ground_idle";
-      }
-      if (pokemon.behavior.canWalk && !animations.includes("walking")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can walk but has no 'walking' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.walking`
-        ] = "animation.${pokemonTypeId}.ground_idle";
-      }
-      if (pokemon.behavior.canSleep && !animations.includes("sleeping")) {
-        Debugger.warn(
-          `Pokemon ${pokemonTypeId} can sleep but has no 'sleeping' animation.`
-        );
-        entityFile["minecraft:client_entity"].description.animations[
-          `animation.${pokemonTypeId}.sleeping`
-        ] = "animation.${pokemonTypeId}.ground_idle";
-      }
+
+      verifyAndUpdateTextures(pokemonTypeId, entityFile);
     }
-    // Verify Pokemon Textures
-    const textures = fs.readdirSync(
-      path.join("textures", "entity", "pokemon", pokemonTypeId)
+
+    fs.writeFileSync(
+      path.join(pokemonEntityFilesDir, `${pokemonTypeId}.entity.json`),
+      JSON.stringify(entityFile, null, 2)
     );
-    if (!textures.includes(pokemonTypeId + ".png")) {
-      Debugger.error(`Pokemon ${pokemonTypeId} has no default texture!`);
-    }
-    if (!textures.includes("shiny_" + pokemonTypeId + ".png")) {
-      Debugger.error(`Pokemon ${pokemonTypeId} has no shiny texture!`);
-      const defaultTexturePath = `textures/entity/pokemon/${pokemonTypeId}/${pokemonTypeId}.png`;
-      const entityTextures =
-        entityFile["minecraft:client_entity"].description.textures;
-      entityTextures["shiny"] = defaultTexturePath;
-      entityTextures["shiny_male"] = defaultTexturePath;
-      entityTextures["shiny_female"] = defaultTexturePath;
-      entityFile["minecraft:client_entity"].description.textures =
-        entityTextures;
-    }
+
+    Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
 
-  fs.writeFileSync(
-    path.join(pokemonEntityFilesDir, pokemonTypeId + ".entity.json"),
-    JSON.stringify(entityFile, null, 2)
-  );
+  Logger.info("Pokémon processing completed.");
+
+  // Write the markdown content to the file
+  fs.writeFileSync(markdownLogPath, markdownContent);
+  Logger.info(`Markdown report generated at ${markdownLogPath}`);
 }
+
+processPokemon();

@@ -1,0 +1,63 @@
+name: Handle Pull Request Events
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  generate-and-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Generate missing_info.md and log file
+      run: npm run generate-missing-info
+
+    - name: Upload missing_info.md and log files as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: reports
+        path: |
+          missing_info.md
+          log-*.log
+
+    - name: Post comments on pull request
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          const missingInfoPath = path.join(process.cwd(), 'missing_info.md');
+          
+          const missingInfo = fs.existsSync(missingInfoPath) ? fs.readFileSync(missingInfoPath, 'utf8') : '';
+          const logFiles = fs.readdirSync(process.cwd()).filter(file => file.match(/^log-.*\.log$/));
+
+          if (missingInfo) {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `### Missing Information Report\n\n\`\`\`markdown\n${missingInfo}\n\`\`\``
+            });
+          }
+
+          for (const logFile of logFiles) {
+            const logContent = fs.readFileSync(logFile, 'utf8');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `### Log File: ${logFile}\n\n\`\`\`text\n${logContent}\n\`\`\``
+            });
+          }
