@@ -61,14 +61,15 @@ jobs:
       run: |
         decoded_changelog=$(cat changelog_base64.txt | base64 --decode)
         echo "$decoded_changelog" > changelog.txt
+        echo "decoded_changelog=$(<changelog.txt)" >> $GITHUB_ENV
 
     - name: Discord Webhook Action
-      uses: tsickert/discord-webhook@v5.3.0
+      uses: tsickert/discord-webhook@v6.0.0
       with:
         avatar-url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
         webhook-url: ${{ secrets.WEBHOOK_URL }}
         embed-title: "[RES] Update v${{ env.version }}"
-        embed-description: ${{ steps.decode_changelog.outputs.decoded_changelog }}
+        embed-description: "View full changelog [here](https://github.com/smell-of-curry/pokebedrock-res/blob/main/CHANGELOG.md)"
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ env.version }}.mcpack"
 

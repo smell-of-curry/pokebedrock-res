@@ -70,7 +70,8 @@ const exclude = [
     archive.pipe(output);
     await archive.finalize();
 
-    fs.copyFileSync(filePath, `${fileName}.zip`);
+    fs.copyFileSync(filePath, `tmp-${fileName}.mcpack`);
+    fs.renameSync(`tmp-${fileName}.mcpack`, `${fileName}.zip`);
   } catch (error) {
     console.error("Error:", error);
     process.exit(1);
