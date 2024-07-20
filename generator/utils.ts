@@ -3,7 +3,6 @@
  * @param message
  */
 function warn(message: any) {
-    return
   console.warn("\x1b[33m" + message + "\x1b[0m");
 }
 
