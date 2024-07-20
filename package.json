@@ -1,5 +1,34 @@
 {
+  "name": "pokebedrock-res",
+  "description": "Welcome to the PokeBedrock Resource Pack repository! This resource pack is designed for the Minecraft Bedrock server, PokeBedrock. It allows users to easily download, fix bugs, change textures, and modify the server's appearance.",
+  "version": "2.10.15",
+  "main": "generator/build.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generateEntityFiles": "npx ts-node --project tsconfig.json generator/entityFiles.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smell-of-curry/pokebedrock-res.git"
+  },
+  "keywords": [
+    "pokemon",
+    "minecraft",
+    "bedrock",
+    "resource_pack"
+  ],
+  "author": "Smell of curry",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/smell-of-curry/pokebedrock-res/issues"
+  },
+  "homepage": "https://github.com/smell-of-curry/pokebedrock-res#readme",
   "dependencies": {
-    "archiver": "^6.0.0"
+    "archiver": "^6.0.0",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.2",
+    "@types/fs-extra": "^11.0.4"
   }
 }
