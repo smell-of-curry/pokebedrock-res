@@ -33,7 +33,7 @@ async function pipeToFile(filePath: string) {
   output.on("close", () => {
     console.log(archive.pointer() + " total bytes");
     console.log((archive.pointer() / 1024 ** 2).toFixed(2) + "MB");
-    console.log(`MCPack created for version`);
+    console.log(`Pack Archive created for ${filePath}!`);
   });
 
   archive.on("warning", (err) => {
