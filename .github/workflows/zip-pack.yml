@@ -70,7 +70,6 @@ jobs:
         avatar-url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
         webhook-url: ${{ secrets.WEBHOOK_URL }}
         embed-title: "[RES] Update v${{ env.version }}"
-        embed-description: |
-          $(cat ${{ env.decoded_changelog }})
+        embed-description: $(cat ${{ env.decoded_changelog }})
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ env.version }}.mcpack"
