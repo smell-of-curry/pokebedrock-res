@@ -23,9 +23,10 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install TypeScript
+    - name: Install dependencies
       run: |
-        npm install -g typescript
+        npm install
+        npm install typescript --save-dev
 
     - name: Read version from manifest
       id: get_version
@@ -36,7 +37,6 @@ jobs:
 
     - name: Create MCPack
       run: |
-        npm install
         npx ts-node --project tsconfig.json generator/build.ts
         
     - name: Release
