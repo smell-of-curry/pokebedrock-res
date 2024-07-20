@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
+
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
@@ -38,7 +38,7 @@ jobs:
     - name: Create MCPack
       run: |
         npx ts-node --project tsconfig.json generator/build.ts
-        
+
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
@@ -50,31 +50,25 @@ jobs:
           PokeBedrock RES ${{ env.version }}.zip
         draft: false
 
-    - name: Read CHANGELOG.md
-      id: read_changelog
+    - name: Read and Encode CHANGELOG.md
+      id: encode_changelog
       run: |
         changelog=$(cat CHANGELOG.md | base64)
         echo "$changelog" > changelog_base64.txt
-        echo "changelog_path=$(pwd)/changelog_base64.txt" >> $GITHUB_ENV
 
-    - name: Decode CHANGELOG
+    - name: Decode CHANGELOG for Discord
       id: decode_changelog
       run: |
-        changelog=$(cat ${{ env.changelog_path }} | base64 --decode)
-        echo "$changelog" > changelog.txt
-        echo "decoded_changelog=$(pwd)/changelog.txt" >> $GITHUB_ENV
+        decoded_changelog=$(cat changelog_base64.txt | base64 --decode)
+        echo "$decoded_changelog" > changelog.txt
 
-    - name: Set decoded changelog
-      run: |
-        echo "DECODED_CHANGELOG=$(cat changelog.txt)" >> $GITHUB_ENV
-          
     - name: Discord Webhook Action
       uses: tsickert/discord-webhook@v5.3.0
       with:
         avatar-url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
         webhook-url: ${{ secrets.WEBHOOK_URL }}
         embed-title: "[RES] Update v${{ env.version }}"
-        embed-description: "${{ env.DECODED_CHANGELOG }}"
+        embed-description: ${{ steps.decode_changelog.outputs.decoded_changelog }}
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ env.version }}.mcpack"
 
