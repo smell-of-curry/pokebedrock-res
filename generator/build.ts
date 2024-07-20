@@ -1,4 +1,5 @@
 import fs from "fs";
+import fsExtra from "fs-extra";
 import path from "path";
 import archiver from "archiver";
 
@@ -20,8 +21,11 @@ const exclude = [
 
 (async () => {
   try {
-    const manifestData = fs.readFileSync("manifest.json", "utf8");
-    const manifest = JSON.parse(manifestData);
+    if (!fs.existsSync("manifest.json")) {
+      console.error("manifest.json not found.");
+      process.exit(1);
+    }
+    const manifest = fsExtra.readJsonSync("manifest.json", "utf8");
     const version = manifest.header.version.join(".");
     const fileName = `PokeBedrock RES ${version}`;
     const filePath = `${fileName}.mcpack`;
@@ -49,13 +53,11 @@ const exclude = [
       throw err;
     });
 
-    const contents = fs
-      .readdirSync(__dirname + "../")
-      .filter((v) => !exclude.includes(v));
+    const contents = fs.readdirSync("../").filter((v) => !exclude.includes(v));
 
     for (const content of contents) {
       if (content.includes(fileName)) continue;
-      const contentPath = path.join(__dirname + "../", content);
+      const contentPath = path.join(content);
 
       if (fs.lstatSync(contentPath).isDirectory()) {
         archive.directory(contentPath, content);
