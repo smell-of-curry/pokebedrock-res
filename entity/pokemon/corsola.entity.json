@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:corsola",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/corsola/corsola",
+        "default_male": "textures/entity/pokemon/corsola/corsola",
+        "default_female": "textures/entity/pokemon/corsola/corsola",
+        "shiny": "textures/entity/pokemon/corsola/shiny_corsola",
+        "shiny_male": "textures/entity/pokemon/corsola/shiny_corsola",
+        "shiny_female": "textures/entity/pokemon/corsola/shiny_corsola",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.corsola"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.corsola.blink",
+        "ground_idle": "animation.corsola.ground_idle",
+        "air_idle": "animation.corsola.ground_idle",
+        "water_idle": "animation.corsola.ground_idle",
+        "walking": "animation.corsola.walking",
+        "flying": "animation.corsola.walking",
+        "swimming": "animation.corsola.walking",
+        "sleeping": "animation.corsola.ground_idle",
+        "attack": "animation.corsola.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:corsola": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "corsola",
+        "texture_index": 0
+      }
+    }
+  }
+}

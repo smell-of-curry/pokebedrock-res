@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:volcarona",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/volcarona/volcarona",
+        "default_male": "textures/entity/pokemon/volcarona/volcarona",
+        "default_female": "textures/entity/pokemon/volcarona/volcarona",
+        "shiny": "textures/entity/pokemon/volcarona/shiny_volcarona",
+        "shiny_male": "textures/entity/pokemon/volcarona/shiny_volcarona",
+        "shiny_female": "textures/entity/pokemon/volcarona/shiny_volcarona",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.volcarona"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.volcarona.blink",
+        "ground_idle": "animation.volcarona.ground_idle",
+        "air_idle": "animation.volcarona.ground_idle",
+        "water_idle": "animation.volcarona.ground_idle",
+        "walking": "animation.volcarona.walking",
+        "flying": "animation.volcarona.walking",
+        "swimming": "animation.volcarona.walking",
+        "sleeping": "animation.volcarona.ground_idle",
+        "attack": "animation.volcarona.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.volcarona.air_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.volcarona.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.volcarona.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:volcarona": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "volcarona",
+        "texture_index": 0
+      }
+    }
+  }
+}

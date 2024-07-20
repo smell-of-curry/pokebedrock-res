@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:pichuspikyeared",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+        "default_male": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+        "default_female": "textures/entity/pokemon/pichuspikyeared/pichuspikyeared",
+        "shiny": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+        "shiny_male": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+        "shiny_female": "textures/entity/pokemon/pichuspikyeared/shiny_pichuspikyeared",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.pichuspikyeared"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.pichuspikyeared.blink",
+        "ground_idle": "animation.pichuspikyeared.ground_idle",
+        "air_idle": "animation.pichuspikyeared.ground_idle",
+        "water_idle": "animation.pichuspikyeared.ground_idle",
+        "walking": "animation.pichuspikyeared.walking",
+        "flying": "animation.pichuspikyeared.walking",
+        "swimming": "animation.pichuspikyeared.walking",
+        "sleeping": "animation.pichuspikyeared.ground_idle",
+        "attack": "animation.pichuspikyeared.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:pichuspikyeared": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "pichuspikyeared",
+        "texture_index": 0
+      }
+    }
+  }
+}

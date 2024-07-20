@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:latias",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/latias/latias",
+        "default_male": "textures/entity/pokemon/latias/latias",
+        "default_female": "textures/entity/pokemon/latias/latias",
+        "shiny": "textures/entity/pokemon/latias/shiny_latias",
+        "shiny_male": "textures/entity/pokemon/latias/shiny_latias",
+        "shiny_female": "textures/entity/pokemon/latias/shiny_latias",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.latias"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.latias.blink",
+        "ground_idle": "animation.latias.ground_idle",
+        "air_idle": "animation.latias.ground_idle",
+        "water_idle": "animation.latias.ground_idle",
+        "walking": "animation.latias.walking",
+        "flying": "animation.latias.walking",
+        "swimming": "animation.latias.walking",
+        "sleeping": "animation.latias.ground_idle",
+        "attack": "animation.latias.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.latias.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.latias.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.latias.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:latias": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "latias",
+        "texture_index": 0
+      }
+    }
+  }
+}

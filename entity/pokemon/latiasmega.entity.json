@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:latiasmega",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/latiasmega/latiasmega",
+        "default_male": "textures/entity/pokemon/latiasmega/latiasmega",
+        "default_female": "textures/entity/pokemon/latiasmega/latiasmega",
+        "shiny": "textures/entity/pokemon/latiasmega/shiny_latiasmega",
+        "shiny_male": "textures/entity/pokemon/latiasmega/shiny_latiasmega",
+        "shiny_female": "textures/entity/pokemon/latiasmega/shiny_latiasmega",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.latiasmega"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.latiasmega.blink",
+        "ground_idle": "animation.latiasmega.ground_idle",
+        "air_idle": "animation.latiasmega.ground_idle",
+        "water_idle": "animation.latiasmega.ground_idle",
+        "walking": "animation.latiasmega.walking",
+        "flying": "animation.latiasmega.walking",
+        "swimming": "animation.latiasmega.walking",
+        "sleeping": "animation.latiasmega.ground_idle",
+        "attack": "animation.latiasmega.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:latiasmega": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "latiasmega",
+        "texture_index": 0
+      }
+    }
+  }
+}

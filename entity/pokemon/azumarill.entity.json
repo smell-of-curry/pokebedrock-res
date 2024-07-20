@@ -1,0 +1,62 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:azumarill",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/azumarill/azumarill",
+        "default_male": "textures/entity/pokemon/azumarill/azumarill",
+        "default_female": "textures/entity/pokemon/azumarill/azumarill",
+        "shiny": "textures/entity/pokemon/azumarill/shiny_azumarill",
+        "shiny_male": "textures/entity/pokemon/azumarill/shiny_azumarill",
+        "shiny_female": "textures/entity/pokemon/azumarill/shiny_azumarill",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.azumarill"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.azumarill.blink",
+        "ground_idle": "animation.azumarill.ground_idle",
+        "air_idle": "animation.azumarill.ground_idle",
+        "water_idle": "animation.azumarill.ground_idle",
+        "walking": "animation.azumarill.walking",
+        "flying": "animation.azumarill.walking",
+        "swimming": "animation.azumarill.walking",
+        "sleeping": "animation.azumarill.ground_idle",
+        "attack": "animation.azumarill.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.azumarill.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:azumarill": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "azumarill",
+        "texture_index": 0
+      }
+    }
+  }
+}

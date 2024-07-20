@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:greninja",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/greninja/greninja",
+        "default_male": "textures/entity/pokemon/greninja/greninja",
+        "default_female": "textures/entity/pokemon/greninja/greninja",
+        "shiny": "textures/entity/pokemon/greninja/shiny_greninja",
+        "shiny_male": "textures/entity/pokemon/greninja/shiny_greninja",
+        "shiny_female": "textures/entity/pokemon/greninja/shiny_greninja",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.greninja"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.greninja.blink",
+        "ground_idle": "animation.greninja.ground_idle",
+        "air_idle": "animation.greninja.ground_idle",
+        "water_idle": "animation.greninja.ground_idle",
+        "walking": "animation.greninja.walking",
+        "flying": "animation.greninja.walking",
+        "swimming": "animation.greninja.walking",
+        "sleeping": "animation.greninja.ground_idle",
+        "attack": "animation.greninja.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.greninja.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.greninja.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.greninja.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:greninja": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "greninja",
+        "texture_index": 0
+      }
+    }
+  }
+}

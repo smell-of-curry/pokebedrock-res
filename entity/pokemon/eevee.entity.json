@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:eevee",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/eevee/eevee",
+        "default_male": "textures/entity/pokemon/eevee/eevee",
+        "default_female": "textures/entity/pokemon/eevee/eevee",
+        "shiny": "textures/entity/pokemon/eevee/shiny_eevee",
+        "shiny_male": "textures/entity/pokemon/eevee/shiny_eevee",
+        "shiny_female": "textures/entity/pokemon/eevee/shiny_eevee",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.eevee"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.eevee.blink",
+        "ground_idle": "animation.eevee.ground_idle",
+        "air_idle": "animation.eevee.ground_idle",
+        "water_idle": "animation.eevee.ground_idle",
+        "walking": "animation.eevee.walking",
+        "flying": "animation.eevee.walking",
+        "swimming": "animation.eevee.walking",
+        "sleeping": "animation.eevee.ground_idle",
+        "attack": "animation.eevee.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.eevee.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.eevee.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:eevee": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "eevee",
+        "texture_index": 0
+      }
+    }
+  }
+}

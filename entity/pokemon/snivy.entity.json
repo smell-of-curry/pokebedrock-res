@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:snivy",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/snivy/snivy",
+        "default_male": "textures/entity/pokemon/snivy/snivy",
+        "default_female": "textures/entity/pokemon/snivy/snivy",
+        "shiny": "textures/entity/pokemon/snivy/shiny_snivy",
+        "shiny_male": "textures/entity/pokemon/snivy/shiny_snivy",
+        "shiny_female": "textures/entity/pokemon/snivy/shiny_snivy",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.snivy"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.snivy.blink",
+        "ground_idle": "animation.snivy.ground_idle",
+        "air_idle": "animation.snivy.ground_idle",
+        "water_idle": "animation.snivy.ground_idle",
+        "walking": "animation.snivy.walking",
+        "flying": "animation.snivy.walking",
+        "swimming": "animation.snivy.walking",
+        "sleeping": "animation.snivy.ground_idle",
+        "attack": "animation.snivy.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.snivy.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.snivy.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.snivy.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:snivy": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "snivy",
+        "texture_index": 0
+      }
+    }
+  }
+}

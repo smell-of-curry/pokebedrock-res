@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:geodude",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/geodude/geodude",
+        "default_male": "textures/entity/pokemon/geodude/geodude",
+        "default_female": "textures/entity/pokemon/geodude/geodude",
+        "shiny": "textures/entity/pokemon/geodude/shiny_geodude",
+        "shiny_male": "textures/entity/pokemon/geodude/shiny_geodude",
+        "shiny_female": "textures/entity/pokemon/geodude/shiny_geodude",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.geodude"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.geodude.blink",
+        "ground_idle": "animation.geodude.ground_idle",
+        "air_idle": "animation.geodude.ground_idle",
+        "water_idle": "animation.geodude.ground_idle",
+        "walking": "animation.geodude.walking",
+        "flying": "animation.geodude.walking",
+        "swimming": "animation.geodude.walking",
+        "sleeping": "animation.geodude.ground_idle",
+        "attack": "animation.geodude.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.geodude.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.geodude.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.geodude.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:geodude": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "geodude",
+        "texture_index": 0
+      }
+    }
+  }
+}

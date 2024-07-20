@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:pidgeot",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/pidgeot/pidgeot",
+        "default_male": "textures/entity/pokemon/pidgeot/pidgeot",
+        "default_female": "textures/entity/pokemon/pidgeot/pidgeot",
+        "shiny": "textures/entity/pokemon/pidgeot/shiny_pidgeot",
+        "shiny_male": "textures/entity/pokemon/pidgeot/shiny_pidgeot",
+        "shiny_female": "textures/entity/pokemon/pidgeot/shiny_pidgeot",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.pidgeot"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.pidgeot.blink",
+        "ground_idle": "animation.pidgeot.ground_idle",
+        "air_idle": "animation.pidgeot.ground_idle",
+        "water_idle": "animation.pidgeot.ground_idle",
+        "walking": "animation.pidgeot.walking",
+        "flying": "animation.pidgeot.walking",
+        "swimming": "animation.pidgeot.walking",
+        "sleeping": "animation.pidgeot.ground_idle",
+        "attack": "animation.pidgeot.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.pidgeot.air_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.pidgeot.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.pidgeot.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:pidgeot": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "pidgeot",
+        "texture_index": 0
+      }
+    }
+  }
+}

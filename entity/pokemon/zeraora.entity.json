@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:zeraora",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/zeraora/zeraora",
+        "default_male": "textures/entity/pokemon/zeraora/zeraora",
+        "default_female": "textures/entity/pokemon/zeraora/zeraora",
+        "shiny": "textures/entity/pokemon/zeraora/shiny_zeraora",
+        "shiny_male": "textures/entity/pokemon/zeraora/shiny_zeraora",
+        "shiny_female": "textures/entity/pokemon/zeraora/shiny_zeraora",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.zeraora"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.zeraora.blink",
+        "ground_idle": "animation.zeraora.ground_idle",
+        "air_idle": "animation.zeraora.ground_idle",
+        "water_idle": "animation.zeraora.ground_idle",
+        "walking": "animation.zeraora.walking",
+        "flying": "animation.zeraora.walking",
+        "swimming": "animation.zeraora.walking",
+        "sleeping": "animation.zeraora.ground_idle",
+        "attack": "animation.zeraora.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:zeraora": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "zeraora",
+        "texture_index": 0
+      }
+    }
+  }
+}

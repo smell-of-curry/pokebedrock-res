@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:clefairy",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/clefairy/clefairy",
+        "default_male": "textures/entity/pokemon/clefairy/clefairy",
+        "default_female": "textures/entity/pokemon/clefairy/clefairy",
+        "shiny": "textures/entity/pokemon/clefairy/shiny_clefairy",
+        "shiny_male": "textures/entity/pokemon/clefairy/shiny_clefairy",
+        "shiny_female": "textures/entity/pokemon/clefairy/shiny_clefairy",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.clefairy"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.clefairy.blink",
+        "ground_idle": "animation.clefairy.ground_idle",
+        "air_idle": "animation.clefairy.ground_idle",
+        "water_idle": "animation.clefairy.ground_idle",
+        "walking": "animation.clefairy.walking",
+        "flying": "animation.clefairy.walking",
+        "swimming": "animation.clefairy.walking",
+        "sleeping": "animation.clefairy.ground_idle",
+        "attack": "animation.clefairy.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.clefairy.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.clefairy.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.clefairy.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:clefairy": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "clefairy",
+        "texture_index": 0
+      }
+    }
+  }
+}

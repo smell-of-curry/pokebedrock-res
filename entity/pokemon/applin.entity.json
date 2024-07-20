@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:applin",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/applin/applin",
+        "default_male": "textures/entity/pokemon/applin/applin",
+        "default_female": "textures/entity/pokemon/applin/applin",
+        "shiny": "textures/entity/pokemon/applin/shiny_applin",
+        "shiny_male": "textures/entity/pokemon/applin/shiny_applin",
+        "shiny_female": "textures/entity/pokemon/applin/shiny_applin",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.applin"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.applin.blink",
+        "ground_idle": "animation.applin.ground_idle",
+        "air_idle": "animation.applin.ground_idle",
+        "water_idle": "animation.applin.ground_idle",
+        "walking": "animation.applin.walking",
+        "flying": "animation.applin.walking",
+        "swimming": "animation.applin.walking",
+        "sleeping": "animation.applin.ground_idle",
+        "attack": "animation.applin.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:applin": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "applin",
+        "texture_index": 0
+      }
+    }
+  }
+}

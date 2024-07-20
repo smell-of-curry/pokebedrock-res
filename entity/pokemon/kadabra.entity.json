@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:kadabra",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/kadabra/kadabra",
+        "default_male": "textures/entity/pokemon/kadabra/kadabra",
+        "default_female": "textures/entity/pokemon/kadabra/kadabra",
+        "shiny": "textures/entity/pokemon/kadabra/shiny_kadabra",
+        "shiny_male": "textures/entity/pokemon/kadabra/shiny_kadabra",
+        "shiny_female": "textures/entity/pokemon/kadabra/shiny_kadabra",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.kadabra"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.kadabra.blink",
+        "ground_idle": "animation.kadabra.ground_idle",
+        "air_idle": "animation.kadabra.ground_idle",
+        "water_idle": "animation.kadabra.ground_idle",
+        "walking": "animation.kadabra.walking",
+        "flying": "animation.kadabra.walking",
+        "swimming": "animation.kadabra.walking",
+        "sleeping": "animation.kadabra.ground_idle",
+        "attack": "animation.kadabra.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.kadabra.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.kadabra.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.kadabra.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:kadabra": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "kadabra",
+        "texture_index": 0
+      }
+    }
+  }
+}

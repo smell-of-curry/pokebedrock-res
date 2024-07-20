@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:uxie",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/uxie/uxie",
+        "default_male": "textures/entity/pokemon/uxie/uxie",
+        "default_female": "textures/entity/pokemon/uxie/uxie",
+        "shiny": "textures/entity/pokemon/uxie/shiny_uxie",
+        "shiny_male": "textures/entity/pokemon/uxie/shiny_uxie",
+        "shiny_female": "textures/entity/pokemon/uxie/shiny_uxie",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.uxie"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.uxie.blink",
+        "ground_idle": "animation.uxie.ground_idle",
+        "air_idle": "animation.uxie.ground_idle",
+        "water_idle": "animation.uxie.ground_idle",
+        "walking": "animation.uxie.walking",
+        "flying": "animation.uxie.walking",
+        "swimming": "animation.uxie.walking",
+        "sleeping": "animation.uxie.ground_idle",
+        "attack": "animation.uxie.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.uxie.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.uxie.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.uxie.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:uxie": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "uxie",
+        "texture_index": 0
+      }
+    }
+  }
+}

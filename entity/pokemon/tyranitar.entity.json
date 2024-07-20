@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:tyranitar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/tyranitar/tyranitar",
+        "default_male": "textures/entity/pokemon/tyranitar/tyranitar",
+        "default_female": "textures/entity/pokemon/tyranitar/tyranitar",
+        "shiny": "textures/entity/pokemon/tyranitar/shiny_tyranitar",
+        "shiny_male": "textures/entity/pokemon/tyranitar/shiny_tyranitar",
+        "shiny_female": "textures/entity/pokemon/tyranitar/shiny_tyranitar",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.tyranitar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.tyranitar.blink",
+        "ground_idle": "animation.tyranitar.ground_idle",
+        "air_idle": "animation.tyranitar.ground_idle",
+        "water_idle": "animation.tyranitar.ground_idle",
+        "walking": "animation.tyranitar.walking",
+        "flying": "animation.tyranitar.walking",
+        "swimming": "animation.tyranitar.walking",
+        "sleeping": "animation.tyranitar.ground_idle",
+        "attack": "animation.tyranitar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.tyranitar.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.tyranitar.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.tyranitar.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:tyranitar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "tyranitar",
+        "texture_index": 0
+      }
+    }
+  }
+}

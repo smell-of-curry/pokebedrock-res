@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:noctowl",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/noctowl/noctowl",
+        "default_male": "textures/entity/pokemon/noctowl/noctowl",
+        "default_female": "textures/entity/pokemon/noctowl/noctowl",
+        "shiny": "textures/entity/pokemon/noctowl/shiny_noctowl",
+        "shiny_male": "textures/entity/pokemon/noctowl/shiny_noctowl",
+        "shiny_female": "textures/entity/pokemon/noctowl/shiny_noctowl",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.noctowl"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.noctowl.blink",
+        "ground_idle": "animation.noctowl.ground_idle",
+        "air_idle": "animation.noctowl.ground_idle",
+        "water_idle": "animation.noctowl.ground_idle",
+        "walking": "animation.noctowl.walking",
+        "flying": "animation.noctowl.walking",
+        "swimming": "animation.noctowl.walking",
+        "sleeping": "animation.noctowl.ground_idle",
+        "attack": "animation.noctowl.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.noctowl.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.noctowl.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:noctowl": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "noctowl",
+        "texture_index": 0
+      }
+    }
+  }
+}

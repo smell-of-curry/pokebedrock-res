@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:mawilemega",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/mawilemega/mawilemega",
+        "default_male": "textures/entity/pokemon/mawilemega/mawilemega",
+        "default_female": "textures/entity/pokemon/mawilemega/mawilemega",
+        "shiny": "textures/entity/pokemon/mawilemega/shiny_mawilemega",
+        "shiny_male": "textures/entity/pokemon/mawilemega/shiny_mawilemega",
+        "shiny_female": "textures/entity/pokemon/mawilemega/shiny_mawilemega",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.mawilemega"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.mawilemega.blink",
+        "ground_idle": "animation.mawilemega.ground_idle",
+        "air_idle": "animation.mawilemega.ground_idle",
+        "water_idle": "animation.mawilemega.ground_idle",
+        "walking": "animation.mawilemega.walking",
+        "flying": "animation.mawilemega.walking",
+        "swimming": "animation.mawilemega.walking",
+        "sleeping": "animation.mawilemega.ground_idle",
+        "attack": "animation.mawilemega.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.mawilemega.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.mawilemega.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:mawilemega": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "mawilemega",
+        "texture_index": 0
+      }
+    }
+  }
+}

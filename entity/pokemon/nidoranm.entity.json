@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:nidoranm",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/nidoranm/nidoranm",
+        "default_male": "textures/entity/pokemon/nidoranm/nidoranm",
+        "default_female": "textures/entity/pokemon/nidoranm/nidoranm",
+        "shiny": "textures/entity/pokemon/nidoranm/shiny_nidoranm",
+        "shiny_male": "textures/entity/pokemon/nidoranm/shiny_nidoranm",
+        "shiny_female": "textures/entity/pokemon/nidoranm/shiny_nidoranm",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.nidoranm"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.nidoranm.blink",
+        "ground_idle": "animation.nidoranm.ground_idle",
+        "air_idle": "animation.nidoranm.ground_idle",
+        "water_idle": "animation.nidoranm.ground_idle",
+        "walking": "animation.nidoranm.walking",
+        "flying": "animation.nidoranm.walking",
+        "swimming": "animation.nidoranm.walking",
+        "sleeping": "animation.nidoranm.ground_idle",
+        "attack": "animation.nidoranm.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.nidoranm.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.nidoranm.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.nidoranm.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:nidoranm": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "nidoranm",
+        "texture_index": 0
+      }
+    }
+  }
+}

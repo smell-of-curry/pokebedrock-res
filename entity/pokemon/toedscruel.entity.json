@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:toedscruel",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/toedscruel/toedscruel",
+        "default_male": "textures/entity/pokemon/toedscruel/toedscruel",
+        "default_female": "textures/entity/pokemon/toedscruel/toedscruel",
+        "shiny": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+        "shiny_male": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+        "shiny_female": "textures/entity/pokemon/toedscruel/shiny_toedscruel",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.toedscruel"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.toedscruel.blink",
+        "ground_idle": "animation.toedscruel.ground_idle",
+        "air_idle": "animation.toedscruel.ground_idle",
+        "water_idle": "animation.toedscruel.ground_idle",
+        "walking": "animation.toedscruel.walking",
+        "flying": "animation.toedscruel.walking",
+        "swimming": "animation.toedscruel.walking",
+        "sleeping": "animation.toedscruel.ground_idle",
+        "attack": "animation.toedscruel.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.toedscruel.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.toedscruel.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:toedscruel": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "toedscruel",
+        "texture_index": 0
+      }
+    }
+  }
+}

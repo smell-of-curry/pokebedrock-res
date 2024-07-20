@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:pignite",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/pignite/pignite",
+        "default_male": "textures/entity/pokemon/pignite/pignite",
+        "default_female": "textures/entity/pokemon/pignite/pignite",
+        "shiny": "textures/entity/pokemon/pignite/shiny_pignite",
+        "shiny_male": "textures/entity/pokemon/pignite/shiny_pignite",
+        "shiny_female": "textures/entity/pokemon/pignite/shiny_pignite",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.pignite"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.pignite.blink",
+        "ground_idle": "animation.pignite.ground_idle",
+        "air_idle": "animation.pignite.ground_idle",
+        "water_idle": "animation.pignite.ground_idle",
+        "walking": "animation.pignite.walking",
+        "flying": "animation.pignite.walking",
+        "swimming": "animation.pignite.walking",
+        "sleeping": "animation.pignite.ground_idle",
+        "attack": "animation.pignite.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.pignite.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.pignite.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.pignite.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:pignite": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "pignite",
+        "texture_index": 0
+      }
+    }
+  }
+}

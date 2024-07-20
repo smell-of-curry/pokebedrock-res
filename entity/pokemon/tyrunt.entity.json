@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:tyrunt",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/tyrunt/tyrunt",
+        "default_male": "textures/entity/pokemon/tyrunt/tyrunt",
+        "default_female": "textures/entity/pokemon/tyrunt/tyrunt",
+        "shiny": "textures/entity/pokemon/tyrunt/shiny_tyrunt",
+        "shiny_male": "textures/entity/pokemon/tyrunt/shiny_tyrunt",
+        "shiny_female": "textures/entity/pokemon/tyrunt/shiny_tyrunt",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.tyrunt"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.tyrunt.blink",
+        "ground_idle": "animation.tyrunt.ground_idle",
+        "air_idle": "animation.tyrunt.ground_idle",
+        "water_idle": "animation.tyrunt.ground_idle",
+        "walking": "animation.tyrunt.walking",
+        "flying": "animation.tyrunt.walking",
+        "swimming": "animation.tyrunt.walking",
+        "sleeping": "animation.tyrunt.ground_idle",
+        "attack": "animation.tyrunt.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.tyrunt.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.tyrunt.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.tyrunt.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:tyrunt": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "tyrunt",
+        "texture_index": 0
+      }
+    }
+  }
+}

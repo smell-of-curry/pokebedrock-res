@@ -1,0 +1,66 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:zubat",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/zubat/zubat",
+        "default_male": "textures/entity/pokemon/zubat/zubat",
+        "default_female": "textures/entity/pokemon/zubat/zubat",
+        "shiny": "textures/entity/pokemon/zubat/shiny_zubat",
+        "shiny_male": "textures/entity/pokemon/zubat/shiny_zubat",
+        "shiny_female": "textures/entity/pokemon/zubat/shiny_zubat",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.zubat"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.zubat.blink",
+        "ground_idle": "animation.zubat.ground_idle",
+        "air_idle": "animation.zubat.ground_idle",
+        "water_idle": "animation.zubat.ground_idle",
+        "walking": "animation.zubat.walking",
+        "flying": "animation.zubat.walking",
+        "swimming": "animation.zubat.walking",
+        "sleeping": "animation.zubat.ground_idle",
+        "attack": "animation.zubat.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.zubat.flying": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zubat.air_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zubat.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zubat.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zubat.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:zubat": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "zubat",
+        "texture_index": 0
+      }
+    }
+  }
+}

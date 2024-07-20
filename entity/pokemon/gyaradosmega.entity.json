@@ -1,0 +1,65 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:gyaradosmega",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/gyaradosmega/gyaradosmega",
+        "default_male": "textures/entity/pokemon/gyaradosmega/gyaradosmega",
+        "default_female": "textures/entity/pokemon/gyaradosmega/gyaradosmega",
+        "shiny": "textures/entity/pokemon/gyaradosmega/shiny_gyaradosmega",
+        "shiny_male": "textures/entity/pokemon/gyaradosmega/shiny_gyaradosmega",
+        "shiny_female": "textures/entity/pokemon/gyaradosmega/shiny_gyaradosmega",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.gyaradosmega"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gyaradosmega.blink",
+        "ground_idle": "animation.gyaradosmega.ground_idle",
+        "air_idle": "animation.gyaradosmega.ground_idle",
+        "water_idle": "animation.gyaradosmega.ground_idle",
+        "walking": "animation.gyaradosmega.walking",
+        "flying": "animation.gyaradosmega.walking",
+        "swimming": "animation.gyaradosmega.walking",
+        "sleeping": "animation.gyaradosmega.ground_idle",
+        "attack": "animation.gyaradosmega.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.gyaradosmega.flying": "animation.${pokemonTypeId}.ground_idle",
+        "animation.gyaradosmega.air_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.gyaradosmega.walking": "animation.${pokemonTypeId}.ground_idle",
+        "animation.gyaradosmega.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:gyaradosmega": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "gyaradosmega",
+        "texture_index": 0
+      }
+    }
+  }
+}

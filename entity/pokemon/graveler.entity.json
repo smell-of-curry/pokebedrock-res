@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:graveler",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/graveler/graveler",
+        "default_male": "textures/entity/pokemon/graveler/graveler",
+        "default_female": "textures/entity/pokemon/graveler/graveler",
+        "shiny": "textures/entity/pokemon/graveler/shiny_graveler",
+        "shiny_male": "textures/entity/pokemon/graveler/shiny_graveler",
+        "shiny_female": "textures/entity/pokemon/graveler/shiny_graveler",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.graveler"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.graveler.blink",
+        "ground_idle": "animation.graveler.ground_idle",
+        "air_idle": "animation.graveler.ground_idle",
+        "water_idle": "animation.graveler.ground_idle",
+        "walking": "animation.graveler.walking",
+        "flying": "animation.graveler.walking",
+        "swimming": "animation.graveler.walking",
+        "sleeping": "animation.graveler.ground_idle",
+        "attack": "animation.graveler.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.graveler.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.graveler.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.graveler.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:graveler": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "graveler",
+        "texture_index": 0
+      }
+    }
+  }
+}

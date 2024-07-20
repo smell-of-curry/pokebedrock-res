@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:girafarig",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/girafarig/girafarig",
+        "default_male": "textures/entity/pokemon/girafarig/girafarig",
+        "default_female": "textures/entity/pokemon/girafarig/girafarig",
+        "shiny": "textures/entity/pokemon/girafarig/shiny_girafarig",
+        "shiny_male": "textures/entity/pokemon/girafarig/shiny_girafarig",
+        "shiny_female": "textures/entity/pokemon/girafarig/shiny_girafarig",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.girafarig"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.girafarig.blink",
+        "ground_idle": "animation.girafarig.ground_idle",
+        "air_idle": "animation.girafarig.ground_idle",
+        "water_idle": "animation.girafarig.ground_idle",
+        "walking": "animation.girafarig.walking",
+        "flying": "animation.girafarig.walking",
+        "swimming": "animation.girafarig.walking",
+        "sleeping": "animation.girafarig.ground_idle",
+        "attack": "animation.girafarig.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.girafarig.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.girafarig.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.girafarig.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:girafarig": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "girafarig",
+        "texture_index": 0
+      }
+    }
+  }
+}

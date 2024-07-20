@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:ledian",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/ledian/ledian",
+        "default_male": "textures/entity/pokemon/ledian/ledian",
+        "default_female": "textures/entity/pokemon/ledian/ledian",
+        "shiny": "textures/entity/pokemon/ledian/shiny_ledian",
+        "shiny_male": "textures/entity/pokemon/ledian/shiny_ledian",
+        "shiny_female": "textures/entity/pokemon/ledian/shiny_ledian",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.ledian"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.ledian.blink",
+        "ground_idle": "animation.ledian.ground_idle",
+        "air_idle": "animation.ledian.ground_idle",
+        "water_idle": "animation.ledian.ground_idle",
+        "walking": "animation.ledian.walking",
+        "flying": "animation.ledian.walking",
+        "swimming": "animation.ledian.walking",
+        "sleeping": "animation.ledian.ground_idle",
+        "attack": "animation.ledian.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.ledian.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.ledian.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.ledian.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:ledian": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "ledian",
+        "texture_index": 0
+      }
+    }
+  }
+}

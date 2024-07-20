@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:cinccino",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/cinccino/cinccino",
+        "default_male": "textures/entity/pokemon/cinccino/cinccino",
+        "default_female": "textures/entity/pokemon/cinccino/cinccino",
+        "shiny": "textures/entity/pokemon/cinccino/shiny_cinccino",
+        "shiny_male": "textures/entity/pokemon/cinccino/shiny_cinccino",
+        "shiny_female": "textures/entity/pokemon/cinccino/shiny_cinccino",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.cinccino"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.cinccino.blink",
+        "ground_idle": "animation.cinccino.ground_idle",
+        "air_idle": "animation.cinccino.ground_idle",
+        "water_idle": "animation.cinccino.ground_idle",
+        "walking": "animation.cinccino.walking",
+        "flying": "animation.cinccino.walking",
+        "swimming": "animation.cinccino.walking",
+        "sleeping": "animation.cinccino.ground_idle",
+        "attack": "animation.cinccino.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:cinccino": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "cinccino",
+        "texture_index": 0
+      }
+    }
+  }
+}

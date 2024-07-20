@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:zapdos",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/zapdos/zapdos",
+        "default_male": "textures/entity/pokemon/zapdos/zapdos",
+        "default_female": "textures/entity/pokemon/zapdos/zapdos",
+        "shiny": "textures/entity/pokemon/zapdos/shiny_zapdos",
+        "shiny_male": "textures/entity/pokemon/zapdos/shiny_zapdos",
+        "shiny_female": "textures/entity/pokemon/zapdos/shiny_zapdos",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.zapdos"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.zapdos.blink",
+        "ground_idle": "animation.zapdos.ground_idle",
+        "air_idle": "animation.zapdos.ground_idle",
+        "water_idle": "animation.zapdos.ground_idle",
+        "walking": "animation.zapdos.walking",
+        "flying": "animation.zapdos.walking",
+        "swimming": "animation.zapdos.walking",
+        "sleeping": "animation.zapdos.ground_idle",
+        "attack": "animation.zapdos.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.zapdos.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zapdos.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.zapdos.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:zapdos": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "zapdos",
+        "texture_index": 0
+      }
+    }
+  }
+}

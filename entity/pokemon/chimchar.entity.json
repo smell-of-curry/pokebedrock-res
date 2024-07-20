@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:chimchar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/chimchar/chimchar",
+        "default_male": "textures/entity/pokemon/chimchar/chimchar",
+        "default_female": "textures/entity/pokemon/chimchar/chimchar",
+        "shiny": "textures/entity/pokemon/chimchar/shiny_chimchar",
+        "shiny_male": "textures/entity/pokemon/chimchar/shiny_chimchar",
+        "shiny_female": "textures/entity/pokemon/chimchar/shiny_chimchar",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.chimchar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.chimchar.blink",
+        "ground_idle": "animation.chimchar.ground_idle",
+        "air_idle": "animation.chimchar.ground_idle",
+        "water_idle": "animation.chimchar.ground_idle",
+        "walking": "animation.chimchar.walking",
+        "flying": "animation.chimchar.walking",
+        "swimming": "animation.chimchar.walking",
+        "sleeping": "animation.chimchar.ground_idle",
+        "attack": "animation.chimchar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.chimchar.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.chimchar.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.chimchar.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:chimchar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "chimchar",
+        "texture_index": 0
+      }
+    }
+  }
+}

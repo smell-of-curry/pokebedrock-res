@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:gligar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/gligar/gligar",
+        "default_male": "textures/entity/pokemon/gligar/gligar",
+        "default_female": "textures/entity/pokemon/gligar/gligar",
+        "shiny": "textures/entity/pokemon/gligar/shiny_gligar",
+        "shiny_male": "textures/entity/pokemon/gligar/shiny_gligar",
+        "shiny_female": "textures/entity/pokemon/gligar/shiny_gligar",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.gligar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gligar.blink",
+        "ground_idle": "animation.gligar.ground_idle",
+        "air_idle": "animation.gligar.ground_idle",
+        "water_idle": "animation.gligar.ground_idle",
+        "walking": "animation.gligar.walking",
+        "flying": "animation.gligar.walking",
+        "swimming": "animation.gligar.walking",
+        "sleeping": "animation.gligar.ground_idle",
+        "attack": "animation.gligar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.gligar.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.gligar.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.gligar.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:gligar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "gligar",
+        "texture_index": 0
+      }
+    }
+  }
+}

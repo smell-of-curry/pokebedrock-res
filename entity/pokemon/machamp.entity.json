@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:machamp",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/machamp/machamp",
+        "default_male": "textures/entity/pokemon/machamp/machamp",
+        "default_female": "textures/entity/pokemon/machamp/machamp",
+        "shiny": "textures/entity/pokemon/machamp/shiny_machamp",
+        "shiny_male": "textures/entity/pokemon/machamp/shiny_machamp",
+        "shiny_female": "textures/entity/pokemon/machamp/shiny_machamp",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.machamp"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.machamp.blink",
+        "ground_idle": "animation.machamp.ground_idle",
+        "air_idle": "animation.machamp.ground_idle",
+        "water_idle": "animation.machamp.ground_idle",
+        "walking": "animation.machamp.walking",
+        "flying": "animation.machamp.walking",
+        "swimming": "animation.machamp.walking",
+        "sleeping": "animation.machamp.ground_idle",
+        "attack": "animation.machamp.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.machamp.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.machamp.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.machamp.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:machamp": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "machamp",
+        "texture_index": 0
+      }
+    }
+  }
+}

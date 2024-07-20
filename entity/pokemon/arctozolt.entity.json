@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:arctozolt",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/arctozolt/arctozolt",
+        "default_male": "textures/entity/pokemon/arctozolt/arctozolt",
+        "default_female": "textures/entity/pokemon/arctozolt/arctozolt",
+        "shiny": "textures/entity/pokemon/arctozolt/shiny_arctozolt",
+        "shiny_male": "textures/entity/pokemon/arctozolt/shiny_arctozolt",
+        "shiny_female": "textures/entity/pokemon/arctozolt/shiny_arctozolt",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.arctozolt"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.arctozolt.blink",
+        "ground_idle": "animation.arctozolt.ground_idle",
+        "air_idle": "animation.arctozolt.ground_idle",
+        "water_idle": "animation.arctozolt.ground_idle",
+        "walking": "animation.arctozolt.walking",
+        "flying": "animation.arctozolt.walking",
+        "swimming": "animation.arctozolt.walking",
+        "sleeping": "animation.arctozolt.ground_idle",
+        "attack": "animation.arctozolt.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:arctozolt": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "arctozolt",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:blaziken",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/blaziken/blaziken",
+        "default_male": "textures/entity/pokemon/blaziken/blaziken",
+        "default_female": "textures/entity/pokemon/blaziken/blaziken",
+        "shiny": "textures/entity/pokemon/blaziken/shiny_blaziken",
+        "shiny_male": "textures/entity/pokemon/blaziken/shiny_blaziken",
+        "shiny_female": "textures/entity/pokemon/blaziken/shiny_blaziken",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.blaziken"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.blaziken.blink",
+        "ground_idle": "animation.blaziken.ground_idle",
+        "air_idle": "animation.blaziken.ground_idle",
+        "water_idle": "animation.blaziken.ground_idle",
+        "walking": "animation.blaziken.walking",
+        "flying": "animation.blaziken.walking",
+        "swimming": "animation.blaziken.walking",
+        "sleeping": "animation.blaziken.ground_idle",
+        "attack": "animation.blaziken.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.blaziken.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.blaziken.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.blaziken.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:blaziken": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "blaziken",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:raikou",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/raikou/raikou",
+        "default_male": "textures/entity/pokemon/raikou/raikou",
+        "default_female": "textures/entity/pokemon/raikou/raikou",
+        "shiny": "textures/entity/pokemon/raikou/shiny_raikou",
+        "shiny_male": "textures/entity/pokemon/raikou/shiny_raikou",
+        "shiny_female": "textures/entity/pokemon/raikou/shiny_raikou",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.raikou"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.raikou.blink",
+        "ground_idle": "animation.raikou.ground_idle",
+        "air_idle": "animation.raikou.ground_idle",
+        "water_idle": "animation.raikou.ground_idle",
+        "walking": "animation.raikou.walking",
+        "flying": "animation.raikou.walking",
+        "swimming": "animation.raikou.walking",
+        "sleeping": "animation.raikou.ground_idle",
+        "attack": "animation.raikou.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:raikou": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "raikou",
+        "texture_index": 0
+      }
+    }
+  }
+}

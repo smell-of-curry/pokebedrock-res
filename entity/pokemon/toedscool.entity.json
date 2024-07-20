@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:toedscool",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/toedscool/toedscool",
+        "default_male": "textures/entity/pokemon/toedscool/toedscool",
+        "default_female": "textures/entity/pokemon/toedscool/toedscool",
+        "shiny": "textures/entity/pokemon/toedscool/shiny_toedscool",
+        "shiny_male": "textures/entity/pokemon/toedscool/shiny_toedscool",
+        "shiny_female": "textures/entity/pokemon/toedscool/shiny_toedscool",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.toedscool"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.toedscool.blink",
+        "ground_idle": "animation.toedscool.ground_idle",
+        "air_idle": "animation.toedscool.ground_idle",
+        "water_idle": "animation.toedscool.ground_idle",
+        "walking": "animation.toedscool.walking",
+        "flying": "animation.toedscool.walking",
+        "swimming": "animation.toedscool.walking",
+        "sleeping": "animation.toedscool.ground_idle",
+        "attack": "animation.toedscool.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.toedscool.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.toedscool.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:toedscool": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "toedscool",
+        "texture_index": 0
+      }
+    }
+  }
+}

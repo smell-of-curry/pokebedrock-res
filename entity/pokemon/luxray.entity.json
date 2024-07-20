@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:luxray",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/luxray/luxray",
+        "default_male": "textures/entity/pokemon/luxray/luxray",
+        "default_female": "textures/entity/pokemon/luxray/luxray",
+        "shiny": "textures/entity/pokemon/luxray/shiny_luxray",
+        "shiny_male": "textures/entity/pokemon/luxray/shiny_luxray",
+        "shiny_female": "textures/entity/pokemon/luxray/shiny_luxray",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.luxray"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.luxray.blink",
+        "ground_idle": "animation.luxray.ground_idle",
+        "air_idle": "animation.luxray.ground_idle",
+        "water_idle": "animation.luxray.ground_idle",
+        "walking": "animation.luxray.walking",
+        "flying": "animation.luxray.walking",
+        "swimming": "animation.luxray.walking",
+        "sleeping": "animation.luxray.ground_idle",
+        "attack": "animation.luxray.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.luxray.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.luxray.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.luxray.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:luxray": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "luxray",
+        "texture_index": 0
+      }
+    }
+  }
+}

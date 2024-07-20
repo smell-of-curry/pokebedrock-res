@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:sandslash",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/sandslash/sandslash",
+        "default_male": "textures/entity/pokemon/sandslash/sandslash",
+        "default_female": "textures/entity/pokemon/sandslash/sandslash",
+        "shiny": "textures/entity/pokemon/sandslash/shiny_sandslash",
+        "shiny_male": "textures/entity/pokemon/sandslash/shiny_sandslash",
+        "shiny_female": "textures/entity/pokemon/sandslash/shiny_sandslash",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.sandslash"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.sandslash.blink",
+        "ground_idle": "animation.sandslash.ground_idle",
+        "air_idle": "animation.sandslash.ground_idle",
+        "water_idle": "animation.sandslash.ground_idle",
+        "walking": "animation.sandslash.walking",
+        "flying": "animation.sandslash.walking",
+        "swimming": "animation.sandslash.walking",
+        "sleeping": "animation.sandslash.ground_idle",
+        "attack": "animation.sandslash.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.sandslash.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.sandslash.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.sandslash.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:sandslash": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "sandslash",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:delphox",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/delphox/delphox",
+        "default_male": "textures/entity/pokemon/delphox/delphox",
+        "default_female": "textures/entity/pokemon/delphox/delphox",
+        "shiny": "textures/entity/pokemon/delphox/shiny_delphox",
+        "shiny_male": "textures/entity/pokemon/delphox/shiny_delphox",
+        "shiny_female": "textures/entity/pokemon/delphox/shiny_delphox",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.delphox"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.delphox.blink",
+        "ground_idle": "animation.delphox.ground_idle",
+        "air_idle": "animation.delphox.ground_idle",
+        "water_idle": "animation.delphox.ground_idle",
+        "walking": "animation.delphox.walking",
+        "flying": "animation.delphox.walking",
+        "swimming": "animation.delphox.walking",
+        "sleeping": "animation.delphox.ground_idle",
+        "attack": "animation.delphox.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.delphox.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.delphox.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.delphox.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:delphox": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "delphox",
+        "texture_index": 0
+      }
+    }
+  }
+}

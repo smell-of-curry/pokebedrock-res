@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:axew",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/axew/axew",
+        "default_male": "textures/entity/pokemon/axew/axew",
+        "default_female": "textures/entity/pokemon/axew/axew",
+        "shiny": "textures/entity/pokemon/axew/shiny_axew",
+        "shiny_male": "textures/entity/pokemon/axew/shiny_axew",
+        "shiny_female": "textures/entity/pokemon/axew/shiny_axew",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.axew"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.axew.blink",
+        "ground_idle": "animation.axew.ground_idle",
+        "air_idle": "animation.axew.ground_idle",
+        "water_idle": "animation.axew.ground_idle",
+        "walking": "animation.axew.walking",
+        "flying": "animation.axew.walking",
+        "swimming": "animation.axew.walking",
+        "sleeping": "animation.axew.ground_idle",
+        "attack": "animation.axew.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.axew.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.axew.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.axew.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:axew": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "axew",
+        "texture_index": 0
+      }
+    }
+  }
+}

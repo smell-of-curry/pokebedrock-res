@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:turtwig",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/turtwig/turtwig",
+        "default_male": "textures/entity/pokemon/turtwig/turtwig",
+        "default_female": "textures/entity/pokemon/turtwig/turtwig",
+        "shiny": "textures/entity/pokemon/turtwig/shiny_turtwig",
+        "shiny_male": "textures/entity/pokemon/turtwig/shiny_turtwig",
+        "shiny_female": "textures/entity/pokemon/turtwig/shiny_turtwig",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.turtwig"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.turtwig.blink",
+        "ground_idle": "animation.turtwig.ground_idle",
+        "air_idle": "animation.turtwig.ground_idle",
+        "water_idle": "animation.turtwig.ground_idle",
+        "walking": "animation.turtwig.walking",
+        "flying": "animation.turtwig.walking",
+        "swimming": "animation.turtwig.walking",
+        "sleeping": "animation.turtwig.ground_idle",
+        "attack": "animation.turtwig.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.turtwig.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.turtwig.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.turtwig.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:turtwig": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "turtwig",
+        "texture_index": 0
+      }
+    }
+  }
+}

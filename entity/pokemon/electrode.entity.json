@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:electrode",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/electrode/electrode",
+        "default_male": "textures/entity/pokemon/electrode/electrode",
+        "default_female": "textures/entity/pokemon/electrode/electrode",
+        "shiny": "textures/entity/pokemon/electrode/shiny_electrode",
+        "shiny_male": "textures/entity/pokemon/electrode/shiny_electrode",
+        "shiny_female": "textures/entity/pokemon/electrode/shiny_electrode",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.electrode"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.electrode.blink",
+        "ground_idle": "animation.electrode.ground_idle",
+        "air_idle": "animation.electrode.ground_idle",
+        "water_idle": "animation.electrode.ground_idle",
+        "walking": "animation.electrode.walking",
+        "flying": "animation.electrode.walking",
+        "swimming": "animation.electrode.walking",
+        "sleeping": "animation.electrode.ground_idle",
+        "attack": "animation.electrode.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.electrode.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.electrode.water_idle": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:electrode": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "electrode",
+        "texture_index": 0
+      }
+    }
+  }
+}

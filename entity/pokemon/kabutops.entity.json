@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:kabutops",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/kabutops/kabutops",
+        "default_male": "textures/entity/pokemon/kabutops/kabutops",
+        "default_female": "textures/entity/pokemon/kabutops/kabutops",
+        "shiny": "textures/entity/pokemon/kabutops/shiny_kabutops",
+        "shiny_male": "textures/entity/pokemon/kabutops/shiny_kabutops",
+        "shiny_female": "textures/entity/pokemon/kabutops/shiny_kabutops",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.kabutops"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.kabutops.blink",
+        "ground_idle": "animation.kabutops.ground_idle",
+        "air_idle": "animation.kabutops.ground_idle",
+        "water_idle": "animation.kabutops.ground_idle",
+        "walking": "animation.kabutops.walking",
+        "flying": "animation.kabutops.walking",
+        "swimming": "animation.kabutops.walking",
+        "sleeping": "animation.kabutops.ground_idle",
+        "attack": "animation.kabutops.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.kabutops.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.kabutops.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.kabutops.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:kabutops": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "kabutops",
+        "texture_index": 0
+      }
+    }
+  }
+}

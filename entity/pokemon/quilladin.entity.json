@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:quilladin",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/quilladin/quilladin",
+        "default_male": "textures/entity/pokemon/quilladin/quilladin",
+        "default_female": "textures/entity/pokemon/quilladin/quilladin",
+        "shiny": "textures/entity/pokemon/quilladin/shiny_quilladin",
+        "shiny_male": "textures/entity/pokemon/quilladin/shiny_quilladin",
+        "shiny_female": "textures/entity/pokemon/quilladin/shiny_quilladin",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.quilladin"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.quilladin.blink",
+        "ground_idle": "animation.quilladin.ground_idle",
+        "air_idle": "animation.quilladin.ground_idle",
+        "water_idle": "animation.quilladin.ground_idle",
+        "walking": "animation.quilladin.walking",
+        "flying": "animation.quilladin.walking",
+        "swimming": "animation.quilladin.walking",
+        "sleeping": "animation.quilladin.ground_idle",
+        "attack": "animation.quilladin.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.quilladin.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.quilladin.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.quilladin.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:quilladin": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "quilladin",
+        "texture_index": 0
+      }
+    }
+  }
+}

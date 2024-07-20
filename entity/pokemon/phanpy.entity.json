@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:phanpy",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/phanpy/phanpy",
+        "default_male": "textures/entity/pokemon/phanpy/phanpy",
+        "default_female": "textures/entity/pokemon/phanpy/phanpy",
+        "shiny": "textures/entity/pokemon/phanpy/shiny_phanpy",
+        "shiny_male": "textures/entity/pokemon/phanpy/shiny_phanpy",
+        "shiny_female": "textures/entity/pokemon/phanpy/shiny_phanpy",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.phanpy"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.phanpy.blink",
+        "ground_idle": "animation.phanpy.ground_idle",
+        "air_idle": "animation.phanpy.ground_idle",
+        "water_idle": "animation.phanpy.ground_idle",
+        "walking": "animation.phanpy.walking",
+        "flying": "animation.phanpy.walking",
+        "swimming": "animation.phanpy.walking",
+        "sleeping": "animation.phanpy.ground_idle",
+        "attack": "animation.phanpy.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.phanpy.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.phanpy.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.phanpy.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:phanpy": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "phanpy",
+        "texture_index": 0
+      }
+    }
+  }
+}

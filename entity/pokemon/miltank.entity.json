@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:miltank",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/miltank/miltank",
+        "default_male": "textures/entity/pokemon/miltank/miltank",
+        "default_female": "textures/entity/pokemon/miltank/miltank",
+        "shiny": "textures/entity/pokemon/miltank/shiny_miltank",
+        "shiny_male": "textures/entity/pokemon/miltank/shiny_miltank",
+        "shiny_female": "textures/entity/pokemon/miltank/shiny_miltank",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.miltank"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.miltank.blink",
+        "ground_idle": "animation.miltank.ground_idle",
+        "air_idle": "animation.miltank.ground_idle",
+        "water_idle": "animation.miltank.ground_idle",
+        "walking": "animation.miltank.walking",
+        "flying": "animation.miltank.walking",
+        "swimming": "animation.miltank.walking",
+        "sleeping": "animation.miltank.ground_idle",
+        "attack": "animation.miltank.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.miltank.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.miltank.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.miltank.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:miltank": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "miltank",
+        "texture_index": 0
+      }
+    }
+  }
+}

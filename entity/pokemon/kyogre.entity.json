@@ -1,0 +1,63 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:kyogre",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/kyogre/kyogre",
+        "default_male": "textures/entity/pokemon/kyogre/kyogre",
+        "default_female": "textures/entity/pokemon/kyogre/kyogre",
+        "shiny": "textures/entity/pokemon/kyogre/shiny_kyogre",
+        "shiny_male": "textures/entity/pokemon/kyogre/shiny_kyogre",
+        "shiny_female": "textures/entity/pokemon/kyogre/shiny_kyogre",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.kyogre"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.kyogre.blink",
+        "ground_idle": "animation.kyogre.ground_idle",
+        "air_idle": "animation.kyogre.ground_idle",
+        "water_idle": "animation.kyogre.ground_idle",
+        "walking": "animation.kyogre.walking",
+        "flying": "animation.kyogre.walking",
+        "swimming": "animation.kyogre.walking",
+        "sleeping": "animation.kyogre.ground_idle",
+        "attack": "animation.kyogre.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.kyogre.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.kyogre.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:kyogre": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "kyogre",
+        "texture_index": 0
+      }
+    }
+  }
+}

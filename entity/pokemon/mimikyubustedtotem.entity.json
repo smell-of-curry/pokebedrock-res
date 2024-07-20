@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:mimikyubustedtotem",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/mimikyubustedtotem/mimikyubustedtotem",
+        "default_male": "textures/entity/pokemon/mimikyubustedtotem/mimikyubustedtotem",
+        "default_female": "textures/entity/pokemon/mimikyubustedtotem/mimikyubustedtotem",
+        "shiny": "textures/entity/pokemon/mimikyubustedtotem/shiny_mimikyubustedtotem",
+        "shiny_male": "textures/entity/pokemon/mimikyubustedtotem/shiny_mimikyubustedtotem",
+        "shiny_female": "textures/entity/pokemon/mimikyubustedtotem/shiny_mimikyubustedtotem",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.mimikyubustedtotem"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.mimikyubustedtotem.blink",
+        "ground_idle": "animation.mimikyubustedtotem.ground_idle",
+        "air_idle": "animation.mimikyubustedtotem.ground_idle",
+        "water_idle": "animation.mimikyubustedtotem.ground_idle",
+        "walking": "animation.mimikyubustedtotem.walking",
+        "flying": "animation.mimikyubustedtotem.walking",
+        "swimming": "animation.mimikyubustedtotem.walking",
+        "sleeping": "animation.mimikyubustedtotem.ground_idle",
+        "attack": "animation.mimikyubustedtotem.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.mimikyubustedtotem.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.mimikyubustedtotem.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.mimikyubustedtotem.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:mimikyubustedtotem": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "mimikyubustedtotem",
+        "texture_index": 0
+      }
+    }
+  }
+}

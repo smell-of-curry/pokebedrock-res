@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:groudon",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/groudon/groudon",
+        "default_male": "textures/entity/pokemon/groudon/groudon",
+        "default_female": "textures/entity/pokemon/groudon/groudon",
+        "shiny": "textures/entity/pokemon/groudon/shiny_groudon",
+        "shiny_male": "textures/entity/pokemon/groudon/shiny_groudon",
+        "shiny_female": "textures/entity/pokemon/groudon/shiny_groudon",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.groudon"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.groudon.blink",
+        "ground_idle": "animation.groudon.ground_idle",
+        "air_idle": "animation.groudon.ground_idle",
+        "water_idle": "animation.groudon.ground_idle",
+        "walking": "animation.groudon.walking",
+        "flying": "animation.groudon.walking",
+        "swimming": "animation.groudon.walking",
+        "sleeping": "animation.groudon.ground_idle",
+        "attack": "animation.groudon.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.groudon.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.groudon.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.groudon.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:groudon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "groudon",
+        "texture_index": 0
+      }
+    }
+  }
+}

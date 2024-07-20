@@ -1,0 +1,64 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:thwackey",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/thwackey/thwackey",
+        "default_male": "textures/entity/pokemon/thwackey/thwackey",
+        "default_female": "textures/entity/pokemon/thwackey/thwackey",
+        "shiny": "textures/entity/pokemon/thwackey/shiny_thwackey",
+        "shiny_male": "textures/entity/pokemon/thwackey/shiny_thwackey",
+        "shiny_female": "textures/entity/pokemon/thwackey/shiny_thwackey",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.thwackey"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.thwackey.blink",
+        "ground_idle": "animation.thwackey.ground_idle",
+        "air_idle": "animation.thwackey.ground_idle",
+        "water_idle": "animation.thwackey.ground_idle",
+        "walking": "animation.thwackey.walking",
+        "flying": "animation.thwackey.walking",
+        "swimming": "animation.thwackey.walking",
+        "sleeping": "animation.thwackey.ground_idle",
+        "attack": "animation.thwackey.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon",
+        "animation.thwackey.swimming": "animation.${pokemonTypeId}.ground_idle",
+        "animation.thwackey.water_idle": "animation.${pokemonTypeId}.ground_idle",
+        "animation.thwackey.sleeping": "animation.${pokemonTypeId}.ground_idle"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:thwackey": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "thwackey",
+        "texture_index": 0
+      }
+    }
+  }
+}
