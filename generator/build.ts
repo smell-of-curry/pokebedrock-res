@@ -21,6 +21,7 @@ const exclude = [
 
 (async () => {
   try {
+    console.log(`Creating MCPack, cwd: ${__dirname}`);
     if (!fs.existsSync("manifest.json")) {
       console.error("manifest.json not found.");
       process.exit(1);
@@ -53,7 +54,7 @@ const exclude = [
       throw err;
     });
 
-    const contents = fs.readdirSync("../").filter((v) => !exclude.includes(v));
+    const contents = fs.readdirSync(".").filter((v) => !exclude.includes(v));
 
     for (const content of contents) {
       if (content.includes(fileName)) continue;
