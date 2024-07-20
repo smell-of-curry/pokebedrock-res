@@ -20,6 +20,51 @@ const exclude = [
   "tsconfig.json",
 ];
 
+/**
+ * Pipes all files in the current directory to a zip file.
+ * @param filePath
+ */
+async function pipeToFile(filePath: string) {
+  if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+
+  const output = fs.createWriteStream(filePath);
+  const archive = archiver("zip", { zlib: { level: 9 } });
+
+  output.on("close", () => {
+    console.log(archive.pointer() + " total bytes");
+    console.log((archive.pointer() / 1024 ** 2).toFixed(2) + "MB");
+    console.log(`MCPack created for version`);
+  });
+
+  archive.on("warning", (err) => {
+    if (err.code === "ENOENT") {
+      console.warn(err);
+    } else {
+      throw err;
+    }
+  });
+
+  archive.on("error", (err) => {
+    throw err;
+  });
+
+  const contents = fs.readdirSync(".").filter((v) => !exclude.includes(v));
+
+  for (const content of contents) {
+    if (content.includes(filePath)) continue;
+    console.log(`Adding ${content} to '${filePath}'...`);
+
+    if (fs.lstatSync(content).isDirectory()) {
+      archive.directory(content, content);
+    } else {
+      archive.file(content, { name: content });
+    }
+  }
+
+  archive.pipe(output);
+  await archive.finalize();
+}
+
 (async () => {
   try {
     if (!fs.existsSync("manifest.json")) {
@@ -29,49 +74,9 @@ const exclude = [
     const manifest = fsExtra.readJsonSync("manifest.json", "utf8");
     const version = manifest.header.version.join(".");
     const fileName = `PokeBedrock RES ${version}`;
-    const filePath = `${fileName}.mcpack`;
 
-    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-
-    const output = fs.createWriteStream(filePath);
-    const archive = archiver("zip", { zlib: { level: 9 } });
-
-    output.on("close", () => {
-      console.log(archive.pointer() + " total bytes");
-      console.log((archive.pointer() / 1024 ** 2).toFixed(2) + "MB");
-      console.log(`MCPack created for version: ${version}`);
-    });
-
-    archive.on("warning", (err) => {
-      if (err.code === "ENOENT") {
-        console.warn(err);
-      } else {
-        throw err;
-      }
-    });
-
-    archive.on("error", (err) => {
-      throw err;
-    });
-
-    const contents = fs.readdirSync(".").filter((v) => !exclude.includes(v));
-
-    for (const content of contents) {
-      if (content.includes(fileName)) continue;
-      const contentPath = path.join(content);
-
-      if (fs.lstatSync(contentPath).isDirectory()) {
-        archive.directory(contentPath, content);
-      } else {
-        archive.file(contentPath, { name: content });
-      }
-    }
-
-    archive.pipe(output);
-    await archive.finalize();
-
-    fs.copyFileSync(filePath, `tmp-${fileName}.mcpack`);
-    fs.renameSync(`tmp-${fileName}.mcpack`, `${fileName}.zip`);
+    pipeToFile(`${fileName}.mcpack`);
+    pipeToFile(`${fileName}.zip`);
   } catch (error) {
     console.error("Error:", error);
     process.exit(1);
