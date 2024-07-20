@@ -53,7 +53,7 @@ jobs:
     - name: Read CHANGELOG.md
       id: read_changelog
       run: |
-        changelog=$(cat CHANGELOG.md)
+        changelog=$(cat CHANGELOG.md | base64)
         echo "changelog=$changelog" >> $GITHUB_ENV
           
     - name: Discord Webhook Action

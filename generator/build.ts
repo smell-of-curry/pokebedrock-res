@@ -50,12 +50,12 @@ const exclude = [
     });
 
     const contents = fs
-      .readdirSync(__dirname)
+      .readdirSync(__dirname + "../")
       .filter((v) => !exclude.includes(v));
 
     for (const content of contents) {
       if (content.includes(fileName)) continue;
-      const contentPath = path.join(__dirname, content);
+      const contentPath = path.join(__dirname + "../", content);
 
       if (fs.lstatSync(contentPath).isDirectory()) {
         archive.directory(contentPath, content);
