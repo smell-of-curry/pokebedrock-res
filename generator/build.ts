@@ -17,11 +17,11 @@ const exclude = [
   ".mcattributes",
   "package-lock.json",
   "package.json",
+  "tsconfig.json",
 ];
 
 (async () => {
   try {
-    console.log(`Creating MCPack, cwd: ${__dirname}`);
     if (!fs.existsSync("manifest.json")) {
       console.error("manifest.json not found.");
       process.exit(1);
@@ -70,8 +70,7 @@ const exclude = [
     archive.pipe(output);
     await archive.finalize();
 
-    const MCPackContents = fs.readFileSync(filePath);
-    fs.writeFileSync(`${fileName}.zip`, MCPackContents);
+    fs.copyFileSync(filePath, `${fileName}.zip`);
   } catch (error) {
     console.error("Error:", error);
     process.exit(1);
