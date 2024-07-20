@@ -21,7 +21,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Use the version you prefer
+        node-version: '14'
 
     - name: Read version from manifest
       id: get_version
@@ -33,7 +33,7 @@ jobs:
     - name: Create MCPack
       run: |
         npm install
-        node ./build.js
+        npx ts-node --project tsconfig.json generator/build.ts
         
     - name: Release
       uses: softprops/action-gh-release@v1
