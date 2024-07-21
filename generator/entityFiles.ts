@@ -150,9 +150,17 @@ for (const pokemonTypeId in pokemonJson.pokemon) {
       }
     }
     // Verify Pokemon Textures
-    const textures = fs.readdirSync(
-      path.join("textures", "entity", "pokemon", pokemonTypeId)
+    const texturesPath = path.join(
+      "textures",
+      "entity",
+      "pokemon",
+      pokemonTypeId
     );
+    if (!fs.existsSync(texturesPath)) {
+      Debugger.error(`Pokemon ${pokemonTypeId} had no textures folder!`);
+      fs.mkdirSync(texturesPath);
+    }
+    const textures = fs.readdirSync(texturesPath);
     if (!textures.includes(pokemonTypeId + ".png")) {
       Debugger.error(`Pokemon ${pokemonTypeId} has no default texture!`);
     }
