@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Generate missing_info.md and log file
-      run: npm run generate-missing-info
+      run: npm run generateEntityFiles
 
     - name: Upload missing_info.md and log files as artifacts
       uses: actions/upload-artifact@v3
@@ -41,23 +41,12 @@ jobs:
           const missingInfoPath = path.join(process.cwd(), 'missing_info.md');
           
           const missingInfo = fs.existsSync(missingInfoPath) ? fs.readFileSync(missingInfoPath, 'utf8') : '';
-          const logFiles = fs.readdirSync(process.cwd()).filter(file => file.match(/^log-.*\.log$/));
 
           if (missingInfo) {
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `### Missing Information Report\n\n\`\`\`markdown\n${missingInfo}\n\`\`\``
-            });
-          }
-
-          for (const logFile of logFiles) {
-            const logContent = fs.readFileSync(logFile, 'utf8');
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `### Log File: ${logFile}\n\n\`\`\`text\n${logContent}\n\`\`\``
+              body: `### Missing Information Report\n\n${missingInfo}\n`
             });
           }
