@@ -9,28 +9,23 @@ import type {
 } from "./types";
 import { Logger } from "./utils";
 
-// Set up the Logger
-const logDirectory = process.cwd(); // You can change this to another directory if needed
-Logger.setLogDirectory(logDirectory);
+Logger.setLogDirectory(path.join(process.cwd(), 'logs'));
 
-// Paths and Variables
 const pokemonJsonPath = path.join(process.cwd(), "pokemon.json");
-const pokemonEntityFileTemplatePath = path.join("generator", "templates", "pokemon.entity.json");
-const pokemonSubstituteEntityFileTemplatePath = path.join("generator", "templates", "pokemonSubstitute.entity.json");
-const pokemonEntityFilesDir = path.join("entity", "pokemon");
+const pokemonEntityFileTemplatePath = path.join(process.cwd(), "generator", "templates", "pokemon.entity.json");
+const pokemonSubstituteEntityFileTemplatePath = path.join(process.cwd(), "generator", "templates", "pokemonSubstitute.entity.json");
+const pokemonEntityFilesDir = path.join(process.cwd(), "entity", "pokemon");
 const markdownLogPath = path.join(process.cwd(), "missing_info.md");
 
-// Initialize directories
+
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
 fsExtra.emptyDirSync(pokemonEntityFilesDir);
 
-// Markdown file content
+
 let markdownContent = `# Missing Information Report\n\n## Summary\nThis report contains details about missing or problematic elements found during the Pokémon processing.\n\n`;
 
-// Read and parse the Pokemon JSON content
 const pokemonJson: PokemonJsonContent = JSON.parse(fs.readFileSync(pokemonJsonPath, "utf8"));
 
-// Read the templates
 const pokemonEntityFileTemplate: EntityFile = JSON.parse(fs.readFileSync(pokemonEntityFileTemplatePath, "utf8"));
 const pokemonSubstituteEntityFileTemplate: EntityFile = JSON.parse(fs.readFileSync(pokemonSubstituteEntityFileTemplatePath, "utf8"));
 
@@ -162,7 +157,7 @@ function processPokemon() {
 
   for (const pokemonTypeId in pokemonJson.pokemon) {
     const pokemon = pokemonJson.pokemon[pokemonTypeId];
-    if (!pokemon) continue; // should not happen but just in case
+    if (!pokemon) continue;
 
     const hasModel = pokemonJson.pokemonWithModels.includes(pokemonTypeId);
     let templateFile = hasModel

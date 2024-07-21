@@ -1,9 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-/**
- * Logger class for logging messages with various severity levels.
- */
 export class Logger {
   private static logFilePath: string | null = null;
   private static readonly COLORS: Record<LogType, string> = {
@@ -23,6 +20,11 @@ export class Logger {
    */
   static setLogDirectory(directory: string): void {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, {
+        recursive: true
+      })
+    }
     this.logFilePath = path.join(directory, `log-${timestamp}.log`);
   }
 
