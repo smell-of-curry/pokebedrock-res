@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:walkingwake",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/walkingwake",
-        "shiny": "textures/sprites/default/walkingwake",
-        "default_male": "textures/sprites/default/walkingwake",
-        "default_female": "textures/sprites/default/walkingwake",
-        "shiny_male": "textures/sprites/default/walkingwake",
-        "shiny_female": "textures/sprites/default/walkingwake"
+        "default": "textures/entity/pokemon/walkingwake/walkingwake",
+        "default_male": "textures/entity/pokemon/walkingwake/walkingwake",
+        "default_female": "textures/entity/pokemon/walkingwake/walkingwake",
+        "shiny": "textures/entity/pokemon/walkingwake/shiny_walkingwake",
+        "shiny_male": "textures/entity/pokemon/walkingwake/shiny_walkingwake",
+        "shiny_female": "textures/entity/pokemon/walkingwake/shiny_walkingwake",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.walkingwake"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.walkingwake.blink",
+        "ground_idle": "animation.walkingwake.ground_idle",
+        "air_idle": "animation.walkingwake.ground_idle",
+        "water_idle": "animation.walkingwake.ground_idle",
+        "walking": "animation.walkingwake.walking",
+        "flying": "animation.walkingwake.walking",
+        "swimming": "animation.walkingwake.walking",
+        "sleeping": "animation.walkingwake.ground_idle",
+        "attack": "animation.walkingwake.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:walkingwake": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "walkingwake",

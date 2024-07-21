@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:armarouge",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/armarouge",
-        "shiny": "textures/sprites/default/armarouge",
-        "default_male": "textures/sprites/default/armarouge",
-        "default_female": "textures/sprites/default/armarouge",
-        "shiny_male": "textures/sprites/default/armarouge",
-        "shiny_female": "textures/sprites/default/armarouge"
+        "default": "textures/entity/pokemon/armarouge/armarouge",
+        "default_male": "textures/entity/pokemon/armarouge/armarouge",
+        "default_female": "textures/entity/pokemon/armarouge/armarouge",
+        "shiny": "textures/entity/pokemon/armarouge/shiny_armarouge",
+        "shiny_male": "textures/entity/pokemon/armarouge/shiny_armarouge",
+        "shiny_female": "textures/entity/pokemon/armarouge/shiny_armarouge",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.armarouge"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.armarouge.blink",
+        "ground_idle": "animation.armarouge.ground_idle",
+        "air_idle": "animation.armarouge.ground_idle",
+        "water_idle": "animation.armarouge.ground_idle",
+        "walking": "animation.armarouge.walking",
+        "flying": "animation.armarouge.walking",
+        "swimming": "animation.armarouge.walking",
+        "sleeping": "animation.armarouge.ground_idle",
+        "attack": "animation.armarouge.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:armarouge": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "armarouge",
