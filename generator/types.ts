@@ -110,3 +110,26 @@ export interface AnimationFile {
     [key: `animation.${string}.${string}`]: AnimationFileAnimation;
   };
 }
+
+interface RenderControllerFileRenderer {
+  arrays: {
+    textures:
+      | { [key: string]: string }
+      | {
+          "Array.variants": (`Texture.${string}`)[];
+        };
+  };
+  geometry: `Geometry.${string}`;
+  materials: [
+    {
+      "*": "Material.default";
+    }
+  ];
+  textures: string[];
+}
+export interface RenderControllerFile {
+  format_version: format_version;
+  render_controllers: {
+    [key: `controller.render.${string}`]: RenderControllerFileRenderer;
+  };
+}
