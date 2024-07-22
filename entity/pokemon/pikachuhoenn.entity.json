@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:pikachuhoenn",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/pikachuhoenn",
-        "shiny": "textures/sprites/default/pikachuhoenn",
-        "default_male": "textures/sprites/default/pikachuhoenn",
-        "default_female": "textures/sprites/default/pikachuhoenn",
-        "shiny_male": "textures/sprites/default/pikachuhoenn",
-        "shiny_female": "textures/sprites/default/pikachuhoenn"
+        "default": "textures/entity/pokemon/pikachuhoenn/pikachuhoenn",
+        "default_male": "textures/entity/pokemon/pikachuhoenn/pikachuhoenn",
+        "default_female": "textures/entity/pokemon/pikachuhoenn/pikachuhoenn",
+        "shiny": "textures/entity/pokemon/pikachuhoenn/shiny_pikachuhoenn",
+        "shiny_male": "textures/entity/pokemon/pikachuhoenn/shiny_pikachuhoenn",
+        "shiny_female": "textures/entity/pokemon/pikachuhoenn/shiny_pikachuhoenn",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.pikachuhoenn"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.pikachuhoenn.blink",
+        "ground_idle": "animation.pikachuhoenn.ground_idle",
+        "air_idle": "animation.pikachuhoenn.ground_idle",
+        "water_idle": "animation.pikachuhoenn.ground_idle",
+        "walking": "animation.pikachuhoenn.walking",
+        "flying": "animation.pikachuhoenn.walking",
+        "swimming": "animation.pikachuhoenn.walking",
+        "sleeping": "animation.pikachuhoenn.ground_idle",
+        "attack": "animation.pikachuhoenn.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:pikachuhoenn": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "pikachuhoenn",

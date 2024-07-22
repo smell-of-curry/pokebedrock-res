@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:charcadet",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/charcadet",
-        "shiny": "textures/sprites/default/charcadet",
-        "default_male": "textures/sprites/default/charcadet",
-        "default_female": "textures/sprites/default/charcadet",
-        "shiny_male": "textures/sprites/default/charcadet",
-        "shiny_female": "textures/sprites/default/charcadet"
+        "default": "textures/entity/pokemon/charcadet/charcadet",
+        "default_male": "textures/entity/pokemon/charcadet/charcadet",
+        "default_female": "textures/entity/pokemon/charcadet/charcadet",
+        "shiny": "textures/entity/pokemon/charcadet/shiny_charcadet",
+        "shiny_male": "textures/entity/pokemon/charcadet/shiny_charcadet",
+        "shiny_female": "textures/entity/pokemon/charcadet/shiny_charcadet",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.charcadet"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.charcadet.blink",
+        "ground_idle": "animation.charcadet.ground_idle",
+        "air_idle": "animation.charcadet.ground_idle",
+        "water_idle": "animation.charcadet.ground_idle",
+        "walking": "animation.charcadet.walking",
+        "flying": "animation.charcadet.walking",
+        "swimming": "animation.charcadet.walking",
+        "sleeping": "animation.charcadet.ground_idle",
+        "attack": "animation.charcadet.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:charcadet": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "charcadet",
