@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:lunala",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/lunala/lunala",
+        "default_male": "textures/entity/pokemon/lunala/lunala",
+        "default_female": "textures/entity/pokemon/lunala/lunala",
+        "shiny": "textures/entity/pokemon/lunala/shiny_lunala",
+        "shiny_male": "textures/entity/pokemon/lunala/shiny_lunala",
+        "shiny_female": "textures/entity/pokemon/lunala/shiny_lunala",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.lunala"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.lunala.blink",
+        "ground_idle": "animation.lunala.ground_idle",
+        "air_idle": "animation.lunala.ground_idle",
+        "water_idle": "animation.lunala.ground_idle",
+        "walking": "animation.lunala.walking",
+        "flying": "animation.lunala.ground_idle",
+        "swimming": "animation.lunala.ground_idle",
+        "sleeping": "animation.lunala.ground_idle",
+        "attack": "animation.lunala.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:lunala": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "lunala",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:dragonite",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/dragonite/dragonite",
+        "default_male": "textures/entity/pokemon/dragonite/dragonite",
+        "default_female": "textures/entity/pokemon/dragonite/dragonite",
+        "shiny": "textures/entity/pokemon/dragonite/shiny_dragonite",
+        "shiny_male": "textures/entity/pokemon/dragonite/shiny_dragonite",
+        "shiny_female": "textures/entity/pokemon/dragonite/shiny_dragonite",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.dragonite"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.dragonite.blink",
+        "ground_idle": "animation.dragonite.ground_idle",
+        "air_idle": "animation.dragonite.ground_idle",
+        "water_idle": "animation.dragonite.ground_idle",
+        "walking": "animation.dragonite.walking",
+        "flying": "animation.dragonite.walking",
+        "swimming": "animation.dragonite.walking",
+        "sleeping": "animation.dragonite.ground_idle",
+        "attack": "animation.dragonite.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:dragonite": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "dragonite",
+        "texture_index": 0
+      }
+    }
+  }
+}

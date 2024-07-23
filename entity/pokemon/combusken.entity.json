@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:combusken",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/combusken/combusken",
+        "default_male": "textures/entity/pokemon/combusken/combusken",
+        "default_female": "textures/entity/pokemon/combusken/combusken",
+        "shiny": "textures/entity/pokemon/combusken/shiny_combusken",
+        "shiny_male": "textures/entity/pokemon/combusken/shiny_combusken",
+        "shiny_female": "textures/entity/pokemon/combusken/shiny_combusken",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.combusken"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.combusken.blink",
+        "ground_idle": "animation.combusken.ground_idle",
+        "air_idle": "animation.combusken.ground_idle",
+        "water_idle": "animation.combusken.ground_idle",
+        "walking": "animation.combusken.walking",
+        "flying": "animation.combusken.ground_idle",
+        "swimming": "animation.combusken.ground_idle",
+        "sleeping": "animation.combusken.ground_idle",
+        "attack": "animation.combusken.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:combusken": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "combusken",
+        "texture_index": 0
+      }
+    }
+  }
+}

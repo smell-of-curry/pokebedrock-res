@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:omastar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/omastar/omastar",
+        "default_male": "textures/entity/pokemon/omastar/omastar",
+        "default_female": "textures/entity/pokemon/omastar/omastar",
+        "shiny": "textures/entity/pokemon/omastar/shiny_omastar",
+        "shiny_male": "textures/entity/pokemon/omastar/shiny_omastar",
+        "shiny_female": "textures/entity/pokemon/omastar/shiny_omastar",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.omastar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.omastar.blink",
+        "ground_idle": "animation.omastar.ground_idle",
+        "air_idle": "animation.omastar.ground_idle",
+        "water_idle": "animation.omastar.ground_idle",
+        "walking": "animation.omastar.walking",
+        "flying": "animation.omastar.ground_idle",
+        "swimming": "animation.omastar.ground_idle",
+        "sleeping": "animation.omastar.ground_idle",
+        "attack": "animation.omastar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:omastar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "omastar",
+        "texture_index": 0
+      }
+    }
+  }
+}

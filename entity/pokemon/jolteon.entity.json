@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:jolteon",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/jolteon/jolteon",
+        "default_male": "textures/entity/pokemon/jolteon/jolteon",
+        "default_female": "textures/entity/pokemon/jolteon/jolteon",
+        "shiny": "textures/entity/pokemon/jolteon/shiny_jolteon",
+        "shiny_male": "textures/entity/pokemon/jolteon/shiny_jolteon",
+        "shiny_female": "textures/entity/pokemon/jolteon/shiny_jolteon",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.jolteon"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.jolteon.blink",
+        "ground_idle": "animation.jolteon.ground_idle",
+        "air_idle": "animation.jolteon.ground_idle",
+        "water_idle": "animation.jolteon.ground_idle",
+        "walking": "animation.jolteon.walking",
+        "flying": "animation.jolteon.ground_idle",
+        "swimming": "animation.jolteon.walking",
+        "sleeping": "animation.jolteon.ground_idle",
+        "attack": "animation.jolteon.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:jolteon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "jolteon",
+        "texture_index": 0
+      }
+    }
+  }
+}

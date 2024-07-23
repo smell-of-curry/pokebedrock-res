@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:delibird",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/delibird/delibird",
+        "default_male": "textures/entity/pokemon/delibird/delibird",
+        "default_female": "textures/entity/pokemon/delibird/delibird",
+        "shiny": "textures/entity/pokemon/delibird/shiny_delibird",
+        "shiny_male": "textures/entity/pokemon/delibird/shiny_delibird",
+        "shiny_female": "textures/entity/pokemon/delibird/shiny_delibird",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.delibird"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.delibird.blink",
+        "ground_idle": "animation.delibird.ground_idle",
+        "air_idle": "animation.delibird.ground_idle",
+        "water_idle": "animation.delibird.ground_idle",
+        "walking": "animation.delibird.walking",
+        "flying": "animation.delibird.ground_idle",
+        "swimming": "animation.delibird.ground_idle",
+        "sleeping": "animation.delibird.ground_idle",
+        "attack": "animation.delibird.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:delibird": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "delibird",
+        "texture_index": 0
+      }
+    }
+  }
+}

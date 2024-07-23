@@ -1,8 +1,8 @@
-name: Zip and Release MCPack
+name: Create new Release
 
 permissions:
   contents: write
-  
+
 on:
   workflow_dispatch:
   push:
@@ -17,49 +17,48 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
+
     - name: Install Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Use the version you prefer
+        node-version: '14'
+
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install typescript --save-dev
 
     - name: Read version from manifest
       id: get_version
       run: |
         version=$(jq -r '.header.version | map(tostring) | join(".")' manifest.json)
         echo "Version: $version"
-        echo "::set-output name=version::$version"
+        echo "version=$version" >> $GITHUB_ENV
 
     - name: Create MCPack
       run: |
-        npm install
-        node ./build.js
-        
+        npx ts-node --project tsconfig.json generator/build.ts
+
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         body_path: CHANGELOG.md
-        name: "v${{ steps.get_version.outputs.version }}"
-        tag_name: "v${{ steps.get_version.outputs.version }}"
+        name: "v${{ env.version }}"
+        tag_name: "v${{ env.version }}"
         files: |
-          PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack
-          PokeBedrock RES ${{ steps.get_version.outputs.version }}.zip
-          
+          PokeBedrock RES ${{ env.version }}.mcpack
+          PokeBedrock RES ${{ env.version }}.zip
         draft: false
 
-    - name: Read CHANGELOG.md
-      id: read_changelog
-      run: |
-        changelog=$(cat CHANGELOG.md)
-        echo "::set-output name=changelog::$changelog"
-          
     - name: Discord Webhook Action
-      uses: tsickert/discord-webhook@v5.3.0
+      uses: tsickert/discord-webhook@v6.0.0
       with:
         avatar-url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
-        webhook-url: ${{ secrets.WEBHOOK_URL  }}
-        embed-title: "[RES] Update v${{ steps.get_version.outputs.version }}"
-        embed-description: "${{ steps.read_changelog.outputs.changelog }}"
+        webhook-url: ${{ secrets.WEBHOOK_URL }}
+        embed-title: "[RES] Update v${{ env.version }}"
+        embed-description: "View full changelog [here](https://github.com/smell-of-curry/pokebedrock-res/blob/main/CHANGELOG.md)"
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
-        filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
-      
+        filename: "PokeBedrock RES ${{ env.version }}.mcpack"
+
+    - name: Complete Workflow
+      run: echo "Workflow completed successfully."

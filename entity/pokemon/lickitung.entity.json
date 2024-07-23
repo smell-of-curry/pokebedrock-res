@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:lickitung",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/lickitung/lickitung",
+        "default_male": "textures/entity/pokemon/lickitung/lickitung",
+        "default_female": "textures/entity/pokemon/lickitung/lickitung",
+        "shiny": "textures/entity/pokemon/lickitung/shiny_lickitung",
+        "shiny_male": "textures/entity/pokemon/lickitung/shiny_lickitung",
+        "shiny_female": "textures/entity/pokemon/lickitung/shiny_lickitung",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.lickitung"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.lickitung.blink",
+        "ground_idle": "animation.lickitung.ground_idle",
+        "air_idle": "animation.lickitung.ground_idle",
+        "water_idle": "animation.lickitung.ground_idle",
+        "walking": "animation.lickitung.walking",
+        "flying": "animation.lickitung.ground_idle",
+        "swimming": "animation.lickitung.ground_idle",
+        "sleeping": "animation.lickitung.ground_idle",
+        "attack": "animation.lickitung.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:lickitung": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "lickitung",
+        "texture_index": 0
+      }
+    }
+  }
+}

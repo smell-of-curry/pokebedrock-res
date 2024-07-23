@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:magby",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/magby/magby",
+        "default_male": "textures/entity/pokemon/magby/magby",
+        "default_female": "textures/entity/pokemon/magby/magby",
+        "shiny": "textures/entity/pokemon/magby/shiny_magby",
+        "shiny_male": "textures/entity/pokemon/magby/shiny_magby",
+        "shiny_female": "textures/entity/pokemon/magby/shiny_magby",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.magby"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.magby.blink",
+        "ground_idle": "animation.magby.ground_idle",
+        "air_idle": "animation.magby.ground_idle",
+        "water_idle": "animation.magby.ground_idle",
+        "walking": "animation.magby.walking",
+        "flying": "animation.magby.ground_idle",
+        "swimming": "animation.magby.ground_idle",
+        "sleeping": "animation.magby.ground_idle",
+        "attack": "animation.magby.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:magby": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "magby",
+        "texture_index": 0
+      }
+    }
+  }
+}

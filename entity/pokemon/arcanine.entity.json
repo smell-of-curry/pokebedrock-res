@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:arcanine",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/arcanine/arcanine",
+        "default_male": "textures/entity/pokemon/arcanine/arcanine",
+        "default_female": "textures/entity/pokemon/arcanine/arcanine",
+        "shiny": "textures/entity/pokemon/arcanine/shiny_arcanine",
+        "shiny_male": "textures/entity/pokemon/arcanine/shiny_arcanine",
+        "shiny_female": "textures/entity/pokemon/arcanine/shiny_arcanine",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.arcanine"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.arcanine.blink",
+        "ground_idle": "animation.arcanine.ground_idle",
+        "air_idle": "animation.arcanine.ground_idle",
+        "water_idle": "animation.arcanine.ground_idle",
+        "walking": "animation.arcanine.walking",
+        "flying": "animation.arcanine.ground_idle",
+        "swimming": "animation.arcanine.ground_idle",
+        "sleeping": "animation.arcanine.ground_idle",
+        "attack": "animation.arcanine.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:arcanine": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "arcanine",
+        "texture_index": 0
+      }
+    }
+  }
+}

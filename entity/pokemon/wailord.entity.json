@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:wailord",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/wailord/wailord",
+        "default_male": "textures/entity/pokemon/wailord/wailord",
+        "default_female": "textures/entity/pokemon/wailord/wailord",
+        "shiny": "textures/entity/pokemon/wailord/shiny_wailord",
+        "shiny_male": "textures/entity/pokemon/wailord/shiny_wailord",
+        "shiny_female": "textures/entity/pokemon/wailord/shiny_wailord",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.wailord"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.wailord.blink",
+        "ground_idle": "animation.wailord.ground_idle",
+        "air_idle": "animation.wailord.ground_idle",
+        "water_idle": "animation.wailord.ground_idle",
+        "walking": "animation.wailord.walking",
+        "flying": "animation.wailord.ground_idle",
+        "swimming": "animation.wailord.walking",
+        "sleeping": "animation.wailord.ground_idle",
+        "attack": "animation.wailord.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:wailord": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "wailord",
+        "texture_index": 0
+      }
+    }
+  }
+}

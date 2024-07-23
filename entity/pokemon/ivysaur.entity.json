@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:ivysaur",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/ivysaur/ivysaur",
+        "default_male": "textures/entity/pokemon/ivysaur/ivysaur",
+        "default_female": "textures/entity/pokemon/ivysaur/ivysaur",
+        "shiny": "textures/entity/pokemon/ivysaur/shiny_ivysaur",
+        "shiny_male": "textures/entity/pokemon/ivysaur/shiny_ivysaur",
+        "shiny_female": "textures/entity/pokemon/ivysaur/shiny_ivysaur",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.ivysaur"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.ivysaur.blink",
+        "ground_idle": "animation.ivysaur.ground_idle",
+        "air_idle": "animation.ivysaur.ground_idle",
+        "water_idle": "animation.ivysaur.ground_idle",
+        "walking": "animation.ivysaur.walking",
+        "flying": "animation.ivysaur.ground_idle",
+        "swimming": "animation.ivysaur.ground_idle",
+        "sleeping": "animation.ivysaur.ground_idle",
+        "attack": "animation.ivysaur.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:ivysaur": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "ivysaur",
+        "texture_index": 0
+      }
+    }
+  }
+}

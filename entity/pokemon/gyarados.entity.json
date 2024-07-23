@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:gyarados",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/gyarados/gyarados",
+        "default_male": "textures/entity/pokemon/gyarados/gyarados",
+        "default_female": "textures/entity/pokemon/gyarados/gyarados",
+        "shiny": "textures/entity/pokemon/gyarados/shiny_gyarados",
+        "shiny_male": "textures/entity/pokemon/gyarados/shiny_gyarados",
+        "shiny_female": "textures/entity/pokemon/gyarados/shiny_gyarados",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.gyarados"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gyarados.blink",
+        "ground_idle": "animation.gyarados.ground_idle",
+        "air_idle": "animation.gyarados.ground_idle",
+        "water_idle": "animation.gyarados.ground_idle",
+        "walking": "animation.gyarados.walking",
+        "flying": "animation.gyarados.ground_idle",
+        "swimming": "animation.gyarados.ground_idle",
+        "sleeping": "animation.gyarados.ground_idle",
+        "attack": "animation.gyarados.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:gyarados": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "gyarados",
+        "texture_index": 0
+      }
+    }
+  }
+}

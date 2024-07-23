@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:larvesta",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/larvesta/larvesta",
+        "default_male": "textures/entity/pokemon/larvesta/larvesta",
+        "default_female": "textures/entity/pokemon/larvesta/larvesta",
+        "shiny": "textures/entity/pokemon/larvesta/shiny_larvesta",
+        "shiny_male": "textures/entity/pokemon/larvesta/shiny_larvesta",
+        "shiny_female": "textures/entity/pokemon/larvesta/shiny_larvesta",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.larvesta"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.larvesta.blink",
+        "ground_idle": "animation.larvesta.ground_idle",
+        "air_idle": "animation.larvesta.ground_idle",
+        "water_idle": "animation.larvesta.ground_idle",
+        "walking": "animation.larvesta.walking",
+        "flying": "animation.larvesta.ground_idle",
+        "swimming": "animation.larvesta.walking",
+        "sleeping": "animation.larvesta.ground_idle",
+        "attack": "animation.larvesta.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:larvesta": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "larvesta",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:kirlia",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/kirlia/kirlia",
+        "default_male": "textures/entity/pokemon/kirlia/kirlia",
+        "default_female": "textures/entity/pokemon/kirlia/kirlia",
+        "shiny": "textures/entity/pokemon/kirlia/shiny_kirlia",
+        "shiny_male": "textures/entity/pokemon/kirlia/shiny_kirlia",
+        "shiny_female": "textures/entity/pokemon/kirlia/shiny_kirlia",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.kirlia"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.kirlia.blink",
+        "ground_idle": "animation.kirlia.ground_idle",
+        "air_idle": "animation.kirlia.ground_idle",
+        "water_idle": "animation.kirlia.ground_idle",
+        "walking": "animation.kirlia.walking",
+        "flying": "animation.kirlia.ground_idle",
+        "swimming": "animation.kirlia.ground_idle",
+        "sleeping": "animation.kirlia.ground_idle",
+        "attack": "animation.kirlia.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:kirlia": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "kirlia",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:archen",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/archen/archen",
+        "default_male": "textures/entity/pokemon/archen/archen",
+        "default_female": "textures/entity/pokemon/archen/archen",
+        "shiny": "textures/entity/pokemon/archen/shiny_archen",
+        "shiny_male": "textures/entity/pokemon/archen/shiny_archen",
+        "shiny_female": "textures/entity/pokemon/archen/shiny_archen",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.archen"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.archen.blink",
+        "ground_idle": "animation.archen.ground_idle",
+        "air_idle": "animation.archen.ground_idle",
+        "water_idle": "animation.archen.ground_idle",
+        "walking": "animation.archen.walking",
+        "flying": "animation.archen.ground_idle",
+        "swimming": "animation.archen.walking",
+        "sleeping": "animation.archen.ground_idle",
+        "attack": "animation.archen.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:archen": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "archen",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:rayquaza",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/rayquaza/rayquaza",
+        "default_male": "textures/entity/pokemon/rayquaza/rayquaza",
+        "default_female": "textures/entity/pokemon/rayquaza/rayquaza",
+        "shiny": "textures/entity/pokemon/rayquaza/shiny_rayquaza",
+        "shiny_male": "textures/entity/pokemon/rayquaza/shiny_rayquaza",
+        "shiny_female": "textures/entity/pokemon/rayquaza/shiny_rayquaza",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.rayquaza"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.rayquaza.blink",
+        "ground_idle": "animation.rayquaza.ground_idle",
+        "air_idle": "animation.rayquaza.ground_idle",
+        "water_idle": "animation.rayquaza.ground_idle",
+        "walking": "animation.rayquaza.walking",
+        "flying": "animation.rayquaza.ground_idle",
+        "swimming": "animation.rayquaza.ground_idle",
+        "sleeping": "animation.rayquaza.ground_idle",
+        "attack": "animation.rayquaza.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:rayquaza": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "rayquaza",
+        "texture_index": 0
+      }
+    }
+  }
+}

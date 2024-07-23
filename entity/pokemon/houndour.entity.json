@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:houndour",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/houndour/houndour",
+        "default_male": "textures/entity/pokemon/houndour/houndour",
+        "default_female": "textures/entity/pokemon/houndour/houndour",
+        "shiny": "textures/entity/pokemon/houndour/shiny_houndour",
+        "shiny_male": "textures/entity/pokemon/houndour/shiny_houndour",
+        "shiny_female": "textures/entity/pokemon/houndour/shiny_houndour",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.houndour"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.houndour.blink",
+        "ground_idle": "animation.houndour.ground_idle",
+        "air_idle": "animation.houndour.ground_idle",
+        "water_idle": "animation.houndour.ground_idle",
+        "walking": "animation.houndour.walking",
+        "flying": "animation.houndour.ground_idle",
+        "swimming": "animation.houndour.ground_idle",
+        "sleeping": "animation.houndour.ground_idle",
+        "attack": "animation.houndour.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:houndour": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "houndour",
+        "texture_index": 0
+      }
+    }
+  }
+}

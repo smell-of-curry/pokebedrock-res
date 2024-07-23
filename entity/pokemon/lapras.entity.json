@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:lapras",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/lapras/lapras",
+        "default_male": "textures/entity/pokemon/lapras/lapras",
+        "default_female": "textures/entity/pokemon/lapras/lapras",
+        "shiny": "textures/entity/pokemon/lapras/shiny_lapras",
+        "shiny_male": "textures/entity/pokemon/lapras/shiny_lapras",
+        "shiny_female": "textures/entity/pokemon/lapras/shiny_lapras",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.lapras"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.lapras.blink",
+        "ground_idle": "animation.lapras.ground_idle",
+        "air_idle": "animation.lapras.ground_idle",
+        "water_idle": "animation.lapras.ground_idle",
+        "walking": "animation.lapras.walking",
+        "flying": "animation.lapras.ground_idle",
+        "swimming": "animation.lapras.ground_idle",
+        "sleeping": "animation.lapras.ground_idle",
+        "attack": "animation.lapras.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:lapras": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "lapras",
+        "texture_index": 0
+      }
+    }
+  }
+}

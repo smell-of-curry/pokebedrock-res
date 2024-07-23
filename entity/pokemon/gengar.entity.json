@@ -1,0 +1,62 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:gengar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/gengar/gengar",
+        "default_male": "textures/entity/pokemon/gengar/gengar",
+        "default_female": "textures/entity/pokemon/gengar/gengar",
+        "shiny": "textures/entity/pokemon/gengar/shiny_gengar",
+        "shiny_male": "textures/entity/pokemon/gengar/shiny_gengar",
+        "shiny_female": "textures/entity/pokemon/gengar/shiny_gengar",
+        "evo_aura": "textures/entity/evolving",
+        "halloween": "textures/entity/pokemon/gengar/gengar_halloween.png"
+      },
+      "geometry": {
+        "default": "geometry.gengar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gengar.blink",
+        "ground_idle": "animation.gengar.ground_idle",
+        "air_idle": "animation.gengar.ground_idle",
+        "water_idle": "animation.gengar.ground_idle",
+        "walking": "animation.gengar.walking",
+        "flying": "animation.gengar.ground_idle",
+        "swimming": "animation.gengar.ground_idle",
+        "sleeping": "animation.gengar.ground_idle",
+        "attack": "animation.gengar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:gengar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "gengar",
+        "texture_index": 0
+      }
+    }
+  }
+}

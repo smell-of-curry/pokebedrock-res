@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:emboar",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/emboar/emboar",
+        "default_male": "textures/entity/pokemon/emboar/emboar",
+        "default_female": "textures/entity/pokemon/emboar/emboar",
+        "shiny": "textures/entity/pokemon/emboar/shiny_emboar",
+        "shiny_male": "textures/entity/pokemon/emboar/shiny_emboar",
+        "shiny_female": "textures/entity/pokemon/emboar/shiny_emboar",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.emboar"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.emboar.blink",
+        "ground_idle": "animation.emboar.ground_idle",
+        "air_idle": "animation.emboar.ground_idle",
+        "water_idle": "animation.emboar.ground_idle",
+        "walking": "animation.emboar.walking",
+        "flying": "animation.emboar.ground_idle",
+        "swimming": "animation.emboar.ground_idle",
+        "sleeping": "animation.emboar.ground_idle",
+        "attack": "animation.emboar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:emboar": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "emboar",
+        "texture_index": 0
+      }
+    }
+  }
+}

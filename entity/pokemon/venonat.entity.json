@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:venonat",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/venonat/venonat",
+        "default_male": "textures/entity/pokemon/venonat/venonat",
+        "default_female": "textures/entity/pokemon/venonat/venonat",
+        "shiny": "textures/entity/pokemon/venonat/shiny_venonat",
+        "shiny_male": "textures/entity/pokemon/venonat/shiny_venonat",
+        "shiny_female": "textures/entity/pokemon/venonat/shiny_venonat",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.venonat"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.venonat.blink",
+        "ground_idle": "animation.venonat.ground_idle",
+        "air_idle": "animation.venonat.ground_idle",
+        "water_idle": "animation.venonat.ground_idle",
+        "walking": "animation.venonat.walking",
+        "flying": "animation.venonat.ground_idle",
+        "swimming": "animation.venonat.ground_idle",
+        "sleeping": "animation.venonat.ground_idle",
+        "attack": "animation.venonat.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:venonat": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "venonat",
+        "texture_index": 0
+      }
+    }
+  }
+}

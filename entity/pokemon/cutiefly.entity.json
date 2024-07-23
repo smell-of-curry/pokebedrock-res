@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:cutiefly",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/cutiefly/cutiefly",
+        "default_male": "textures/entity/pokemon/cutiefly/cutiefly",
+        "default_female": "textures/entity/pokemon/cutiefly/cutiefly",
+        "shiny": "textures/entity/pokemon/cutiefly/shiny_cutiefly",
+        "shiny_male": "textures/entity/pokemon/cutiefly/shiny_cutiefly",
+        "shiny_female": "textures/entity/pokemon/cutiefly/shiny_cutiefly",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.cutiefly"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.cutiefly.blink",
+        "ground_idle": "animation.cutiefly.ground_idle",
+        "air_idle": "animation.cutiefly.ground_idle",
+        "water_idle": "animation.cutiefly.ground_idle",
+        "walking": "animation.cutiefly.walking",
+        "flying": "animation.cutiefly.walking",
+        "swimming": "animation.cutiefly.walking",
+        "sleeping": "animation.cutiefly.ground_idle",
+        "attack": "animation.cutiefly.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:cutiefly": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "cutiefly",
+        "texture_index": 0
+      }
+    }
+  }
+}

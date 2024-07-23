@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:flaaffy",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/flaaffy/flaaffy",
+        "default_male": "textures/entity/pokemon/flaaffy/flaaffy",
+        "default_female": "textures/entity/pokemon/flaaffy/flaaffy",
+        "shiny": "textures/entity/pokemon/flaaffy/shiny_flaaffy",
+        "shiny_male": "textures/entity/pokemon/flaaffy/shiny_flaaffy",
+        "shiny_female": "textures/entity/pokemon/flaaffy/shiny_flaaffy",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.flaaffy"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.flaaffy.blink",
+        "ground_idle": "animation.flaaffy.ground_idle",
+        "air_idle": "animation.flaaffy.ground_idle",
+        "water_idle": "animation.flaaffy.ground_idle",
+        "walking": "animation.flaaffy.walking",
+        "flying": "animation.flaaffy.ground_idle",
+        "swimming": "animation.flaaffy.walking",
+        "sleeping": "animation.flaaffy.ground_idle",
+        "attack": "animation.flaaffy.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:flaaffy": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "flaaffy",
+        "texture_index": 0
+      }
+    }
+  }
+}

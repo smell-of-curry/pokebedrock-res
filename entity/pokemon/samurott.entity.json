@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:samurott",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/samurott/samurott",
+        "default_male": "textures/entity/pokemon/samurott/samurott",
+        "default_female": "textures/entity/pokemon/samurott/samurott",
+        "shiny": "textures/entity/pokemon/samurott/shiny_samurott",
+        "shiny_male": "textures/entity/pokemon/samurott/shiny_samurott",
+        "shiny_female": "textures/entity/pokemon/samurott/shiny_samurott",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.samurott"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.samurott.blink",
+        "ground_idle": "animation.samurott.ground_idle",
+        "air_idle": "animation.samurott.ground_idle",
+        "water_idle": "animation.samurott.ground_idle",
+        "walking": "animation.samurott.walking",
+        "flying": "animation.samurott.ground_idle",
+        "swimming": "animation.samurott.walking",
+        "sleeping": "animation.samurott.ground_idle",
+        "attack": "animation.samurott.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:samurott": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "samurott",
+        "texture_index": 0
+      }
+    }
+  }
+}

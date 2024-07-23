@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:treecko",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/treecko/treecko",
+        "default_male": "textures/entity/pokemon/treecko/treecko",
+        "default_female": "textures/entity/pokemon/treecko/treecko",
+        "shiny": "textures/entity/pokemon/treecko/shiny_treecko",
+        "shiny_male": "textures/entity/pokemon/treecko/shiny_treecko",
+        "shiny_female": "textures/entity/pokemon/treecko/shiny_treecko",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.treecko"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.treecko.blink",
+        "ground_idle": "animation.treecko.ground_idle",
+        "air_idle": "animation.treecko.ground_idle",
+        "water_idle": "animation.treecko.ground_idle",
+        "walking": "animation.treecko.walking",
+        "flying": "animation.treecko.ground_idle",
+        "swimming": "animation.treecko.ground_idle",
+        "sleeping": "animation.treecko.ground_idle",
+        "attack": "animation.treecko.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:treecko": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "treecko",
+        "texture_index": 0
+      }
+    }
+  }
+}

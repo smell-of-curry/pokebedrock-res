@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:totodile",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/totodile/totodile",
+        "default_male": "textures/entity/pokemon/totodile/totodile",
+        "default_female": "textures/entity/pokemon/totodile/totodile",
+        "shiny": "textures/entity/pokemon/totodile/shiny_totodile",
+        "shiny_male": "textures/entity/pokemon/totodile/shiny_totodile",
+        "shiny_female": "textures/entity/pokemon/totodile/shiny_totodile",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.totodile"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.totodile.blink",
+        "ground_idle": "animation.totodile.ground_idle",
+        "air_idle": "animation.totodile.ground_idle",
+        "water_idle": "animation.totodile.ground_idle",
+        "walking": "animation.totodile.walking",
+        "flying": "animation.totodile.ground_idle",
+        "swimming": "animation.totodile.ground_idle",
+        "sleeping": "animation.totodile.ground_idle",
+        "attack": "animation.totodile.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:totodile": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "totodile",
+        "texture_index": 0
+      }
+    }
+  }
+}
