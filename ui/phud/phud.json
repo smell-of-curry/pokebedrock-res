@@ -57,6 +57,11 @@
         "sidebar_control@data_control": {
           "$update_string": "&_sidebar:"
         }
+      },
+      {
+        "actionbar_control@data_control": {
+          "$update_string": "&_actionbar:"
+        }
       }
     ]
   },
@@ -113,6 +118,14 @@
         "source_property_name": "(#preserved_text - '&_sidebar:')",
         "target_property_name": "#sidebar",
         "resolve_sibling_scope": true
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "actionbar_control",
+        "source_property_name": "(#preserved_text - '&_actionbar:')",
+        "target_property_name": "#fake_actionbar",
+        "resolve_sibling_scope": true
       }
     ],
     "controls": [
@@ -125,14 +138,14 @@
           "$color": [1, 1, 0.52, 1]
         }
       },
-      // {
-      //   "phone@phud_phone.main": {
-      //     "size": [64, 64],
-      //     "offset": [8, 0],
-      //     "anchor_from": "left_middle",
-      //     "anchor_to": "left_middle"
-      //   }
-      // },
+      {
+        "phone@phud_phone.main": {
+          "size": [64, 64],
+          "offset": [8, 0],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle"
+        }
+      },
       {
         "battle_wait@phud_battleWait.main": {}
       },
@@ -145,6 +158,15 @@
       {
         "sidebar@phud_sidebar.main": {
           "$color": "white"
+        }
+      },
+      {
+        "actionbar@phud_actionbar.main": {
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [0, "50%-70px"],
+          "$font_scale": 1,
+          "$color": [1, 1, 0.52, 1]
         }
       }
     ]
