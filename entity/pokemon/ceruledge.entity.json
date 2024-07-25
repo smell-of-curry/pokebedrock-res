@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:ceruledge",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/ceruledge",
-        "shiny": "textures/sprites/default/ceruledge",
-        "default_male": "textures/sprites/default/ceruledge",
-        "default_female": "textures/sprites/default/ceruledge",
-        "shiny_male": "textures/sprites/default/ceruledge",
-        "shiny_female": "textures/sprites/default/ceruledge"
+        "default": "textures/entity/pokemon/ceruledge/ceruledge",
+        "default_male": "textures/entity/pokemon/ceruledge/ceruledge",
+        "default_female": "textures/entity/pokemon/ceruledge/ceruledge",
+        "shiny": "textures/entity/pokemon/ceruledge/shiny_ceruledge",
+        "shiny_male": "textures/entity/pokemon/ceruledge/shiny_ceruledge",
+        "shiny_female": "textures/entity/pokemon/ceruledge/shiny_ceruledge",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.ceruledge"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.ceruledge.blink",
+        "ground_idle": "animation.ceruledge.ground_idle",
+        "air_idle": "animation.ceruledge.ground_idle",
+        "water_idle": "animation.ceruledge.ground_idle",
+        "walking": "animation.ceruledge.walking",
+        "flying": "animation.ceruledge.ground_idle",
+        "swimming": "animation.ceruledge.walking",
+        "sleeping": "animation.ceruledge.ground_idle",
+        "attack": "animation.ceruledge.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:ceruledge": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "ceruledge",
