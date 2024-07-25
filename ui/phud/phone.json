@@ -11,6 +11,23 @@
       { "jeb_background@jeb_background": {} }
     ]
   },
+  "icon@abstract_phone_conditional": {
+    "texture": "('textures/ui/phud/' + $name)"
+  },
+  "jeb_icon": {
+    "type": "image",
+    "texture": "('textures/ui/phud/maple_' + $name))",
+    "uv_size": [64, 64],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#phone",
+        "target_property_name": "#value"
+      }
+    ]
+  },
   "icons": {
     "type": "panel",
     "controls": [
@@ -22,36 +39,39 @@
           "uv_size": [64, 64]
         }
       },
+      {
+        "standby@icon": {
+          "$condition": "(#value = 'standby')",
+          "$name": "standby"
+        }
+      },
       { "jeb_icon_wrapper@jeb_icon_wrapper": {} }
     ],
     "layer": 1
   },
-
   "phone_background@abstract_phone_conditional": {
     "texture": "textures/ui/phud/box_small",
-    "$condition": "(#value = 'ring')"
+    "$condition": "((#value = 'ring') or (#value = 'standby')"
   },
   "jeb_background@abstract_phone_conditional": {
     "type": "image",
-    "$condition": "(#value = 'loop')",
+    "$condition": "((%.4s * #value) = 'loop')",
     "size": ["100%", "100%"],
     "texture": "textures/ui/phud/box_wide",
     "alpha": 0,
     "anims": ["@phud_phone.anim__jeb_loop_show__0"]
   },
-  "icon@abstract_phone_conditional": {
-    "texture": "('textures/ui/phud/' + $name)"
-  },
   "jeb_icon_wrapper@abstract_phone_conditional": {
     "type": "panel",
     "size": ["100%", "100%"],
-    "$condition": "(#value = 'loop')",
+    // Starts with loop. Should be `loop_jade`...
+    "$condition": "((%.4s * #value) = 'loop')",
     "controls": [
       {
         "start@jeb_icon": {
           "uv": "@phud_phone.anim__jeb_start_flipbook",
           "anims": ["@phud_phone.anim__jeb_start_destroy"],
-          "$name": "jeb_start"
+          "$name": "start"
         }
       },
       {
@@ -59,15 +79,10 @@
           "uv": "@phud_phone.anim__jeb_loop_flipbook",
           "anims": ["@phud_phone.anim__jeb_loop_show__0"],
           "alpha": 0,
-          "$name": "jeb_loop"
+          "$name": "loop"
         }
       }
     ]
-  },
-  "jeb_icon": {
-    "type": "image",
-    "texture": "('textures/ui/phud/' + $name)",
-    "uv_size": [64, 64]
   },
   "abstract_phone_conditional": {
     "type": "image",
