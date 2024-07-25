@@ -1,9 +1,6 @@
-**Update v2.10.18**
+**Update v2.10.20**
 
-- Add in Neuterer
-- New Caterpie Model
-- Improve Smell of curry VO Quality
-- Redo Phone/Calling Textures
-- Add new Fake Actionbar system
-- Update phone to work with Professor Maple
-- Update `pokemon.json` to match new behaviors.
+- Added Ceruledge Model
+- Added new Ditto Model by @joker00666 
+- Fixed Lucario and Lucario Mega Animations
+- Fixed some behaviors and animations
