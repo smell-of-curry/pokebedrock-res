@@ -1,61 +1,61 @@
 {
-    "format_version": "1.18.3",
-    "minecraft:client_entity": {
-        "description": {
-            "identifier": "pokemon:{speciesId}",
-            "materials": {
-                "default": "entity_emissive_alpha",
-                "aura": "charged_creeper"
-            },
-            "textures": {
-                "default": "textures/entity/pokemon/{speciesId}/{speciesId}",
-                "default_male": "textures/entity/pokemon/{speciesId}/{speciesId}",
-                "default_female": "textures/entity/pokemon/{speciesId}/{speciesId}",
-                "shiny": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
-                "shiny_male": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
-                "shiny_female": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
-                "evo_aura": "textures/entity/evolving"
-            },
-            "geometry": {
-                "default": "geometry.{speciesId}"
-            },
-            "scripts": {
-                "animate": [
-                    "controller",
-                    {
-                        "blink": "math.random(0.0, 25.0) <= 0.25"
-                    }
-                ]
-            },
-            "animations": {
-                "blink": "animation.{speciesId}.blink",
-                "ground_idle": "animation.{speciesId}.ground_idle",
-                "air_idle": "animation.{speciesId}.ground_idle",
-                "water_idle": "animation.{speciesId}.ground_idle",
-                "walking": "animation.{speciesId}.walking",
-                "flying": "animation.{speciesId}.walking",
-                "swimming": "animation.{speciesId}.walking",
-                "sleeping": "animation.{speciesId}.ground_idle",
-                "attack": "animation.{speciesId}.attack",
-                "look_at_target": "animation.pokemon.look_at_target",
-                "controller": "controller.animation.pokemon"
-            },
-            "particle_effects": {
-                "poison_smoke": "pokeb:posion_smoke",
-                "tail_flame": "pokeb:tail_flame"
-            },
-            "render_controllers": [
-                {
-                    "controller.render.pokemon:{speciesId}": "query.variant==0"
-                },
-                {
-                    "controller.render.evolve": "query.variant==1"
-                }
-            ],
-            "spawn_egg": {
-                "texture": "{speciesId}",
-                "texture_index": 0
-            }
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:{speciesId}",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/{speciesId}/{speciesId}",
+        "default_male": "textures/entity/pokemon/{speciesId}/{speciesId}",
+        "default_female": "textures/entity/pokemon/{speciesId}/{speciesId}",
+        "shiny": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
+        "shiny_male": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
+        "shiny_female": "textures/entity/pokemon/{speciesId}/shiny_{speciesId}",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.{speciesId}"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.{speciesId}.blink",
+        "ground_idle": "animation.{speciesId}.ground_idle",
+        "air_idle": "animation.{speciesId}.air_idle",
+        "water_idle": "animation.{speciesId}.water_idle",
+        "walking": "animation.{speciesId}.walking",
+        "flying": "animation.{speciesId}.flying",
+        "swimming": "animation.{speciesId}.swimming",
+        "sleeping": "animation.{speciesId}.sleeping",
+        "attack": "animation.{speciesId}.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:{speciesId}": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
         }
+      ],
+      "spawn_egg": {
+        "texture": "{speciesId}",
+        "texture_index": 0
+      }
     }
+  }
 }
