@@ -1,7 +1,25 @@
-**Update v2.10.22**
+**Update v2.10.23**
 
-- Updated & Fixed Crocalor Model
-- Updated & Fixed Fennekin Model
-- Fixed Vibrava Model
-- Fixed Mega Metagross Model
-- Added new TMS lang translations
+- Compressed all animation files to reduce addon pack size.
+- Compressed all entity files to reduce addon pack size.
+- Compressed all model files to reduce addon pack size
+- Compress all render controllers
+- Removed bad models
+ - Gastrodon
+ - Bonsly
+ - Weavile
+ - Electivre
+ - Magmortar
+ - Togekiss
+ - Gliscor
+ - Mamoswine
+- Added models for missing pokemon
+ - Slakoth
+ - Vigoroth
+ - Buneary
+ - Lopunny
+ - Shaymin
+ - Leavanny
+- Fixed Fennekin Unknown token `m`
+- Added a `removeUnusedFiles` script which will go through animations, models, and textures to find pokemon that are not being used
+- Added `compressAssets` script which will go through animations & models and compress native assets to reduce pack size.

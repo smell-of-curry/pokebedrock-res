@@ -13,7 +13,7 @@ import { Logger } from "./utils";
 Logger.setLogDirectory(path.join(process.cwd(), "logs"));
 
 const pokemonJsonPath = path.join(process.cwd(), "pokemon.json");
-const templatesPath = path.join(process.cwd(), "generator", "templates");
+const templatesPath = path.join(process.cwd(), "scripts", "templates");
 const pokemonEntityTemplatePath = path.join(
   templatesPath,
   "pokemon.entity.json"
@@ -262,8 +262,7 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
 
   fsExtra.writeJSONSync(
     path.join(renderControllersPath, `${pokemonTypeId}.rc.json`),
-    rcFile,
-    { spaces: 2 }
+    rcFile
   );
 }
 
@@ -313,8 +312,7 @@ function processPokemon() {
 
     fsExtra.writeJSONSync(
       path.join(pokemonEntityFilesDir, `${pokemonTypeId}.entity.json`),
-      entityFile,
-      { spaces: 2 }
+      entityFile
     );
 
     makeRenderController(pokemonTypeId, pokemon.skins);
