@@ -10,7 +10,7 @@ const exclude = [
   ".github",
   ".vscode",
   ".git",
-  "generator",
+  "scripts",
   "node_modules",
   ".gitattributes",
   ".gitignore",
@@ -22,18 +22,18 @@ const exclude = [
 
 /**
  * Pipes all files in the current directory to a zip file.
- * @param filePath
+ * @param fileName
  */
-async function pipeToFile(filePath: string) {
-  if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+async function pipeToFile(fileName: string) {
+  if (fs.existsSync(fileName)) fs.unlinkSync(fileName);
 
-  const output = fs.createWriteStream(filePath);
+  const output = fs.createWriteStream(fileName);
   const archive = archiver("zip", { zlib: { level: 9 } });
 
   output.on("close", () => {
     console.log(archive.pointer() + " total bytes");
     console.log((archive.pointer() / 1024 ** 2).toFixed(2) + "MB");
-    console.log(`Pack Archive created for ${filePath}!`);
+    console.log(`Pack Archive created for ${fileName}!`);
   });
 
   archive.on("warning", (err) => {
@@ -51,8 +51,8 @@ async function pipeToFile(filePath: string) {
   const contents = fs.readdirSync(".").filter((v) => !exclude.includes(v));
 
   for (const content of contents) {
-    if (content.includes(filePath)) continue;
-    console.log(`Adding ${content} to '${filePath}'...`);
+    if (content.startsWith(fileName.split(".")[0])) continue;
+    console.log(`Adding ${content} to '${fileName}'...`);
 
     if (fs.lstatSync(content).isDirectory()) {
       archive.directory(content, content);

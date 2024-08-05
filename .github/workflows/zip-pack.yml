@@ -58,6 +58,10 @@ jobs:
         echo "$changelog" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
 
+    - name: Set Release URL
+      id: set_release_url
+      run: echo "release_url=https://github.com/${{ github.repository }}/releases/tag/v${{ env.version }}" >> $GITHUB_ENV
+
     - name: Discord Webhook Action
       uses: tsickert/discord-webhook@v6.0.0
       with:
@@ -65,7 +69,7 @@ jobs:
         webhook-url: ${{ secrets.WEBHOOK_URL }}
         embed-title: "[RES] Update v${{ env.version }}"
         embed-description: "${{ env.changelog }}"
-        embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
+        embed-url: "${{ env.release_url }}"
         filename: "PokeBedrock RES ${{ env.version }}.mcpack"
 
     - name: Complete Workflow
