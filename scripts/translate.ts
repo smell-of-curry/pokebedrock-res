@@ -47,7 +47,7 @@ async function main() {
 		Object.entries(en).map(([key, value]) => [value, key])
 	);
 
-	if (fs.existsSync(file)) fs.copySync("texts/en_US.lang", file);
+	if (!fs.existsSync(file)) fs.copySync("texts/en_US.lang", file);
 	const lines = (await fs.readFile(file, "utf-8")).split("\n");
 
 	Logger.info(`.lang file has total of ${lines.length} lines.`);
