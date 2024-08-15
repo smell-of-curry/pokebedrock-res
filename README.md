@@ -49,3 +49,11 @@ And then translate 25% of source strings using
 ```
 npm run translate <language>
 ```
+
+### Getting status of translation
+
+Use
+
+```
+npm run translate <language> stat
+```

@@ -7,6 +7,8 @@ import { Logger } from "./utils";
 // Usage: npm run translate <lang: language>
 // Possible langages can be found in the texts/languages.json
 //
+// Use npm run translate <lang: language> stat to see translation progress.
+//
 // It can be possibly extended to fetch content from https://github.com/smogon/pokemon-showdown/tree/master/data/text
 
 async function main() {
@@ -20,6 +22,23 @@ async function main() {
 	}
 
 	const file = `texts/${targetName}.lang`;
+
+	if (process.argv[3] === "stat") {
+		const enStrings: Record<string, string> = {};
+
+		await forEachLangFileEntry(
+			"texts/en_US.lang",
+			(langKey, value) => (enStrings[langKey] = value)
+		);
+
+		let translated = 0;
+		const { strings } = await forEachLangFileEntry(file, (langKey, value) => {
+			if (value !== enStrings[langKey]) translated++;
+		});
+
+		Logger.info(`Stat: ${(translated/strings* 100).toFixed(2)}% translated.`);
+		return;
+	}
 
 	if (child_process.execSync(`git diff --name-only ${file}`).toString()) {
 		return Logger.critical(
@@ -47,39 +66,26 @@ async function main() {
 		Object.entries(en).map(([key, value]) => [value, key])
 	);
 
-	if (!fs.existsSync(file)) fs.copySync("texts/en_US.lang", file);
-	const lines = (await fs.readFile(file, "utf-8")).split("\n");
-
-	Logger.info(`.lang file has total of ${lines.length} lines.`);
-
 	let stringsFromCobblemon = 0;
 	let stringsFromCobblemonInTarget = 0;
 	let translated = 0;
-	let unparsed: number[] = [];
-	let strings = 0;
-	for (const [i, line] of lines.entries()) {
-		if (line.trim() === "" || line.trim().startsWith("#")) continue;
 
-		const parsed = /([^=]+)=([^\r]+)(.+)?/.exec(line);
-		if (!parsed) {
-			unparsed.push(i);
-			continue;
+	const { lines, strings, unparsed } = await forEachLangFileEntry(
+		file,
+		(langKey, value, comment, lines, i) => {
+			if (!(value in enValues)) return;
+
+			stringsFromCobblemon++;
+			const key = enValues[value];
+			if (!(key in target)) return;
+
+			stringsFromCobblemonInTarget++;
+			if (target[key] === en[key]) return;
+
+			translated++;
+			lines[i] = `${langKey}=${target[key]}${comment || ""}`;
 		}
-
-		const [, langkey, value, comment] = parsed;
-		strings++;
-		if (!(value in enValues)) continue;
-
-		stringsFromCobblemon++;
-		const key = enValues[value];
-		if (!(key in target)) continue;
-
-		stringsFromCobblemonInTarget++;
-		if (target[key] === en[key]) continue;
-
-		translated++;
-		lines[i] = `${langkey}=${target[key]}${comment || ""}`;
-	}
+	);
 
 	if (unparsed.length) {
 		Logger.warn(
@@ -135,3 +141,37 @@ const allLangs = [
 ];
 
 main();
+
+async function forEachLangFileEntry(
+	file: string,
+	callback: (
+		langKey: string,
+		value: string,
+		comment: undefined | string,
+		lines: string[],
+		i: number
+	) => void
+) {
+	if (!fs.existsSync(file)) fs.copySync("texts/en_US.lang", file);
+	const lines = (await fs.readFile(file, "utf-8")).split("\n");
+
+	Logger.info(`${file} has total of ${lines.length} lines.`);
+
+	let unparsed: number[] = [];
+	let strings = 0;
+	for (const [i, line] of lines.entries()) {
+		if (line.trim() === "" || line.trim().startsWith("#")) continue;
+
+		const parsed = /([^=]+)=([^\r]+)(.+)?/.exec(line);
+		if (!parsed) {
+			unparsed.push(i);
+			continue;
+		}
+
+		const [, langkey, value, comment] = parsed;
+		strings++;
+		callback(langkey, value, comment, lines, i);
+	}
+
+	return { unparsed, strings, lines };
+}
