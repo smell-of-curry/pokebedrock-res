@@ -1,25 +1,13 @@
-**Update v2.10.23**
+**Update v2.10.24**
 
-- Compressed all animation files to reduce addon pack size.
-- Compressed all entity files to reduce addon pack size.
-- Compressed all model files to reduce addon pack size
-- Compress all render controllers
-- Removed bad models
- - Gastrodon
- - Bonsly
- - Weavile
- - Electivre
- - Magmortar
- - Togekiss
- - Gliscor
- - Mamoswine
-- Added models for missing pokemon
- - Slakoth
- - Vigoroth
- - Buneary
- - Lopunny
- - Shaymin
- - Leavanny
-- Fixed Fennekin Unknown token `m`
-- Added a `removeUnusedFiles` script which will go through animations, models, and textures to find pokemon that are not being used
-- Added `compressAssets` script which will go through animations & models and compress native assets to reduce pack size.
+- Added Tinkaton Line by @Jok3r00666
+    - Tinkatink
+    - Tinkaton
+    - Tinkatuff
+- Converted Evo Stone Armor Names
+    - Converted prefix `_stone_plate` => `_stone_chestplate`
+    - Converted prefix `_stone_legs` => `_stone_leggings`
+    - Converted prefix `_stone_helm` => `_stone_helmet`
+- Updated Stairs and Trapdoor Geometry.
+- Removed some duplicates inside `en_US.lang`
+- Fixed some broken item textures
