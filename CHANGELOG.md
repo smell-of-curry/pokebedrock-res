@@ -1,4 +1,4 @@
-**Update v2.10.24**
+**Update v2.10.25**
 
 - Added Tinkaton Line by @Jok3r00666
     - Tinkatink
