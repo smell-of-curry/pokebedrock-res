@@ -1,4 +1,4 @@
-**Update v2.10.25**
+**Update v2.10.25-2**
 
 - Added Russian (ru_RU) translations by @leaftail1880
 - Added a new auto translation script by @leaftail1880
