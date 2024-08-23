@@ -1,16 +1,16 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
 export class Logger {
   private static logFilePath: string | null = null;
   private static readonly COLORS: Record<LogType, string> = {
-    info: '\x1b[32m',    // Green
-    warning: '\x1b[33m', // Yellow
-    error: '\x1b[31m',   // Red
-    debug: '\x1b[34m',   // Blue
-    critical: '\x1b[35m',// Magenta
-    trace: '\x1b[36m',   // Cyan
-    fatal: '\x1b[41m'    // Red background
+    info: "\x1b[32m", // Green
+    warning: "\x1b[33m", // Yellow
+    error: "\x1b[31m", // Red
+    debug: "\x1b[34m", // Blue
+    critical: "\x1b[35m", // Magenta
+    trace: "\x1b[36m", // Cyan
+    fatal: "\x1b[41m", // Red background
   };
 
   /**
@@ -19,11 +19,11 @@ export class Logger {
    * @param directory - The directory path for the log file.
    */
   static setLogDirectory(directory: string): void {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     if (!fs.existsSync(directory)) {
       fs.mkdirSync(directory, {
-        recursive: true
-      })
+        recursive: true,
+      });
     }
     this.logFilePath = path.join(directory, `log-${timestamp}.log`);
   }
@@ -63,35 +63,97 @@ export class Logger {
   }
 
   static info(message: string): void {
-    this.logMessage(message, 'info');
+    this.logMessage(message, "info");
   }
 
   static warn(message: string): void {
-    this.logMessage(message, 'warning');
+    this.logMessage(message, "warning");
   }
 
   static error(message: string): void {
-    this.logMessage(message, 'error');
+    this.logMessage(message, "error");
   }
 
   static debug(message: string): void {
-    this.logMessage(message, 'debug');
+    this.logMessage(message, "debug");
   }
 
   static critical(message: string): void {
-    this.logMessage(message, 'critical');
+    this.logMessage(message, "critical");
   }
 
   static trace(message: string): void {
-    this.logMessage(message, 'trace');
+    this.logMessage(message, "trace");
   }
 
   static fatal(message: string): void {
-    this.logMessage(message, 'fatal');
+    this.logMessage(message, "fatal");
   }
 }
 
 /**
  * Type alias for log message types.
  */
-type LogType = 'info' | 'warning' | 'error' | 'debug' | 'critical' | 'trace' | 'fatal';
+type LogType =
+  | "info"
+  | "warning"
+  | "error"
+  | "debug"
+  | "critical"
+  | "trace"
+  | "fatal";
+
+/**
+ * Removes comments from a JSON string, returning a clean result.
+ * @param jsonData
+ * @returns
+ */
+export function removeComments(jsonData: string): string {
+  let result = "";
+  let inString = false;
+  let inSingleLineComment = false;
+  let inBlockComment = false;
+  let i = 0;
+
+  while (i < jsonData.length) {
+    const char = jsonData[i];
+    const nextChar = jsonData[i + 1];
+
+    if (inString) {
+      // Check if we encounter an unescaped closing quote
+      if (char === '"' && jsonData[i - 1] !== '\\') {
+        inString = false;
+      }
+      result += char;
+    } else if (inSingleLineComment) {
+      // Single-line comments end with a newline character
+      if (char === '\n') {
+        inSingleLineComment = false;
+        result += char;  // Preserve the newline character
+      }
+    } else if (inBlockComment) {
+      // Block comments end with */
+      if (char === '*' && nextChar === '/') {
+        inBlockComment = false;
+        i++;  // Skip the closing '/'
+      }
+    } else {
+      if (char === '"') {
+        inString = true;
+        result += char;
+      } else if (char === '/' && nextChar === '/') {
+        inSingleLineComment = true;
+        i++;  // Skip the next '/'
+      } else if (char === '/' && nextChar === '*') {
+        inBlockComment = true;
+        i++;  // Skip the next '*'
+      } else {
+        result += char;
+      }
+    }
+    i++;
+  }
+
+  return result;
+}
+
