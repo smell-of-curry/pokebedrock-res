@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:sobble","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/sobble/sobble","default_male":"textures/entity/pokemon/sobble/sobble","default_female":"textures/entity/pokemon/sobble/sobble","shiny":"textures/entity/pokemon/sobble/shiny_sobble","shiny_male":"textures/entity/pokemon/sobble/shiny_sobble","shiny_female":"textures/entity/pokemon/sobble/shiny_sobble","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.sobble"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.sobble.blink","ground_idle":"animation.sobble.ground_idle","air_idle":"animation.sobble.ground_idle","water_idle":"animation.sobble.ground_idle","walking":"animation.sobble.walking","flying":"animation.sobble.ground_idle","swimming":"animation.sobble.ground_idle","sleeping":"animation.sobble.ground_idle","attack":"animation.sobble.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:sobble":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"sobble","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:sobble",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/sobble/sobble",
+        "default_male": "textures/entity/pokemon/sobble/sobble",
+        "default_female": "textures/entity/pokemon/sobble/sobble",
+        "shiny": "textures/entity/pokemon/sobble/shiny_sobble",
+        "shiny_male": "textures/entity/pokemon/sobble/shiny_sobble",
+        "shiny_female": "textures/entity/pokemon/sobble/shiny_sobble",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.sobble"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.sobble.blink",
+        "ground_idle": "animation.sobble.ground_idle",
+        "air_idle": "animation.sobble.ground_idle",
+        "water_idle": "animation.sobble.ground_idle",
+        "walking": "animation.sobble.walking",
+        "flying": "animation.sobble.ground_idle",
+        "swimming": "animation.sobble.ground_idle",
+        "sleeping": "animation.sobble.ground_idle",
+        "attack": "animation.sobble.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:sobble": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "sobble",
+        "texture_index": 0
+      }
+    }
+  }
+}

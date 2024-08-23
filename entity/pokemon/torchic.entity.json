@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:torchic","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/torchic/torchic","default_male":"textures/entity/pokemon/torchic/torchic","default_female":"textures/entity/pokemon/torchic/torchic","shiny":"textures/entity/pokemon/torchic/shiny_torchic","shiny_male":"textures/entity/pokemon/torchic/shiny_torchic","shiny_female":"textures/entity/pokemon/torchic/shiny_torchic","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.torchic"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.torchic.blink","ground_idle":"animation.torchic.ground_idle","air_idle":"animation.torchic.ground_idle","water_idle":"animation.torchic.ground_idle","walking":"animation.torchic.walking","flying":"animation.torchic.ground_idle","swimming":"animation.torchic.ground_idle","sleeping":"animation.torchic.ground_idle","attack":"animation.torchic.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:torchic":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"torchic","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:torchic",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/torchic/torchic",
+        "default_male": "textures/entity/pokemon/torchic/torchic",
+        "default_female": "textures/entity/pokemon/torchic/torchic",
+        "shiny": "textures/entity/pokemon/torchic/shiny_torchic",
+        "shiny_male": "textures/entity/pokemon/torchic/shiny_torchic",
+        "shiny_female": "textures/entity/pokemon/torchic/shiny_torchic",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.torchic"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.torchic.blink",
+        "ground_idle": "animation.torchic.ground_idle",
+        "air_idle": "animation.torchic.ground_idle",
+        "water_idle": "animation.torchic.ground_idle",
+        "walking": "animation.torchic.walking",
+        "flying": "animation.torchic.ground_idle",
+        "swimming": "animation.torchic.ground_idle",
+        "sleeping": "animation.torchic.ground_idle",
+        "attack": "animation.torchic.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:torchic": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "torchic",
+        "texture_index": 0
+      }
+    }
+  }
+}

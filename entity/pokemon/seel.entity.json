@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:seel","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/seel/seel","default_male":"textures/entity/pokemon/seel/seel","default_female":"textures/entity/pokemon/seel/seel","shiny":"textures/entity/pokemon/seel/shiny_seel","shiny_male":"textures/entity/pokemon/seel/shiny_seel","shiny_female":"textures/entity/pokemon/seel/shiny_seel","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.seel"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.seel.blink","ground_idle":"animation.seel.ground_idle","air_idle":"animation.seel.ground_idle","water_idle":"animation.seel.ground_idle","walking":"animation.seel.walking","flying":"animation.seel.ground_idle","swimming":"animation.seel.ground_idle","sleeping":"animation.seel.ground_idle","attack":"animation.seel.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:seel":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"seel","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:seel",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/seel/seel",
+        "default_male": "textures/entity/pokemon/seel/seel",
+        "default_female": "textures/entity/pokemon/seel/seel",
+        "shiny": "textures/entity/pokemon/seel/shiny_seel",
+        "shiny_male": "textures/entity/pokemon/seel/shiny_seel",
+        "shiny_female": "textures/entity/pokemon/seel/shiny_seel",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.seel"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.seel.blink",
+        "ground_idle": "animation.seel.ground_idle",
+        "air_idle": "animation.seel.ground_idle",
+        "water_idle": "animation.seel.ground_idle",
+        "walking": "animation.seel.walking",
+        "flying": "animation.seel.ground_idle",
+        "swimming": "animation.seel.ground_idle",
+        "sleeping": "animation.seel.ground_idle",
+        "attack": "animation.seel.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:seel": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "seel",
+        "texture_index": 0
+      }
+    }
+  }
+}

@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:meowth","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/meowth/meowth","default_male":"textures/entity/pokemon/meowth/meowth","default_female":"textures/entity/pokemon/meowth/meowth","shiny":"textures/entity/pokemon/meowth/shiny_meowth","shiny_male":"textures/entity/pokemon/meowth/shiny_meowth","shiny_female":"textures/entity/pokemon/meowth/shiny_meowth","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.meowth"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.meowth.blink","ground_idle":"animation.meowth.ground_idle","air_idle":"animation.meowth.ground_idle","water_idle":"animation.meowth.ground_idle","walking":"animation.meowth.walking","flying":"animation.meowth.ground_idle","swimming":"animation.meowth.ground_idle","sleeping":"animation.meowth.ground_idle","attack":"animation.meowth.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:meowth":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"meowth","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:meowth",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/meowth/meowth",
+        "default_male": "textures/entity/pokemon/meowth/meowth",
+        "default_female": "textures/entity/pokemon/meowth/meowth",
+        "shiny": "textures/entity/pokemon/meowth/shiny_meowth",
+        "shiny_male": "textures/entity/pokemon/meowth/shiny_meowth",
+        "shiny_female": "textures/entity/pokemon/meowth/shiny_meowth",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.meowth"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.meowth.blink",
+        "ground_idle": "animation.meowth.ground_idle",
+        "air_idle": "animation.meowth.ground_idle",
+        "water_idle": "animation.meowth.ground_idle",
+        "walking": "animation.meowth.walking",
+        "flying": "animation.meowth.ground_idle",
+        "swimming": "animation.meowth.ground_idle",
+        "sleeping": "animation.meowth.ground_idle",
+        "attack": "animation.meowth.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:meowth": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "meowth",
+        "texture_index": 0
+      }
+    }
+  }
+}

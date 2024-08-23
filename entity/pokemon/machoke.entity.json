@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:machoke","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/machoke/machoke","default_male":"textures/entity/pokemon/machoke/machoke","default_female":"textures/entity/pokemon/machoke/machoke","shiny":"textures/entity/pokemon/machoke/shiny_machoke","shiny_male":"textures/entity/pokemon/machoke/shiny_machoke","shiny_female":"textures/entity/pokemon/machoke/shiny_machoke","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.machoke"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.machoke.blink","ground_idle":"animation.machoke.ground_idle","air_idle":"animation.machoke.ground_idle","water_idle":"animation.machoke.ground_idle","walking":"animation.machoke.walking","flying":"animation.machoke.ground_idle","swimming":"animation.machoke.ground_idle","sleeping":"animation.machoke.ground_idle","attack":"animation.machoke.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:machoke":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"machoke","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:machoke",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/machoke/machoke",
+        "default_male": "textures/entity/pokemon/machoke/machoke",
+        "default_female": "textures/entity/pokemon/machoke/machoke",
+        "shiny": "textures/entity/pokemon/machoke/shiny_machoke",
+        "shiny_male": "textures/entity/pokemon/machoke/shiny_machoke",
+        "shiny_female": "textures/entity/pokemon/machoke/shiny_machoke",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.machoke"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.machoke.blink",
+        "ground_idle": "animation.machoke.ground_idle",
+        "air_idle": "animation.machoke.ground_idle",
+        "water_idle": "animation.machoke.ground_idle",
+        "walking": "animation.machoke.walking",
+        "flying": "animation.machoke.ground_idle",
+        "swimming": "animation.machoke.ground_idle",
+        "sleeping": "animation.machoke.ground_idle",
+        "attack": "animation.machoke.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:machoke": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "machoke",
+        "texture_index": 0
+      }
+    }
+  }
+}

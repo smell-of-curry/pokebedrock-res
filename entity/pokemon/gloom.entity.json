@@ -1,1 +1,61 @@
-{"format_version":"1.18.3","minecraft:client_entity":{"description":{"identifier":"pokemon:gloom","materials":{"default":"entity_emissive_alpha","aura":"charged_creeper"},"textures":{"default":"textures/entity/pokemon/gloom/gloom","default_male":"textures/entity/pokemon/gloom/gloom","default_female":"textures/entity/pokemon/gloom/gloom","shiny":"textures/entity/pokemon/gloom/shiny_gloom","shiny_male":"textures/entity/pokemon/gloom/shiny_gloom","shiny_female":"textures/entity/pokemon/gloom/shiny_gloom","evo_aura":"textures/entity/evolving"},"geometry":{"default":"geometry.gloom"},"scripts":{"animate":["controller",{"blink":"math.random(0.0, 25.0) <= 0.25"}]},"animations":{"blink":"animation.gloom.blink","ground_idle":"animation.gloom.ground_idle","air_idle":"animation.gloom.ground_idle","water_idle":"animation.gloom.ground_idle","walking":"animation.gloom.walking","flying":"animation.gloom.ground_idle","swimming":"animation.gloom.ground_idle","sleeping":"animation.gloom.ground_idle","attack":"animation.gloom.attack","look_at_target":"animation.pokemon.look_at_target","controller":"controller.animation.pokemon"},"particle_effects":{"poison_smoke":"pokeb:posion_smoke","tail_flame":"pokeb:tail_flame"},"render_controllers":[{"controller.render.pokemon:gloom":"query.variant==0"},{"controller.render.evolve":"query.variant==1"}],"spawn_egg":{"texture":"gloom","texture_index":0}}}}
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:gloom",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/gloom/gloom",
+        "default_male": "textures/entity/pokemon/gloom/gloom",
+        "default_female": "textures/entity/pokemon/gloom/gloom",
+        "shiny": "textures/entity/pokemon/gloom/shiny_gloom",
+        "shiny_male": "textures/entity/pokemon/gloom/shiny_gloom",
+        "shiny_female": "textures/entity/pokemon/gloom/shiny_gloom",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.gloom"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gloom.blink",
+        "ground_idle": "animation.gloom.ground_idle",
+        "air_idle": "animation.gloom.ground_idle",
+        "water_idle": "animation.gloom.ground_idle",
+        "walking": "animation.gloom.walking",
+        "flying": "animation.gloom.ground_idle",
+        "swimming": "animation.gloom.ground_idle",
+        "sleeping": "animation.gloom.ground_idle",
+        "attack": "animation.gloom.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:gloom": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "gloom",
+        "texture_index": 0
+      }
+    }
+  }
+}
