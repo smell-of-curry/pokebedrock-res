@@ -62,6 +62,11 @@
         "actionbar_control@data_control": {
           "$update_string": "&_actionbar:"
         }
+      },
+      {
+        "player_ping_control@data_control": {
+          "$update_string": "&_playerPing:"
+        }
       }
     ]
   },
@@ -125,6 +130,13 @@
         "source_control_name": "actionbar_control",
         "source_property_name": "(#preserved_text - '&_actionbar:')",
         "target_property_name": "#fake_actionbar",
+        "resolve_sibling_scope": true
+      },      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "player_ping_control",
+        "source_property_name": "(#preserved_text - '&_playerPing:')",
+        "target_property_name": "#player_ping_text",
         "resolve_sibling_scope": true
       }
     ],
