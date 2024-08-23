@@ -262,7 +262,10 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
 
   fsExtra.writeJSONSync(
     path.join(renderControllersPath, `${pokemonTypeId}.rc.json`),
-    rcFile
+    rcFile,
+    {
+      spaces: 2,
+    }
   );
 }
 
@@ -312,7 +315,10 @@ function processPokemon() {
 
     fsExtra.writeJSONSync(
       path.join(pokemonEntityFilesDir, `${pokemonTypeId}.entity.json`),
-      entityFile
+      entityFile,
+      {
+        spaces: 2,
+      }
     );
 
     makeRenderController(pokemonTypeId, pokemon.skins);
