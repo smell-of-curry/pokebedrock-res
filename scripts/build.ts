@@ -45,6 +45,7 @@ async function addPathToArchive(
       // Compress JSON file
       try {
         const fileContents = fsExtra.readFileSync(pathToAdd, "utf-8");
+        const fileContents = await fsExtra.readFile(pathToAdd, "utf-8");
         const commentsRemoved = removeComments(fileContents);
         const parsedJson = JSON.parse(commentsRemoved);
         const compressedContents = JSON.stringify(parsedJson);
