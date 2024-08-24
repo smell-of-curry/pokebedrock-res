@@ -41,7 +41,7 @@ async function addPathToArchive(
   } else {
     const ext = pathToAdd.split(".").pop();
 
-    if (ext === "json" || ext === "material") {
+    if (ext === "json") {
       // Compress JSON file
       try {
         const fileContents = fsExtra.readFileSync(pathToAdd, "utf-8");
