@@ -44,7 +44,6 @@ async function addPathToArchive(
     if (ext === "json") {
       // Compress JSON file
       try {
-        const fileContents = fsExtra.readFileSync(pathToAdd, "utf-8");
         const fileContents = await fsExtra.readFile(pathToAdd, "utf-8");
         const commentsRemoved = removeComments(fileContents);
         const parsedJson = JSON.parse(commentsRemoved);
@@ -53,7 +52,7 @@ async function addPathToArchive(
         // Add the compressed JSON content as a temporary file
         archive.append(compressedContents, { name: pathToAdd });
       } catch (error) {
-        console.error(`Error compressing ${pathToAdd}:`, error);
+        console.error(`Error compressing JSON: ${pathToAdd}:`, error);
       }
     } else if (ext === "png") {
       // Compress PNG file
@@ -69,7 +68,7 @@ async function addPathToArchive(
         // Add the compressed PNG content as a temporary file in memory
         archive.append(compressedBuffer, { name: pathToAdd });
       } catch (error) {
-        console.error(`Error compressing ${pathToAdd}:`, error);
+        console.error(`Error compressing PNG: ${pathToAdd}:`, error);
       }
     } else {
       archive.file(pathToAdd, { name: pathToAdd });
