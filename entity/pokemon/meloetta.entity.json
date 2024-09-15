@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:meloetta",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/meloetta",
-        "shiny": "textures/sprites/default/meloetta",
-        "default_male": "textures/sprites/default/meloetta",
-        "default_female": "textures/sprites/default/meloetta",
-        "shiny_male": "textures/sprites/default/meloetta",
-        "shiny_female": "textures/sprites/default/meloetta"
+        "default": "textures/entity/pokemon/meloetta/meloetta",
+        "default_male": "textures/entity/pokemon/meloetta/meloetta",
+        "default_female": "textures/entity/pokemon/meloetta/meloetta",
+        "shiny": "textures/entity/pokemon/meloetta/shiny_meloetta",
+        "shiny_male": "textures/entity/pokemon/meloetta/shiny_meloetta",
+        "shiny_female": "textures/entity/pokemon/meloetta/shiny_meloetta",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.meloetta"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.meloetta.blink",
+        "ground_idle": "animation.meloetta.ground_idle",
+        "air_idle": "animation.meloetta.ground_idle",
+        "water_idle": "animation.meloetta.water_idle",
+        "walking": "animation.meloetta.walking",
+        "flying": "animation.meloetta.ground_idle",
+        "swimming": "animation.meloetta.swimming",
+        "sleeping": "animation.meloetta.sleeping",
+        "attack": "animation.meloetta.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:meloetta": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "meloetta",

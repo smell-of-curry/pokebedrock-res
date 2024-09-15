@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:meloettapirouette",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/meloettapirouette",
-        "shiny": "textures/sprites/default/meloettapirouette",
-        "default_male": "textures/sprites/default/meloettapirouette",
-        "default_female": "textures/sprites/default/meloettapirouette",
-        "shiny_male": "textures/sprites/default/meloettapirouette",
-        "shiny_female": "textures/sprites/default/meloettapirouette"
+        "default": "textures/entity/pokemon/meloettapirouette/meloettapirouette",
+        "default_male": "textures/entity/pokemon/meloettapirouette/meloettapirouette",
+        "default_female": "textures/entity/pokemon/meloettapirouette/meloettapirouette",
+        "shiny": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette",
+        "shiny_male": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette",
+        "shiny_female": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.meloettapirouette"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.meloettapirouette.blink",
+        "ground_idle": "animation.meloettapirouette.ground_idle",
+        "air_idle": "animation.meloettapirouette.ground_idle",
+        "water_idle": "animation.meloettapirouette.water_idle",
+        "walking": "animation.meloettapirouette.walking",
+        "flying": "animation.meloettapirouette.ground_idle",
+        "swimming": "animation.meloettapirouette.swimming",
+        "sleeping": "animation.meloettapirouette.sleeping",
+        "attack": "animation.meloettapirouette.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:meloettapirouette": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "meloettapirouette",
