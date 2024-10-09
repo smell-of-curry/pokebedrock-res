@@ -108,7 +108,7 @@ type LogType =
  * @param jsonData
  * @returns
  */
-export function removeComments(jsonData: string): string {
+export function removeCommentsFromJSON(jsonData: string): string {
   let result = "";
   let inString = false;
   let inSingleLineComment = false;
@@ -157,3 +157,44 @@ export function removeComments(jsonData: string): string {
   return result;
 }
 
+/**
+ * Removes comments & spaces from a `.lang` file, returning a clean result in CRLF format.
+ * Supports comments starting with two or more `#` and in-line comments.
+ * @param langData 
+ */
+export function removeCommentsFromLang(langData: string): string {
+  // Split the data into lines
+  const lines = langData.split(/\r?\n/);
+  
+  const cleanedLines = lines
+    .map(line => {
+      // Remove any in-line comments that have two or more # (e.g., ##, ###, etc.)
+      const noInlineComments = line.split(/#{2,}/)[0].trim();
+      
+      // Return the line only if it's not empty and not a full-line comment (starting with ## or more #)
+      return noInlineComments.length > 0 && !noInlineComments.match(/^#{2,}/)
+        ? noInlineComments
+        : null;
+    })
+    .filter(Boolean); // Remove null values
+
+  // Join the cleaned lines with CRLF (\r\n) to maintain Windows-style line breaks
+  return cleanedLines.join("\r\n");
+}
+
+/**
+ * Function to count the total files and folders recursively.
+ */
+export function countFilesRecursively(directory: string): number {
+  let count = 0;
+  const items = fs.readdirSync(directory);
+  for (const item of items) {
+    const fullPath = path.join(directory, item);
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      count += countFilesRecursively(fullPath);
+    } else {
+      count += 1;
+    }
+  }
+  return count;
+}
