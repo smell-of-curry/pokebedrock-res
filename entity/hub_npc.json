@@ -1,0 +1,45 @@
+{
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+      "description": {
+        "identifier": "pokeb:trainer",
+        "materials": {
+          "default": "npc"
+        },
+        "textures": {
+          "black": "textures/entity/hub_npcs/black",
+          "gold": "textures/entity/hub_npcs/gold",
+          "ruby": "textures/entity/hub_npcs/ruby",
+          "sapphire": "textures/entity/hub_npcs/sapphire",
+          "silver": "textures/entity/hub_npcs/silver",
+          "white": "textures/entity/hub_npcs/white"
+        },
+        "geometry": {
+            "black": "geometry.hub_npc_black",
+            "gold": "geometry.hub_npc_gold",
+            "ruby": "geometry.hub_npc_ruby",
+            "sapphire": "geometry.hub_npc_sapphire",
+            "silver": "geometry.hub_npc_silver",
+            "white": "geometry.hub_npc_white"
+        },
+        "scripts": {
+          "animate": ["controller"]
+        },
+        "animations": {
+          "look_at_target_default": "animation.humanoid.look_at_target.default",
+          "look_at_target_gliding": "animation.humanoid.look_at_target.gliding",
+          "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
+          "controller": "controller.animation.trainer",
+          "black_idle": "animation.hub_npc_black.idle",
+          "black_blink": "animation.hub_npc_black.blink"
+        },
+        "render_controllers": ["controller.render.trainer"],
+        "spawn_egg": {
+          "texture": "spawn_egg",
+          "texture_index": 35
+        },
+        "enable_attachables": true
+      }
+    }
+  }
+  
