@@ -1,7 +1,14 @@
-**Update v2.10.28**
+**Update v2.11.0**
 
-- Added Added Meloetta and Melotta Pirouette
-- Fixed Dusk Stone Helmet and Leggings from not displaying
-- Added missing sprites for Urshifu and Urshifu Rapid Strike by @joker00666 
-- Updated `en_US.lang` to add a lot of missing spawn egg Pokémon, and remove a tremendous amount of duplicated text.
-- Fixed dawn stone helmet translation in `pt_BR`
+- Added Models/Skins for All Hub NPCS
+- Added Nature Mint Textures
+- Added PokeBuilder Assets by @mankind
+- Fixed grammar in en_US.lang `src.pokebedrock.modules.forms.party.editPokemonHeldItems.4`
+- Improved Resource Pack Building
+  1. Now a `contents.json` file will be generated
+  2. Now a `textures_list.json` file will be generated
+  3. A progress bar is now displayed for more info.
+  4. Added Compilation for material files to fix broken parsing.
+  5. Added Compilation for `.lang` files to save more space.
+  6. Added better logging
+  7. Improved speed of generation 2x
