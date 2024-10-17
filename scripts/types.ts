@@ -26,6 +26,10 @@ export interface PokemonJsonContent {
 type format_version = `${number}.${number}.${number}`;
 type Vector3 = [number, number, number];
 type Vector2 = [number, number];
+/**
+ * This needs to be a valid molang string.
+ */
+type Molang = string;
 
 export interface EntityFile {
   format_version: format_version;
@@ -116,7 +120,7 @@ interface RenderControllerFileRenderer {
     textures:
       | { [key: string]: string }
       | {
-          "Array.variants": (`Texture.${string}`)[];
+          "Array.variants": `Texture.${string}`[];
         };
   };
   geometry: `Geometry.${string}`;
@@ -126,10 +130,24 @@ interface RenderControllerFileRenderer {
     }
   ];
   textures: string[];
+  uv_anim?: {
+    offset: [number | Molang, number | Molang];
+    scale: [number | Molang, number | Molang];
+  };
 }
 export interface RenderControllerFile {
   format_version: format_version;
   render_controllers: {
     [key: `controller.render.${string}`]: RenderControllerFileRenderer;
+  };
+}
+
+export interface ItemTextureFile {
+  resource_pack_name: string;
+  texture_name: string;
+  texture_data: {
+    [key: string]: {
+      textures: string[] | string;
+    };
   };
 }

@@ -1,14 +1,18 @@
 import fs from "fs";
 import path from "path";
 import fsExtra from "fs-extra";
+import sharp from "sharp";
+import * as commentJson from "comment-json";
 import type {
   AnimationFile,
   EntityFile,
   GeometryFile,
+  ItemTextureFile,
   PokemonJsonContent,
   RenderControllerFile,
 } from "./types";
 import { Logger } from "./utils";
+import { ANIMATED_TEXTURED_POKEMON } from "./data/animatedTextures";
 
 Logger.setLogDirectory(path.join(process.cwd(), "logs"));
 
@@ -69,6 +73,10 @@ const hasInvalidAnimationFiles = new Set<string>();
 const missingGeometryFiles = new Set<string>();
 const invalidGeometryFiles = new Set<string>();
 const missingAnimationFiles = new Set<string>();
+/**
+ * Holds a list of pokemon typeId's that are missing a sprite
+ */
+const missingSprites = new Set<string>();
 
 /**
  * Checks if a valid geometry file exists for the given Pokemon type.
@@ -170,6 +178,11 @@ function updateEntityFileWithAnimations(
       entityDescription.animations[behaviorKey] = defaultAnimation;
   });
 
+  if (pokemonTypeId in ANIMATED_TEXTURED_POKEMON) {
+    entityFile["minecraft:client_entity"].description.materials["default"] =
+      "custom_animated"; // Apply UV Animation to the entity.
+  }
+
   entityFile["minecraft:client_entity"].description = entityDescription;
   return entityFile;
 }
@@ -257,6 +270,16 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
   }
 
   (renderer.arrays.textures["Array.variants"] as string[]) = textures;
+  if (pokemonTypeId in ANIMATED_TEXTURED_POKEMON) {
+    const [frameCount, fps] = ANIMATED_TEXTURED_POKEMON[pokemonTypeId];
+    renderer["uv_anim"] = {
+      offset: [
+        0.0,
+        `math.mod(math.floor(q.life_time * ${fps}), ${frameCount}) / ${frameCount}`,
+      ],
+      scale: [1.0, `1.0 / ${frameCount}`],
+    };
+  }
   rcFile.render_controllers[`controller.render.pokemon:${pokemonTypeId}`] =
     renderer;
 
@@ -270,9 +293,70 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
 }
 
 /**
+ * Checks if this pokemon has a sprite matching its typeId in `textures/sprites/default`.
+ * This will also generate a darkened sprite in `textures/sprites/dark` if it doesn't exist.
+ * Then will ensure the item texture exists in `textures/item_texture.json`.
+ *
+ * @param pokemonTypeId
+ */
+async function checkAndEnsureSprite(pokemonTypeId: string) {
+  const spriteDir = path.join("textures", "sprites", "default");
+  const darkSpriteDir = path.join("textures", "sprites", "dark");
+
+  const spritePath = path.join(spriteDir, `${pokemonTypeId}.png`);
+  const darkSpritePath = path.join(darkSpriteDir, `${pokemonTypeId}.png`);
+  const itemTexturesPath = path.join("textures", "item_texture.json");
+
+  if (!fs.existsSync(spritePath)) {
+    Logger.error(`Missing sprite for ${pokemonTypeId} in ${spritePath}`);
+    missingSprites.add(pokemonTypeId);
+    return;
+  }
+
+  if (!fs.existsSync(darkSpritePath)) {
+    Logger.info(`Generating dark sprite for ${pokemonTypeId}...`);
+    try {
+      // Load the image
+      const image = sharp(spritePath);
+
+      // Get the metadata (like dimensions) to properly manipulate pixels
+      const { width, height } = await image.metadata();
+
+      // Extract the raw pixel data
+      const rawImageData = await image.raw().toBuffer();
+
+      // Modify the pixel values to make them pitch dark
+      for (let i = 0; i < rawImageData.length; i += 4) {
+        // Set RGB values to near-zero, keeping the alpha channel intact
+        rawImageData[i] = 10; // Red
+        rawImageData[i + 1] = 10; // Green
+        rawImageData[i + 2] = 10; // Blue
+      }
+
+      // Create a new image with the modified pixel data
+      await sharp(rawImageData, {
+        raw: { width: width!, height: height!, channels: 4 },
+      }).toFile(darkSpritePath);
+
+      Logger.info(`Dark sprite generated for ${pokemonTypeId}!`);
+    } catch (error) {
+      Logger.error(`Error processing the image: ${error}`);
+    }
+  }
+
+  const itemTextures: ItemTextureFile = fsExtra.readJSONSync(itemTexturesPath);
+  itemTextures.texture_data[pokemonTypeId] = {
+    textures: spritePath.replace(/\\/g, "/"),
+  };
+  fsExtra.writeJSONSync(itemTexturesPath, itemTextures, {
+    spaces: 2,
+  });
+}
+
+/**
  * Main function to process all Pokemon and generate entity files.
  */
-function processPokemon() {
+async function processPokemon() {
   Logger.info("Starting Pokémon processing...");
 
   for (const pokemonTypeId in pokemonJson.pokemon) {
@@ -322,6 +406,7 @@ function processPokemon() {
     );
 
     makeRenderController(pokemonTypeId, pokemon.skins);
+    await checkAndEnsureSprite(pokemonTypeId);
 
     Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
@@ -363,6 +448,14 @@ function processPokemon() {
     });
   } else {
     markdownContent += "No pokemon have missing textures!\n";
+  }
+  markdownContent += `\n## Missing Pokemon Sprite Textures\n`;
+  if (missingSprites.size > 0) {
+    missingSprites.forEach((pokemonTypeId) => {
+      markdownContent += `- [${pokemonTypeId}](textures/sprites/default/${pokemonTypeId})\n`;
+    });
+  } else {
+    markdownContent += "No pokemon have missing sprite textures!\n";
   }
   markdownContent += `\n## Pokemon that Have Invalid Animation Names\n`;
   if (hasInvalidAnimationNames.size > 0) {
