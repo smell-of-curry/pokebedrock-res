@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:celebihalloween",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/celebihalloween/celebihalloween",
+        "default_male": "textures/entity/pokemon/celebihalloween/celebihalloween",
+        "default_female": "textures/entity/pokemon/celebihalloween/celebihalloween",
+        "shiny": "textures/entity/pokemon/celebihalloween/shiny_celebihalloween",
+        "shiny_male": "textures/entity/pokemon/celebihalloween/shiny_celebihalloween",
+        "shiny_female": "textures/entity/pokemon/celebihalloween/shiny_celebihalloween",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.celebihalloween"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.celebihalloween.blink",
+        "ground_idle": "animation.celebihalloween.ground_idle",
+        "air_idle": "animation.celebihalloween.ground_idle",
+        "water_idle": "animation.celebihalloween.water_idle",
+        "walking": "animation.celebihalloween.walking",
+        "flying": "animation.celebihalloween.ground_idle",
+        "swimming": "animation.celebihalloween.swimming",
+        "sleeping": "animation.celebihalloween.sleeping",
+        "attack": "animation.celebihalloween.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:celebihalloween": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "celebihalloween",
+        "texture_index": 0
+      }
+    }
+  }
+}
