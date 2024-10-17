@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:garbodor",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/garbodor",
-        "shiny": "textures/sprites/default/garbodor",
-        "default_male": "textures/sprites/default/garbodor",
-        "default_female": "textures/sprites/default/garbodor",
-        "shiny_male": "textures/sprites/default/garbodor",
-        "shiny_female": "textures/sprites/default/garbodor"
+        "default": "textures/entity/pokemon/garbodor/garbodor",
+        "default_male": "textures/entity/pokemon/garbodor/garbodor",
+        "default_female": "textures/entity/pokemon/garbodor/garbodor",
+        "shiny": "textures/entity/pokemon/garbodor/shiny_garbodor",
+        "shiny_male": "textures/entity/pokemon/garbodor/shiny_garbodor",
+        "shiny_female": "textures/entity/pokemon/garbodor/shiny_garbodor",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.garbodor"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.garbodor.blink",
+        "ground_idle": "animation.garbodor.ground_idle",
+        "air_idle": "animation.garbodor.ground_idle",
+        "water_idle": "animation.garbodor.water_idle",
+        "walking": "animation.garbodor.walking",
+        "flying": "animation.garbodor.ground_idle",
+        "swimming": "animation.garbodor.swimming",
+        "sleeping": "animation.garbodor.sleeping",
+        "attack": "animation.garbodor.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:garbodor": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "garbodor",

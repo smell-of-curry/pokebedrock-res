@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:trubbish",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/trubbish",
-        "shiny": "textures/sprites/default/trubbish",
-        "default_male": "textures/sprites/default/trubbish",
-        "default_female": "textures/sprites/default/trubbish",
-        "shiny_male": "textures/sprites/default/trubbish",
-        "shiny_female": "textures/sprites/default/trubbish"
+        "default": "textures/entity/pokemon/trubbish/trubbish",
+        "default_male": "textures/entity/pokemon/trubbish/trubbish",
+        "default_female": "textures/entity/pokemon/trubbish/trubbish",
+        "shiny": "textures/entity/pokemon/trubbish/shiny_trubbish",
+        "shiny_male": "textures/entity/pokemon/trubbish/shiny_trubbish",
+        "shiny_female": "textures/entity/pokemon/trubbish/shiny_trubbish",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.trubbish"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.trubbish.blink",
+        "ground_idle": "animation.trubbish.ground_idle",
+        "air_idle": "animation.trubbish.ground_idle",
+        "water_idle": "animation.trubbish.water_idle",
+        "walking": "animation.trubbish.walking",
+        "flying": "animation.trubbish.ground_idle",
+        "swimming": "animation.trubbish.swimming",
+        "sleeping": "animation.trubbish.sleeping",
+        "attack": "animation.trubbish.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:trubbish": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "trubbish",

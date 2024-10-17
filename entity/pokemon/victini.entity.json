@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:victini",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/victini",
-        "shiny": "textures/sprites/default/victini",
-        "default_male": "textures/sprites/default/victini",
-        "default_female": "textures/sprites/default/victini",
-        "shiny_male": "textures/sprites/default/victini",
-        "shiny_female": "textures/sprites/default/victini"
+        "default": "textures/entity/pokemon/victini/victini",
+        "default_male": "textures/entity/pokemon/victini/victini",
+        "default_female": "textures/entity/pokemon/victini/victini",
+        "shiny": "textures/entity/pokemon/victini/shiny_victini",
+        "shiny_male": "textures/entity/pokemon/victini/shiny_victini",
+        "shiny_female": "textures/entity/pokemon/victini/shiny_victini",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.victini"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.victini.blink",
+        "ground_idle": "animation.victini.ground_idle",
+        "air_idle": "animation.victini.ground_idle",
+        "water_idle": "animation.victini.water_idle",
+        "walking": "animation.victini.walking",
+        "flying": "animation.victini.ground_idle",
+        "swimming": "animation.victini.swimming",
+        "sleeping": "animation.victini.sleeping",
+        "attack": "animation.victini.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:victini": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "victini",

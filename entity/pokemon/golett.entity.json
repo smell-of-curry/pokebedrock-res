@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:golett",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/golett",
-        "shiny": "textures/sprites/default/golett",
-        "default_male": "textures/sprites/default/golett",
-        "default_female": "textures/sprites/default/golett",
-        "shiny_male": "textures/sprites/default/golett",
-        "shiny_female": "textures/sprites/default/golett"
+        "default": "textures/entity/pokemon/golett/golett",
+        "default_male": "textures/entity/pokemon/golett/golett",
+        "default_female": "textures/entity/pokemon/golett/golett",
+        "shiny": "textures/entity/pokemon/golett/shiny_golett",
+        "shiny_male": "textures/entity/pokemon/golett/shiny_golett",
+        "shiny_female": "textures/entity/pokemon/golett/shiny_golett",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.golett"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.golett.blink",
+        "ground_idle": "animation.golett.ground_idle",
+        "air_idle": "animation.golett.ground_idle",
+        "water_idle": "animation.golett.water_idle",
+        "walking": "animation.golett.walking",
+        "flying": "animation.golett.ground_idle",
+        "swimming": "animation.golett.swimming",
+        "sleeping": "animation.golett.sleeping",
+        "attack": "animation.golett.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:golett": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "golett",

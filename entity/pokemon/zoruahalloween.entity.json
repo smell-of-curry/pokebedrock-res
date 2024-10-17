@@ -1,0 +1,61 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokemon:zoruahalloween",
+      "materials": {
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
+      },
+      "textures": {
+        "default": "textures/entity/pokemon/zoruahalloween/zoruahalloween",
+        "default_male": "textures/entity/pokemon/zoruahalloween/zoruahalloween",
+        "default_female": "textures/entity/pokemon/zoruahalloween/zoruahalloween",
+        "shiny": "textures/entity/pokemon/zoruahalloween/shiny_zoruahalloween",
+        "shiny_male": "textures/entity/pokemon/zoruahalloween/shiny_zoruahalloween",
+        "shiny_female": "textures/entity/pokemon/zoruahalloween/shiny_zoruahalloween",
+        "evo_aura": "textures/entity/evolving"
+      },
+      "geometry": {
+        "default": "geometry.zoruahalloween"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.zoruahalloween.blink",
+        "ground_idle": "animation.zoruahalloween.ground_idle",
+        "air_idle": "animation.zoruahalloween.ground_idle",
+        "water_idle": "animation.zoruahalloween.water_idle",
+        "walking": "animation.zoruahalloween.walking",
+        "flying": "animation.zoruahalloween.ground_idle",
+        "swimming": "animation.zoruahalloween.swimming",
+        "sleeping": "animation.zoruahalloween.sleeping",
+        "attack": "animation.zoruahalloween.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
+      },
+      "render_controllers": [
+        {
+          "controller.render.pokemon:zoruahalloween": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
+      ],
+      "spawn_egg": {
+        "texture": "zoruahalloween",
+        "texture_index": 0
+      }
+    }
+  }
+}

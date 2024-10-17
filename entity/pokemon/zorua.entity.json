@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:zorua",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/zorua",
-        "shiny": "textures/sprites/default/zorua",
-        "default_male": "textures/sprites/default/zorua",
-        "default_female": "textures/sprites/default/zorua",
-        "shiny_male": "textures/sprites/default/zorua",
-        "shiny_female": "textures/sprites/default/zorua"
+        "default": "textures/entity/pokemon/zorua/zorua",
+        "default_male": "textures/entity/pokemon/zorua/zorua",
+        "default_female": "textures/entity/pokemon/zorua/zorua",
+        "shiny": "textures/entity/pokemon/zorua/shiny_zorua",
+        "shiny_male": "textures/entity/pokemon/zorua/shiny_zorua",
+        "shiny_female": "textures/entity/pokemon/zorua/shiny_zorua",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.zorua"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.zorua.blink",
+        "ground_idle": "animation.zorua.ground_idle",
+        "air_idle": "animation.zorua.ground_idle",
+        "water_idle": "animation.zorua.water_idle",
+        "walking": "animation.zorua.walking",
+        "flying": "animation.zorua.ground_idle",
+        "swimming": "animation.zorua.swimming",
+        "sleeping": "animation.zorua.sleeping",
+        "attack": "animation.zorua.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:zorua": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "zorua",

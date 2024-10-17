@@ -4,21 +4,53 @@
     "description": {
       "identifier": "pokemon:marshadow",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/marshadow",
-        "shiny": "textures/sprites/default/marshadow",
-        "default_male": "textures/sprites/default/marshadow",
-        "default_female": "textures/sprites/default/marshadow",
-        "shiny_male": "textures/sprites/default/marshadow",
-        "shiny_female": "textures/sprites/default/marshadow"
+        "default": "textures/entity/pokemon/marshadow/marshadow",
+        "default_male": "textures/entity/pokemon/marshadow/marshadow",
+        "default_female": "textures/entity/pokemon/marshadow/marshadow",
+        "shiny": "textures/entity/pokemon/marshadow/shiny_marshadow",
+        "shiny_male": "textures/entity/pokemon/marshadow/shiny_marshadow",
+        "shiny_female": "textures/entity/pokemon/marshadow/shiny_marshadow",
+        "evo_aura": "textures/entity/evolving"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.marshadow"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.marshadow.blink",
+        "ground_idle": "animation.marshadow.ground_idle",
+        "air_idle": "animation.marshadow.ground_idle",
+        "water_idle": "animation.marshadow.water_idle",
+        "walking": "animation.marshadow.walking",
+        "flying": "animation.marshadow.ground_idle",
+        "swimming": "animation.marshadow.swimming",
+        "sleeping": "animation.marshadow.sleeping",
+        "attack": "animation.marshadow.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:marshadow": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "marshadow",
