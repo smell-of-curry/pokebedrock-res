@@ -81,12 +81,7 @@ async function addPathToArchive(
 
       // Compress PNG file
       try {
-        const compressedBuffer = await sharp(pathToAdd)
-          .png({
-            effort: 10,
-            compressionLevel: 9,
-          })
-          .toBuffer();
+        const compressedBuffer = await sharp(pathToAdd).png().toBuffer();
 
         // Add the compressed PNG content as a temporary file in memory
         archive.append(compressedBuffer, { name: pathToAdd });
