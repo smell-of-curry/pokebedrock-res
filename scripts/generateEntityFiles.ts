@@ -14,8 +14,6 @@ import type {
 import { Logger } from "./utils";
 import { ANIMATED_TEXTURED_POKEMON } from "./data/animatedTextures";
 
-Logger.setLogDirectory(path.join(process.cwd(), "logs"));
-
 const pokemonJsonPath = path.join(process.cwd(), "pokemon.json");
 const templatesPath = path.join(process.cwd(), "scripts", "templates");
 const pokemonEntityTemplatePath = path.join(
@@ -34,6 +32,11 @@ const renderControllersPath = path.join(
   "render_controllers",
   "pokemon"
 );
+const itemTexturesPath = path.join(
+  process.cwd(),
+  "textures",
+  "item_texture.json"
+);
 
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
 fsExtra.ensureDirSync(renderControllersPath);
@@ -50,6 +53,8 @@ const pokemonSubstituteEntityFileTemplate: EntityFile = fsExtra.readJSONSync(
 const pokemonRCTemplate: RenderControllerFile = fsExtra.readJSONSync(
   pokemonRCTemplatePath
 );
+const itemTexturesFile: ItemTextureFile =
+  fsExtra.readJSONSync(itemTexturesPath);
 
 /**
  * Maps a pokemon's typeId to an array of missing animations
@@ -305,7 +310,6 @@ async function checkAndEnsureSprite(pokemonTypeId: string) {
 
   const spritePath = path.join(spriteDir, `${pokemonTypeId}.png`);
   const darkSpritePath = path.join(darkSpriteDir, `${pokemonTypeId}.png`);
-  const itemTexturesPath = path.join("textures", "item_texture.json");
 
   if (!fs.existsSync(spritePath)) {
     Logger.error(`Missing sprite for ${pokemonTypeId} in ${spritePath}`);
@@ -344,13 +348,9 @@ async function checkAndEnsureSprite(pokemonTypeId: string) {
     }
   }
 
-  const itemTextures: ItemTextureFile = fsExtra.readJSONSync(itemTexturesPath);
-  itemTextures.texture_data[pokemonTypeId] = {
+  itemTexturesFile.texture_data[pokemonTypeId] = {
     textures: spritePath.replace(/\\/g, "/"),
   };
-  fsExtra.writeJSONSync(itemTexturesPath, itemTextures, {
-    spaces: 2,
-  });
 }
 
 /**
@@ -415,12 +415,14 @@ async function processPokemon() {
       }
     );
 
-    makeRenderController(pokemonTypeId, pokemon.skins);
     await checkAndEnsureSprite(pokemonTypeId);
 
     Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
 
+  fsExtra.writeJSONSync(itemTexturesPath, itemTexturesFile, {
+    spaces: 2,
+  });
   Logger.info("Pokémon processing completed.");
 
   // Write the markdown content to the file
