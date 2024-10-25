@@ -397,6 +397,16 @@ async function processPokemon() {
       );
     }
 
+    if (pokemon.skins.length > 0) {
+      makeRenderController(pokemonTypeId, pokemon.skins);
+    } else if (hasModel) {
+      // Use the default render controller for Pokémon without skins
+      entityFile["minecraft:client_entity"].description.render_controllers[0] =
+        {
+          "controller.render.pokemon": "query.variant==0",
+        };
+    }
+
     fsExtra.writeJSONSync(
       path.join(pokemonEntityFilesDir, `${pokemonTypeId}.entity.json`),
       entityFile,
