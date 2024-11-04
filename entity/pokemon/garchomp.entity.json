@@ -8,13 +8,11 @@
         "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/entity/pokemon/garchomp/garchomp",
-        "default_male": "textures/entity/pokemon/garchomp/garchomp",
-        "default_female": "textures/entity/pokemon/garchomp/garchomp",
-        "shiny": "textures/entity/pokemon/garchomp/shiny_garchomp",
-        "shiny_male": "textures/entity/pokemon/garchomp/shiny_garchomp",
-        "shiny_female": "textures/entity/pokemon/garchomp/shiny_garchomp",
-        "evo_aura": "textures/entity/evolving"
+        "evo_aura": "textures/entity/evolving",
+        "male_default": "textures/entity/pokemon/garchomp/male_garchomp.png",
+        "male_shiny": "textures/entity/pokemon/garchomp/male_shiny_garchomp.png",
+        "female_default": "textures/entity/pokemon/garchomp/female_garchomp.png",
+        "female_shiny": "textures/entity/pokemon/garchomp/female_shiny_garchomp.png"
       },
       "geometry": {
         "default": "geometry.garchomp"
@@ -30,12 +28,12 @@
       "animations": {
         "blink": "animation.garchomp.blink",
         "ground_idle": "animation.garchomp.ground_idle",
-        "air_idle": "animation.garchomp.ground_idle",
-        "water_idle": "animation.garchomp.ground_idle",
+        "air_idle": "animation.garchomp.air_idle",
+        "water_idle": "animation.garchomp.water_idle",
         "walking": "animation.garchomp.walking",
         "flying": "animation.garchomp.flying",
-        "swimming": "animation.garchomp.ground_idle",
-        "sleeping": "animation.garchomp.ground_idle",
+        "swimming": "animation.garchomp.swimming",
+        "sleeping": "animation.garchomp.sleeping",
         "attack": "animation.garchomp.attack",
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
@@ -46,7 +44,7 @@
       },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:garchomp": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"

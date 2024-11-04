@@ -8,13 +8,13 @@
         "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/entity/pokemon/gabite/gabite",
-        "default_male": "textures/entity/pokemon/gabite/gabite",
-        "default_female": "textures/entity/pokemon/gabite/gabite",
-        "shiny": "textures/entity/pokemon/gabite/shiny_gabite",
-        "shiny_male": "textures/entity/pokemon/gabite/shiny_gabite",
-        "shiny_female": "textures/entity/pokemon/gabite/shiny_gabite",
-        "evo_aura": "textures/entity/evolving"
+        "evo_aura": "textures/entity/evolving",
+        "male_default": "textures/entity/pokemon/gabite/male_gabite.png",
+        "male_shiny": "textures/entity/pokemon/gabite/male_shiny_gabite.png",
+        "female_default": "textures/entity/pokemon/gabite/female_gabite.png",
+        "female_shiny": "textures/entity/pokemon/gabite/female_shiny_gabite.png",
+        "male_halloween": "textures/entity/pokemon/gabite/male_gabite_halloween.png",
+        "female_halloween": "textures/entity/pokemon/gabite/female_gabite_halloween.png"
       },
       "geometry": {
         "default": "geometry.gabite"
@@ -31,11 +31,11 @@
         "blink": "animation.gabite.blink",
         "ground_idle": "animation.gabite.ground_idle",
         "air_idle": "animation.gabite.ground_idle",
-        "water_idle": "animation.gabite.ground_idle",
+        "water_idle": "animation.gabite.water_idle",
         "walking": "animation.gabite.walking",
         "flying": "animation.gabite.ground_idle",
-        "swimming": "animation.gabite.ground_idle",
-        "sleeping": "animation.gabite.ground_idle",
+        "swimming": "animation.gabite.swimming",
+        "sleeping": "animation.gabite.sleeping",
         "attack": "animation.gabite.attack",
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
@@ -46,7 +46,7 @@
       },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:gabite": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"

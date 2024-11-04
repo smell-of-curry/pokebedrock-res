@@ -13,6 +13,7 @@ import type {
 } from "./types";
 import { Logger } from "./utils";
 import { ANIMATED_TEXTURED_POKEMON } from "./data/animatedTextures";
+import { POKEMON_GENDER_DIFFERENCES } from "./data/genderDiffrences";
 
 const pokemonJsonPath = path.join(process.cwd(), "pokemon.json");
 const templatesPath = path.join(process.cwd(), "scripts", "templates");
@@ -97,6 +98,7 @@ function hasValidGeometryFile(pokemonTypeId: string): boolean {
   );
   if (!fs.existsSync(filePath)) {
     missingGeometryFiles.add(pokemonTypeId);
+    Logger.error(`Missing geometry file for ${pokemonTypeId}!`);
     return false;
   }
 
@@ -106,6 +108,7 @@ function hasValidGeometryFile(pokemonTypeId: string): boolean {
   );
   if (!valid) {
     invalidGeometryFiles.add(pokemonTypeId);
+    Logger.error(`Invalid geometry file found for ${pokemonTypeId}!`);
     return false;
   }
   return valid;
@@ -124,6 +127,7 @@ function getDefinedAnimations(pokemonTypeId: string): string[] | undefined {
   );
   if (!fs.existsSync(filePath)) {
     missingAnimationFiles.add(pokemonTypeId);
+    Logger.error(`Missing animation file for ${pokemonTypeId}!`);
     return undefined;
   }
 
@@ -135,11 +139,13 @@ function getDefinedAnimations(pokemonTypeId: string): string[] | undefined {
     for (const animationName of animationNames) {
       if (animationName != "INVALID_ANIMATION_NAME") continue;
       hasInvalidAnimationNames.add(pokemonTypeId);
+      Logger.error(`Invalid animation name found in ${filePath}!`);
     }
     return animationNames.filter((a) => a != "INVALID_ANIMATION_NAME");
   } catch (error) {
     // Most likely there is a comment inside the JSON file.
     hasInvalidAnimationFiles.add(pokemonTypeId);
+    Logger.error(`Invalid JSON file found at ${filePath}, ${error}!`);
     return undefined;
   }
 }
@@ -176,6 +182,7 @@ function updateEntityFileWithAnimations(
     if (behavior[requirement] && animations.includes(behaviorKey)) return;
 
     const missingAnimations = missingPokemonAnimations.get(pokemonTypeId) ?? [];
+    //Logger.error(`Missing animation ${behaviorKey} for ${pokemonTypeId}!`);
     missingAnimations.push(behaviorKey);
     missingPokemonAnimations.set(pokemonTypeId, missingAnimations);
 
@@ -193,48 +200,97 @@ function updateEntityFileWithAnimations(
 }
 
 /**
- * Verifies and updates textures for the given Pokemon type.
+ * Verifies and updates textures for the given Pokemon type that has a model.
  * @param pokemonTypeId - The ID of the Pokemon type.
  * @param entityFile - The entity file to update.
  * @returns the updated entity file
  */
 function verifyAndUpdateTextures(
   pokemonTypeId: string,
-  skins: string[],
   entityFile: EntityFile
 ): EntityFile {
   const textureDir = path.join("textures", "entity", "pokemon", pokemonTypeId);
   const textures = fs.readdirSync(textureDir);
-  const defaultTexturePath = path
-    .join(textureDir, `${pokemonTypeId}.png`)
-    .replace(/\\/g, "/");
+  const missingTextures = missingPokemonTextures.get(pokemonTypeId) ?? [];
+  const getTexturePath = (fileName: string) =>
+    path.join(textureDir, fileName).replace(/\\/g, "/");
+
   const entityTextures =
     entityFile["minecraft:client_entity"].description.textures;
+  const pokemonData = pokemonJson.pokemon[pokemonTypeId];
 
-  const missingTextures = missingPokemonTextures.get(pokemonTypeId) ?? [];
-  if (!textures.includes(`${pokemonTypeId}.png`)) {
-    missingTextures.push(`${pokemonTypeId}.png`);
-    return entityFile; // not good!
-  }
-
-  if (!textures.includes(`shiny_${pokemonTypeId}.png`)) {
-    missingTextures.push(`shiny_${pokemonTypeId}.png`);
-
-    entityTextures["shiny"] = defaultTexturePath;
-    entityTextures["shiny_male"] = defaultTexturePath;
-    entityTextures["shiny_female"] = defaultTexturePath;
-  }
-
-  for (const skinId of skins) {
-    const skinFileName = `${pokemonTypeId}_${skinId}.png`;
-    if (textures.includes(skinFileName)) {
-      entityTextures[skinId] = path
-        .join(textureDir, skinFileName)
-        .replace(/\\/g, "/");
-      continue;
+  const ensureBasicTextures = () => {
+    const defaultTexture = `${pokemonTypeId}.png`;
+    if (!textures.includes(defaultTexture)) {
+      Logger.error(`Missing default texture for ${pokemonTypeId}!`);
+      missingTextures.push(defaultTexture);
     } else {
-      missingTextures.push(skinFileName);
-      entityTextures[skinId] = defaultTexturePath;
+      entityTextures["default"] = getTexturePath(defaultTexture);
+    }
+
+    const shinyTexture = `shiny_${pokemonTypeId}.png`;
+    if (!textures.includes(shinyTexture)) {
+      Logger.error(`Missing shiny texture for ${pokemonTypeId}!`);
+      missingTextures.push(shinyTexture);
+    } else {
+      entityTextures["shiny"] = getTexturePath(shinyTexture);
+    }
+  };
+
+  if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+    const genderDifferences = POKEMON_GENDER_DIFFERENCES[pokemonTypeId];
+    const changesTexture = genderDifferences.includes("texture");
+    const changesModel = genderDifferences.includes("model");
+    if (changesTexture || changesModel) {
+      for (const gender of ["male", "female"]) {
+        const defaultTexture = `${gender}_${pokemonTypeId}.png`;
+        if (!textures.includes(defaultTexture)) {
+          Logger.error(
+            `Missing texture ${defaultTexture} for ${pokemonTypeId}!`
+          );
+          missingTextures.push(defaultTexture);
+        } else {
+          entityTextures[`${gender}_default`] = getTexturePath(defaultTexture);
+        }
+
+        const shinyTexture = `${gender}_shiny_${pokemonTypeId}.png`;
+        if (!textures.includes(shinyTexture)) {
+          Logger.error(`Missing texture ${shinyTexture} for ${pokemonTypeId}!`);
+          missingTextures.push(shinyTexture);
+        } else {
+          entityTextures[`${gender}_shiny`] = getTexturePath(shinyTexture);
+        }
+      }
+    } else ensureBasicTextures();
+  } else ensureBasicTextures();
+
+  /**
+   * Verifies that the skin path exists, then adds it to the pokemon's textures
+   * @param skinId
+   * @param fileName
+   */
+  const addAndVerifySkin = (skinId: string, fileName: string) => {
+    const texturePath = getTexturePath(fileName);
+    if (textures.includes(fileName)) {
+      entityTextures[skinId] = texturePath;
+    } else {
+      Logger.error(`Missing texture ${fileName} for ${pokemonTypeId}!`);
+      missingTextures.push(fileName);
+      entityTextures[skinId] = texturePath;
+    }
+  };
+
+  for (const skinId of pokemonData.skins) {
+    if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+      // Pokemon has gender differences, each skin should have a male/female version
+
+      for (const gender of ["male", "female"]) {
+        const skinFileName = `${gender}_${pokemonTypeId}_${skinId}.png`;
+        addAndVerifySkin(`${gender}_${skinId}`, skinFileName);
+      }
+    } else {
+      const skinFileName = `${pokemonTypeId}_${skinId}.png`;
+      addAndVerifySkin(skinId, skinFileName);
     }
   }
 
@@ -256,25 +312,59 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
     pokemonTypeId
   );
 
+  let textureCheckMolangFile = "textureCheck.molang";
+
+  if (skins.length > 0 && pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+    // Has skins and has gender differences.
+    textureCheckMolangFile = "skinsGenderTextureCheck.molang";
+  } else if (skins.length > 0) {
+    // Has skins but doesn't have gender differences.
+    textureCheckMolangFile = "skinsTextureCheck.molang";
+  } else if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+    // Has gender differences but no skins.
+    textureCheckMolangFile = "genderTextureCheck.molang";
+  }
+
   const textureCheckMolang = fs
-    .readFileSync(path.join(templatesPath, "textureCheck.molang"), "utf-8")
+    .readFileSync(
+      path.join(templatesPath, "molang", textureCheckMolangFile),
+      "utf-8"
+    )
     .replace(/\s+/g, "");
 
   const updatedTemplate = templateString.replace(
-    `\'./textureCheck.molang\'`,
+    `\'{textureCheck.molang}\'`,
     textureCheckMolang
   );
   const rcFile: RenderControllerFile = JSON.parse(updatedTemplate);
 
   const renderer =
     rcFile.render_controllers[`controller.render.pokemon:${pokemonTypeId}`];
-  const textures = renderer.arrays.textures["Array.variants"] as string[];
+  let textures = renderer.arrays.textures["Array.variants"] as string[];
+
+  if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+    textures = [
+      "Texture.male_default",
+      "Texture.male_shiny",
+      "Texture.female_default",
+      "Texture.female_shiny",
+    ];
+  } else {
+    textures = ["Texture.default", "Texture.shiny"];
+  }
 
   for (const skin of skins) {
-    textures.push(`Texture.${skin}`);
+    if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
+      for (const gender of ["male", "female"]) {
+        textures.push(`Texture.${gender}_${skin}`);
+      }
+    } else {
+      textures.push(`Texture.${skin}`);
+    }
   }
 
   (renderer.arrays.textures["Array.variants"] as string[]) = textures;
+
   if (pokemonTypeId in ANIMATED_TEXTURED_POKEMON) {
     const [frameCount, fps] = ANIMATED_TEXTURED_POKEMON[pokemonTypeId];
     renderer["uv_anim"] = {
@@ -390,14 +480,14 @@ async function processPokemon() {
         Logger.error(`Pokemon ${pokemonTypeId} has no defined animations.`);
       }
 
-      entityFile = verifyAndUpdateTextures(
-        pokemonTypeId,
-        pokemon.skins,
-        entityFile
-      );
+      entityFile = verifyAndUpdateTextures(pokemonTypeId, entityFile);
     }
 
-    if (pokemon.skins.length > 0) {
+    if (
+      pokemon.skins.length > 0 ||
+      pokemonTypeId in POKEMON_GENDER_DIFFERENCES ||
+      pokemonTypeId in ANIMATED_TEXTURED_POKEMON
+    ) {
       makeRenderController(pokemonTypeId, pokemon.skins);
     } else if (hasModel) {
       // Use the default render controller for Pokémon without skins
@@ -417,7 +507,7 @@ async function processPokemon() {
 
     await checkAndEnsureSprite(pokemonTypeId);
 
-    Logger.info(`Processed Pokémon ${pokemonTypeId}`);
+    //Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
 
   fsExtra.writeJSONSync(itemTexturesPath, itemTexturesFile, {

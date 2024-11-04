@@ -10,6 +10,8 @@ export interface PokemonJsonContent {
    */
   pokemon: {
     [key: string]: {
+      name: string;
+      genderless: boolean;
       skins: string[];
       behavior: {
         canMove: boolean;

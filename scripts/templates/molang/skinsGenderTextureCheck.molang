@@ -1,0 +1,5 @@
+query.skin_id == 0
+	? query.property('pokeb:shiny') == true
+		? query.property('pokeb:gender') == 'male' ? 1 : 3
+		: query.property('pokeb:gender') == 'male' ? 0 : 2
+	: ((2 * query.skin_id) + (query.property('pokeb:gender') == 'male' ? 2 : 3))
