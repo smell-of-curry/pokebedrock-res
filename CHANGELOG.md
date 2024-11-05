@@ -1,9 +1,25 @@
-**Update v2.11.2**
+**Update v2.12.0**
 
-- Render Controllers are now standardized in which only pokemon that need custom render controllers (skin mapping) will get one.
-  This reduces pack size, and makes editing of the basic file a lot easier.
-- Added missing Zorua halloween dark sprite
-- File Logging has been removed for scripts to prevent useless info.
-- Now when generating entity files, the item textures file is now only edited once, to prevent broken reading and increase build speed.
-- Fixed HUGE problem with compression on images, that resulted in broken texture displays of pokemon.
-- Added Spanish + German v2.11.1 Halloween and Badges Translations by @TheBlueJo
+- Updated Walking Wake Texture by @Jok3r00666
+- Added Shiny Gardevoir Texture by @Jok3r00666
+- Added Shiny Ralts Texture by @Jok3r00666
+- Added Shiny Kirila Texture by @Jok3r00666
+- Updated Gabite Model and added Halloween Variant by @Jok3r00666
+- Updated Gible Model and added Halloween Variant by @Jok3r00666
+- Updated Garchomp Model and added Halloween Variant by @Jok3r00666
+- Added new Garchomp Mega Model and added Halloween Variant by @Jok3r00666
+- Updated Sandslash and added a new Halloween Variant by @isme
+- Updated Sandshrew and added a new Halloween Variant by @isme
+- Gender Differences for Pokemon have been completely revamped
+  - Now if a pokemon has a gender difference it will be marked in (`./scripts/data/genderDiffrences.ts`)
+  - Gender Differences can now include: model, texture, sprite, sound, and even animations.
+  - Now each entity file only needs to hold the files it has, instead of all ways having to have gender stuff in it.
+  - New Render Controllers are now generated when gender differences are required, with now dynamic texture change.
+  - Gender files are now verified to ensure integrity.
+  - Pokemon with gender differences now require variants for every skin.
+- Fixed a bug where pokemon with animated textures were not getting a new render controller.
+- Added `genderless` to the pokemon data in (`./pokemon.json`)
+- Added Missing Held items `item_texture.json` links.
+- Fixed Urshifu sprite being swapped with Urshifu Rapid Strike
+- Removed `You can apply this skin too: %s!` messages as skins no longer use applicable format.
+- Added all missing TM/HMs text.
