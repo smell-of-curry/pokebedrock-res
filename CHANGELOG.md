@@ -1,25 +1,7 @@
-**Update v2.12.0**
+**Update v2.12.1**
 
-- Updated Walking Wake Texture by @Jok3r00666
-- Added Shiny Gardevoir Texture by @Jok3r00666
-- Added Shiny Ralts Texture by @Jok3r00666
-- Added Shiny Kirila Texture by @Jok3r00666
-- Updated Gabite Model and added Halloween Variant by @Jok3r00666
-- Updated Gible Model and added Halloween Variant by @Jok3r00666
-- Updated Garchomp Model and added Halloween Variant by @Jok3r00666
-- Added new Garchomp Mega Model and added Halloween Variant by @Jok3r00666
-- Updated Sandslash and added a new Halloween Variant by @isme
-- Updated Sandshrew and added a new Halloween Variant by @isme
-- Gender Differences for Pokemon have been completely revamped
-  - Now if a pokemon has a gender difference it will be marked in (`./scripts/data/genderDiffrences.ts`)
-  - Gender Differences can now include: model, texture, sprite, sound, and even animations.
-  - Now each entity file only needs to hold the files it has, instead of all ways having to have gender stuff in it.
-  - New Render Controllers are now generated when gender differences are required, with now dynamic texture change.
-  - Gender files are now verified to ensure integrity.
-  - Pokemon with gender differences now require variants for every skin.
-- Fixed a bug where pokemon with animated textures were not getting a new render controller.
-- Added `genderless` to the pokemon data in (`./pokemon.json`)
-- Added Missing Held items `item_texture.json` links.
-- Fixed Urshifu sprite being swapped with Urshifu Rapid Strike
-- Removed `You can apply this skin too: %s!` messages as skins no longer use applicable format.
-- Added all missing TM/HMs text.
+- Fixed Garchomp halloween textures by @joker00666
+- Fixed Voltorb Shiny & Model by @rosegoldenowl
+- Sprites now verify each skin to ensure each skin has a sprite. Which means skins will have different displays in the addon.
+- Added Mewtwo Mega X Shadow/Armored Sprites
+- Added Mewtwo Shadow/Armored Sprites
