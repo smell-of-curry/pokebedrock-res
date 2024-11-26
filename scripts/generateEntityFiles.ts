@@ -394,53 +394,59 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
  *
  * @param pokemonTypeId
  */
-async function checkAndEnsureSprite(pokemonTypeId: string) {
+async function checkAndEnsureSprites(pokemonTypeId: string, skins: string[]) {
   const spriteDir = path.join("textures", "sprites", "default");
   const darkSpriteDir = path.join("textures", "sprites", "dark");
 
-  const spritePath = path.join(spriteDir, `${pokemonTypeId}.png`);
-  const darkSpritePath = path.join(darkSpriteDir, `${pokemonTypeId}.png`);
+  const sprites = [
+    pokemonTypeId,
+    ...skins.map((s) => `${pokemonTypeId}${s.replace(/_/g, "")}`),
+  ];
+  for (const sprite of sprites) {
+    const spritePath = path.join(spriteDir, `${sprite}.png`);
+    const darkSpritePath = path.join(darkSpriteDir, `${sprite}.png`);
 
-  if (!fs.existsSync(spritePath)) {
-    Logger.error(`Missing sprite for ${pokemonTypeId} in ${spritePath}`);
-    missingSprites.add(pokemonTypeId);
-    return;
-  }
-
-  if (!fs.existsSync(darkSpritePath)) {
-    Logger.info(`Generating dark sprite for ${pokemonTypeId}...`);
-    try {
-      // Load the image
-      const image = sharp(spritePath);
-
-      // Get the metadata (like dimensions) to properly manipulate pixels
-      const { width, height } = await image.metadata();
-
-      // Extract the raw pixel data
-      const rawImageData = await image.raw().toBuffer();
-
-      // Modify the pixel values to make them pitch dark
-      for (let i = 0; i < rawImageData.length; i += 4) {
-        // Set RGB values to near-zero, keeping the alpha channel intact
-        rawImageData[i] = 10; // Red
-        rawImageData[i + 1] = 10; // Green
-        rawImageData[i + 2] = 10; // Blue
-      }
-
-      // Create a new image with the modified pixel data
-      await sharp(rawImageData, {
-        raw: { width: width!, height: height!, channels: 4 },
-      }).toFile(darkSpritePath);
-
-      Logger.info(`Dark sprite generated for ${pokemonTypeId}!`);
-    } catch (error) {
-      Logger.error(`Error processing the image: ${error}`);
+    if (!fs.existsSync(spritePath)) {
+      Logger.error(`Missing sprite for ${sprite} in ${spritePath}`);
+      missingSprites.add(sprite);
+      continue;
     }
-  }
 
-  itemTexturesFile.texture_data[pokemonTypeId] = {
-    textures: spritePath.replace(/\\/g, "/"),
-  };
+    if (!fs.existsSync(darkSpritePath)) {
+      Logger.info(`Generating dark sprite for ${sprite}...`);
+      try {
+        // Load the image
+        const image = sharp(spritePath);
+
+        // Get the metadata (like dimensions) to properly manipulate pixels
+        const { width, height } = await image.metadata();
+
+        // Extract the raw pixel data
+        const rawImageData = await image.raw().toBuffer();
+
+        // Modify the pixel values to make them pitch dark
+        for (let i = 0; i < rawImageData.length; i += 4) {
+          // Set RGB values to near-zero, keeping the alpha channel intact
+          rawImageData[i] = 10; // Red
+          rawImageData[i + 1] = 10; // Green
+          rawImageData[i + 2] = 10; // Blue
+        }
+
+        // Create a new image with the modified pixel data
+        await sharp(rawImageData, {
+          raw: { width: width!, height: height!, channels: 4 },
+        }).toFile(darkSpritePath);
+
+        Logger.info(`Dark sprite generated for ${sprite}!`);
+      } catch (error) {
+        Logger.error(`Error processing the image: ${error}`);
+      }
+    }
+
+    itemTexturesFile.texture_data[sprite] = {
+      textures: spritePath.replace(/\\/g, "/"),
+    };
+  }
 }
 
 /**
@@ -505,7 +511,7 @@ async function processPokemon() {
       }
     );
 
-    await checkAndEnsureSprite(pokemonTypeId);
+    await checkAndEnsureSprites(pokemonTypeId, pokemon.skins);
 
     //Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
