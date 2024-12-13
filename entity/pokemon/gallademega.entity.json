@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:gallademega",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/gallademega",
-        "shiny": "textures/sprites/default/gallademega",
-        "default_male": "textures/sprites/default/gallademega",
-        "default_female": "textures/sprites/default/gallademega",
-        "shiny_male": "textures/sprites/default/gallademega",
-        "shiny_female": "textures/sprites/default/gallademega"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/gallademega/gallademega.png",
+        "shiny": "textures/entity/pokemon/gallademega/shiny_gallademega.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.gallademega"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gallademega.blink",
+        "ground_idle": "animation.gallademega.ground_idle",
+        "air_idle": "animation.gallademega.ground_idle",
+        "water_idle": "animation.gallademega.water_idle",
+        "walking": "animation.gallademega.walking",
+        "flying": "animation.gallademega.ground_idle",
+        "swimming": "animation.gallademega.swimming",
+        "sleeping": "animation.gallademega.sleeping",
+        "attack": "animation.gallademega.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "gallademega",
