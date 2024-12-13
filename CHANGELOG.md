@@ -1,17 +1,8 @@
-**Update v2.12.2**
+**Update v2.12.3**
 
-- Added in Santa Entity
-- Fixed Hex Mania Spawn egg translation not showing
-- Added another argument to `src.pokebedrock.modules.commands.redeem.10` to allow for a error reason.
-- Added Santa Quest Icons:
-    - Candy Cane
-    - Ability Icon
-    - Shiny Icon
-    - Snow Golem
-- Added Tinkaton Christmas Skin by @Jok3r00666
-- Added new Comfey Model and Christmas Skin by @DCRdemonKOD
-- Added Mew Christmas Skin by @Jok3r00666
-- Fixed the breaking sound of the custom ores (leaf stone, dusk, etc.)
-- Fixed the Mewtwo Shiny Armored skin which was broken.
-- Fixed the missing Female Pikachu Captin skin by @bruno
-- Deleted random Fossil Machine Geometry in ./models
+- Merged Pull Request from @TheblueJo which
+    - Fixed missing booster energy lang map
+    - Fixed black augurite, peat block,tart apple, sweet apple, and cracked pot items.
+- Added in Elf NPC Model & Animations
+- Added in Gallade and Mega Gallade by [Modeler] DCRdemonlord
+- Updated Terrain Textures resource pack name to match pokebedrock.
