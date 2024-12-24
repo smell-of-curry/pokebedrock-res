@@ -36,9 +36,23 @@ test("Verify's that all item icons are present", async () => {
     .mockImplementation(() => {});
 
   for (const icon of itemIcons) {
-    if (itemTextures.texture_data[icon]) continue;
-
-    console.error(`Icon '${icon}' not found in item_texture.json`);
+    const iconData = itemTextures.texture_data[icon];
+    if (iconData) {
+      // Ensure icon exists.
+      const textures = iconData["textures"];
+      if (!textures) {
+        console.error(`Icon '${icon}' has no textures`);
+        continue;
+      }
+      for (let iconPath of Array.isArray(textures) ? textures : [textures]) {
+        if (!iconPath.endsWith(".png")) iconPath += ".png";
+        if (!fs.existsSync(path.join(process.cwd(), iconPath))) {
+          console.error(`Icon '${icon}' not found at path '${iconPath}'`);
+        }
+      }
+    } else {
+      console.error(`Icon '${icon}' not found in item_texture.json`);
+    }
   }
 
   // Assert that console.error was not called
