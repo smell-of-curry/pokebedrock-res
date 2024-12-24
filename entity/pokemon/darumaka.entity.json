@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:darumaka",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/darumaka",
-        "shiny": "textures/sprites/default/darumaka",
-        "default_male": "textures/sprites/default/darumaka",
-        "default_female": "textures/sprites/default/darumaka",
-        "shiny_male": "textures/sprites/default/darumaka",
-        "shiny_female": "textures/sprites/default/darumaka"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/darumaka/darumaka.png",
+        "shiny": "textures/entity/pokemon/darumaka/shiny_darumaka.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.darumaka"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.darumaka.blink",
+        "ground_idle": "animation.darumaka.ground_idle",
+        "air_idle": "animation.darumaka.ground_idle",
+        "water_idle": "animation.darumaka.water_idle",
+        "walking": "animation.darumaka.walking",
+        "flying": "animation.darumaka.ground_idle",
+        "swimming": "animation.darumaka.swimming",
+        "sleeping": "animation.darumaka.sleeping",
+        "attack": "animation.darumaka.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "darumaka",

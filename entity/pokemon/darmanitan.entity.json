@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:darmanitan",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/darmanitan",
-        "shiny": "textures/sprites/default/darmanitan",
-        "default_male": "textures/sprites/default/darmanitan",
-        "default_female": "textures/sprites/default/darmanitan",
-        "shiny_male": "textures/sprites/default/darmanitan",
-        "shiny_female": "textures/sprites/default/darmanitan"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/darmanitan/darmanitan.png",
+        "shiny": "textures/entity/pokemon/darmanitan/shiny_darmanitan.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.darmanitan"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.darmanitan.blink",
+        "ground_idle": "animation.darmanitan.ground_idle",
+        "air_idle": "animation.darmanitan.ground_idle",
+        "water_idle": "animation.darmanitan.water_idle",
+        "walking": "animation.darmanitan.walking",
+        "flying": "animation.darmanitan.ground_idle",
+        "swimming": "animation.darmanitan.swimming",
+        "sleeping": "animation.darmanitan.sleeping",
+        "attack": "animation.darmanitan.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "darmanitan",
