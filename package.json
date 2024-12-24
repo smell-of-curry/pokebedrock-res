@@ -4,11 +4,12 @@
   "version": "2.12.3",
   "main": "scripts/build.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npx ts-node --project tsconfig.json scripts/build.ts",
     "generatePokemonFiles": "npx ts-node --project tsconfig.json scripts/generatePokemonFiles.ts",
     "removeUnusedFiles": "npx ts-node --project tsconfig.json scripts/removeUnusedFiles.ts",
-    "translate": "npx ts-node --project tsconfig.json scripts/translate.ts"
+    "translate": "npx ts-node --project tsconfig.json scripts/translate.ts",
+    "generateItemLang": "npx ts-node --project tsconfig.json scripts/generateItemLang.ts"
   },
   "repository": {
     "type": "git",
@@ -32,10 +33,14 @@
     "fs-extra": "^11.2.0",
     "inquirer": "^10.1.7",
     "progress": "^2.0.3",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/archiver": "^6.0.2",
-    "@types/fs-extra": "^11.0.4"
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
   }
 }
