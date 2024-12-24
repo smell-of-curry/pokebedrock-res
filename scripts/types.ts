@@ -13,6 +13,7 @@ export interface PokemonJsonContent {
       name: string;
       genderless: boolean;
       skins: string[];
+      canMount: boolean;
       behavior: {
         canMove: boolean;
         canWalk: boolean;
