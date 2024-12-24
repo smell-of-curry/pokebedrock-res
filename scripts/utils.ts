@@ -92,32 +92,32 @@ export function removeCommentsFromJSON(jsonData: string): string {
 
     if (inString) {
       // Check if we encounter an unescaped closing quote
-      if (char === '"' && jsonData[i - 1] !== '\\') {
+      if (char === '"' && jsonData[i - 1] !== "\\") {
         inString = false;
       }
       result += char;
     } else if (inSingleLineComment) {
       // Single-line comments end with a newline character
-      if (char === '\n') {
+      if (char === "\n") {
         inSingleLineComment = false;
-        result += char;  // Preserve the newline character
+        result += char; // Preserve the newline character
       }
     } else if (inBlockComment) {
       // Block comments end with */
-      if (char === '*' && nextChar === '/') {
+      if (char === "*" && nextChar === "/") {
         inBlockComment = false;
-        i++;  // Skip the closing '/'
+        i++; // Skip the closing '/'
       }
     } else {
       if (char === '"') {
         inString = true;
         result += char;
-      } else if (char === '/' && nextChar === '/') {
+      } else if (char === "/" && nextChar === "/") {
         inSingleLineComment = true;
-        i++;  // Skip the next '/'
-      } else if (char === '/' && nextChar === '*') {
+        i++; // Skip the next '/'
+      } else if (char === "/" && nextChar === "*") {
         inBlockComment = true;
-        i++;  // Skip the next '*'
+        i++; // Skip the next '*'
       } else {
         result += char;
       }
@@ -131,17 +131,17 @@ export function removeCommentsFromJSON(jsonData: string): string {
 /**
  * Removes comments & spaces from a `.lang` file, returning a clean result in CRLF format.
  * Supports comments starting with two or more `#` and in-line comments.
- * @param langData 
+ * @param langData
  */
 export function removeCommentsFromLang(langData: string): string {
   // Split the data into lines
   const lines = langData.split(/\r?\n/);
-  
+
   const cleanedLines = lines
-    .map(line => {
+    .map((line) => {
       // Remove any in-line comments that have two or more # (e.g., ##, ###, etc.)
       const noInlineComments = line.split(/#{2,}/)[0].trim();
-      
+
       // Return the line only if it's not empty and not a full-line comment (starting with ## or more #)
       return noInlineComments.length > 0 && !noInlineComments.match(/^#{2,}/)
         ? noInlineComments
@@ -168,4 +168,66 @@ export function countFilesRecursively(directory: string): number {
     }
   }
   return count;
+}
+
+/**
+ * Edits a section inside a `.lang` file with the given header, and replaces the content.
+ * If the section doesn't exist, it will be appended a new section to the end of the file.
+ *
+ * @param filePath Path to the `.lang` file (will create a new file if not found).
+ * @param header A section is a group of lines that start with a header (e.g., `# Header`).
+ * @param content Content to replace the section with.
+ */
+export function editLangSection(
+  filePath: string,
+  header: string,
+  content: string
+) {
+  if (!fs.existsSync(filePath))
+    fs.writeFileSync(filePath, `##${header}\n\n${content}`);
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const lines = fileContent.split(/\r?\n/);
+
+  // Find the start of the section
+  const startIndex = lines.findIndex(
+    (line) =>
+      // Remove all spaces to compare the header
+      line.replace(/[# ]/g, "") == header.replace(/[# ]/g, "")
+  );
+
+  if (startIndex === -1) {
+    // If the section doesn't exist, append it to the end of the file
+    lines.push(`## ${header}`);
+    lines.push(content);
+  } else {
+    // Replace the section with the new content
+    const endIndex = lines.findIndex(
+      (line, i) => i > startIndex && line.startsWith("#")
+    );
+    lines.splice(
+      startIndex,
+      endIndex - startIndex,
+      `## ${header}`,
+      content,
+      ""
+    );
+  }
+
+  fs.writeFileSync(filePath, lines.join("\r\n"));
+}
+
+/**
+ * Gets a displayable name for a item stack
+ * @param itemStack
+ * @returns
+ */
+export function typeIdToName(typeId: string): string {
+  const idName = typeId.split(":")[1];
+  if (!idName) throw new Error("ItemStack has no name");
+  return idName
+    .replace(/_/g, " ")
+    .replace(/_/g, " ")
+    .split(" ")
+    .map((v) => v.charAt(0).toUpperCase() + v.substring(1))
+    .join(" ");
 }

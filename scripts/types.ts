@@ -154,3 +154,7 @@ export interface ItemTextureFile {
     };
   };
 }
+
+export interface IItemsJson {
+  [key: `pokeb:${string}`]: string;
+}
