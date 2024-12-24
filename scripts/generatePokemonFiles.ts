@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import fsExtra from "fs-extra";
 import sharp from "sharp";
-import * as commentJson from "comment-json";
 import type {
   AnimationFile,
   EntityFile,
@@ -11,7 +10,7 @@ import type {
   PokemonJsonContent,
   RenderControllerFile,
 } from "./types";
-import { Logger } from "./utils";
+import { editLangSection, Logger } from "./utils";
 import { ANIMATED_TEXTURED_POKEMON } from "./data/animatedTextures";
 import { POKEMON_GENDER_DIFFERENCES } from "./data/genderDiffrences";
 
@@ -512,9 +511,32 @@ async function processPokemon() {
     );
 
     await checkAndEnsureSprites(pokemonTypeId, pokemon.skins);
-
     //Logger.info(`Processed Pokémon ${pokemonTypeId}`);
   }
+
+  // Update Lang
+  const langFilePath = path.join(process.cwd(), "texts", "en_US.lang");
+  editLangSection(
+    langFilePath,
+    "Pokemon Spawn Eggs",
+    Object.keys(pokemonJson.pokemon)
+      .map(
+        (species) =>
+          `item.spawn_egg.entity.pokemon:${species}.name=${pokemonJson.pokemon[species].name}`
+      )
+      .join("\n")
+  );
+  editLangSection(
+    langFilePath,
+    "Dismount Messages",
+    Object.keys(pokemonJson.pokemon)
+      .filter((p) => pokemonJson.pokemon[p].canMount)
+      .map(
+        (species) =>
+          `action.hint.exit.pokemon:${species}=Tap sneak to dismount\naction.hint.exit.console.pokemon:${species}=Press :_input_key.jump: to dismount`
+      )
+      .join("\n")
+  );
 
   fsExtra.writeJSONSync(itemTexturesPath, itemTexturesFile, {
     spaces: 2,
