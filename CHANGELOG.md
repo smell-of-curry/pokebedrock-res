@@ -1,13 +1,21 @@
-**Update v2.12.5**
+**Update v2.12.6**
 
-- The Testing Workflow will now use the latest node-version when running tests.
-- Renamed Armarouge Christmas animation file, as Christmas was spelled wrong.
-- Removed unused Gardevoir Mega Animation
-- Changed Floating Text Texture Name to be a proper `_spawn_egg` name.
-- Fixed the Leaders Crest `items.json` icon id.
-- Updated `scripts/removeUnusedFiles.ts`:
-    - Now when asking if you want to delete, it will give you proper path.
-    - It will now loop through `textures/item_textures.json` to ensure all is used.
-- `scripts/tests/verifyItemIcons` now does extra verification to ensure the file referenced in the icon id path exists.
-- Fixed & Removed a ton of icons, to fix displays of items.
-- Merge pull request #87 from TheblueJo/main, which updates de_DE and en_ES.
+- Add new Wooper Line by @rosegoldenowl
+    - This new line adds Wooper Paldea, Clodsire, Wooper, & Quagsire!
+- Fixed Broken Garchomp Halloween Textures by @AbstractJoker
+- Added in missing Gourge Sprites by @ismegames
+- Added in missing Pumpkaboo Sprites by @ismegames
+- Fixed Armarouge Christmas Animation handling.
+- Fixed Flabebe skin map generating broken `flababe` before skin name.
+- Fixed the Gastly Halloween Line Sprites by @brunodltt
+- Added missing Pikachu Line sprites by @brunodltt
+    - Pichu Spiky Eared
+    - Pikachu Captin
+    - Pikachu Detective
+    - Pikachu doll
+    - Pikachu santa
+    - Pikachu witch
+- Added Missing Snorlax santa sprite by @brunodltt
+- Repositioned the Darumka sprite to match the other by @ismegames
+- Added Missing Dudun Sparce Three Segment Texture by @ismegames
+- Added a TON of missing translations of Send Message to translate keys to improve compatibility.

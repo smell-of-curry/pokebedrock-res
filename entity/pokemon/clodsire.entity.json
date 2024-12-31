@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:clodsire",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/clodsire",
-        "shiny": "textures/sprites/default/clodsire",
-        "default_male": "textures/sprites/default/clodsire",
-        "default_female": "textures/sprites/default/clodsire",
-        "shiny_male": "textures/sprites/default/clodsire",
-        "shiny_female": "textures/sprites/default/clodsire"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/clodsire/clodsire.png",
+        "shiny": "textures/entity/pokemon/clodsire/shiny_clodsire.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.clodsire"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.clodsire.blink",
+        "ground_idle": "animation.clodsire.ground_idle",
+        "air_idle": "animation.clodsire.ground_idle",
+        "water_idle": "animation.clodsire.water_idle",
+        "walking": "animation.clodsire.walking",
+        "flying": "animation.clodsire.ground_idle",
+        "swimming": "animation.clodsire.swimming",
+        "sleeping": "animation.clodsire.sleeping",
+        "attack": "animation.clodsire.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "clodsire",
