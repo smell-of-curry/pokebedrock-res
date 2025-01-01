@@ -1,0 +1,60 @@
+{
+  "typeId": "pokemon:abra",
+  "is_shoulder_mountable": false,
+  "components": {
+    "minecraft:movement.hover": {
+      "max_turn": 30
+    },
+    "minecraft:behavior.random_hover": {
+      "priority": 10,
+      "xz_dist": 8,
+      "y_dist": 2,
+      "y_offset": -1,
+      "interval": 1,
+      "hover_height": [1, 2]
+    },
+    "minecraft:behavior.move_to_random_block": {
+      "priority": 2,
+      "within_radius": 5.0,
+      "block_distance": 128.0,
+      "speed_multiplier": 1.0
+    },
+    "minecraft:behavior.move_to_land": {
+      "priority": 10,
+      "search_count": 10,
+      "search_range": 16,
+      "search_height": 5,
+      "goal_radius": 0.5,
+      "speed_multiplier": 2.0
+    }
+  },
+  "movement": {
+    "walk": {
+      "can_walk": true,
+      "walkSpeed": 2
+    },
+    "fly": {
+      "can_fly": true,
+      "flySpeed": 2,
+      "can_land_on_trees": false,
+      "y_dist": 1,
+      "xz_dist": 6
+    },
+    "swim": false,
+    "teleport": {
+      "random_teleports": true,
+      "target_distance": 16,
+      "target_teleport_chance": 0.1,
+      "dark_teleport_chance": 0.1,
+      "light_teleport_chance": 0.2,
+      "max_random_teleport_time": 60,
+      "min_random_teleport_time": 50,
+      "random_teleport_cube": [64, 32, 64]
+    },
+    "navigation": {}
+  },
+  "breathing": {},
+  "resting": {},
+  "mountable": null,
+  "hit_box": {}
+}
