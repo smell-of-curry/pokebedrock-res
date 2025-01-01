@@ -365,6 +365,88 @@
         }
       },
       {
+        "pokebuilder_grid_image": {
+          "type": "image",
+          "size": [200, 200],
+          "offset": [0, -5],
+          "texture": "textures/ui/pokebuilder/27_slot_pokebuilder",
+          "$quest_chest_flag": "§c§h§e§s§t§p§o§k§b§u§i§l",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-4, 94]
+              }
+            },
+            {
+              "pokebuilder_chest_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 3],
+                "size": ["100% - 41px", "100% - 146px"],
+                "offset": [20, 114],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $quest_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "pokebuilder_grid_large_image": {
+          "type": "image",
+          "size": [200, 200],
+          "offset": [0, -5],
+          "texture": "textures/ui/pokebuilder/45_slot_pokebuilder",
+          "$pokebuilder_chest_flag": "§c§h§e§s§t§p§o§k§e§b§u§L",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-10, 52]
+              }
+            },
+            {
+              "pokebuilder_chest_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 6],
+                "size": ["100% - 32px", "100% - 80px"],
+                "offset": [17, 67],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $pokebuilder_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
         "backpack_grid": {
           "type": "image",
           "size": [245, 216],
@@ -754,7 +836,8 @@
   },
   "chest_item": {
     "type": "stack_panel",
-    "size": [16, 16],
+    "$item_size|default": [16, 16],
+    "size": "$item_size",
     "layer": 2,
     "controls": [
       {
