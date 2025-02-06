@@ -248,6 +248,9 @@ function verifyAndUpdateTextures(
             `Missing texture ${defaultTexture} for ${pokemonTypeId}!`
           );
           missingTextures.push(defaultTexture);
+          
+          // NOTE: This is a temporary fix to use the default texture
+          entityTextures[`${gender}_default`] = getTexturePath(`${pokemonTypeId}.png`);
         } else {
           entityTextures[`${gender}_default`] = getTexturePath(defaultTexture);
         }
@@ -256,6 +259,9 @@ function verifyAndUpdateTextures(
         if (!textures.includes(shinyTexture)) {
           Logger.error(`Missing texture ${shinyTexture} for ${pokemonTypeId}!`);
           missingTextures.push(shinyTexture);
+
+          // NOTE: This is a temporary fix to use the default texture
+          entityTextures[`${gender}_shiny`] = getTexturePath(`${pokemonTypeId}.png`);
         } else {
           entityTextures[`${gender}_shiny`] = getTexturePath(shinyTexture);
         }

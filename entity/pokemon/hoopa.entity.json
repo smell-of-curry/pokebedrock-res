@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:hoopa",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/hoopa",
-        "shiny": "textures/sprites/default/hoopa",
-        "default_male": "textures/sprites/default/hoopa",
-        "default_female": "textures/sprites/default/hoopa",
-        "shiny_male": "textures/sprites/default/hoopa",
-        "shiny_female": "textures/sprites/default/hoopa"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/hoopa/hoopa.png",
+        "shiny": "textures/entity/pokemon/hoopa/shiny_hoopa.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.hoopa"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.hoopa.blink",
+        "ground_idle": "animation.hoopa.ground_idle",
+        "air_idle": "animation.hoopa.ground_idle",
+        "water_idle": "animation.hoopa.water_idle",
+        "walking": "animation.hoopa.walking",
+        "flying": "animation.hoopa.ground_idle",
+        "swimming": "animation.hoopa.swimming",
+        "sleeping": "animation.hoopa.sleeping",
+        "attack": "animation.hoopa.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "hoopa",
