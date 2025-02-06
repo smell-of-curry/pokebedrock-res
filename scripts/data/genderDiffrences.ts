@@ -1,3 +1,5 @@
+import type pokemon from "../../pokemon.json";
+
 /**
  * A array of differences in a pokemon's display that need to be taken account for generation.
  * This is only relevant for pokemon that don't have a different identifier in-game. For example
@@ -65,7 +67,9 @@ type PokemonGenderDifferences = (
  * Comprehensive list of Pokémon with known gender differences, in National Dex order.
  */
 export const POKEMON_GENDER_DIFFERENCES: {
-  [pokemonId: string]: PokemonGenderDifferences;
+  [pokemonId in keyof Partial<
+    (typeof pokemon)["pokemon"]
+  >]: PokemonGenderDifferences;
 } = {
   // -- Gen 1 --------------------------------------
   /**
@@ -200,6 +204,11 @@ export const POKEMON_GENDER_DIFFERENCES: {
    */
   octillery: ["texture"],
 
+  /**
+   * The antennae are shorter on the female than on the male
+   */
+  ledian: ["texture"],
+
   // -- Gen 3 --------------------------------------
   /**
    * Female's petals are bigger on the head
@@ -223,6 +232,11 @@ export const POKEMON_GENDER_DIFFERENCES: {
    */
   hippopotas: ["texture", "sprite"],
   hippowdon: ["texture", "sprite"],
+
+  /**
+   * Female has longer cape
+   */
+  roserade: ["model", "texture"],
 
   /**
    * Only female evolves, and the female middle face marking is red
@@ -556,18 +570,8 @@ export const POKEMON_GENDER_DIFFERENCES: {
    */
   foongus: ["texture"],
   amoonguss: ["texture"],
-  // ...
 
-  /**
-   * Female’s ring marking is smaller
-   */
-  tympolegalar: ["texture"], // if you have regional forms included
-  // ... etc.
-
-  // This pattern continues for many Gen 5 Pokémon with subtle differences.
-
-  // -- Gen 6+ (a few big ones; many do not have well-known gender diffs or have separate forms) --
-
+  // -- Gen 6 --------------------------------------
   /**
    * Female tail is smaller
    */
@@ -578,7 +582,7 @@ export const POKEMON_GENDER_DIFFERENCES: {
   /**
    * Female’s whiskers are shorter
    */
-  litleo: ["texture"], 
+  litleo: ["texture"],
   // pyroar is above
 
   /**
@@ -593,27 +597,17 @@ export const POKEMON_GENDER_DIFFERENCES: {
   gogoat: ["model"],
 
   /**
-   * Female’s “dress” portion is smaller
+   * Female’s ear tufts are shorter
    */
-  espurr: ["texture"], 
+  espurr: ["texture"],
   // meowstic has separate IDs
 
-  // ...
   /**
-   * Female’s leaf is smaller
+   * Female has a rounder pumpkin shape
    */
-  pumpkaboo: ["texture"], 
-  gourgeist: ["texture"],
+  pumpkaboo: ["model"],
+  gourgeist: ["model"],
 
-  // -- Gen 7 examples (most have no significant difference) --
-  /**
-   * Female’s beak is slightly shorter
-   */
-  pikipek: ["texture"],
-  // ... etc. (Very few Gen 7 have notable differences aside from different forms)
-
-  // -- Gen 8/9 (again, mostly forms or separate IDs) --
-
-  // Add more into Legends: Arceus / Scarlet & Violet
-
+  // -- Gen 7/8/9 --------------------------------------
+  // None
 };
