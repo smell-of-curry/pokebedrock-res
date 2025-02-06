@@ -1,4 +1,5 @@
 import type pokemon from "../../pokemon.json";
+import { PokemonTypeId } from "../types";
 
 /**
  * A array of differences in a pokemon's display that need to be taken account for generation.
@@ -66,11 +67,9 @@ type PokemonGenderDifferences = (
 /**
  * Comprehensive list of Pokémon with known gender differences, in National Dex order.
  */
-export const POKEMON_GENDER_DIFFERENCES: {
-  [pokemonId in keyof Partial<
-    (typeof pokemon)["pokemon"]
-  >]: PokemonGenderDifferences;
-} = {
+export const POKEMON_GENDER_DIFFERENCES: Partial<{
+  [pokemonId in PokemonTypeId]: PokemonGenderDifferences;
+}> = {
   // -- Gen 1 --------------------------------------
   /**
    * Female's flower has a visible gynoecium

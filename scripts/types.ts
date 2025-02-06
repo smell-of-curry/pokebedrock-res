@@ -1,15 +1,18 @@
+import type pokemonJson from "../pokemon.json"
+export type PokemonTypeId = keyof (typeof pokemonJson)["pokemon"]
+
 export interface PokemonJsonContent {
   /**
    * Pokemon In PokeBedrock that have Models
    * @key PokemonName -> @value Types
    */
-  pokemonWithModels: string[];
+  pokemonWithModels: Partial<PokemonTypeId>[];
   /**
    * Pokemon In PokeBedrock that are Without Models
    * @key PokemonName -> @value Types
    */
   pokemon: {
-    [key: string]: {
+    [key in PokemonTypeId]: {
       name: string;
       genderless: boolean;
       skins: string[];
