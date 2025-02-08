@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:finizen",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/finizen",
-        "shiny": "textures/sprites/default/finizen",
-        "default_male": "textures/sprites/default/finizen",
-        "default_female": "textures/sprites/default/finizen",
-        "shiny_male": "textures/sprites/default/finizen",
-        "shiny_female": "textures/sprites/default/finizen"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/finizen/finizen.png",
+        "shiny": "textures/entity/pokemon/finizen/shiny_finizen.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.finizen"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.finizen.blink",
+        "ground_idle": "animation.finizen.ground_idle",
+        "air_idle": "animation.finizen.ground_idle",
+        "water_idle": "animation.finizen.water_idle",
+        "walking": "animation.finizen.walking",
+        "flying": "animation.finizen.ground_idle",
+        "swimming": "animation.finizen.swimming",
+        "sleeping": "animation.finizen.sleeping",
+        "attack": "animation.finizen.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "finizen",

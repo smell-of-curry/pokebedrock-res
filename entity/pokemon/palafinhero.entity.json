@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:palafinhero",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/palafinhero",
-        "shiny": "textures/sprites/default/palafinhero",
-        "default_male": "textures/sprites/default/palafinhero",
-        "default_female": "textures/sprites/default/palafinhero",
-        "shiny_male": "textures/sprites/default/palafinhero",
-        "shiny_female": "textures/sprites/default/palafinhero"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/palafinhero/palafinhero.png",
+        "shiny": "textures/entity/pokemon/palafinhero/shiny_palafinhero.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.palafinhero"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.palafinhero.blink",
+        "ground_idle": "animation.palafinhero.ground_idle",
+        "air_idle": "animation.palafinhero.ground_idle",
+        "water_idle": "animation.palafinhero.water_idle",
+        "walking": "animation.palafinhero.walking",
+        "flying": "animation.palafinhero.ground_idle",
+        "swimming": "animation.palafinhero.swimming",
+        "sleeping": "animation.palafinhero.sleeping",
+        "attack": "animation.palafinhero.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "palafinhero",

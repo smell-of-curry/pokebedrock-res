@@ -8,6 +8,7 @@ import type {
   GeometryFile,
   ItemTextureFile,
   PokemonJsonContent,
+  PokemonTypeId,
   RenderControllerFile,
 } from "./types";
 import { editLangSection, Logger } from "./utils";
@@ -88,7 +89,7 @@ const missingSprites = new Set<string>();
  * @param pokemonTypeId - The ID of the Pokemon type.
  * @returns `true` if the geometry file is valid, `false` otherwise.
  */
-function hasValidGeometryFile(pokemonTypeId: string): boolean {
+function hasValidGeometryFile(pokemonTypeId: PokemonTypeId): boolean {
   const filePath = path.join(
     "models",
     "entity",
@@ -118,7 +119,9 @@ function hasValidGeometryFile(pokemonTypeId: string): boolean {
  * @param pokemonTypeId - The ID of the Pokemon type.
  * @returns An array of animation names, or `undefined` if no animations are found.
  */
-function getDefinedAnimations(pokemonTypeId: string): string[] | undefined {
+function getDefinedAnimations(
+  pokemonTypeId: PokemonTypeId
+): string[] | undefined {
   const filePath = path.join(
     "animations",
     "pokemon",
@@ -157,7 +160,7 @@ function getDefinedAnimations(pokemonTypeId: string): string[] | undefined {
  * @returns the updated entity file
  */
 function updateEntityFileWithAnimations(
-  pokemonTypeId: string,
+  pokemonTypeId: PokemonTypeId,
   entityFile: EntityFile,
   animations: string[]
 ): EntityFile {
@@ -205,7 +208,7 @@ function updateEntityFileWithAnimations(
  * @returns the updated entity file
  */
 function verifyAndUpdateTextures(
-  pokemonTypeId: string,
+  pokemonTypeId: PokemonTypeId,
   entityFile: EntityFile
 ): EntityFile {
   const textureDir = path.join("textures", "entity", "pokemon", pokemonTypeId);
@@ -236,8 +239,8 @@ function verifyAndUpdateTextures(
     }
   };
 
-  if (pokemonTypeId in POKEMON_GENDER_DIFFERENCES) {
-    const genderDifferences = POKEMON_GENDER_DIFFERENCES[pokemonTypeId];
+  const genderDifferences = POKEMON_GENDER_DIFFERENCES[pokemonTypeId];
+  if (genderDifferences) {
     const changesTexture = genderDifferences.includes("texture");
     const changesModel = genderDifferences.includes("model");
     if (changesTexture || changesModel) {
@@ -248,6 +251,11 @@ function verifyAndUpdateTextures(
             `Missing texture ${defaultTexture} for ${pokemonTypeId}!`
           );
           missingTextures.push(defaultTexture);
+
+          // NOTE: This is a temporary fix to use the default texture
+          entityTextures[`${gender}_default`] = getTexturePath(
+            `${pokemonTypeId}.png`
+          );
         } else {
           entityTextures[`${gender}_default`] = getTexturePath(defaultTexture);
         }
@@ -256,6 +264,11 @@ function verifyAndUpdateTextures(
         if (!textures.includes(shinyTexture)) {
           Logger.error(`Missing texture ${shinyTexture} for ${pokemonTypeId}!`);
           missingTextures.push(shinyTexture);
+
+          // NOTE: This is a temporary fix to use the default texture
+          entityTextures[`${gender}_shiny`] = getTexturePath(
+            `${pokemonTypeId}.png`
+          );
         } else {
           entityTextures[`${gender}_shiny`] = getTexturePath(shinyTexture);
         }
@@ -305,7 +318,10 @@ function verifyAndUpdateTextures(
  * @param pokemonTypeId - The ID of the Pokémon type.
  * @param skins - An array of skin texture identifiers.
  */
-function makeRenderController(pokemonTypeId: string, skins: string[]): void {
+function makeRenderController(
+  pokemonTypeId: PokemonTypeId,
+  skins: string[]
+): void {
   const templateString = JSON.stringify(pokemonRCTemplate, null, 2).replace(
     /\{speciesId\}/g,
     pokemonTypeId
@@ -393,7 +409,10 @@ function makeRenderController(pokemonTypeId: string, skins: string[]): void {
  *
  * @param pokemonTypeId
  */
-async function checkAndEnsureSprites(pokemonTypeId: string, skins: string[]) {
+async function checkAndEnsureSprites(
+  pokemonTypeId: PokemonTypeId,
+  skins: string[]
+) {
   const spriteDir = path.join("textures", "sprites", "default");
   const darkSpriteDir = path.join("textures", "sprites", "dark");
 
@@ -454,10 +473,8 @@ async function checkAndEnsureSprites(pokemonTypeId: string, skins: string[]) {
 async function processPokemon() {
   Logger.info("Starting Pokémon processing...");
 
-  for (const pokemonTypeId in pokemonJson.pokemon) {
-    const pokemon = pokemonJson.pokemon[pokemonTypeId];
-    if (!pokemon) continue;
-
+  Object.entries(pokemonJson.pokemon).forEach(async ([key, pokemon]) => {
+    const pokemonTypeId = key as PokemonTypeId;
     const hasModel = pokemonJson.pokemonWithModels.includes(pokemonTypeId);
     let templateFile = hasModel
       ? pokemonEntityFileTemplate
@@ -512,7 +529,7 @@ async function processPokemon() {
 
     await checkAndEnsureSprites(pokemonTypeId, pokemon.skins);
     //Logger.info(`Processed Pokémon ${pokemonTypeId}`);
-  }
+  });
 
   // Update Lang
   const langFilePath = path.join(process.cwd(), "texts", "en_US.lang");
@@ -521,8 +538,8 @@ async function processPokemon() {
     "Pokemon Spawn Eggs",
     Object.keys(pokemonJson.pokemon)
       .map(
-        (species) =>
-          `item.spawn_egg.entity.pokemon:${species}.name=${pokemonJson.pokemon[species].name}`
+        (s) =>
+          `item.spawn_egg.entity.pokemon:${s}.name=${pokemonJson.pokemon[s as PokemonTypeId].name}`
       )
       .join("\n")
   );
@@ -530,7 +547,7 @@ async function processPokemon() {
     langFilePath,
     "Dismount Messages",
     Object.keys(pokemonJson.pokemon)
-      .filter((p) => pokemonJson.pokemon[p].canMount)
+      .filter((p) => pokemonJson.pokemon[p as PokemonTypeId].canMount)
       .map(
         (species) =>
           `action.hint.exit.pokemon:${species}=Tap sneak to dismount\naction.hint.exit.console.pokemon:${species}=Press :_input_key.jump: to dismount`

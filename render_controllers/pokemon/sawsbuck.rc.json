@@ -5,11 +5,16 @@
       "arrays": {
         "textures": {
           "Array.variants": [
-            "Texture.default",
-            "Texture.shiny",
-            "Texture.summer",
-            "Texture.autumn",
-            "Texture.winter"
+            "Texture.male_default",
+            "Texture.male_shiny",
+            "Texture.female_default",
+            "Texture.female_shiny",
+            "Texture.male_summer",
+            "Texture.female_summer",
+            "Texture.male_autumn",
+            "Texture.female_autumn",
+            "Texture.male_winter",
+            "Texture.female_winter"
           ]
         }
       },
@@ -20,7 +25,7 @@
         }
       ],
       "textures": [
-        "Array.variants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
+        "Array.variants[query.skin_id==0?query.property('pokeb:shiny')==true?query.property('pokeb:gender')=='male'?1:3:query.property('pokeb:gender')=='male'?0:2:((2*query.skin_id)+(query.property('pokeb:gender')=='male'?2:3))]"
       ]
     }
   }

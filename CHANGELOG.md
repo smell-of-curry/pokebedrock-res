@@ -1,21 +1,24 @@
-**Update v2.12.6**
+**Update v2.12.7**
 
-- Add new Wooper Line by @rosegoldenowl
-    - This new line adds Wooper Paldea, Clodsire, Wooper, & Quagsire!
-- Fixed Broken Garchomp Halloween Textures by @AbstractJoker
-- Added in missing Gourge Sprites by @ismegames
-- Added in missing Pumpkaboo Sprites by @ismegames
-- Fixed Armarouge Christmas Animation handling.
-- Fixed Flabebe skin map generating broken `flababe` before skin name.
-- Fixed the Gastly Halloween Line Sprites by @brunodltt
-- Added missing Pikachu Line sprites by @brunodltt
-    - Pichu Spiky Eared
-    - Pikachu Captin
-    - Pikachu Detective
-    - Pikachu doll
-    - Pikachu santa
-    - Pikachu witch
-- Added Missing Snorlax santa sprite by @brunodltt
-- Repositioned the Darumka sprite to match the other by @ismegames
-- Added Missing Dudun Sparce Three Segment Texture by @ismegames
-- Added a TON of missing translations of Send Message to translate keys to improve compatibility.
+- Added Move Tutor
+- Added PokeBuilder Forms
+- Updated Gender Differences with all pokemon that have gender differences
+- Created a initial test scheme of pokemon behaviors 
+- Added in a ton of new pokemon:
+    - Finizen
+    - Hoopa
+    - Ninetales
+    - Ninetales Alola
+    - Palafin
+    - Palafin Hero
+    - Vulpix
+    - Vulpix Alola
+- Updated Models for:
+    - Clodsire
+    - Golett
+    - Golett Halloween
+    - Golurk
+    - Golurk Halloween
+    - Gallade
+- Added in a Valentine NPC
+- Added in a Heart Scale Item

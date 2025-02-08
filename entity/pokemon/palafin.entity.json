@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:palafin",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/palafin",
-        "shiny": "textures/sprites/default/palafin",
-        "default_male": "textures/sprites/default/palafin",
-        "default_female": "textures/sprites/default/palafin",
-        "shiny_male": "textures/sprites/default/palafin",
-        "shiny_female": "textures/sprites/default/palafin"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/palafin/palafin.png",
+        "shiny": "textures/entity/pokemon/palafin/shiny_palafin.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.palafin"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.palafin.blink",
+        "ground_idle": "animation.palafin.ground_idle",
+        "air_idle": "animation.palafin.ground_idle",
+        "water_idle": "animation.palafin.water_idle",
+        "walking": "animation.palafin.walking",
+        "flying": "animation.palafin.ground_idle",
+        "swimming": "animation.palafin.swimming",
+        "sleeping": "animation.palafin.sleeping",
+        "attack": "animation.palafin.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "palafin",

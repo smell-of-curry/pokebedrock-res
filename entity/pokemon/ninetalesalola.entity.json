@@ -4,21 +4,49 @@
     "description": {
       "identifier": "pokemon:ninetalesalola",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/ninetalesalola",
-        "shiny": "textures/sprites/default/ninetalesalola",
-        "default_male": "textures/sprites/default/ninetalesalola",
-        "default_female": "textures/sprites/default/ninetalesalola",
-        "shiny_male": "textures/sprites/default/ninetalesalola",
-        "shiny_female": "textures/sprites/default/ninetalesalola"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/ninetalesalola/ninetalesalola.png",
+        "shiny": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola.png"
       },
       "geometry": {
-        "default": "geometry.substitute"
+        "default": "geometry.ninetalesalola"
+      },
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.ninetalesalola.blink",
+        "ground_idle": "animation.ninetalesalola.ground_idle",
+        "air_idle": "animation.ninetalesalola.ground_idle",
+        "water_idle": "animation.ninetalesalola.water_idle",
+        "walking": "animation.ninetalesalola.walking",
+        "flying": "animation.ninetalesalola.ground_idle",
+        "swimming": "animation.ninetalesalola.swimming",
+        "sleeping": "animation.ninetalesalola.sleeping",
+        "attack": "animation.ninetalesalola.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
+      },
+      "particle_effects": {
+        "poison_smoke": "pokeb:posion_smoke",
+        "tail_flame": "pokeb:tail_flame"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "ninetalesalola",
