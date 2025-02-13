@@ -14,9 +14,9 @@ import { PokemonTypeId } from "../types";
  *               the Female has black (purple in Generation V) spots on her lower wings.
  *      File Names (in `./textures/entity/pokemon/pokemon_name/`):
  *          - `male_{pokemonId}.png`
+ *          - `male_shiny_{pokemonId}.png`
  *          - `female_{pokemonId}.png`
- *          - `shiny_male_{pokemonId}.png`
- *          - `shiny_female_{pokemonId}.png`
+ *          - `female_shiny_{pokemonId}.png`
  *      Note: If a pokemon has a model difference, a texture difference is inherited. Also
  *            if the pokemon has any skins, the skin must have a variant too for genders.
  *            For Example: `male_{pokemonId}_{skinId}.png`
@@ -207,6 +207,15 @@ export const POKEMON_GENDER_DIFFERENCES: Partial<{
    * The antennae are shorter on the female than on the male
    */
   ledian: ["texture"],
+
+  /**
+   * Female has one set of gill branches
+   */
+  wooper: ["texture"],
+  /**
+   * Female has a smaller dorsal ridge
+   */
+  quagsire: ["texture"],
 
   // -- Gen 3 --------------------------------------
   /**
