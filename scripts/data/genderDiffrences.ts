@@ -1,4 +1,3 @@
-import type pokemon from "../../pokemon.json";
 import { PokemonTypeId } from "../types";
 
 /**
