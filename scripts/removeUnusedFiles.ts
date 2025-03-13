@@ -1,7 +1,12 @@
 import fsExtra from "fs-extra";
 import { join } from "path";
 import { confirm } from "@inquirer/prompts";
-import { IItemsJson, ItemTextureFile, PokemonJsonContent } from "./types";
+import {
+  IItemsJson,
+  ItemTextureFile,
+  PokemonJsonContent,
+  PokemonTypeId,
+} from "./types";
 import { Logger } from "./utils";
 
 const root = join(__dirname, "../");
@@ -37,18 +42,28 @@ const getPath = (folder: string) => {
  * @param file
  * @returns
  */
-const getPokemonTypeId = (folder: string, file: string) => {
+function getPokemonTypeId(folder: string, file: string): PokemonTypeId {
+  let typeId: string | null = null;
+  
   switch (folder) {
     case "animations":
-      return file.replace(".animation.json", "");
+      typeId = file.replace(".animation.json", "") as PokemonTypeId;
+      break;
     case "models":
-      return file.replace(".geo.json", "");
+      typeId = file.replace(".geo.json", "");
+      break;
     case "sounds":
-      return file.replace(".ogg", "");
+      typeId = file.replace(".ogg", "");
+      break;
     default:
-      return file;
+      throw new Error(`Unknown folder ${folder} for file ${file}`);
   }
-};
+
+  if (typeId in pokemonJson.pokemon) return typeId as PokemonTypeId;
+  throw new Error(
+    `Unknown Pokemon Type ID ${typeId} in folder ${folder} for file ${file}`
+  );
+}
 
 (async () => {
   for (const folder of folders) {
