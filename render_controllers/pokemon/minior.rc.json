@@ -3,10 +3,21 @@
   "render_controllers": {
     "controller.render.pokemon:minior": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default",
+            "Geometry.orange",
+            "Geometry.yellow",
+            "Geometry.green",
+            "Geometry.blue",
+            "Geometry.indigo",
+            "Geometry.violet"
+          ]
+        },
         "textures": {
-          "Array.variants": [
+          "Array.textureVariants": [
             "Texture.default",
-            "Texture.shiny",
+            "Texture.shiny_default",
             "Texture.orange",
             "Texture.yellow",
             "Texture.green",
@@ -16,14 +27,14 @@
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:(query.skin_id==1)?1:(query.skin_id==2)?2:(query.skin_id==3)?3:(query.skin_id==4)?4:(query.skin_id==5)?5:(query.skin_id==6)?6:0]",
       "textures": [
-        "Array.variants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
+        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
       ]
     }
   }

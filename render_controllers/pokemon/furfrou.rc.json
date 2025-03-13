@@ -3,41 +3,44 @@
   "render_controllers": {
     "controller.render.pokemon:furfrou": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default",
+            "Geometry.dandy",
+            "Geometry.debutante",
+            "Geometry.diamond",
+            "Geometry.heart",
+            "Geometry.kabuki",
+            "Geometry.la_reine",
+            "Geometry.matron",
+            "Geometry.pharaoh",
+            "Geometry.star"
+          ]
+        },
         "textures": {
-          "Array.variants": [
-            "Texture.male_default",
-            "Texture.male_shiny",
-            "Texture.female_default",
-            "Texture.female_shiny",
-            "Texture.male_dandy",
-            "Texture.female_dandy",
-            "Texture.male_debutante",
-            "Texture.female_debutante",
-            "Texture.male_diamond",
-            "Texture.female_diamond",
-            "Texture.male_heart",
-            "Texture.female_heart",
-            "Texture.male_kabuki",
-            "Texture.female_kabuki",
-            "Texture.male_la_reine",
-            "Texture.female_la_reine",
-            "Texture.male_matron",
-            "Texture.female_matron",
-            "Texture.male_pharaoh",
-            "Texture.female_pharaoh",
-            "Texture.male_star",
-            "Texture.female_star"
+          "Array.textureVariants": [
+            "Texture.default",
+            "Texture.shiny_default",
+            "Texture.dandy",
+            "Texture.debutante",
+            "Texture.diamond",
+            "Texture.heart",
+            "Texture.kabuki",
+            "Texture.la_reine",
+            "Texture.matron",
+            "Texture.pharaoh",
+            "Texture.star"
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:(query.skin_id==1)?1:(query.skin_id==2)?2:(query.skin_id==3)?3:(query.skin_id==4)?4:(query.skin_id==5)?5:(query.skin_id==6)?6:(query.skin_id==7)?7:(query.skin_id==8)?8:(query.skin_id==9)?9:0]",
       "textures": [
-        "Array.variants[query.skin_id==0?query.property('pokeb:shiny')==true?query.property('pokeb:gender')=='male'?1:3:query.property('pokeb:gender')=='male'?0:2:((2*query.skin_id)+(query.property('pokeb:gender')=='male'?2:3))]"
+        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
       ]
     }
   }

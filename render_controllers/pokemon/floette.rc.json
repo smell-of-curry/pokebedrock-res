@@ -3,10 +3,15 @@
   "render_controllers": {
     "controller.render.pokemon:floette": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default"
+          ]
+        },
         "textures": {
-          "Array.variants": [
+          "Array.textureVariants": [
             "Texture.default",
-            "Texture.shiny",
+            "Texture.shiny_default",
             "Texture.blue",
             "Texture.orange",
             "Texture.white",
@@ -14,14 +19,14 @@
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:0]",
       "textures": [
-        "Array.variants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
+        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
       ]
     }
   }

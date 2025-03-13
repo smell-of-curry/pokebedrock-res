@@ -3,21 +3,28 @@
   "render_controllers": {
     "controller.render.pokemon:golurk": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default",
+            "Geometry.halloween"
+          ]
+        },
         "textures": {
-          "Array.variants": [
+          "Array.textureVariants": [
             "Texture.default",
-            "Texture.shiny"
+            "Texture.shiny_default",
+            "Texture.halloween"
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:(query.skin_id==1)?1:0]",
       "textures": [
-        "Array.variants[query.property('pokeb:shiny')?1:0]"
+        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
       ],
       "uv_anim": {
         "offset": [

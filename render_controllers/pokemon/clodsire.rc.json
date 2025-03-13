@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.pokemon:clodsire": {
+      "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default",
+            "Geometry.stpatrick"
+          ]
+        },
+        "textures": {
+          "Array.textureVariants": [
+            "Texture.default",
+            "Texture.shiny_default",
+            "Texture.stpatrick"
+          ]
+        }
+      },
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:(query.skin_id==1)?1:0]",
+      "textures": [
+        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
+      ]
+    }
+  }
+}

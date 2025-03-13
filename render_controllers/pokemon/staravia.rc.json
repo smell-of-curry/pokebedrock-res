@@ -3,23 +3,28 @@
   "render_controllers": {
     "controller.render.pokemon:staravia": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default"
+          ]
+        },
         "textures": {
-          "Array.variants": [
+          "Array.textureVariants": [
             "Texture.male_default",
-            "Texture.male_shiny",
+            "Texture.shiny_male_default",
             "Texture.female_default",
-            "Texture.female_shiny"
+            "Texture.shiny_female_default"
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
+      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:0]",
       "textures": [
-        "Array.variants[query.property('pokeb:shiny')==true?query.property('pokeb:gender')=='male'?1:3:query.property('pokeb:gender')=='male'?0:2]"
+        "Array.textureVariants[query.property('pokeb:shiny')==true?query.property('pokeb:gender')=='male'?1:3:query.property('pokeb:gender')=='male'?0:2]"
       ]
     }
   }
