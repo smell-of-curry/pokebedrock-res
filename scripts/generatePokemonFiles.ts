@@ -650,7 +650,7 @@ async function processPokemon() {
     markdownContent += `## Pokémon Missing Geometry Files\n`;
     if (report.missingGeometryFiles.size > 0) {
       report.missingGeometryFiles.forEach((_, id) => {
-        markdownContent += `- ${id}\n`;
+        markdownContent += `- [${id}](models/entity/pokemon/${id}.geo.json)\n`;
       });
     } else {
       markdownContent += "No Pokémon missing geometry files found!\n";
