@@ -1,0 +1,303 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.ponyta",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "ponyta",
+					"pivot": [0, 12, 4.5]
+				},
+				{
+					"name": "body",
+					"parent": "ponyta",
+					"pivot": [0, 12, 4.5],
+					"cubes": [
+						{"origin": [-3, 8, -8], "size": [6, 6, 14], "inflate": -0.001, "uv": [0, 0]},
+						{"origin": [0, 14, -2], "size": [0, 3, 8], "inflate": -0.001, "uv": [0, 34]},
+						{"origin": [0, 14, -8], "size": [0, 3, 6], "inflate": -0.001, "uv": [0, 39]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 11.25, -6.5]
+				},
+				{
+					"name": "neck",
+					"parent": "head",
+					"pivot": [0, 11.25, -6.5],
+					"cubes": [
+						{"origin": [-2, 11.25, -8.5], "size": [4, 7, 4], "uv": [16, 37]},
+						{"origin": [0, 14.25, -4.5], "size": [0, 3, 3], "uv": [8, 22]}
+					]
+				},
+				{
+					"name": "mainhead",
+					"parent": "neck",
+					"pivot": [0, 18.25, -6.5],
+					"cubes": [
+						{"origin": [-2.5, 17.25, -10.5], "size": [5, 5, 6], "inflate": -0.001, "uv": [24, 20]},
+						{"origin": [-1, 21.25, -5.5], "size": [2, 3, 3], "inflate": -0.001, "uv": [0, 48]},
+						{"origin": [-2, 21.75, -9.5], "size": [4, 3, 4], "inflate": -0.001, "uv": [0, 62]},
+						{"origin": [-1, 21.25, -11.5], "size": [2, 3, 2], "inflate": -0.001, "uv": [0, 23]},
+						{"origin": [0, 20.5, -11.5], "size": [0, 1, 1], "inflate": -0.001, "uv": [3, 20]},
+						{"origin": [0, 23.25, -3.5], "size": [0, 2, 2], "uv": [1, 26]},
+						{"origin": [0, 24.75, -2], "size": [0, 1, 1], "inflate": -0.001, "uv": [3, 21]},
+						{"origin": [0, 17.25, -4.5], "size": [0, 4, 2], "uv": [2, 36]}
+					]
+				},
+				{
+					"name": "rightear",
+					"parent": "mainhead",
+					"pivot": [-1.75, 21.25, -4.75],
+					"rotation": [0, 0, -45],
+					"cubes": [
+						{"origin": [-1.75, 21.25, -4.75], "size": [1, 3, 0], "uv": [26, 10]},
+						{"origin": [-2.25, 20.75, -4.76], "size": [1, 3, 0], "uv": [10, 8]},
+						{"origin": [-2.75, 21.25, -4.75], "size": [1, 4, 0], "uv": [26, 6]}
+					]
+				},
+				{
+					"name": "leftear",
+					"parent": "mainhead",
+					"pivot": [1.75, 21.25, -4.75],
+					"rotation": [0, 0, 45],
+					"cubes": [
+						{"origin": [0.75, 21.25, -4.75], "size": [1, 3, 0], "uv": [28, 10]},
+						{"origin": [1.25, 20.75, -4.76], "size": [1, 3, 0], "uv": [12, 8]},
+						{"origin": [1.75, 21.25, -4.75], "size": [1, 4, 0], "uv": [28, 6]}
+					]
+				},
+				{
+					"name": "mouth",
+					"parent": "mainhead",
+					"pivot": [0, 18.5, -10.5]
+				},
+				{
+					"name": "lowerjaw",
+					"parent": "mouth",
+					"pivot": [0, 18.5, -10.5],
+					"rotation": [2.5, 0, 0],
+					"cubes": [
+						{"origin": [-1, 17.5, -13.25], "size": [2, 1, 4], "uv": [33, 31]},
+						{"origin": [-0.25, 18.51, -12.25], "size": [1, 0, 3], "uv": [23, 34]},
+						{"origin": [-0.75, 18.51, -12.25], "size": [1, 0, 3], "uv": [21, 34]}
+					]
+				},
+				{
+					"name": "upperjaw",
+					"parent": "mouth",
+					"pivot": [0, 18.5, -10.5],
+					"rotation": [5, 0, 0],
+					"cubes": [
+						{"origin": [-1.5, 18.5, -13.5], "size": [3, 2, 4], "uv": [32, 36]},
+						{"origin": [-1, 18.5, -13.25], "size": [2, 0, 4], "inflate": 0.001, "uv": [28, 44]}
+					]
+				},
+				{
+					"name": "eyes",
+					"parent": "mainhead",
+					"pivot": [0, 20.25, -8]
+				},
+				{
+					"name": "righteye",
+					"parent": "eyes",
+					"pivot": [-2.5, 20.25, -8.5],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [-2.51, 19.75, -10], "size": [0, 1, 3], "inflate": 0.001, "uv": [0, 17]},
+						{"origin": [-2.51, 20.25, -10], "size": [0, 1, 3], "inflate": 0.001, "uv": [12, 17]},
+						{"origin": [-2.515, 20, -9.5], "size": [0, 1, 1], "inflate": 0.001, "uv": [10, 10]}
+					]
+				},
+				{
+					"name": "lefteye",
+					"parent": "eyes",
+					"pivot": [2.5, 20.25, -8.5],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [2.51, 19.75, -10], "size": [0, 1, 3], "inflate": 0.001, "uv": [6, 17]},
+						{"origin": [2.51, 20.25, -10], "size": [0, 1, 3], "inflate": 0.001, "uv": [18, 17]},
+						{"origin": [2.515, 20, -9.5], "size": [0, 1, 1], "inflate": 0.002, "uv": [12, 10]}
+					]
+				},
+				{
+					"name": "blinkre",
+					"parent": "eyes",
+					"pivot": [0, 20.25, -8],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [-2.25, 20.25, -10], "size": [0, 1, 3], "uv": [8, 10]}
+					]
+				},
+				{
+					"name": "blinkle",
+					"parent": "eyes",
+					"pivot": [0, 20.25, -8],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [2.25, 20.25, -10], "size": [0, 1, 3], "uv": [8, 9]}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [0, 13.5, 6],
+					"rotation": [10, 0, 0],
+					"cubes": [
+						{"origin": [0, 10.5, 5], "size": [0, 6, 9], "uv": [0, 47]},
+						{"origin": [-2.5, 13.5, 5], "size": [5, 0, 9], "uv": [-3, 33]},
+						{"origin": [0, 11.5, 14], "size": [0, 5, 4], "uv": [7, 24]}
+					]
+				},
+				{
+					"name": "legs",
+					"parent": "ponyta",
+					"pivot": [0, 10.5, -1.5]
+				},
+				{
+					"name": "backlegs",
+					"parent": "legs",
+					"pivot": [0, 12, 4.5]
+				},
+				{
+					"name": "backrightleg",
+					"parent": "backlegs",
+					"pivot": [-2.25, 11.5, 4.5]
+				},
+				{
+					"name": "thighbrl",
+					"parent": "backrightleg",
+					"pivot": [-2.25, 11.5, 4.5],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [-4.25, 6.5, 2.5], "size": [2, 6, 4], "uv": [18, 66]},
+						{"origin": [-3.25, 6.5, 6.5], "size": [0, 2, 3], "uv": [8, 18]},
+						{"origin": [-3.25, 8.5, 6.5], "size": [0, 4, 3], "uv": [0, 27]}
+					]
+				},
+				{
+					"name": "shinbrl",
+					"parent": "backrightleg",
+					"pivot": [-3.25, 7, 5],
+					"cubes": [
+						{"origin": [-4.25, 1, 4], "size": [2, 6, 2], "uv": [42, 48]}
+					]
+				},
+				{
+					"name": "hoofbrl",
+					"parent": "shinbrl",
+					"pivot": [-3.25, 1.5, 5],
+					"cubes": [
+						{"origin": [-4.25, 0, 3.5], "size": [2, 2, 2], "inflate": -0.001, "uv": [16, 21]}
+					]
+				},
+				{
+					"name": "backleftleg",
+					"parent": "backlegs",
+					"pivot": [2.25, 11.5, 4.5]
+				},
+				{
+					"name": "thighbll",
+					"parent": "backleftleg",
+					"pivot": [2.25, 11.5, 4.5],
+					"rotation": [15, 0, 0],
+					"cubes": [
+						{"origin": [2.25, 6.5, 2.5], "size": [2, 6, 4], "uv": [18, 56]},
+						{"origin": [3.25, 8.5, 6.5], "size": [0, 4, 3], "uv": [0, 31]},
+						{"origin": [3.25, 6.5, 6.5], "size": [0, 2, 3], "uv": [8, 20]}
+					]
+				},
+				{
+					"name": "shinbll",
+					"parent": "backleftleg",
+					"pivot": [3.25, 7, 5],
+					"cubes": [
+						{"origin": [2.25, 1, 4], "size": [2, 6, 2], "uv": [34, 48]}
+					]
+				},
+				{
+					"name": "hoofbll",
+					"parent": "shinbll",
+					"pivot": [3.25, 1.5, 5],
+					"cubes": [
+						{"origin": [2.25, 0, 3.5], "size": [2, 2, 2], "inflate": -0.001, "uv": [16, 33]}
+					]
+				},
+				{
+					"name": "frontlegs",
+					"parent": "legs",
+					"pivot": [0, 10, -6]
+				},
+				{
+					"name": "frontrightleg",
+					"parent": "frontlegs",
+					"pivot": [-2.25, 10, -6]
+				},
+				{
+					"name": "thighfrl",
+					"parent": "frontrightleg",
+					"pivot": [-2.25, 10, -6],
+					"cubes": [
+						{"origin": [-4.25, 5.5, -7], "size": [2, 6, 2], "uv": [18, 48]},
+						{"origin": [-3.25, 6.5, -5], "size": [0, 4, 3], "uv": [10, 45]}
+					]
+				},
+				{
+					"name": "shinfrl",
+					"parent": "thighfrl",
+					"pivot": [-3.25, 6, -6],
+					"cubes": [
+						{"origin": [-4.25, 1, -7], "size": [2, 5, 2], "uv": [46, 56]}
+					]
+				},
+				{
+					"name": "hooffrl",
+					"parent": "shinfrl",
+					"pivot": [-3.25, 1.5, -6],
+					"cubes": [
+						{"origin": [-4.25, 0, -7.5], "size": [2, 2, 2], "inflate": -0.001, "uv": [16, 25]}
+					]
+				},
+				{
+					"name": "frontleftleg",
+					"parent": "frontlegs",
+					"pivot": [2.25, 10, -6]
+				},
+				{
+					"name": "thighfll",
+					"parent": "frontleftleg",
+					"pivot": [2.25, 10, -6],
+					"cubes": [
+						{"origin": [2.25, 5.5, -7], "size": [2, 6, 2], "uv": [26, 48]},
+						{"origin": [3.25, 6.5, -5], "size": [0, 4, 3], "uv": [10, 49]}
+					]
+				},
+				{
+					"name": "shinfll",
+					"parent": "thighfll",
+					"pivot": [3.25, 6, -6],
+					"cubes": [
+						{"origin": [2.25, 1, -7], "size": [2, 5, 2], "uv": [38, 56]}
+					]
+				},
+				{
+					"name": "hooffll",
+					"parent": "shinfll",
+					"pivot": [3.25, 1.5, -6],
+					"cubes": [
+						{"origin": [2.25, 0, -7.5], "size": [2, 2, 2], "inflate": -0.001, "uv": [16, 29]}
+					]
+				}
+			]
+		}
+	]
+}
