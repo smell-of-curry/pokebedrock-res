@@ -1,5 +1,6 @@
-import type pokemonJson from "../pokemon.json"
-export type PokemonTypeId = keyof (typeof pokemonJson)["pokemon"]
+import type pokemonJson from "../pokemon.json";
+export type PokemonTypeId = keyof (typeof pokemonJson)["pokemon"];
+import type { PokemonCustomization } from "./data/customizations";
 
 export interface PokemonJsonContent {
   /**
@@ -14,8 +15,6 @@ export interface PokemonJsonContent {
   pokemon: {
     [key in PokemonTypeId]: {
       name: string;
-      genderless: boolean;
-      skins: string[];
       canMount: boolean;
       behavior: {
         canMove: boolean;
@@ -107,18 +106,39 @@ interface AnimationFileAnimationBone {
   scale: AnimationFileAnimationBoneKeyframes;
 }
 
+interface AnimationFileParticleEffect {
+  effect: string;
+  locator: string;
+}
 interface AnimationFileAnimation {
   loop: boolean;
   animation_length: number;
   override_previous_animation: boolean;
   bones: { [key: string]: AnimationFileAnimationBone };
+  particle_effects?: {
+    [key: `${number}.${number}`]: AnimationFileParticleEffect;
+  };
 }
+
+export const PokemonAnimationTypes = [
+  "flying",
+  "air_idle",
+  "swimming",
+  "water_idle",
+  "walking",
+  "ground_idle",
+  "sleeping",
+  "blink",
+  "attack",
+  "faint",
+] as const;
+
+export type PokemonAnimationKey =
+  `animation.${PokemonTypeId}.${(typeof PokemonAnimationTypes)[number]}`;
 
 export interface AnimationFile {
   format_version: format_version;
-  animations: {
-    [key: `animation.${string}.${string}`]: AnimationFileAnimation;
-  };
+  animations: Partial<Record<PokemonAnimationKey, AnimationFileAnimation>>;
 }
 
 interface RenderControllerFileRenderer {
@@ -126,16 +146,21 @@ interface RenderControllerFileRenderer {
     textures:
       | { [key: string]: string }
       | {
-          "Array.variants": `Texture.${string}`[];
+          "Array.textureVariants": `Texture.${string}`[];
+        };
+    geometries:
+      | { [key: string]: string }
+      | {
+          "Array.geometryVariants": `Geometry.${string}`[];
         };
   };
-  geometry: `Geometry.${string}`;
+  geometry: `Geometry.${string}` | Molang;
   materials: [
     {
       "*": "Material.default";
     }
   ];
-  textures: string[];
+  textures: string[] | [Molang];
   uv_anim?: {
     offset: [number | Molang, number | Molang];
     scale: [number | Molang, number | Molang];
@@ -161,3 +186,59 @@ export interface ItemTextureFile {
 export interface IItemsJson {
   [key: `pokeb:${string}`]: string;
 }
+
+/**
+ * A array of differences in a pokemon's display that need to be taken account for generation.
+ * This is only relevant for pokemon that don't have a different identifier in-game. For example
+ * this would apply to venusaur, but not to Meowstic as it already has a different typeId: `pokemon:mewosticf`.
+ *
+ * This should only apply to a pokemon if it can spawn in different genders. For example `petilil` will not be in
+ * this list as it is always Female, but `combee` will be in this list as it can be either male or female.
+ *
+ * The differences are:
+ * - texture: The texture of the pokemon is different.
+ *      @example: Butterfree has a different texture in which
+ *               the Female has black (purple in Generation V) spots on her lower wings.
+ *      File Names (in `./textures/entity/pokemon/pokemon_name/`):
+ *          - `male_{pokemonId}.png`
+ *          - `male_shiny_{pokemonId}.png`
+ *          - `female_{pokemonId}.png`
+ *          - `female_shiny_{pokemonId}.png`
+ *      Note: If a pokemon has a model difference, a texture difference is inherited. Also
+ *            if the pokemon has any skins, the skin must have a variant too for genders.
+ *            For Example: `male_{pokemonId}_{skinId}.png`
+ *  - model: The model of the pokemon is different.
+ *      @example: Venusaur has a different model in which the
+ *                Female's flower has a visible gynoecium (seed-producing organ).
+ *      File Names (in `./models/pokemon/`):
+ *         - `male_{pokemonId}.geo.json`
+ *         - `female_{pokemonId}.geo.json`
+ * - animation_{id}: The animation `animation.{pokemonID}.{id}` for the pokemon is different for this model.
+ *     @example: Female Kirlia has a different `walking` animation that is more delicate compared to males.
+ *               In which `animation_walking` should be added.
+ *      Animation ID Names (in `./animations/pokemon/{pokemonId}.animation.json`):
+ *          - `animation.{pokemonID}.male_{id}`
+ *          - `animation.{pokemonID}.female_{id}`
+ * - sound: The sound of the pokemon is different. This is usually for pokemon with a cry difference.
+ *     @example The male and female forms of Unfezant have noticeably different cries in the games.
+ *      File Names (in `./sounds/mob/pokemon/`):
+ *        - `male_{pokemonId}.ogg`
+ *        - `female_{pokemonId}.ogg`
+ */
+export type PokemonAppearanceDifferences = (
+  | "texture"
+  | "model"
+  | "sound"
+  | `animation_${(typeof PokemonAnimationTypes)[number]}`
+)[];
+
+/**
+ * The config for how this texture should be animated.
+ * the first index is the number of frames in the texture.
+ * the second index is the speed of the animation (in FPS).
+ */
+export type AnimatedTextureConfig = [number, number];
+
+export type GeometryFileName = `${"male_" | "female_" | ""}${PokemonTypeId}${
+  | `_${keyof PokemonCustomization["skins"]}`
+  | ""}`;

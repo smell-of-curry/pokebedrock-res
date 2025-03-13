@@ -3,10 +3,13 @@
   "render_controllers": {
     "controller.render.pokemon:{speciesId}": {
       "arrays": {
+        "geometries": {
+          "Array.geometryVariants": ["Geometry.default"]
+        },
         "textures": {
-          "Array.variants": [
+          "Array.textureVariants": [
             "Texture.default",
-            "Texture.shiny",
+            "Texture.shiny_default",
             "Texture.default_male",
             "Texture.default_female",
             "Texture.shiny_male",
@@ -14,13 +17,13 @@
           ]
         }
       },
-      "geometry": "Geometry.default",
       "materials": [
         {
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.variants['{textureCheck.molang}']"]
+      "geometry": "Array.geometryVariants['{geometryParser.molang}']",
+      "textures": ["Array.textureVariants['{textureParser.molang}']"]
     }
   }
 }
