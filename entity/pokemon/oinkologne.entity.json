@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:oinkologne",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/oinkologne",
-        "shiny": "textures/sprites/default/oinkologne",
-        "default_male": "textures/sprites/default/oinkologne",
-        "default_female": "textures/sprites/default/oinkologne",
-        "shiny_male": "textures/sprites/default/oinkologne",
-        "shiny_female": "textures/sprites/default/oinkologne"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/oinkologne/oinkologne.png",
+        "shiny_default": "textures/entity/pokemon/oinkologne/shiny_oinkologne.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.oinkologne.blink",
+        "ground_idle": "animation.oinkologne.ground_idle",
+        "air_idle": "animation.oinkologne.ground_idle",
+        "water_idle": "animation.oinkologne.water_idle",
+        "walking": "animation.oinkologne.walking",
+        "flying": "animation.oinkologne.ground_idle",
+        "swimming": "animation.oinkologne.swimming",
+        "sleeping": "animation.oinkologne.sleeping",
+        "attack": "animation.oinkologne.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "oinkologne",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.oinkologne"
       }
     }
   }

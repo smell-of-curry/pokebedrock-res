@@ -9,13 +9,8 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/grotle/grotle.png",
-        "male_shiny": "textures/entity/pokemon/grotle/grotle.png",
-        "female_default": "textures/entity/pokemon/grotle/grotle.png",
-        "female_shiny": "textures/entity/pokemon/grotle/grotle.png"
-      },
-      "geometry": {
-        "default": "geometry.grotle"
+        "default": "textures/entity/pokemon/grotle/grotle.png",
+        "shiny_default": "textures/entity/pokemon/grotle/shiny_grotle.png"
       },
       "scripts": {
         "animate": [
@@ -38,13 +33,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon:grotle": "query.variant==0"
+          "controller.render.pokemon": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -53,6 +44,9 @@
       "spawn_egg": {
         "texture": "grotle",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.grotle"
       }
     }
   }

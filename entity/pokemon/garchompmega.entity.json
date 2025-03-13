@@ -9,11 +9,12 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/garchompmega/garchompmega.png",
-        "shiny": "textures/entity/pokemon/garchompmega/shiny_garchompmega.png"
-      },
-      "geometry": {
-        "default": "geometry.garchompmega"
+        "male_default": "textures/entity/pokemon/garchompmega/garchompmega.png",
+        "male_shiny": "textures/entity/pokemon/garchompmega/garchompmega.png",
+        "female_default": "textures/entity/pokemon/garchompmega/garchompmega.png",
+        "female_shiny": "textures/entity/pokemon/garchompmega/garchompmega.png",
+        "male_halloween": "textures/entity/pokemon/garchompmega/male_garchompmega_halloween.png",
+        "female_halloween": "textures/entity/pokemon/garchompmega/female_garchompmega_halloween.png"
       },
       "scripts": {
         "animate": [
@@ -36,13 +37,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:garchompmega": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -51,6 +48,10 @@
       "spawn_egg": {
         "texture": "garchompmega",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.garchompmega",
+        "halloween": "geometry.garchompmega_halloween"
       }
     }
   }

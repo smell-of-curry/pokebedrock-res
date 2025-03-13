@@ -9,11 +9,10 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/donphan/donphan.png",
-        "shiny": "textures/entity/pokemon/donphan/shiny_donphan.png"
-      },
-      "geometry": {
-        "default": "geometry.donphan"
+        "male_default": "textures/entity/pokemon/donphan/donphan.png",
+        "male_shiny": "textures/entity/pokemon/donphan/donphan.png",
+        "female_default": "textures/entity/pokemon/donphan/donphan.png",
+        "female_shiny": "textures/entity/pokemon/donphan/donphan.png"
       },
       "scripts": {
         "animate": [
@@ -36,13 +35,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:donphan": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -51,6 +46,9 @@
       "spawn_egg": {
         "texture": "donphan",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.donphan"
       }
     }
   }

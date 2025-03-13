@@ -10,10 +10,8 @@
       "textures": {
         "evo_aura": "textures/entity/evolving",
         "default": "textures/entity/pokemon/victini/victini.png",
-        "shiny": "textures/entity/pokemon/victini/shiny_victini.png"
-      },
-      "geometry": {
-        "default": "geometry.victini"
+        "shiny_default": "textures/entity/pokemon/victini/shiny_victini.png",
+        "valentine": "textures/entity/pokemon/victini/victini_valentine.png"
       },
       "scripts": {
         "animate": [
@@ -36,13 +34,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:victini": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -51,6 +45,10 @@
       "spawn_egg": {
         "texture": "victini",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.victini",
+        "valentine": "geometry.victini_valentine"
       }
     }
   }

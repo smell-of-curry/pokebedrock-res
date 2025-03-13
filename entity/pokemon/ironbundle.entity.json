@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:ironbundle",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/ironbundle",
-        "shiny": "textures/sprites/default/ironbundle",
-        "default_male": "textures/sprites/default/ironbundle",
-        "default_female": "textures/sprites/default/ironbundle",
-        "shiny_male": "textures/sprites/default/ironbundle",
-        "shiny_female": "textures/sprites/default/ironbundle"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/ironbundle/ironbundle.png",
+        "shiny_default": "textures/entity/pokemon/ironbundle/shiny_ironbundle.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.ironbundle.blink",
+        "ground_idle": "animation.ironbundle.ground_idle",
+        "air_idle": "animation.ironbundle.ground_idle",
+        "water_idle": "animation.ironbundle.ground_idle",
+        "walking": "animation.ironbundle.walking",
+        "flying": "animation.ironbundle.ground_idle",
+        "swimming": "animation.ironbundle.ground_idle",
+        "sleeping": "animation.ironbundle.sleeping",
+        "attack": "animation.ironbundle.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "ironbundle",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.ironbundle"
       }
     }
   }

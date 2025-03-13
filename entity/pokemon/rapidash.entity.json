@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:rapidash",
       "materials": {
-        "default": "zombie"
+        "default": "custom_animated",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/rapidash",
-        "shiny": "textures/sprites/default/rapidash",
-        "default_male": "textures/sprites/default/rapidash",
-        "default_female": "textures/sprites/default/rapidash",
-        "shiny_male": "textures/sprites/default/rapidash",
-        "shiny_female": "textures/sprites/default/rapidash"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/rapidash/rapidash.png",
+        "shiny_default": "textures/entity/pokemon/rapidash/shiny_rapidash.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.rapidash.blink",
+        "ground_idle": "animation.rapidash.ground_idle",
+        "air_idle": "animation.rapidash.ground_idle",
+        "water_idle": "animation.rapidash.water_idle",
+        "walking": "animation.rapidash.walking",
+        "flying": "animation.rapidash.ground_idle",
+        "swimming": "animation.rapidash.swimming",
+        "sleeping": "animation.rapidash.sleeping",
+        "attack": "animation.rapidash.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:rapidash": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "rapidash",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.rapidash"
       }
     }
   }

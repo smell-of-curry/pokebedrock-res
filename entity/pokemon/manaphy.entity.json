@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:manaphy",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/manaphy",
-        "shiny": "textures/sprites/default/manaphy",
-        "default_male": "textures/sprites/default/manaphy",
-        "default_female": "textures/sprites/default/manaphy",
-        "shiny_male": "textures/sprites/default/manaphy",
-        "shiny_female": "textures/sprites/default/manaphy"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/manaphy/manaphy.png",
+        "shiny_default": "textures/entity/pokemon/manaphy/shiny_manaphy.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.manaphy.blink",
+        "ground_idle": "animation.manaphy.ground_idle",
+        "air_idle": "animation.manaphy.ground_idle",
+        "water_idle": "animation.manaphy.water_idle",
+        "walking": "animation.manaphy.walking",
+        "flying": "animation.manaphy.ground_idle",
+        "swimming": "animation.manaphy.swimming",
+        "sleeping": "animation.manaphy.sleeping",
+        "attack": "animation.manaphy.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "manaphy",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.manaphy"
       }
     }
   }

@@ -9,13 +9,8 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/marill/marill.png",
-        "male_shiny": "textures/entity/pokemon/marill/marill.png",
-        "female_default": "textures/entity/pokemon/marill/marill.png",
-        "female_shiny": "textures/entity/pokemon/marill/marill.png"
-      },
-      "geometry": {
-        "default": "geometry.marill"
+        "default": "textures/entity/pokemon/marill/marill.png",
+        "shiny_default": "textures/entity/pokemon/marill/shiny_marill.png"
       },
       "scripts": {
         "animate": [
@@ -38,13 +33,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon:marill": "query.variant==0"
+          "controller.render.pokemon": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -53,6 +44,9 @@
       "spawn_egg": {
         "texture": "marill",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.marill"
       }
     }
   }

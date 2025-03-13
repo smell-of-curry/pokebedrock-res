@@ -9,11 +9,10 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/gligar/gligar.png",
-        "shiny": "textures/entity/pokemon/gligar/shiny_gligar.png"
-      },
-      "geometry": {
-        "default": "geometry.gligar"
+        "male_default": "textures/entity/pokemon/gligar/gligar.png",
+        "male_shiny": "textures/entity/pokemon/gligar/gligar.png",
+        "female_default": "textures/entity/pokemon/gligar/gligar.png",
+        "female_shiny": "textures/entity/pokemon/gligar/gligar.png"
       },
       "scripts": {
         "animate": [
@@ -36,13 +35,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:gligar": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -51,6 +46,9 @@
       "spawn_egg": {
         "texture": "gligar",
         "texture_index": 0
+      },
+      "geometry": {
+        "gligar": "geometry.gligar"
       }
     }
   }

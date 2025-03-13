@@ -10,10 +10,8 @@
       "textures": {
         "evo_aura": "textures/entity/evolving",
         "default": "textures/entity/pokemon/armarouge/armarouge.png",
-        "shiny": "textures/entity/pokemon/armarouge/shiny_armarouge.png"
-      },
-      "geometry": {
-        "default": "geometry.armarouge"
+        "shiny_default": "textures/entity/pokemon/armarouge/shiny_armarouge.png",
+        "christmas": "textures/entity/pokemon/armarouge/armarouge_christmas.png"
       },
       "scripts": {
         "animate": [
@@ -36,13 +34,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:armarouge": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -51,6 +45,10 @@
       "spawn_egg": {
         "texture": "armarouge",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.armarouge",
+        "christmas": "geometry.armarouge_christmas"
       }
     }
   }

@@ -9,13 +9,8 @@
       },
       "textures": {
         "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/darmanitan/darmanitan.png",
-        "male_shiny": "textures/entity/pokemon/darmanitan/darmanitan.png",
-        "female_default": "textures/entity/pokemon/darmanitan/darmanitan.png",
-        "female_shiny": "textures/entity/pokemon/darmanitan/darmanitan.png"
-      },
-      "geometry": {
-        "default": "geometry.darmanitan"
+        "default": "textures/entity/pokemon/darmanitan/darmanitan.png",
+        "shiny_default": "textures/entity/pokemon/darmanitan/shiny_darmanitan.png"
       },
       "scripts": {
         "animate": [
@@ -38,13 +33,9 @@
         "look_at_target": "animation.pokemon.look_at_target",
         "controller": "controller.animation.pokemon"
       },
-      "particle_effects": {
-        "poison_smoke": "pokeb:posion_smoke",
-        "tail_flame": "pokeb:tail_flame"
-      },
       "render_controllers": [
         {
-          "controller.render.pokemon:darmanitan": "query.variant==0"
+          "controller.render.pokemon": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -53,6 +44,9 @@
       "spawn_egg": {
         "texture": "darmanitan",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.darmanitan"
       }
     }
   }
