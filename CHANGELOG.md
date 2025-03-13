@@ -1,15 +1,25 @@
-**Update v2.12.8**
+**Update v2.13.0**
 
-- Fixed Clodsire texture gliches, and made animations into molang by @plain_trash_rose
-- Fixed Darmanitan Animations not working by @ismegames
-- Fixed Golett and Golurk Halloween Texture Glitches by @dcrdemonlord
-- Fixed Mew Christmas Broken Animations by @abstractjoker
-- Added Gender Differences to both Wooper and Quagsire making them more accurate by @plain_trash_rose
-- Fixed broken Wooper Paldea, having broken typeId
-- Fixed Hoopa's Z fighting and some pixels fix by @abstractjoker
-- Added setboost lang to en_US.lang
-- Fixed invalid size when rendering pokedex
-- Updated de_DE and en_ES translations by @TheblueJo
-- Updated pt_BR by @Personal0ne
-- Added new cs_CZ translations by @MangyCoyote
-- Removed duplicates inside lang files, to prevent errors.
+> [!WARNING]  
+> Pokemon Skin System has been re-done, and pokemon now require gender differences.
+
+- Added 9 New Pokemon
+    - Lechonk, Oinkolonge & Oinkologne-Female by @plain_trash_rose
+    - Iron Bundle by @morty134
+    - Manaphy by @ismegames
+    - Ponyta & Rapidash by @plain_trash_rose
+    - Terapagos by @ismegames
+    - Terrakion by @ismegames
+- Added Stpatricks NPC and Trainer
+- Fixed Hub NPC Type Id
+- Delete extra Hex Mania Copy
+- Removed `skins` from `pokemon.json`
+- Fixed spelling of poison smoke particle
+- Fixed missing splash particle.
+- Now pokemon only who require particles will have them defined in there `entity.json`
+- Fixed missing percent numbers in the pc and pokedex UI.
+- Change the global string parser separator from `_` to `|`
+- Add auto issue reporting for issues with the resource pack.
+- Fixed stripped apricorn log texture
+- Fixed tsconfig directories
+- Pokemon can now render different models from render controllers.
