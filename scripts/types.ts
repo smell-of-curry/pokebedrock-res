@@ -239,6 +239,37 @@ export type PokemonAppearanceDifferences = (
  */
 export type AnimatedTextureConfig = [number, number];
 
-export type GeometryFileName = `${"male_" | "female_" | ""}${PokemonTypeId}${
-  | `_${keyof PokemonCustomization["skins"]}`
-  | ""}`;
+export type GeometryFileName =
+  | PokemonTypeId // Base form
+  | `male_${PokemonTypeId}` // Male form
+  | `female_${PokemonTypeId}` // Female form
+  | `${PokemonTypeId}_${keyof PokemonCustomization["skins"]}` // Skin form
+  | `male_${PokemonTypeId}_${keyof PokemonCustomization["skins"]}` // Male skin form
+  | `female_${PokemonTypeId}_${keyof PokemonCustomization["skins"]}`; // Female skin form
+
+export interface RenderController {
+  format_version: string;
+  "minecraft:render_controller": {
+    geometry: string;
+    materials: Array<{
+      "*": string;
+    }>;
+    textures: string[];
+    arrays?: {
+      geometries?: {
+        "Array.geometries": string[];
+      };
+      textures?: {
+        "Array.textures": string[];
+      };
+    };
+    renderer_arrays?: Array<{
+      "Array.geometries"?: {
+        "*": string;
+      };
+      "Array.textures"?: {
+        "*": string;
+      };
+    }>;
+  };
+}

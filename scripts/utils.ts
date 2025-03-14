@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import fsExtra from "fs-extra";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -230,4 +231,25 @@ export function typeIdToName(typeId: string): string {
     .split(" ")
     .map((v) => v.charAt(0).toUpperCase() + v.substring(1))
     .join(" ");
+}
+
+/**
+ * Safely reads and parses a JSON file.
+ */
+export function safeReadJSON<T>(filePath: string): T | null {
+  try {
+    return fsExtra.readJSONSync(filePath) as T;
+  } catch (error) {
+    Logger.error(`Failed to read JSON from ${filePath}: ${error}`);
+    return null;
+  }
+}
+
+/**
+ * Deep-clones a template and replaces all instances of `{speciesId}`.
+ */
+export function cloneTemplate<T>(template: T, speciesId: string): T {
+  const cloned = JSON.parse(JSON.stringify(template));
+  const stringified = JSON.stringify(cloned).replace(/\{speciesId\}/g, speciesId);
+  return JSON.parse(stringified);
 }
