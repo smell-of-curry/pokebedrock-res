@@ -130,6 +130,19 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model"],
   },
 
+  spinda: {
+    skins: {
+      bowties: ["texture", "shiny_texture"],
+      facescar: ["texture", "shiny_texture"],
+      doubleganger: ["texture", "shiny_texture"],
+      dots: ["texture", "shiny_texture"],
+      glasses: ["texture", "shiny_texture"],
+      eyebrows: ["texture", "shiny_texture"],
+      smallking: ["texture", "shiny_texture"],
+      heart: ["texture", "shiny_texture"],
+    }
+  },
+
   /** Female has one large spot per petal */
   gloom: {
     genderDifferences: ["texture"],

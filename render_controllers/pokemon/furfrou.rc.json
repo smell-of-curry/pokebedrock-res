@@ -38,9 +38,9 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:(query.skin_id==1)?1:(query.skin_id==2)?2:(query.skin_id==3)?3:(query.skin_id==4)?4:(query.skin_id==5)?5:(query.skin_id==6)?6:(query.skin_id==7)?7:(query.skin_id==8)?8:(query.skin_id==9)?9:0]",
+      "geometry": "Array.geometryVariants[0]",
       "textures": [
-        "Array.textureVariants[query.skin_id==0?query.property('pokeb:shiny')==true?1:0:(query.skin_id+1)]"
+        "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==1) ? 2:(query.skin_id==2) ? 3:(query.skin_id==3) ? 4:(query.skin_id==4) ? 5:(query.skin_id==5) ? 6:(query.skin_id==6) ? 7:(query.skin_id==7) ? 8:(query.skin_id==8) ? 9:(query.skin_id==9) ? 10:0]"
       ]
     }
   }

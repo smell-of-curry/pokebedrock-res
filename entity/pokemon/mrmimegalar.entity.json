@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:mrmimegalar",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/mrmimegalar",
-        "shiny_default": "textures/sprites/default/mrmimegalar",
-        "default_male": "textures/sprites/default/mrmimegalar",
-        "default_female": "textures/sprites/default/mrmimegalar",
-        "shiny_male": "textures/sprites/default/mrmimegalar",
-        "shiny_female": "textures/sprites/default/mrmimegalar"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/mrmimegalar/mrmimegalar.png",
+        "shiny_default": "textures/entity/pokemon/mrmimegalar/shiny_mrmimegalar.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.mrmimegalar.blink",
+        "ground_idle": "animation.mrmimegalar.ground_idle",
+        "air_idle": "animation.mrmimegalar.ground_idle",
+        "water_idle": "animation.mrmimegalar.water_idle",
+        "walking": "animation.mrmimegalar.walking",
+        "flying": "animation.mrmimegalar.ground_idle",
+        "swimming": "animation.mrmimegalar.swimming",
+        "sleeping": "animation.mrmimegalar.sleeping",
+        "attack": "animation.mrmimegalar.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "mrmimegalar",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.mrmimegalar"
       }
     }
   }

@@ -1,0 +1,45 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.pokemon:spinda": {
+      "arrays": {
+        "geometries": {
+          "Array.geometryVariants": [
+            "Geometry.default"
+          ]
+        },
+        "textures": {
+          "Array.textureVariants": [
+            "Texture.default",
+            "Texture.shiny_default",
+            "Texture.bowties",
+            "Texture.shiny_bowties",
+            "Texture.facescar",
+            "Texture.shiny_facescar",
+            "Texture.doubleganger",
+            "Texture.shiny_doubleganger",
+            "Texture.dots",
+            "Texture.shiny_dots",
+            "Texture.glasses",
+            "Texture.shiny_glasses",
+            "Texture.eyebrows",
+            "Texture.shiny_eyebrows",
+            "Texture.smallking",
+            "Texture.shiny_smallking",
+            "Texture.heart",
+            "Texture.shiny_heart"
+          ]
+        }
+      },
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "geometry": "Geometry.default",
+      "textures": [
+        "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==1 && query.property('pokeb:shiny') == false) ? 2:(query.skin_id==1 && query.property('pokeb:shiny') == true) ? 3:(query.skin_id==2 && query.property('pokeb:shiny') == false) ? 4:(query.skin_id==2 && query.property('pokeb:shiny') == true) ? 5:(query.skin_id==3 && query.property('pokeb:shiny') == false) ? 6:(query.skin_id==3 && query.property('pokeb:shiny') == true) ? 7:(query.skin_id==4 && query.property('pokeb:shiny') == false) ? 8:(query.skin_id==4 && query.property('pokeb:shiny') == true) ? 9:(query.skin_id==5 && query.property('pokeb:shiny') == false) ? 10:(query.skin_id==5 && query.property('pokeb:shiny') == true) ? 11:(query.skin_id==6 && query.property('pokeb:shiny') == false) ? 12:(query.skin_id==6 && query.property('pokeb:shiny') == true) ? 13:(query.skin_id==7 && query.property('pokeb:shiny') == false) ? 14:(query.skin_id==7 && query.property('pokeb:shiny') == true) ? 15:(query.skin_id==8 && query.property('pokeb:shiny') == false) ? 16:(query.skin_id==8 && query.property('pokeb:shiny') == true) ? 17:0]"
+      ]
+    }
+  }
+}

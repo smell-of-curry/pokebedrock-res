@@ -20,9 +20,9 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[(query.skin_id==0)?0:0]",
+      "geometry": "Geometry.default",
       "textures": [
-        "Array.textureVariants[query.property('pokeb:shiny')?1:0]"
+        "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:shiny') == true) ? 1:0]"
       ],
       "uv_anim": {
         "offset": [

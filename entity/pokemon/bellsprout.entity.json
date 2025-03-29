@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:bellsprout",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/bellsprout",
-        "shiny_default": "textures/sprites/default/bellsprout",
-        "default_male": "textures/sprites/default/bellsprout",
-        "default_female": "textures/sprites/default/bellsprout",
-        "shiny_male": "textures/sprites/default/bellsprout",
-        "shiny_female": "textures/sprites/default/bellsprout"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/bellsprout/bellsprout.png",
+        "shiny_default": "textures/entity/pokemon/bellsprout/shiny_bellsprout.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.bellsprout.blink",
+        "ground_idle": "animation.bellsprout.ground_idle",
+        "air_idle": "animation.bellsprout.ground_idle",
+        "water_idle": "animation.bellsprout.water_idle",
+        "walking": "animation.bellsprout.walking",
+        "flying": "animation.bellsprout.ground_idle",
+        "swimming": "animation.bellsprout.swimming",
+        "sleeping": "animation.bellsprout.sleeping",
+        "attack": "animation.bellsprout.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "bellsprout",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.bellsprout"
       }
     }
   }

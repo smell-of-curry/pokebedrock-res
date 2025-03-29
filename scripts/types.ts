@@ -227,6 +227,7 @@ export interface IItemsJson {
  */
 export type PokemonAppearanceDifferences = (
   | "texture"
+  | "shiny_texture"
   | "model"
   | "sound"
   | `animation_${(typeof PokemonAnimationTypes)[number]}`

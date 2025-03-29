@@ -1,6 +1,11 @@
-**Update v2.13.1**
+**Update v2.13.2**
 
-- Fixed mapping of geometries and render controllers
-- Fixed mapping of mapping of textures with skins and shiny texture for gendered pokemon.
-- Fix kit redeem messages
-- Improve types of parser.
+- Added 10 new Pokemon Models:
+  - Victreebel, Weepingbell, and Bellsprount by @rafael8355 
+  - Gengar Mega by @ismegames 
+  - Mime Jr, Mr Mime, Mr Mime Galar, and Mr Rime by @ismegames 
+  - Spritomb by @ismegames 
+  - Spinda by @ismegames 
+- Converted to a new Skin Mapping System allowing skins to have shiny textures and better mapping.
+- Added Spinda Skin Sprites
+- Fixed Terrakion Missing Horns

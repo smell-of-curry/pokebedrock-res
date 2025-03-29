@@ -23,9 +23,9 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[(query.skin_id==0 && query.property('pokeb:gender')=='male')?0:(query.skin_id==0 && query.property('pokeb:gender')=='female')?1:0]",
+      "geometry": "Array.geometryVariants[0]",
       "textures": [
-        "Array.textureVariants[query.property('pokeb:shiny')==true?query.property('pokeb:gender')=='male'?1:3:query.property('pokeb:gender')=='male'?0:2]"
+        "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(query.skin_id==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:0]"
       ]
     }
   }

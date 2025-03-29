@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:mrrime",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/mrrime",
-        "shiny_default": "textures/sprites/default/mrrime",
-        "default_male": "textures/sprites/default/mrrime",
-        "default_female": "textures/sprites/default/mrrime",
-        "shiny_male": "textures/sprites/default/mrrime",
-        "shiny_female": "textures/sprites/default/mrrime"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/mrrime/mrrime.png",
+        "shiny_default": "textures/entity/pokemon/mrrime/shiny_mrrime.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.mrrime.blink",
+        "ground_idle": "animation.mrrime.ground_idle",
+        "air_idle": "animation.mrrime.ground_idle",
+        "water_idle": "animation.mrrime.water_idle",
+        "walking": "animation.mrrime.walking",
+        "flying": "animation.mrrime.ground_idle",
+        "swimming": "animation.mrrime.swimming",
+        "sleeping": "animation.mrrime.sleeping",
+        "attack": "animation.mrrime.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "mrrime",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.mrrime"
       }
     }
   }

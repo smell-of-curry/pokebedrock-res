@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:gengarmega",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/gengarmega",
-        "shiny_default": "textures/sprites/default/gengarmega",
-        "default_male": "textures/sprites/default/gengarmega",
-        "default_female": "textures/sprites/default/gengarmega",
-        "shiny_male": "textures/sprites/default/gengarmega",
-        "shiny_female": "textures/sprites/default/gengarmega"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/gengarmega/gengarmega.png",
+        "shiny_default": "textures/entity/pokemon/gengarmega/shiny_gengarmega.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.gengarmega.blink",
+        "ground_idle": "animation.gengarmega.ground_idle",
+        "air_idle": "animation.gengarmega.ground_idle",
+        "water_idle": "animation.gengarmega.water_idle",
+        "walking": "animation.gengarmega.walking",
+        "flying": "animation.gengarmega.ground_idle",
+        "swimming": "animation.gengarmega.swimming",
+        "sleeping": "animation.gengarmega.sleeping",
+        "attack": "animation.gengarmega.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "gengarmega",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.gengarmega"
       }
     }
   }

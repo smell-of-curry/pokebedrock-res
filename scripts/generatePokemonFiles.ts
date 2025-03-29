@@ -431,12 +431,17 @@ function verifyAndUpdateTextures(
   for (const [skinId, options] of skins) {
     if (!options.includes("texture") && !options.includes("model")) continue;
     const skinnedId = `${pokemonTypeId}_${skinId}`;
+    const hasShinyTexture = options.includes("shiny_texture");
+
     if (customizations?.genderDifferences) {
       for (const gender of ["male", "female"]) {
-        verifySkinTexture(`${gender}_${skinnedId}`);
+        const genderedSkinId = `${gender}_${skinnedId}`;
+        verifySkinTexture(genderedSkinId);
+        if (hasShinyTexture) verifySkinTexture("shiny_" + genderedSkinId);
       }
     } else {
       verifySkinTexture(skinnedId);
+      if (hasShinyTexture) verifySkinTexture("shiny_" + skinnedId);
     }
   }
 
@@ -466,39 +471,6 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     pokemonTypeId
   );
 
-  // Create texture Parser molang.
-  let textureParserMolang = "";
-  let textureParserMolangFile = "textureParser.molang";
-  const skinKeys = Object.keys(customizations.skins ?? {});
-  const hasTextureDifferencesWithGender =
-    customizations.genderDifferences?.includes("texture") ||
-    customizations.genderDifferences?.includes("model");
-  if (skinKeys.length > 0 && hasTextureDifferencesWithGender) {
-    textureParserMolangFile = "skinnedGenderTextureParser.molang";
-  } else if (skinKeys.length > 0) {
-    textureParserMolangFile = "skinnedTextureParser.molang";
-  } else if (hasTextureDifferencesWithGender) {
-    textureParserMolangFile = "genderTextureParser.molang";
-  }
-  try {
-    textureParserMolang = fs
-      .readFileSync(
-        path.join(templatesPath, "molang", textureParserMolangFile),
-        "utf-8"
-      )
-      .replace(/\s+/g, "");
-  } catch (error) {
-    throw new Error(
-      `Error reading texture parser file ${textureParserMolangFile}: ${error}`
-    );
-  }
-
-  // Replace the molang parser in the template.
-  templateString = templateString.replace(
-    /'\{textureParser\.molang\}'/g,
-    textureParserMolang
-  );
-
   // Parse the render controller JSON.
   let rcFile: RenderControllerFile;
   try {
@@ -517,6 +489,11 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     );
 
   // Parse and Setup Types for Render Controller
+  const skinKeys = Object.keys(customizations.skins ?? {});
+  const hasTextureDifferencesWithGender =
+    customizations.genderDifferences?.includes("texture") ||
+    customizations.genderDifferences?.includes("model");
+
   type AppearanceId = `${"male_" | "female_" | ""}${
     | keyof typeof customizations.skins
     | "default"}`;
@@ -551,6 +528,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     if (!options) continue;
     const hasModel = options.includes("model");
     const hasTexture = options.includes("texture") || hasModel;
+    const hasShinyTexture = options.includes("shiny_texture");
 
     // If this pokemon requires different textures by gender, we need to map.
     if (hasTextureDifferencesWithGender) {
@@ -558,11 +536,13 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         const appearanceId = `${gender}_${skin}` as AppearanceId;
         if (hasModel) geometries.push(`Geometry.${appearanceId}`);
         if (hasTexture) textures.push(`Texture.${appearanceId}`);
+        if (hasShinyTexture) textures.push(`Texture.shiny_${appearanceId}`);
       }
     } else {
       const appearanceId = skin as AppearanceId;
       if (hasModel) geometries.push(`Geometry.${appearanceId}`);
       if (hasTexture) textures.push(`Texture.${appearanceId}`);
+      if (hasShinyTexture) textures.push(`Texture.shiny_${appearanceId}`);
     }
   }
 
@@ -582,25 +562,120 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     };
   }
 
+  // Build the texture parser.
+  let textureParser = "";
+  const textureVariants = ["default"]
+    .concat(Object.keys(customizations.skins ?? {}))
+    .entries();
+
+  // First handle variants with gender differences
+
+  // Handle shiny and non-shiny textures for each gender and skin combination
+  for (const [idx, variant] of textureVariants) {
+    let hasShiny = true;
+    if (variant != "default") {
+      // Is custom skin
+      const options = customizations.skins?.[variant];
+      if (!options)
+        throw new Error(`Missing custom skin options for ${variant}!`);
+      hasShiny = options.includes("shiny_texture");
+    }
+
+    if (hasTextureDifferencesWithGender) {
+      for (const gender of ["male", "female"] as const) {
+        // Normal texture
+        const normalAppearanceId = `${gender}_${variant}`;
+        const normalTextureIndex = textures.indexOf(
+          `Texture.${normalAppearanceId}` as (typeof textures)[number]
+        );
+        if (normalTextureIndex !== -1) {
+          textureParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}'${
+            hasShiny ? " && query.property('pokeb:shiny') == false" : ""
+          }) ? ${normalTextureIndex}:`;
+        }
+
+        if (!hasShiny) continue;
+
+        // Shiny texture
+        const shinyAppearanceId = `shiny_${gender}_${variant}`;
+        const shinyTextureIndex = textures.indexOf(
+          `Texture.${shinyAppearanceId}` as (typeof textures)[number]
+        );
+        if (shinyTextureIndex !== -1) {
+          textureParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}'${
+            hasShiny ? " && query.property('pokeb:shiny') == true" : ""
+          }) ? ${shinyTextureIndex}:`;
+        }
+      }
+    } else {
+      // Normal texture
+      const normalTextureIndex = textures.indexOf(
+        `Texture.${variant}` as (typeof textures)[number]
+      );
+      if (normalTextureIndex !== -1) {
+        textureParser += `(query.skin_id==${idx}${
+          hasShiny ? " && query.property('pokeb:shiny') == false" : ""
+        }) ? ${normalTextureIndex}:`;
+      }
+
+      if (!hasShiny) continue;
+
+      // Shiny texture
+      const shinyTextureIndex = textures.indexOf(
+        `Texture.shiny_${variant}` as (typeof textures)[number]
+      );
+      if (shinyTextureIndex !== -1) {
+        textureParser += `(query.skin_id==${idx}${
+          hasShiny ? " && query.property('pokeb:shiny') == true" : ""
+        }) ? ${shinyTextureIndex}:`;
+      }
+    }
+  }
+
+  // Fallback to first texture if nothing matches
+  textureParser += "0";
+
+  // Set the texture parser in the render controller
+  rcFile.render_controllers[
+    `controller.render.pokemon:${pokemonTypeId}`
+  ].textures = [`Array.textureVariants[${textureParser}]`];
+
   // Register all changes to the render controller.
   rcFile.render_controllers[`controller.render.pokemon:${pokemonTypeId}`] =
     renderer;
 
-  // Build the geometryParser.
-  let geometryParser = "";
-  const geometryVariants = ["default"].concat(
-    Object.keys(customizations.skins ?? {}).filter((s) =>
-      customizations.skins?.[s].includes("model")
+  const geometryVariants = ["default"]
+    .concat(
+      Object.keys(customizations.skins ?? {}).filter((s) =>
+        customizations.skins?.[s].includes("model")
+      )
     )
-  );
-  const skinKeysArray = Object.keys(customizations.skins ?? {});
-  for (const variant of geometryVariants) {
-    // Determine skin index using keys array.
-    let skinId = skinKeysArray.indexOf(variant);
-    skinId = skinId === -1 ? 0 : skinId + 1;
-    if (customizations.genderDifferences?.includes("model")) {
-      for (const gender of ["male", "female"]) {
-        const appearanceId = `${gender}_${variant}` as AppearanceId;
+    .entries();
+
+  if (
+    [...geometryVariants].length > 1 ||
+    customizations.genderDifferences?.includes("model")
+  ) {
+    // Build the geometryParser for a pokemon with gender differences or custom skins.
+    let geometryParser = "";;
+
+    for (const [idx, variant] of geometryVariants) {
+      if (customizations.genderDifferences?.includes("model")) {
+        for (const gender of ["male", "female"]) {
+          const appearanceId = `${gender}_${variant}` as AppearanceId;
+          const geometryIdIndex = geometries.indexOf(
+            `Geometry.${appearanceId}`
+          );
+          if (geometryIdIndex === -1) {
+            Logger.error(
+              `Missing geometry for ${pokemonTypeId} with appearanceId: ${appearanceId}`
+            );
+            continue;
+          }
+          geometryParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}') ? ${geometryIdIndex}:`;
+        }
+      } else {
+        const appearanceId = variant as AppearanceId;
         const geometryIdIndex = geometries.indexOf(`Geometry.${appearanceId}`);
         if (geometryIdIndex === -1) {
           Logger.error(
@@ -608,28 +683,22 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
           );
           continue;
         }
-        geometryParser += `(query.skin_id==${skinId} && query.property('pokeb:gender')=='${gender}')?${geometryIdIndex}:`;
+        geometryParser += `(query.skin_id==${idx})?${geometryIdIndex}:`;
       }
-    } else {
-      const appearanceId = variant as AppearanceId;
-      const geometryIdIndex = geometries.indexOf(`Geometry.${appearanceId}`);
-      if (geometryIdIndex === -1) {
-        Logger.error(
-          `Missing geometry for ${pokemonTypeId} with appearanceId: ${appearanceId}`
-        );
-        continue;
-      }
-      geometryParser += `(query.skin_id==${skinId})?${geometryIdIndex}:`;
     }
+
+    // Append default geometry, if molang fails.
+    geometryParser += "0";
+
+    // Set the geometry parser in the render controller.
+    rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}`
+    ].geometry = `Array.geometryVariants[${geometryParser}]`;
+  } else {
+    rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}`
+    ].geometry = `Geometry.default`;
   }
-
-  // Append default geometry, if molang fails.
-  geometryParser += "0";
-
-  // Set the geometry parser in the render controller.
-  rcFile.render_controllers[
-    `controller.render.pokemon:${pokemonTypeId}`
-  ].geometry = `Array.geometryVariants[${geometryParser}]`;
 
   // Write the render controller file.
   try {
@@ -655,7 +724,7 @@ async function checkAndEnsureSprites(pokemonTypeId: PokemonTypeId) {
   const skinKeys = Object.keys(customizations?.skins ?? {});
   const sprites = [
     pokemonTypeId,
-    ...skinKeys.map((s) => `${pokemonTypeId}_${s.replace(/_/g, "")}`),
+    ...skinKeys.map((s) => `${pokemonTypeId}_${s}`),
   ];
   for (const sprite of sprites) {
     const spritePath = path.join(spriteDir, `${sprite}.png`);
