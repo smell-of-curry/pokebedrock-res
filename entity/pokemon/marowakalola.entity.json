@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:marowakalola",
       "materials": {
-        "default": "zombie"
+        "default": "custom_animated",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/marowakalola",
-        "shiny_default": "textures/sprites/default/marowakalola",
-        "default_male": "textures/sprites/default/marowakalola",
-        "default_female": "textures/sprites/default/marowakalola",
-        "shiny_male": "textures/sprites/default/marowakalola",
-        "shiny_female": "textures/sprites/default/marowakalola"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/marowakalola/marowakalola.png",
+        "shiny_default": "textures/entity/pokemon/marowakalola/shiny_marowakalola.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.marowakalola.blink",
+        "ground_idle": "animation.marowakalola.ground_idle",
+        "air_idle": "animation.marowakalola.ground_idle",
+        "water_idle": "animation.marowakalola.water_idle",
+        "walking": "animation.marowakalola.walking",
+        "flying": "animation.marowakalola.ground_idle",
+        "swimming": "animation.marowakalola.swimming",
+        "sleeping": "animation.marowakalola.ground_idle",
+        "attack": "animation.marowakalola.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon:marowakalola": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "marowakalola",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.marowakalola"
       }
     }
   }

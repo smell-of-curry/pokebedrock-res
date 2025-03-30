@@ -878,6 +878,10 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  marowakalola: {
+    animatedTextureConfig: [2, 8]
+  },
+
   // ======================== GEN 8 ========================
 
   alcremie: {

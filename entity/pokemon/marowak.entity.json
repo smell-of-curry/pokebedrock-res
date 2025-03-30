@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:marowak",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/marowak",
-        "shiny_default": "textures/sprites/default/marowak",
-        "default_male": "textures/sprites/default/marowak",
-        "default_female": "textures/sprites/default/marowak",
-        "shiny_male": "textures/sprites/default/marowak",
-        "shiny_female": "textures/sprites/default/marowak"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/marowak/marowak.png",
+        "shiny_default": "textures/entity/pokemon/marowak/shiny_marowak.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.marowak.blink",
+        "ground_idle": "animation.marowak.ground_idle",
+        "air_idle": "animation.marowak.ground_idle",
+        "water_idle": "animation.marowak.water_idle",
+        "walking": "animation.marowak.walking",
+        "flying": "animation.marowak.ground_idle",
+        "swimming": "animation.marowak.swimming",
+        "sleeping": "animation.marowak.ground_idle",
+        "attack": "animation.marowak.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "marowak",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.marowak"
       }
     }
   }
