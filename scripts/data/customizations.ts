@@ -245,7 +245,7 @@ export const PokemonCustomizations: Partial<{
 
   celebi: {
     skins: {
-      halloween: ["model", "texture"],
+      halloween: ["model", "texture", "shiny_texture"],
     },
   },
 
