@@ -3,6 +3,11 @@
   "render_controllers": {
     "controller.render.pokemon:deerling": {
       "arrays": {
+        "materials": {
+          "Array.materialVariants": [
+            "Material.default"
+          ]
+        },
         "geometries": {
           "Array.geometryVariants": [
             "Geometry.default",
@@ -26,7 +31,7 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[0]",
+      "geometry": "Array.geometryVariants[query.skin_id]",
       "textures": [
         "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==1) ? 2:(query.skin_id==2) ? 3:(query.skin_id==3) ? 4:0]"
       ]

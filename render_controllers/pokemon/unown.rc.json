@@ -3,6 +3,11 @@
   "render_controllers": {
     "controller.render.pokemon:unown": {
       "arrays": {
+        "materials": {
+          "Array.materialVariants": [
+            "Material.default"
+          ]
+        },
         "geometries": {
           "Array.geometryVariants": [
             "Geometry.default",
@@ -74,7 +79,7 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[0]",
+      "geometry": "Array.geometryVariants[query.skin_id]",
       "textures": [
         "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==1) ? 2:(query.skin_id==2) ? 3:(query.skin_id==3) ? 4:(query.skin_id==4) ? 5:(query.skin_id==5) ? 6:(query.skin_id==6) ? 7:(query.skin_id==7) ? 8:(query.skin_id==8) ? 9:(query.skin_id==9) ? 10:(query.skin_id==10) ? 11:(query.skin_id==11) ? 12:(query.skin_id==12) ? 13:(query.skin_id==13) ? 14:(query.skin_id==14) ? 15:(query.skin_id==15) ? 16:(query.skin_id==16) ? 17:(query.skin_id==17) ? 18:(query.skin_id==18) ? 19:(query.skin_id==19) ? 20:(query.skin_id==20) ? 21:(query.skin_id==21) ? 22:(query.skin_id==22) ? 23:(query.skin_id==23) ? 24:(query.skin_id==24) ? 25:(query.skin_id==25) ? 26:(query.skin_id==26) ? 27:(query.skin_id==27) ? 28:0]"
       ]

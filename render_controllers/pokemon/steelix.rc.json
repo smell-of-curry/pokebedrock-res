@@ -3,6 +3,11 @@
   "render_controllers": {
     "controller.render.pokemon:steelix": {
       "arrays": {
+        "materials": {
+          "Array.materialVariants": [
+            "Material.default"
+          ]
+        },
         "geometries": {
           "Array.geometryVariants": [
             "Geometry.male_default",
@@ -23,7 +28,7 @@
           "*": "Material.default"
         }
       ],
-      "geometry": "Array.geometryVariants[0]",
+      "geometry": "Array.geometryVariants[(query.skin_id==0 && query.property('pokeb:gender')=='male') ? 0:(query.skin_id==0 && query.property('pokeb:gender')=='female') ? 1:0]",
       "textures": [
         "Array.textureVariants[(query.skin_id==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(query.skin_id==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(query.skin_id==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(query.skin_id==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:0]"
       ]
