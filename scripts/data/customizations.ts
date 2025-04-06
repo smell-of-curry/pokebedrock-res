@@ -3,7 +3,18 @@ import type {
   AnimatedTextureConfig,
   PokemonAppearanceDifferences,
   PokemonTypeId,
+  ParticleEffectId,
+  PokemonSkinOptionObject
 } from "../types";
+
+/**
+ * Defines customization options for a Pokémon skin.
+ * Use the array form for simple skins that only need different assets.
+ * Use the object form when you need custom animations or particle effects that are specific to the skin.
+ */
+export type PokemonSkinOption = 
+  | PokemonAppearanceDifferences 
+  | PokemonSkinOptionObject;
 
 export interface PokemonCustomization {
   /**
@@ -17,7 +28,7 @@ export interface PokemonCustomization {
    * Which means it should be mapped to: ["model", "texture"].
    * Also if this skin uses a different sound, sprite, or animation, it should be added here.
    */
-  skins?: { [key: string]: PokemonAppearanceDifferences };
+  skins?: { [key: string]: PokemonSkinOption };
   /**
    * If the pokemon has a different look based on what gender it is.
    */
@@ -25,15 +36,17 @@ export interface PokemonCustomization {
   /**
    * If this appearance uses a animated texture to display.
    * Map to a animated texture config.
+   * This applies to the default form and all skins unless a skin defines its own animatedTextureConfig.
    */
   animatedTextureConfig?: AnimatedTextureConfig;
   /**
    * An array of particle effects this pokemon uses in its animations
    * Where the effect ID will be the second string after the split of ":"
-   * 
+   * This applies to the default form and all skins unless a skin defines its own animationParticleEffects.
+   *
    * @example "pokeb:poison_smoke" -> poison_smoke: "pokeb:poison_smoke"
    */
-  animationParticleEffects?: `${"minecraft" | "pokeb"}:${string}`[]
+  animationParticleEffects?: ParticleEffectId[];
 }
 
 /**
@@ -51,13 +64,32 @@ export const PokemonCustomizations: Partial<{
 }> = {
   // ======================== GEN 1 ========================
 
-
   charmander: {
-    animationParticleEffects: ["pokeb:tail_flame"]
+    animationParticleEffects: ["pokeb:tail_flame"],
   },
 
   dewgong: {
-    animationParticleEffects: ["pokeb:splash"]
+    animationParticleEffects: ["pokeb:splash"],
+  },
+
+  torterra: {
+    skins: {
+      stpatrick: {
+        differences: [
+          "model",
+          "texture",
+          "shiny_texture",
+          "animation_ground_idle",
+          "animation_walking",
+          "animation_water_idle",
+          "animation_swimming",
+          "animation_sleeping",
+          "animation_attack",
+          "animation_faint",
+        ],
+        animatedTextureConfig: [3, 8]
+      }
+    }
   },
 
   /** Female's flower has a visible gynoecium */
@@ -140,7 +172,7 @@ export const PokemonCustomizations: Partial<{
       eyebrows: ["texture", "shiny_texture"],
       smallking: ["texture", "shiny_texture"],
       heart: ["texture", "shiny_texture"],
-    }
+    },
   },
 
   /** Female has one large spot per petal */
@@ -234,11 +266,11 @@ export const PokemonCustomizations: Partial<{
   },
 
   koffing: {
-    animationParticleEffects: ["pokeb:poison_smoke"]
+    animationParticleEffects: ["pokeb:poison_smoke"],
   },
 
   weezing: {
-    animationParticleEffects: ["pokeb:poison_smoke"]
+    animationParticleEffects: ["pokeb:poison_smoke"],
   },
 
   // ======================== GEN 2 ========================
@@ -879,7 +911,7 @@ export const PokemonCustomizations: Partial<{
   },
 
   marowakalola: {
-    animatedTextureConfig: [2, 8]
+    animatedTextureConfig: [2, 8],
   },
 
   // ======================== GEN 8 ========================

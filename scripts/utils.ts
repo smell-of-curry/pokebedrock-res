@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import fsExtra from "fs-extra";
+import { PokemonSkinOption } from "./data/customizations";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -252,4 +253,19 @@ export function cloneTemplate<T>(template: T, speciesId: string): T {
   const cloned = JSON.parse(JSON.stringify(template));
   const stringified = JSON.stringify(cloned).replace(/\{speciesId\}/g, speciesId);
   return JSON.parse(stringified);
+}
+
+/**
+ * Extracts differences from a skin option, handling both array and object forms
+ */
+export function getSkinDifferences(skinOption: PokemonSkinOption): string[] {
+  return Array.isArray(skinOption) ? skinOption : skinOption.differences;
+}
+
+/**
+ * Checks if a skin option includes a specific difference
+ */
+export function skinOptionIncludes(skinOption: PokemonSkinOption, difference: string): boolean {
+  const differences = getSkinDifferences(skinOption);
+  return differences.includes(difference);
 }

@@ -143,6 +143,11 @@ export interface AnimationFile {
 
 interface RenderControllerFileRenderer {
   arrays: {
+    materials:
+      | { [key: string]: string }
+      | {
+          "Array.materialVariants": `Material.${string}`[];
+        };
     textures:
       | { [key: string]: string }
       | {
@@ -157,7 +162,7 @@ interface RenderControllerFileRenderer {
   geometry: `Geometry.${string}` | Molang;
   materials: [
     {
-      "*": "Material.default";
+      "*": string | "Material.default";
     }
   ];
   textures: string[] | [Molang];
@@ -239,6 +244,29 @@ export type PokemonAppearanceDifferences = (
  * the second index is the speed of the animation (in FPS).
  */
 export type AnimatedTextureConfig = [number, number];
+
+/**
+ * Represents a particle effect ID in the format "namespace:path"
+ * Used for defining particle effects in animations and skins
+ */
+export type ParticleEffectId = `${"minecraft" | "pokeb"}:${string}`;
+
+/**
+ * Represents the object form of a Pokemon skin option with enhanced capabilities
+ */
+export interface PokemonSkinOptionObject {
+  differences: PokemonAppearanceDifferences;
+  /**
+   * If this skin uses a animated texture to display.
+   * This will override the parent's animatedTextureConfig when this skin is selected.
+   */
+  animatedTextureConfig?: AnimatedTextureConfig;
+  /**
+   * An array of particle effects this skin uses in its animations
+   * This will override or supplement the parent's animationParticleEffects when this skin is selected.
+   */
+  animationParticleEffects?: ParticleEffectId[];
+}
 
 export type GeometryFileName =
   | PokemonTypeId // Base form

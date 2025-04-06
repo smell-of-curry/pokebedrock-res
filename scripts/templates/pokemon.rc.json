@@ -3,6 +3,9 @@
   "render_controllers": {
     "controller.render.pokemon:{speciesId}": {
       "arrays": {
+        "materials": {
+          "Array.materialVariants": ["Material.default"]
+        },
         "geometries": {
           "Array.geometryVariants": ["Geometry.default"]
         },
@@ -19,7 +22,7 @@
       },
       "materials": [
         {
-          "*": "Material.default"
+          "*": "Array.materialVariants['{materialParser.molang}']"
         }
       ],
       "geometry": "Array.geometryVariants['{geometryParser.molang}']",
