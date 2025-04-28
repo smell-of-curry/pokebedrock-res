@@ -1,6 +1,6 @@
 # All Rights Reserved
 
-Copyright (c) 2024 PokeBedrock
+Copyright (c) 2025 PokeBedrock
 
 All rights reserved. This resource pack and its accompanying files are the intellectual property of PokeBedrock. No part of this resource pack may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the creator.
 
