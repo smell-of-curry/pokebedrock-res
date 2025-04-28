@@ -1,16 +1,14 @@
-**Update v2.13.4**
+**Update v2.13.5**
 
-- Added a new Torterra & Torterra-StPatrick Skin by @dcrdemonlord 
-- Added new Greninja Ash Model by @abstractjoker 
-- Fixed Bell Sprout & Weepinbell Blink Animation by @rafael8355 
-- Added Shiny Skin for Celebi Halloween by @ismegames 
-- Slightly Changed Nintales Alola Color by @dcrdemonlord 
-- Slightly Changed Terrakion Model to fix Z-Fighting by @ismegames 
-- Fixed Alcremie Sprites not having correct name.
-- Added Darkrai halloween Spite by @morty134 
-- Fixed Furfrou La Reine Sprite
-- Fixed Mimikyu Skin Sprites by @morty134 
-- Added Rockruff Dusk Sprite
-- Fixed Vivillon Sprites
-- Fixed Spheal Watermelon Sprite
-- Fixed Geometry Variant mapping for pokemon
+- Added in new Battle Tower NPC to Server NPC Skins
+- Separated out Elite Four Models into there own entity files.
+- Added Hatenna Line by @rafael8355
+- Fixed the walking and erroring of trainers adding in `variable.tcos0`
+- Added in missing held item Mask textures
+- Added in missing mimikyu busted sprite
+- Fixed missing Griseous Core, Adamant Crystal, and Lustrous Globe from not having listed item mapping.
+- Fixed Palkia and Arceus not displaying properly due to mal-configuration of particles.
+- Removed Ash Greninja as a actual pokemon.
+- Fixed the Spheal Watermelon skin name being wrong.
+- Added new `src.pokebedrock.modules.forms.party.editPokemonHeldItems.7` for translations of `Cannot set a bundle as a held item.`
+- Added new `zh_CN` Translations of Simplified Chinese from @ASHISK404
