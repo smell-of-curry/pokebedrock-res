@@ -128,6 +128,12 @@
                     "binding_name": "#null",
                     "binding_type": "view",
                     "source_property_name": "$string_parser",
+                    "target_property_name": "#ball_type"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "('textures/ui/sidebar/balls/' + #ball_type)",
                     "target_property_name": "#texture"
                   }
                 ],
@@ -151,12 +157,18 @@
                           "binding_name": "#null",
                           "binding_type": "view",
                           "source_property_name": "$string_parser",
+                          "target_property_name": "#pokemon_icon"
+                        },
+                        {
+                          "binding_name": "#null",
+                          "binding_type": "view",
+                          "source_property_name": "('textures/sprites/default/' + #pokemon_icon)",
                           "target_property_name": "#texture"
                         },
                         {
                           "binding_name": "#null",
                           "binding_type": "view",
-                          "source_property_name": "(not (#texture = 'null'))",
+                          "source_property_name": "(not (#pokemon_icon = 'null'))",
                           "target_property_name": "#visible"
                         }
                       ]
@@ -196,7 +208,7 @@
     "size": ["100%", "80%"],
     "offset": ["47%", "0%"],
     "layer": 1,
-    "$var_size": 81,
+    "$var_size": 121,
     "alpha": 1,
     "controls": [
       {
