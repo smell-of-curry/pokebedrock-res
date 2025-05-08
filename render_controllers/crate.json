@@ -8,10 +8,10 @@
           "*": "Material.default"
         }
       ],
-      "textures": ["Array.skins[query.skin_id]"],
+      "textures": ["Array.skins[query.property('pokeb:skin') == 'ender_chest' ? 0 : 1]"],
       "arrays": {
         "textures": {
-          "Array.skins": ["Texture.default", "Texture.normal"]
+          "Array.skins": ["Texture.ender_chest", "Texture.chest"]
         }
       }
     }

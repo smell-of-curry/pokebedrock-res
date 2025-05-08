@@ -9,7 +9,7 @@
       },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
-      "textures": ["Array.variants[query.skin_id]"],
+      "textures": ["Array.variants[query.property('pokeb:status') == 'off' ? 0 : 1]"],
       "uv_anim": {
         "offset": [0.0, "math.mod(math.floor(q.life_time * 8),11) / 11"],
         "scale": [1.0, "1 / 11"]
