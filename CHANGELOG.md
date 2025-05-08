@@ -1,8 +1,6 @@
-**Update v2.13.6**
+**Update v2.13.7**
 
-- Added Server Logos of all servers (except Sun & Moon) for rendering in hub
-- Added Sun and Moon Template NPC's (these will need to be replaced with actual model)
-- Fixed broken feather textures
-- Fixed Hearthflame mask texture spelling
-- Updated sidebar to have a increased variable length to allow for non ASCII chars (different languages) to render properly.
-- Cleaned up Ball Type and Sprite rendering in sidebar so less needs to be passed from script API.
+- Refactored `query.skin_id` and `query.mark_variant` to new entity properties for Trainers, Pokemon, Pokestop, etc.
+- Removed Hub NPC file, as it was causing unnecessary content errors (and was not being used)
+- Updated crate texture names, to match the behavior pack.
+- Removed broken texture setting in `block.json`
