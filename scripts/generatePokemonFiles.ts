@@ -650,8 +650,8 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         scaleExpr += " : ";
       }
 
-      offsetExpr += `(query.skin_id==${skinIndex}) ? math.mod(math.floor(q.life_time * ${skinFps}), ${skinFrameCount}) / ${skinFrameCount}`;
-      scaleExpr += `(query.skin_id==${skinIndex}) ? 1.0 / ${skinFrameCount}`;
+      offsetExpr += `(query.property('pokeb:skin_index')==${skinIndex}) ? math.mod(math.floor(q.life_time * ${skinFps}), ${skinFrameCount}) / ${skinFrameCount}`;
+      scaleExpr += `(query.property('pokeb:skin_index')==${skinIndex}) ? 1.0 / ${skinFrameCount}`;
     });
 
     // Add parent animation as the default case if it exists
@@ -722,7 +722,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
           `Texture.${normalAppearanceId}` as (typeof textures)[number]
         );
         if (normalTextureIndex !== -1) {
-          textureParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}'${
+          textureParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}'${
             hasShiny ? " && query.property('pokeb:shiny') == false" : ""
           }) ? ${normalTextureIndex}:`;
         }
@@ -735,7 +735,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
           `Texture.${shinyAppearanceId}` as (typeof textures)[number]
         );
         if (shinyTextureIndex !== -1) {
-          textureParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}'${
+          textureParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}'${
             hasShiny ? " && query.property('pokeb:shiny') == true" : ""
           }) ? ${shinyTextureIndex}:`;
         }
@@ -746,7 +746,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         `Texture.${variant}` as (typeof textures)[number]
       );
       if (normalTextureIndex !== -1) {
-        textureParser += `(query.skin_id==${idx}${
+        textureParser += `(query.property('pokeb:skin_index')==${idx}${
           hasShiny ? " && query.property('pokeb:shiny') == false" : ""
         }) ? ${normalTextureIndex}:`;
       }
@@ -758,7 +758,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         `Texture.shiny_${variant}` as (typeof textures)[number]
       );
       if (shinyTextureIndex !== -1) {
-        textureParser += `(query.skin_id==${idx}${
+        textureParser += `(query.property('pokeb:skin_index')==${idx}${
           hasShiny ? " && query.property('pokeb:shiny') == true" : ""
         }) ? ${shinyTextureIndex}:`;
       }
@@ -805,7 +805,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
     if (canUseSimplifiedApproach) {
       // We can use the simplified syntax
-      geometryParser = "query.skin_id";
+      geometryParser = "query.property('pokeb:skin_index')";
     } else {
       // Need to use the full ternary approach for gender differences or non-sequential indices
       for (const [idx, variant] of geometryVariantsArray.entries()) {
@@ -821,7 +821,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
               );
               continue;
             }
-            geometryParser += `(query.skin_id==${idx} && query.property('pokeb:gender')=='${gender}') ? ${geometryIdIndex}:`;
+            geometryParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}') ? ${geometryIdIndex}:`;
           }
         } else {
           const appearanceId = variant as AppearanceId;
@@ -834,7 +834,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
             );
             continue;
           }
-          geometryParser += `(query.skin_id==${idx})?${geometryIdIndex}:`;
+          geometryParser += `(query.property('pokeb:skin_index')==${idx})?${geometryIdIndex}:`;
         }
       }
 
@@ -858,7 +858,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
       `controller.render.pokemon:${pokemonTypeId}`
     ].materials = [
       {
-        "*": "Array.materialVariants[query.skin_id]",
+        "*": "Array.materialVariants[query.property('pokeb:skin_index')]",
       },
     ];
   } else {
