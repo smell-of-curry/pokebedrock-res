@@ -4,25 +4,49 @@
     "description": {
       "identifier": "pokemon:poipole",
       "materials": {
-        "default": "zombie"
+        "default": "entity_emissive_alpha",
+        "aura": "charged_creeper"
       },
       "textures": {
-        "default": "textures/sprites/default/poipole",
-        "shiny_default": "textures/sprites/default/poipole",
-        "default_male": "textures/sprites/default/poipole",
-        "default_female": "textures/sprites/default/poipole",
-        "shiny_male": "textures/sprites/default/poipole",
-        "shiny_female": "textures/sprites/default/poipole"
+        "evo_aura": "textures/entity/evolving",
+        "default": "textures/entity/pokemon/poipole/poipole.png",
+        "shiny_default": "textures/entity/pokemon/poipole/shiny_poipole.png"
       },
-      "geometry": {
-        "default": "geometry.substitute"
+      "scripts": {
+        "animate": [
+          "controller",
+          {
+            "blink": "math.random(0.0, 25.0) <= 0.25"
+          }
+        ]
+      },
+      "animations": {
+        "blink": "animation.poipole.blink",
+        "ground_idle": "animation.poipole.ground_idle",
+        "air_idle": "animation.poipole.ground_idle",
+        "water_idle": "animation.poipole.water_idle",
+        "walking": "animation.poipole.walking",
+        "flying": "animation.poipole.ground_idle",
+        "swimming": "animation.poipole.swimming",
+        "sleeping": "animation.poipole.sleeping",
+        "attack": "animation.poipole.attack",
+        "look_at_target": "animation.pokemon.look_at_target",
+        "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
-        "controller.render.pokemon"
+        {
+          "controller.render.pokemon": "query.variant==0"
+        },
+        {
+          "controller.render.evolve": "query.variant==1"
+        }
       ],
       "spawn_egg": {
         "texture": "poipole",
         "texture_index": 0
+      },
+      "geometry": {
+        "default": "geometry.poipole"
       }
     }
   }
