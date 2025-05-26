@@ -4,7 +4,7 @@ import type {
   PokemonAppearanceDifferences,
   PokemonTypeId,
   ParticleEffectId,
-  PokemonSkinOptionObject
+  PokemonSkinOptionObject,
 } from "../types";
 
 /**
@@ -12,8 +12,8 @@ import type {
  * Use the array form for simple skins that only need different assets.
  * Use the object form when you need custom animations or particle effects that are specific to the skin.
  */
-export type PokemonSkinOption = 
-  | PokemonAppearanceDifferences 
+export type PokemonSkinOption =
+  | PokemonAppearanceDifferences
   | PokemonSkinOptionObject;
 
 export interface PokemonCustomization {
@@ -87,9 +87,9 @@ export const PokemonCustomizations: Partial<{
           "animation_attack",
           "animation_faint",
         ],
-        animatedTextureConfig: [3, 8]
-      }
-    }
+        animatedTextureConfig: [3, 8],
+      },
+    },
   },
 
   /** Female's flower has a visible gynoecium */
@@ -262,6 +262,12 @@ export const PokemonCustomizations: Partial<{
   mewtwomegay: {
     skins: {
       shadow: ["texture"],
+    },
+  },
+
+  meowscarada: {
+    skins: {
+      valentine: ["model", "texture"],
     },
   },
 
@@ -511,7 +517,17 @@ export const PokemonCustomizations: Partial<{
 
   gardevoir: {
     skins: {
-      christmas: ["model", "texture"],
+      christmas: [
+        "model",
+        "texture",
+        "animation_ground_idle",
+        "animation_water_idle",
+        "animation_walking",
+        "animation_swimming",
+        "animation_attack",
+        "animation_faint",
+        "animation_sleeping",
+      ],
     },
   },
 
