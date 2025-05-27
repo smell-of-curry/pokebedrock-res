@@ -13,24 +13,35 @@
         "shiny_default": "textures/entity/pokemon/weepinbell/shiny_weepinbell.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.weepinbell.blink",
-        "ground_idle": "animation.weepinbell.ground_idle",
-        "air_idle": "animation.weepinbell.ground_idle",
-        "water_idle": "animation.weepinbell.water_idle",
-        "walking": "animation.weepinbell.walking",
-        "flying": "animation.weepinbell.ground_idle",
-        "swimming": "animation.weepinbell.swimming",
-        "sleeping": "animation.weepinbell.ground_idle",
-        "attack": "animation.weepinbell.attack",
+        "default_ground_idle": "animation.weepinbell.ground_idle",
+        "default_air_idle": "animation.weepinbell.ground_idle",
+        "default_water_idle": "animation.weepinbell.water_idle",
+        "default_walking": "animation.weepinbell.walking",
+        "default_flying": "animation.weepinbell.ground_idle",
+        "default_swimming": "animation.weepinbell.swimming",
+        "default_sleeping": "animation.weepinbell.ground_idle",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.weepinbell.default_attack",
+        "blink": "animation.weepinbell.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

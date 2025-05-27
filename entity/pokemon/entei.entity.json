@@ -13,24 +13,35 @@
         "shiny_default": "textures/entity/pokemon/entei/shiny_entei.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.entei.blink",
-        "ground_idle": "animation.entei.ground_idle",
-        "air_idle": "animation.entei.ground_idle",
-        "water_idle": "animation.entei.water_idle",
-        "walking": "animation.entei.walking",
-        "flying": "animation.entei.ground_idle",
-        "swimming": "animation.entei.swimming",
-        "sleeping": "animation.entei.sleeping",
-        "attack": "animation.entei.attack",
+        "default_ground_idle": "animation.entei.ground_idle",
+        "default_air_idle": "animation.entei.ground_idle",
+        "default_water_idle": "animation.entei.water_idle",
+        "default_walking": "animation.entei.walking",
+        "default_flying": "animation.entei.ground_idle",
+        "default_swimming": "animation.entei.swimming",
+        "default_sleeping": "animation.entei.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.entei.default_attack",
+        "blink": "animation.entei.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

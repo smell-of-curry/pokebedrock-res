@@ -4,6 +4,7 @@ import fsExtra from "fs-extra";
 import sharp from "sharp";
 import type {
   AnimationFile,
+  AnimationControllerFile,
   EntityFile,
   GeometryFile,
   GeometryFileName,
@@ -27,8 +28,6 @@ import {
   PokemonSkinOption,
 } from "./data/customizations";
 
-// TODO: Implement animations for skinned/gender pokemon.
-
 // --- Paths & Initialization ---
 const cwd = process.cwd();
 const pokemonJsonPath = path.join(cwd, "pokemon.json");
@@ -42,16 +41,27 @@ const pokemonSubstituteEntityTemplatePath = path.join(
   "pokemonSubstitute.entity.json"
 );
 const pokemonRCTemplatePath = path.join(templatesPath, "pokemon.rc.json");
+const pokemonACTemplatePath = path.join(
+  templatesPath,
+  "pokemon.animation_controller.json"
+);
 const pokemonEntityFilesDir = path.join(cwd, "entity", "pokemon");
 const markdownLogPath = path.join(cwd, "missing_info.md");
 const renderControllersPath = path.join(cwd, "render_controllers", "pokemon");
+const animationControllersPath = path.join(
+  cwd,
+  "animation_controllers",
+  "pokemon"
+);
 const itemTexturesPath = path.join(cwd, "textures", "item_texture.json");
 
 // Ensure directories exist and are clean
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
 fsExtra.ensureDirSync(renderControllersPath);
+fsExtra.ensureDirSync(animationControllersPath);
 fsExtra.emptyDirSync(pokemonEntityFilesDir);
 fsExtra.emptyDirSync(renderControllersPath);
+fsExtra.emptyDirSync(animationControllersPath);
 
 // --- Global Report State ---
 const report = {
@@ -84,11 +94,15 @@ const pokemonSubstituteEntityTemplate = safeReadJSON<EntityFile>(
 const pokemonRCTemplate = safeReadJSON<RenderControllerFile>(
   pokemonRCTemplatePath
 );
+const pokemonACTemplate = safeReadJSON<AnimationControllerFile>(
+  pokemonACTemplatePath
+);
 const itemTexturesFile = safeReadJSON<ItemTextureFile>(itemTexturesPath);
 if (
   !pokemonEntityFileTemplate ||
   !pokemonSubstituteEntityTemplate ||
   !pokemonRCTemplate ||
+  !pokemonACTemplate ||
   !itemTexturesFile
 ) {
   Logger.error("One or more template files are missing or invalid.");
@@ -264,6 +278,7 @@ function updateEntityFileWithAnimations(
     return entityFile;
   }
   const behavior = pokemonEntry.behavior;
+  const skinAnimations = getSkinSpecificAnimations(pokemonTypeId);
 
   const requirementMap: Record<
     (typeof PokemonAnimationTypes)[number],
@@ -284,12 +299,51 @@ function updateEntityFileWithAnimations(
   for (const [animKey, requirement] of Object.entries(requirementMap)) {
     if (!requirement) continue;
     if (behavior[requirement] && animations.includes(animKey)) continue;
-    const missing = report.missingPokemonAnimations.get(pokemonTypeId) || [];
-    missing.push(animKey);
-    report.missingPokemonAnimations.set(pokemonTypeId, missing);
-    if (animKey !== "blink") {
-      description.animations[animKey] = defaultAnimation;
+    const missingReport =
+      report.missingPokemonAnimations.get(pokemonTypeId) || [];
+    missingReport.push(animKey);
+    report.missingPokemonAnimations.set(pokemonTypeId, missingReport);
+    if (animKey === "blink") continue;
+    description.animations[`default_${animKey}`] = defaultAnimation;
+  }
+
+  // Helper function to insert a key before a target key (so it looks neat in the entity file).
+  const insertKeyBefore = (
+    obj: Record<string, any>,
+    newKey: string,
+    newValue: any,
+    targetKey: string
+  ) => {
+    let result: Record<string, any> = {};
+    for (let key in obj) {
+      if (key === targetKey) {
+        result[newKey] = newValue;
+      }
+      result[key] = obj[key];
     }
+    return result;
+  };
+
+  // Add animations for skinned pokemon.
+  if (Object.keys(skinAnimations).length > 0) {
+    for (const skin of Object.keys(skinAnimations)) {
+      const animations = skinAnimations[skin];
+      for (const animation of animations) {
+        description.animations = insertKeyBefore(
+          description.animations,
+          `${skin}_${animation}`,
+          `animation.${pokemonTypeId}_${skin}.${animation}`,
+          `look_at_target`
+        );
+      }
+    }
+  } else {
+    // Switch to use default animation controller.
+    description.animations["attack"] = `animation.${pokemonTypeId}.default_attack`;
+    delete description.animations["default_attack"];
+    description.animations["blink"] = `animation.${pokemonTypeId}.default_blink`;
+    delete description.animations["default_blink"];
+    description.animations["controller"] = "controller.animation.pokemon";
   }
 
   delete description.materials["aura"];
@@ -500,6 +554,185 @@ function verifyAndUpdateTextures(
   // Update the entity file with the textures.
   entityFile["minecraft:client_entity"].description.textures = entityTextures;
   return entityFile;
+}
+
+/**
+ * Checks if a Pokemon has skin-specific animations.
+ */
+function hasSkinSpecificAnimations(pokemonTypeId: PokemonTypeId): boolean {
+  const customizations = PokemonCustomizations[pokemonTypeId];
+  if (!customizations?.skins) return false;
+
+  return Object.values(customizations.skins).some((skinOption) => {
+    if (Array.isArray(skinOption)) {
+      return skinOption.some((diff) => diff.startsWith("animation_"));
+    } else {
+      return skinOption.differences.some((diff) =>
+        diff.startsWith("animation_")
+      );
+    }
+  });
+}
+
+/**
+ * Gets all skin-specific animation types for a Pokemon.
+ */
+function getSkinSpecificAnimations(pokemonTypeId: PokemonTypeId): {
+  [skinName: string]: string[];
+} {
+  const customizations = PokemonCustomizations[pokemonTypeId];
+  if (!customizations?.skins) return {};
+
+  const result: { [skinName: string]: string[] } = {};
+
+  Object.entries(customizations.skins).forEach(([skinName, skinOption]) => {
+    const differences = Array.isArray(skinOption)
+      ? skinOption
+      : skinOption.differences;
+
+    const animationDifferences = differences.filter((diff) =>
+      diff.startsWith("animation_")
+    );
+
+    if (animationDifferences.length > 0) {
+      result[skinName] = animationDifferences.map((diff) =>
+        diff.replace("animation_", "")
+      );
+    }
+  });
+
+  return result;
+}
+
+/**
+ * Creates an animation controller for the given Pokémon type.
+ */
+function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
+  if (!hasSkinSpecificAnimations(pokemonTypeId)) return;
+
+  let templateString = JSON.stringify(pokemonACTemplate, null, 2).replace(
+    /\{speciesId\}/g,
+    pokemonTypeId
+  );
+
+  // Parse the animation controller JSON.
+  let acFile: AnimationControllerFile;
+  try {
+    acFile = JSON.parse(templateString);
+  } catch (error) {
+    throw new Error(
+      `Error parsing animation controller JSON for ${pokemonTypeId}: ${error}`
+    );
+  }
+
+  const controller =
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}`
+    ];
+  if (!controller)
+    throw new Error(
+      `No controller found in animation controller for ${pokemonTypeId}`
+    );
+  const blinkController =
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}_blink`
+    ];
+  if (!blinkController)
+    throw new Error(
+      `No blink controller found in animation controller for ${pokemonTypeId}`
+    );
+  const attackController =
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}_attack`
+    ];
+  if (!attackController)
+    throw new Error(`No attack controller found in animation controller for ${pokemonTypeId}`);
+
+  const skinAnimations = getSkinSpecificAnimations(pokemonTypeId);
+  const skinKeys = Object.keys(skinAnimations);
+
+  // Go through each state of controller (ignoring default) and append each skin that has an animation for this state.
+  // If so, add a animations array entry for this skin.
+  for (const state of Object.keys(controller.states)) {
+    if (state === "default") continue;
+    const stateController = controller.states[state];
+    const animations = stateController.animations;
+    if (!animations)
+      throw new Error(
+        `No animations found for state ${state} in animation controller for ${pokemonTypeId}`
+      );
+    for (const skin of skinKeys) {
+      if (!skinAnimations[skin].includes(state)) continue;
+      animations.push({
+        [`${skin}_${state}`]: `query.property('pokeb:skin_index') == ${
+          skinKeys.indexOf(skin) + 1
+        }`,
+      });
+    }
+    stateController.animations = animations;
+    controller.states[state] = stateController;
+  }
+
+  // Check if a skin has a custom animation for blinking.
+  if (
+    Object.values(skinAnimations).some((animations) =>
+      animations.includes("blink")
+    )
+  ) {
+    // We need to add a custom blink animation for each skin that has a blink animation.
+    const blinkStateAnimations = blinkController.states["blink"].animations;
+    if (!blinkStateAnimations)
+      throw new Error(
+        `No blink state animations found in blink controller for ${pokemonTypeId}`
+      );
+    for (const skin of skinKeys) {
+      if (!skinAnimations[skin].includes("blink")) continue;
+      blinkStateAnimations.push({
+        [`${skin}_blink`]: `query.property('pokeb:skin_index') == ${
+          skinKeys.indexOf(skin) + 1
+        }`,
+      });
+    }
+    blinkController.states["blink"].animations = blinkStateAnimations;
+  }
+
+  // Check if a skin has a custom attack animation.
+  if (Object.values(skinAnimations).some((animations) => animations.includes("attack"))) {
+    // We need to add a custom attack animation for each skin that has a attack animation.
+    const attackStateAnimations = attackController.states["attack"].animations;
+    if (!attackStateAnimations)
+      throw new Error(`No attack state animations found in animation controller for ${pokemonTypeId}`);
+    for (const skin of skinKeys) {
+      if (!skinAnimations[skin].includes("attack")) continue;
+      attackStateAnimations.push({
+        [`${skin}_attack`]: `query.property('pokeb:skin_index') == ${skinKeys.indexOf(skin) + 1}`,
+      });
+    }
+    attackController.states["attack"].animations = attackStateAnimations;
+  }
+
+  // Write the animation controller file.
+  try {
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}`
+    ] = controller;
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}_blink`
+    ] = blinkController;
+    acFile.animation_controllers[
+      `controller.animation.pokemon:${pokemonTypeId}_attack`
+    ] = attackController;
+    fsExtra.writeJSONSync(
+      path.join(animationControllersPath, `${pokemonTypeId}.json`),
+      acFile,
+      { spaces: 2 }
+    );
+    Logger.info(`Created animation controller for ${pokemonTypeId}`);
+  } catch (error) {
+    Logger.error(
+      `Error writing animation controller for ${pokemonTypeId}: ${error}`
+    );
+  }
 }
 
 /**
@@ -1101,6 +1334,9 @@ async function processPokemon() {
           "controller.render.pokemon": "query.variant==0",
         };
       }
+
+      // Create animation controller if needed
+      if (hasSkinSpecificAnimations(typeId)) makeAnimationController(typeId);
 
       fsExtra.writeJSONSync(
         path.join(pokemonEntityFilesDir, `${typeId}.entity.json`),

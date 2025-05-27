@@ -13,24 +13,35 @@
         "shiny_default": "textures/entity/pokemon/skiploom/shiny_skiploom.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.skiploom.blink",
-        "ground_idle": "animation.skiploom.ground_idle",
-        "air_idle": "animation.skiploom.ground_idle",
-        "water_idle": "animation.skiploom.water_idle",
-        "walking": "animation.skiploom.walking",
-        "flying": "animation.skiploom.ground_idle",
-        "swimming": "animation.skiploom.swimming",
-        "sleeping": "animation.skiploom.sleeping",
-        "attack": "animation.skiploom.attack",
+        "default_ground_idle": "animation.skiploom.ground_idle",
+        "default_air_idle": "animation.skiploom.ground_idle",
+        "default_water_idle": "animation.skiploom.water_idle",
+        "default_walking": "animation.skiploom.walking",
+        "default_flying": "animation.skiploom.ground_idle",
+        "default_swimming": "animation.skiploom.swimming",
+        "default_sleeping": "animation.skiploom.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.skiploom.default_attack",
+        "blink": "animation.skiploom.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

@@ -13,24 +13,35 @@
         "shiny_default": "textures/entity/pokemon/lucario/shiny_lucario.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.lucario.blink",
-        "ground_idle": "animation.lucario.ground_idle",
-        "air_idle": "animation.lucario.ground_idle",
-        "water_idle": "animation.lucario.water_idle",
-        "walking": "animation.lucario.walking",
-        "flying": "animation.lucario.ground_idle",
-        "swimming": "animation.lucario.swimming",
-        "sleeping": "animation.lucario.sleeping",
-        "attack": "animation.lucario.attack",
+        "default_ground_idle": "animation.lucario.ground_idle",
+        "default_air_idle": "animation.lucario.ground_idle",
+        "default_water_idle": "animation.lucario.water_idle",
+        "default_walking": "animation.lucario.walking",
+        "default_flying": "animation.lucario.ground_idle",
+        "default_swimming": "animation.lucario.swimming",
+        "default_sleeping": "animation.lucario.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.lucario.default_attack",
+        "blink": "animation.lucario.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

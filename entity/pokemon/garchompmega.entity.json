@@ -17,24 +17,35 @@
         "female_halloween": "textures/entity/pokemon/garchompmega/female_garchompmega_halloween.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.garchompmega.blink",
-        "ground_idle": "animation.garchompmega.ground_idle",
-        "air_idle": "animation.garchompmega.air_idle",
-        "water_idle": "animation.garchompmega.water_idle",
-        "walking": "animation.garchompmega.walking",
-        "flying": "animation.garchompmega.flying",
-        "swimming": "animation.garchompmega.swimming",
-        "sleeping": "animation.garchompmega.sleeping",
-        "attack": "animation.garchompmega.attack",
+        "default_ground_idle": "animation.garchompmega.ground_idle",
+        "default_air_idle": "animation.garchompmega.air_idle",
+        "default_water_idle": "animation.garchompmega.water_idle",
+        "default_walking": "animation.garchompmega.walking",
+        "default_flying": "animation.garchompmega.flying",
+        "default_swimming": "animation.garchompmega.swimming",
+        "default_sleeping": "animation.garchompmega.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.garchompmega.default_attack",
+        "blink": "animation.garchompmega.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

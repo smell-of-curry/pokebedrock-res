@@ -14,24 +14,35 @@
         "halloween": "textures/entity/pokemon/zoroark/zoroark_halloween.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.zoroark.blink",
-        "ground_idle": "animation.zoroark.ground_idle",
-        "air_idle": "animation.zoroark.ground_idle",
-        "water_idle": "animation.zoroark.water_idle",
-        "walking": "animation.zoroark.walking",
-        "flying": "animation.zoroark.ground_idle",
-        "swimming": "animation.zoroark.swimming",
-        "sleeping": "animation.zoroark.sleeping",
-        "attack": "animation.zoroark.attack",
+        "default_ground_idle": "animation.zoroark.ground_idle",
+        "default_air_idle": "animation.zoroark.ground_idle",
+        "default_water_idle": "animation.zoroark.water_idle",
+        "default_walking": "animation.zoroark.walking",
+        "default_flying": "animation.zoroark.ground_idle",
+        "default_swimming": "animation.zoroark.swimming",
+        "default_sleeping": "animation.zoroark.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.zoroark.default_attack",
+        "blink": "animation.zoroark.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [

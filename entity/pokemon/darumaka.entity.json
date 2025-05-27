@@ -13,24 +13,35 @@
         "shiny_default": "textures/entity/pokemon/darumaka/shiny_darumaka.png"
       },
       "scripts": {
+        "initialize": [
+          "v.blink_chance = 0.01"
+        ],
+        "pre_animation": [
+          "v.is_ground_idling = query.is_on_ground;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_water_idling = query.is_in_water;",
+          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.is_swimming = query.is_swimming;",
+          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_sleeping = q.is_sleeping;",
+          "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+        ],
         "animate": [
           "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
+          "blink"
         ]
       },
       "animations": {
-        "blink": "animation.darumaka.blink",
-        "ground_idle": "animation.darumaka.ground_idle",
-        "air_idle": "animation.darumaka.ground_idle",
-        "water_idle": "animation.darumaka.water_idle",
-        "walking": "animation.darumaka.walking",
-        "flying": "animation.darumaka.ground_idle",
-        "swimming": "animation.darumaka.swimming",
-        "sleeping": "animation.darumaka.sleeping",
-        "attack": "animation.darumaka.attack",
+        "default_ground_idle": "animation.darumaka.ground_idle",
+        "default_air_idle": "animation.darumaka.ground_idle",
+        "default_water_idle": "animation.darumaka.water_idle",
+        "default_walking": "animation.darumaka.walking",
+        "default_flying": "animation.darumaka.ground_idle",
+        "default_swimming": "animation.darumaka.swimming",
+        "default_sleeping": "animation.darumaka.sleeping",
         "look_at_target": "animation.pokemon.look_at_target",
+        "attack": "animation.darumaka.default_attack",
+        "blink": "animation.darumaka.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
