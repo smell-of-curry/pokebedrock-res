@@ -11,7 +11,7 @@
         "evo_aura": "textures/entity/evolving"
       },
       "scripts": {
-        "initialize": ["v.blink_chance = 0.01"],
+        "initialize": ["v.blink_chance = 0.01;"],
         "pre_animation": [
           "v.is_ground_idling = query.is_on_ground;",
           "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -35,9 +35,9 @@
         "default_sleeping": "animation.{speciesId}.sleeping",
         "default_attack": "animation.{speciesId}.attack",
         "look_at_target": "animation.pokemon.look_at_target",
-        "attack": "controller.animation.{speciesId}_attack",
-        "blink": "controller.animation.{speciesId}_blink",
-        "controller": "controller.animation.{speciesId}"
+        "attack": "controller.animation.pokemon:{speciesId}_attack",
+        "blink": "controller.animation.pokemon:{speciesId}_blink",
+        "controller": "controller.animation.pokemon:{speciesId}"
       },
       "render_controllers": [
         {
