@@ -339,9 +339,13 @@ function updateEntityFileWithAnimations(
     }
   } else {
     // Switch to use default animation controller.
-    description.animations["attack"] = `animation.${pokemonTypeId}.default_attack`;
+    description.animations[
+      "attack"
+    ] = `animation.${pokemonTypeId}.default_attack`;
     delete description.animations["default_attack"];
-    description.animations["blink"] = `animation.${pokemonTypeId}.default_blink`;
+    description.animations[
+      "blink"
+    ] = `animation.${pokemonTypeId}.default_blink`;
     delete description.animations["default_blink"];
     description.animations["controller"] = "controller.animation.pokemon";
   }
@@ -627,7 +631,7 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
   const controller =
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}`
+      `controller.animation.pokemon.${pokemonTypeId}`
     ];
   if (!controller)
     throw new Error(
@@ -635,7 +639,7 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
     );
   const blinkController =
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}_blink`
+      `controller.animation.pokemon.${pokemonTypeId}_blink`
     ];
   if (!blinkController)
     throw new Error(
@@ -643,10 +647,12 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
     );
   const attackController =
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}_attack`
+      `controller.animation.pokemon.${pokemonTypeId}_attack`
     ];
   if (!attackController)
-    throw new Error(`No attack controller found in animation controller for ${pokemonTypeId}`);
+    throw new Error(
+      `No attack controller found in animation controller for ${pokemonTypeId}`
+    );
 
   const skinAnimations = getSkinSpecificAnimations(pokemonTypeId);
   const skinKeys = Object.keys(skinAnimations);
@@ -661,14 +667,27 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
       throw new Error(
         `No animations found for state ${state} in animation controller for ${pokemonTypeId}`
       );
+
+    // Add custom animations for each skin that has a custom animation for this state.
     for (const skin of skinKeys) {
       if (!skinAnimations[skin].includes(state)) continue;
       animations.push({
-        [`${skin}_${state}`]: `query.property('pokeb:skin_index') == ${
+        [`${skin}_${state}`]: `v.skin_index == ${
           skinKeys.indexOf(skin) + 1
         }`,
       });
     }
+
+    // Use the default animation for any skin that doesn't have a custom animation for this state.
+    for (const skin of skinKeys) {
+      if (skinAnimations[skin].includes(state)) continue;
+      (animations[0] as any)[
+        `default_${state}`
+      ] += ` || v.skin_index == ${
+        skinKeys.indexOf(skin) + 1
+      }`;
+    }
+
     stateController.animations = animations;
     controller.states[state] = stateController;
   }
@@ -680,47 +699,75 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
     )
   ) {
     // We need to add a custom blink animation for each skin that has a blink animation.
-    const blinkStateAnimations = blinkController.states["blink"].animations;
+    const blinkStateAnimations = blinkController.states["default"].animations;
     if (!blinkStateAnimations)
       throw new Error(
         `No blink state animations found in blink controller for ${pokemonTypeId}`
       );
+
+    // Add custom animations for each skin that has a custom animation for blinking.
     for (const skin of skinKeys) {
-      if (!skinAnimations[skin].includes("blink")) continue;
+      if (!skinAnimations[skin].includes("default")) continue;
       blinkStateAnimations.push({
-        [`${skin}_blink`]: `query.property('pokeb:skin_index') == ${
+        [`${skin}_blink`]: `v.should_blink && v.skin_index == ${
           skinKeys.indexOf(skin) + 1
         }`,
       });
     }
-    blinkController.states["blink"].animations = blinkStateAnimations;
+
+    // Use the default animation for any skin that doesn't have a custom animation for blinking.
+    for (const skin of skinKeys) {
+      if (skinAnimations[skin].includes("default")) continue;
+      (blinkStateAnimations[0] as any)[`default_blink`] += ` || v.skin_index == ${
+        skinKeys.indexOf(skin) + 1
+      }`;
+    }
+
+    blinkController.states["default"].animations = blinkStateAnimations;
   }
 
   // Check if a skin has a custom attack animation.
-  if (Object.values(skinAnimations).some((animations) => animations.includes("attack"))) {
+  if (
+    Object.values(skinAnimations).some((animations) =>
+      animations.includes("attack")
+    )
+  ) {
     // We need to add a custom attack animation for each skin that has a attack animation.
     const attackStateAnimations = attackController.states["attack"].animations;
     if (!attackStateAnimations)
-      throw new Error(`No attack state animations found in animation controller for ${pokemonTypeId}`);
+      throw new Error(
+        `No attack state animations found in animation controller for ${pokemonTypeId}`
+      );
+
+    // Add custom animations for each skin that has a custom animation for attack.
     for (const skin of skinKeys) {
       if (!skinAnimations[skin].includes("attack")) continue;
       attackStateAnimations.push({
-        [`${skin}_attack`]: `query.property('pokeb:skin_index') == ${skinKeys.indexOf(skin) + 1}`,
+        [`${skin}_attack`]: `v.skin_index == ${
+          skinKeys.indexOf(skin) + 1
+        }`,
       });
     }
-    attackController.states["attack"].animations = attackStateAnimations;
+
+    // Use the default animation for any skin that doesn't have a custom animation for attack.
+    for (const skin of skinKeys) {
+      if (skinAnimations[skin].includes("attack")) continue;
+      (attackStateAnimations[0] as any)[`default_attack`] += ` || v.skin_index == ${
+        skinKeys.indexOf(skin) + 1
+      }`;
+    }
   }
 
   // Write the animation controller file.
   try {
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}`
+      `controller.animation.pokemon.${pokemonTypeId}`
     ] = controller;
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}_blink`
+      `controller.animation.pokemon.${pokemonTypeId}_blink`
     ] = blinkController;
     acFile.animation_controllers[
-      `controller.animation.pokemon:${pokemonTypeId}_attack`
+      `controller.animation.pokemon.${pokemonTypeId}_attack`
     ] = attackController;
     fsExtra.writeJSONSync(
       path.join(animationControllersPath, `${pokemonTypeId}.json`),
@@ -883,8 +930,8 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         scaleExpr += " : ";
       }
 
-      offsetExpr += `(query.property('pokeb:skin_index')==${skinIndex}) ? math.mod(math.floor(q.life_time * ${skinFps}), ${skinFrameCount}) / ${skinFrameCount}`;
-      scaleExpr += `(query.property('pokeb:skin_index')==${skinIndex}) ? 1.0 / ${skinFrameCount}`;
+      offsetExpr += `(v.skin_index==${skinIndex}) ? math.mod(math.floor(q.life_time * ${skinFps}), ${skinFrameCount}) / ${skinFrameCount}`;
+      scaleExpr += `(v.skin_index==${skinIndex}) ? 1.0 / ${skinFrameCount}`;
     });
 
     // Add parent animation as the default case if it exists
@@ -955,7 +1002,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
           `Texture.${normalAppearanceId}` as (typeof textures)[number]
         );
         if (normalTextureIndex !== -1) {
-          textureParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}'${
+          textureParser += `(v.skin_index==${idx} && query.property('pokeb:gender')=='${gender}'${
             hasShiny ? " && query.property('pokeb:shiny') == false" : ""
           }) ? ${normalTextureIndex}:`;
         }
@@ -968,7 +1015,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
           `Texture.${shinyAppearanceId}` as (typeof textures)[number]
         );
         if (shinyTextureIndex !== -1) {
-          textureParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}'${
+          textureParser += `(v.skin_index==${idx} && query.property('pokeb:gender')=='${gender}'${
             hasShiny ? " && query.property('pokeb:shiny') == true" : ""
           }) ? ${shinyTextureIndex}:`;
         }
@@ -979,7 +1026,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         `Texture.${variant}` as (typeof textures)[number]
       );
       if (normalTextureIndex !== -1) {
-        textureParser += `(query.property('pokeb:skin_index')==${idx}${
+        textureParser += `(v.skin_index==${idx}${
           hasShiny ? " && query.property('pokeb:shiny') == false" : ""
         }) ? ${normalTextureIndex}:`;
       }
@@ -991,7 +1038,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
         `Texture.shiny_${variant}` as (typeof textures)[number]
       );
       if (shinyTextureIndex !== -1) {
-        textureParser += `(query.property('pokeb:skin_index')==${idx}${
+        textureParser += `(v.skin_index==${idx}${
           hasShiny ? " && query.property('pokeb:shiny') == true" : ""
         }) ? ${shinyTextureIndex}:`;
       }
@@ -1038,7 +1085,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
     if (canUseSimplifiedApproach) {
       // We can use the simplified syntax
-      geometryParser = "query.property('pokeb:skin_index')";
+      geometryParser = "v.skin_index";
     } else {
       // Need to use the full ternary approach for gender differences or non-sequential indices
       for (const [idx, variant] of geometryVariantsArray.entries()) {
@@ -1054,7 +1101,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
               );
               continue;
             }
-            geometryParser += `(query.property('pokeb:skin_index')==${idx} && query.property('pokeb:gender')=='${gender}') ? ${geometryIdIndex}:`;
+            geometryParser += `(v.skin_index==${idx} && query.property('pokeb:gender')=='${gender}') ? ${geometryIdIndex}:`;
           }
         } else {
           const appearanceId = variant as AppearanceId;
@@ -1067,7 +1114,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
             );
             continue;
           }
-          geometryParser += `(query.property('pokeb:skin_index')==${idx})?${geometryIdIndex}:`;
+          geometryParser += `(v.skin_index==${idx})?${geometryIdIndex}:`;
         }
       }
 
@@ -1091,7 +1138,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
       `controller.render.pokemon:${pokemonTypeId}`
     ].materials = [
       {
-        "*": "Array.materialVariants[query.property('pokeb:skin_index')]",
+        "*": "Array.materialVariants[v.skin_index]",
       },
     ];
   } else {

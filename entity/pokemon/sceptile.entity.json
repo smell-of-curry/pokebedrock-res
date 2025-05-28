@@ -14,21 +14,25 @@
       },
       "scripts": {
         "initialize": [
-          "v.blink_chance = 0.01;"
+          "v.blink_chance = 0.01;",
+          "v.move_threshold = 0.01;"
         ],
         "pre_animation": [
-          "v.is_ground_idling = query.is_on_ground;",
-          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
-          "v.is_water_idling = query.is_in_water;",
-          "v.is_walking = query.modified_move_speed >= 0.01 && query.is_on_ground && !query.is_in_water;",
+          "v.skin_index = query.property('pokeb:skin_index');",
+          "v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+          "v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+          "v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+          "v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
           "v.is_swimming = query.is_swimming;",
-          "v.is_flying = query.modified_move_speed >= 0.01 && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
           "v.is_sleeping = q.is_sleeping;",
           "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
         ],
         "animate": [
           "controller",
-          "blink"
+          {
+            "blink": "v.should_blink"
+          }
         ]
       },
       "animations": {
@@ -40,8 +44,8 @@
         "default_swimming": "animation.sceptile.ground_idle",
         "default_sleeping": "animation.sceptile.ground_idle",
         "look_at_target": "animation.pokemon.look_at_target",
-        "attack": "animation.pokemon:sceptile.default_attack",
-        "blink": "animation.pokemon:sceptile.default_blink",
+        "attack": "animation.sceptile.default_attack",
+        "blink": "animation.sceptile.default_blink",
         "controller": "controller.animation.pokemon"
       },
       "render_controllers": [
