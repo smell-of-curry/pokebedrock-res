@@ -339,13 +339,9 @@ function updateEntityFileWithAnimations(
     }
   } else {
     // Switch to use default animation controller.
-    description.animations[
-      "attack"
-    ] = `animation.${pokemonTypeId}.default_attack`;
+    description.animations["attack"] = `animation.${pokemonTypeId}.attack`;
     delete description.animations["default_attack"];
-    description.animations[
-      "blink"
-    ] = `animation.${pokemonTypeId}.default_blink`;
+    description.animations["blink"] = `animation.${pokemonTypeId}.blink`;
     delete description.animations["default_blink"];
     description.animations["controller"] = "controller.animation.pokemon";
   }
