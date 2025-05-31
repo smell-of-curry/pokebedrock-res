@@ -1,0 +1,74 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.containment": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+            "animations": [
+                { "idle_empty": "(query.property('pokeb:state') == 0)" },
+                { "idle_filled_1": "(query.property('pokeb:state') == 1)" },
+                { "idle_filled_2": "(query.property('pokeb:state') == 2)" },
+                { "idle_filled_3": "(query.property('pokeb:state') == 3)" },
+                { "idle_filled_4": "(query.property('pokeb:state') == 4)" },
+                { "idle_filled_5": "(query.property('pokeb:state') == 5)" },
+                { "idle_filled_6": "(query.property('pokeb:state') == 6)" },
+                { "idle_filled_7": "(query.property('pokeb:state') == 7)" },
+                { "idle_filled_8": "(query.property('pokeb:state') == 8)" },
+                { "idle_filled_9": "(query.property('pokeb:state') == 9)" },
+                { "idle_filled_10": "(query.property('pokeb:state') == 10)" },
+                { "idle_filled_11": "(query.property('pokeb:state') == 11)" },
+                { "idle_filled_12": "(query.property('pokeb:state') == 12)" },
+                { "idle_filled_13": "(query.property('pokeb:state') == 13)" },
+                { "idle_filled_14": "(query.property('pokeb:state') == 14)" },
+                { "idle_filled_15": "(query.property('pokeb:state') == 15)" },
+                { "idle_filled_16": "(query.property('pokeb:state') == 16)" },
+                { "idle_filled_17": "(query.property('pokeb:state') == 17)" },
+                { "idle_filled_18": "(query.property('pokeb:state') == 18)" },
+                { "idle_filled_19": "(query.property('pokeb:state') == 19)" },
+                { "idle_filled_20": "(query.property('pokeb:state') == 20)" },
+                { "idle_filled_21": "(query.property('pokeb:state') == 21)" },
+                { "idle_filled_22": "(query.property('pokeb:state') == 22)" },
+                { "idle_filled_23": "(query.property('pokeb:state') == 23)" },
+                { "idle_filled_24": "(query.property('pokeb:state') == 24)" },
+                { "idle_filled_25": "(query.property('pokeb:state') == 25)" },
+                { "idle_filled_26": "(query.property('pokeb:state') == 26)" },
+                { "idle_filled": "(query.property('pokeb:state') == 27)" },
+                { "idle_filled_occupied": "(query.property('pokeb:state') == 28)" },
+                { "contaminated_filled": "(query.property('pokeb:state') == 29)" }
+            ],
+            "transitions": [
+                {
+                    "idle_broken_1": "query.property('pokeb:state') == 30"
+                },
+                {
+                    "contaminated_opening": "query.property('pokeb:state') == 31"
+                }
+            ]
+        },
+        "idle_broken_1": {
+          "animations": ["idle_broken_1"],
+          "transitions": [
+            {
+              "idle_broken_2": "query.anim_time >= 12"
+            }
+          ]
+        },
+        "idle_broken_2": {
+          "animations": ["idle_broken_2"]
+        },
+         "contaminated_opening": {
+          "animations": ["contaminated_opening"],
+          "transitions": [
+            {
+              "contaminated_opened_idle": "query.anim_time >= 4"
+            }
+          ]
+        },
+        "contaminated_opened_idle": {
+          "animations": ["contaminated_opened_idle"]
+        }
+      }
+    }
+  }
+}
