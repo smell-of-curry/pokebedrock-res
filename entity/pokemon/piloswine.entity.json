@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:piloswine",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/piloswine/piloswine.png",
-        "shiny_male_default": "textures/entity/pokemon/piloswine/piloswine.png",
-        "female_default": "textures/entity/pokemon/piloswine/piloswine.png",
-        "shiny_female_default": "textures/entity/pokemon/piloswine/piloswine.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.piloswine.blink",
-        "ground_idle": "animation.piloswine.ground_idle",
-        "air_idle": "animation.piloswine.ground_idle",
-        "water_idle": "animation.piloswine.ground_idle",
-        "walking": "animation.piloswine.walking",
-        "flying": "animation.piloswine.ground_idle",
-        "swimming": "animation.piloswine.ground_idle",
-        "sleeping": "animation.piloswine.ground_idle",
-        "attack": "animation.piloswine.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:piloswine": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "piloswine",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.piloswine"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:piloswine",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/piloswine/piloswine.png",
+				"shiny_male_default": "textures/entity/pokemon/piloswine/piloswine.png",
+				"female_default": "textures/entity/pokemon/piloswine/piloswine.png",
+				"shiny_female_default": "textures/entity/pokemon/piloswine/piloswine.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.piloswine.blink",
+				"ground_idle": "animation.piloswine.ground_idle",
+				"air_idle": "animation.piloswine.ground_idle",
+				"water_idle": "animation.piloswine.ground_idle",
+				"walking": "animation.piloswine.walking",
+				"flying": "animation.piloswine.ground_idle",
+				"swimming": "animation.piloswine.ground_idle",
+				"sleeping": "animation.piloswine.ground_idle",
+				"attack": "animation.piloswine.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:piloswine": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "piloswine",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.piloswine"
+			}
+		}
+	}
 }

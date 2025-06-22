@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:pidgeotmega",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/pidgeotmega/pidgeotmega.png",
-        "shiny_default": "textures/entity/pokemon/pidgeotmega/shiny_pidgeotmega.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.pidgeotmega.blink",
-        "ground_idle": "animation.pidgeotmega.ground_idle",
-        "air_idle": "animation.pidgeotmega.air_idle",
-        "water_idle": "animation.pidgeotmega.water_idle",
-        "walking": "animation.pidgeotmega.walking",
-        "flying": "animation.pidgeotmega.flying",
-        "swimming": "animation.pidgeotmega.swimming",
-        "sleeping": "animation.pidgeotmega.sleeping",
-        "attack": "animation.pidgeotmega.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "pidgeotmega",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.pidgeotmega"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:pidgeotmega",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/pidgeotmega/pidgeotmega.png",
+				"shiny_default": "textures/entity/pokemon/pidgeotmega/shiny_pidgeotmega.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.pidgeotmega.blink",
+				"ground_idle": "animation.pidgeotmega.ground_idle",
+				"air_idle": "animation.pidgeotmega.air_idle",
+				"water_idle": "animation.pidgeotmega.water_idle",
+				"walking": "animation.pidgeotmega.walking",
+				"flying": "animation.pidgeotmega.flying",
+				"swimming": "animation.pidgeotmega.swimming",
+				"sleeping": "animation.pidgeotmega.sleeping",
+				"attack": "animation.pidgeotmega.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "pidgeotmega",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.pidgeotmega"
+			}
+		}
+	}
 }

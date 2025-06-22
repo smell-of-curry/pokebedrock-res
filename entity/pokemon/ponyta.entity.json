@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:ponyta",
-      "materials": {
-        "default": "custom_animated",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/ponyta/ponyta.png",
-        "shiny_default": "textures/entity/pokemon/ponyta/shiny_ponyta.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.ponyta.blink",
-        "ground_idle": "animation.ponyta.ground_idle",
-        "air_idle": "animation.ponyta.ground_idle",
-        "water_idle": "animation.ponyta.water_idle",
-        "walking": "animation.ponyta.walking",
-        "flying": "animation.ponyta.ground_idle",
-        "swimming": "animation.ponyta.swimming",
-        "sleeping": "animation.ponyta.sleeping",
-        "attack": "animation.ponyta.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:ponyta": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "ponyta",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.ponyta"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:ponyta",
+			"materials": {
+				"default": "custom_animated",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/ponyta/ponyta.png",
+				"shiny_default": "textures/entity/pokemon/ponyta/shiny_ponyta.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.ponyta.blink",
+				"ground_idle": "animation.ponyta.ground_idle",
+				"air_idle": "animation.ponyta.ground_idle",
+				"water_idle": "animation.ponyta.water_idle",
+				"walking": "animation.ponyta.walking",
+				"flying": "animation.ponyta.ground_idle",
+				"swimming": "animation.ponyta.swimming",
+				"sleeping": "animation.ponyta.sleeping",
+				"attack": "animation.ponyta.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:ponyta": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "ponyta",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.ponyta"
+			}
+		}
+	}
 }

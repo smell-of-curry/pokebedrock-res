@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:sneasel",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/sneasel/male_sneasel.png",
-        "shiny_male_default": "textures/entity/pokemon/sneasel/male_shiny_sneasel.png",
-        "female_default": "textures/entity/pokemon/sneasel/female_sneasel.png",
-        "shiny_female_default": "textures/entity/pokemon/sneasel/female_shiny_sneasel.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.sneasel.blink",
-        "ground_idle": "animation.sneasel.ground_idle",
-        "air_idle": "animation.sneasel.ground_idle",
-        "water_idle": "animation.sneasel.ground_idle",
-        "walking": "animation.sneasel.walking",
-        "flying": "animation.sneasel.ground_idle",
-        "swimming": "animation.sneasel.swimming",
-        "sleeping": "animation.sneasel.ground_idle",
-        "attack": "animation.sneasel.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:sneasel": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "sneasel",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.sneasel"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:sneasel",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/sneasel/male_sneasel.png",
+				"shiny_male_default": "textures/entity/pokemon/sneasel/male_shiny_sneasel.png",
+				"female_default": "textures/entity/pokemon/sneasel/female_sneasel.png",
+				"shiny_female_default": "textures/entity/pokemon/sneasel/female_shiny_sneasel.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.sneasel.blink",
+				"ground_idle": "animation.sneasel.ground_idle",
+				"air_idle": "animation.sneasel.ground_idle",
+				"water_idle": "animation.sneasel.ground_idle",
+				"walking": "animation.sneasel.walking",
+				"flying": "animation.sneasel.ground_idle",
+				"swimming": "animation.sneasel.swimming",
+				"sleeping": "animation.sneasel.ground_idle",
+				"attack": "animation.sneasel.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:sneasel": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "sneasel",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.sneasel"
+			}
+		}
+	}
 }

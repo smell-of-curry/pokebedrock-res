@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:sudowoodo",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
-        "shiny_male_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
-        "female_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
-        "shiny_female_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.sudowoodo.blink",
-        "ground_idle": "animation.sudowoodo.ground_idle",
-        "air_idle": "animation.sudowoodo.ground_idle",
-        "water_idle": "animation.sudowoodo.ground_idle",
-        "walking": "animation.sudowoodo.walking",
-        "flying": "animation.sudowoodo.ground_idle",
-        "swimming": "animation.sudowoodo.ground_idle",
-        "sleeping": "animation.sudowoodo.ground_idle",
-        "attack": "animation.sudowoodo.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:sudowoodo": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "sudowoodo",
-        "texture_index": 0
-      },
-      "geometry": {
-        "male_default": "geometry.sudowoodo",
-        "female_default": "geometry.sudowoodo"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:sudowoodo",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
+				"shiny_male_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
+				"female_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png",
+				"shiny_female_default": "textures/entity/pokemon/sudowoodo/sudowoodo.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.sudowoodo.blink",
+				"ground_idle": "animation.sudowoodo.ground_idle",
+				"air_idle": "animation.sudowoodo.ground_idle",
+				"water_idle": "animation.sudowoodo.ground_idle",
+				"walking": "animation.sudowoodo.walking",
+				"flying": "animation.sudowoodo.ground_idle",
+				"swimming": "animation.sudowoodo.ground_idle",
+				"sleeping": "animation.sudowoodo.ground_idle",
+				"attack": "animation.sudowoodo.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:sudowoodo": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "sudowoodo",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.sudowoodo",
+				"female_default": "geometry.sudowoodo"
+			}
+		}
+	}
 }

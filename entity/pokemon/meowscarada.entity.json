@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:meowscarada",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/meowscarada/meowscarada.png",
-        "shiny_default": "textures/entity/pokemon/meowscarada/shiny_meowscarada.png",
-        "valentine": "textures/entity/pokemon/meowscarada/meowscarada_valentine.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.meowscarada.blink",
-        "ground_idle": "animation.meowscarada.ground_idle",
-        "air_idle": "animation.meowscarada.ground_idle",
-        "water_idle": "animation.meowscarada.water_idle",
-        "walking": "animation.meowscarada.walking",
-        "flying": "animation.meowscarada.ground_idle",
-        "swimming": "animation.meowscarada.swimming",
-        "sleeping": "animation.meowscarada.sleeping",
-        "attack": "animation.meowscarada.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:meowscarada": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "meowscarada",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.meowscarada",
-        "valentine": "geometry.meowscarada_valentine"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:meowscarada",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/meowscarada/meowscarada.png",
+				"shiny_default": "textures/entity/pokemon/meowscarada/shiny_meowscarada.png",
+				"valentine": "textures/entity/pokemon/meowscarada/meowscarada_valentine.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.meowscarada.blink",
+				"ground_idle": "animation.meowscarada.ground_idle",
+				"air_idle": "animation.meowscarada.ground_idle",
+				"water_idle": "animation.meowscarada.water_idle",
+				"walking": "animation.meowscarada.walking",
+				"flying": "animation.meowscarada.ground_idle",
+				"swimming": "animation.meowscarada.swimming",
+				"sleeping": "animation.meowscarada.sleeping",
+				"attack": "animation.meowscarada.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:meowscarada": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "meowscarada",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.meowscarada",
+				"valentine": "geometry.meowscarada_valentine"
+			}
+		}
+	}
 }

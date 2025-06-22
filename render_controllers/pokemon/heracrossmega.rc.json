@@ -1,37 +1,37 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.pokemon:heracrossmega": {
-      "arrays": {
-        "materials": {
-          "Array.materialVariants": [
-            "Material.default"
-          ]
-        },
-        "geometries": {
-          "Array.geometryVariants": [
-            "Geometry.male_default",
-            "Geometry.female_default"
-          ]
-        },
-        "textures": {
-          "Array.textureVariants": [
-            "Texture.male_default",
-            "Texture.shiny_male_default",
-            "Texture.female_default",
-            "Texture.shiny_female_default"
-          ]
-        }
-      },
-      "materials": [
-        {
-          "*": "Material.default"
-        }
-      ],
-      "geometry": "Array.geometryVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male') ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female') ? 1:0]",
-      "textures": [
-        "Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:0]"
-      ]
-    }
-  }
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:heracrossmega": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.male_default",
+						"Geometry.female_default"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.male_default",
+						"Texture.shiny_male_default",
+						"Texture.female_default",
+						"Texture.shiny_female_default"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Array.geometryVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male') ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female') ? 1:0]",
+			"textures": [
+				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:0]"
+			]
+		}
+	}
 }

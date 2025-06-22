@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import fsExtra from "fs-extra";
 import { PokemonSkinOption } from "./data/customizations";
+import { isEqual } from "lodash";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -251,7 +252,10 @@ export function safeReadJSON<T>(filePath: string): T | null {
  */
 export function cloneTemplate<T>(template: T, speciesId: string): T {
   const cloned = JSON.parse(JSON.stringify(template));
-  const stringified = JSON.stringify(cloned).replace(/\{speciesId\}/g, speciesId);
+  const stringified = JSON.stringify(cloned).replace(
+    /\{speciesId\}/g,
+    speciesId
+  );
   return JSON.parse(stringified);
 }
 
@@ -265,7 +269,55 @@ export function getSkinDifferences(skinOption: PokemonSkinOption): string[] {
 /**
  * Checks if a skin option includes a specific difference
  */
-export function skinOptionIncludes(skinOption: PokemonSkinOption, difference: string): boolean {
+export function skinOptionIncludes(
+  skinOption: PokemonSkinOption,
+  difference: string
+): boolean {
   const differences = getSkinDifferences(skinOption);
   return differences.includes(difference);
+}
+
+/**
+ * Writes text to file only if the content has changed
+ */
+export function writeFileIfChanged(filePath: string, data: string): boolean {
+  // Check if file exists and read current content
+  if (fs.existsSync(filePath)) {
+    try {
+      const currentContent = fs.readFileSync(filePath, "utf8");
+      if (currentContent === data) {
+        return false; // No change needed
+      }
+    } catch (error) {
+      // If we can't read the file, proceed with writing
+    }
+  }
+
+  // Write the file since content has changed or file doesn't exist
+  fs.writeFileSync(filePath, data, "utf8");
+  return true; // File was written
+}
+
+/**
+ * Writes image buffer to file only if the content has changed
+ */
+export async function writeImageIfChanged(
+  filePath: string,
+  imageBuffer: Buffer
+): Promise<boolean> {
+  // Check if file exists and compare content
+  if (fs.existsSync(filePath)) {
+    try {
+      const currentBuffer = fs.readFileSync(filePath);
+      if (currentBuffer.equals(imageBuffer)) {
+        return false; // No change needed
+      }
+    } catch (error) {
+      // If we can't read the file, proceed with writing
+    }
+  }
+
+  // Write the file since content has changed or file doesn't exist
+  fs.writeFileSync(filePath, imageBuffer);
+  return true; // File was written
 }

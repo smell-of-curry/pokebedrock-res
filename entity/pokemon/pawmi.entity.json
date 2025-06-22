@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:pawmi",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/pawmi/pawmi.png",
-        "shiny_default": "textures/entity/pokemon/pawmi/shiny_pawmi.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.pawmi.blink",
-        "ground_idle": "animation.pawmi.ground_idle",
-        "air_idle": "animation.pawmi.ground_idle",
-        "water_idle": "animation.pawmi.ground_idle",
-        "walking": "animation.pawmi.walking",
-        "flying": "animation.pawmi.ground_idle",
-        "swimming": "animation.pawmi.ground_idle",
-        "sleeping": "animation.pawmi.sleeping",
-        "attack": "animation.pawmi.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "pawmi",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.pawmi"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:pawmi",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/pawmi/pawmi.png",
+				"shiny_default": "textures/entity/pokemon/pawmi/shiny_pawmi.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.pawmi.blink",
+				"ground_idle": "animation.pawmi.ground_idle",
+				"air_idle": "animation.pawmi.ground_idle",
+				"water_idle": "animation.pawmi.ground_idle",
+				"walking": "animation.pawmi.walking",
+				"flying": "animation.pawmi.ground_idle",
+				"swimming": "animation.pawmi.ground_idle",
+				"sleeping": "animation.pawmi.sleeping",
+				"attack": "animation.pawmi.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "pawmi",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.pawmi"
+			}
+		}
+	}
 }

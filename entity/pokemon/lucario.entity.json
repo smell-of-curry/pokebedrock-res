@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:lucario",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/lucario/lucario.png",
-        "shiny_default": "textures/entity/pokemon/lucario/shiny_lucario.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.lucario.blink",
-        "ground_idle": "animation.lucario.ground_idle",
-        "air_idle": "animation.lucario.ground_idle",
-        "water_idle": "animation.lucario.water_idle",
-        "walking": "animation.lucario.walking",
-        "flying": "animation.lucario.ground_idle",
-        "swimming": "animation.lucario.swimming",
-        "sleeping": "animation.lucario.sleeping",
-        "attack": "animation.lucario.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "lucario",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.lucario"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:lucario",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/lucario/lucario.png",
+				"shiny_default": "textures/entity/pokemon/lucario/shiny_lucario.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.lucario.blink",
+				"ground_idle": "animation.lucario.ground_idle",
+				"air_idle": "animation.lucario.ground_idle",
+				"water_idle": "animation.lucario.water_idle",
+				"walking": "animation.lucario.walking",
+				"flying": "animation.lucario.ground_idle",
+				"swimming": "animation.lucario.swimming",
+				"sleeping": "animation.lucario.sleeping",
+				"attack": "animation.lucario.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "lucario",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.lucario"
+			}
+		}
+	}
 }

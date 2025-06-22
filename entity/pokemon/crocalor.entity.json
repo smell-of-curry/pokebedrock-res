@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:crocalor",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/crocalor/crocalor.png",
-        "shiny_default": "textures/entity/pokemon/crocalor/shiny_crocalor.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.crocalor.blink",
-        "ground_idle": "animation.crocalor.ground_idle",
-        "air_idle": "animation.crocalor.ground_idle",
-        "water_idle": "animation.crocalor.water_idle",
-        "walking": "animation.crocalor.walking",
-        "flying": "animation.crocalor.ground_idle",
-        "swimming": "animation.crocalor.swimming",
-        "sleeping": "animation.crocalor.sleeping",
-        "attack": "animation.crocalor.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "crocalor",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.crocalor"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:crocalor",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/crocalor/crocalor.png",
+				"shiny_default": "textures/entity/pokemon/crocalor/shiny_crocalor.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.crocalor.blink",
+				"ground_idle": "animation.crocalor.ground_idle",
+				"air_idle": "animation.crocalor.ground_idle",
+				"water_idle": "animation.crocalor.water_idle",
+				"walking": "animation.crocalor.walking",
+				"flying": "animation.crocalor.ground_idle",
+				"swimming": "animation.crocalor.swimming",
+				"sleeping": "animation.crocalor.sleeping",
+				"attack": "animation.crocalor.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "crocalor",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.crocalor"
+			}
+		}
+	}
 }

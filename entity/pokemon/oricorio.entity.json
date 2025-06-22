@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:oricorio",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/oricorio/oricorio.png",
-        "shiny_default": "textures/entity/pokemon/oricorio/shiny_oricorio.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.oricorio.blink",
-        "ground_idle": "animation.oricorio.ground_idle",
-        "air_idle": "animation.oricorio.ground_idle",
-        "water_idle": "animation.oricorio.water_idle",
-        "walking": "animation.oricorio.walking",
-        "flying": "animation.oricorio.ground_idle",
-        "swimming": "animation.oricorio.swimming",
-        "sleeping": "animation.oricorio.sleeping",
-        "attack": "animation.oricorio.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "oricorio",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.oricorio"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:oricorio",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/oricorio/oricorio.png",
+				"shiny_default": "textures/entity/pokemon/oricorio/shiny_oricorio.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.oricorio.blink",
+				"ground_idle": "animation.oricorio.ground_idle",
+				"air_idle": "animation.oricorio.ground_idle",
+				"water_idle": "animation.oricorio.water_idle",
+				"walking": "animation.oricorio.walking",
+				"flying": "animation.oricorio.ground_idle",
+				"swimming": "animation.oricorio.swimming",
+				"sleeping": "animation.oricorio.sleeping",
+				"attack": "animation.oricorio.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "oricorio",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.oricorio"
+			}
+		}
+	}
 }

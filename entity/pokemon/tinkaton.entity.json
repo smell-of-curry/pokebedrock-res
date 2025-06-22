@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:tinkaton",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/tinkaton/tinkaton.png",
-        "shiny_default": "textures/entity/pokemon/tinkaton/shiny_tinkaton.png",
-        "christmas": "textures/entity/pokemon/tinkaton/tinkaton_christmas.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.tinkaton.blink",
-        "ground_idle": "animation.tinkaton.ground_idle",
-        "air_idle": "animation.tinkaton.ground_idle",
-        "water_idle": "animation.tinkaton.water_idle",
-        "walking": "animation.tinkaton.walking",
-        "flying": "animation.tinkaton.ground_idle",
-        "swimming": "animation.tinkaton.swimming",
-        "sleeping": "animation.tinkaton.sleeping",
-        "attack": "animation.tinkaton.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:tinkaton": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "tinkaton",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.tinkaton",
-        "christmas": "geometry.tinkaton_christmas"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:tinkaton",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/tinkaton/tinkaton.png",
+				"shiny_default": "textures/entity/pokemon/tinkaton/shiny_tinkaton.png",
+				"christmas": "textures/entity/pokemon/tinkaton/tinkaton_christmas.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.tinkaton.blink",
+				"ground_idle": "animation.tinkaton.ground_idle",
+				"air_idle": "animation.tinkaton.ground_idle",
+				"water_idle": "animation.tinkaton.water_idle",
+				"walking": "animation.tinkaton.walking",
+				"flying": "animation.tinkaton.ground_idle",
+				"swimming": "animation.tinkaton.swimming",
+				"sleeping": "animation.tinkaton.sleeping",
+				"attack": "animation.tinkaton.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:tinkaton": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "tinkaton",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.tinkaton",
+				"christmas": "geometry.tinkaton_christmas"
+			}
+		}
+	}
 }

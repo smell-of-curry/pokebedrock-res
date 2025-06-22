@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:darumakagalar",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/darumakagalar/darumakagalar.png",
-        "shiny_default": "textures/entity/pokemon/darumakagalar/shiny_darumakagalar.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.darumakagalar.blink",
-        "ground_idle": "animation.darumakagalar.ground_idle",
-        "air_idle": "animation.darumakagalar.ground_idle",
-        "water_idle": "animation.darumakagalar.water_idle",
-        "walking": "animation.darumakagalar.walking",
-        "flying": "animation.darumakagalar.ground_idle",
-        "swimming": "animation.darumakagalar.swimming",
-        "sleeping": "animation.darumakagalar.sleeping",
-        "attack": "animation.darumakagalar.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "darumakagalar",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.darumakagalar"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:darumakagalar",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/darumakagalar/darumakagalar.png",
+				"shiny_default": "textures/entity/pokemon/darumakagalar/shiny_darumakagalar.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.darumakagalar.blink",
+				"ground_idle": "animation.darumakagalar.ground_idle",
+				"air_idle": "animation.darumakagalar.ground_idle",
+				"water_idle": "animation.darumakagalar.water_idle",
+				"walking": "animation.darumakagalar.walking",
+				"flying": "animation.darumakagalar.ground_idle",
+				"swimming": "animation.darumakagalar.swimming",
+				"sleeping": "animation.darumakagalar.sleeping",
+				"attack": "animation.darumakagalar.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "darumakagalar",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.darumakagalar"
+			}
+		}
+	}
 }

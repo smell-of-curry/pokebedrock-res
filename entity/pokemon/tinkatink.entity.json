@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:tinkatink",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/tinkatink/tinkatink.png",
-        "shiny_default": "textures/entity/pokemon/tinkatink/shiny_tinkatink.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.tinkatink.blink",
-        "ground_idle": "animation.tinkatink.ground_idle",
-        "air_idle": "animation.tinkatink.ground_idle",
-        "water_idle": "animation.tinkatink.water_idle",
-        "walking": "animation.tinkatink.walking",
-        "flying": "animation.tinkatink.ground_idle",
-        "swimming": "animation.tinkatink.swimming",
-        "sleeping": "animation.tinkatink.sleeping",
-        "attack": "animation.tinkatink.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "tinkatink",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.tinkatink"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:tinkatink",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/tinkatink/tinkatink.png",
+				"shiny_default": "textures/entity/pokemon/tinkatink/shiny_tinkatink.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.tinkatink.blink",
+				"ground_idle": "animation.tinkatink.ground_idle",
+				"air_idle": "animation.tinkatink.ground_idle",
+				"water_idle": "animation.tinkatink.water_idle",
+				"walking": "animation.tinkatink.walking",
+				"flying": "animation.tinkatink.ground_idle",
+				"swimming": "animation.tinkatink.swimming",
+				"sleeping": "animation.tinkatink.sleeping",
+				"attack": "animation.tinkatink.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "tinkatink",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.tinkatink"
+			}
+		}
+	}
 }

@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:ivysaur",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/ivysaur/ivysaur.png",
-        "shiny_default": "textures/entity/pokemon/ivysaur/shiny_ivysaur.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.ivysaur.blink",
-        "ground_idle": "animation.ivysaur.ground_idle",
-        "air_idle": "animation.ivysaur.ground_idle",
-        "water_idle": "animation.ivysaur.ground_idle",
-        "walking": "animation.ivysaur.walking",
-        "flying": "animation.ivysaur.ground_idle",
-        "swimming": "animation.ivysaur.ground_idle",
-        "sleeping": "animation.ivysaur.ground_idle",
-        "attack": "animation.ivysaur.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "ivysaur",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.ivysaur"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:ivysaur",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/ivysaur/ivysaur.png",
+				"shiny_default": "textures/entity/pokemon/ivysaur/shiny_ivysaur.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.ivysaur.blink",
+				"ground_idle": "animation.ivysaur.ground_idle",
+				"air_idle": "animation.ivysaur.ground_idle",
+				"water_idle": "animation.ivysaur.ground_idle",
+				"walking": "animation.ivysaur.walking",
+				"flying": "animation.ivysaur.ground_idle",
+				"swimming": "animation.ivysaur.ground_idle",
+				"sleeping": "animation.ivysaur.ground_idle",
+				"attack": "animation.ivysaur.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "ivysaur",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.ivysaur"
+			}
+		}
+	}
 }

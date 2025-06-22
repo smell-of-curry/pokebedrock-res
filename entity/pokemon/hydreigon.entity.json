@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:hydreigon",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/hydreigon/hydreigon.png",
-        "shiny_default": "textures/entity/pokemon/hydreigon/shiny_hydreigon.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.hydreigon.blink",
-        "ground_idle": "animation.hydreigon.ground_idle",
-        "air_idle": "animation.hydreigon.air_idle",
-        "water_idle": "animation.hydreigon.water_idle",
-        "walking": "animation.hydreigon.walking",
-        "flying": "animation.hydreigon.flying",
-        "swimming": "animation.hydreigon.swimming",
-        "sleeping": "animation.hydreigon.sleeping",
-        "attack": "animation.hydreigon.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "hydreigon",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.hydreigon"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:hydreigon",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/hydreigon/hydreigon.png",
+				"shiny_default": "textures/entity/pokemon/hydreigon/shiny_hydreigon.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.hydreigon.blink",
+				"ground_idle": "animation.hydreigon.ground_idle",
+				"air_idle": "animation.hydreigon.air_idle",
+				"water_idle": "animation.hydreigon.water_idle",
+				"walking": "animation.hydreigon.walking",
+				"flying": "animation.hydreigon.flying",
+				"swimming": "animation.hydreigon.swimming",
+				"sleeping": "animation.hydreigon.sleeping",
+				"attack": "animation.hydreigon.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "hydreigon",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.hydreigon"
+			}
+		}
+	}
 }

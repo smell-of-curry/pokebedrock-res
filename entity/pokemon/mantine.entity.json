@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:mantine",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/mantine/mantine.png",
-        "shiny_default": "textures/entity/pokemon/mantine/shiny_mantine.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.mantine.blink",
-        "ground_idle": "animation.mantine.ground_idle",
-        "air_idle": "animation.mantine.ground_idle",
-        "water_idle": "animation.mantine.ground_idle",
-        "walking": "animation.mantine.walking",
-        "flying": "animation.mantine.ground_idle",
-        "swimming": "animation.mantine.ground_idle",
-        "sleeping": "animation.mantine.ground_idle",
-        "attack": "animation.mantine.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "mantine",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.mantine"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:mantine",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/mantine/mantine.png",
+				"shiny_default": "textures/entity/pokemon/mantine/shiny_mantine.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.mantine.blink",
+				"ground_idle": "animation.mantine.ground_idle",
+				"air_idle": "animation.mantine.ground_idle",
+				"water_idle": "animation.mantine.ground_idle",
+				"walking": "animation.mantine.walking",
+				"flying": "animation.mantine.ground_idle",
+				"swimming": "animation.mantine.ground_idle",
+				"sleeping": "animation.mantine.ground_idle",
+				"attack": "animation.mantine.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "mantine",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.mantine"
+			}
+		}
+	}
 }

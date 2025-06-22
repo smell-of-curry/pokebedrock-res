@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:poliwhirl",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/poliwhirl/poliwhirl.png",
-        "shiny_default": "textures/entity/pokemon/poliwhirl/shiny_poliwhirl.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.poliwhirl.blink",
-        "ground_idle": "animation.poliwhirl.ground_idle",
-        "air_idle": "animation.poliwhirl.ground_idle",
-        "water_idle": "animation.poliwhirl.ground_idle",
-        "walking": "animation.poliwhirl.walking",
-        "flying": "animation.poliwhirl.ground_idle",
-        "swimming": "animation.poliwhirl.ground_idle",
-        "sleeping": "animation.poliwhirl.ground_idle",
-        "attack": "animation.poliwhirl.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "poliwhirl",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.poliwhirl"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:poliwhirl",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/poliwhirl/poliwhirl.png",
+				"shiny_default": "textures/entity/pokemon/poliwhirl/shiny_poliwhirl.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.poliwhirl.blink",
+				"ground_idle": "animation.poliwhirl.ground_idle",
+				"air_idle": "animation.poliwhirl.ground_idle",
+				"water_idle": "animation.poliwhirl.ground_idle",
+				"walking": "animation.poliwhirl.walking",
+				"flying": "animation.poliwhirl.ground_idle",
+				"swimming": "animation.poliwhirl.ground_idle",
+				"sleeping": "animation.poliwhirl.ground_idle",
+				"attack": "animation.poliwhirl.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "poliwhirl",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.poliwhirl"
+			}
+		}
+	}
 }

@@ -1,36 +1,36 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.pokemon:clodsire": {
-      "arrays": {
-        "materials": {
-          "Array.materialVariants": [
-            "Material.default"
-          ]
-        },
-        "geometries": {
-          "Array.geometryVariants": [
-            "Geometry.default",
-            "Geometry.stpatrick"
-          ]
-        },
-        "textures": {
-          "Array.textureVariants": [
-            "Texture.default",
-            "Texture.shiny_default",
-            "Texture.stpatrick"
-          ]
-        }
-      },
-      "materials": [
-        {
-          "*": "Material.default"
-        }
-      ],
-      "geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
-      "textures": [
-        "Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:0]"
-      ]
-    }
-  }
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:clodsire": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.stpatrick"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.stpatrick"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"textures": [
+				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:0]"
+			]
+		}
+	}
 }

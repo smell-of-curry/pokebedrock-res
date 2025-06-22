@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:shieldon",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/shieldon/shieldon.png",
-        "shiny_default": "textures/entity/pokemon/shieldon/shiny_shieldon.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.shieldon.blink",
-        "ground_idle": "animation.shieldon.ground_idle",
-        "air_idle": "animation.shieldon.ground_idle",
-        "water_idle": "animation.shieldon.water_idle",
-        "walking": "animation.shieldon.walking",
-        "flying": "animation.shieldon.ground_idle",
-        "swimming": "animation.shieldon.swimming",
-        "sleeping": "animation.shieldon.sleeping",
-        "attack": "animation.shieldon.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "shieldon",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.shieldon"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:shieldon",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/shieldon/shieldon.png",
+				"shiny_default": "textures/entity/pokemon/shieldon/shiny_shieldon.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.shieldon.blink",
+				"ground_idle": "animation.shieldon.ground_idle",
+				"air_idle": "animation.shieldon.ground_idle",
+				"water_idle": "animation.shieldon.water_idle",
+				"walking": "animation.shieldon.walking",
+				"flying": "animation.shieldon.ground_idle",
+				"swimming": "animation.shieldon.swimming",
+				"sleeping": "animation.shieldon.sleeping",
+				"attack": "animation.shieldon.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "shieldon",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.shieldon"
+			}
+		}
+	}
 }

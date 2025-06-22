@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:applin",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/applin/applin.png",
-        "shiny_default": "textures/entity/pokemon/applin/shiny_applin.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.applin.blink",
-        "ground_idle": "animation.applin.ground_idle",
-        "air_idle": "animation.applin.ground_idle",
-        "water_idle": "animation.applin.water_idle",
-        "walking": "animation.applin.walking",
-        "flying": "animation.applin.ground_idle",
-        "swimming": "animation.applin.swimming",
-        "sleeping": "animation.applin.sleeping",
-        "attack": "animation.applin.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "applin",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.applin"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:applin",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/applin/applin.png",
+				"shiny_default": "textures/entity/pokemon/applin/shiny_applin.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.applin.blink",
+				"ground_idle": "animation.applin.ground_idle",
+				"air_idle": "animation.applin.ground_idle",
+				"water_idle": "animation.applin.water_idle",
+				"walking": "animation.applin.walking",
+				"flying": "animation.applin.ground_idle",
+				"swimming": "animation.applin.swimming",
+				"sleeping": "animation.applin.sleeping",
+				"attack": "animation.applin.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "applin",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.applin"
+			}
+		}
+	}
 }

@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:darmanitan",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/darmanitan/darmanitan.png",
-        "shiny_default": "textures/entity/pokemon/darmanitan/shiny_darmanitan.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.darmanitan.blink",
-        "ground_idle": "animation.darmanitan.ground_idle",
-        "air_idle": "animation.darmanitan.ground_idle",
-        "water_idle": "animation.darmanitan.water_idle",
-        "walking": "animation.darmanitan.walking",
-        "flying": "animation.darmanitan.ground_idle",
-        "swimming": "animation.darmanitan.swimming",
-        "sleeping": "animation.darmanitan.sleeping",
-        "attack": "animation.darmanitan.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "darmanitan",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.darmanitan"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:darmanitan",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/darmanitan/darmanitan.png",
+				"shiny_default": "textures/entity/pokemon/darmanitan/shiny_darmanitan.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.darmanitan.blink",
+				"ground_idle": "animation.darmanitan.ground_idle",
+				"air_idle": "animation.darmanitan.ground_idle",
+				"water_idle": "animation.darmanitan.water_idle",
+				"walking": "animation.darmanitan.walking",
+				"flying": "animation.darmanitan.ground_idle",
+				"swimming": "animation.darmanitan.swimming",
+				"sleeping": "animation.darmanitan.sleeping",
+				"attack": "animation.darmanitan.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "darmanitan",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.darmanitan"
+			}
+		}
+	}
 }

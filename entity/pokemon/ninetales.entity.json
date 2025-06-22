@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:ninetales",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/ninetales/ninetales.png",
-        "shiny_default": "textures/entity/pokemon/ninetales/shiny_ninetales.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.ninetales.blink",
-        "ground_idle": "animation.ninetales.ground_idle",
-        "air_idle": "animation.ninetales.ground_idle",
-        "water_idle": "animation.ninetales.water_idle",
-        "walking": "animation.ninetales.walking",
-        "flying": "animation.ninetales.ground_idle",
-        "swimming": "animation.ninetales.swimming",
-        "sleeping": "animation.ninetales.sleeping",
-        "attack": "animation.ninetales.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "ninetales",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.ninetales"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:ninetales",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/ninetales/ninetales.png",
+				"shiny_default": "textures/entity/pokemon/ninetales/shiny_ninetales.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.ninetales.blink",
+				"ground_idle": "animation.ninetales.ground_idle",
+				"air_idle": "animation.ninetales.ground_idle",
+				"water_idle": "animation.ninetales.water_idle",
+				"walking": "animation.ninetales.walking",
+				"flying": "animation.ninetales.ground_idle",
+				"swimming": "animation.ninetales.swimming",
+				"sleeping": "animation.ninetales.sleeping",
+				"attack": "animation.ninetales.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "ninetales",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.ninetales"
+			}
+		}
+	}
 }

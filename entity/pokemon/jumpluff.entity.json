@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:jumpluff",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/jumpluff/jumpluff.png",
-        "shiny_default": "textures/entity/pokemon/jumpluff/shiny_jumpluff.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.jumpluff.blink",
-        "ground_idle": "animation.jumpluff.ground_idle",
-        "air_idle": "animation.jumpluff.ground_idle",
-        "water_idle": "animation.jumpluff.water_idle",
-        "walking": "animation.jumpluff.walking",
-        "flying": "animation.jumpluff.ground_idle",
-        "swimming": "animation.jumpluff.swimming",
-        "sleeping": "animation.jumpluff.sleeping",
-        "attack": "animation.jumpluff.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "jumpluff",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.jumpluff"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:jumpluff",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/jumpluff/jumpluff.png",
+				"shiny_default": "textures/entity/pokemon/jumpluff/shiny_jumpluff.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.jumpluff.blink",
+				"ground_idle": "animation.jumpluff.ground_idle",
+				"air_idle": "animation.jumpluff.ground_idle",
+				"water_idle": "animation.jumpluff.water_idle",
+				"walking": "animation.jumpluff.walking",
+				"flying": "animation.jumpluff.ground_idle",
+				"swimming": "animation.jumpluff.swimming",
+				"sleeping": "animation.jumpluff.sleeping",
+				"attack": "animation.jumpluff.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "jumpluff",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.jumpluff"
+			}
+		}
+	}
 }

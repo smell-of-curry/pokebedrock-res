@@ -24,8 +24,9 @@ import {
 } from "./utils";
 import {
   PokemonCustomizations,
-  PokemonSkinOption,
 } from "./data/customizations";
+import { writeFileIfChanged, writeImageIfChanged } from "./utils";
+import {writeJsonFileSync} from 'write-json-file';
 
 // TODO: Implement animations for skinned/gender pokemon.
 
@@ -869,11 +870,8 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
   // Write the render controller file.
   try {
-    fsExtra.writeJSONSync(
-      path.join(renderControllersPath, `${pokemonTypeId}.rc.json`),
-      rcFile,
-      { spaces: 2 }
-    );
+    const filePath = path.join(renderControllersPath, `${pokemonTypeId}.rc.json`);
+    writeJsonFileSync(filePath, rcFile, { detectIndent: true });
   } catch (error) {
     Logger.error(
       `Error writing render controller for ${pokemonTypeId}: ${error}`
@@ -901,28 +899,30 @@ async function checkAndEnsureSprites(pokemonTypeId: PokemonTypeId) {
       report.missingSprites.add(sprite);
       continue;
     }
-    if (!fs.existsSync(darkSpritePath)) {
-      Logger.info(`Generating dark sprite for ${sprite}...`);
-      try {
-        const image = sharp(spritePath);
-        const metadata = await image.metadata();
-        if (!metadata.width || !metadata.height) {
-          Logger.error(`Invalid metadata for ${sprite}`);
-          continue;
-        }
-        const rawImageData = await image.raw().toBuffer();
-        for (let i = 0; i < rawImageData.length; i += 4) {
-          rawImageData[i] = 10; // Red
-          rawImageData[i + 1] = 10; // Green
-          rawImageData[i + 2] = 10; // Blue
-        }
-        await sharp(rawImageData, {
-          raw: { width: metadata.width, height: metadata.height, channels: 4 },
-        }).toFile(darkSpritePath);
-        Logger.info(`Dark sprite generated for ${sprite}!`);
-      } catch (error) {
-        Logger.error(`Error processing image for ${sprite}: ${error}`);
+    // Generate dark sprite if needed (check content, not just existence)
+    try {
+      const image = sharp(spritePath);
+      const metadata = await image.metadata();
+      if (!metadata.width || !metadata.height) {
+        Logger.error(`Invalid metadata for ${sprite}`);
+        continue;
       }
+      const rawImageData = await image.raw().toBuffer();
+      for (let i = 0; i < rawImageData.length; i += 4) {
+        rawImageData[i] = 10; // Red
+        rawImageData[i + 1] = 10; // Green
+        rawImageData[i + 2] = 10; // Blue
+      }
+      const processedImageBuffer = await sharp(rawImageData, {
+        raw: { width: metadata.width, height: metadata.height, channels: 4 },
+      }).png().toBuffer();
+      
+      const wasWritten = await writeImageIfChanged(darkSpritePath, processedImageBuffer);
+      if (wasWritten) {
+        Logger.info(`Dark sprite generated for ${sprite}!`);
+      }
+    } catch (error) {
+      Logger.error(`Error processing image for ${sprite}: ${error}`);
     }
     // Update item textures
     itemTexturesFile!.texture_data[sprite] = {
@@ -1102,11 +1102,8 @@ async function processPokemon() {
         };
       }
 
-      fsExtra.writeJSONSync(
-        path.join(pokemonEntityFilesDir, `${typeId}.entity.json`),
-        entityFile,
-        { spaces: 2 }
-      );
+      const entityFilePath = path.join(pokemonEntityFilesDir, `${typeId}.entity.json`);
+      writeJsonFileSync(entityFilePath, entityFile, { detectIndent: true });
       await checkAndEnsureSprites(typeId);
     } catch (error) {
       Logger.error(`Error processing Pokémon ${pokemonTypeId}: ${error}`);
@@ -1133,7 +1130,7 @@ async function processPokemon() {
       )
       .join("\n");
     editLangSection(langFilePath, "Dismount Messages", dismountEntries);
-    fsExtra.writeJSONSync(itemTexturesPath, itemTexturesFile, { spaces: 2 });
+    writeJsonFileSync(itemTexturesPath, itemTexturesFile, { detectIndent: true });
 
     // Generate markdown report.
     let markdownContent = `# Missing Information Report\n\nThis report contains details about missing or problematic elements found during the Pokémon processing.\n\n`;
@@ -1238,8 +1235,10 @@ async function processPokemon() {
       markdownContent +=
         "No Pokémon have problematic blink animations that modify non-eye bones!\n";
     }
-    fs.writeFileSync(markdownLogPath, markdownContent);
-    Logger.info(`Markdown report generated at ${markdownLogPath}`);
+    const markdownWritten = writeFileIfChanged(markdownLogPath, markdownContent);
+    if (markdownWritten) {
+      Logger.info(`Markdown report updated at ${markdownLogPath}`);
+    }
   } catch (error) {
     Logger.error(
       `Error updating language files or generating report: ${error}`

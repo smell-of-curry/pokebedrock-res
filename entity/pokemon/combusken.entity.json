@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:combusken",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/combusken/combusken.png",
-        "shiny_male_default": "textures/entity/pokemon/combusken/combusken.png",
-        "female_default": "textures/entity/pokemon/combusken/combusken.png",
-        "shiny_female_default": "textures/entity/pokemon/combusken/combusken.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.combusken.blink",
-        "ground_idle": "animation.combusken.ground_idle",
-        "air_idle": "animation.combusken.ground_idle",
-        "water_idle": "animation.combusken.ground_idle",
-        "walking": "animation.combusken.walking",
-        "flying": "animation.combusken.ground_idle",
-        "swimming": "animation.combusken.ground_idle",
-        "sleeping": "animation.combusken.ground_idle",
-        "attack": "animation.combusken.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:combusken": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "combusken",
-        "texture_index": 0
-      },
-      "geometry": {
-        "male_default": "geometry.combusken",
-        "female_default": "geometry.combusken"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:combusken",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/combusken/combusken.png",
+				"shiny_male_default": "textures/entity/pokemon/combusken/combusken.png",
+				"female_default": "textures/entity/pokemon/combusken/combusken.png",
+				"shiny_female_default": "textures/entity/pokemon/combusken/combusken.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.combusken.blink",
+				"ground_idle": "animation.combusken.ground_idle",
+				"air_idle": "animation.combusken.ground_idle",
+				"water_idle": "animation.combusken.ground_idle",
+				"walking": "animation.combusken.walking",
+				"flying": "animation.combusken.ground_idle",
+				"swimming": "animation.combusken.ground_idle",
+				"sleeping": "animation.combusken.ground_idle",
+				"attack": "animation.combusken.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:combusken": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "combusken",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.combusken",
+				"female_default": "geometry.combusken"
+			}
+		}
+	}
 }

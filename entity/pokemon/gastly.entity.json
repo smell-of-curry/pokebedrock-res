@@ -1,54 +1,54 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:gastly",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/gastly/gastly.png",
-        "shiny_default": "textures/entity/pokemon/gastly/shiny_gastly.png",
-        "halloween": "textures/entity/pokemon/gastly/gastly_halloween.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.gastly.blink",
-        "ground_idle": "animation.gastly.ground_idle",
-        "air_idle": "animation.gastly.ground_idle",
-        "water_idle": "animation.gastly.ground_idle",
-        "walking": "animation.gastly.walking",
-        "flying": "animation.gastly.ground_idle",
-        "swimming": "animation.gastly.ground_idle",
-        "sleeping": "animation.gastly.ground_idle",
-        "attack": "animation.gastly.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:gastly": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "gastly",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.gastly"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:gastly",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/gastly/gastly.png",
+				"shiny_default": "textures/entity/pokemon/gastly/shiny_gastly.png",
+				"halloween": "textures/entity/pokemon/gastly/gastly_halloween.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.gastly.blink",
+				"ground_idle": "animation.gastly.ground_idle",
+				"air_idle": "animation.gastly.ground_idle",
+				"water_idle": "animation.gastly.ground_idle",
+				"walking": "animation.gastly.walking",
+				"flying": "animation.gastly.ground_idle",
+				"swimming": "animation.gastly.ground_idle",
+				"sleeping": "animation.gastly.ground_idle",
+				"attack": "animation.gastly.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:gastly": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "gastly",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.gastly"
+			}
+		}
+	}
 }

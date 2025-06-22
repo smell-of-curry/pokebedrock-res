@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:dracozolt",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/dracozolt/dracozolt.png",
-        "shiny_default": "textures/entity/pokemon/dracozolt/shiny_dracozolt.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.dracozolt.blink",
-        "ground_idle": "animation.dracozolt.ground_idle",
-        "air_idle": "animation.dracozolt.ground_idle",
-        "water_idle": "animation.dracozolt.water_idle",
-        "walking": "animation.dracozolt.walking",
-        "flying": "animation.dracozolt.ground_idle",
-        "swimming": "animation.dracozolt.swimming",
-        "sleeping": "animation.dracozolt.sleeping",
-        "attack": "animation.dracozolt.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "dracozolt",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.dracozolt"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:dracozolt",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/dracozolt/dracozolt.png",
+				"shiny_default": "textures/entity/pokemon/dracozolt/shiny_dracozolt.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.dracozolt.blink",
+				"ground_idle": "animation.dracozolt.ground_idle",
+				"air_idle": "animation.dracozolt.ground_idle",
+				"water_idle": "animation.dracozolt.water_idle",
+				"walking": "animation.dracozolt.walking",
+				"flying": "animation.dracozolt.ground_idle",
+				"swimming": "animation.dracozolt.swimming",
+				"sleeping": "animation.dracozolt.sleeping",
+				"attack": "animation.dracozolt.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "dracozolt",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.dracozolt"
+			}
+		}
+	}
 }

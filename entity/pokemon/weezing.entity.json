@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:weezing",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/weezing/weezing.png",
-        "shiny_default": "textures/entity/pokemon/weezing/shiny_weezing.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.weezing.blink",
-        "ground_idle": "animation.weezing.ground_idle",
-        "air_idle": "animation.weezing.ground_idle",
-        "water_idle": "animation.weezing.ground_idle",
-        "walking": "animation.weezing.walking",
-        "flying": "animation.weezing.ground_idle",
-        "swimming": "animation.weezing.ground_idle",
-        "sleeping": "animation.weezing.ground_idle",
-        "attack": "animation.weezing.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "weezing",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.weezing"
-      },
-      "particle_effects": {
-        "poison_smoke": "pokeb:poison_smoke"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:weezing",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/weezing/weezing.png",
+				"shiny_default": "textures/entity/pokemon/weezing/shiny_weezing.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.weezing.blink",
+				"ground_idle": "animation.weezing.ground_idle",
+				"air_idle": "animation.weezing.ground_idle",
+				"water_idle": "animation.weezing.ground_idle",
+				"walking": "animation.weezing.walking",
+				"flying": "animation.weezing.ground_idle",
+				"swimming": "animation.weezing.ground_idle",
+				"sleeping": "animation.weezing.ground_idle",
+				"attack": "animation.weezing.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "weezing",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.weezing"
+			},
+			"particle_effects": {
+				"poison_smoke": "pokeb:poison_smoke"
+			}
+		}
+	}
 }

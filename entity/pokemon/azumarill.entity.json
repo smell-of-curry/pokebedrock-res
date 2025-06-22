@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:azumarill",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/azumarill/azumarill.png",
-        "shiny_default": "textures/entity/pokemon/azumarill/shiny_azumarill.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.azumarill.blink",
-        "ground_idle": "animation.azumarill.ground_idle",
-        "air_idle": "animation.azumarill.ground_idle",
-        "water_idle": "animation.azumarill.ground_idle",
-        "walking": "animation.azumarill.walking",
-        "flying": "animation.azumarill.ground_idle",
-        "swimming": "animation.azumarill.swimming",
-        "sleeping": "animation.azumarill.sleeping",
-        "attack": "animation.azumarill.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "azumarill",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.azumarill"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:azumarill",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/azumarill/azumarill.png",
+				"shiny_default": "textures/entity/pokemon/azumarill/shiny_azumarill.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.azumarill.blink",
+				"ground_idle": "animation.azumarill.ground_idle",
+				"air_idle": "animation.azumarill.ground_idle",
+				"water_idle": "animation.azumarill.ground_idle",
+				"walking": "animation.azumarill.walking",
+				"flying": "animation.azumarill.ground_idle",
+				"swimming": "animation.azumarill.swimming",
+				"sleeping": "animation.azumarill.sleeping",
+				"attack": "animation.azumarill.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "azumarill",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.azumarill"
+			}
+		}
+	}
 }

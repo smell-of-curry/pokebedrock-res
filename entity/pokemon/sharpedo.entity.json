@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:sharpedo",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/sharpedo/sharpedo.png",
-        "shiny_default": "textures/entity/pokemon/sharpedo/shiny_sharpedo.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.sharpedo.blink",
-        "ground_idle": "animation.sharpedo.ground_idle",
-        "air_idle": "animation.sharpedo.ground_idle",
-        "water_idle": "animation.sharpedo.water_idle",
-        "walking": "animation.sharpedo.walking",
-        "flying": "animation.sharpedo.ground_idle",
-        "swimming": "animation.sharpedo.swimming",
-        "sleeping": "animation.sharpedo.sleeping",
-        "attack": "animation.sharpedo.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "sharpedo",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.sharpedo"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:sharpedo",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/sharpedo/sharpedo.png",
+				"shiny_default": "textures/entity/pokemon/sharpedo/shiny_sharpedo.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.sharpedo.blink",
+				"ground_idle": "animation.sharpedo.ground_idle",
+				"air_idle": "animation.sharpedo.ground_idle",
+				"water_idle": "animation.sharpedo.water_idle",
+				"walking": "animation.sharpedo.walking",
+				"flying": "animation.sharpedo.ground_idle",
+				"swimming": "animation.sharpedo.swimming",
+				"sleeping": "animation.sharpedo.sleeping",
+				"attack": "animation.sharpedo.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "sharpedo",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.sharpedo"
+			}
+		}
+	}
 }

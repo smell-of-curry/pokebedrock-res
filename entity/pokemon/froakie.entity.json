@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:froakie",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/froakie/froakie.png",
-        "shiny_default": "textures/entity/pokemon/froakie/shiny_froakie.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.froakie.blink",
-        "ground_idle": "animation.froakie.ground_idle",
-        "air_idle": "animation.froakie.ground_idle",
-        "water_idle": "animation.froakie.ground_idle",
-        "walking": "animation.froakie.walking",
-        "flying": "animation.froakie.ground_idle",
-        "swimming": "animation.froakie.ground_idle",
-        "sleeping": "animation.froakie.ground_idle",
-        "attack": "animation.froakie.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "froakie",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.froakie"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:froakie",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/froakie/froakie.png",
+				"shiny_default": "textures/entity/pokemon/froakie/shiny_froakie.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.froakie.blink",
+				"ground_idle": "animation.froakie.ground_idle",
+				"air_idle": "animation.froakie.ground_idle",
+				"water_idle": "animation.froakie.ground_idle",
+				"walking": "animation.froakie.walking",
+				"flying": "animation.froakie.ground_idle",
+				"swimming": "animation.froakie.ground_idle",
+				"sleeping": "animation.froakie.ground_idle",
+				"attack": "animation.froakie.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "froakie",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.froakie"
+			}
+		}
+	}
 }

@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:golurk",
-      "materials": {
-        "default": "custom_animated",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/golurk/golurk.png",
-        "shiny_default": "textures/entity/pokemon/golurk/shiny_golurk.png",
-        "halloween": "textures/entity/pokemon/golurk/golurk_halloween.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.golurk.blink",
-        "ground_idle": "animation.golurk.ground_idle",
-        "air_idle": "animation.golurk.ground_idle",
-        "water_idle": "animation.golurk.water_idle",
-        "walking": "animation.golurk.walking",
-        "flying": "animation.golurk.ground_idle",
-        "swimming": "animation.golurk.swimming",
-        "sleeping": "animation.golurk.sleeping",
-        "attack": "animation.golurk.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:golurk": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "golurk",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.golurk",
-        "halloween": "geometry.golurk_halloween"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:golurk",
+			"materials": {
+				"default": "custom_animated",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/golurk/golurk.png",
+				"shiny_default": "textures/entity/pokemon/golurk/shiny_golurk.png",
+				"halloween": "textures/entity/pokemon/golurk/golurk_halloween.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.golurk.blink",
+				"ground_idle": "animation.golurk.ground_idle",
+				"air_idle": "animation.golurk.ground_idle",
+				"water_idle": "animation.golurk.water_idle",
+				"walking": "animation.golurk.walking",
+				"flying": "animation.golurk.ground_idle",
+				"swimming": "animation.golurk.swimming",
+				"sleeping": "animation.golurk.sleeping",
+				"attack": "animation.golurk.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:golurk": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "golurk",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.golurk",
+				"halloween": "geometry.golurk_halloween"
+			}
+		}
+	}
 }

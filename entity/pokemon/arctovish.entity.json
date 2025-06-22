@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:arctovish",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/arctovish/arctovish.png",
-        "shiny_default": "textures/entity/pokemon/arctovish/shiny_arctovish.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.arctovish.blink",
-        "ground_idle": "animation.arctovish.ground_idle",
-        "air_idle": "animation.arctovish.ground_idle",
-        "water_idle": "animation.arctovish.water_idle",
-        "walking": "animation.arctovish.walking",
-        "flying": "animation.arctovish.ground_idle",
-        "swimming": "animation.arctovish.swimming",
-        "sleeping": "animation.arctovish.sleeping",
-        "attack": "animation.arctovish.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "arctovish",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.arctovish"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:arctovish",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/arctovish/arctovish.png",
+				"shiny_default": "textures/entity/pokemon/arctovish/shiny_arctovish.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.arctovish.blink",
+				"ground_idle": "animation.arctovish.ground_idle",
+				"air_idle": "animation.arctovish.ground_idle",
+				"water_idle": "animation.arctovish.water_idle",
+				"walking": "animation.arctovish.walking",
+				"flying": "animation.arctovish.ground_idle",
+				"swimming": "animation.arctovish.swimming",
+				"sleeping": "animation.arctovish.sleeping",
+				"attack": "animation.arctovish.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "arctovish",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.arctovish"
+			}
+		}
+	}
 }

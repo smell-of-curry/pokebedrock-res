@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:magnemite",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/magnemite/magnemite.png",
-        "shiny_default": "textures/entity/pokemon/magnemite/shiny_magnemite.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.magnemite.blink",
-        "ground_idle": "animation.magnemite.ground_idle",
-        "air_idle": "animation.magnemite.ground_idle",
-        "water_idle": "animation.magnemite.ground_idle",
-        "walking": "animation.magnemite.walking",
-        "flying": "animation.magnemite.ground_idle",
-        "swimming": "animation.magnemite.ground_idle",
-        "sleeping": "animation.magnemite.ground_idle",
-        "attack": "animation.magnemite.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "magnemite",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.magnemite"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:magnemite",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/magnemite/magnemite.png",
+				"shiny_default": "textures/entity/pokemon/magnemite/shiny_magnemite.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.magnemite.blink",
+				"ground_idle": "animation.magnemite.ground_idle",
+				"air_idle": "animation.magnemite.ground_idle",
+				"water_idle": "animation.magnemite.ground_idle",
+				"walking": "animation.magnemite.walking",
+				"flying": "animation.magnemite.ground_idle",
+				"swimming": "animation.magnemite.ground_idle",
+				"sleeping": "animation.magnemite.ground_idle",
+				"attack": "animation.magnemite.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "magnemite",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.magnemite"
+			}
+		}
+	}
 }

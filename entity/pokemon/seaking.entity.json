@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:seaking",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/seaking/seaking.png",
-        "shiny_male_default": "textures/entity/pokemon/seaking/seaking.png",
-        "female_default": "textures/entity/pokemon/seaking/seaking.png",
-        "shiny_female_default": "textures/entity/pokemon/seaking/seaking.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.seaking.blink",
-        "ground_idle": "animation.seaking.ground_idle",
-        "air_idle": "animation.seaking.ground_idle",
-        "water_idle": "animation.seaking.ground_idle",
-        "walking": "animation.seaking.walking",
-        "flying": "animation.seaking.ground_idle",
-        "swimming": "animation.seaking.ground_idle",
-        "sleeping": "animation.seaking.ground_idle",
-        "attack": "animation.seaking.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:seaking": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "seaking",
-        "texture_index": 0
-      },
-      "geometry": {
-        "male_default": "geometry.seaking",
-        "female_default": "geometry.seaking"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:seaking",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/seaking/seaking.png",
+				"shiny_male_default": "textures/entity/pokemon/seaking/seaking.png",
+				"female_default": "textures/entity/pokemon/seaking/seaking.png",
+				"shiny_female_default": "textures/entity/pokemon/seaking/seaking.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.seaking.blink",
+				"ground_idle": "animation.seaking.ground_idle",
+				"air_idle": "animation.seaking.ground_idle",
+				"water_idle": "animation.seaking.ground_idle",
+				"walking": "animation.seaking.walking",
+				"flying": "animation.seaking.ground_idle",
+				"swimming": "animation.seaking.ground_idle",
+				"sleeping": "animation.seaking.ground_idle",
+				"attack": "animation.seaking.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:seaking": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "seaking",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.seaking",
+				"female_default": "geometry.seaking"
+			}
+		}
+	}
 }

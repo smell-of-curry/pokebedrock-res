@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:cinccino",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/cinccino/cinccino.png",
-        "shiny_default": "textures/entity/pokemon/cinccino/shiny_cinccino.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.cinccino.blink",
-        "ground_idle": "animation.cinccino.ground_idle",
-        "air_idle": "animation.cinccino.ground_idle",
-        "water_idle": "animation.cinccino.water_idle",
-        "walking": "animation.cinccino.walking",
-        "flying": "animation.cinccino.ground_idle",
-        "swimming": "animation.cinccino.swimming",
-        "sleeping": "animation.cinccino.sleeping",
-        "attack": "animation.cinccino.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "cinccino",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.cinccino"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:cinccino",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/cinccino/cinccino.png",
+				"shiny_default": "textures/entity/pokemon/cinccino/shiny_cinccino.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.cinccino.blink",
+				"ground_idle": "animation.cinccino.ground_idle",
+				"air_idle": "animation.cinccino.ground_idle",
+				"water_idle": "animation.cinccino.water_idle",
+				"walking": "animation.cinccino.walking",
+				"flying": "animation.cinccino.ground_idle",
+				"swimming": "animation.cinccino.swimming",
+				"sleeping": "animation.cinccino.sleeping",
+				"attack": "animation.cinccino.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "cinccino",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.cinccino"
+			}
+		}
+	}
 }

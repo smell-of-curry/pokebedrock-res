@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:entei",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/entei/entei.png",
-        "shiny_default": "textures/entity/pokemon/entei/shiny_entei.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.entei.blink",
-        "ground_idle": "animation.entei.ground_idle",
-        "air_idle": "animation.entei.ground_idle",
-        "water_idle": "animation.entei.water_idle",
-        "walking": "animation.entei.walking",
-        "flying": "animation.entei.ground_idle",
-        "swimming": "animation.entei.swimming",
-        "sleeping": "animation.entei.sleeping",
-        "attack": "animation.entei.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "entei",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.entei"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:entei",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/entei/entei.png",
+				"shiny_default": "textures/entity/pokemon/entei/shiny_entei.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.entei.blink",
+				"ground_idle": "animation.entei.ground_idle",
+				"air_idle": "animation.entei.ground_idle",
+				"water_idle": "animation.entei.water_idle",
+				"walking": "animation.entei.walking",
+				"flying": "animation.entei.ground_idle",
+				"swimming": "animation.entei.swimming",
+				"sleeping": "animation.entei.sleeping",
+				"attack": "animation.entei.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "entei",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.entei"
+			}
+		}
+	}
 }

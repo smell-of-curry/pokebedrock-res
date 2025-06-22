@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:lickitung",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/lickitung/lickitung.png",
-        "shiny_default": "textures/entity/pokemon/lickitung/shiny_lickitung.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.lickitung.blink",
-        "ground_idle": "animation.lickitung.ground_idle",
-        "air_idle": "animation.lickitung.ground_idle",
-        "water_idle": "animation.lickitung.ground_idle",
-        "walking": "animation.lickitung.walking",
-        "flying": "animation.lickitung.ground_idle",
-        "swimming": "animation.lickitung.ground_idle",
-        "sleeping": "animation.lickitung.ground_idle",
-        "attack": "animation.lickitung.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "lickitung",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.lickitung"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:lickitung",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/lickitung/lickitung.png",
+				"shiny_default": "textures/entity/pokemon/lickitung/shiny_lickitung.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.lickitung.blink",
+				"ground_idle": "animation.lickitung.ground_idle",
+				"air_idle": "animation.lickitung.ground_idle",
+				"water_idle": "animation.lickitung.ground_idle",
+				"walking": "animation.lickitung.walking",
+				"flying": "animation.lickitung.ground_idle",
+				"swimming": "animation.lickitung.ground_idle",
+				"sleeping": "animation.lickitung.ground_idle",
+				"attack": "animation.lickitung.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "lickitung",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.lickitung"
+			}
+		}
+	}
 }

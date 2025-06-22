@@ -1,57 +1,57 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:torterra",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "stpatrick": "custom_animated",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/torterra/torterra.png",
-        "shiny_default": "textures/entity/pokemon/torterra/shiny_torterra.png",
-        "stpatrick": "textures/entity/pokemon/torterra/torterra_stpatrick.png",
-        "shiny_stpatrick": "textures/entity/pokemon/torterra/shiny_torterra_stpatrick.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.torterra.blink",
-        "ground_idle": "animation.torterra.ground_idle",
-        "air_idle": "animation.torterra.ground_idle",
-        "water_idle": "animation.torterra.water_idle",
-        "walking": "animation.torterra.walking",
-        "flying": "animation.torterra.ground_idle",
-        "swimming": "animation.torterra.swimming",
-        "sleeping": "animation.torterra.sleeping",
-        "attack": "animation.torterra.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:torterra": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "torterra",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.torterra",
-        "stpatrick": "geometry.torterra_stpatrick"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:torterra",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"stpatrick": "custom_animated",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/torterra/torterra.png",
+				"shiny_default": "textures/entity/pokemon/torterra/shiny_torterra.png",
+				"stpatrick": "textures/entity/pokemon/torterra/torterra_stpatrick.png",
+				"shiny_stpatrick": "textures/entity/pokemon/torterra/shiny_torterra_stpatrick.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.torterra.blink",
+				"ground_idle": "animation.torterra.ground_idle",
+				"air_idle": "animation.torterra.ground_idle",
+				"water_idle": "animation.torterra.water_idle",
+				"walking": "animation.torterra.walking",
+				"flying": "animation.torterra.ground_idle",
+				"swimming": "animation.torterra.swimming",
+				"sleeping": "animation.torterra.sleeping",
+				"attack": "animation.torterra.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:torterra": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "torterra",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.torterra",
+				"stpatrick": "geometry.torterra_stpatrick"
+			}
+		}
+	}
 }

@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:raikou",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/raikou/raikou.png",
-        "shiny_default": "textures/entity/pokemon/raikou/shiny_raikou.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.raikou.blink",
-        "ground_idle": "animation.raikou.ground_idle",
-        "air_idle": "animation.raikou.ground_idle",
-        "water_idle": "animation.raikou.water_idle",
-        "walking": "animation.raikou.walking",
-        "flying": "animation.raikou.ground_idle",
-        "swimming": "animation.raikou.swimming",
-        "sleeping": "animation.raikou.sleeping",
-        "attack": "animation.raikou.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "raikou",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.raikou"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:raikou",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/raikou/raikou.png",
+				"shiny_default": "textures/entity/pokemon/raikou/shiny_raikou.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.raikou.blink",
+				"ground_idle": "animation.raikou.ground_idle",
+				"air_idle": "animation.raikou.ground_idle",
+				"water_idle": "animation.raikou.water_idle",
+				"walking": "animation.raikou.walking",
+				"flying": "animation.raikou.ground_idle",
+				"swimming": "animation.raikou.swimming",
+				"sleeping": "animation.raikou.sleeping",
+				"attack": "animation.raikou.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "raikou",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.raikou"
+			}
+		}
+	}
 }

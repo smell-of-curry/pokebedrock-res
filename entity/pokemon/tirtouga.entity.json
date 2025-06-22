@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:tirtouga",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/tirtouga/tirtouga.png",
-        "shiny_default": "textures/entity/pokemon/tirtouga/shiny_tirtouga.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.tirtouga.blink",
-        "ground_idle": "animation.tirtouga.ground_idle",
-        "air_idle": "animation.tirtouga.ground_idle",
-        "water_idle": "animation.tirtouga.water_idle",
-        "walking": "animation.tirtouga.walking",
-        "flying": "animation.tirtouga.ground_idle",
-        "swimming": "animation.tirtouga.swimming",
-        "sleeping": "animation.tirtouga.sleeping",
-        "attack": "animation.tirtouga.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "tirtouga",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.tirtouga"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:tirtouga",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/tirtouga/tirtouga.png",
+				"shiny_default": "textures/entity/pokemon/tirtouga/shiny_tirtouga.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.tirtouga.blink",
+				"ground_idle": "animation.tirtouga.ground_idle",
+				"air_idle": "animation.tirtouga.ground_idle",
+				"water_idle": "animation.tirtouga.water_idle",
+				"walking": "animation.tirtouga.walking",
+				"flying": "animation.tirtouga.ground_idle",
+				"swimming": "animation.tirtouga.swimming",
+				"sleeping": "animation.tirtouga.sleeping",
+				"attack": "animation.tirtouga.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "tirtouga",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.tirtouga"
+			}
+		}
+	}
 }

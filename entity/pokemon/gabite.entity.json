@@ -1,58 +1,58 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:gabite",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/gabite/male_gabite.png",
-        "shiny_male_default": "textures/entity/pokemon/gabite/male_shiny_gabite.png",
-        "female_default": "textures/entity/pokemon/gabite/female_gabite.png",
-        "shiny_female_default": "textures/entity/pokemon/gabite/female_shiny_gabite.png",
-        "male_halloween": "textures/entity/pokemon/gabite/male_gabite_halloween.png",
-        "female_halloween": "textures/entity/pokemon/gabite/female_gabite_halloween.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.gabite.blink",
-        "ground_idle": "animation.gabite.ground_idle",
-        "air_idle": "animation.gabite.ground_idle",
-        "water_idle": "animation.gabite.water_idle",
-        "walking": "animation.gabite.walking",
-        "flying": "animation.gabite.ground_idle",
-        "swimming": "animation.gabite.swimming",
-        "sleeping": "animation.gabite.sleeping",
-        "attack": "animation.gabite.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:gabite": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "gabite",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.gabite",
-        "halloween": "geometry.gabite"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:gabite",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/gabite/male_gabite.png",
+				"shiny_male_default": "textures/entity/pokemon/gabite/male_shiny_gabite.png",
+				"female_default": "textures/entity/pokemon/gabite/female_gabite.png",
+				"shiny_female_default": "textures/entity/pokemon/gabite/female_shiny_gabite.png",
+				"male_halloween": "textures/entity/pokemon/gabite/male_gabite_halloween.png",
+				"female_halloween": "textures/entity/pokemon/gabite/female_gabite_halloween.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.gabite.blink",
+				"ground_idle": "animation.gabite.ground_idle",
+				"air_idle": "animation.gabite.ground_idle",
+				"water_idle": "animation.gabite.water_idle",
+				"walking": "animation.gabite.walking",
+				"flying": "animation.gabite.ground_idle",
+				"swimming": "animation.gabite.swimming",
+				"sleeping": "animation.gabite.sleeping",
+				"attack": "animation.gabite.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:gabite": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "gabite",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.gabite",
+				"halloween": "geometry.gabite"
+			}
+		}
+	}
 }

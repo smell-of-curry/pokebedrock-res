@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:regigigas",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/regigigas/regigigas.png",
-        "shiny_default": "textures/entity/pokemon/regigigas/shiny_regigigas.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.regigigas.blink",
-        "ground_idle": "animation.regigigas.ground_idle",
-        "air_idle": "animation.regigigas.ground_idle",
-        "water_idle": "animation.regigigas.ground_idle",
-        "walking": "animation.regigigas.walking",
-        "flying": "animation.regigigas.ground_idle",
-        "swimming": "animation.regigigas.ground_idle",
-        "sleeping": "animation.regigigas.ground_idle",
-        "attack": "animation.regigigas.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "regigigas",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.regigigas"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:regigigas",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/regigigas/regigigas.png",
+				"shiny_default": "textures/entity/pokemon/regigigas/shiny_regigigas.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.regigigas.blink",
+				"ground_idle": "animation.regigigas.ground_idle",
+				"air_idle": "animation.regigigas.ground_idle",
+				"water_idle": "animation.regigigas.ground_idle",
+				"walking": "animation.regigigas.walking",
+				"flying": "animation.regigigas.ground_idle",
+				"swimming": "animation.regigigas.ground_idle",
+				"sleeping": "animation.regigigas.ground_idle",
+				"attack": "animation.regigigas.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "regigigas",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.regigigas"
+			}
+		}
+	}
 }

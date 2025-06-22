@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:quilladin",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/quilladin/quilladin.png",
-        "shiny_default": "textures/entity/pokemon/quilladin/shiny_quilladin.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.quilladin.blink",
-        "ground_idle": "animation.quilladin.ground_idle",
-        "air_idle": "animation.quilladin.ground_idle",
-        "water_idle": "animation.quilladin.ground_idle",
-        "walking": "animation.quilladin.walking",
-        "flying": "animation.quilladin.ground_idle",
-        "swimming": "animation.quilladin.ground_idle",
-        "sleeping": "animation.quilladin.ground_idle",
-        "attack": "animation.quilladin.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "quilladin",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.quilladin"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:quilladin",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/quilladin/quilladin.png",
+				"shiny_default": "textures/entity/pokemon/quilladin/shiny_quilladin.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.quilladin.blink",
+				"ground_idle": "animation.quilladin.ground_idle",
+				"air_idle": "animation.quilladin.ground_idle",
+				"water_idle": "animation.quilladin.ground_idle",
+				"walking": "animation.quilladin.walking",
+				"flying": "animation.quilladin.ground_idle",
+				"swimming": "animation.quilladin.ground_idle",
+				"sleeping": "animation.quilladin.ground_idle",
+				"attack": "animation.quilladin.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "quilladin",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.quilladin"
+			}
+		}
+	}
 }

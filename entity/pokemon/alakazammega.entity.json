@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:alakazammega",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/alakazammega/alakazammega.png",
-        "shiny_default": "textures/entity/pokemon/alakazammega/shiny_alakazammega.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.alakazammega.blink",
-        "ground_idle": "animation.alakazammega.ground_idle",
-        "air_idle": "animation.alakazammega.ground_idle",
-        "water_idle": "animation.alakazammega.water_idle",
-        "walking": "animation.alakazammega.walking",
-        "flying": "animation.alakazammega.ground_idle",
-        "swimming": "animation.alakazammega.swimming",
-        "sleeping": "animation.alakazammega.sleeping",
-        "attack": "animation.alakazammega.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "alakazammega",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.alakazammega"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:alakazammega",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/alakazammega/alakazammega.png",
+				"shiny_default": "textures/entity/pokemon/alakazammega/shiny_alakazammega.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.alakazammega.blink",
+				"ground_idle": "animation.alakazammega.ground_idle",
+				"air_idle": "animation.alakazammega.ground_idle",
+				"water_idle": "animation.alakazammega.water_idle",
+				"walking": "animation.alakazammega.walking",
+				"flying": "animation.alakazammega.ground_idle",
+				"swimming": "animation.alakazammega.swimming",
+				"sleeping": "animation.alakazammega.sleeping",
+				"attack": "animation.alakazammega.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "alakazammega",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.alakazammega"
+			}
+		}
+	}
 }

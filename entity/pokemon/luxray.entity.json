@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:luxray",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/luxray/luxray.png",
-        "shiny_male_default": "textures/entity/pokemon/luxray/luxray.png",
-        "female_default": "textures/entity/pokemon/luxray/luxray.png",
-        "shiny_female_default": "textures/entity/pokemon/luxray/luxray.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.luxray.blink",
-        "ground_idle": "animation.luxray.ground_idle",
-        "air_idle": "animation.luxray.ground_idle",
-        "water_idle": "animation.luxray.ground_idle",
-        "walking": "animation.luxray.walking",
-        "flying": "animation.luxray.ground_idle",
-        "swimming": "animation.luxray.ground_idle",
-        "sleeping": "animation.luxray.ground_idle",
-        "attack": "animation.luxray.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:luxray": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "luxray",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.luxray"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:luxray",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/luxray/luxray.png",
+				"shiny_male_default": "textures/entity/pokemon/luxray/luxray.png",
+				"female_default": "textures/entity/pokemon/luxray/luxray.png",
+				"shiny_female_default": "textures/entity/pokemon/luxray/luxray.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.luxray.blink",
+				"ground_idle": "animation.luxray.ground_idle",
+				"air_idle": "animation.luxray.ground_idle",
+				"water_idle": "animation.luxray.ground_idle",
+				"walking": "animation.luxray.walking",
+				"flying": "animation.luxray.ground_idle",
+				"swimming": "animation.luxray.ground_idle",
+				"sleeping": "animation.luxray.ground_idle",
+				"attack": "animation.luxray.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:luxray": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "luxray",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.luxray"
+			}
+		}
+	}
 }

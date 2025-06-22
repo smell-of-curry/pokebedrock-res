@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:gligar",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/gligar/gligar.png",
-        "shiny_male_default": "textures/entity/pokemon/gligar/gligar.png",
-        "female_default": "textures/entity/pokemon/gligar/gligar.png",
-        "shiny_female_default": "textures/entity/pokemon/gligar/gligar.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.gligar.blink",
-        "ground_idle": "animation.gligar.ground_idle",
-        "air_idle": "animation.gligar.ground_idle",
-        "water_idle": "animation.gligar.ground_idle",
-        "walking": "animation.gligar.walking",
-        "flying": "animation.gligar.ground_idle",
-        "swimming": "animation.gligar.ground_idle",
-        "sleeping": "animation.gligar.ground_idle",
-        "attack": "animation.gligar.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:gligar": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "gligar",
-        "texture_index": 0
-      },
-      "geometry": {
-        "male_default": "geometry.gligar",
-        "female_default": "geometry.gligar"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:gligar",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/gligar/gligar.png",
+				"shiny_male_default": "textures/entity/pokemon/gligar/gligar.png",
+				"female_default": "textures/entity/pokemon/gligar/gligar.png",
+				"shiny_female_default": "textures/entity/pokemon/gligar/gligar.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.gligar.blink",
+				"ground_idle": "animation.gligar.ground_idle",
+				"air_idle": "animation.gligar.ground_idle",
+				"water_idle": "animation.gligar.ground_idle",
+				"walking": "animation.gligar.walking",
+				"flying": "animation.gligar.ground_idle",
+				"swimming": "animation.gligar.ground_idle",
+				"sleeping": "animation.gligar.ground_idle",
+				"attack": "animation.gligar.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:gligar": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "gligar",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.gligar",
+				"female_default": "geometry.gligar"
+			}
+		}
+	}
 }

@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:dartrix",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/dartrix/dartrix.png",
-        "shiny_default": "textures/entity/pokemon/dartrix/shiny_dartrix.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.dartrix.blink",
-        "ground_idle": "animation.dartrix.ground_idle",
-        "air_idle": "animation.dartrix.ground_idle",
-        "water_idle": "animation.dartrix.ground_idle",
-        "walking": "animation.dartrix.walking",
-        "flying": "animation.dartrix.ground_idle",
-        "swimming": "animation.dartrix.ground_idle",
-        "sleeping": "animation.dartrix.ground_idle",
-        "attack": "animation.dartrix.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "dartrix",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.dartrix"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:dartrix",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/dartrix/dartrix.png",
+				"shiny_default": "textures/entity/pokemon/dartrix/shiny_dartrix.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.dartrix.blink",
+				"ground_idle": "animation.dartrix.ground_idle",
+				"air_idle": "animation.dartrix.ground_idle",
+				"water_idle": "animation.dartrix.ground_idle",
+				"walking": "animation.dartrix.walking",
+				"flying": "animation.dartrix.ground_idle",
+				"swimming": "animation.dartrix.ground_idle",
+				"sleeping": "animation.dartrix.ground_idle",
+				"attack": "animation.dartrix.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "dartrix",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.dartrix"
+			}
+		}
+	}
 }

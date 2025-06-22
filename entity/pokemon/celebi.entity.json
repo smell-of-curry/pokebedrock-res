@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:celebi",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/celebi/celebi.png",
-        "shiny_default": "textures/entity/pokemon/celebi/shiny_celebi.png",
-        "halloween": "textures/entity/pokemon/celebi/celebi_halloween.png",
-        "shiny_halloween": "textures/entity/pokemon/celebi/shiny_celebi_halloween.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.celebi.blink",
-        "ground_idle": "animation.celebi.ground_idle",
-        "air_idle": "animation.celebi.ground_idle",
-        "water_idle": "animation.celebi.water_idle",
-        "walking": "animation.celebi.walking",
-        "flying": "animation.celebi.ground_idle",
-        "swimming": "animation.celebi.swimming",
-        "sleeping": "animation.celebi.sleeping",
-        "attack": "animation.celebi.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:celebi": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "celebi",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.celebi",
-        "halloween": "geometry.celebi_halloween"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:celebi",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/celebi/celebi.png",
+				"shiny_default": "textures/entity/pokemon/celebi/shiny_celebi.png",
+				"halloween": "textures/entity/pokemon/celebi/celebi_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/celebi/shiny_celebi_halloween.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.celebi.blink",
+				"ground_idle": "animation.celebi.ground_idle",
+				"air_idle": "animation.celebi.ground_idle",
+				"water_idle": "animation.celebi.water_idle",
+				"walking": "animation.celebi.walking",
+				"flying": "animation.celebi.ground_idle",
+				"swimming": "animation.celebi.swimming",
+				"sleeping": "animation.celebi.sleeping",
+				"attack": "animation.celebi.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:celebi": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "celebi",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.celebi",
+				"halloween": "geometry.celebi_halloween"
+			}
+		}
+	}
 }

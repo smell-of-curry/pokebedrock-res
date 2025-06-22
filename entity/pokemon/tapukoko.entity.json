@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:tapukoko",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/tapukoko/tapukoko.png",
-        "shiny_default": "textures/entity/pokemon/tapukoko/shiny_tapukoko.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.tapukoko.blink",
-        "ground_idle": "animation.tapukoko.ground_idle",
-        "air_idle": "animation.tapukoko.ground_idle",
-        "water_idle": "animation.tapukoko.ground_idle",
-        "walking": "animation.tapukoko.walking",
-        "flying": "animation.tapukoko.ground_idle",
-        "swimming": "animation.tapukoko.ground_idle",
-        "sleeping": "animation.tapukoko.sleeping",
-        "attack": "animation.tapukoko.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "tapukoko",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.tapukoko"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:tapukoko",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/tapukoko/tapukoko.png",
+				"shiny_default": "textures/entity/pokemon/tapukoko/shiny_tapukoko.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.tapukoko.blink",
+				"ground_idle": "animation.tapukoko.ground_idle",
+				"air_idle": "animation.tapukoko.ground_idle",
+				"water_idle": "animation.tapukoko.ground_idle",
+				"walking": "animation.tapukoko.walking",
+				"flying": "animation.tapukoko.ground_idle",
+				"swimming": "animation.tapukoko.ground_idle",
+				"sleeping": "animation.tapukoko.sleeping",
+				"attack": "animation.tapukoko.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "tapukoko",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.tapukoko"
+			}
+		}
+	}
 }

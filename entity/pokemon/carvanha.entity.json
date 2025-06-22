@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:carvanha",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/carvanha/carvanha.png",
-        "shiny_default": "textures/entity/pokemon/carvanha/shiny_carvanha.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.carvanha.blink",
-        "ground_idle": "animation.carvanha.ground_idle",
-        "air_idle": "animation.carvanha.ground_idle",
-        "water_idle": "animation.carvanha.water_idle",
-        "walking": "animation.carvanha.walking",
-        "flying": "animation.carvanha.ground_idle",
-        "swimming": "animation.carvanha.swimming",
-        "sleeping": "animation.carvanha.sleeping",
-        "attack": "animation.carvanha.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "carvanha",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.carvanha"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:carvanha",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/carvanha/carvanha.png",
+				"shiny_default": "textures/entity/pokemon/carvanha/shiny_carvanha.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.carvanha.blink",
+				"ground_idle": "animation.carvanha.ground_idle",
+				"air_idle": "animation.carvanha.ground_idle",
+				"water_idle": "animation.carvanha.water_idle",
+				"walking": "animation.carvanha.walking",
+				"flying": "animation.carvanha.ground_idle",
+				"swimming": "animation.carvanha.swimming",
+				"sleeping": "animation.carvanha.sleeping",
+				"attack": "animation.carvanha.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "carvanha",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.carvanha"
+			}
+		}
+	}
 }

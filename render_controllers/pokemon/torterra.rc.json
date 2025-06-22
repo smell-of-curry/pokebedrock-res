@@ -1,48 +1,48 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.pokemon:torterra": {
-      "arrays": {
-        "materials": {
-          "Array.materialVariants": [
-            "Material.default",
-            "Material.stpatrick"
-          ]
-        },
-        "geometries": {
-          "Array.geometryVariants": [
-            "Geometry.default",
-            "Geometry.stpatrick"
-          ]
-        },
-        "textures": {
-          "Array.textureVariants": [
-            "Texture.default",
-            "Texture.shiny_default",
-            "Texture.stpatrick",
-            "Texture.shiny_stpatrick"
-          ]
-        }
-      },
-      "materials": [
-        {
-          "*": "Array.materialVariants[query.property('pokeb:skin_index')]"
-        }
-      ],
-      "geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
-      "textures": [
-        "Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == true) ? 3:0]"
-      ],
-      "uv_anim": {
-        "offset": [
-          0,
-          "(query.property('pokeb:skin_index')==1) ? math.mod(math.floor(q.life_time * 8), 3) / 3 : 0.0"
-        ],
-        "scale": [
-          1,
-          "(query.property('pokeb:skin_index')==1) ? 1.0 / 3 : 1.0"
-        ]
-      }
-    }
-  }
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:torterra": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default",
+						"Material.stpatrick"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.stpatrick"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.stpatrick",
+						"Texture.shiny_stpatrick"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Array.materialVariants[query.property('pokeb:skin_index')]"
+				}
+			],
+			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"textures": [
+				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == true) ? 3:0]"
+			],
+			"uv_anim": {
+				"offset": [
+					0,
+					"(query.property('pokeb:skin_index')==1) ? math.mod(math.floor(q.life_time * 8), 3) / 3 : 0.0"
+				],
+				"scale": [
+					1,
+					"(query.property('pokeb:skin_index')==1) ? 1.0 / 3 : 1.0"
+				]
+			}
+		}
+	}
 }

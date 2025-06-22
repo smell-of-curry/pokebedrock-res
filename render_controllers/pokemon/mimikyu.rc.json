@@ -1,37 +1,37 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.pokemon:mimikyu": {
-      "arrays": {
-        "materials": {
-          "Array.materialVariants": [
-            "Material.default"
-          ]
-        },
-        "geometries": {
-          "Array.geometryVariants": [
-            "Geometry.default"
-          ]
-        },
-        "textures": {
-          "Array.textureVariants": [
-            "Texture.default",
-            "Texture.shiny_default",
-            "Texture.raichu",
-            "Texture.riolu",
-            "Texture.yamper"
-          ]
-        }
-      },
-      "materials": [
-        {
-          "*": "Material.default"
-        }
-      ],
-      "geometry": "Geometry.default",
-      "textures": [
-        "Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:(query.property('pokeb:skin_index')==2) ? 3:(query.property('pokeb:skin_index')==3) ? 4:0]"
-      ]
-    }
-  }
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:mimikyu": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.raichu",
+						"Texture.riolu",
+						"Texture.yamper"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Geometry.default",
+			"textures": [
+				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:(query.property('pokeb:skin_index')==2) ? 3:(query.property('pokeb:skin_index')==3) ? 4:0]"
+			]
+		}
+	}
 }

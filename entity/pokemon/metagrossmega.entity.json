@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:metagrossmega",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/metagrossmega/metagrossmega.png",
-        "shiny_default": "textures/entity/pokemon/metagrossmega/shiny_metagrossmega.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.metagrossmega.blink",
-        "ground_idle": "animation.metagrossmega.ground_idle",
-        "air_idle": "animation.metagrossmega.air_idle",
-        "water_idle": "animation.metagrossmega.water_idle",
-        "walking": "animation.metagrossmega.walking",
-        "flying": "animation.metagrossmega.flying",
-        "swimming": "animation.metagrossmega.swimming",
-        "sleeping": "animation.metagrossmega.sleeping",
-        "attack": "animation.metagrossmega.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "metagrossmega",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.metagrossmega"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:metagrossmega",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/metagrossmega/metagrossmega.png",
+				"shiny_default": "textures/entity/pokemon/metagrossmega/shiny_metagrossmega.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.metagrossmega.blink",
+				"ground_idle": "animation.metagrossmega.ground_idle",
+				"air_idle": "animation.metagrossmega.air_idle",
+				"water_idle": "animation.metagrossmega.water_idle",
+				"walking": "animation.metagrossmega.walking",
+				"flying": "animation.metagrossmega.flying",
+				"swimming": "animation.metagrossmega.swimming",
+				"sleeping": "animation.metagrossmega.sleeping",
+				"attack": "animation.metagrossmega.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "metagrossmega",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.metagrossmega"
+			}
+		}
+	}
 }

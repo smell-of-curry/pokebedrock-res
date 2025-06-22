@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:kingler",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/kingler/kingler.png",
-        "shiny_default": "textures/entity/pokemon/kingler/shiny_kingler.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.kingler.blink",
-        "ground_idle": "animation.kingler.ground_idle",
-        "air_idle": "animation.kingler.ground_idle",
-        "water_idle": "animation.kingler.ground_idle",
-        "walking": "animation.kingler.walking",
-        "flying": "animation.kingler.ground_idle",
-        "swimming": "animation.kingler.ground_idle",
-        "sleeping": "animation.kingler.ground_idle",
-        "attack": "animation.kingler.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "kingler",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.kingler"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:kingler",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/kingler/kingler.png",
+				"shiny_default": "textures/entity/pokemon/kingler/shiny_kingler.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.kingler.blink",
+				"ground_idle": "animation.kingler.ground_idle",
+				"air_idle": "animation.kingler.ground_idle",
+				"water_idle": "animation.kingler.ground_idle",
+				"walking": "animation.kingler.walking",
+				"flying": "animation.kingler.ground_idle",
+				"swimming": "animation.kingler.ground_idle",
+				"sleeping": "animation.kingler.ground_idle",
+				"attack": "animation.kingler.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "kingler",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.kingler"
+			}
+		}
+	}
 }

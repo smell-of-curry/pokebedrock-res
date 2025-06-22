@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:amaura",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/amaura/amaura.png",
-        "shiny_default": "textures/entity/pokemon/amaura/shiny_amaura.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.amaura.blink",
-        "ground_idle": "animation.amaura.ground_idle",
-        "air_idle": "animation.amaura.ground_idle",
-        "water_idle": "animation.amaura.water_idle",
-        "walking": "animation.amaura.walking",
-        "flying": "animation.amaura.ground_idle",
-        "swimming": "animation.amaura.swimming",
-        "sleeping": "animation.amaura.sleeping",
-        "attack": "animation.amaura.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "amaura",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.amaura"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:amaura",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/amaura/amaura.png",
+				"shiny_default": "textures/entity/pokemon/amaura/shiny_amaura.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.amaura.blink",
+				"ground_idle": "animation.amaura.ground_idle",
+				"air_idle": "animation.amaura.ground_idle",
+				"water_idle": "animation.amaura.water_idle",
+				"walking": "animation.amaura.walking",
+				"flying": "animation.amaura.ground_idle",
+				"swimming": "animation.amaura.swimming",
+				"sleeping": "animation.amaura.sleeping",
+				"attack": "animation.amaura.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "amaura",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.amaura"
+			}
+		}
+	}
 }

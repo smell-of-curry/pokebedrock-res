@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:kyogre",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/kyogre/kyogre.png",
-        "shiny_default": "textures/entity/pokemon/kyogre/shiny_kyogre.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.kyogre.blink",
-        "ground_idle": "animation.kyogre.ground_idle",
-        "air_idle": "animation.kyogre.ground_idle",
-        "water_idle": "animation.kyogre.ground_idle",
-        "walking": "animation.kyogre.walking",
-        "flying": "animation.kyogre.ground_idle",
-        "swimming": "animation.kyogre.swimming",
-        "sleeping": "animation.kyogre.ground_idle",
-        "attack": "animation.kyogre.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "kyogre",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.kyogre"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:kyogre",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/kyogre/kyogre.png",
+				"shiny_default": "textures/entity/pokemon/kyogre/shiny_kyogre.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.kyogre.blink",
+				"ground_idle": "animation.kyogre.ground_idle",
+				"air_idle": "animation.kyogre.ground_idle",
+				"water_idle": "animation.kyogre.ground_idle",
+				"walking": "animation.kyogre.walking",
+				"flying": "animation.kyogre.ground_idle",
+				"swimming": "animation.kyogre.swimming",
+				"sleeping": "animation.kyogre.ground_idle",
+				"attack": "animation.kyogre.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "kyogre",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.kyogre"
+			}
+		}
+	}
 }

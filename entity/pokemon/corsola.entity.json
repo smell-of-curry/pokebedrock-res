@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:corsola",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/corsola/corsola.png",
-        "shiny_default": "textures/entity/pokemon/corsola/shiny_corsola.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.corsola.blink",
-        "ground_idle": "animation.corsola.ground_idle",
-        "air_idle": "animation.corsola.ground_idle",
-        "water_idle": "animation.corsola.water_idle",
-        "walking": "animation.corsola.walking",
-        "flying": "animation.corsola.ground_idle",
-        "swimming": "animation.corsola.swimming",
-        "sleeping": "animation.corsola.sleeping",
-        "attack": "animation.corsola.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "corsola",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.corsola"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:corsola",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/corsola/corsola.png",
+				"shiny_default": "textures/entity/pokemon/corsola/shiny_corsola.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.corsola.blink",
+				"ground_idle": "animation.corsola.ground_idle",
+				"air_idle": "animation.corsola.ground_idle",
+				"water_idle": "animation.corsola.water_idle",
+				"walking": "animation.corsola.walking",
+				"flying": "animation.corsola.ground_idle",
+				"swimming": "animation.corsola.swimming",
+				"sleeping": "animation.corsola.sleeping",
+				"attack": "animation.corsola.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "corsola",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.corsola"
+			}
+		}
+	}
 }

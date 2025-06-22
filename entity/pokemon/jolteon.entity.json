@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:jolteon",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/jolteon/jolteon.png",
-        "shiny_default": "textures/entity/pokemon/jolteon/shiny_jolteon.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.jolteon.blink",
-        "ground_idle": "animation.jolteon.ground_idle",
-        "air_idle": "animation.jolteon.ground_idle",
-        "water_idle": "animation.jolteon.ground_idle",
-        "walking": "animation.jolteon.walking",
-        "flying": "animation.jolteon.ground_idle",
-        "swimming": "animation.jolteon.swimming",
-        "sleeping": "animation.jolteon.sleeping",
-        "attack": "animation.jolteon.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "jolteon",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.jolteon"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:jolteon",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/jolteon/jolteon.png",
+				"shiny_default": "textures/entity/pokemon/jolteon/shiny_jolteon.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.jolteon.blink",
+				"ground_idle": "animation.jolteon.ground_idle",
+				"air_idle": "animation.jolteon.ground_idle",
+				"water_idle": "animation.jolteon.ground_idle",
+				"walking": "animation.jolteon.walking",
+				"flying": "animation.jolteon.ground_idle",
+				"swimming": "animation.jolteon.swimming",
+				"sleeping": "animation.jolteon.sleeping",
+				"attack": "animation.jolteon.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "jolteon",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.jolteon"
+			}
+		}
+	}
 }

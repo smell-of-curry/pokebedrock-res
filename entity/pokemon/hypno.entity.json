@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:hypno",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/hypno/hypno.png",
-        "shiny_male_default": "textures/entity/pokemon/hypno/hypno.png",
-        "female_default": "textures/entity/pokemon/hypno/hypno.png",
-        "shiny_female_default": "textures/entity/pokemon/hypno/hypno.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.hypno.blink",
-        "ground_idle": "animation.hypno.ground_idle",
-        "air_idle": "animation.hypno.ground_idle",
-        "water_idle": "animation.hypno.ground_idle",
-        "walking": "animation.hypno.walking",
-        "flying": "animation.hypno.ground_idle",
-        "swimming": "animation.hypno.ground_idle",
-        "sleeping": "animation.hypno.ground_idle",
-        "attack": "animation.hypno.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:hypno": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "hypno",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.hypno"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:hypno",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/hypno/hypno.png",
+				"shiny_male_default": "textures/entity/pokemon/hypno/hypno.png",
+				"female_default": "textures/entity/pokemon/hypno/hypno.png",
+				"shiny_female_default": "textures/entity/pokemon/hypno/hypno.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.hypno.blink",
+				"ground_idle": "animation.hypno.ground_idle",
+				"air_idle": "animation.hypno.ground_idle",
+				"water_idle": "animation.hypno.ground_idle",
+				"walking": "animation.hypno.walking",
+				"flying": "animation.hypno.ground_idle",
+				"swimming": "animation.hypno.ground_idle",
+				"sleeping": "animation.hypno.ground_idle",
+				"attack": "animation.hypno.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:hypno": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "hypno",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.hypno"
+			}
+		}
+	}
 }

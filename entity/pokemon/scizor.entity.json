@@ -1,56 +1,56 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:scizor",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/scizor/scizor.png",
-        "shiny_male_default": "textures/entity/pokemon/scizor/scizor.png",
-        "female_default": "textures/entity/pokemon/scizor/scizor.png",
-        "shiny_female_default": "textures/entity/pokemon/scizor/scizor.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.scizor.blink",
-        "ground_idle": "animation.scizor.ground_idle",
-        "air_idle": "animation.scizor.ground_idle",
-        "water_idle": "animation.scizor.ground_idle",
-        "walking": "animation.scizor.walking",
-        "flying": "animation.scizor.ground_idle",
-        "swimming": "animation.scizor.ground_idle",
-        "sleeping": "animation.scizor.ground_idle",
-        "attack": "animation.scizor.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:scizor": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "scizor",
-        "texture_index": 0
-      },
-      "geometry": {
-        "male_default": "geometry.scizor",
-        "female_default": "geometry.scizor"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:scizor",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/scizor/scizor.png",
+				"shiny_male_default": "textures/entity/pokemon/scizor/scizor.png",
+				"female_default": "textures/entity/pokemon/scizor/scizor.png",
+				"shiny_female_default": "textures/entity/pokemon/scizor/scizor.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.scizor.blink",
+				"ground_idle": "animation.scizor.ground_idle",
+				"air_idle": "animation.scizor.ground_idle",
+				"water_idle": "animation.scizor.ground_idle",
+				"walking": "animation.scizor.walking",
+				"flying": "animation.scizor.ground_idle",
+				"swimming": "animation.scizor.ground_idle",
+				"sleeping": "animation.scizor.ground_idle",
+				"attack": "animation.scizor.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:scizor": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "scizor",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.scizor",
+				"female_default": "geometry.scizor"
+			}
+		}
+	}
 }

@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:yveltal",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/yveltal/yveltal.png",
-        "shiny_default": "textures/entity/pokemon/yveltal/shiny_yveltal.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.yveltal.blink",
-        "ground_idle": "animation.yveltal.ground_idle",
-        "air_idle": "animation.yveltal.air_idle",
-        "water_idle": "animation.yveltal.ground_idle",
-        "walking": "animation.yveltal.walking",
-        "flying": "animation.yveltal.flying",
-        "swimming": "animation.yveltal.ground_idle",
-        "sleeping": "animation.yveltal.sleeping",
-        "attack": "animation.yveltal.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "yveltal",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.yveltal"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:yveltal",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/yveltal/yveltal.png",
+				"shiny_default": "textures/entity/pokemon/yveltal/shiny_yveltal.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.yveltal.blink",
+				"ground_idle": "animation.yveltal.ground_idle",
+				"air_idle": "animation.yveltal.air_idle",
+				"water_idle": "animation.yveltal.ground_idle",
+				"walking": "animation.yveltal.walking",
+				"flying": "animation.yveltal.flying",
+				"swimming": "animation.yveltal.ground_idle",
+				"sleeping": "animation.yveltal.sleeping",
+				"attack": "animation.yveltal.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "yveltal",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.yveltal"
+			}
+		}
+	}
 }

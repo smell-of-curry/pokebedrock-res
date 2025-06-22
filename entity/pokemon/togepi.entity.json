@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:togepi",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/togepi/togepi.png",
-        "shiny_default": "textures/entity/pokemon/togepi/shiny_togepi.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.togepi.blink",
-        "ground_idle": "animation.togepi.ground_idle",
-        "air_idle": "animation.togepi.ground_idle",
-        "water_idle": "animation.togepi.ground_idle",
-        "walking": "animation.togepi.walking",
-        "flying": "animation.togepi.ground_idle",
-        "swimming": "animation.togepi.ground_idle",
-        "sleeping": "animation.togepi.ground_idle",
-        "attack": "animation.togepi.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "togepi",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.togepi"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:togepi",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/togepi/togepi.png",
+				"shiny_default": "textures/entity/pokemon/togepi/shiny_togepi.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.togepi.blink",
+				"ground_idle": "animation.togepi.ground_idle",
+				"air_idle": "animation.togepi.ground_idle",
+				"water_idle": "animation.togepi.ground_idle",
+				"walking": "animation.togepi.walking",
+				"flying": "animation.togepi.ground_idle",
+				"swimming": "animation.togepi.ground_idle",
+				"sleeping": "animation.togepi.ground_idle",
+				"attack": "animation.togepi.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "togepi",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.togepi"
+			}
+		}
+	}
 }

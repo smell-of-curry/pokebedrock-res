@@ -1,52 +1,52 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.pokemon:furfrou": {
-      "arrays": {
-        "materials": {
-          "Array.materialVariants": [
-            "Material.default"
-          ]
-        },
-        "geometries": {
-          "Array.geometryVariants": [
-            "Geometry.default",
-            "Geometry.dandy",
-            "Geometry.debutante",
-            "Geometry.diamond",
-            "Geometry.heart",
-            "Geometry.kabuki",
-            "Geometry.la_reine",
-            "Geometry.matron",
-            "Geometry.pharaoh",
-            "Geometry.star"
-          ]
-        },
-        "textures": {
-          "Array.textureVariants": [
-            "Texture.default",
-            "Texture.shiny_default",
-            "Texture.dandy",
-            "Texture.debutante",
-            "Texture.diamond",
-            "Texture.heart",
-            "Texture.kabuki",
-            "Texture.la_reine",
-            "Texture.matron",
-            "Texture.pharaoh",
-            "Texture.star"
-          ]
-        }
-      },
-      "materials": [
-        {
-          "*": "Material.default"
-        }
-      ],
-      "geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
-      "textures": [
-        "Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:(query.property('pokeb:skin_index')==2) ? 3:(query.property('pokeb:skin_index')==3) ? 4:(query.property('pokeb:skin_index')==4) ? 5:(query.property('pokeb:skin_index')==5) ? 6:(query.property('pokeb:skin_index')==6) ? 7:(query.property('pokeb:skin_index')==7) ? 8:(query.property('pokeb:skin_index')==8) ? 9:(query.property('pokeb:skin_index')==9) ? 10:0]"
-      ]
-    }
-  }
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:furfrou": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.dandy",
+						"Geometry.debutante",
+						"Geometry.diamond",
+						"Geometry.heart",
+						"Geometry.kabuki",
+						"Geometry.la_reine",
+						"Geometry.matron",
+						"Geometry.pharaoh",
+						"Geometry.star"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.dandy",
+						"Texture.debutante",
+						"Texture.diamond",
+						"Texture.heart",
+						"Texture.kabuki",
+						"Texture.la_reine",
+						"Texture.matron",
+						"Texture.pharaoh",
+						"Texture.star"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"textures": [
+				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:(query.property('pokeb:skin_index')==2) ? 3:(query.property('pokeb:skin_index')==3) ? 4:(query.property('pokeb:skin_index')==4) ? 5:(query.property('pokeb:skin_index')==5) ? 6:(query.property('pokeb:skin_index')==6) ? 7:(query.property('pokeb:skin_index')==7) ? 8:(query.property('pokeb:skin_index')==8) ? 9:(query.property('pokeb:skin_index')==9) ? 10:0]"
+			]
+		}
+	}
 }

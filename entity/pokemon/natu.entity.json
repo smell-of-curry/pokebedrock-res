@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:natu",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/natu/natu.png",
-        "shiny_default": "textures/entity/pokemon/natu/shiny_natu.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.natu.blink",
-        "ground_idle": "animation.natu.ground_idle",
-        "air_idle": "animation.natu.ground_idle",
-        "water_idle": "animation.natu.ground_idle",
-        "walking": "animation.natu.walking",
-        "flying": "animation.natu.ground_idle",
-        "swimming": "animation.natu.ground_idle",
-        "sleeping": "animation.natu.ground_idle",
-        "attack": "animation.natu.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "natu",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.natu"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:natu",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/natu/natu.png",
+				"shiny_default": "textures/entity/pokemon/natu/shiny_natu.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.natu.blink",
+				"ground_idle": "animation.natu.ground_idle",
+				"air_idle": "animation.natu.ground_idle",
+				"water_idle": "animation.natu.ground_idle",
+				"walking": "animation.natu.walking",
+				"flying": "animation.natu.ground_idle",
+				"swimming": "animation.natu.ground_idle",
+				"sleeping": "animation.natu.ground_idle",
+				"attack": "animation.natu.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "natu",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.natu"
+			}
+		}
+	}
 }

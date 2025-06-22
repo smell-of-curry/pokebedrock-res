@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:gallade",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/gallade/gallade.png",
-        "shiny_default": "textures/entity/pokemon/gallade/shiny_gallade.png",
-        "christmas": "textures/entity/pokemon/gallade/gallade_christmas.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.gallade.blink",
-        "ground_idle": "animation.gallade.ground_idle",
-        "air_idle": "animation.gallade.ground_idle",
-        "water_idle": "animation.gallade.water_idle",
-        "walking": "animation.gallade.walking",
-        "flying": "animation.gallade.ground_idle",
-        "swimming": "animation.gallade.swimming",
-        "sleeping": "animation.gallade.sleeping",
-        "attack": "animation.gallade.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:gallade": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "gallade",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.gallade",
-        "christmas": "geometry.gallade_christmas"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:gallade",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/gallade/gallade.png",
+				"shiny_default": "textures/entity/pokemon/gallade/shiny_gallade.png",
+				"christmas": "textures/entity/pokemon/gallade/gallade_christmas.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.gallade.blink",
+				"ground_idle": "animation.gallade.ground_idle",
+				"air_idle": "animation.gallade.ground_idle",
+				"water_idle": "animation.gallade.water_idle",
+				"walking": "animation.gallade.walking",
+				"flying": "animation.gallade.ground_idle",
+				"swimming": "animation.gallade.swimming",
+				"sleeping": "animation.gallade.sleeping",
+				"attack": "animation.gallade.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:gallade": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "gallade",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.gallade",
+				"christmas": "geometry.gallade_christmas"
+			}
+		}
+	}
 }

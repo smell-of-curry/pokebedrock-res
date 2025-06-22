@@ -1,55 +1,55 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:ursaring",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "male_default": "textures/entity/pokemon/ursaring/ursaring.png",
-        "shiny_male_default": "textures/entity/pokemon/ursaring/ursaring.png",
-        "female_default": "textures/entity/pokemon/ursaring/ursaring.png",
-        "shiny_female_default": "textures/entity/pokemon/ursaring/ursaring.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.ursaring.blink",
-        "ground_idle": "animation.ursaring.ground_idle",
-        "air_idle": "animation.ursaring.ground_idle",
-        "water_idle": "animation.ursaring.ground_idle",
-        "walking": "animation.ursaring.walking",
-        "flying": "animation.ursaring.ground_idle",
-        "swimming": "animation.ursaring.ground_idle",
-        "sleeping": "animation.ursaring.ground_idle",
-        "attack": "animation.ursaring.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon:ursaring": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "ursaring",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.ursaring"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:ursaring",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/ursaring/ursaring.png",
+				"shiny_male_default": "textures/entity/pokemon/ursaring/ursaring.png",
+				"female_default": "textures/entity/pokemon/ursaring/ursaring.png",
+				"shiny_female_default": "textures/entity/pokemon/ursaring/ursaring.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.ursaring.blink",
+				"ground_idle": "animation.ursaring.ground_idle",
+				"air_idle": "animation.ursaring.ground_idle",
+				"water_idle": "animation.ursaring.ground_idle",
+				"walking": "animation.ursaring.walking",
+				"flying": "animation.ursaring.ground_idle",
+				"swimming": "animation.ursaring.ground_idle",
+				"sleeping": "animation.ursaring.ground_idle",
+				"attack": "animation.ursaring.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:ursaring": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "ursaring",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.ursaring"
+			}
+		}
+	}
 }

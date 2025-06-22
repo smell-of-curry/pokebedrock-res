@@ -1,53 +1,53 @@
 {
-  "format_version": "1.18.3",
-  "minecraft:client_entity": {
-    "description": {
-      "identifier": "pokemon:cradily",
-      "materials": {
-        "default": "entity_emissive_alpha",
-        "aura": "charged_creeper"
-      },
-      "textures": {
-        "evo_aura": "textures/entity/evolving",
-        "default": "textures/entity/pokemon/cradily/cradily.png",
-        "shiny_default": "textures/entity/pokemon/cradily/shiny_cradily.png"
-      },
-      "scripts": {
-        "animate": [
-          "controller",
-          {
-            "blink": "math.random(0.0, 25.0) <= 0.25"
-          }
-        ]
-      },
-      "animations": {
-        "blink": "animation.cradily.blink",
-        "ground_idle": "animation.cradily.ground_idle",
-        "air_idle": "animation.cradily.ground_idle",
-        "water_idle": "animation.cradily.ground_idle",
-        "walking": "animation.cradily.ground_idle",
-        "flying": "animation.cradily.ground_idle",
-        "swimming": "animation.cradily.ground_idle",
-        "sleeping": "animation.cradily.ground_idle",
-        "attack": "animation.cradily.attack",
-        "look_at_target": "animation.pokemon.look_at_target",
-        "controller": "controller.animation.pokemon"
-      },
-      "render_controllers": [
-        {
-          "controller.render.pokemon": "query.variant==0"
-        },
-        {
-          "controller.render.evolve": "query.variant==1"
-        }
-      ],
-      "spawn_egg": {
-        "texture": "cradily",
-        "texture_index": 0
-      },
-      "geometry": {
-        "default": "geometry.cradily"
-      }
-    }
-  }
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:cradily",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/cradily/cradily.png",
+				"shiny_default": "textures/entity/pokemon/cradily/shiny_cradily.png"
+			},
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.cradily.blink",
+				"ground_idle": "animation.cradily.ground_idle",
+				"air_idle": "animation.cradily.ground_idle",
+				"water_idle": "animation.cradily.ground_idle",
+				"walking": "animation.cradily.ground_idle",
+				"flying": "animation.cradily.ground_idle",
+				"swimming": "animation.cradily.ground_idle",
+				"sleeping": "animation.cradily.ground_idle",
+				"attack": "animation.cradily.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "cradily",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.cradily"
+			}
+		}
+	}
 }
