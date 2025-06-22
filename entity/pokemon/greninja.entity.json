@@ -10,7 +10,9 @@
       "textures": {
         "evo_aura": "textures/entity/evolving",
         "default": "textures/entity/pokemon/greninja/greninja.png",
-        "shiny_default": "textures/entity/pokemon/greninja/shiny_greninja.png"
+        "shiny_default": "textures/entity/pokemon/greninja/shiny_greninja.png",
+        "ash": "textures/entity/pokemon/greninja/greninja_ash.png",
+        "shiny_ash": "textures/entity/pokemon/greninja/shiny_greninja_ash.png"
       },
       "scripts": {
         "animate": [
@@ -35,7 +37,7 @@
       },
       "render_controllers": [
         {
-          "controller.render.pokemon": "query.variant==0"
+          "controller.render.pokemon:greninja": "query.variant==0"
         },
         {
           "controller.render.evolve": "query.variant==1"
@@ -46,7 +48,8 @@
         "texture_index": 0
       },
       "geometry": {
-        "default": "geometry.greninja"
+        "default": "geometry.greninja",
+        "ash": "geometry.greninja_ash"
       }
     }
   }

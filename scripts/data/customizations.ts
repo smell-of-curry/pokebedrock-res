@@ -786,6 +786,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["texture", "sound"],
   },
 
+  greninja: {
+    skins: {
+      ash: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   /** Male is blue and female is pink, both have different patterns */
   frillish: {
     genderDifferences: ["texture"],
