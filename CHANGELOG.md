@@ -1,5 +1,3 @@
-**Update v2.13.9**
+**Update v2.13.10**
 
-- Fixed Ash-Greninja Skin by transforming Greninja into a render-based entity.
-- Created a default formatting scheme for file generation.
-- Improved Dark sprite generation, and have re-generated tons of dark sprites to lower size.
+- Change generation of `source_property_name` for pokemon icons to allow for the behavior pack to use dark sprites too, also fixed Infernape and other pokemon icon display issues due to JSON UI parsing.
