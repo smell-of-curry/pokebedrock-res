@@ -40,7 +40,7 @@ Unauthorized use, reproduction, or distribution of this resource pack or any por
 - smellawella
 - ShadeKinoSoul
 - N1ghtb3ast
-- Joker00666
+- AbstractJoker
 - MSmaug
 - morty134
 - ismegames
