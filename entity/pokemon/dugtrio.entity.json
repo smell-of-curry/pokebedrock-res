@@ -10,7 +10,8 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/dugtrio/dugtrio.png",
-				"shiny_default": "textures/entity/pokemon/dugtrio/shiny_dugtrio.png"
+				"shiny_default": "textures/entity/pokemon/dugtrio/shiny_dugtrio.png",
+				"independence": "textures/entity/pokemon/dugtrio/dugtrio_independence.png"
 			},
 			"scripts": {
 				"animate": [
@@ -35,7 +36,7 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:dugtrio": "query.variant==0"
 				},
 				{
 					"controller.render.evolve": "query.variant==1"
@@ -46,7 +47,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.dugtrio"
+				"default": "geometry.dugtrio",
+				"independence": "geometry.dugtrio_independence"
 			}
 		}
 	}
