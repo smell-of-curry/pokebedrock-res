@@ -72,6 +72,18 @@ export const PokemonCustomizations: Partial<{
     animationParticleEffects: ["pokeb:splash"],
   },
 
+  dugtrio: {
+    skins: {
+      independence: ["model", "texture"],
+    },
+  },
+
+  wailord: {
+    skins: {
+      independence: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   torterra: {
     skins: {
       stpatrick: {
@@ -416,6 +428,26 @@ export const PokemonCustomizations: Partial<{
   /** Female has smaller horns */
   houndoom: {
     genderDifferences: ["texture"],
+    skins: {
+      independence: ["texture"],
+    },
+  },
+
+  cubone: {
+    skins: {
+      independence: [
+        "model",
+        "texture",
+        "shiny_texture",
+        "animation_ground_idle",
+        "animation_water_idle",
+        "animation_sleeping",
+        "animation_walking",
+        "animation_swimming",
+        "animation_attack",
+        "animation_faint",
+      ],
+    },
   },
 
   /** Female has shorter tusks */
