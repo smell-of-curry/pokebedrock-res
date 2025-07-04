@@ -1,3 +1,7 @@
-**Update v2.13.10**
+**Update v2.13.11**
 
-- Change generation of `source_property_name` for pokemon icons to allow for the behavior pack to use dark sprites too, also fixed Infernape and other pokemon icon display issues due to JSON UI parsing.
+- Added independence skin for:
+    - Dugtrio by @nova2011d
+    - Wailord by @wasp_eater2023
+    - Cubone by @wasp_eater2023
+    - Houndoom by @nova2011d
