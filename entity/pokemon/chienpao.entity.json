@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:chienpao",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/chienpao",
-				"shiny_default": "textures/sprites/default/chienpao",
-				"default_male": "textures/sprites/default/chienpao",
-				"default_female": "textures/sprites/default/chienpao",
-				"shiny_male": "textures/sprites/default/chienpao",
-				"shiny_female": "textures/sprites/default/chienpao"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/chienpao/chienpao.png",
+				"shiny_default": "textures/entity/pokemon/chienpao/shiny_chienpao.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.chienpao.blink",
+				"ground_idle": "animation.chienpao.ground_idle",
+				"air_idle": "animation.chienpao.ground_idle",
+				"water_idle": "animation.chienpao.water_idle",
+				"walking": "animation.chienpao.walking",
+				"flying": "animation.chienpao.ground_idle",
+				"swimming": "animation.chienpao.swimming",
+				"sleeping": "animation.chienpao.sleeping",
+				"attack": "animation.chienpao.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "chienpao",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.chienpao"
 			}
 		}
 	}
