@@ -1,0 +1,38 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:attachable": {
+		"description": {
+			"identifier": "pokeb:gui",
+			"render_controllers": [
+				"controller.render.item_default"
+			],
+			"materials": {
+				"default": "entity_alphatest",
+				"enchanted": "entity_alphatest_glint"
+			},
+			"textures": {
+				"default": "textures/entity/gui",
+				"enchanted": "textures/misc/enchanted_item_glint"
+			},
+			"geometry": {
+				"default": "geometry.gui"
+			},
+			"animations": {
+				"first_person_open": "animation.gui.first_person_open",
+				"third_person_open": "animation.gui.third_person_open",
+				"first_person_close": "animation.gui.first_person_close",
+				"third_person_close": "animation.gui.third_person_close"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"first_person_open": "c.is_first_person"
+					},
+					{
+						"third_person_close": "!c.is_first_person"
+					}
+				]
+			}
+		}
+	}
+}
