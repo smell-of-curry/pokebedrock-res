@@ -1,0 +1,33 @@
+{
+    "format_version": "1.18.3",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pokeb:cooling_station",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/containment_chamber"
+            },
+            "geometry": {
+                "default": "geometry.cooling_station"
+            },
+            "scripts": {
+                "scale": "0.75",
+                "pre_animation": [
+                    "variable.potion_amount = query.property('pokeb:potion_amount');",
+                    "variable.has_fluid = query.property('pokeb:has_fluid');"
+                ],
+                "animate": [
+                    "idle"
+                ]
+            },
+            "animations": {
+                "idle": "animation.cooling_station.idle"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}
