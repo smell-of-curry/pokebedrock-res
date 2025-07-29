@@ -1,0 +1,116 @@
+#!/usr/bin/env sh
+
+# Get the commit message
+commit_msg=$(cat "$1")
+
+# Extract version if present (matches patterns like v2.13.11 or 2.13.11)
+version=$(echo "$commit_msg" | grep -oE 'v?[0-9]+\.[0-9]+\.[0-9]+' | head -1 | sed 's/^v//')
+
+# Generic function to check version in a file with custom extraction pattern
+check_file_version() {
+  local file_path="$1"
+  local expected_version="$2"
+  local extraction_pattern="$3"
+  local file_description="$4"
+
+  if [ ! -f "$file_path" ]; then
+    echo "❌ $file_description not found at $file_path"
+    return 1
+  fi
+
+  local found_version
+  case "$extraction_pattern" in
+  "json_version")
+    found_version=$(grep '"version"' "$file_path" | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+    ;;
+  "manifest_array")
+    # Extract version array from manifest.json and convert to dot notation
+    found_version=$(node -e "
+      try {
+        const fs = require('fs');
+        const manifest = JSON.parse(fs.readFileSync('$file_path', 'utf8'));
+        const version = manifest.header.version;
+        if (Array.isArray(version)) {
+          console.log(version.join('.'));
+        } else {
+          process.exit(1);
+        }
+      } catch (e) {
+        process.exit(1);
+      }
+    " 2>/dev/null)
+    ;;
+  "lang_pack_name")
+    # Extract version from pack.name line in .lang file
+    found_version=$(head -n 1 "$file_path" | sed -n 's/.*v\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
+    ;;
+  esac
+
+  if [ -z "$found_version" ]; then
+    echo "❌ Could not extract version from $file_description"
+    return 1
+  fi
+
+  if [ "$found_version" != "$expected_version" ]; then
+    echo "❌ Version mismatch in $file_description: found $found_version, expected $expected_version"
+    return 1
+  else
+    echo "✅ Version in $file_description matches: $found_version"
+    return 0
+  fi
+}
+
+# Function to validate version consistency
+validate_version_consistency() {
+  local commit_version="$1"
+  local errors=0
+
+  echo "🔍 Validating version consistency for v${commit_version}..."
+  echo ""
+
+  # Check package.json version
+  echo "📦 Checking package.json..."
+  if ! check_file_version "package.json" "$commit_version" "json_version" "package.json"; then
+    errors=$((errors + 1))
+  fi
+
+  # Check manifest.json version (Bedrock pack format)
+  echo "📋 Checking manifest.json..."
+  if ! check_file_version "manifest.json" "$commit_version" "manifest_array" "manifest.json"; then
+    errors=$((errors + 1))
+  fi
+
+  # Check en_US.lang version (pack name format)
+  echo "🌐 Checking texts/en_US.lang..."
+  if ! check_file_version "texts/en_US.lang" "$commit_version" "lang_pack_name" "texts/en_US.lang"; then
+    errors=$((errors + 1))
+  fi
+
+  return $errors
+}
+
+# If version found in commit message, validate consistency
+if [ -n "$version" ]; then
+  echo "🏷️  Version commit detected: v${version}"
+  echo ""
+  
+  if ! validate_version_consistency "$version"; then
+    echo ""
+    echo "💥 Version validation failed! Please fix the issues above before committing."
+    echo ""
+    echo "📝 Required version format in each file:"
+    echo "   • package.json: \"version\": \"${version}\""
+    echo "   • manifest.json: \"version\": [${version//./", "}]"
+    echo "   • texts/en_US.lang: pack.name=§lPokeBedrock v${version} RES"
+    echo ""
+    echo "🔧 Make sure all version references are updated to v${version}"
+    exit 1
+  fi
+  
+  echo ""
+  echo "🎉 All version checks passed! ✅"
+  echo "📦 All files have consistent version: v${version}"
+  echo ""
+else
+  echo "ℹ️  Non-version commit detected, skipping version checks"
+fi 
