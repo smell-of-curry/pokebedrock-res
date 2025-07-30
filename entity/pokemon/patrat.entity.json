@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:patrat",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/patrat",
-				"shiny_default": "textures/sprites/default/patrat",
-				"default_male": "textures/sprites/default/patrat",
-				"default_female": "textures/sprites/default/patrat",
-				"shiny_male": "textures/sprites/default/patrat",
-				"shiny_female": "textures/sprites/default/patrat"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/patrat/patrat.png",
+				"shiny_default": "textures/entity/pokemon/patrat/shiny_patrat.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.patrat.blink",
+				"ground_idle": "animation.patrat.ground_idle",
+				"air_idle": "animation.patrat.ground_idle",
+				"water_idle": "animation.patrat.water_idle",
+				"walking": "animation.patrat.walking",
+				"flying": "animation.patrat.ground_idle",
+				"swimming": "animation.patrat.swimming",
+				"sleeping": "animation.patrat.ground_idle",
+				"attack": "animation.patrat.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "patrat",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.patrat"
 			}
 		}
 	}

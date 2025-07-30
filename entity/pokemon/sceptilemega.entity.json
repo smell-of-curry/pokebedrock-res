@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:sceptilemega",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/sceptilemega",
-				"shiny_default": "textures/sprites/default/sceptilemega",
-				"default_male": "textures/sprites/default/sceptilemega",
-				"default_female": "textures/sprites/default/sceptilemega",
-				"shiny_male": "textures/sprites/default/sceptilemega",
-				"shiny_female": "textures/sprites/default/sceptilemega"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/sceptilemega/sceptilemega.png",
+				"shiny_default": "textures/entity/pokemon/sceptilemega/shiny_sceptilemega.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.sceptilemega.blink",
+				"ground_idle": "animation.sceptilemega.ground_idle",
+				"air_idle": "animation.sceptilemega.ground_idle",
+				"water_idle": "animation.sceptilemega.water_idle",
+				"walking": "animation.sceptilemega.walking",
+				"flying": "animation.sceptilemega.ground_idle",
+				"swimming": "animation.sceptilemega.swimming",
+				"sleeping": "animation.sceptilemega.sleeping",
+				"attack": "animation.sceptilemega.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "sceptilemega",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.sceptilemega"
 			}
 		}
 	}

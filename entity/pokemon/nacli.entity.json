@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:nacli",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/nacli",
-				"shiny_default": "textures/sprites/default/nacli",
-				"default_male": "textures/sprites/default/nacli",
-				"default_female": "textures/sprites/default/nacli",
-				"shiny_male": "textures/sprites/default/nacli",
-				"shiny_female": "textures/sprites/default/nacli"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/nacli/nacli.png",
+				"shiny_default": "textures/entity/pokemon/nacli/shiny_nacli.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.nacli.blink",
+				"ground_idle": "animation.nacli.ground_idle",
+				"air_idle": "animation.nacli.ground_idle",
+				"water_idle": "animation.nacli.water_idle",
+				"walking": "animation.nacli.walking",
+				"flying": "animation.nacli.ground_idle",
+				"swimming": "animation.nacli.swimming",
+				"sleeping": "animation.nacli.sleeping",
+				"attack": "animation.nacli.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "nacli",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.nacli"
 			}
 		}
 	}
