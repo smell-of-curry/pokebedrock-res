@@ -11,17 +11,17 @@ on:
 
 jobs:
   build:
-    if: "startsWith(github.event.head_commit.message, 'v')"
+    if: startsWith(github.event.head_commit.message, 'v')
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '14'
+        node-version: '18.x'
 
     - name: Install dependencies
       run: |
