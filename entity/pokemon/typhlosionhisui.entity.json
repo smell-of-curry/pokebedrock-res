@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:typhlosionhisui",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/typhlosionhisui",
-				"shiny_default": "textures/sprites/default/typhlosionhisui",
-				"default_male": "textures/sprites/default/typhlosionhisui",
-				"default_female": "textures/sprites/default/typhlosionhisui",
-				"shiny_male": "textures/sprites/default/typhlosionhisui",
-				"shiny_female": "textures/sprites/default/typhlosionhisui"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/typhlosionhisui/typhlosionhisui.png",
+				"shiny_default": "textures/entity/pokemon/typhlosionhisui/shiny_typhlosionhisui.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.typhlosionhisui.blink",
+				"ground_idle": "animation.typhlosionhisui.ground_idle",
+				"air_idle": "animation.typhlosionhisui.ground_idle",
+				"water_idle": "animation.typhlosionhisui.water_idle",
+				"walking": "animation.typhlosionhisui.walking",
+				"flying": "animation.typhlosionhisui.ground_idle",
+				"swimming": "animation.typhlosionhisui.swimming",
+				"sleeping": "animation.typhlosionhisui.sleeping",
+				"attack": "animation.typhlosionhisui.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "typhlosionhisui",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.typhlosionhisui"
 			}
 		}
 	}

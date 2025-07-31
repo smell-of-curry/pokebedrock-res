@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:liepard",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/liepard",
-				"shiny_default": "textures/sprites/default/liepard",
-				"default_male": "textures/sprites/default/liepard",
-				"default_female": "textures/sprites/default/liepard",
-				"shiny_male": "textures/sprites/default/liepard",
-				"shiny_female": "textures/sprites/default/liepard"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/liepard/liepard.png",
+				"shiny_default": "textures/entity/pokemon/liepard/shiny_liepard.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.liepard.blink",
+				"ground_idle": "animation.liepard.ground_idle",
+				"air_idle": "animation.liepard.ground_idle",
+				"water_idle": "animation.liepard.water_idle",
+				"walking": "animation.liepard.walking",
+				"flying": "animation.liepard.ground_idle",
+				"swimming": "animation.liepard.swimming",
+				"sleeping": "animation.liepard.sleeping",
+				"attack": "animation.liepard.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "liepard",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.liepard"
 			}
 		}
 	}

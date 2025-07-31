@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:watchog",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/watchog",
-				"shiny_default": "textures/sprites/default/watchog",
-				"default_male": "textures/sprites/default/watchog",
-				"default_female": "textures/sprites/default/watchog",
-				"shiny_male": "textures/sprites/default/watchog",
-				"shiny_female": "textures/sprites/default/watchog"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/watchog/watchog.png",
+				"shiny_default": "textures/entity/pokemon/watchog/shiny_watchog.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.watchog.blink",
+				"ground_idle": "animation.watchog.ground_idle",
+				"air_idle": "animation.watchog.ground_idle",
+				"water_idle": "animation.watchog.water_idle",
+				"walking": "animation.watchog.walking",
+				"flying": "animation.watchog.ground_idle",
+				"swimming": "animation.watchog.swimming",
+				"sleeping": "animation.watchog.ground_idle",
+				"attack": "animation.watchog.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "watchog",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.watchog"
 			}
 		}
 	}

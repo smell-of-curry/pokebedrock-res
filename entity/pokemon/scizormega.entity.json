@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:scizormega",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/scizormega",
-				"shiny_default": "textures/sprites/default/scizormega",
-				"default_male": "textures/sprites/default/scizormega",
-				"default_female": "textures/sprites/default/scizormega",
-				"shiny_male": "textures/sprites/default/scizormega",
-				"shiny_female": "textures/sprites/default/scizormega"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/scizormega/scizormega.png",
+				"shiny_default": "textures/entity/pokemon/scizormega/shiny_scizormega.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.scizormega.blink",
+				"ground_idle": "animation.scizormega.ground_idle",
+				"air_idle": "animation.scizormega.air_idle",
+				"water_idle": "animation.scizormega.water_idle",
+				"walking": "animation.scizormega.walking",
+				"flying": "animation.scizormega.flying",
+				"swimming": "animation.scizormega.swimming",
+				"sleeping": "animation.scizormega.sleeping",
+				"attack": "animation.scizormega.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "scizormega",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.scizormega"
 			}
 		}
 	}

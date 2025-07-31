@@ -1,258 +1,95 @@
 {
-  "format_version": "1.12.0",
-  "minecraft:geometry": [
-    {
-      "description": {
-        "identifier": "geometry.porygonz",
-        "texture_width": 32,
-        "texture_height": 32,
-        "visible_bounds_width": 3,
-        "visible_bounds_height": 2.5,
-        "visible_bounds_offset": [
-          0,
-          0.75,
-          0
-        ]
-      },
-      "bones": [
-        {
-          "name": "Porygon_z",
-          "pivot": [
-            0,
-            8,
-            0
-          ]
-        },
-        {
-          "name": "Body",
-          "parent": "Porygon_z",
-          "pivot": [
-            -0.5,
-            10,
-            0
-          ],
-          "rotation": [
-            -37.5,
-            0,
-            0
-          ],
-          "cubes": [
-            {
-              "origin": [
-                -1.99,
-                7,
-                -3
-              ],
-              "size": [
-                3.98,
-                5,
-                7
-              ],
-              "uv": [
-                0,
-                0
-              ]
-            },
-            {
-              "origin": [
-                -1.73,
-                7.25,
-                -3.4
-              ],
-              "size": [
-                3.48,
-                4.5,
-                1
-              ],
-              "uv": [
-                13,
-                19
-              ]
-            },
-            {
-              "origin": [
-                -1,
-                13.50571,
-                4.5
-              ],
-              "size": [
-                2,
-                5.5,
-                1
-              ],
-              "pivot": [
-                0,
-                12,
-                4
-              ],
-              "rotation": [
-                -122.5,
-                0,
-                0
-              ],
-              "uv": [
-                0,
-                0
-              ]
-            },
-            {
-              "origin": [
-                -0.5,
-                11.50571,
-                4.5
-              ],
-              "size": [
-                1,
-                2.5,
-                1
-              ],
-              "pivot": [
-                0,
-                12,
-                4
-              ],
-              "rotation": [
-                -122.5,
-                0,
-                0
-              ],
-              "uv": [
-                0,
-                0
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Leg",
-          "parent": "Porygon_z",
-          "pivot": [
-            -2,
-            10,
-            -1
-          ],
-          "rotation": [
-            0,
-            52.5,
-            0
-          ],
-          "cubes": [
-            {
-              "origin": [
-                -3.81541,
-                9,
-                -5.40211
-              ],
-              "size": [
-                2,
-                2.5,
-                5
-              ],
-              "uv": [
-                15,
-                0
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Leg2",
-          "parent": "Porygon_z",
-          "pivot": [
-            2,
-            10,
-            -2
-          ],
-          "rotation": [
-            0,
-            -52.5,
-            0
-          ],
-          "cubes": [
-            {
-              "origin": [
-                2.60876,
-                9,
-                -5.79335
-              ],
-              "size": [
-                2,
-                2.5,
-                5
-              ],
-              "uv": [
-                15,
-                0
-              ],
-              "mirror": true
-            }
-          ]
-        },
-        {
-          "name": "Head",
-          "parent": "Porygon_z",
-          "pivot": [
-            -0.5,
-            14,
-            -3
-          ],
-          "rotation": [
-            -0.5,
-            0,
-            0
-          ],
-          "cubes": [
-            {
-              "origin": [
-                -1.75,
-                14,
-                -6
-              ],
-              "size": [
-                3.5,
-                4,
-                4
-              ],
-              "uv": [
-                0,
-                12
-              ]
-            },
-            {
-              "origin": [
-                -0.5,
-                18,
-                -4
-              ],
-              "size": [
-                1,
-                2,
-                1
-              ],
-              "uv": [
-                0,
-                12
-              ]
-            },
-            {
-              "origin": [
-                -1.2,
-                15,
-                -9
-              ],
-              "size": [
-                2.5,
-                1,
-                3
-              ],
-              "uv": [
-                0,
-                20
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.porygonz",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "Body",
+					"parent": "root",
+					"pivot": [0, 11, -0.5],
+					"cubes": [
+						{"origin": [-2.5, 8, -3], "size": [5, 6, 5], "uv": [0, 11]}
+					]
+				},
+				{
+					"name": "Arms",
+					"parent": "Body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "Leftarm",
+					"parent": "Arms",
+					"pivot": [2.5, 12, 0],
+					"rotation": [0, 0, 45],
+					"cubes": [
+						{"origin": [4.5, 10.5, -1.5], "size": [6, 3, 3], "uv": [20, 17]},
+						{"origin": [2.5, 11, -1], "size": [2, 2, 2], "uv": [28, 23]}
+					]
+				},
+				{
+					"name": "Rightarm",
+					"parent": "Arms",
+					"pivot": [-2.5, 12, 0],
+					"rotation": [0, 0, -45],
+					"cubes": [
+						{"origin": [-10.5, 10.5, -1.5], "size": [6, 3, 3], "uv": [20, 11]},
+						{"origin": [-4.5, 11, -1], "size": [2, 2, 2], "uv": [28, 23]}
+					]
+				},
+				{
+					"name": "Tail",
+					"parent": "Body",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-1.5, 0, -1.5], "size": [3, 6, 3], "uv": [16, 23]},
+						{"origin": [-1, 6, -1], "size": [2, 2, 2], "uv": [24, 7]}
+					]
+				},
+				{
+					"name": "Head",
+					"parent": "Body",
+					"pivot": [0, 15, -0.5],
+					"cubes": [
+						{"origin": [-2, 15.5, -7.5], "size": [4, 2, 4], "uv": [0, 22]},
+						{"origin": [-3.125, 16.5, -1], "size": [0, 2, 1], "uv": [0, 30]},
+						{"origin": [3.125, 16.5, -1], "size": [0, 2, 1], "uv": [0, 30]},
+						{"origin": [3.05, 15.5, -2], "size": [0, 4, 3], "uv": [24, 0]},
+						{"origin": [-1, 20, -1.5], "size": [2, 3, 2], "uv": [6, 28]},
+						{"origin": [-3.05, 15.5, -2], "size": [0, 4, 3], "uv": [0, 28]},
+						{"origin": [-3.1, 16, -1.5], "size": [0, 3, 2], "uv": [28, 31]},
+						{"origin": [3.1, 16, -1.5], "size": [0, 3, 2], "uv": [30, 0]},
+						{"origin": [-3, 15, -3.5], "size": [6, 5, 6], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Leftpupil",
+					"parent": "Head",
+					"pivot": [3.15, 17.5, -0.5],
+					"cubes": [
+						{"origin": [3.15, 16.5, -1], "size": [0, 2, 1], "uv": [14, 28]}
+					]
+				},
+				{
+					"name": "Rightpupil",
+					"parent": "Head",
+					"pivot": [-3.15, 17.5, -0.5],
+					"cubes": [
+						{"origin": [-3.15, 16.5, -1], "size": [0, 2, 1], "uv": [14, 31]}
+					]
+				}
+			]
+		}
+	]
 }

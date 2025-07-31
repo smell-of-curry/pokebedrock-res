@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:naclstack",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/naclstack",
-				"shiny_default": "textures/sprites/default/naclstack",
-				"default_male": "textures/sprites/default/naclstack",
-				"default_female": "textures/sprites/default/naclstack",
-				"shiny_male": "textures/sprites/default/naclstack",
-				"shiny_female": "textures/sprites/default/naclstack"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/naclstack/naclstack.png",
+				"shiny_default": "textures/entity/pokemon/naclstack/shiny_naclstack.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.naclstack.blink",
+				"ground_idle": "animation.naclstack.ground_idle",
+				"air_idle": "animation.naclstack.ground_idle",
+				"water_idle": "animation.naclstack.water_idle",
+				"walking": "animation.naclstack.walking",
+				"flying": "animation.naclstack.ground_idle",
+				"swimming": "animation.naclstack.swimming",
+				"sleeping": "animation.naclstack.sleeping",
+				"attack": "animation.naclstack.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "naclstack",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.naclstack"
 			}
 		}
 	}

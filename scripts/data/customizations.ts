@@ -516,10 +516,10 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller leaves */
   nuzleaf: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model","texture","shiny_texture"],
   },
   shiftry: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model","texture","shiny_texture"],
   },
 
   /** Male's ears are higher */

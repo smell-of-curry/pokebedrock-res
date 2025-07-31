@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:chiyu",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/chiyu",
-				"shiny_default": "textures/sprites/default/chiyu",
-				"default_male": "textures/sprites/default/chiyu",
-				"default_female": "textures/sprites/default/chiyu",
-				"shiny_male": "textures/sprites/default/chiyu",
-				"shiny_female": "textures/sprites/default/chiyu"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/chiyu/chiyu.png",
+				"shiny_default": "textures/entity/pokemon/chiyu/shiny_chiyu.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.chiyu.blink",
+				"ground_idle": "animation.chiyu.ground_idle",
+				"air_idle": "animation.chiyu.air_idle",
+				"water_idle": "animation.chiyu.water_idle",
+				"walking": "animation.chiyu.walking",
+				"flying": "animation.chiyu.flying",
+				"swimming": "animation.chiyu.swimming",
+				"sleeping": "animation.chiyu.sleeping",
+				"attack": "animation.chiyu.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "chiyu",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.chiyu"
 			}
 		}
 	}

@@ -4,25 +4,49 @@
 		"description": {
 			"identifier": "pokemon:kartana",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/kartana",
-				"shiny_default": "textures/sprites/default/kartana",
-				"default_male": "textures/sprites/default/kartana",
-				"default_female": "textures/sprites/default/kartana",
-				"shiny_male": "textures/sprites/default/kartana",
-				"shiny_female": "textures/sprites/default/kartana"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/kartana/kartana.png",
+				"shiny_default": "textures/entity/pokemon/kartana/shiny_kartana.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.kartana.blink",
+				"ground_idle": "animation.kartana.ground_idle",
+				"air_idle": "animation.kartana.ground_idle",
+				"water_idle": "animation.kartana.water_idle",
+				"walking": "animation.kartana.walking",
+				"flying": "animation.kartana.ground_idle",
+				"swimming": "animation.kartana.swimming",
+				"sleeping": "animation.kartana.sleeping",
+				"attack": "animation.kartana.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "kartana",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.kartana"
 			}
 		}
 	}
