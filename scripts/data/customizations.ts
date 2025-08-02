@@ -1,4 +1,3 @@
-import { match } from "assert";
 import type {
   AnimatedTextureConfig,
   PokemonAppearanceDifferences,
@@ -47,6 +46,12 @@ export interface PokemonCustomization {
    * @example "pokeb:poison_smoke" -> poison_smoke: "pokeb:poison_smoke"
    */
   animationParticleEffects?: ParticleEffectId[];
+  /**
+   * Inherits the customization of the pokemon typeId.
+   */
+  inherits?: Partial<
+    Record<PokemonAppearanceDifferences[number], PokemonTypeId>
+  >;
 }
 
 /**

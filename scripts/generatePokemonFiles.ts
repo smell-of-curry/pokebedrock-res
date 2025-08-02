@@ -22,11 +22,9 @@ import {
   getSkinDifferences,
   skinOptionIncludes,
 } from "./utils";
-import {
-  PokemonCustomizations,
-} from "./data/customizations";
+import { PokemonCustomizations } from "./data/customizations";
 import { writeFileIfChanged, writeImageIfChanged } from "./utils";
-import {writeJsonFileSync} from 'write-json-file';
+import { writeJsonFileSync } from "write-json-file";
 
 // TODO: Implement animations for skinned/gender pokemon.
 
@@ -142,16 +140,18 @@ function verifyAndUpdateGeometries(
   const geometryTypeIds: { [key: string]: GeometryFileName } = {};
 
   if (customizations) {
+    const pokemonTypeIdToUse = customizations.inherits?.model || pokemonTypeId;
     const hasModelGenderDifference =
       customizations.genderDifferences?.includes("model");
+
     if (hasModelGenderDifference) {
       geometryTypeIds[`male_default`] =
-        `geometry.male_${pokemonTypeId}` as GeometryFileName;
+        `geometry.male_${pokemonTypeIdToUse}` as GeometryFileName;
       geometryTypeIds[`female_default`] =
-        `geometry.female_${pokemonTypeId}` as GeometryFileName;
+        `geometry.female_${pokemonTypeIdToUse}` as GeometryFileName;
     } else {
       geometryTypeIds[`default`] = ("geometry." +
-        pokemonTypeId) as GeometryFileName;
+        pokemonTypeIdToUse) as GeometryFileName;
     }
 
     // Add geometry types for skins.
@@ -257,6 +257,7 @@ function updateEntityFileWithAnimations(
   entityFile: EntityFile,
   animations: string[]
 ): EntityFile {
+  const customizations = PokemonCustomizations[pokemonTypeId];
   const description = entityFile["minecraft:client_entity"].description;
   const defaultAnimation = `animation.${pokemonTypeId}.ground_idle`;
   const pokemonEntry = pokemonJson!.pokemon[pokemonTypeId];
@@ -266,10 +267,8 @@ function updateEntityFileWithAnimations(
   }
   const behavior = pokemonEntry.behavior;
 
-  const requirementMap: Record<
-    (typeof PokemonAnimationTypes)[number],
-    keyof typeof behavior | null
-  > = {
+  type AnimationKey = (typeof PokemonAnimationTypes)[number];
+  const requirementMap: Record<AnimationKey, keyof typeof behavior | null> = {
     flying: "canFly",
     air_idle: "canFly",
     swimming: "canSwim",
@@ -282,19 +281,37 @@ function updateEntityFileWithAnimations(
     faint: null,
   };
 
+  // Get the animations that this pokemon inherits.
+  const inheritedAnimations = (
+    customizations?.inherits?.animations
+      ? Object.keys(requirementMap)
+      : Object.keys(customizations?.inherits ?? {})
+          .filter((a) => a.startsWith("animation_"))
+          .map((a) => a.replace("animation_", ""))
+  ) as AnimationKey[];
+
   for (const [animKey, requirement] of Object.entries(requirementMap)) {
+    if (inheritedAnimations.includes(animKey as AnimationKey)) {
+      // This pokemon inherits animations from another pokemon.
+      const inheritsFrom =
+        customizations?.inherits?.animations ||
+        customizations?.inherits?.[
+          `animation_${animKey}` as keyof typeof customizations.inherits
+        ];
+
+      description.animations[animKey] = `animation.${inheritsFrom}.${animKey}`;
+      continue;
+    }
     if (!requirement) continue;
     if (behavior[requirement] && animations.includes(animKey)) continue;
+
     const missing = report.missingPokemonAnimations.get(pokemonTypeId) || [];
     missing.push(animKey);
     report.missingPokemonAnimations.set(pokemonTypeId, missing);
-    if (animKey !== "blink") {
-      description.animations[animKey] = defaultAnimation;
-    }
+    if (animKey !== "blink") description.animations[animKey] = defaultAnimation;
   }
 
   delete description.materials["aura"];
-  const customizations = PokemonCustomizations[pokemonTypeId];
   if (customizations && customizations.animatedTextureConfig) {
     description.materials["default"] = "custom_animated";
   }
@@ -367,17 +384,17 @@ function verifyAndUpdateTextures(
   entityFile: EntityFile
 ): EntityFile {
   // Read all textures from the directory.
-  const texturesDir = path.join("textures", "entity", "pokemon", pokemonTypeId);
+  const texturesDir = path.join("textures", "entity", "pokemon");
   let textures: string[] = [];
   try {
-    textures = fs.readdirSync(texturesDir);
+    textures = fs.readdirSync(path.join(texturesDir, pokemonTypeId));
   } catch (error) {
     Logger.error(`Error reading textures for ${pokemonTypeId}: ${error}`);
   }
 
   // Define the texture path function.
-  const getTexturePath = (fileName: string) =>
-    path.join(texturesDir, fileName).replace(/\\/g, "/");
+  const getTexturePath = (typeId: PokemonTypeId, fileName: string) =>
+    path.join(texturesDir, typeId, fileName).replace(/\\/g, "/");
 
   // Fetch already missing textures.
   const missingTextures =
@@ -390,76 +407,120 @@ function verifyAndUpdateTextures(
   /**
    * Ensures the basic textures are present and updates the entity file.
    */
-  const ensureBasicTextures = () => {
-    const defaultTexture = `${pokemonTypeId}.png`;
-    if (!textures.includes(defaultTexture)) {
+  const ensureBasicTextures = (
+    pokemonTypeIdToUseForTexture: PokemonTypeId,
+    pokemonTypeIdToUseForShinyTexture: PokemonTypeId
+  ) => {
+    const defaultTexture = `${pokemonTypeIdToUseForTexture}.png`;
+    if (
+      pokemonTypeIdToUseForTexture === pokemonTypeId &&
+      !textures.includes(defaultTexture)
+    ) {
       Logger.error(`Missing default texture for ${pokemonTypeId}!`);
       missingTextures.push(defaultTexture);
       // We cant fix this so it will just show up broken in game.
     } else {
-      entityTextures["default"] = getTexturePath(defaultTexture);
+      entityTextures["default"] = getTexturePath(
+        pokemonTypeIdToUseForTexture,
+        defaultTexture
+      );
     }
 
     // Check for shiny texture.
-    const shinyTexture = `shiny_${pokemonTypeId}.png`;
-    if (!textures.includes(shinyTexture)) {
+    const shinyTexture = `shiny_${pokemonTypeIdToUseForShinyTexture}.png`;
+    if (
+      pokemonTypeIdToUseForShinyTexture === pokemonTypeId &&
+      !textures.includes(shinyTexture)
+    ) {
       Logger.error(`Missing shiny texture for ${pokemonTypeId}!`);
       missingTextures.push(shinyTexture);
 
       // Set it to use the default texture, which is a fallback.
-      entityTextures["shiny_default"] = getTexturePath(defaultTexture);
+      entityTextures["shiny_default"] = getTexturePath(
+        pokemonTypeIdToUseForTexture,
+        defaultTexture
+      );
     } else {
-      entityTextures["shiny_default"] = getTexturePath(shinyTexture);
+      entityTextures["shiny_default"] = getTexturePath(
+        pokemonTypeIdToUseForShinyTexture,
+        shinyTexture
+      );
     }
   };
 
   const customizations = PokemonCustomizations[pokemonTypeId];
+  const pokemonTypeIdToUseForTexture =
+    customizations?.inherits?.texture || pokemonTypeId;
+  const pokemonTypeIdToUseForShinyTexture =
+    customizations?.inherits?.shiny_texture || pokemonTypeId;
+
   if (customizations && customizations.genderDifferences) {
     const changesModel = customizations.genderDifferences.includes("model");
     const changesTexture =
       customizations.genderDifferences.includes("texture") || changesModel;
     if (changesTexture || changesModel) {
       for (const gender of ["male", "female"]) {
-        const defaultTex = `${gender}_${pokemonTypeId}.png`;
-        if (!textures.includes(defaultTex)) {
+        const defaultTex = `${gender}_${pokemonTypeIdToUseForTexture}.png`;
+        if (
+          pokemonTypeIdToUseForTexture === pokemonTypeId &&
+          !textures.includes(defaultTex)
+        ) {
           Logger.error(`Missing texture ${defaultTex} for ${pokemonTypeId}!`);
           missingTextures.push(defaultTex);
 
           // Set it to use the default texture, which is a fallback (we hope this is defined).
           // TODO: Remove this once all gender differences are defined.
           entityTextures[`${gender}_default`] = getTexturePath(
-            `${pokemonTypeId}.png`
+            pokemonTypeIdToUseForTexture,
+            `${pokemonTypeIdToUseForTexture}.png`
           );
         } else {
-          entityTextures[`${gender}_default`] = getTexturePath(defaultTex);
+          entityTextures[`${gender}_default`] = getTexturePath(
+            pokemonTypeIdToUseForTexture,
+            defaultTex
+          );
         }
 
         // Check for shiny texture.
-        const shinyTex = `${gender}_shiny_${pokemonTypeId}.png`;
-        if (!textures.includes(shinyTex)) {
+
+        const shinyTex = `${gender}_shiny_${pokemonTypeIdToUseForShinyTexture}.png`;
+        if (
+          pokemonTypeIdToUseForShinyTexture === pokemonTypeId &&
+          !textures.includes(shinyTex)
+        ) {
           Logger.error(`Missing texture ${shinyTex} for ${pokemonTypeId}!`);
           missingTextures.push(shinyTex);
 
           // Set it to use the default texture, which is a fallback (we hope this is defined).
           // TODO: Remove this once all gender differences are defined.
           entityTextures[`shiny_${gender}_default`] = getTexturePath(
-            `${pokemonTypeId}.png`
+            pokemonTypeIdToUseForShinyTexture,
+            `${pokemonTypeIdToUseForShinyTexture}.png`
           );
         } else {
-          entityTextures[`shiny_${gender}_default`] = getTexturePath(shinyTex);
+          entityTextures[`shiny_${gender}_default`] = getTexturePath(
+            pokemonTypeIdToUseForShinyTexture,
+            shinyTex
+          );
         }
       }
     } else {
-      ensureBasicTextures();
+      ensureBasicTextures(
+        pokemonTypeIdToUseForTexture,
+        pokemonTypeIdToUseForShinyTexture
+      );
     }
   } else {
-    ensureBasicTextures();
+    ensureBasicTextures(
+      pokemonTypeIdToUseForTexture,
+      pokemonTypeIdToUseForShinyTexture
+    );
   }
 
   // Verify skin textures if defined.
   const verifySkinTexture = (skinId: string) => {
     const fileName = `${skinId}.png`;
-    const texturePath = getTexturePath(fileName);
+    const texturePath = getTexturePath(pokemonTypeId, fileName);
     if (!textures.includes(fileName)) {
       Logger.error(`Missing texture ${fileName} for ${pokemonTypeId}!`);
       missingTextures.push(fileName);
@@ -870,7 +931,10 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
   // Write the render controller file.
   try {
-    const filePath = path.join(renderControllersPath, `${pokemonTypeId}.rc.json`);
+    const filePath = path.join(
+      renderControllersPath,
+      `${pokemonTypeId}.rc.json`
+    );
     writeJsonFileSync(filePath, rcFile, { detectIndent: true });
   } catch (error) {
     Logger.error(
@@ -915,9 +979,14 @@ async function checkAndEnsureSprites(pokemonTypeId: PokemonTypeId) {
       }
       const processedImageBuffer = await sharp(rawImageData, {
         raw: { width: metadata.width, height: metadata.height, channels: 4 },
-      }).png().toBuffer();
-      
-      const wasWritten = await writeImageIfChanged(darkSpritePath, processedImageBuffer);
+      })
+        .png()
+        .toBuffer();
+
+      const wasWritten = await writeImageIfChanged(
+        darkSpritePath,
+        processedImageBuffer
+      );
       if (wasWritten) {
         Logger.info(`Dark sprite generated for ${sprite}!`);
       }
@@ -1102,7 +1171,10 @@ async function processPokemon() {
         };
       }
 
-      const entityFilePath = path.join(pokemonEntityFilesDir, `${typeId}.entity.json`);
+      const entityFilePath = path.join(
+        pokemonEntityFilesDir,
+        `${typeId}.entity.json`
+      );
       writeJsonFileSync(entityFilePath, entityFile, { detectIndent: true });
       await checkAndEnsureSprites(typeId);
     } catch (error) {
@@ -1130,7 +1202,9 @@ async function processPokemon() {
       )
       .join("\n");
     editLangSection(langFilePath, "Dismount Messages", dismountEntries);
-    writeJsonFileSync(itemTexturesPath, itemTexturesFile, { detectIndent: true });
+    writeJsonFileSync(itemTexturesPath, itemTexturesFile, {
+      detectIndent: true,
+    });
 
     // Generate markdown report.
     let markdownContent = `# Missing Information Report\n\nThis report contains details about missing or problematic elements found during the Pokémon processing.\n\n`;
@@ -1235,7 +1309,10 @@ async function processPokemon() {
       markdownContent +=
         "No Pokémon have problematic blink animations that modify non-eye bones!\n";
     }
-    const markdownWritten = writeFileIfChanged(markdownLogPath, markdownContent);
+    const markdownWritten = writeFileIfChanged(
+      markdownLogPath,
+      markdownContent
+    );
     if (markdownWritten) {
       Logger.info(`Markdown report updated at ${markdownLogPath}`);
     }
