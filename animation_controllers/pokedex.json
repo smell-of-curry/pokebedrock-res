@@ -1,0 +1,74 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.pokedex": {
+            "initial_state": "closed_third",
+            "states": {
+                "closed_third": {
+                    "animations": [
+                        "third_person_turn_off"
+                    ],
+                    "transitions": [
+                        {
+                            "open_third": "!c.is_first_person && q.mark_variant == 1"
+                        },
+                        {
+                            "closed_first": "c.is_first_person && q.mark_variant == 0"
+                        },
+                        {
+                            "open_first": "c.is_first_person && q.mark_variant == 1"
+                        }
+                    ]
+                },
+                "closed_first": {
+                    "animations": [
+                        "first_person_turn_off"
+                    ],
+                    "transitions": [
+                        {
+                            "open_first": "c.is_first_person && q.mark_variant == 1"
+                        },
+                        {
+                            "closed_third": "!c.is_first_person && q.mark_variant == 0"
+                        },
+                        {
+                            "open_third": "!c.is_first_person && q.mark_variant == 1"
+                        }
+                    ]
+                },
+                "open_third": {
+                    "animations": [
+                        "third_person_turn_on"
+                    ],
+                    "transitions": [
+                        {
+                            "closed_third": "!c.is_first_person && q.mark_variant == 0"
+                        },
+                        {
+                            "open_first": "c.is_first_person && q.mark_variant == 1"
+                        },
+                        {
+                            "closed_first": "c.is_first_person && q.mark_variant == 0"
+                        }
+                    ]
+                },
+                "open_first": {
+                    "animations": [
+                        "first_person_turn_on"
+                    ],
+                    "transitions": [
+                        {
+                            "closed_first": "c.is_first_person && q.mark_variant == 0"
+                        },
+                        {
+                            "open_third": "!c.is_first_person && q.mark_variant == 1"
+                        },
+                        {
+                            "closed_third": "!c.is_first_person && q.mark_variant == 0"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

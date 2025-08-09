@@ -236,6 +236,7 @@ export type PokemonAppearanceDifferences = (
   | "model"
   | "sound"
   | `animation_${(typeof PokemonAnimationTypes)[number]}`
+  | "animations"
 )[];
 
 /**
