@@ -4,25 +4,51 @@
 		"description": {
 			"identifier": "pokemon:pachirisu",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/pachirisu",
-				"shiny_default": "textures/sprites/default/pachirisu",
-				"default_male": "textures/sprites/default/pachirisu",
-				"default_female": "textures/sprites/default/pachirisu",
-				"shiny_male": "textures/sprites/default/pachirisu",
-				"shiny_female": "textures/sprites/default/pachirisu"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/pachirisu/male_pachirisu.png",
+				"shiny_male_default": "textures/entity/pokemon/pachirisu/male_shiny_pachirisu.png",
+				"female_default": "textures/entity/pokemon/pachirisu/female_pachirisu.png",
+				"shiny_female_default": "textures/entity/pokemon/pachirisu/female_shiny_pachirisu.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.pachirisu.blink",
+				"ground_idle": "animation.pachirisu.ground_idle",
+				"air_idle": "animation.pachirisu.ground_idle",
+				"water_idle": "animation.pachirisu.water_idle",
+				"walking": "animation.pachirisu.walking",
+				"flying": "animation.pachirisu.ground_idle",
+				"swimming": "animation.pachirisu.swimming",
+				"sleeping": "animation.pachirisu.sleeping",
+				"attack": "animation.pachirisu.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:pachirisu": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "pachirisu",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.pachirisu"
 			}
 		}
 	}

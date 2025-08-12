@@ -4,25 +4,52 @@
 		"description": {
 			"identifier": "pokemon:nuzleaf",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/nuzleaf",
-				"shiny_default": "textures/sprites/default/nuzleaf",
-				"default_male": "textures/sprites/default/nuzleaf",
-				"default_female": "textures/sprites/default/nuzleaf",
-				"shiny_male": "textures/sprites/default/nuzleaf",
-				"shiny_female": "textures/sprites/default/nuzleaf"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/nuzleaf/male_nuzleaf.png",
+				"shiny_male_default": "textures/entity/pokemon/nuzleaf/male_shiny_nuzleaf.png",
+				"female_default": "textures/entity/pokemon/nuzleaf/female_nuzleaf.png",
+				"shiny_female_default": "textures/entity/pokemon/nuzleaf/female_shiny_nuzleaf.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.nuzleaf.blink",
+				"ground_idle": "animation.nuzleaf.ground_idle",
+				"air_idle": "animation.nuzleaf.ground_idle",
+				"water_idle": "animation.nuzleaf.water_idle",
+				"walking": "animation.nuzleaf.walking",
+				"flying": "animation.nuzleaf.ground_idle",
+				"swimming": "animation.nuzleaf.swimming",
+				"sleeping": "animation.nuzleaf.sleeping",
+				"attack": "animation.nuzleaf.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:nuzleaf": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "nuzleaf",
 				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.male_nuzleaf",
+				"female_default": "geometry.female_nuzleaf"
 			}
 		}
 	}

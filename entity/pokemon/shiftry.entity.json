@@ -4,25 +4,52 @@
 		"description": {
 			"identifier": "pokemon:shiftry",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/shiftry",
-				"shiny_default": "textures/sprites/default/shiftry",
-				"default_male": "textures/sprites/default/shiftry",
-				"default_female": "textures/sprites/default/shiftry",
-				"shiny_male": "textures/sprites/default/shiftry",
-				"shiny_female": "textures/sprites/default/shiftry"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/shiftry/male_shiftry.png",
+				"shiny_male_default": "textures/entity/pokemon/shiftry/male_shiny_shiftry.png",
+				"female_default": "textures/entity/pokemon/shiftry/female_shiftry.png",
+				"shiny_female_default": "textures/entity/pokemon/shiftry/female_shiny_shiftry.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"animate": [
+					"controller",
+					{
+						"blink": "math.random(0.0, 25.0) <= 0.25"
+					}
+				]
+			},
+			"animations": {
+				"blink": "animation.shiftry.blink",
+				"ground_idle": "animation.shiftry.ground_idle",
+				"air_idle": "animation.shiftry.ground_idle",
+				"water_idle": "animation.shiftry.water_idle",
+				"walking": "animation.shiftry.walking",
+				"flying": "animation.shiftry.ground_idle",
+				"swimming": "animation.shiftry.swimming",
+				"sleeping": "animation.shiftry.sleeping",
+				"attack": "animation.shiftry.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:shiftry": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "shiftry",
 				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.male_shiftry",
+				"female_default": "geometry.female_shiftry"
 			}
 		}
 	}
