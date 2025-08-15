@@ -1,10 +1,50 @@
-**Update v2.13.12**
+**Update v2.14.0**
 
-- Added new Geodex Textures by @Nathan93705
-- Added new GUI Modal and textures by @Nathan93705
-- Added in 16 new Pokedex textures and modals by @Nathan93705
-- Added new German and Spanish translations by @TheblueJo
-- Fixed trainer animations
-- Added new pokestop spawn egg texture
-- Added new ability shield, clear amulet, eject pack, scroll of darkness, scroll of waters, syrupy apple, utility umbrella, platnium ingot, and silver ingot by @plain_trash_rose
-- Added a new pichu spiky eared texture by @plain_trash_rose
+- Updated .github/workflows/zip-pack.yml to use step outputs instead of environment variables for version, changelog, and release URL. Adjusted all references accordingly for consistency and improved reliability. Also added 'softprops', 'tostring', and 'tsickert' to .vscode/settings.json spell check ignore list.
+- Added New `inherits` system to customizations, which allows simplification of the customizations file for pokemon's that use the same model, animations, textures, etc. across multiple forms.
+- Added a new `animations` appearance difference which allows you to specify that all animations are different instead of having to describe each animation individually.
+- Fixed `misdreavus` and `naganadel` in-use of air idle and flying animation.
+- Added/Updated 42 Pokemon Models:
+  - arcanine - <@725917806943666207>
+  - buneary - <@541176595948371989>
+  - chi_yu - <@1357970072588521496>
+  - chien_pao - <@1357970072588521496>
+  - flygon - <@778563703796006912>
+  - garganacl - <@1253070809229164555>
+  - growlithe - <@725917806943666207>
+  - hisuian_typhlosion - <@1357970072588521496>
+  - horsea - <@887127472250961920>
+  - kartana - <@1357970072588521496>
+  - kingdra - <@887127472250961920>
+  - koraidon - <@1117210298236031146>
+  - krokorok - <@1357970072588521496>
+  - krookodile - <@1357970072588521496>
+  - leavanny - <@887127472250961920>
+  - liepard - <@887127472250961920>
+  - lopunny - <@541176595948371989>
+  - lugia - <@1357970072588521496>
+  - magnemite - <@1308998000835821618>
+  - magneton - <@1308998000835821618>
+  - magnezone - <@1308998000835821618>
+  - nacli - <@1253070809229164555>
+  - naclstack - <@1253070809229164555>
+  - nuzleaf - <@887127472250961920>
+  - pachirisu - <@725917806943666207>
+  - patrat - <@887127472250961920>
+  - porygon - <@1253070809229164555>
+  - porygon2 - <@1253070809229164555>
+  - porygonz - <@1253070809229164555>
+  - purrloin - <@887127472250961920>
+  - sandile - <@1357970072588521496>
+  - sceptilemega - <@1117210298236031146>
+  - scizormega - <@541176595948371989>
+  - seadra - <@887127472250961920>
+  - seedot - <@887127472250961920>
+  - sewaddle - <@887127472250961920>
+  - shiftry - <@887127472250961920>
+  - swadloon - <@887127472250961920>
+  - trapinch - <@778563703796006912>
+  - typhlosionhisui - <@1357970072588521496>
+  - vibrava - <@778563703796006912>
+  - watchog - <@887127472250961920>
+- Added new Snowscape Particle Effects
