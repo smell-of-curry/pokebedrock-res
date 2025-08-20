@@ -32,6 +32,37 @@
 			"textures": [
 				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:0]"
 			]
+		},
+		"controller.render.pokemon:aipom.evolve": {
+			"arrays": {
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.male_default",
+						"Geometry.female_default"
+					]
+				}
+			},
+			"geometry": "Array.geometryVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='male') ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:gender')=='female') ? 1:0]",
+			"materials": [
+				{
+					"*": "Material.aura"
+				}
+			],
+			"textures": [
+				"Texture.evo_aura"
+			],
+			"uv_anim": {
+				"offset": [
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0",
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0"
+				],
+				"scale": [
+					1,
+					1
+				]
+			},
+			"light_color_multiplier": 1,
+			"ignore_lighting": true
 		}
 	}
 }

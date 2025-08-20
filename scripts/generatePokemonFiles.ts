@@ -22,7 +22,10 @@ import {
   getSkinDifferences,
   skinOptionIncludes,
 } from "./utils";
-import { PokemonCustomizations } from "./data/customizations";
+import {
+  PokemonCustomization,
+  PokemonCustomizations,
+} from "./data/customizations";
 import { writeFileIfChanged, writeImageIfChanged } from "./utils";
 import { writeJsonFileSync } from "write-json-file";
 
@@ -127,6 +130,22 @@ function isValidGeometryFile(pokemonTypeId: GeometryFileName): boolean {
     );
   }
   return valid;
+}
+
+/**
+ * Checks if this pokemon's customizations requires a custom evolution render controller
+ * required when the model could change.
+ *
+ * @param customizations
+ * @returns
+ */
+function needsCustomEvoController(customizations: PokemonCustomization) {
+  return (
+    customizations.genderDifferences?.includes("model") ||
+    Object.values(customizations.skins ?? []).some((s) =>
+      (Array.isArray(s) ? s : s.differences).includes("model")
+    )
+  );
 }
 
 /**
@@ -593,6 +612,10 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
   const renderer =
     rcFile.render_controllers[`controller.render.pokemon:${pokemonTypeId}`];
+  const evoRender =
+    rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}.evolve`
+    ];
   if (!renderer)
     throw new Error(
       `No renderer found in render controller for ${pokemonTypeId}`
@@ -646,20 +669,17 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     const hasTexture = differences.includes("texture") || hasModel;
     const hasShinyTexture = differences.includes("shiny_texture");
 
-    // If this pokemon requires different textures by gender, we need to map.
-    if (hasTextureDifferencesWithGender) {
-      for (const gender of ["male", "female"]) {
-        const appearanceId = `${gender}_${skin}` as AppearanceId;
-        if (hasModel) geometries.push(`Geometry.${appearanceId}`);
-        if (hasTexture) textures.push(`Texture.${appearanceId}`);
-        if (hasShinyTexture) textures.push(`Texture.shiny_${appearanceId}`);
-      }
-    } else {
-      const appearanceId = skin as AppearanceId;
+    const pushEntries = (appearanceId: AppearanceId) => {
       if (hasModel) geometries.push(`Geometry.${appearanceId}`);
       if (hasTexture) textures.push(`Texture.${appearanceId}`);
       if (hasShinyTexture) textures.push(`Texture.shiny_${appearanceId}`);
-    }
+    };
+
+    // If this pokemon requires different textures by gender, we need to map.
+    if (hasTextureDifferencesWithGender) {
+      for (const gender of ["male", "female"])
+        pushEntries(`${gender}_${skin}` as AppearanceId);
+    } else pushEntries(skin as AppearanceId);
   }
 
   // Add material variants based on skins.
@@ -674,10 +694,8 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     }
   }
 
-  // Set textures and geometries.
+  // Set textures array.
   renderer.arrays.textures["Array.textureVariants"] = textures;
-  renderer.arrays.geometries["Array.geometryVariants"] = geometries;
-  renderer.arrays.materials["Array.materialVariants"] = materialVariants;
 
   // Look for skins with animated textures or particle effects
   const skinsWithAnimation = skinKeys.filter((skin) => {
@@ -878,6 +896,10 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
               `Geometry.${appearanceId}`
             );
             if (geometryIdIndex === -1) {
+              // Remove Geometry from the `Array.geometryVariants`
+              geometries = geometries.filter(
+                (g) => g != "Geometry." + appearanceId
+              );
               Logger.error(
                 `Missing geometry for ${pokemonTypeId} with appearanceId: ${appearanceId}`
               );
@@ -891,6 +913,10 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
             `Geometry.${appearanceId}`
           );
           if (geometryIdIndex === -1) {
+            // Remove Geometry from the `Array.geometryVariants`
+            geometries = geometries.filter(
+              (g) => g != "Geometry." + appearanceId
+            );
             Logger.error(
               `Missing geometry for ${pokemonTypeId} with appearanceId: ${appearanceId}`
             );
@@ -904,13 +930,24 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
       geometryParser += "0";
     }
 
+    // Set arrays.
+    renderer.arrays.geometries["Array.geometryVariants"] = geometries;
+    evoRender.arrays.geometries["Array.geometryVariants"] = geometries;
+    renderer.arrays.materials["Array.materialVariants"] = materialVariants;
+
     // Set the geometry parser in the render controller.
     rcFile.render_controllers[
       `controller.render.pokemon:${pokemonTypeId}`
     ].geometry = `Array.geometryVariants[${geometryParser}]`;
+    rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}.evolve`
+    ].geometry = `Array.geometryVariants[${geometryParser}]`;
   } else {
     rcFile.render_controllers[
       `controller.render.pokemon:${pokemonTypeId}`
+    ].geometry = `Geometry.default`;
+    rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}.evolve`
     ].geometry = `Geometry.default`;
   }
 
@@ -927,6 +964,12 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     rcFile.render_controllers[
       `controller.render.pokemon:${pokemonTypeId}`
     ].materials = [{ "*": "Material.default" }];
+  }
+
+  if (!needsCustomEvoController(customizations)) {
+    delete rcFile.render_controllers[
+      `controller.render.pokemon:${pokemonTypeId}.evolve`
+    ];
   }
 
   // Write the render controller file.
@@ -1162,12 +1205,24 @@ async function processPokemon() {
         customizations?.skins
       ) {
         makeRenderController(typeId);
+        if (hasModel && !needsCustomEvoController(customizations)) {
+          entityFile[
+            "minecraft:client_entity"
+          ].description.render_controllers[1] = {
+            "controller.render.evolve": "query.variant==1",
+          };
+        }
       } else if (hasModel) {
-        // Fallback render controller
+        // Fallback render controllers
         entityFile[
           "minecraft:client_entity"
         ].description.render_controllers[0] = {
           "controller.render.pokemon": "query.variant==0",
+        };
+        entityFile[
+          "minecraft:client_entity"
+        ].description.render_controllers[1] = {
+          "controller.render.evolve": "query.variant==1",
         };
       }
 
