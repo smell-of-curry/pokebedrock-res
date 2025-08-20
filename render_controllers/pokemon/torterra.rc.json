@@ -26,21 +26,21 @@
 			},
 			"materials": [
 				{
-					"*": "Array.materialVariants[query.property('pokeb:skin_index')]"
+					"*": "Array.materialVariants[v.skin_index]"
 				}
 			],
-			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"geometry": "Array.geometryVariants[v.skin_index]",
 			"textures": [
-				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == false) ? 2:(query.property('pokeb:skin_index')==1 && query.property('pokeb:shiny') == true) ? 3:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1 && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==1 && query.property('pokeb:shiny') == true) ? 3:0]"
 			],
 			"uv_anim": {
 				"offset": [
 					0,
-					"(query.property('pokeb:skin_index')==1) ? math.mod(math.floor(q.life_time * 8), 3) / 3 : 0.0"
+					"(v.skin_index==1) ? math.mod(math.floor(q.life_time * 8), 3) / 3 : 0.0"
 				],
 				"scale": [
 					1,
-					"(query.property('pokeb:skin_index')==1) ? 1.0 / 3 : 1.0"
+					"(v.skin_index==1) ? 1.0 / 3 : 1.0"
 				]
 			}
 		},
@@ -53,7 +53,7 @@
 					]
 				}
 			},
-			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"geometry": "Array.geometryVariants[v.skin_index]",
 			"materials": [
 				{
 					"*": "Material.aura"

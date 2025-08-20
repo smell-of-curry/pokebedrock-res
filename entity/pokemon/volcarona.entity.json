@@ -13,24 +13,39 @@
 				"shiny_default": "textures/entity/pokemon/volcarona/shiny_volcarona.png"
 			},
 			"scripts": {
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.volcarona.blink",
-				"ground_idle": "animation.volcarona.ground_idle",
-				"air_idle": "animation.volcarona.ground_idle",
-				"water_idle": "animation.volcarona.ground_idle",
-				"walking": "animation.volcarona.walking",
-				"flying": "animation.volcarona.flying",
-				"swimming": "animation.volcarona.ground_idle",
-				"sleeping": "animation.volcarona.sleeping",
-				"attack": "animation.volcarona.attack",
+				"default_ground_idle": "animation.volcarona.ground_idle",
+				"default_air_idle": "animation.volcarona.ground_idle",
+				"default_water_idle": "animation.volcarona.ground_idle",
+				"default_walking": "animation.volcarona.walking",
+				"default_flying": "animation.volcarona.flying",
+				"default_swimming": "animation.volcarona.ground_idle",
+				"default_sleeping": "animation.volcarona.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.volcarona.attack",
+				"blink": "animation.volcarona.blink",
 				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [

@@ -27,9 +27,9 @@
 					"*": "Material.default"
 				}
 			],
-			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"geometry": "Array.geometryVariants[v.skin_index]",
 			"textures": [
-				"Array.textureVariants[(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == false) ? 0:(query.property('pokeb:skin_index')==0 && query.property('pokeb:shiny') == true) ? 1:(query.property('pokeb:skin_index')==1) ? 2:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1) ? 2:0]"
 			]
 		},
 		"controller.render.pokemon:armarouge.evolve": {
@@ -41,7 +41,7 @@
 					]
 				}
 			},
-			"geometry": "Array.geometryVariants[query.property('pokeb:skin_index')]",
+			"geometry": "Array.geometryVariants[v.skin_index]",
 			"materials": [
 				{
 					"*": "Material.aura"

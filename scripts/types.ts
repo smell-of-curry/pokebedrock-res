@@ -178,6 +178,24 @@ export interface RenderControllerFile {
   };
 }
 
+interface AnimationControllerState {
+  animations?: (string | { [key: string]: string })[];
+  transitions?: { [key: string]: string }[];
+  blend_transition?: number;
+}
+
+export interface AnimationControllerFile {
+  format_version: format_version;
+  animation_controllers: {
+    [key: `controller.animation.${string}`]: {
+      initial_state: string;
+      states: {
+        [key: string]: AnimationControllerState;
+      };
+    };
+  };
+}
+
 export interface ItemTextureFile {
   resource_pack_name: string;
   texture_name: string;

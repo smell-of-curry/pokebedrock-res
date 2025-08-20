@@ -13,24 +13,39 @@
 				"shiny_default": "textures/entity/pokemon/cinderace/shiny_cinderace.png"
 			},
 			"scripts": {
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.cinderace.blink",
-				"ground_idle": "animation.cinderace.ground_idle",
-				"air_idle": "animation.cinderace.ground_idle",
-				"water_idle": "animation.cinderace.water_idle",
-				"walking": "animation.cinderace.walking",
-				"flying": "animation.cinderace.ground_idle",
-				"swimming": "animation.cinderace.swimming",
-				"sleeping": "animation.cinderace.sleeping",
-				"attack": "animation.cinderace.attack",
+				"default_ground_idle": "animation.cinderace.ground_idle",
+				"default_air_idle": "animation.cinderace.ground_idle",
+				"default_water_idle": "animation.cinderace.water_idle",
+				"default_walking": "animation.cinderace.walking",
+				"default_flying": "animation.cinderace.ground_idle",
+				"default_swimming": "animation.cinderace.swimming",
+				"default_sleeping": "animation.cinderace.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.cinderace.attack",
+				"blink": "animation.cinderace.blink",
 				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
