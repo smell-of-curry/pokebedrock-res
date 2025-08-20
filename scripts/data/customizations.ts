@@ -1027,12 +1027,4 @@ export const PokemonCustomizations: Partial<{
       ],
     },
   },
-
-  palkia: {
-    animationParticleEffects: ["pokeb:charge"],
-  },
-
-  arceus: {
-    animationParticleEffects: ["pokeb:firing"],
-  },
 } as const;
