@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # needed because the action checks out base/head refs
+          # lfs: true      # uncomment if you use Git LFS for textures
+
       - name: Minecraft Model Preview
         uses: smell-of-curry/mc-model-preview@v0.0.4
         with:
