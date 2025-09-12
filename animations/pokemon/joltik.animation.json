@@ -1,0 +1,440 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.joltik.ground_idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"joltik": {
+					"position": [0, 2.4, 0]
+				},
+				"Body": {
+					"rotation": ["0+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+					"position": [0, "0+math.cos((q.anim_time)*90*4-0)*0.1", 0]
+				},
+				"Legfront_right": {
+					"rotation": [0, 0, -65],
+					"position": [0.9, 0, 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Legfront_left": {
+					"rotation": [0, 0, 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_left": {
+					"rotation": [0, 0, 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_right": {
+					"rotation": [0, 0, -65],
+					"position": [0.9, 0, 0]
+				}
+			}
+		},
+		"animation.joltik.walking": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"joltik": {
+					"position": [0, 2.4, 0]
+				},
+				"Body": {
+					"rotation": ["0+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+					"position": [0, "0+math.cos((q.anim_time)*90*4-0)*0.1", 0]
+				},
+				"Legfront_right": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-80)*10", -65],
+					"position": [0.7, "0+math.clamp(math.cos(q.anim_time*90*2-150)*0.8,0,10)", 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Legfront_left": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-80)*10", 65],
+					"position": [-0.7, "0+math.clamp(math.cos(q.anim_time*90*2-0)*0.8,0,10)", 0]
+				},
+				"Legback_left": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-80)*-10", 65],
+					"position": [-0.7, "0+math.clamp(math.cos(q.anim_time*90*2-150)*0.8,0,10)", 0]
+				},
+				"Legback_right": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-80)*-10", -65],
+					"position": [0.7, "0+math.clamp(math.cos(q.anim_time*90*2-0)*0.8,0,10)", 0]
+				}
+			}
+		},
+		"animation.joltik.water_idle": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"joltik": {
+					"rotation": [-22.5, 0, 0],
+					"position": [0, "-0.6+math.cos((q.anim_time)*90*2-0)*0.1", 0]
+				},
+				"Body": {
+					"rotation": ["0+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+					"position": [0, "0+math.cos((q.anim_time)*90*4-0)*0.1", 0]
+				},
+				"Legfront_right": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-30)*-6", -65],
+					"position": [0.9, 0, 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Legfront_left": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-30)*-6", 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_left": {
+					"rotation": [0, "-15+math.cos((q.anim_time)*90*2-30)*7", 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_right": {
+					"rotation": [0, "15+math.cos((q.anim_time)*90*2-30)*7", -65],
+					"position": [0.9, 0, 0]
+				}
+			}
+		},
+		"animation.joltik.swimming": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"joltik": {
+					"rotation": [-12.5, 0, 0],
+					"position": [0, "-0.6+math.cos((q.anim_time)*90*2-0)*0.1", 0]
+				},
+				"Body": {
+					"rotation": ["0+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+					"position": [0, "0+math.cos((q.anim_time)*90*4-0)*0.1", 0]
+				},
+				"Legfront_right": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-60)*-6", -65],
+					"position": [0.9, 0, 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Legfront_left": {
+					"rotation": [0, "0+math.cos((q.anim_time)*90*2-60)*6", 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_left": {
+					"rotation": [0, "-15+math.cos((q.anim_time)*90*2-30)*7", 65],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_right": {
+					"rotation": [0, "15+math.cos((q.anim_time)*90*2-30)*-7", -65],
+					"position": [0.9, 0, 0]
+				}
+			}
+		},
+		"animation.joltik.attack": {
+			"animation_length": 1.25,
+			"bones": {
+				"joltik": {
+					"position": {
+						"0.0": [0, 2.4, 0],
+						"0.25": [0, 2.4, 0],
+						"0.5": [0, 2.4, -4],
+						"1.0": [0, 2.4, -4],
+						"1.25": [0, 2.4, 0]
+					}
+				},
+				"Body": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.25": ["-22.5+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+						"0.5": ["5+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+						"0.75": ["math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+						"1.0": ["20+math.cos((q.anim_time)*90*2-30)*2", 0, 0],
+						"1.25": ["2.5+math.cos((q.anim_time)*90*2-30)*2", 0, 0]
+					},
+					"position": [0, "0+math.cos((q.anim_time)*90*4-0)*0.1", 0]
+				},
+				"Legfront_right": {
+					"rotation": {
+						"0.0": [0, 0, -65],
+						"0.25": [0, -20, -65],
+						"0.5": [0, 27.5, -65],
+						"0.75": [0, 0, -65],
+						"1.0": [0, 27.5, -65],
+						"1.25": [0, 0, -65]
+					},
+					"position": [0.9, 0, 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": {
+						"0.0": [0, 0, 10],
+						"0.25": [0, 0, 10],
+						"0.5": [-12.5, 0, 27.5],
+						"0.75": [0, 0, 10]
+					}
+				},
+				"Jaw2": {
+					"rotation": {
+						"0.0": [0, 0, -10],
+						"0.25": [0, 0, -10],
+						"0.5": [-12.5, 0, -27.5],
+						"0.75": [0, 0, -10]
+					}
+				},
+				"Legfront_left": {
+					"rotation": {
+						"0.0": [0, 0, 65],
+						"0.25": [0, 20, 65],
+						"0.5": [0, -27.5, 65],
+						"0.75": [0, 0, 65],
+						"1.0": [0, -27.5, 65],
+						"1.25": [0, 0, 65]
+					},
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_left": {
+					"rotation": {
+						"0.0": [0, 0, 65],
+						"0.25": [0, 5, 65],
+						"0.5": [0, -30, 65],
+						"0.75": [0, 0, 65],
+						"1.0": [0, -30, 65],
+						"1.25": [0, 0, 65]
+					},
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_right": {
+					"rotation": {
+						"0.0": [0, 0, -65],
+						"0.25": [0, -5, -65],
+						"0.5": [0, 30, -65],
+						"0.75": [0, 0, -65],
+						"1.0": [0, 30, -65],
+						"1.25": [0, 0, -65]
+					},
+					"position": [0.9, 0, 0]
+				}
+			}
+		},
+		"animation.joltik.faint": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.5,
+			"bones": {
+				"joltik": {
+					"position": {
+						"0.0": {
+							"post": [0, 2.4, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [0, 2.25, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": {
+							"post": [0, 2.4, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [0, 2.4, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.25": [0, 0.4, 0],
+						"1.375": [0, -0.25, 0],
+						"1.5": [0, 0.4, 0]
+					}
+				},
+				"Body": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.0": {
+							"post": [-5, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.375": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"1.5": [0, 0, 0]
+					},
+					"position": [0, 0, 0]
+				},
+				"Legfront_right": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, -65],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [0, -7.5, -55],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": [0, 0, -65],
+						"1.0": [0, 0, -65],
+						"1.25": [0, -80, -65]
+					},
+					"position": [0.9, 0, 0]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Eyes_closed": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.25": {"pre": [0, 0, 0], "post": [0, 0, -1]}
+					}
+				},
+				"Legfront_left": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 65],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [0, 7.5, 55],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": [0, 0, 65],
+						"1.0": [0, 0, 65],
+						"1.25": [0, 80, 65]
+					},
+					"position": {
+						"0.0": [-0.7, 0, 0],
+						"1.25": [-0.7, 0, 0]
+					}
+				},
+				"Legback_left": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, 65],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [0, 0, 55],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": [0, 0, 65],
+						"1.0": [0, 0, 65],
+						"1.25": [0, -80, 65]
+					},
+					"position": {
+						"0.0": [-0.7, 0, 0],
+						"1.25": [-0.7, 0, 0]
+					}
+				},
+				"Legback_right": {
+					"rotation": {
+						"0.0": {
+							"post": [0, 0, -65],
+							"lerp_mode": "catmullrom"
+						},
+						"0.25": {
+							"post": [0, 0, -55],
+							"lerp_mode": "catmullrom"
+						},
+						"0.5": [0, 0, -65],
+						"1.0": [0, 0, -65],
+						"1.25": [0, 80, -65]
+					},
+					"position": {
+						"0.0": [-0.7, 0, 0],
+						"1.25": [-0.7, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.joltik.sleeping": {
+			"loop": true,
+			"animation_length": 2,
+			"bones": {
+				"joltik": {
+					"position": [0, 0, 0]
+				},
+				"Body": {
+					"rotation": ["-12.5+math.cos((q.anim_time)*90*2-30)*1", 0, 0],
+					"position": [0, 1, 0]
+				},
+				"Legfront_right": {
+					"rotation": [0, -110, 0],
+					"position": [0.2, 0, 1]
+				},
+				"Jaws": {
+					"rotation": [-10, 0, 0]
+				},
+				"Jaw": {
+					"rotation": [0, 0, 10]
+				},
+				"Jaw2": {
+					"rotation": [0, 0, -10]
+				},
+				"Eyes_closed": {
+					"position": [0, 0, -1]
+				},
+				"Legfront_left": {
+					"rotation": [0, 110, 0],
+					"position": [-0.2, 0, 1]
+				},
+				"Legback_left": {
+					"rotation": [0, -22.5, 2.5],
+					"position": [-0.7, 0, 0]
+				},
+				"Legback_right": {
+					"rotation": [0, 22.5, -2.5],
+					"position": [0.7, 0, 0]
+				}
+			}
+		},
+		"animation.joltik.blink": {
+			"animation_length": 0.25,
+			"bones": {
+				"Eyes_closed": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0417": [0, 0, -1],
+						"0.2083": [0, 0, -1],
+						"0.25": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}
