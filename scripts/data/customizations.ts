@@ -510,6 +510,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model"],
   },
 
+  flygon: {
+    skins: {
+      fly: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
   /** Female has smaller antennae */
   dustox: {
     genderDifferences: ["model"],
