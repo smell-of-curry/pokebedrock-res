@@ -2,19 +2,19 @@ import fs from "fs";
 import path from "path";
 import fsExtra from "fs-extra";
 import sharp from "sharp";
-import type {
+import {
   AnimationFile,
   AnimationControllerFile,
   EntityFile,
   GeometryFile,
   GeometryFileName,
   ItemTextureFile,
-  PokemonAnimationTypes,
   PokemonJsonContent,
   PokemonTypeId,
   RenderControllerFile,
   PokemonSkinOptionObject,
 } from "./types";
+import { PokemonAnimationTypes } from "./types";
 import {
   cloneTemplate,
   editLangSection,
@@ -647,10 +647,14 @@ function hasSkinSpecificAnimations(pokemonTypeId: PokemonTypeId): boolean {
 
   return Object.values(customizations.skins).some((skinOption) => {
     if (Array.isArray(skinOption)) {
-      return skinOption.some((diff) => diff.startsWith("animation_"));
+      return (
+        skinOption.includes("animations") ||
+        skinOption.some((diff) => diff.startsWith("animation_"))
+      );
     } else {
-      return skinOption.differences.some((diff) =>
-        diff.startsWith("animation_")
+      return (
+        skinOption.differences.includes("animations") ||
+        skinOption.differences.some((diff) => diff.startsWith("animation_"))
       );
     }
   });
@@ -671,6 +675,11 @@ function getSkinSpecificAnimations(pokemonTypeId: PokemonTypeId): {
     const differences = Array.isArray(skinOption)
       ? skinOption
       : skinOption.differences;
+
+    if (differences.includes("animations")) {
+      result[skinName] = [...PokemonAnimationTypes];
+      return;
+    }
 
     const animationDifferences = differences.filter((diff) =>
       diff.startsWith("animation_")
