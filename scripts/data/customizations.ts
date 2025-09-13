@@ -428,7 +428,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller tusk */
   piloswine: {
-    genderDifferences: ["texture"],
+    genderDifferences: ["model", "texture"],
   },
 
   /** Female has smaller horns */
@@ -796,7 +796,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller tusks */
   mamoswine: {
-    genderDifferences: ["texture"],
+    genderDifferences: ["model", "texture"],
   },
 
   burmy: {
