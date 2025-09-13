@@ -1,15 +1,33 @@
-**Update v2.14.5**
+**Update v2.14.6**
 
-- Fixed Arceus & Palkia particles from being broken in animation.
-- Cleaned up `blocks.json` from throwing tons of content errors.
-- Added Silver Ore texture.
-- Fixed Missing Shiny Stone and Professor Oak spawn egg.
-- Added a missing raw silver icon.
-- Added handling to evolution effect to use a different model for the evolution.
-- Fixed Ho-oh Animations.
-- Added Handling for Skin Specific & Gender Specific Animations.
-  - Fixing Gardevoir Christmas
-  - Fixing Torterra St-Patricks
-  - Fixing Cubone Independence
-  - Fixing Clodsire St-Patricks
-- Added Scale handling to pokemon based on the `pokeb:scale` property.
+- Fixed/Added Spawn Eggs for:
+  - EliteFour: Ashcroft, Yukimara
+  - Nursery Aide
+  - Server Npc's
+  - Trainer
+- Added 10 new Gym Badges:
+  - Bug
+  - Dragon
+  - Electric
+  - Fairy
+  - Fighting
+  - Flying
+  - Ghost
+  - Ice
+  - Psychic
+  - Rock
+- Remodeled models for:
+  - Mew - IsMe
+  - Scyther line - IsMe
+  - Poliwag line - Tortu152
+- Added new models for:
+  - Floette eternal - IsMe
+  - Genesect all form - Rafael
+  - Kubfu - IsMe
+  - Tandemaus line - Plain Trash
+  - Togedmaru - Plain Trash
+- Fixed models for:
+  - Comfey (z fighting fixed) - Dat1Braincell
+  - Pacharisu (Animation fixed) - Plain Trash
+- Added new skins for Flygon Fly skin by Dat1Braincell
+- Fixed generator for `animations` in `customizations.ts` to now properly generate ALL animations for skins.
