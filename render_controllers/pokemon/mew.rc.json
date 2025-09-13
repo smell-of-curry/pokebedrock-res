@@ -11,14 +11,17 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.christmas"
+						"Geometry.christmas",
+						"Geometry.shadow"
 					]
 				},
 				"textures": {
 					"Array.textureVariants": [
 						"Texture.default",
 						"Texture.shiny_default",
-						"Texture.christmas"
+						"Texture.christmas",
+						"Texture.shadow",
+						"Texture.shiny_shadow"
 					]
 				}
 			},
@@ -29,7 +32,7 @@
 			],
 			"geometry": "Array.geometryVariants[v.skin_index]",
 			"textures": [
-				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1) ? 2:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1) ? 2:(v.skin_index==2 && query.property('pokeb:shiny') == false) ? 3:(v.skin_index==2 && query.property('pokeb:shiny') == true) ? 4:0]"
 			]
 		},
 		"controller.render.pokemon:mew.evolve": {
@@ -37,7 +40,8 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.christmas"
+						"Geometry.christmas",
+						"Geometry.shadow"
 					]
 				}
 			},
