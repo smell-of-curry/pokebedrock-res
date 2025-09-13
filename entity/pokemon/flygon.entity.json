@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/flygon/flygon.png",
-				"shiny_default": "textures/entity/pokemon/flygon/shiny_flygon.png"
+				"shiny_default": "textures/entity/pokemon/flygon/shiny_flygon.png",
+				"fly": "textures/entity/pokemon/flygon/flygon_fly.png",
+				"shiny_fly": "textures/entity/pokemon/flygon/shiny_flygon_fly.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.flygon.blink",
 				"default_ground_idle": "animation.flygon.ground_idle",
 				"default_air_idle": "animation.flygon.air_idle",
 				"default_water_idle": "animation.flygon.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.flygon.flying",
 				"default_swimming": "animation.flygon.swimming",
 				"default_sleeping": "animation.flygon.sleeping",
+				"default_attack": "animation.flygon.attack",
+				"fly_flying": "animation.flygon_fly.flying",
+				"fly_air_idle": "animation.flygon_fly.air_idle",
+				"fly_swimming": "animation.flygon_fly.swimming",
+				"fly_water_idle": "animation.flygon_fly.water_idle",
+				"fly_walking": "animation.flygon_fly.walking",
+				"fly_ground_idle": "animation.flygon_fly.ground_idle",
+				"fly_sleeping": "animation.flygon_fly.sleeping",
+				"fly_blink": "animation.flygon_fly.blink",
+				"fly_attack": "animation.flygon_fly.attack",
+				"fly_faint": "animation.flygon_fly.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.flygon.attack",
-				"blink": "animation.flygon.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.flygon_attack",
+				"blink": "controller.animation.pokemon.flygon_blink",
+				"controller": "controller.animation.pokemon.flygon"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:flygon": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:flygon.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.flygon"
+				"default": "geometry.flygon",
+				"fly": "geometry.flygon_fly"
 			}
 		}
 	}

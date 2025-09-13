@@ -1,285 +1,218 @@
 {
-  "format_version": "1.8.0",
-  "animations": {
-    "animation.politoed.ground_idle": {
-      "loop": true,
-      "animation_length": 1,
-      "bones": {
-        "Politoed": {
-          "position": {
-            "0.0": [
-              0,
-              2,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              2,
-              0
-            ]
-          }
-        },
-        "Body": {
-          "position": {
-            "0.0": [
-              0,
-              0,
-              0
-            ],
-            "0.52": [
-              0,
-              -2,
-              0
-            ],
-            "1.0": [
-              0,
-              0,
-              0
-            ]
-          }
-        },
-        "Left_Leg": {
-          "position": {
-            "0.0": [
-              0,
-              0,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              0,
-              0
-            ]
-          }
-        },
-        "Left_Leg2": {
-          "position": {
-            "0.0": [
-              0,
-              0,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              0,
-              0
-            ]
-          }
-        },
-        "Left_Arm": {
-          "position": {
-            "0.0": [
-              0,
-              -1,
-              0
-            ],
-            "0.52": [
-              0,
-              -2,
-              0
-            ],
-            "1.0": [
-              0,
-              -1,
-              0
-            ]
-          }
-        },
-        "Rght_Arm": {
-          "position": {
-            "0.0": [
-              0,
-              -1,
-              0
-            ],
-            "0.52": [
-              0,
-              -2,
-              0
-            ],
-            "1.0": [
-              0,
-              -1,
-              0
-            ]
-          }
-        }
-      }
-    },
-    "animation.politoed.sitting": {
-      "loop": true,
-      "animation_length": 1,
-      "bones": {
-        "Body": {
-          "rotation": [
-            10,
-            0,
-            0
-          ],
-          "position": [
-            0,
-            -3,
-            0
-          ]
-        },
-        "Left_Arm": {
-          "position": [
-            0,
-            -3,
-            0
-          ]
-        },
-        "Rght_Arm": {
-          "position": [
-            0,
-            -3,
-            0
-          ]
-        }
-      }
-    },
-    "animation.politoed.walking": {
-      "loop": true,
-      "animation_length": 1,
-      "bones": {
-        "Politoed": {
-          "position": [
-            0,
-            1,
-            0
-          ]
-        },
-        "Body": {
-          "position": {
-            "0.0": [
-              0,
-              -0.5,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              -0.5,
-              0
-            ]
-          }
-        },
-        "Left_Leg": {
-          "rotation": {
-            "0.0": [
-              -10,
-              0,
-              0
-            ],
-            "0.24": [
-              12.5,
-              0,
-              0
-            ],
-            "0.52": [
-              -10,
-              0,
-              0
-            ],
-            "0.76": [
-              12.5,
-              0,
-              0
-            ],
-            "1.0": [
-              -10,
-              0,
-              0
-            ]
-          }
-        },
-        "Left_Leg2": {
-          "rotation": {
-            "0.0": [
-              10,
-              0,
-              0
-            ],
-            "0.24": [
-              -10,
-              0,
-              0
-            ],
-            "0.52": [
-              10,
-              0,
-              0
-            ],
-            "0.76": [
-              -10,
-              0,
-              0
-            ],
-            "1.0": [
-              10,
-              0,
-              0
-            ]
-          }
-        },
-        "Left_Arm": {
-          "position": {
-            "0.0": [
-              0,
-              -0.5,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              -0.5,
-              0
-            ]
-          }
-        },
-        "Rght_Arm": {
-          "position": {
-            "0.0": [
-              0,
-              -0.5,
-              0
-            ],
-            "0.52": [
-              0,
-              0,
-              0
-            ],
-            "1.0": [
-              0,
-              -0.5,
-              0
-            ]
-          }
-        }
-      }
-    }
-  }
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.politoed.ground_idle": {
+			"loop": true,
+			"animation_length": 1.3333,
+			"bones": {
+				"body": {
+					"position": [0, "0+math.sin(q.anim_time*90*3)*0.5", 0]
+				},
+				"torso": {
+					"rotation": ["-2.5+math.sin(q.anim_time*90*3-90)*1", 0, 0],
+					"position": [0, "0-math.sin(q.anim_time*90*3)*0.2", 0]
+				},
+				"arm_left": {
+					"rotation": [-90, 0, "17.5+math.sin(q.anim_time*90*3-120)*2"]
+				},
+				"arm_left2": {
+					"rotation": [0, 40, 0]
+				},
+				"arm_right": {
+					"rotation": [-90, 0, "-17.5-math.sin(q.anim_time*90*3-120)*2"]
+				},
+				"arm_right2": {
+					"rotation": [0, -40, 0]
+				},
+				"neck": {
+					"rotation": [-2.5, 0, 0]
+				},
+				"head": {
+					"rotation": ["2.5+math.sin(q.anim_time*90*3-160)*2", 0, 0]
+				},
+				"mouth": {
+					"rotation": ["0+math.sin(q.anim_time*90*3-180)*0.5", 0, 0]
+				},
+				"tongue": {
+					"position": [0, -1, 0],
+					"scale": 0.1
+				},
+				"hair": {
+					"rotation": ["0+math.sin(q.anim_time*90*3-180)*2", 0, 0]
+				},
+				"hair3": {
+					"rotation": ["0+math.sin(q.anim_time*90*3-200)*2", 0, 0]
+				},
+				"hair5": {
+					"rotation": ["0+math.sin(q.anim_time*90*3-240)*2", 0, 0]
+				},
+				"leg_right": {
+					"rotation": ["0+math.sin(q.anim_time*90*3)*2", 30, 0],
+					"position": [1, 0, 0]
+				},
+				"knee_right": {
+					"rotation": ["0-math.sin(q.anim_time*90*3)*2", 0, 0]
+				},
+				"feet_right": {
+					"rotation": ["0+math.sin(q.anim_time*90*3)*2", 0, 0]
+				},
+				"leg_left": {
+					"rotation": ["0+math.sin(q.anim_time*90*3)*2", -30, 0],
+					"position": [-1, 0, 0]
+				},
+				"knee_left": {
+					"rotation": ["0-math.sin(q.anim_time*90*3)*2", 0, 0]
+				},
+				"feet_left": {
+					"rotation": ["0+math.sin(q.anim_time*90*3)*2", 0, 0]
+				},
+				"mouth_hide": {
+					"position": [0, 0, 1]
+				}
+			}
+		},
+		"animation.politoed.sitting": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"Body": {
+					"rotation": [10, 0, 0],
+					"position": [0, -3, 0]
+				},
+				"Left_Arm": {
+					"position": [0, -3, 0]
+				},
+				"Rght_Arm": {
+					"position": [0, -3, 0]
+				}
+			}
+		},
+		"animation.politoed.walking": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
+				"Politoed": {
+					"position": [0, 1, 0]
+				},
+				"Body": {
+					"position": {
+						"0.0": [0, -0.5, 0],
+						"0.52": [0, 0, 0],
+						"1.0": [0, -0.5, 0]
+					}
+				},
+				"Left_Leg": {
+					"rotation": {
+						"0.0": [-10, 0, 0],
+						"0.24": [12.5, 0, 0],
+						"0.52": [-10, 0, 0],
+						"0.76": [12.5, 0, 0],
+						"1.0": [-10, 0, 0]
+					}
+				},
+				"Left_Leg2": {
+					"rotation": {
+						"0.0": [10, 0, 0],
+						"0.24": [-10, 0, 0],
+						"0.52": [10, 0, 0],
+						"0.76": [-10, 0, 0],
+						"1.0": [10, 0, 0]
+					}
+				},
+				"Left_Arm": {
+					"position": {
+						"0.0": [0, -0.5, 0],
+						"0.52": [0, 0, 0],
+						"1.0": [0, -0.5, 0]
+					}
+				},
+				"Rght_Arm": {
+					"position": {
+						"0.0": [0, -0.5, 0],
+						"0.52": [0, 0, 0],
+						"1.0": [0, -0.5, 0]
+					}
+				}
+			}
+		},
+		"animation.politoed.sleeping": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"body": {
+					"rotation": [90, -360, -180],
+					"position": [0, 2, 0]
+				},
+				"torso": {
+					"rotation": ["0+math.sin(q.anim_time*90*1)*1", 0, 0]
+				},
+				"arm_left": {
+					"rotation": [0, "-50-math.sin(q.anim_time*90*1)*1", 0],
+					"position": [0, 0, 1]
+				},
+				"arm_left2": {
+					"rotation": [0, 42.5, 0]
+				},
+				"thumb_left": {
+					"rotation": [0, -22.5, 0]
+				},
+				"middle_left": {
+					"rotation": [0, 20, 0]
+				},
+				"pinky_left": {
+					"rotation": [0, 30, 0]
+				},
+				"arm_right": {
+					"rotation": [0, "50+math.sin(q.anim_time*90*1)*1", 0],
+					"position": [0, 0, 1]
+				},
+				"arm_right2": {
+					"rotation": [0, -42.5, 0]
+				},
+				"thumb_right": {
+					"rotation": [0, 22.5, 0]
+				},
+				"middle_right": {
+					"rotation": [0, -20, 0]
+				},
+				"pinky_right": {
+					"rotation": [0, -30, 0]
+				},
+				"neck": {
+					"rotation": ["0-math.sin(q.anim_time*90*1)*1.5", 0, 0]
+				},
+				"head": {
+					"rotation": ["-7.5+math.sin(q.anim_time*90*1-90)*1", 0, 0]
+				},
+				"mouth": {
+					"rotation": ["25+math.sin(q.anim_time*90*1-140)*1", 0, 0]
+				},
+				"tongue": {
+					"position": [0, -2, 0],
+					"scale": 0.1
+				},
+				"hair": {
+					"rotation": [-85, 0, 0]
+				},
+				"leg_right": {
+					"rotation": [30, 7.5, 37.5]
+				},
+				"feet_right": {
+					"rotation": [0, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [30, -7.5, -37.5]
+				},
+				"eyelid_left": {
+					"position": [1, 0, 0]
+				},
+				"eyelid_right": {
+					"position": [-1, 0, 0]
+				},
+				"mouth_hide": {
+					"position": [0, 0, 1]
+				}
+			}
+		}
+	}
 }

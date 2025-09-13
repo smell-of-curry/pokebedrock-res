@@ -4,25 +4,65 @@
 		"description": {
 			"identifier": "pokemon:mausholdfour",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/mausholdfour",
-				"shiny_default": "textures/sprites/default/mausholdfour",
-				"default_male": "textures/sprites/default/mausholdfour",
-				"default_female": "textures/sprites/default/mausholdfour",
-				"shiny_male": "textures/sprites/default/mausholdfour",
-				"shiny_female": "textures/sprites/default/mausholdfour"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/mausholdfour/mausholdfour.png",
+				"shiny_default": "textures/entity/pokemon/mausholdfour/shiny_mausholdfour.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.mausholdfour.ground_idle",
+				"default_air_idle": "animation.mausholdfour.ground_idle",
+				"default_water_idle": "animation.mausholdfour.water_idle",
+				"default_walking": "animation.mausholdfour.walking",
+				"default_flying": "animation.mausholdfour.ground_idle",
+				"default_swimming": "animation.mausholdfour.swimming",
+				"default_sleeping": "animation.mausholdfour.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.mausholdfour.attack",
+				"blink": "animation.mausholdfour.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "mausholdfour",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.mausholdfour"
 			}
 		}
 	}

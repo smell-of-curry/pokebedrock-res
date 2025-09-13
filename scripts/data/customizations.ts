@@ -240,7 +240,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female abdomen larger/more rounded */
   scyther: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
 
   /** Female whiskers white */
@@ -263,6 +263,7 @@ export const PokemonCustomizations: Partial<{
   mew: {
     skins: {
       christmas: ["model", "texture"],
+      shadow: ["model", "texture", "shiny_texture"],
     },
   },
   mewtwo: {
@@ -374,7 +375,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female abdomen larger */
   scizor: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
 
   /** Female's horn heart-shaped */
@@ -507,6 +508,12 @@ export const PokemonCustomizations: Partial<{
   /** Male has longer red markings on his upper wings */
   beautifly: {
     genderDifferences: ["model"],
+  },
+
+  flygon: {
+    skins: {
+      fly: ["model", "texture", "shiny_texture", "animations"],
+    },
   },
 
   /** Female has smaller antennae */
