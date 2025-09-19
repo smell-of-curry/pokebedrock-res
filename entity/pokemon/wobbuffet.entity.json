@@ -4,25 +4,67 @@
 		"description": {
 			"identifier": "pokemon:wobbuffet",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/wobbuffet",
-				"shiny_default": "textures/sprites/default/wobbuffet",
-				"default_male": "textures/sprites/default/wobbuffet",
-				"default_female": "textures/sprites/default/wobbuffet",
-				"shiny_male": "textures/sprites/default/wobbuffet",
-				"shiny_female": "textures/sprites/default/wobbuffet"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/wobbuffet/male_wobbuffet.png",
+				"shiny_male_default": "textures/entity/pokemon/wobbuffet/male_shiny_wobbuffet.png",
+				"female_default": "textures/entity/pokemon/wobbuffet/female_wobbuffet.png",
+				"shiny_female_default": "textures/entity/pokemon/wobbuffet/female_shiny_wobbuffet.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.wobbuffet.ground_idle",
+				"default_air_idle": "animation.wobbuffet.ground_idle",
+				"default_water_idle": "animation.wobbuffet.water_idle",
+				"default_walking": "animation.wobbuffet.walking",
+				"default_flying": "animation.wobbuffet.ground_idle",
+				"default_swimming": "animation.wobbuffet.swimming",
+				"default_sleeping": "animation.wobbuffet.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.wobbuffet.attack",
+				"blink": "animation.wobbuffet.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:wobbuffet": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "wobbuffet",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.wobbuffet"
 			}
 		}
 	}
