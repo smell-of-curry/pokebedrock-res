@@ -4,25 +4,69 @@
 		"description": {
 			"identifier": "pokemon:burmy",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/burmy",
-				"shiny_default": "textures/sprites/default/burmy",
-				"default_male": "textures/sprites/default/burmy",
-				"default_female": "textures/sprites/default/burmy",
-				"shiny_male": "textures/sprites/default/burmy",
-				"shiny_female": "textures/sprites/default/burmy"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/burmy/burmy.png",
+				"shiny_default": "textures/entity/pokemon/burmy/shiny_burmy.png",
+				"sandy": "textures/entity/pokemon/burmy/burmy_sandy.png",
+				"trash": "textures/entity/pokemon/burmy/burmy_trash.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.burmy.ground_idle",
+				"default_air_idle": "animation.burmy.ground_idle",
+				"default_water_idle": "animation.burmy.water_idle",
+				"default_walking": "animation.burmy.walking",
+				"default_flying": "animation.burmy.ground_idle",
+				"default_swimming": "animation.burmy.swimming",
+				"default_sleeping": "animation.burmy.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.burmy.attack",
+				"blink": "animation.burmy.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:burmy": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:burmy.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "burmy",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.burmy",
+				"sandy": "geometry.burmy_sandy",
+				"trash": "geometry.burmy_trash"
 			}
 		}
 	}

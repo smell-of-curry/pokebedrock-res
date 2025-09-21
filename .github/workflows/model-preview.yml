@@ -1,0 +1,14 @@
+name: Model Preview
+
+on:
+  pull_request:
+
+jobs:
+  model-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Minecraft Model Preview
+        uses: smell-of-curry/mc-model-preview@v0.0.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

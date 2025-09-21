@@ -1,0 +1,67 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:dugtrio": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.independence"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.independence"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Array.geometryVariants[v.skin_index]",
+			"textures": [
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1) ? 2:0]"
+			]
+		},
+		"controller.render.pokemon:dugtrio.evolve": {
+			"arrays": {
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.independence"
+					]
+				}
+			},
+			"geometry": "Array.geometryVariants[v.skin_index]",
+			"materials": [
+				{
+					"*": "Material.aura"
+				}
+			],
+			"textures": [
+				"Texture.evo_aura"
+			],
+			"uv_anim": {
+				"offset": [
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0",
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0"
+				],
+				"scale": [
+					1,
+					1
+				]
+			},
+			"light_color_multiplier": 1,
+			"ignore_lighting": true
+		}
+	}
+}

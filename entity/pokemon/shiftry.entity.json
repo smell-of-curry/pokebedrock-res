@@ -4,25 +4,68 @@
 		"description": {
 			"identifier": "pokemon:shiftry",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/shiftry",
-				"shiny_default": "textures/sprites/default/shiftry",
-				"default_male": "textures/sprites/default/shiftry",
-				"default_female": "textures/sprites/default/shiftry",
-				"shiny_male": "textures/sprites/default/shiftry",
-				"shiny_female": "textures/sprites/default/shiftry"
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/shiftry/male_shiftry.png",
+				"shiny_male_default": "textures/entity/pokemon/shiftry/male_shiny_shiftry.png",
+				"female_default": "textures/entity/pokemon/shiftry/female_shiftry.png",
+				"shiny_female_default": "textures/entity/pokemon/shiftry/female_shiny_shiftry.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.shiftry.ground_idle",
+				"default_air_idle": "animation.shiftry.ground_idle",
+				"default_water_idle": "animation.shiftry.water_idle",
+				"default_walking": "animation.shiftry.walking",
+				"default_flying": "animation.shiftry.ground_idle",
+				"default_swimming": "animation.shiftry.swimming",
+				"default_sleeping": "animation.shiftry.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.shiftry.attack",
+				"blink": "animation.shiftry.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon:shiftry": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:shiftry.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "shiftry",
 				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.male_shiftry",
+				"female_default": "geometry.female_shiftry"
 			}
 		}
 	}

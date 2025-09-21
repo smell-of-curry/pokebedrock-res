@@ -1,3 +1,33 @@
-**Update v2.13.10**
+**Update v2.14.6**
 
-- Change generation of `source_property_name` for pokemon icons to allow for the behavior pack to use dark sprites too, also fixed Infernape and other pokemon icon display issues due to JSON UI parsing.
+- Fixed/Added Spawn Eggs for:
+  - EliteFour: Ashcroft, Yukimara
+  - Nursery Aide
+  - Server Npc's
+  - Trainer
+- Added 10 new Gym Badges:
+  - Bug
+  - Dragon
+  - Electric
+  - Fairy
+  - Fighting
+  - Flying
+  - Ghost
+  - Ice
+  - Psychic
+  - Rock
+- Remodeled models for:
+  - Mew - IsMe
+  - Scyther line - IsMe
+  - Poliwag line - Tortu152
+- Added new models for:
+  - Floette eternal - IsMe
+  - Genesect all form - Rafael
+  - Kubfu - IsMe
+  - Tandemaus line - Plain Trash
+  - Togedmaru - Plain Trash
+- Fixed models for:
+  - Comfey (z fighting fixed) - Dat1Braincell
+  - Pacharisu (Animation fixed) - Plain Trash
+- Added new skins for Flygon Fly skin by Dat1Braincell
+- Fixed generator for `animations` in `customizations.ts` to now properly generate ALL animations for skins.

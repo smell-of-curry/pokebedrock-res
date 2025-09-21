@@ -10,35 +10,65 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/flygon/flygon.png",
-				"shiny_default": "textures/entity/pokemon/flygon/shiny_flygon.png"
+				"shiny_default": "textures/entity/pokemon/flygon/shiny_flygon.png",
+				"fly": "textures/entity/pokemon/flygon/flygon_fly.png",
+				"shiny_fly": "textures/entity/pokemon/flygon/shiny_flygon_fly.png"
 			},
 			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.flygon.blink",
-				"ground_idle": "animation.flygon.ground_idle",
-				"air_idle": "animation.flygon.air_idle",
-				"water_idle": "animation.flygon.ground_idle",
-				"walking": "animation.flygon.walking",
-				"flying": "animation.flygon.flying",
-				"swimming": "animation.flygon.ground_idle",
-				"sleeping": "animation.flygon.sleeping",
-				"attack": "animation.flygon.attack",
+				"default_blink": "animation.flygon.blink",
+				"default_ground_idle": "animation.flygon.ground_idle",
+				"default_air_idle": "animation.flygon.air_idle",
+				"default_water_idle": "animation.flygon.water_idle",
+				"default_walking": "animation.flygon.walking",
+				"default_flying": "animation.flygon.flying",
+				"default_swimming": "animation.flygon.swimming",
+				"default_sleeping": "animation.flygon.sleeping",
+				"default_attack": "animation.flygon.attack",
+				"fly_flying": "animation.flygon_fly.flying",
+				"fly_air_idle": "animation.flygon_fly.air_idle",
+				"fly_swimming": "animation.flygon_fly.swimming",
+				"fly_water_idle": "animation.flygon_fly.water_idle",
+				"fly_walking": "animation.flygon_fly.walking",
+				"fly_ground_idle": "animation.flygon_fly.ground_idle",
+				"fly_sleeping": "animation.flygon_fly.sleeping",
+				"fly_blink": "animation.flygon_fly.blink",
+				"fly_attack": "animation.flygon_fly.attack",
+				"fly_faint": "animation.flygon_fly.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.flygon_attack",
+				"blink": "controller.animation.pokemon.flygon_blink",
+				"controller": "controller.animation.pokemon.flygon"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:flygon": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:flygon.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -46,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.flygon"
+				"default": "geometry.flygon",
+				"fly": "geometry.flygon_fly"
 			}
 		}
 	}

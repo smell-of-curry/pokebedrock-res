@@ -16,32 +16,57 @@
 				"shiny_stpatrick": "textures/entity/pokemon/torterra/shiny_torterra_stpatrick.png"
 			},
 			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.torterra.blink",
-				"ground_idle": "animation.torterra.ground_idle",
-				"air_idle": "animation.torterra.ground_idle",
-				"water_idle": "animation.torterra.water_idle",
-				"walking": "animation.torterra.walking",
-				"flying": "animation.torterra.ground_idle",
-				"swimming": "animation.torterra.swimming",
-				"sleeping": "animation.torterra.sleeping",
-				"attack": "animation.torterra.attack",
+				"default_blink": "animation.torterra.blink",
+				"default_ground_idle": "animation.torterra.ground_idle",
+				"default_air_idle": "animation.torterra.ground_idle",
+				"default_water_idle": "animation.torterra.water_idle",
+				"default_walking": "animation.torterra.walking",
+				"default_flying": "animation.torterra.ground_idle",
+				"default_swimming": "animation.torterra.swimming",
+				"default_sleeping": "animation.torterra.sleeping",
+				"default_attack": "animation.torterra.attack",
+				"stpatrick_ground_idle": "animation.torterra_stpatrick.ground_idle",
+				"stpatrick_walking": "animation.torterra_stpatrick.walking",
+				"stpatrick_water_idle": "animation.torterra_stpatrick.water_idle",
+				"stpatrick_swimming": "animation.torterra_stpatrick.swimming",
+				"stpatrick_sleeping": "animation.torterra_stpatrick.sleeping",
+				"stpatrick_attack": "animation.torterra_stpatrick.attack",
+				"stpatrick_faint": "animation.torterra_stpatrick.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.torterra_attack",
+				"blink": "controller.animation.pokemon.torterra_blink",
+				"controller": "controller.animation.pokemon.torterra"
 			},
 			"render_controllers": [
 				{
 					"controller.render.pokemon:torterra": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:torterra.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {

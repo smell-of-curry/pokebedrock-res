@@ -9,30 +9,46 @@
 			},
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
-				"male_default": "textures/entity/pokemon/scyther/scyther.png",
+				"male_default": "textures/entity/pokemon/scyther/male_scyther.png",
 				"shiny_male_default": "textures/entity/pokemon/scyther/scyther.png",
-				"female_default": "textures/entity/pokemon/scyther/scyther.png",
-				"shiny_female_default": "textures/entity/pokemon/scyther/scyther.png"
+				"female_default": "textures/entity/pokemon/scyther/female_scyther.png",
+				"shiny_female_default": "textures/entity/pokemon/scyther/female_shiny_scyther.png"
 			},
 			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.scyther.blink",
-				"ground_idle": "animation.scyther.ground_idle",
-				"air_idle": "animation.scyther.air_idle",
-				"water_idle": "animation.scyther.water_idle",
-				"walking": "animation.scyther.walking",
-				"flying": "animation.scyther.flying",
-				"swimming": "animation.scyther.swimming",
-				"sleeping": "animation.scyther.ground_idle",
-				"attack": "animation.scyther.attack",
+				"default_ground_idle": "animation.scyther.ground_idle",
+				"default_air_idle": "animation.scyther.air_idle",
+				"default_water_idle": "animation.scyther.water_idle",
+				"default_walking": "animation.scyther.walking",
+				"default_flying": "animation.scyther.flying",
+				"default_swimming": "animation.scyther.swimming",
+				"default_sleeping": "animation.scyther.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.scyther.attack",
+				"blink": "animation.scyther.blink",
 				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
@@ -40,7 +56,7 @@
 					"controller.render.pokemon:scyther": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:scyther.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -48,8 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"male_default": "geometry.scyther",
-				"female_default": "geometry.scyther"
+				"male_default": "geometry.male_scyther",
+				"female_default": "geometry.female_scyther"
 			}
 		}
 	}

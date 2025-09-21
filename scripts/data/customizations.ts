@@ -1,4 +1,3 @@
-import { match } from "assert";
 import type {
   AnimatedTextureConfig,
   PokemonAppearanceDifferences,
@@ -47,6 +46,12 @@ export interface PokemonCustomization {
    * @example "pokeb:poison_smoke" -> poison_smoke: "pokeb:poison_smoke"
    */
   animationParticleEffects?: ParticleEffectId[];
+  /**
+   * Inherits the customization of the pokemon typeId.
+   */
+  inherits?: Partial<
+    Record<PokemonAppearanceDifferences[number], PokemonTypeId>
+  >;
 }
 
 /**
@@ -70,6 +75,18 @@ export const PokemonCustomizations: Partial<{
 
   dewgong: {
     animationParticleEffects: ["pokeb:splash"],
+  },
+
+  dugtrio: {
+    skins: {
+      independence: ["model", "texture"],
+    },
+  },
+
+  wailord: {
+    skins: {
+      independence: ["model", "texture", "shiny_texture"],
+    },
   },
 
   torterra: {
@@ -223,7 +240,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female abdomen larger/more rounded */
   scyther: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
 
   /** Female whiskers white */
@@ -246,6 +263,7 @@ export const PokemonCustomizations: Partial<{
   mew: {
     skins: {
       christmas: ["model", "texture"],
+      shadow: ["model", "texture", "shiny_texture"],
     },
   },
   mewtwo: {
@@ -357,7 +375,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female abdomen larger */
   scizor: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
 
   /** Female's horn heart-shaped */
@@ -410,12 +428,32 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller tusk */
   piloswine: {
-    genderDifferences: ["texture"],
+    genderDifferences: ["model", "texture"],
   },
 
   /** Female has smaller horns */
   houndoom: {
     genderDifferences: ["texture"],
+    skins: {
+      independence: ["texture"],
+    },
+  },
+
+  cubone: {
+    skins: {
+      independence: [
+        "model",
+        "texture",
+        "shiny_texture",
+        "animation_ground_idle",
+        "animation_water_idle",
+        "animation_sleeping",
+        "animation_walking",
+        "animation_swimming",
+        "animation_attack",
+        "animation_faint",
+      ],
+    },
   },
 
   /** Female has shorter tusks */
@@ -472,6 +510,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model"],
   },
 
+  flygon: {
+    skins: {
+      fly: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
   /** Female has smaller antennae */
   dustox: {
     genderDifferences: ["model"],
@@ -484,10 +528,10 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller leaves */
   nuzleaf: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
   shiftry: {
-    genderDifferences: ["model"],
+    genderDifferences: ["model", "texture", "shiny_texture"],
   },
 
   /** Male's ears are higher */
@@ -752,7 +796,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller tusks */
   mamoswine: {
-    genderDifferences: ["texture"],
+    genderDifferences: ["model", "texture"],
   },
 
   burmy: {
@@ -989,13 +1033,5 @@ export const PokemonCustomizations: Partial<{
         "animation_faint",
       ],
     },
-  },
-
-  palkia: {
-    animationParticleEffects: ["pokeb:charge"],
-  },
-
-  arceus: {
-    animationParticleEffects: ["pokeb:firing"],
   },
 } as const;

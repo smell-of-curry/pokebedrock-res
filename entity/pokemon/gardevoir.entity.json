@@ -14,32 +14,57 @@
 				"christmas": "textures/entity/pokemon/gardevoir/gardevoir_christmas.png"
 			},
 			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
 				"animate": [
 					"controller",
 					{
-						"blink": "math.random(0.0, 25.0) <= 0.25"
+						"blink": "v.should_blink"
 					}
 				]
 			},
 			"animations": {
-				"blink": "animation.gardevoir.blink",
-				"ground_idle": "animation.gardevoir.ground_idle",
-				"air_idle": "animation.gardevoir.ground_idle",
-				"water_idle": "animation.gardevoir.water_idle",
-				"walking": "animation.gardevoir.walking",
-				"flying": "animation.gardevoir.ground_idle",
-				"swimming": "animation.gardevoir.ground_idle",
-				"sleeping": "animation.gardevoir.sleeping",
-				"attack": "animation.gardevoir.attack",
+				"default_blink": "animation.gardevoir.blink",
+				"default_ground_idle": "animation.gardevoir.ground_idle",
+				"default_air_idle": "animation.gardevoir.ground_idle",
+				"default_water_idle": "animation.gardevoir.water_idle",
+				"default_walking": "animation.gardevoir.walking",
+				"default_flying": "animation.gardevoir.ground_idle",
+				"default_swimming": "animation.gardevoir.ground_idle",
+				"default_sleeping": "animation.gardevoir.sleeping",
+				"default_attack": "animation.gardevoir.attack",
+				"christmas_ground_idle": "animation.gardevoir_christmas.ground_idle",
+				"christmas_water_idle": "animation.gardevoir_christmas.water_idle",
+				"christmas_walking": "animation.gardevoir_christmas.walking",
+				"christmas_swimming": "animation.gardevoir_christmas.swimming",
+				"christmas_attack": "animation.gardevoir_christmas.attack",
+				"christmas_faint": "animation.gardevoir_christmas.faint",
+				"christmas_sleeping": "animation.gardevoir_christmas.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.gardevoir_attack",
+				"blink": "controller.animation.pokemon.gardevoir_blink",
+				"controller": "controller.animation.pokemon.gardevoir"
 			},
 			"render_controllers": [
 				{
 					"controller.render.pokemon:gardevoir": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:gardevoir.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
