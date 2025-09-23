@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/ditto/ditto.png",
-				"shiny_default": "textures/entity/pokemon/ditto/shiny_ditto.png"
+				"shiny_default": "textures/entity/pokemon/ditto/shiny_ditto.png",
+				"slimeking": "textures/entity/pokemon/ditto/ditto_slimeking.png",
+				"shiny_slimeking": "textures/entity/pokemon/ditto/shiny_ditto_slimeking.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:ditto": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:ditto.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.ditto"
+				"default": "geometry.ditto",
+				"slimeking": "geometry.ditto_slimeking"
 			}
 		}
 	}

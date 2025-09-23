@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/caterpie/caterpie.png",
-				"shiny_default": "textures/entity/pokemon/caterpie/shiny_caterpie.png"
+				"shiny_default": "textures/entity/pokemon/caterpie/shiny_caterpie.png",
+				"king": "textures/entity/pokemon/caterpie/caterpie_king.png",
+				"shiny_king": "textures/entity/pokemon/caterpie/shiny_caterpie_king.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:caterpie": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:caterpie.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.caterpie"
+				"default": "geometry.caterpie",
+				"king": "geometry.caterpie_king"
 			}
 		}
 	}

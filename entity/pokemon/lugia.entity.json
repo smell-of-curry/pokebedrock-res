@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/lugia/lugia.png",
-				"shiny_default": "textures/entity/pokemon/lugia/shiny_lugia.png"
+				"shiny_default": "textures/entity/pokemon/lugia/shiny_lugia.png",
+				"shadow": "textures/entity/pokemon/lugia/lugia_shadow.png",
+				"shiny_shadow": "textures/entity/pokemon/lugia/shiny_lugia_shadow.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:lugia": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:lugia.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.lugia"
+				"default": "geometry.lugia",
+				"shadow": "geometry.lugia_shadow"
 			}
 		}
 	}
