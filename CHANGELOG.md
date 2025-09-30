@@ -1,33 +1,28 @@
-**Update v2.14.6**
+**Update v2.15.0**
 
-- Fixed/Added Spawn Eggs for:
-  - EliteFour: Ashcroft, Yukimara
-  - Nursery Aide
-  - Server Npc's
-  - Trainer
-- Added 10 new Gym Badges:
-  - Bug
-  - Dragon
-  - Electric
-  - Fairy
-  - Fighting
-  - Flying
-  - Ghost
-  - Ice
-  - Psychic
-  - Rock
-- Remodeled models for:
-  - Mew - IsMe
-  - Scyther line - IsMe
-  - Poliwag line - Tortu152
-- Added new models for:
-  - Floette eternal - IsMe
-  - Genesect all form - Rafael
-  - Kubfu - IsMe
-  - Tandemaus line - Plain Trash
-  - Togedmaru - Plain Trash
-- Fixed models for:
-  - Comfey (z fighting fixed) - Dat1Braincell
-  - Pacharisu (Animation fixed) - Plain Trash
-- Added new skins for Flygon Fly skin by Dat1Braincell
-- Fixed generator for `animations` in `customizations.ts` to now properly generate ALL animations for skins.
+**NEW MODELS**
+
+- Wobbuffet - @relle_g
+- Miraidon - @relle_g
+- Espurr - <@725917806943666207>
+- Drilbur line - <@541176595948371989>
+- Burmy line - @protoporygon137
+- Pansage line - @rafael8355
+- Woobat line - @rafael8355
+- Joltik line - @rafael8355
+
+**REMODELS**
+
+- Swinub remodel line - @protoporygon137
+- Ledyba line - @protoporygon137
+- Katuto remodel line - @protoporygon137
+
+**MODEL FIXES**
+
+- Mew (Shiny texture) - <@541176595948371989>
+- Chi-yu (missing animations) - @relle_g
+- Chien-pao (missing animations) - @relle_g
+
+- Added 300+ New Sounds and fixed mapping so that ALL pokemon now will have a proper cry sound.
+- Added a new pokemon cry sound generator that uses Pokemon Showdown's cry database to parse them all to `.ogg`
+- Updated the DE and ES lang translations for pokedex & geodex by @TheBlueJo
