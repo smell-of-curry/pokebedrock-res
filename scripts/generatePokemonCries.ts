@@ -148,9 +148,18 @@ async function downloadToBuffer(url: string): Promise<Buffer> {
         }
         if (res.statusCode !== 200)
           return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
-        const chunks: Buffer[] = [];
-        res.on("data", (c) => chunks.push(Buffer.from(c)));
-        res.on("end", () => resolve(Buffer.concat(chunks)));
+        const chunks: Uint8Array[] = [];
+        res.on("data", (c) => chunks.push(new Uint8Array(c)));
+        res.on("end", () => {
+          const total = chunks.reduce((n, b) => n + b.byteLength, 0);
+          const out = Buffer.allocUnsafe(total);
+          let offset = 0;
+          for (const part of chunks) {
+            out.set(part, offset);
+            offset += part.byteLength;
+          }
+          resolve(out);
+        });
       })
       .on("error", reject);
   });
@@ -161,13 +170,13 @@ function convertMp3BufferToOgg(mp3Buffer: Buffer): Buffer {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "pokeb-"));
   const inPath = path.join(tmpDir, "in.mp3");
   const outPath = path.join(tmpDir, "out.ogg");
-  fs.writeFileSync(inPath, mp3Buffer);
+  fs.writeFileSync(inPath, new Uint8Array(mp3Buffer));
   try {
     execSync(
       `ffmpeg -loglevel error -y -i "${inPath}" -c:a libvorbis -q:a 5 "${outPath}"`
     );
     const result = fs.readFileSync(outPath);
-    return result;
+    return Buffer.isBuffer(result) ? result : Buffer.from(result);
   } finally {
     try {
       fs.rmSync(tmpDir, { recursive: true, force: true });
@@ -333,7 +342,7 @@ async function main() {
         oggBuffer = convertMp3BufferToOgg(buf);
       }
       const outPath = path.join(CRY_DIR, `${item.ourKey}.ogg`);
-      fs.writeFileSync(outPath, oggBuffer);
+      fs.writeFileSync(outPath, new Uint8Array(oggBuffer));
     } catch (err) {
       Logger.error(`Failed processing ${item.baseName}: ${err}`);
     }

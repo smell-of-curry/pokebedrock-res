@@ -949,8 +949,11 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     const hasTexture = differences.includes("texture") || hasModel;
     const hasShinyTexture = differences.includes("shiny_texture");
 
-    const pushEntries = (appearanceId: AppearanceId) => {
-      if (hasModel) geometries.push(`Geometry.${appearanceId}`);
+    const pushEntries = (
+      appearanceId: AppearanceId,
+      includeModel: boolean = true
+    ) => {
+      if (hasModel && includeModel) geometries.push(`Geometry.${appearanceId}`);
       if (hasTexture) textures.push(`Texture.${appearanceId}`);
       if (hasShinyTexture) textures.push(`Texture.shiny_${appearanceId}`);
     };
@@ -958,7 +961,10 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     // If this pokemon requires different textures by gender, we need to map.
     if (hasTextureDifferencesWithGender) {
       for (const gender of ["male", "female"])
-        pushEntries(`${gender}_${skin}` as AppearanceId);
+        pushEntries(
+          `${gender}_${skin}` as AppearanceId,
+          customizations.genderDifferences?.includes("model")
+        );
     } else pushEntries(skin as AppearanceId);
   }
 

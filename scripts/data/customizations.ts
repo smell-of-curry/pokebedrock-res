@@ -610,7 +610,7 @@ export const PokemonCustomizations: Partial<{
   gabite: {
     genderDifferences: ["texture"],
     skins: {
-      halloween: ["model", "texture"],
+      halloween: ["texture"],
     },
   },
   garchomp: {
