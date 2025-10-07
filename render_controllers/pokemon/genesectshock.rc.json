@@ -1,0 +1,82 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.pokemon:genesectshock": {
+			"arrays": {
+				"materials": {
+					"Array.materialVariants": [
+						"Material.default"
+					]
+				},
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.beru",
+						"Geometry.teamplasma"
+					]
+				},
+				"textures": {
+					"Array.textureVariants": [
+						"Texture.default",
+						"Texture.shiny_default",
+						"Texture.beru",
+						"Texture.shiny_beru",
+						"Texture.teamplasma",
+						"Texture.shiny_teamplasma"
+					]
+				}
+			},
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"geometry": "Array.geometryVariants[v.skin_index]",
+			"textures": [
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1 && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==1 && query.property('pokeb:shiny') == true) ? 3:(v.skin_index==2 && query.property('pokeb:shiny') == false) ? 4:(v.skin_index==2 && query.property('pokeb:shiny') == true) ? 5:0]"
+			],
+			"uv_anim": {
+				"offset": [
+					0,
+					"math.mod(math.floor(q.life_time * 8), 5) / 5"
+				],
+				"scale": [
+					1,
+					"1.0 / 5"
+				]
+			}
+		},
+		"controller.render.pokemon:genesectshock.evolve": {
+			"arrays": {
+				"geometries": {
+					"Array.geometryVariants": [
+						"Geometry.default",
+						"Geometry.beru",
+						"Geometry.teamplasma"
+					]
+				}
+			},
+			"geometry": "Array.geometryVariants[v.skin_index]",
+			"materials": [
+				{
+					"*": "Material.aura"
+				}
+			],
+			"textures": [
+				"Texture.evo_aura"
+			],
+			"uv_anim": {
+				"offset": [
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0",
+					"(query.variant == 1)?(Math.floor(query.life_time*20.0)+query.frame_alpha)*0.01:0.0"
+				],
+				"scale": [
+					1,
+					1
+				]
+			},
+			"light_color_multiplier": 1,
+			"ignore_lighting": true
+		}
+	}
+}

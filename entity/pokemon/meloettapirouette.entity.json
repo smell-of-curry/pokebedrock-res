@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/meloettapirouette/meloettapirouette.png",
-				"shiny_default": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette.png"
+				"shiny_default": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette.png",
+				"diva": "textures/entity/pokemon/meloettapirouette/meloettapirouette_diva.png",
+				"shiny_diva": "textures/entity/pokemon/meloettapirouette/shiny_meloettapirouette_diva.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:meloettapirouette": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:meloettapirouette.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.meloettapirouette"
+				"default": "geometry.meloettapirouette",
+				"diva": "geometry.meloettapirouette_diva"
 			}
 		}
 	}

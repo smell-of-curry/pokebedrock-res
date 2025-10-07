@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/excadrill/excadrill.png",
-				"shiny_default": "textures/entity/pokemon/excadrill/shiny_excadrill.png"
+				"shiny_default": "textures/entity/pokemon/excadrill/shiny_excadrill.png",
+				"miner": "textures/entity/pokemon/excadrill/excadrill_miner.png",
+				"shiny_miner": "textures/entity/pokemon/excadrill/shiny_excadrill_miner.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:excadrill": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:excadrill.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.excadrill"
+				"default": "geometry.excadrill",
+				"miner": "geometry.excadrill_miner"
 			}
 		}
 	}

@@ -12,7 +12,11 @@
 				"male_default": "textures/entity/pokemon/scizor/male_scizor.png",
 				"shiny_male_default": "textures/entity/pokemon/scizor/male_shiny_scizor.png",
 				"female_default": "textures/entity/pokemon/scizor/female_scizor.png",
-				"shiny_female_default": "textures/entity/pokemon/scizor/female_shiny_scizor.png"
+				"shiny_female_default": "textures/entity/pokemon/scizor/female_shiny_scizor.png",
+				"male_ranger": "textures/entity/pokemon/scizor/male_scizor_ranger.png",
+				"shiny_male_ranger": "textures/entity/pokemon/scizor/shiny_male_scizor_ranger.png",
+				"female_ranger": "textures/entity/pokemon/scizor/female_scizor_ranger.png",
+				"shiny_female_ranger": "textures/entity/pokemon/scizor/shiny_female_scizor_ranger.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -39,6 +43,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.scizor.blink",
 				"default_ground_idle": "animation.scizor.ground_idle",
 				"default_air_idle": "animation.scizor.air_idle",
 				"default_water_idle": "animation.scizor.water_idle",
@@ -46,10 +51,21 @@
 				"default_flying": "animation.scizor.flying",
 				"default_swimming": "animation.scizor.swimming",
 				"default_sleeping": "animation.scizor.sleeping",
+				"default_attack": "animation.scizor.attack",
+				"ranger_flying": "animation.scizor_ranger.flying",
+				"ranger_air_idle": "animation.scizor_ranger.air_idle",
+				"ranger_swimming": "animation.scizor_ranger.swimming",
+				"ranger_water_idle": "animation.scizor_ranger.water_idle",
+				"ranger_walking": "animation.scizor_ranger.walking",
+				"ranger_ground_idle": "animation.scizor_ranger.ground_idle",
+				"ranger_sleeping": "animation.scizor_ranger.sleeping",
+				"ranger_blink": "animation.scizor_ranger.blink",
+				"ranger_attack": "animation.scizor_ranger.attack",
+				"ranger_faint": "animation.scizor_ranger.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.scizor.attack",
-				"blink": "animation.scizor.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.scizor_attack",
+				"blink": "controller.animation.pokemon.scizor_blink",
+				"controller": "controller.animation.pokemon.scizor"
 			},
 			"render_controllers": [
 				{
@@ -65,7 +81,9 @@
 			},
 			"geometry": {
 				"male_default": "geometry.male_scizor",
-				"female_default": "geometry.female_scizor"
+				"female_default": "geometry.female_scizor",
+				"male_ranger": "geometry.male_scizor_ranger",
+				"female_ranger": "geometry.female_scizor_ranger"
 			}
 		}
 	}

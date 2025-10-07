@@ -5,6 +5,7 @@ import type {
   ParticleEffectId,
   PokemonSkinOptionObject,
 } from "../types";
+import { getSkinDifferences, skinOptionIncludes } from "../utils";
 
 /**
  * Defines customization options for a Pokémon skin.
@@ -297,6 +298,18 @@ export const PokemonCustomizations: Partial<{
     animationParticleEffects: ["pokeb:poison_smoke"],
   },
 
+  ditto: {
+    skins: {
+      slimeking: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  caterpie: {
+    skins: {
+      king: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 2 ========================
 
   celebi: {
@@ -376,6 +389,9 @@ export const PokemonCustomizations: Partial<{
   /** Female abdomen larger */
   scizor: {
     genderDifferences: ["model", "texture", "shiny_texture"],
+    skins: {
+      ranger: ["model", "texture", "shiny_texture", "animations"]
+    },
   },
 
   /** Female's horn heart-shaped */
@@ -490,6 +506,12 @@ export const PokemonCustomizations: Partial<{
       z: ["model", "texture"],
       exclamation: ["model", "texture"],
       question: ["model", "texture"],
+    },
+  },
+
+  lugia: {
+    skins: {
+      shadow: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -796,6 +818,9 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has smaller tusks */
   mamoswine: {
+    skins: {
+      appa: ["model", "texture", "shiny_texture", "animations"],
+    },
     genderDifferences: ["model", "texture"],
   },
 
@@ -820,9 +845,9 @@ export const PokemonCustomizations: Partial<{
   },
   golurk: {
     skins: {
-      halloween: ["model", "texture"],
+      halloween: ["model", "texture", "shiny_texture", "animations"],
+      fullmetal: ["model", "texture", "shiny_texture", "animations"],
     },
-    animatedTextureConfig: [3, 8],
   },
 
   /** Male has a reddish-pink wattle with long extensions while the female has a curved feather on the back of her head. Male has a green underside and female has a brown underside */
@@ -884,6 +909,64 @@ export const PokemonCustomizations: Partial<{
   victini: {
     skins: {
       valentine: ["model", "texture"],
+    },
+  },
+
+  excadrill: {
+    skins: {
+      miner: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  genesect: {
+    skins: {
+      beru: ["model", "texture", "shiny_texture", "animations"],
+      teamplasma: ["model", "texture", "shiny_texture", "animations"],
+    },
+    animatedTextureConfig: [5, 8],
+  },
+
+  genesectchill: {
+    skins: {
+      beru: ["model", "texture", "shiny_texture", "animations"],
+      teamplasma: ["model", "texture", "shiny_texture", "animations"],
+    },
+    animatedTextureConfig: [5, 8],
+  },
+
+  genesectshock: {
+    skins: {
+      beru: ["model", "texture", "shiny_texture", "animations"],
+      teamplasma: ["model", "texture", "shiny_texture", "animations"],
+    },
+    animatedTextureConfig: [5, 8],
+  },
+
+  genesectdouse: {
+    skins: {
+      beru: ["model", "texture", "shiny_texture", "animations"],
+      teamplasma: ["model", "texture", "shiny_texture", "animations"],
+    },
+    animatedTextureConfig: [5, 8],
+  },
+
+  genesectburn: {
+    skins: {
+      beru: ["model", "texture", "shiny_texture", "animations"],
+      teamplasma: ["model", "texture", "shiny_texture", "animations"],
+    },
+    animatedTextureConfig: [5, 8],
+  },
+
+  meloetta: {
+    skins: {
+      diva: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  meloettapirouette: {
+    skins: {
+      diva: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -961,7 +1044,7 @@ export const PokemonCustomizations: Partial<{
 
   comfey: {
     skins: {
-      christmas: ["model", "texture"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 

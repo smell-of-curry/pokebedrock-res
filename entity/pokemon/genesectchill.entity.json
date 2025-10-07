@@ -4,13 +4,17 @@
 		"description": {
 			"identifier": "pokemon:genesectchill",
 			"materials": {
-				"default": "entity_emissive_alpha",
+				"default": "custom_animated",
 				"aura": "charged_creeper"
 			},
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/genesectchill/genesectchill.png",
-				"shiny_default": "textures/entity/pokemon/genesectchill/shiny_genesectchill.png"
+				"shiny_default": "textures/entity/pokemon/genesectchill/shiny_genesectchill.png",
+				"beru": "textures/entity/pokemon/genesectchill/genesectchill_beru.png",
+				"shiny_beru": "textures/entity/pokemon/genesectchill/shiny_genesectchill_beru.png",
+				"teamplasma": "textures/entity/pokemon/genesectchill/genesectchill_teamplasma.png",
+				"shiny_teamplasma": "textures/entity/pokemon/genesectchill/shiny_genesectchill_teamplasma.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +41,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.genesectchill.blink",
 				"default_ground_idle": "animation.genesectchill.ground_idle",
 				"default_air_idle": "animation.genesectchill.ground_idle",
 				"default_water_idle": "animation.genesectchill.water_idle",
@@ -44,17 +49,38 @@
 				"default_flying": "animation.genesectchill.ground_idle",
 				"default_swimming": "animation.genesectchill.swimming",
 				"default_sleeping": "animation.genesectchill.sleeping",
+				"default_attack": "animation.genesectchill.attack",
+				"beru_flying": "animation.genesectchill_beru.flying",
+				"beru_air_idle": "animation.genesectchill_beru.air_idle",
+				"beru_swimming": "animation.genesectchill_beru.swimming",
+				"beru_water_idle": "animation.genesectchill_beru.water_idle",
+				"beru_walking": "animation.genesectchill_beru.walking",
+				"beru_ground_idle": "animation.genesectchill_beru.ground_idle",
+				"beru_sleeping": "animation.genesectchill_beru.sleeping",
+				"beru_blink": "animation.genesectchill_beru.blink",
+				"beru_attack": "animation.genesectchill_beru.attack",
+				"beru_faint": "animation.genesectchill_beru.faint",
+				"teamplasma_flying": "animation.genesectchill_teamplasma.flying",
+				"teamplasma_air_idle": "animation.genesectchill_teamplasma.air_idle",
+				"teamplasma_swimming": "animation.genesectchill_teamplasma.swimming",
+				"teamplasma_water_idle": "animation.genesectchill_teamplasma.water_idle",
+				"teamplasma_walking": "animation.genesectchill_teamplasma.walking",
+				"teamplasma_ground_idle": "animation.genesectchill_teamplasma.ground_idle",
+				"teamplasma_sleeping": "animation.genesectchill_teamplasma.sleeping",
+				"teamplasma_blink": "animation.genesectchill_teamplasma.blink",
+				"teamplasma_attack": "animation.genesectchill_teamplasma.attack",
+				"teamplasma_faint": "animation.genesectchill_teamplasma.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.genesectchill.attack",
-				"blink": "animation.genesectchill.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.genesectchill_attack",
+				"blink": "controller.animation.pokemon.genesectchill_blink",
+				"controller": "controller.animation.pokemon.genesectchill"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:genesectchill": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:genesectchill.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +88,9 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.genesectchill"
+				"default": "geometry.genesectchill",
+				"beru": "geometry.genesectchill_beru",
+				"teamplasma": "geometry.genesectchill_teamplasma"
 			}
 		}
 	}

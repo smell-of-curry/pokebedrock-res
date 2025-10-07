@@ -4,14 +4,17 @@
 		"description": {
 			"identifier": "pokemon:golurk",
 			"materials": {
-				"default": "custom_animated",
+				"default": "entity_emissive_alpha",
 				"aura": "charged_creeper"
 			},
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/golurk/golurk.png",
 				"shiny_default": "textures/entity/pokemon/golurk/shiny_golurk.png",
-				"halloween": "textures/entity/pokemon/golurk/golurk_halloween.png"
+				"halloween": "textures/entity/pokemon/golurk/golurk_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/golurk/shiny_golurk_halloween.png",
+				"fullmetal": "textures/entity/pokemon/golurk/golurk_fullmetal.png",
+				"shiny_fullmetal": "textures/entity/pokemon/golurk/shiny_golurk_fullmetal.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -38,6 +41,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.golurk.blink",
 				"default_ground_idle": "animation.golurk.ground_idle",
 				"default_air_idle": "animation.golurk.ground_idle",
 				"default_water_idle": "animation.golurk.water_idle",
@@ -45,10 +49,31 @@
 				"default_flying": "animation.golurk.ground_idle",
 				"default_swimming": "animation.golurk.swimming",
 				"default_sleeping": "animation.golurk.sleeping",
+				"default_attack": "animation.golurk.attack",
+				"halloween_flying": "animation.golurk_halloween.flying",
+				"halloween_air_idle": "animation.golurk_halloween.air_idle",
+				"halloween_swimming": "animation.golurk_halloween.swimming",
+				"halloween_water_idle": "animation.golurk_halloween.water_idle",
+				"halloween_walking": "animation.golurk_halloween.walking",
+				"halloween_ground_idle": "animation.golurk_halloween.ground_idle",
+				"halloween_sleeping": "animation.golurk_halloween.sleeping",
+				"halloween_blink": "animation.golurk_halloween.blink",
+				"halloween_attack": "animation.golurk_halloween.attack",
+				"halloween_faint": "animation.golurk_halloween.faint",
+				"fullmetal_flying": "animation.golurk_fullmetal.flying",
+				"fullmetal_air_idle": "animation.golurk_fullmetal.air_idle",
+				"fullmetal_swimming": "animation.golurk_fullmetal.swimming",
+				"fullmetal_water_idle": "animation.golurk_fullmetal.water_idle",
+				"fullmetal_walking": "animation.golurk_fullmetal.walking",
+				"fullmetal_ground_idle": "animation.golurk_fullmetal.ground_idle",
+				"fullmetal_sleeping": "animation.golurk_fullmetal.sleeping",
+				"fullmetal_blink": "animation.golurk_fullmetal.blink",
+				"fullmetal_attack": "animation.golurk_fullmetal.attack",
+				"fullmetal_faint": "animation.golurk_fullmetal.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.golurk.attack",
-				"blink": "animation.golurk.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.golurk_attack",
+				"blink": "controller.animation.pokemon.golurk_blink",
+				"controller": "controller.animation.pokemon.golurk"
 			},
 			"render_controllers": [
 				{
@@ -64,7 +89,8 @@
 			},
 			"geometry": {
 				"default": "geometry.golurk",
-				"halloween": "geometry.golurk_halloween"
+				"halloween": "geometry.golurk_halloween",
+				"fullmetal": "geometry.golurk_fullmetal"
 			}
 		}
 	}

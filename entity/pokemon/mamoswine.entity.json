@@ -12,7 +12,11 @@
 				"male_default": "textures/entity/pokemon/mamoswine/male_mamoswine.png",
 				"shiny_male_default": "textures/entity/pokemon/mamoswine/male_shiny_mamoswine.png",
 				"female_default": "textures/entity/pokemon/mamoswine/female_mamoswine.png",
-				"shiny_female_default": "textures/entity/pokemon/mamoswine/female_shiny_mamoswine.png"
+				"shiny_female_default": "textures/entity/pokemon/mamoswine/female_shiny_mamoswine.png",
+				"male_appa": "textures/entity/pokemon/mamoswine/male_mamoswine_appa.png",
+				"shiny_male_appa": "textures/entity/pokemon/mamoswine/shiny_male_mamoswine_appa.png",
+				"female_appa": "textures/entity/pokemon/mamoswine/female_mamoswine_appa.png",
+				"shiny_female_appa": "textures/entity/pokemon/mamoswine/shiny_female_mamoswine_appa.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -39,6 +43,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.mamoswine.blink",
 				"default_ground_idle": "animation.mamoswine.ground_idle",
 				"default_air_idle": "animation.mamoswine.ground_idle",
 				"default_water_idle": "animation.mamoswine.water_idle",
@@ -46,10 +51,21 @@
 				"default_flying": "animation.mamoswine.ground_idle",
 				"default_swimming": "animation.mamoswine.swimming",
 				"default_sleeping": "animation.mamoswine.sleeping",
+				"default_attack": "animation.mamoswine.attack",
+				"appa_flying": "animation.mamoswine_appa.flying",
+				"appa_air_idle": "animation.mamoswine_appa.air_idle",
+				"appa_swimming": "animation.mamoswine_appa.swimming",
+				"appa_water_idle": "animation.mamoswine_appa.water_idle",
+				"appa_walking": "animation.mamoswine_appa.walking",
+				"appa_ground_idle": "animation.mamoswine_appa.ground_idle",
+				"appa_sleeping": "animation.mamoswine_appa.sleeping",
+				"appa_blink": "animation.mamoswine_appa.blink",
+				"appa_attack": "animation.mamoswine_appa.attack",
+				"appa_faint": "animation.mamoswine_appa.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.mamoswine.attack",
-				"blink": "animation.mamoswine.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.mamoswine_attack",
+				"blink": "controller.animation.pokemon.mamoswine_blink",
+				"controller": "controller.animation.pokemon.mamoswine"
 			},
 			"render_controllers": [
 				{
@@ -65,7 +81,9 @@
 			},
 			"geometry": {
 				"male_default": "geometry.male_mamoswine",
-				"female_default": "geometry.female_mamoswine"
+				"female_default": "geometry.female_mamoswine",
+				"male_appa": "geometry.male_mamoswine_appa",
+				"female_appa": "geometry.female_mamoswine_appa"
 			}
 		}
 	}
