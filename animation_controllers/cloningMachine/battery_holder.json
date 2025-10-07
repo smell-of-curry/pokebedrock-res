@@ -1,0 +1,74 @@
+{
+    "format_version": "1.18.3",
+    "animation_controllers": {
+        "controller.animation.battery_holder": {
+            "initial_state": "empty",
+            "states": {
+                "empty": {
+                    "animations": [
+                        "empty"
+                    ],
+                    "transitions": [
+                        {
+                            "one": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "two": "q.property('pokeb:batteries') == 2"
+                        },
+                        {
+                            "three": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "one": {
+                    "animations": [
+                        "one"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "two": "q.property('pokeb:batteries') == 2"
+                        },
+                        {
+                            "three": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "two": {
+                    "animations": [
+                        "two"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "one": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "three": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "three": {
+                    "animations": [
+                        "three"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "one": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "two": "q.property('pokeb:batteries') == 2"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
