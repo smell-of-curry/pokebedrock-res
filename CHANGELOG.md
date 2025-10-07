@@ -1,28 +1,27 @@
-**Update v2.15.0**
+**Update v2.16.0**
 
-**NEW MODELS**
+**New Skins**
 
-- Wobbuffet - @relle_g
-- Miraidon - @relle_g
-- Espurr - <@725917806943666207>
-- Drilbur line - <@541176595948371989>
-- Burmy line - @protoporygon137
-- Pansage line - @rafael8355
-- Woobat line - @rafael8355
-- Joltik line - @rafael8355
+- Shadow Mew by IsMe
+- Ranger Scizor by IsMe
+- Miner Excadrill by IsMe
+- Diva Meloette and Pirouette by Joker
+- Slimeking Ditto by Joker
+- Shadow Lugia by Relle
+- Appa Mamoswine by Relle
+- Fullmetal Golurk by Rafeal
+- Teamplasma Genesect by Rafeal
+- Beru Genesect by Rafeal
+- King Caterpie by Rose
 
-**REMODELS**
+**Fixed Skins**
 
-- Swinub remodel line - @protoporygon137
-- Ledyba line - @protoporygon137
-- Katuto remodel line - @protoporygon137
+- Christmas Comfey - new Model T-pose poses, update animations by Demon
 
-**MODEL FIXES**
+**Extra Adjustments**
 
-- Mew (Shiny texture) - <@541176595948371989>
-- Chi-yu (missing animations) - @relle_g
-- Chien-pao (missing animations) - @relle_g
-
-- Added 300+ New Sounds and fixed mapping so that ALL pokemon now will have a proper cry sound.
-- Added a new pokemon cry sound generator that uses Pokemon Showdown's cry database to parse them all to `.ogg`
-- Updated the DE and ES lang translations for pokedex & geodex by @TheBlueJo
+- Make Golurk texture into non Flipnote and Fixed Halloween Golurk texture along with adding Halloween Golurk Animation to prevent animations from Fullmetal Golurk not playing
+- Turn Genesect Texture into Flipnote texture to fit with Beru Genesect Flipnote texture
+- Cleaned up skin model generation which fixes gabite, garchomp, etc from being broken.
+- Added new Anabel Npc
+- Removed Hub Specific entries that now are only in the `pokebedrock-hub-res`
