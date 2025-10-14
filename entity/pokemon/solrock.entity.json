@@ -4,25 +4,65 @@
 		"description": {
 			"identifier": "pokemon:solrock",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/solrock",
-				"shiny_default": "textures/sprites/default/solrock",
-				"default_male": "textures/sprites/default/solrock",
-				"default_female": "textures/sprites/default/solrock",
-				"shiny_male": "textures/sprites/default/solrock",
-				"shiny_female": "textures/sprites/default/solrock"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/solrock/solrock.png",
+				"shiny_default": "textures/entity/pokemon/solrock/shiny_solrock.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.solrock.ground_idle",
+				"default_air_idle": "animation.solrock.air_idle",
+				"default_water_idle": "animation.solrock.water_idle",
+				"default_walking": "animation.solrock.walking",
+				"default_flying": "animation.solrock.flying",
+				"default_swimming": "animation.solrock.swimming",
+				"default_sleeping": "animation.solrock.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.solrock.attack",
+				"blink": "animation.solrock.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "solrock",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.solrock"
 			}
 		}
 	}
