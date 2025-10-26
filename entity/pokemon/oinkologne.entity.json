@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/oinkologne/oinkologne.png",
-				"shiny_default": "textures/entity/pokemon/oinkologne/shiny_oinkologne.png"
+				"shiny_default": "textures/entity/pokemon/oinkologne/shiny_oinkologne.png",
+				"halloween": "textures/entity/pokemon/oinkologne/oinkologne_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/oinkologne/shiny_oinkologne_halloween.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.oinkologne.blink",
 				"default_ground_idle": "animation.oinkologne.ground_idle",
 				"default_air_idle": "animation.oinkologne.ground_idle",
 				"default_water_idle": "animation.oinkologne.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.oinkologne.ground_idle",
 				"default_swimming": "animation.oinkologne.swimming",
 				"default_sleeping": "animation.oinkologne.sleeping",
+				"default_attack": "animation.oinkologne.attack",
+				"halloween_flying": "animation.oinkologne_halloween.flying",
+				"halloween_air_idle": "animation.oinkologne_halloween.air_idle",
+				"halloween_swimming": "animation.oinkologne_halloween.swimming",
+				"halloween_water_idle": "animation.oinkologne_halloween.water_idle",
+				"halloween_walking": "animation.oinkologne_halloween.walking",
+				"halloween_ground_idle": "animation.oinkologne_halloween.ground_idle",
+				"halloween_sleeping": "animation.oinkologne_halloween.sleeping",
+				"halloween_blink": "animation.oinkologne_halloween.blink",
+				"halloween_attack": "animation.oinkologne_halloween.attack",
+				"halloween_faint": "animation.oinkologne_halloween.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.oinkologne.attack",
-				"blink": "animation.oinkologne.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.oinkologne_attack",
+				"blink": "controller.animation.pokemon.oinkologne_blink",
+				"controller": "controller.animation.pokemon.oinkologne"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:oinkologne": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:oinkologne.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.oinkologne"
+				"default": "geometry.oinkologne",
+				"halloween": "geometry.oinkologne_halloween"
 			}
 		}
 	}

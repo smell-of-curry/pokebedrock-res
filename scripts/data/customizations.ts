@@ -300,7 +300,8 @@ export const PokemonCustomizations: Partial<{
 
   ditto: {
     skins: {
-      slimeking: ["model", "texture", "shiny_texture"],
+      slimeking: ["model", "texture", "shiny_texture", "animations"],
+      venom: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -512,6 +513,12 @@ export const PokemonCustomizations: Partial<{
   lugia: {
     skins: {
       shadow: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  shuckle: {
+    skins: {
+      tophat: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -1115,6 +1122,24 @@ export const PokemonCustomizations: Partial<{
         "animation_attack",
         "animation_faint",
       ],
+    },
+  },
+
+  lechonk: {
+    skins: {
+      halloween: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  oinkologne: {
+    skins: {
+      halloween: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  oinkolognef: {
+    skins: {
+      halloween: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 } as const;
