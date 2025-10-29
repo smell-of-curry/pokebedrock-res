@@ -4,8 +4,8 @@ import type {
   PokemonTypeId,
   ParticleEffectId,
   PokemonSkinOptionObject,
+  MaterialId,
 } from "../types";
-import { getSkinDifferences, skinOptionIncludes } from "../utils";
 
 /**
  * Defines customization options for a Pokémon skin.
@@ -39,6 +39,16 @@ export interface PokemonCustomization {
    * This applies to the default form and all skins unless a skin defines its own animatedTextureConfig.
    */
   animatedTextureConfig?: AnimatedTextureConfig;
+  /**
+   * The material to use for this Pokémon's default appearance.
+   * Accepts any vanilla material or a custom material id defined in materials/*.material.
+   * Skins may override this with their own material.
+   *
+   * NOTE: If this Pokémon also uses an animated texture {@link animatedTextureConfig}, and you
+   * set a custom material here, that custom material must support animated textures.
+   * To do so, inherit/add the animated texture define 'USE_UV_ANIM' in your material.
+   */
+  material?: MaterialId;
   /**
    * An array of particle effects this pokemon uses in its animations
    * Where the effect ID will be the second string after the split of ":"
@@ -390,7 +400,7 @@ export const PokemonCustomizations: Partial<{
   scizor: {
     genderDifferences: ["model", "texture", "shiny_texture"],
     skins: {
-      ranger: ["model", "texture", "shiny_texture", "animations"]
+      ranger: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
