@@ -13,6 +13,10 @@ import { Logger } from "./utils";
 
 async function main() {
   const targetName = process.argv[2];
+  if (!targetName)
+    return Logger.critical(
+      "Missing target language. Usage: npm run translate <lang> [stat]"
+    );
   if (!allLangs.includes(targetName)) {
     return Logger.critical(
       `Target language name ${targetName} does not exists in the list:\n${allLangs.join(
@@ -107,7 +111,7 @@ async function main() {
     ).toFixed(2)}% of total strings.`
   );
 
-  fs.writeFile(file, lines.join("\n"));
+  await fs.writeFile(file, lines.join("\n"));
 }
 
 const allLangs = [
@@ -170,9 +174,11 @@ async function forEachLangFileEntry(
       continue;
     }
 
-    const [, langkey, value, comment] = parsed;
+    const [, langKeyRaw, valueRaw, comment] = parsed;
+    const langKey = (langKeyRaw ?? "").trim();
+    const value = (valueRaw ?? "").trim();
     strings++;
-    callback(langkey, value, comment, lines, i);
+    callback(langKey, value, comment, lines, i);
   }
 
   return { unparsed, strings, lines };

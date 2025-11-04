@@ -5,15 +5,23 @@ import { config } from "dotenv";
 config(); // Load environment variables from .env file if present
 
 // Pull repository info from GitHub Actions environment.
-const repository = process.env.GITHUB_REPOSITORY;
+const repository = process.env["GITHUB_REPOSITORY"];
 if (!repository) {
   console.error("GITHUB_REPOSITORY is not defined in the environment.");
   process.exit(1);
 }
-const [OWNER, REPO] = repository.split("/");
+const [ownerRaw, repoRaw] = repository.split("/");
+if (!ownerRaw || !repoRaw) {
+  console.error(
+    `GITHUB_REPOSITORY has unexpected format: ${repository}. Expected 'owner/repo'.`
+  );
+  process.exit(1);
+}
+const OWNER = ownerRaw;
+const REPO = repoRaw;
 
 // Get the GitHub token from the environment.
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env["GITHUB_TOKEN"];
 if (!GITHUB_TOKEN) {
   console.error("GITHUB_TOKEN is not defined in the environment.");
   process.exit(1);
@@ -70,7 +78,8 @@ function parseReport(
   const sections = content.split("\n## ").slice(1);
   for (const section of sections) {
     const lines = section.split("\n");
-    const header = lines[0].trim();
+    const header = (lines[0] ?? "").trim();
+    if (!header) continue;
 
     // TODO: Remove this once animations are reliable.
     if (header == "Missing Pokémon Animations") continue;
@@ -95,10 +104,15 @@ function parseReport(
         console.warn(`Unable to parse line: ${line}`);
         continue;
       }
-      const pokemonId = match[1].trim();
-      const filePath = match[2].trim();
+      const [, pokemonIdRaw, filePathRaw, detailsRaw] = match;
+      const pokemonId = (pokemonIdRaw ?? "").trim();
+      const filePath = (filePathRaw ?? "").trim();
       // Use an empty string if details are missing.
-      const details = match[3]?.trim() || "";
+      const details = (detailsRaw ?? "").trim();
+      if (!pokemonId || !filePath) {
+        console.warn(`Skipping invalid entry: ${line}`);
+        continue;
+      }
 
       // Construct an issue title (e.g., "Venusaur Missing Pokemon Textures").
       const issueTitle = `${capitalize(pokemonId)} ${header}`;
@@ -176,13 +190,16 @@ async function main(): Promise<void> {
   if (issuesMap.size === 0) return;
 
   // List open issues labeled "auto-sync" and "missing-info".
-  const issues = await octokit.paginate(octokit.issues.listForRepo, {
+  type IssuesListData = Awaited<
+    ReturnType<typeof octokit.issues.listForRepo>
+  >["data"];
+  const issues = (await octokit.paginate(octokit.issues.listForRepo, {
     owner: OWNER,
     repo: REPO,
     state: "open",
     labels: "auto-sync,missing-info",
     per_page: 100,
-  });
+  })) as IssuesListData;
 
   for (const [
     issueTitle,

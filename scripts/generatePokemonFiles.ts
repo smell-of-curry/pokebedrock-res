@@ -364,10 +364,11 @@ function updateEntityFileWithAnimations(
   };
 
   // Add animations for skinned pokemon.
+  if (!description.animations) description.animations = {};
   if (Object.keys(skinAnimations).length > 0) {
     for (const skin of Object.keys(skinAnimations)) {
-      const animations = skinAnimations[skin];
-      for (const animation of animations) {
+      const animationsForSkin = skinAnimations[skin] ?? [];
+      for (const animation of animationsForSkin) {
         description.animations = insertKeyBefore(
           description.animations,
           `${skin}_${animation}`,
@@ -435,8 +436,7 @@ function updateEntityFileWithAnimations(
           report.invalidParticleCustomization.get(pokemonTypeId) || [];
         invalid.push(effectName || "unknown");
         report.invalidParticleCustomization.set(pokemonTypeId, invalid);
-      }
-      description.particle_effects[effectName] = effectTypeId;
+      } else description.particle_effects[effectName] = effectTypeId;
     }
   } else if (effects.size > 0) {
     Logger.error(
@@ -749,15 +749,24 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
   for (const state of Object.keys(controller.states)) {
     if (state === "default") continue;
     const stateController = controller.states[state];
+    if (!stateController)
+      throw new Error(
+        `No state '${state}' found in animation controller for ${pokemonTypeId}`
+      );
     const animations = stateController.animations;
     if (!animations)
       throw new Error(
         `No animations found for state ${state} in animation controller for ${pokemonTypeId}`
       );
+    if (animations.length === 0)
+      throw new Error(
+        `Animations array for state ${state} is empty in animation controller for ${pokemonTypeId}`
+      );
 
     // Add custom animations for each skin that has a custom animation for this state.
     for (const skin of skinKeys) {
-      if (!skinAnimations[skin].includes(state)) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (!skinStates.includes(state)) continue;
       animations.push({
         [`${skin}_${state}`]: `v.skin_index == ${skinKeys.indexOf(skin) + 1}`,
       });
@@ -765,7 +774,8 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
     // Use the default animation for any skin that doesn't have a custom animation for this state.
     for (const skin of skinKeys) {
-      if (skinAnimations[skin].includes(state)) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (skinStates.includes(state)) continue;
       (animations[0] as any)[`default_${state}`] += ` || v.skin_index == ${
         skinKeys.indexOf(skin) + 1
       }`;
@@ -782,7 +792,12 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
     )
   ) {
     // We need to add a custom blink animation for each skin that has a blink animation.
-    const blinkStateAnimations = blinkController.states["default"].animations;
+    const blinkDefaultState = blinkController.states["default"];
+    if (!blinkDefaultState)
+      throw new Error(
+        `No default state found in blink controller for ${pokemonTypeId}`
+      );
+    const blinkStateAnimations = blinkDefaultState.animations;
     if (!blinkStateAnimations)
       throw new Error(
         `No blink state animations found in blink controller for ${pokemonTypeId}`
@@ -790,7 +805,8 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
     // Add custom animations for each skin that has a custom animation for blinking.
     for (const skin of skinKeys) {
-      if (!skinAnimations[skin].includes("default")) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (!skinStates.includes("default")) continue;
       blinkStateAnimations.push({
         [`${skin}_blink`]: `v.should_blink && v.skin_index == ${
           skinKeys.indexOf(skin) + 1
@@ -800,13 +816,14 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
     // Use the default animation for any skin that doesn't have a custom animation for blinking.
     for (const skin of skinKeys) {
-      if (skinAnimations[skin].includes("default")) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (skinStates.includes("default")) continue;
       (blinkStateAnimations[0] as any)[
         `default_blink`
       ] += ` || v.skin_index == ${skinKeys.indexOf(skin) + 1}`;
     }
 
-    blinkController.states["default"].animations = blinkStateAnimations;
+    blinkDefaultState.animations = blinkStateAnimations;
   }
 
   // Check if a skin has a custom attack animation.
@@ -816,7 +833,12 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
     )
   ) {
     // We need to add a custom attack animation for each skin that has a attack animation.
-    const attackStateAnimations = attackController.states["attack"].animations;
+    const attackState = attackController.states["attack"];
+    if (!attackState)
+      throw new Error(
+        `No attack state found in animation controller for ${pokemonTypeId}`
+      );
+    const attackStateAnimations = attackState.animations;
     if (!attackStateAnimations)
       throw new Error(
         `No attack state animations found in animation controller for ${pokemonTypeId}`
@@ -824,7 +846,8 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
     // Add custom animations for each skin that has a custom animation for attack.
     for (const skin of skinKeys) {
-      if (!skinAnimations[skin].includes("attack")) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (!skinStates.includes("attack")) continue;
       attackStateAnimations.push({
         [`${skin}_attack`]: `v.skin_index == ${skinKeys.indexOf(skin) + 1}`,
       });
@@ -832,7 +855,8 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 
     // Use the default animation for any skin that doesn't have a custom animation for attack.
     for (const skin of skinKeys) {
-      if (skinAnimations[skin].includes("attack")) continue;
+      const skinStates = skinAnimations[skin] ?? [];
+      if (skinStates.includes("attack")) continue;
       (attackStateAnimations[0] as any)[
         `default_attack`
       ] += ` || v.skin_index == ${skinKeys.indexOf(skin) + 1}`;
@@ -1135,9 +1159,7 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
   textureParser += "0";
 
   // Set the texture parser in the render controller
-  rcFile.render_controllers[
-    `controller.render.pokemon:${pokemonTypeId}`
-  ].textures = [`Array.textureVariants[${textureParser}]`];
+  renderer.textures = [`Array.textureVariants[${textureParser}]`];
 
   // Register all changes to the render controller.
   rcFile.render_controllers[`controller.render.pokemon:${pokemonTypeId}`] =
@@ -1218,38 +1240,31 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
 
     // Set arrays.
     renderer.arrays.geometries["Array.geometryVariants"] = geometries;
-    evoRender.arrays.geometries["Array.geometryVariants"] = geometries;
+    if (evoRender)
+      evoRender.arrays.geometries["Array.geometryVariants"] = geometries;
     renderer.arrays.materials["Array.materialVariants"] = materialVariants;
 
     // Set the geometry parser in the render controller.
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}`
-    ].geometry = `Array.geometryVariants[${geometryParser}]`;
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}.evolve`
-    ].geometry = `Array.geometryVariants[${geometryParser}]`;
+    renderer.geometry = `Array.geometryVariants[${geometryParser}]`;
+    if (evoRender) {
+      evoRender.geometry = `Array.geometryVariants[${geometryParser}]`;
+    }
   } else {
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}`
-    ].geometry = `Geometry.default`;
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}.evolve`
-    ].geometry = `Geometry.default`;
+    renderer.geometry = `Geometry.default`;
+    if (evoRender) {
+      evoRender.geometry = `Geometry.default`;
+    }
   }
 
   // If one of the skins has a different material, we need to add a material parser.
   if (materialVariants.length > 1) {
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}`
-    ].materials = [
+    renderer.materials = [
       {
         "*": "Array.materialVariants[v.skin_index]",
       },
     ];
   } else {
-    rcFile.render_controllers[
-      `controller.render.pokemon:${pokemonTypeId}`
-    ].materials = [{ "*": "Material.default" }];
+    renderer.materials = [{ "*": "Material.default" }];
   }
 
   if (!needsCustomEvoController(customizations)) {
