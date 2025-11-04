@@ -198,7 +198,7 @@ function generateTypesFileContent(
  * Generation time: ${now}
  *
  * Re-generate using your package script, e.g.:
- *   npm run generateMaterialTypes.ts
+ *   npm run generateMaterialTypes
  */
 
 /**
