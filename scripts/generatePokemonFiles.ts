@@ -387,16 +387,31 @@ function updateEntityFileWithAnimations(
   }
 
   delete description.materials["aura"];
-  if (customizations && customizations.animatedTextureConfig) {
+  // Default material precedence: explicit material > animated texture > template default
+  if (customizations && customizations.material) {
+    description.materials["default"] = customizations.material as string;
+  } else if (customizations && customizations.animatedTextureConfig) {
     description.materials["default"] = "custom_animated";
   }
-  // Add materials for skins.
+  // Add materials for skins (explicit material > animated texture)
   if (customizations?.skins) {
     for (const skin of Object.keys(customizations.skins)) {
       const skinOption = customizations.skins[skin];
-      if ("animatedTextureConfig" in skinOption) {
-        description.materials[skin] = "custom_animated";
+      // Prefer explicit material on skin object
+      if (
+        skinOption &&
+        typeof skinOption === "object" &&
+        "material" in skinOption &&
+        (skinOption as PokemonSkinOptionObject).material
+      ) {
+        description.materials[skin] = (skinOption as PokemonSkinOptionObject)
+          .material as string;
+        continue;
       }
+
+      // Fallback to custom animated if configured
+      if (skinOption && "animatedTextureConfig" in skinOption)
+        description.materials[skin] = "custom_animated";
     }
   }
   description.materials["aura"] = "charged_creeper";
@@ -409,14 +424,9 @@ function updateEntityFileWithAnimations(
   const skinParticleEffects: string[] = [];
   if (customizations?.skins) {
     Object.entries(customizations.skins).forEach(([_, skinOption]) => {
-      if (
-        skinOption &&
-        typeof skinOption === "object" &&
-        "differences" in skinOption &&
-        skinOption.animationParticleEffects
-      ) {
-        skinParticleEffects.push(...skinOption.animationParticleEffects);
-      }
+      if (!("differences" in skinOption)) return;
+      if (!skinOption.animationParticleEffects) return;
+      skinParticleEffects.push(...skinOption.animationParticleEffects);
     });
   }
 
@@ -992,17 +1002,22 @@ function makeRenderController(pokemonTypeId: PokemonTypeId): void {
     } else pushEntries(skin as AppearanceId);
   }
 
-  // Add material variants based on skins.
+  // Add material variants based on skins (explicit skin material > animated texture)
   materialVariants = ["Material.default"];
   for (const skin of skinKeys) {
     const skinOption = customizations.skins?.[skin];
     if (!skinOption) continue;
-    if ("animatedTextureConfig" in skinOption) {
+    let pushMaterial = false;
+    if ("material" in skinOption && skinOption.material) pushMaterial = true;
+    else if ("animatedTextureConfig" in skinOption) pushMaterial = true;
+    if (pushMaterial)
       materialVariants.push(
         `Material.${skin}` as `Material.${keyof typeof customizations.skins}`
       );
-    }
   }
+
+  // Register material variants array regardless of geometry variations
+  renderer.arrays.materials["Array.materialVariants"] = materialVariants;
 
   // Set textures array.
   renderer.arrays.textures["Array.textureVariants"] = textures;
@@ -1460,7 +1475,7 @@ function checkBlinkAnimation(pokemonTypeId: PokemonTypeId): string[] | null {
  */
 async function processPokemon() {
   Logger.info("Starting Pokémon processing...");
-  for (const [pokemonTypeId, pokemon] of Object.entries(pokemonJson!.pokemon)) {
+  for (const pokemonTypeId of Object.keys(pokemonJson!.pokemon)) {
     try {
       const typeId = pokemonTypeId as PokemonTypeId;
       const hasModel = pokemonJson!.pokemonWithModels.includes(typeId);
