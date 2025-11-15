@@ -216,13 +216,13 @@
         "binding_type": "collection",
         "binding_collection_name": "form_buttons",
         "binding_condition": "none",
-        "binding_name": "#form_button_text",
-        "binding_name_override": "#form_button_text"
+        "binding_name": "#form_button_texture",
+        "binding_name_override": "#form_button_texture"
       },
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not((%.1s * #form_button_text) = ' '))",
+        "source_property_name": "(not((%.1s * #form_button_texture) = 'f'))",
         "target_property_name": "#enabled"
       }
     ]
@@ -416,10 +416,10 @@
     "controls": [
       {
         "button@battle.simple_button": {
-          "$default_button_texture": "textures/ui/battle/moveSelection_badge_background",
+          "$default_button_texture": "textures/ui/battle/moveSelectionBadges/background",
           "$hover_button_texture": "textures/ui/battle/moveSelection_blank_badge",
           "$pressed_button_texture": "textures/ui/battle/moveSelection_blank_badge",
-          "$locked_button_texture": "textures/ui/battle/moveSelection_badge_background",
+          "$locked_button_texture": "textures/ui/battle/moveSelectionBadges/background",
           "$border_visible": false,
           "$hover_text_index": 27
         }
@@ -432,6 +432,7 @@
           "layer": 16,
           "anchor_from": "center",
           "anchor_to": "center",
+          "texture": "#texture",
           "bindings": [
             {
               "binding_name": "#null",
@@ -439,16 +440,17 @@
               "binding_collection_name": "form_buttons"
             },
             {
-              "binding_name": "#form_button_texture_file_system",
-              "binding_name_override": "#texture_file_system",
               "binding_type": "collection",
-              "binding_collection_name": "form_buttons"
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_texture",
+              "binding_name_override": "#form_button_texture"
             },
             {
-              "binding_name": "#form_button_texture",
-              "binding_name_override": "#texture",
-              "binding_type": "collection",
-              "binding_collection_name": "form_buttons"
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "('textures/ui/battle/moveSelectionBadges/' + (#form_button_texture - (%.3s * #form_button_texture)))",
+              "target_property_name": "#texture"
             }
           ]
         }
@@ -543,7 +545,7 @@
                 "$hover_button_texture": "textures/ui/battle/moveSelection_hover",
                 "$pressed_button_texture": "textures/ui/battle/moveSelection",
                 "$locked_button_texture": "textures/ui/battle/moveSelection_locked",
-                "$hover_text_index": 53
+                "$hover_text_index": 98
               }
             }
           ]
@@ -571,7 +573,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_property_name": "((( 'showdown.moves.' + (%.15s * (#form_button_text - (%.21s * #form_button_text)))) - '_') + '.name')",
+              "source_property_name": "((( 'showdown.moves' + (%.30s * (#form_button_text - (%.36s * #form_button_text)))) - '_') + '.name')",
               "target_property_name": "#text"
             }
           ]
@@ -605,7 +607,7 @@
         "pp_text": {
           "type": "label",
           "size": ["100%", "100%"],
-          "offset": ["45%", "89%"],
+          "offset": ["45%", "92%"],
           "layer": 11,
           "anchor_from": "center",
           "anchor_to": "center",
@@ -623,7 +625,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_property_name": "((%.7s * (#form_button_text - (%.36s * #form_button_text))) - '_')",
+              "source_property_name": "((%.7s * (#form_button_text - (%.66s * #form_button_text))) - '_')",
               "target_property_name": "#text"
             }
           ]
