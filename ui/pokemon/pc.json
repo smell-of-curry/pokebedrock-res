@@ -119,10 +119,10 @@
   },
 
   "left_arrow_button@pc.button": {
-    "$default_button_texture": "textures/ui/pc/left_arrow",
-    "$hover_button_texture": "textures/ui/pc/left_arrow_hover",
-    "$pressed_button_texture": "textures/ui/pc/left_arrow",
-    "$locked_button_texture": "textures/ui/pc/left_arrow_disabled",
+    "$default_button_texture": "textures/ui/pc/buttons/left_arrow",
+    "$hover_button_texture": "textures/ui/pc/buttons/left_arrow_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/left_arrow",
+    "$locked_button_texture": "textures/ui/pc/buttons/left_arrow_disabled",
     "$button_image_fill": false,
     "$border_visible": false,
 
@@ -143,10 +143,10 @@
   },
 
   "right_arrow_button@pc.button": {
-    "$default_button_texture": "textures/ui/pc/right_arrow",
-    "$hover_button_texture": "textures/ui/pc/right_arrow_hover",
-    "$pressed_button_texture": "textures/ui/pc/right_arrow",
-    "$locked_button_texture": "textures/ui/pc/right_arrow_disabled",
+    "$default_button_texture": "textures/ui/pc/buttons/right_arrow",
+    "$hover_button_texture": "textures/ui/pc/buttons/right_arrow_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/right_arrow",
+    "$locked_button_texture": "textures/ui/pc/buttons/right_arrow_disabled",
     "$button_image_fill": false,
     "$border_visible": false,
 
@@ -161,6 +161,78 @@
         "binding_name": "#null",
         "binding_type": "view",
         "source_property_name": "(not((#form_button_text - 'btn:right_arrow') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "filter_button@pc.button": {
+    "$default_button_texture": "textures/ui/pc/buttons/filter_button",
+    "$hover_button_texture": "textures/ui/pc/buttons/filter_button_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/filter_button",
+    "$locked_button_texture": "textures/ui/pc/buttons/filter_button_disabled",
+    "$button_image_fill": false,
+    "$border_visible": false,
+
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not((#form_button_text - 'btn:filter_button') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "search_button@pc.button": {
+    "$default_button_texture": "textures/ui/pc/buttons/search_button",
+    "$hover_button_texture": "textures/ui/pc/buttons/search_button_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/search_button",
+    "$locked_button_texture": "textures/ui/pc/buttons/search_button_disabled",
+    "$button_image_fill": false,
+    "$border_visible": false,
+
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not((#form_button_text - 'btn:search_button') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "settings_button@pc.button": {
+    "$default_button_texture": "textures/ui/pc/buttons/settings_button",
+    "$hover_button_texture": "textures/ui/pc/buttons/settings_button_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/settings_button",
+    "$locked_button_texture": "textures/ui/pc/buttons/settings_button_disabled",
+    "$button_image_fill": false,
+    "$border_visible": false,
+
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not((#form_button_text - 'btn:settings_button') = #form_button_text))",
         "target_property_name": "#visible"
       }
     ]
@@ -191,10 +263,10 @@
   },
 
   "action_button@pc.button": {
-    "$default_button_texture": "textures/ui/pc/action_button",
-    "$hover_button_texture": "textures/ui/pc/action_button_hover",
-    "$pressed_button_texture": "textures/ui/pc/action_button",
-    "$locked_button_texture": "textures/ui/pc/action_button_disabled",
+    "$default_button_texture": "textures/ui/pc/buttons/action_button",
+    "$hover_button_texture": "textures/ui/pc/buttons/action_button_hover",
+    "$pressed_button_texture": "textures/ui/pc/buttons/action_button",
+    "$locked_button_texture": "textures/ui/pc/buttons/action_button_disabled",
     "$button_image_fill": false,
     "$border_visible": false,
     "$text_alignment": "center",
@@ -310,6 +382,104 @@
           "size": [116, "100%c"],
           "controls": [
             {
+              "filter_box": {
+                "type": "image",
+                "size": ["100%", 17],
+                "texture": "textures/ui/pc/filter_box",
+                "controls": [
+                  {
+                    "box_details": {
+                      "type": "stack_panel",
+                      "orientation": "horizontal",
+                      "size": ["100%", "100%"],
+                      "controls": [
+                        {
+                          "start_padding": {
+                            "type": "panel",
+                            "size": [5, "100%"]
+                          }
+                        },
+                        {
+                          "filter_button@pc.button_stack": {
+                            "size": [14, "100%"],
+                            "layer": 3,
+                            "anchor_from": "center",
+                            "anchor_to": "center",
+
+                            "$button": "pc.filter_button"
+                          }
+                        },
+                        {
+                          "search_button@pc.button_stack": {
+                            "size": [14, "100%"],
+                            "layer": 3,
+                            "anchor_from": "center",
+                            "anchor_to": "center",
+
+                            "$button": "pc.search_button"
+                          }
+                        },
+                        {
+                          "search_field": {
+                            "type": "panel",
+                            "size": [66, "100%"],
+                            "offset": [0, 1],
+                            "layer": 3,
+                            "controls": [
+                              {
+                                "text": {
+                                  "type": "label",
+                                  "text": "#text",
+                                  "offset": [-8, 0.5],
+                                  "text_alignment": "left",
+                                  "font_scale_factor": 0.85,
+                                  "bindings": [
+                                    {
+                                      "binding_type": "global",
+                                      "binding_name": "#title_text"
+                                    },
+                                    {
+                                      "binding_name": "#null",
+                                      "binding_type": "view",
+                                      "source_property_name": "((%.22s * #title_text) - '_')",
+                                      "target_property_name": "#text"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "settings_button@pc.button_stack": {
+                            "size": [14, "100%"],
+                            "offset": [0, 3],
+                            "layer": 3,
+                            "anchor_from": "center",
+                            "anchor_to": "center",
+
+                            "$button": "pc.settings_button"
+                          }
+                        },
+                        {
+                          "end_padding": {
+                            "type": "panel",
+                            "size": [5, "100%"]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "spacer1": {
+                "type": "panel",
+                "size": ["100%", 1]
+              }
+            },
+            {
               "title_box": {
                 "type": "image",
                 "size": ["100%", 17],
@@ -347,9 +517,21 @@
                               {
                                 "text": {
                                   "type": "label",
-                                  "text": "#title_text",
+                                  "text": "#text",
                                   "text_alignment": "center",
-                                  "font_scale_factor": 0.95
+                                  "font_scale_factor": 0.95,
+                                  "bindings": [
+                                    {
+                                      "binding_type": "global",
+                                      "binding_name": "#title_text"
+                                    },
+                                    {
+                                      "binding_name": "#null",
+                                      "binding_type": "view",
+                                      "source_property_name": "(( %.22s * (#title_text - (%.22s * #title_text))) - '_')",
+                                      "target_property_name": "#text"
+                                    }
+                                  ]
                                 }
                               }
                             ]
@@ -378,7 +560,7 @@
               }
             },
             {
-              "spacer1": {
+              "spacer2": {
                 "type": "panel",
                 "size": ["100%", 1]
               }
@@ -387,7 +569,7 @@
               "container_slots": {
                 "type": "image",
                 "size": ["100%", 105],
-                "texture": "textures/ui/pc/container_slots",
+                "texture": "#texture",
                 "controls": [
                   {
                     "small_chest_grid": {
@@ -402,11 +584,23 @@
                       "layer": 1
                     }
                   }
+                ],
+                "bindings": [
+                  {
+                    "binding_type": "global",
+                    "binding_name": "#title_text"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "(('textures/ui/pc/backgrounds/' + (#title_text - (%.44s * #title_text))) - '_')",
+                    "target_property_name": "#texture"
+                  }
                 ]
               }
             },
             {
-              "spacer2": {
+              "spacer3": {
                 "type": "panel",
                 "size": ["100%", 1.5]
               }
