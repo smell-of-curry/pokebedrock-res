@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/shuckle/shuckle.png",
-				"shiny_default": "textures/entity/pokemon/shuckle/shiny_shuckle.png"
+				"shiny_default": "textures/entity/pokemon/shuckle/shiny_shuckle.png",
+				"tophat": "textures/entity/pokemon/shuckle/shuckle_tophat.png",
+				"shiny_tophat": "textures/entity/pokemon/shuckle/shiny_shuckle_tophat.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -39,10 +41,10 @@
 			"animations": {
 				"default_ground_idle": "animation.shuckle.ground_idle",
 				"default_air_idle": "animation.shuckle.ground_idle",
-				"default_water_idle": "animation.shuckle.ground_idle",
+				"default_water_idle": "animation.shuckle.water_idle",
 				"default_walking": "animation.shuckle.walking",
 				"default_flying": "animation.shuckle.ground_idle",
-				"default_swimming": "animation.shuckle.ground_idle",
+				"default_swimming": "animation.shuckle.swimming",
 				"default_sleeping": "animation.shuckle.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"attack": "animation.shuckle.attack",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:shuckle": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:shuckle.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.shuckle"
+				"default": "geometry.shuckle",
+				"tophat": "geometry.shuckle_tophat"
 			}
 		}
 	}
