@@ -721,14 +721,14 @@
                   },
                   {
                     "binding_name": "#null",
-                    "binding_type": "view",
-                    "source_property_name": "(#form_button_text - ('%.12s' * #form_button_text))",
-                    "target_property_name": "#hover_text"
+                    "binding_type": "collection_details",
+                    "binding_collection_name": "form_buttons"
                   },
                   {
                     "binding_name": "#null",
-                    "binding_type": "collection_details",
-                    "binding_collection_name": "form_buttons"
+                    "binding_type": "view",
+                    "source_property_name": "(#form_button_text - ('%.14s' * #form_button_text))",
+                    "target_property_name": "#hover_text"
                   }
                 ]
               }
@@ -751,7 +751,25 @@
                 "type": "image",
                 "size": [18, 18],
                 "texture": "textures/ui/highlight_slot",
-                "layer": 0
+                "layer": 0,
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_text",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "collection_details",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "((('%.6s' * #form_button_text) - ('%.4s' * #form_button_text)) = 't:')",
+                    "target_property_name": "#visible"
+                  }
+                ]
               }
             },
             {
@@ -759,7 +777,25 @@
                 "type": "image",
                 "size": [18, 18],
                 "texture": "textures/ui/focus_border_white",
-                "layer": 1
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_text",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "collection_details",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "((('%.6s' * #form_button_text) - ('%.4s' * #form_button_text)) = 't:')",
+                    "target_property_name": "#visible"
+                  }
+                ]
               }
             }
           ]
