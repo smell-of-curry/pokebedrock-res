@@ -1,0 +1,142 @@
+{
+    "format_version": "1.18.3",
+    "animation_controllers": {
+        "controller.animation.containment_chamber": {
+            "initial_state": "empty",
+            "states": {
+                "empty": {
+                    "animations": [
+                        "empty"
+                    ],
+                    "transitions": [
+                        {
+                            "filling": "q.property('pokeb:state') == 'filling'"
+                        },
+                        {
+                            "breaking": "q.property('pokeb:state') == 'breaking'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "opening_ditto": "q.property('pokeb:state') == 'opening_ditto'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                },
+                "filling": {
+                    "animations": [
+                        "filling"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:state') == 'empty'"
+                        },
+                        {
+                            "breaking": "q.property('pokeb:state') == 'breaking'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "opening_ditto": "q.property('pokeb:state') == 'opening_ditto'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                },
+                "breaking": {
+                    "animations": [
+                        "breaking"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:state') == 'empty'"
+                        },
+                        {
+                            "filling": "q.property('pokeb:state') == 'filling'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "opening_ditto": "q.property('pokeb:state') == 'opening_ditto'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                },
+                "opening": {
+                    "animations": [
+                        "opening"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:state') == 'empty'"
+                        },
+                        {
+                            "filling": "q.property('pokeb:state') == 'filling'"
+                        },
+                        {
+                            "breaking": "q.property('pokeb:state') == 'breaking'"
+                        },
+                        {
+                            "opening_ditto": "q.property('pokeb:state') == 'opening_ditto'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                },
+                "opening_ditto": {
+                    "animations": [
+                        "opening_ditto"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:state') == 'empty'"
+                        },
+                        {
+                            "filling": "q.property('pokeb:state') == 'filling'"
+                        },
+                        {
+                            "breaking": "q.property('pokeb:state') == 'breaking'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                },
+                "closing": {
+                    "animations": [
+                        "closing"
+                    ],
+                    "transitions": [
+                        {
+                            "empty": "q.property('pokeb:state') == 'empty'"
+                        },
+                        {
+                            "filling": "q.property('pokeb:state') == 'filling'"
+                        },
+                        {
+                            "breaking": "q.property('pokeb:state') == 'breaking'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "opening_ditto": "q.property('pokeb:state') == 'opening_ditto'"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
