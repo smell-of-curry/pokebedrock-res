@@ -1,0 +1,56 @@
+{
+  "namespace": "player_ping",
+  "main": {
+    "type": "image",
+    "texture": "textures/ui/Black",
+    "size": [
+      "100%c + 6px",
+      "100%c + 2px"
+    ],
+    "alpha": 0.7,
+    "controls": [
+      {
+        "player_position_text": {
+          "type": "label",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1,
+          "enable_profanity_filter": false,
+          "color": "$chat_text_color",
+          "shadow": true,
+          "text": "#text",
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "elements",
+              "source_property_name": "(#player_ping_text - '_')",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#player_ping_text",
+        "target_property_name": "#player_ping_text"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#player_ping_text = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#player_ping_text = ''))",
+        "target_property_name": "#enabled"
+      }
+    ]
+  }
+}

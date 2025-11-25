@@ -1,0 +1,67 @@
+{
+  "namespace": "phud_loadingScreen",
+  "main": {
+    "type": "image",
+    "texture": "textures/ui/background",
+    "tiled": true,
+    "tiled_scale": [
+      2,
+      2
+    ],
+    "layer": 1000,
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "text": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text": "#text",
+          "layer": 1002,
+          "localize": true,
+          "font_size": "normal",
+          "text_alignment": "center",
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "elements",
+              "source_property_name": "#loadingScreen",
+              "target_property_name": "#loadingScreenText"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(#loadingScreenText)",
+              "target_property_name": "#text"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#loadingScreen",
+        "target_property_name": "#loadingScreen"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#loadingScreen = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#loadingScreen = ''))",
+        "target_property_name": "#enabled"
+      }
+    ]
+  }
+}
