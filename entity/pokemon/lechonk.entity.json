@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/lechonk/lechonk.png",
-				"shiny_default": "textures/entity/pokemon/lechonk/shiny_lechonk.png"
+				"shiny_default": "textures/entity/pokemon/lechonk/shiny_lechonk.png",
+				"halloween": "textures/entity/pokemon/lechonk/lechonk_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/lechonk/shiny_lechonk_halloween.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.lechonk.blink",
 				"default_ground_idle": "animation.lechonk.ground_idle",
 				"default_air_idle": "animation.lechonk.ground_idle",
 				"default_water_idle": "animation.lechonk.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.lechonk.ground_idle",
 				"default_swimming": "animation.lechonk.swimming",
 				"default_sleeping": "animation.lechonk.sleeping",
+				"default_attack": "animation.lechonk.attack",
+				"halloween_flying": "animation.lechonk_halloween.flying",
+				"halloween_air_idle": "animation.lechonk_halloween.air_idle",
+				"halloween_swimming": "animation.lechonk_halloween.swimming",
+				"halloween_water_idle": "animation.lechonk_halloween.water_idle",
+				"halloween_walking": "animation.lechonk_halloween.walking",
+				"halloween_ground_idle": "animation.lechonk_halloween.ground_idle",
+				"halloween_sleeping": "animation.lechonk_halloween.sleeping",
+				"halloween_blink": "animation.lechonk_halloween.blink",
+				"halloween_attack": "animation.lechonk_halloween.attack",
+				"halloween_faint": "animation.lechonk_halloween.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.lechonk.attack",
-				"blink": "animation.lechonk.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.lechonk_attack",
+				"blink": "controller.animation.pokemon.lechonk_blink",
+				"controller": "controller.animation.pokemon.lechonk"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:lechonk": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:lechonk.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.lechonk"
+				"default": "geometry.lechonk",
+				"halloween": "geometry.lechonk_halloween"
 			}
 		}
 	}

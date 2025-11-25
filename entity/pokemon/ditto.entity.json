@@ -12,7 +12,9 @@
 				"default": "textures/entity/pokemon/ditto/ditto.png",
 				"shiny_default": "textures/entity/pokemon/ditto/shiny_ditto.png",
 				"slimeking": "textures/entity/pokemon/ditto/ditto_slimeking.png",
-				"shiny_slimeking": "textures/entity/pokemon/ditto/shiny_ditto_slimeking.png"
+				"shiny_slimeking": "textures/entity/pokemon/ditto/shiny_ditto_slimeking.png",
+				"venom": "textures/entity/pokemon/ditto/ditto_venom.png",
+				"shiny_venom": "textures/entity/pokemon/ditto/shiny_ditto_venom.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -39,6 +41,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.ditto.blink",
 				"default_ground_idle": "animation.ditto.ground_idle",
 				"default_air_idle": "animation.ditto.ground_idle",
 				"default_water_idle": "animation.ditto.water_idle",
@@ -46,10 +49,31 @@
 				"default_flying": "animation.ditto.ground_idle",
 				"default_swimming": "animation.ditto.swimming",
 				"default_sleeping": "animation.ditto.sleeping",
+				"default_attack": "animation.ditto.attack",
+				"slimeking_flying": "animation.ditto_slimeking.flying",
+				"slimeking_air_idle": "animation.ditto_slimeking.air_idle",
+				"slimeking_swimming": "animation.ditto_slimeking.swimming",
+				"slimeking_water_idle": "animation.ditto_slimeking.water_idle",
+				"slimeking_walking": "animation.ditto_slimeking.walking",
+				"slimeking_ground_idle": "animation.ditto_slimeking.ground_idle",
+				"slimeking_sleeping": "animation.ditto_slimeking.sleeping",
+				"slimeking_blink": "animation.ditto_slimeking.blink",
+				"slimeking_attack": "animation.ditto_slimeking.attack",
+				"slimeking_faint": "animation.ditto_slimeking.faint",
+				"venom_flying": "animation.ditto_venom.flying",
+				"venom_air_idle": "animation.ditto_venom.air_idle",
+				"venom_swimming": "animation.ditto_venom.swimming",
+				"venom_water_idle": "animation.ditto_venom.water_idle",
+				"venom_walking": "animation.ditto_venom.walking",
+				"venom_ground_idle": "animation.ditto_venom.ground_idle",
+				"venom_sleeping": "animation.ditto_venom.sleeping",
+				"venom_blink": "animation.ditto_venom.blink",
+				"venom_attack": "animation.ditto_venom.attack",
+				"venom_faint": "animation.ditto_venom.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.ditto.attack",
-				"blink": "animation.ditto.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.ditto_attack",
+				"blink": "controller.animation.pokemon.ditto_blink",
+				"controller": "controller.animation.pokemon.ditto"
 			},
 			"render_controllers": [
 				{
@@ -65,7 +89,8 @@
 			},
 			"geometry": {
 				"default": "geometry.ditto",
-				"slimeking": "geometry.ditto_slimeking"
+				"slimeking": "geometry.ditto_slimeking",
+				"venom": "geometry.ditto_venom"
 			}
 		}
 	}
