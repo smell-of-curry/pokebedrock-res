@@ -1,0 +1,647 @@
+{
+  "namespace": "pokemon",
+  "main_panel": {
+    "type": "image",
+    "texture": "textures/ui/pokemon/background",
+    "layer": 1,
+    "keep_ratio": true,
+    "fill": true,
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "text_common": {
+          "type": "panel",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "size": [
+            "60%",
+            "30%"
+          ],
+          "offset": [
+            0,
+            "15%"
+          ],
+          "layer": 2,
+          "controls": [
+            {
+              "hello": {
+                "type": "label",
+                "font_type": "default",
+                "localize": false,
+                "text": "Welcome to PokéBedrock !",
+                "color": "white",
+                "text_alignment": "center",
+                "font_scale_factor": 1,
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "size": [
+                  "90%",
+                  20
+                ],
+                "offset": [
+                  0,
+                  0
+                ]
+              }
+            },
+            {
+              "pick": {
+                "type": "label",
+                "font_type": "default",
+                "localize": false,
+                "text": "Now, please pick your desired starter Pokémon !",
+                "color": "white",
+                "text_alignment": "center",
+                "font_scale_factor": 1,
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "size": [
+                  "90%",
+                  20
+                ],
+                "offset": [
+                  0,
+                  10
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "button_panel": {
+          "type": "image",
+          "texture": "textures/ui/pokemon/background",
+          "color": "black",
+          "anchor_from": "bottom",
+          "anchor_to": "bottom",
+          "size": [
+            "80%",
+            "60%"
+          ],
+          "alpha": 0,
+          "offset": [
+            0,
+            0
+          ],
+          "controls": [
+            {
+              "common_panel@pokemon.common_panel": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "button_stack": {
+    "type": "stack_panel",
+    "size": [
+      "100%",
+      "100%c"
+    ],
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$button|default": "default_form.button",
+    "factory": {
+      "name": "buttons",
+      "control_name": "$button"
+    },
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_length",
+        "binding_name_override": "#collection_length"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - '§s') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "pokemon_text": {
+    "type": "label",
+    "font_type": "MinecraftTen",
+    "text": "#title_text",
+    "text_alignment": "left",
+    "line_padding": 2,
+    "font_scale_factor": 1,
+    "size": [
+      "100%",
+      "default"
+    ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      "42%",
+      -10
+    ],
+    "layer": 5,
+    "shadow": true,
+    "bindings": [
+      {
+        "binding_name": "#title_text",
+        "binding_type": "global"
+      }
+    ],
+    "controls": [
+      {
+        "data": {
+          "type": "label",
+          "font_type": "default",
+          "text": "#form_text",
+          "text_alignment": "left",
+          "line_padding": 2,
+          "color": "white",
+          "font_scale_factor": 1,
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [
+            "40%",
+            "default"
+          ],
+          "offset": [
+            "20%",
+            50
+          ],
+          "layer": 5,
+          "shadow": true
+        }
+      }
+    ]
+  },
+  "button_action": {
+    "type": "stack_panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "orientation": "vertical",
+    "$color|default": "default",
+    "controls": [
+      {
+        "entry_description": {
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "layer": 2,
+          "type": "image",
+          "$alpha|default": 0,
+          "variables": [
+            {
+              "requires": "($state = 'hover')",
+              "$alpha": 0.3,
+              "$color": "black"
+            }
+          ],
+          "alpha": "$alpha",
+          "keep_ratio": false,
+          "controls": [
+            {
+              "entry_description_label": {
+                "type": "image",
+                "color": "$color",
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_name_override": "#texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_name_override": "#texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "button": {
+    "type": "panel",
+    "size": [
+      "15%",
+      30
+    ],
+    "controls": [
+      {
+        "button@common.button": {
+          "size": [
+            "45%",
+            "100%"
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 1,
+          "$pressed_button_name": "button.form_button_click",
+          "controls": [
+            {
+              "default@pokemon.button_action": {
+                "$state": "default"
+              }
+            },
+            {
+              "hover@pokemon.button_action": {
+                "$state": "hover"
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons",
+              "binding_condition": "none",
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(not ((#form_button_text = '') or (#form_button_text = 'loading')))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons",
+        "binding_condition": "none",
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text"
+      }
+    ]
+  },
+  "icon": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "8%x"
+    ],
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "$pressed_button_name": "button.form_button_click",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            "-300%"
+          ],
+          "controls": [
+            {
+              "image": {
+                "type": "image",
+                "anchor_to": "top_middle",
+                "anchor_from": "top_middle",
+                "layer": 5,
+                "size": [
+                  "400%y",
+                  "400%"
+                ],
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_name_override": "#texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_name_override": "#texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "back_button": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "8%x"
+    ],
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "size": [
+            "25%",
+            "75%"
+          ],
+          "anchor_from": "middle_left",
+          "anchor_to": "middle_left",
+          "offset": [
+            "-40%",
+            "25%"
+          ],
+          "controls": [
+            {
+              "arrow": {
+                "type": "image",
+                "size": [
+                  "50%",
+                  "100%x"
+                ],
+                "texture": "textures/ui/chevron_left",
+                "layer": 2
+              }
+            },
+            {
+              "hover": {
+                "type": "image",
+                "size": [
+                  "50%",
+                  "100%x"
+                ],
+                "texture": "textures/ui/chevron_left",
+                "layer": 2,
+                "color": "black"
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "accept_button": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "8%x"
+    ],
+    "controls": [
+      {
+        "form_button@common.button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$default_state|default": false,
+          "$hover_state|default": false,
+          "size": [
+            "25%",
+            "75%"
+          ],
+          "anchor_from": "middle_left",
+          "anchor_to": "middle_left",
+          "offset": [
+            0,
+            "200%"
+          ],
+          "controls": [
+            {
+              "button": {
+                "type": "image",
+                "size": [
+                  "100%",
+                  "100%"
+                ],
+                "texture": "textures/ui/pokemon/background_default",
+                "layer": 2,
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "font_type": "MinecraftTen",
+                      "localize": false,
+                      "text": "Start adventure !",
+                      "color": "white",
+                      "text_alignment": "center",
+                      "font_scale_factor": 1,
+                      "size": [
+                        "100%",
+                        "100%"
+                      ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [
+                        0,
+                        5
+                      ],
+                      "layer": 10000
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "hover": {
+                "type": "image",
+                "size": [
+                  "100%",
+                  "100%"
+                ],
+                "texture": "textures/ui/pokemon/background_hover",
+                "layer": 2,
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "font_type": "MinecraftTen",
+                      "localize": false,
+                      "text": "Start adventure !",
+                      "color": "white",
+                      "text_alignment": "center",
+                      "font_scale_factor": 1,
+                      "size": [
+                        "100%",
+                        "100%"
+                      ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "offset": [
+                        0,
+                        5
+                      ],
+                      "layer": 10000
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "select_button": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%c"
+    ],
+    "controls": [
+      {
+        "back_button@pokemon.back_button": {
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "image",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#texture = 'back')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "accept_button@pokemon.accept_button": {
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "image",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#texture = 'accept')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "pokemon_icon@pokemon.icon": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(#form_button_text = '§i§m§g')",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "picker_panel_grid": {
+    "type": "grid",
+    "size": [
+      "100%",
+      "100%c"
+    ],
+    "offset": [
+      0,
+      10
+    ],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "grid_item_template": "pokemon.button",
+    "grid_rescaling_type": "horizontal",
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_length",
+        "binding_name_override": "#maximum_grid_items"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - '§1') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "pokemon_panel_grid@pokemon.button_stack": {
+    "size": [
+      "98%",
+      "100%c"
+    ],
+    "$button": "pokemon.select_button"
+  },
+  "common_panel": {
+    "type": "panel",
+    "anchor_from": "middle",
+    "anchor_to": "middle",
+    "offset": [
+      0,
+      5
+    ],
+    "size": [
+      "100% - 5px",
+      "100%c"
+    ],
+    "controls": [
+      {
+        "picker_panel_grid@pokemon.picker_panel_grid": {}
+      },
+      {
+        "pokemon_panel_grid@pokemon.pokemon_panel_grid": {}
+      },
+      {
+        "pokemon_text@pokemon.pokemon_text": {}
+      }
+    ]
+  }
+}
