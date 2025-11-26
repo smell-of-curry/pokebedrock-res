@@ -1,28 +1,20 @@
-/**
- * Battle Wait HUD Element
- *
- * Displays a battle log overlay at the bottom of the screen with a red-tinted
- * transparent background. Shows battle text and subtitle information.
- */
-
 import {
   defineMain,
-  image,
-  label,
-  stackPanel,
-  phudVisibility,
-  phudRead,
-  viewBinding,
+  fromRGB,
   hudSubtitleBinding,
+  image,
+  boundLabel,
+  phudRead,
+  phudVisibility,
+  stackPanel,
+  viewBinding,
 } from "mcbe-ts-ui";
 
 // Battle log text label
-const battleLogText = label("text")
+const battleLogText = boundLabel("text")
   .anchor("top_middle")
-  .text("#text")
   .layer(1002)
-  .localize(true)
-  .fontSize("normal")
+  .localize()
   .textAlignment("center")
   .bindings(
     phudRead("#battleLog", "#log_text"),
@@ -30,49 +22,38 @@ const battleLogText = label("text")
   );
 
 // Menu extra panel - dark background for battle text
-const menuExtra = image("menu_extra")
-  .texture("textures/ui/battle/white_transparency")
-  .color([0.137, 0.125, 0.125])
+const menuExtra = image("menu_extra", "textures/ui/battle/white_transparency")
+  .color(fromRGB(35, 32, 32))
   .layer(2)
-  .keepRatio(true)
-  .fill(true)
+  .fill()
   .anchor("bottom_left")
-  .size("85%", "100%")
+  .size("85%")
   .controls(battleLogText);
 
 // Info label - displays subtitle text
-const infoLabel = label("info_label")
-  .localize(false)
-  .text("#text")
+const infoLabel = boundLabel("info_label")
   .color("default")
   .alpha(1)
   .textAlignment("center")
-  .fontScaleFactor(1)
-  .anchor("center")
-  .size("fill", "100%")
+  .size("fill")
   .layer(3)
-  .shadow(false)
   .bindings(hudSubtitleBinding());
 
 // Main holder stack panel
-const mainHolder = stackPanel("main_holder")
-  .horizontal()
-  .size("100%", "95%")
+const mainHolder = stackPanel("main_holder", "horizontal")
+  .size("default", "95%")
   .anchor("bottom_left")
   .controls(menuExtra, infoLabel);
 
 // Main battle wait container
 export default defineMain(
   "phud_battleWait",
-  image("main")
-    .texture("textures/ui/battle/white_transparency")
-    .color([0.749, 0.168, 0.211])
+  image("main", "textures/ui/battle/white_transparency")
+    .color(fromRGB(191, 43, 54))
     .layer(1000)
-    .keepRatio(true)
-    .fill(true)
+    .fill()
     .anchor("bottom_left")
-    .size("100%", "30%")
+    .size("default", "30%")
     .controls(mainHolder)
-    .bindings(...phudVisibility("#battleLog")),
-  { subdir: "phud" }
+    .bindings(...phudVisibility("#battleLog"))
 );
