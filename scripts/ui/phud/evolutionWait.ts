@@ -5,8 +5,7 @@
  * Shows text centered within the evolution box texture.
  */
 
-import { defineMain, image, label } from "mcbe-ts-ui";
-import { phudVisibility, phudRead } from "./_helpers";
+import { defineMain, image, label, phudVisibility, phudRead } from "mcbe-ts-ui";
 
 // Evolution text label
 const evolutionText = label("text")
@@ -34,4 +33,3 @@ export default defineMain(
     .bindings(...phudVisibility("#evolutionWait")),
   { subdir: "phud" }
 );
-

@@ -1,37 +1,36 @@
 /**
  * PC Storage UI
  *
- * Pokemon PC box storage interface with:
- * - Left content box (information panel)
- * - Center grid for box storage (6x6 slots)
- * - Right content with pokemon icon and action buttons
- * - Navigation arrows for box switching
+ * Pokemon PC box storage interface with navigation and action buttons.
  */
 
-import { defineUI, image, label, panel, stackPanel } from "mcbe-ts-ui";
-import { skip, first, strip, contains } from "../phud/_string_parser";
+import {
+  defineUI,
+  stackPanel,
+  collectionBinding,
+  viewBinding,
+  factoryBindings,
+  buttonFlagVisibility,
+  globalBinding,
+} from "mcbe-ts-ui";
+import { skip, first, strip, type Binding } from "mcbe-ts-ui";
+
+// Visibility binding helper for button ID
+const visibilityForId = (id: string): Binding[] =>
+  buttonFlagVisibility(id, "form_buttons");
 
 export default defineUI("pc", (ns) => {
   // Button stack factory
-  ns.addRaw("button_stack", {
-    type: "stack_panel",
-    size: ["100%", "100%c"],
-    orientation: "vertical",
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    "$button|default": "default_form.button",
-    factory: {
-      name: "buttons",
-      control_name: "$button",
-    },
-    collection_name: "form_buttons",
-    bindings: [
-      {
-        binding_name: "#form_button_length",
-        binding_name_override: "#collection_length",
-      },
-    ],
-  });
+  ns.add(
+    stackPanel("button_stack")
+      .size("100%", "100%c")
+      .vertical()
+      .anchor("top_left")
+      .rawProp("$button|default", "default_form.button")
+      .rawProp("factory", { name: "buttons", control_name: "$button" })
+      .rawProp("collection_name", "form_buttons")
+      .bindings(...factoryBindings())
+  );
 
   // Base button template
   ns.addRaw("button", {
@@ -58,19 +57,8 @@ export default defineUI("pc", (ns) => {
               binding_type: "collection_details",
               binding_collection_name: "form_buttons",
             },
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: "((%.1s * #form_button_text) = 't')",
-              target_property_name: "#enabled",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding("((%.1s * #form_button_text) = 't')", "#enabled"),
           ],
         },
       },
@@ -87,19 +75,8 @@ export default defineUI("pc", (ns) => {
           text_alignment: "$text_alignment",
           color: "white",
           bindings: [
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: strip(skip(25, "#form_button_text")),
-              target_property_name: "#text",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding(strip(skip(25, "#form_button_text")), "#text"),
           ],
         },
       },
@@ -110,25 +87,23 @@ export default defineUI("pc", (ns) => {
           offset: "$image_offset",
           layer: 11,
           bindings: [
-            {
-              binding_name: "#form_button_texture",
-              binding_name_override: "#texture",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#form_button_texture_file_system",
-              binding_name_override: "#texture_file_system",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
+            collectionBinding(
+              "#form_button_texture",
+              "form_buttons",
+              "#texture"
+            ),
+            collectionBinding(
+              "#form_button_texture_file_system",
+              "form_buttons",
+              "#texture_file_system"
+            ),
           ],
         },
       },
     ],
   });
 
-  // Left arrow button
+  // Button variants
   ns.addRaw("left_arrow_button@pc.button", {
     $default_button_texture: "textures/ui/pc/left_arrow",
     $hover_button_texture: "textures/ui/pc/left_arrow_hover",
@@ -136,23 +111,9 @@ export default defineUI("pc", (ns) => {
     $locked_button_texture: "textures/ui/pc/left_arrow_disabled",
     $button_image_fill: false,
     $border_visible: false,
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "btn:left_arrow"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("btn:left_arrow"),
   });
 
-  // Right arrow button
   ns.addRaw("right_arrow_button@pc.button", {
     $default_button_texture: "textures/ui/pc/right_arrow",
     $hover_button_texture: "textures/ui/pc/right_arrow_hover",
@@ -160,280 +121,228 @@ export default defineUI("pc", (ns) => {
     $locked_button_texture: "textures/ui/pc/right_arrow_disabled",
     $button_image_fill: false,
     $border_visible: false,
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "btn:right_arrow"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("btn:right_arrow"),
   });
 
-  // Icon button
   ns.addRaw("icon_button@pc.button", {
     $default_button_texture: "textures/ui/pc/icon_box",
     $hover_button_texture: "textures/ui/pc/icon_box",
     $pressed_button_texture: "textures/ui/pc/icon_box",
     $locked_button_texture: "textures/ui/pc/icon_box",
-    $image_size: ["100%", "100%"],
-    $button_image_fill: true,
+    $image_size: [54, 54],
+    $image_offset: [0, -7],
+    $button_image_fill: false,
     $border_visible: false,
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "btn:icon"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("btn:icon"),
   });
 
-  // Action button
   ns.addRaw("action_button@pc.button", {
     $default_button_texture: "textures/ui/pc/action_button",
     $hover_button_texture: "textures/ui/pc/action_button_hover",
     $pressed_button_texture: "textures/ui/pc/action_button",
-    $locked_button_texture: "textures/ui/pc/action_button_disabled",
+    $locked_button_texture: "textures/ui/pc/action_button",
+    $text_offset: [0, -3],
     $button_image_fill: false,
     $border_visible: false,
-    $text_alignment: "center",
-    $text_font_scale_factor: 0.8,
-    $text_offset: ["0px", "5px"],
-    bindings: [
+    bindings: visibilityForId("btn:action"),
+  });
+
+  // Main PC layout
+  ns.addRaw("main", {
+    type: "stack_panel",
+    orientation: "horizontal",
+    size: ["100%", "100%"],
+    offset: ["25%", "25%"],
+    anchor_from: "center",
+    anchor_to: "center",
+    controls: [
+      // Left content box (info panel)
       {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
+        left_content_box: {
+          type: "image",
+          size: [73, 115],
+          texture: "textures/ui/pc/content_box",
+          controls: [
+            {
+              "close_button@common.light_close_button": {
+                $close_button_offset: [3, -3],
+              },
+            },
+            {
+              content_stack: {
+                type: "stack_panel",
+                orientation: "vertical",
+                size: ["100%", "100%"],
+                offset: [5, 4],
+                controls: [
+                  {
+                    header_text: {
+                      type: "label",
+                      size: [64, 8],
+                      font_scale_factor: 0.7,
+                      color: "white",
+                      offset: [3, 0],
+                      anchor_from: "top_left",
+                      anchor_to: "top_left",
+                      text: "#text",
+                      text_alignment: "center",
+                      bindings: [
+                        globalBinding("#form_text"),
+                        viewBinding(strip(first(40, "#form_text")), "#text"),
+                      ],
+                    },
+                  },
+                  {
+                    body_text: {
+                      type: "label",
+                      size: [64, 95],
+                      font_scale_factor: 0.6,
+                      color: "white",
+                      anchor_from: "top_left",
+                      anchor_to: "top_left",
+                      text: "#text",
+                      bindings: [
+                        globalBinding("#form_text"),
+                        viewBinding(strip(skip(40, "#form_text")), "#text"),
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
+      { spacer1: { type: "panel", size: [2, "100%"] } },
+      // Center grid
       {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "btn:action_button"),
-        target_property_name: "#visible",
+        center_grid: {
+          type: "stack_panel",
+          orientation: "vertical",
+          size: [116, "100%c"],
+          controls: [
+            {
+              title_box: {
+                type: "image",
+                size: ["100%", 17],
+                texture: "textures/ui/pc/title_box",
+                controls: [
+                  {
+                    box_details: {
+                      type: "stack_panel",
+                      orientation: "horizontal",
+                      size: ["100%", "100%"],
+                      controls: [
+                        {
+                          start_padding: { type: "panel", size: [5, "100%"] },
+                        },
+                        {
+                          "left_button@pc.button_stack": {
+                            size: [11, "100%"],
+                            layer: 3,
+                            anchor_from: "center",
+                            anchor_to: "center",
+                            $button: "pc.left_arrow_button",
+                          },
+                        },
+                        {
+                          title: {
+                            type: "panel",
+                            size: [84, "100%"],
+                            offset: [0, 7],
+                            layer: 3,
+                            controls: [
+                              {
+                                text: {
+                                  type: "label",
+                                  text: "#title_text",
+                                  text_alignment: "center",
+                                  font_scale_factor: 0.95,
+                                },
+                              },
+                            ],
+                          },
+                        },
+                        {
+                          "right_button@pc.button_stack": {
+                            size: [11, "100%"],
+                            layer: 3,
+                            anchor_from: "center",
+                            anchor_to: "center",
+                            $button: "pc.right_arrow_button",
+                          },
+                        },
+                        { end_padding: { type: "panel", size: [5, "100%"] } },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+            { spacer1: { type: "panel", size: ["100%", 1] } },
+            {
+              container_slots: {
+                type: "image",
+                size: ["100%", 105],
+                texture: "textures/ui/pc/container_slots",
+                controls: [
+                  {
+                    small_chest_grid: {
+                      type: "grid",
+                      grid_dimensions: [6, 6],
+                      size: [108, 118],
+                      offset: [5, 5],
+                      anchor_from: "top_left",
+                      anchor_to: "top_left",
+                      grid_item_template: "chest_ui.chest_item",
+                      collection_name: "form_buttons",
+                      layer: 1,
+                    },
+                  },
+                ],
+              },
+            },
+            { spacer2: { type: "panel", size: ["100%", 1.5] } },
+            {
+              party_slots: {
+                type: "image",
+                size: ["100%", 26],
+                texture: "textures/ui/pc/party_slots",
+              },
+            },
+          ],
+        },
+      },
+      { spacer2: { type: "panel", size: [1, "100%"] } },
+      // Right content (icon and action)
+      {
+        right_content: {
+          type: "stack_panel",
+          orientation: "vertical",
+          size: [71, "100%c"],
+          controls: [
+            {
+              "icon_box@pc.button_stack": {
+                size: ["100%", 70],
+                layer: 3,
+                anchor_from: "center",
+                anchor_to: "center",
+                $button: "pc.icon_button",
+              },
+            },
+            { spacer: { type: "panel", size: ["100%", 0.5] } },
+            {
+              "action_button@pc.button_stack": {
+                size: ["100%", 18],
+                layer: 3,
+                anchor_from: "center",
+                anchor_to: "center",
+                $button: "pc.action_button",
+              },
+            },
+          ],
+        },
       },
     ],
   });
-
-  // Main PC UI
-  ns.add(
-    stackPanel("main")
-      .horizontal()
-      .fullSize()
-      .offset("25%", "25%")
-      .anchor("center")
-      .controls(
-        // Left content box
-        {
-          left_content_box: {
-            type: "image",
-            size: [73, 115],
-            texture: "textures/ui/pc/content_box",
-            controls: [
-              {
-                "close_button@common.light_close_button": {
-                  $close_button_offset: [3, -3],
-                },
-              },
-              {
-                content_stack: {
-                  type: "stack_panel",
-                  orientation: "vertical",
-                  size: ["100%", "100%"],
-                  offset: [5, 4],
-                  controls: [
-                    {
-                      header_text: {
-                        type: "label",
-                        size: [64, 8],
-                        font_scale_factor: 0.7,
-                        color: "white",
-                        offset: [3, 0],
-                        anchor_from: "top_left",
-                        anchor_to: "top_left",
-                        text: "#text",
-                        text_alignment: "center",
-                        bindings: [
-                          { binding_type: "global", binding_name: "#form_text" },
-                          {
-                            binding_name: "#null",
-                            binding_type: "view",
-                            source_property_name: strip(first(40, "#form_text")),
-                            target_property_name: "#text",
-                          },
-                        ],
-                      },
-                    },
-                    {
-                      body_text: {
-                        type: "label",
-                        size: [64, 95],
-                        font_scale_factor: 0.6,
-                        color: "white",
-                        anchor_from: "top_left",
-                        anchor_to: "top_left",
-                        text: "#text",
-                        bindings: [
-                          { binding_type: "global", binding_name: "#form_text" },
-                          {
-                            binding_name: "#null",
-                            binding_type: "view",
-                            source_property_name: strip(skip(40, "#form_text")),
-                            target_property_name: "#text",
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
-        // Spacer
-        { spacer1: { type: "panel", size: [2, "100%"] } },
-        // Center grid area
-        {
-          center_grid: {
-            type: "stack_panel",
-            orientation: "vertical",
-            size: [116, "100%c"],
-            controls: [
-              {
-                title_box: {
-                  type: "image",
-                  size: ["100%", 17],
-                  texture: "textures/ui/pc/title_box",
-                  controls: [
-                    {
-                      box_details: {
-                        type: "stack_panel",
-                        orientation: "horizontal",
-                        size: ["100%", "100%"],
-                        controls: [
-                          { start_padding: { type: "panel", size: [5, "100%"] } },
-                          {
-                            "left_button@pc.button_stack": {
-                              size: [11, "100%"],
-                              layer: 3,
-                              anchor_from: "center",
-                              anchor_to: "center",
-                              $button: "pc.left_arrow_button",
-                            },
-                          },
-                          {
-                            title: {
-                              type: "panel",
-                              size: [84, "100%"],
-                              offset: [0, 7],
-                              layer: 3,
-                              controls: [
-                                {
-                                  text: {
-                                    type: "label",
-                                    text: "#title_text",
-                                    text_alignment: "center",
-                                    font_scale_factor: 0.95,
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                          {
-                            "right_button@pc.button_stack": {
-                              size: [11, "100%"],
-                              layer: 3,
-                              anchor_from: "center",
-                              anchor_to: "center",
-                              $button: "pc.right_arrow_button",
-                            },
-                          },
-                          { end_padding: { type: "panel", size: [5, "100%"] } },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-              { spacer1: { type: "panel", size: ["100%", 1] } },
-              {
-                container_slots: {
-                  type: "image",
-                  size: ["100%", 105],
-                  texture: "textures/ui/pc/container_slots",
-                  controls: [
-                    {
-                      small_chest_grid: {
-                        type: "grid",
-                        grid_dimensions: [6, 6],
-                        size: [108, 118],
-                        offset: [5, 5],
-                        anchor_from: "top_left",
-                        anchor_to: "top_left",
-                        grid_item_template: "chest_ui.chest_item",
-                        collection_name: "form_buttons",
-                        layer: 1,
-                      },
-                    },
-                  ],
-                },
-              },
-              { spacer2: { type: "panel", size: ["100%", 1.5] } },
-              {
-                party_slots: {
-                  type: "image",
-                  size: ["100%", 26],
-                  texture: "textures/ui/pc/party_slots",
-                },
-              },
-            ],
-          },
-        },
-        // Spacer
-        { spacer2: { type: "panel", size: [1, "100%"] } },
-        // Right content
-        {
-          right_content: {
-            type: "stack_panel",
-            orientation: "vertical",
-            size: [71, "100%c"],
-            controls: [
-              {
-                "icon_box@pc.button_stack": {
-                  size: ["100%", 70],
-                  layer: 3,
-                  anchor_from: "center",
-                  anchor_to: "center",
-                  $button: "pc.icon_button",
-                },
-              },
-              { spacer: { type: "panel", size: ["100%", 0.5] } },
-              {
-                "action_button@pc.button_stack": {
-                  size: ["100%", 18],
-                  layer: 3,
-                  anchor_from: "center",
-                  anchor_to: "center",
-                  $button: "pc.action_button",
-                },
-              },
-            ],
-          },
-        }
-      )
-  );
 });
-

@@ -1,11 +1,11 @@
 ## PHUD Helpers
 
-Located in `./phud/_helpers.ts`:
+All helpers are now imported directly from `mcbe-ts-ui`:
 
 ### Visibility Bindings
 
 ```typescript
-import { phudVisibility, phudText } from "./_helpers";
+import { phudVisibility, phudText } from "mcbe-ts-ui";
 
 // Standard PHUD visibility pattern (fetch + show if not empty)
 panel("main").bindings(...phudVisibility("#fake_actionbar"));
@@ -32,7 +32,7 @@ import {
   prefix,
   notEmpty,
   contains,
-} from "./_helpers";
+} from "mcbe-ts-ui";
 
 // Get first 80 characters
 first(80, "#prop"); // "%.80s * #prop"
@@ -54,4 +54,31 @@ skipStripped(80, "#prop"); // After 80 chars, strip underscore
 prefix(4, "#text", "cht:"); // Check if starts with "cht:"
 notEmpty("#prop"); // "(not (#prop = ''))"
 contains("#text", "search"); // Check if contains substring
+```
+
+### Binding Helpers
+
+```typescript
+import {
+  collectionBinding,
+  viewBinding,
+  globalBinding,
+  factoryBindings,
+  buttonFlagVisibility,
+} from "mcbe-ts-ui";
+
+// Collection binding for form buttons
+collectionBinding("#form_button_text");
+
+// View binding for computed properties
+viewBinding("(#health > 0)", "#visible");
+
+// Global binding
+globalBinding("#form_text", "#text");
+
+// Factory bindings
+factoryBindings();
+
+// Button visibility by flag
+buttonFlagVisibility("btn:search", "form_buttons");
 ```

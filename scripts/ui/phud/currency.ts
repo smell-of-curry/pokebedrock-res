@@ -5,9 +5,17 @@
  * The format is: [first 80 chars = quest]_[rest = currency]
  */
 
-import { defineMain, image, label, panel, stackPanel } from "mcbe-ts-ui";
-import { phudVisibility, phudRead } from "./_helpers";
-import { firstStripped, skipStripped } from "./_string_parser";
+import {
+  defineMain,
+  image,
+  label,
+  panel,
+  stackPanel,
+  phudVisibility,
+  phudRead,
+  firstStripped,
+  skipStripped,
+} from "mcbe-ts-ui";
 
 // Quest label - displays first 80 characters (quest info)
 const questLabel = label("quest_label")

@@ -5,8 +5,14 @@
  * Shows loading text centered on screen.
  */
 
-import { defineMain, label, panel } from "mcbe-ts-ui";
-import { phudVisibility, phudRead } from "./_helpers";
+import {
+  defineMain,
+  label,
+  panel,
+  phudVisibility,
+  phudRead,
+  viewBinding,
+} from "mcbe-ts-ui";
 
 // Loading screen text label
 const loadingText = label("text")
@@ -18,15 +24,11 @@ const loadingText = label("text")
   .textAlignment("center")
   .bindings(
     phudRead("#loadingScreen", "#loadingScreenText"),
-    {
-      binding_name: "#null",
-      binding_type: "view",
-      source_property_name: "(#loadingScreenText)",
-      target_property_name: "#text",
-    }
+    viewBinding("(#loadingScreenText)", "#text")
   );
 
-// Main loading screen container - extends common.dirt_background
+// Main loading screen container - tiled background
+// Raw properties needed for tiled image which isn't supported by panel builder
 export default defineMain(
   "phud_loadingScreen",
   panel("main")
@@ -40,4 +42,3 @@ export default defineMain(
     .bindings(...phudVisibility("#loadingScreen")),
   { subdir: "phud" }
 );
-

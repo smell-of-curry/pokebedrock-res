@@ -7,116 +7,109 @@
  * - Loop: Jeb-style animated loop for special states
  */
 
-import { defineUI, image, panel } from "mcbe-ts-ui";
-import { prefix } from "./_string_parser";
+import {
+  defineUI,
+  image,
+  panel,
+  prefix,
+  phudPhoneBinding,
+  conditionalBindings,
+  animation,
+  animRef,
+} from "mcbe-ts-ui";
 
 export default defineUI(
   "phud_phone",
   (ns) => {
-    // Abstract base for phone conditional elements
+    // =========================================================================
+    // Animation Definitions
+    // =========================================================================
+
+    // Ringing animation - 11 frame flip book
+    ns.addAnimation(
+      animation("anim__ringing")
+        .flipBook()
+        .initialUV(0, 0)
+        .frameCount(11)
+        .fps(11)
+        .frameStep(64)
+    );
+
+    // Active animation - 4 frame flip book
+    ns.addAnimation(
+      animation("anim__active")
+        .flipBook()
+        .initialUV(0, 0)
+        .frameCount(4)
+        .fps(4)
+        .frameStep(64)
+    );
+
+    // Jeb start flip book animation
+    ns.addAnimation(
+      animation("anim__jeb_start_flipbook")
+        .flipBook()
+        .initialUV(0, 0)
+        .frameCount(12)
+        .fps(12)
+        .frameStep(64)
+    );
+
+    // Jeb start destroy animation - waits then destroys the "start" element
+    ns.addAnimation(
+      animation("anim__jeb_start_destroy").wait(0.97).destroyAtEnd("start")
+    );
+
+    // Jeb loop flip book animation
+    ns.addAnimation(
+      animation("anim__jeb_loop_flipbook")
+        .flipBook()
+        .initialUV(0, 0)
+        .frameCount(8)
+        .fps(12)
+        .frameStep(64)
+    );
+
+    // Jeb loop show animation - waits then triggers next animation
+    ns.addAnimation(
+      animation("anim__jeb_loop_show__0")
+        .wait(0.97)
+        .next(animRef("phud_phone", "anim__jeb_loop_show__1"))
+    );
+
+    // Jeb loop show animation - final alpha set
+    ns.addAnimation(
+      animation("anim__jeb_loop_show__1").alpha(1, 1).duration(0)
+    );
+
+    // =========================================================================
+    // Abstract Base Element
+    // =========================================================================
+
+    // Abstract base for phone conditional elements - reused by multiple elements
     const abstractPhoneConditional = image("abstract_phone_conditional")
       .fullSize()
-      .bindings(
-        {
-          binding_name: "#null",
-          binding_type: "view",
-          source_control_name: "elements",
-          source_property_name: "#phone",
-          target_property_name: "#value",
-        },
-        {
-          binding_name: "#null",
-          binding_type: "view",
-          source_property_name: "$condition",
-          target_property_name: "#visible",
-        },
-        {
-          binding_name: "#null",
-          binding_type: "view",
-          source_property_name: "$condition",
-          target_property_name: "#enabled",
-        }
-      );
+      .bindings(phudPhoneBinding("#value"), ...conditionalBindings());
+    ns.add(abstractPhoneConditional);
 
-    // Ringing animation - flip-book
-    ns.addRaw("anim__ringing", {
-      anim_type: "flip_book",
-      initial_uv: [0, 0],
-      frame_count: 11,
-      fps: 11,
-      frame_step: 64,
-    });
+    // =========================================================================
+    // Icon Templates
+    // =========================================================================
 
-    // Active animation - flip-book
-    ns.addRaw("anim__active", {
-      anim_type: "flip_book",
-      initial_uv: [0, 0],
-      frame_count: 4,
-      fps: 4,
-      frame_step: 64,
-    });
-
-    // Jeb start animation - flip-book
-    ns.addRaw("anim__jeb_start_flipbook", {
-      anim_type: "flip_book",
-      initial_uv: [0, 0],
-      frame_count: 12,
-      fps: 12,
-      frame_step: 64,
-    });
-
-    // Jeb start destroy animation
-    ns.addRaw("anim__jeb_start_destroy", {
-      anim_type: "wait",
-      duration: 0.97,
-      destroy_at_end: "start",
-    });
-
-    // Jeb loop animation - flip-book
-    ns.addRaw("anim__jeb_loop_flipbook", {
-      anim_type: "flip_book",
-      initial_uv: [0, 0],
-      frame_count: 8,
-      fps: 12,
-      frame_step: 64,
-    });
-
-    // Jeb loop show animations
-    ns.addRaw("anim__jeb_loop_show__0", {
-      anim_type: "wait",
-      duration: 0.97,
-      next: "@phud_phone.anim__jeb_loop_show__1",
-    });
-
-    ns.addRaw("anim__jeb_loop_show__1", {
-      anim_type: "alpha",
-      duration: 0,
-      from: 1,
-      to: 1,
-    });
-
-    // Icon template - conditional phone icon
+    // Icon template extending abstract base (raw needed for dynamic texture expression)
     ns.addRaw("icon@abstract_phone_conditional", {
       texture: "('textures/ui/phud/' + $name)",
     });
 
-    // Jeb icon - special animated icon
+    // Jeb icon template (raw needed for dynamic texture expression)
     ns.addRaw("jeb_icon", {
       type: "image",
       texture: "('textures/ui/phud/maple_' + $name))",
       uv_size: [64, 64],
-      bindings: [
-        {
-          binding_name: "#null",
-          binding_type: "view",
-          source_control_name: "elements",
-          source_property_name: "#phone",
-          target_property_name: "#value",
-        },
-      ],
+      bindings: [phudPhoneBinding("#value")],
     });
 
-    // Jeb icon wrapper - contains start and loop animations
+    // Jeb icon wrapper extending abstract base
     ns.addRaw("jeb_icon_wrapper@abstract_phone_conditional", {
       type: "panel",
       size: ["100%", "100%"],
@@ -124,15 +117,15 @@ export default defineUI(
       controls: [
         {
           "start@jeb_icon": {
-            uv: "@phud_phone.anim__jeb_start_flipbook",
-            anims: ["@phud_phone.anim__jeb_start_destroy"],
+            uv: animRef("phud_phone", "anim__jeb_start_flipbook"),
+            anims: [animRef("phud_phone", "anim__jeb_start_destroy")],
             $name: "start",
           },
         },
         {
           "loop@jeb_icon": {
-            uv: "@phud_phone.anim__jeb_loop_flipbook",
-            anims: ["@phud_phone.anim__jeb_loop_show__0"],
+            uv: animRef("phud_phone", "anim__jeb_loop_flipbook"),
+            anims: [animRef("phud_phone", "anim__jeb_loop_show__0")],
             alpha: 0,
             $name: "loop",
           },
@@ -148,7 +141,7 @@ export default defineUI(
           "ringing@icon": {
             $condition: "(#value = 'ring')",
             $name: "ringing",
-            uv: "@phud_phone.anim__ringing",
+            uv: animRef("phud_phone", "anim__ringing"),
             uv_size: [64, 64],
           },
         },
@@ -160,21 +153,26 @@ export default defineUI(
         },
         { "jeb_icon_wrapper@jeb_icon_wrapper": {} }
       );
+    ns.add(icons);
 
-    // Phone background - visible for ring/standby states
+    // =========================================================================
+    // Background Templates
+    // =========================================================================
+
+    // Phone background extending abstract base
     ns.addRaw("phone_background@abstract_phone_conditional", {
       texture: "textures/ui/phud/box_small",
       $condition: "((#value = 'ring') or (#value = 'standby')",
     });
 
-    // Jeb background - visible for loop states with fade-in
+    // Jeb background extending abstract base
     ns.addRaw("jeb_background@abstract_phone_conditional", {
       type: "image",
       $condition: prefix(4, "#value", "loop"),
       size: ["100%", "100%"],
       texture: "textures/ui/phud/box_wide",
       alpha: 0,
-      anims: ["@phud_phone.anim__jeb_loop_show__0"],
+      anims: [animRef("phud_phone", "anim__jeb_loop_show__0")],
     });
 
     // Backgrounds panel
@@ -182,19 +180,19 @@ export default defineUI(
       { "phone@phone_background": {} },
       { "jeb_background@jeb_background": {} }
     );
-
-    // Add the abstract base
-    ns.add(abstractPhoneConditional);
-
-    // Add icons panel
-    ns.add(icons);
-
-    // Add backgrounds panel
     ns.add(backgrounds);
 
+    // =========================================================================
+    // Main Panel
+    // =========================================================================
+
     // Main panel containing icons and backgrounds
-    ns.add(panel("main").controls({ "icons@icons": {} }, { "backgrounds@backgrounds": {} }));
+    ns.add(
+      panel("main").controls(
+        { "icons@icons": {} },
+        { "backgrounds@backgrounds": {} }
+      )
+    );
   },
   { subdir: "phud" }
 );
-
