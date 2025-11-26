@@ -1,20 +1,10 @@
 /**
  * Chest Server Form UI
  *
- * Custom chest-like form interfaces with multiple layout variants:
- * - Inventory chest grid (4 rows)
- * - Single chest grid (5 rows)
- * - Tiny chest grid (1 row)
- * - Small chest grid (8 rows)
- * - Large chest grid (6 rows)
- * - Quest chest grids
- * - Pokebuilder grids
- * - Backpack grid
- * - Auction house grid
+ * Custom chest-like form interfaces with multiple layout variants.
  */
 
-import { defineUI, panel } from "mcbe-ts-ui";
-import { contains } from "./phud/_string_parser";
+import { defineUI, image, panel, stackPanel, contains } from "mcbe-ts-ui";
 
 // Flag constants for chest type detection
 const FLAGS = {
@@ -31,12 +21,48 @@ const FLAGS = {
   auctionHouse: "§c§h§e§s§t§a§u§c§t§i§o§n",
 } as const;
 
+// Texture bindings for item renderer
+const textureBindings = [
+  {
+    binding_name: "#form_button_texture",
+    binding_type: "collection",
+    binding_collection_name: "form_buttons",
+  },
+  {
+    binding_type: "view",
+    source_property_name:
+      "(not (('%.8s' * #form_button_texture) = 'textures'))",
+    target_property_name: "#visible",
+  },
+  {
+    binding_type: "view",
+    source_property_name:
+      "(not ((#form_button_texture = '') or (#form_button_texture = 'loading')))",
+    target_property_name: "#visible",
+  },
+  {
+    binding_type: "view",
+    source_property_name: "(#form_button_texture * 1)",
+    target_property_name: "#item_id_aux",
+  },
+];
+
+// Helper to create visibility bindings for chest type
+const chestVisibilityBindings = (flag: string) => [
+  { binding_name: "#title_text" },
+  {
+    binding_name: "#null",
+    binding_type: "view" as const,
+    source_property_name: contains("#title_text", flag),
+    target_property_name: "#visible",
+  },
+];
+
 export default defineUI("chest_ui", (ns) => {
-  // Chest label template
+  // Chest label
   ns.addRaw("chest_label", {
     type: "label",
-    "$offset|default": [7, 10],
-    offset: "$offset",
+    offset: [7, 10],
     anchor_from: "top_left",
     anchor_to: "top_left",
     text: "#title_text",
@@ -44,6 +70,43 @@ export default defineUI("chest_ui", (ns) => {
     color: "$title_text_color",
     layer: 2,
   });
+
+  // Inventory text
+  ns.addRaw("inventory_text", {
+    type: "label",
+    anchor_from: "top_left",
+    anchor_to: "top_left",
+    offset: [7, "$y_offset"],
+    size: ["90%", "default"],
+    layer: 2,
+    color: "$title_text_color",
+    text: "container.inventory",
+  });
+
+  // Non-renderer item (texture-based)
+  ns.add(
+    image("non_renderer_item").size(16, 16).bindings(
+      {
+        binding_name: "#form_button_texture",
+        binding_name_override: "#texture",
+        binding_type: "collection",
+        binding_collection_name: "form_buttons",
+      },
+      {
+        binding_name: "#null",
+        binding_type: "view",
+        source_property_name:
+          "(not ((#texture = '') or (#texture = 'loading')))",
+        target_property_name: "#visible",
+      },
+      {
+        binding_name: "#null",
+        binding_type: "view",
+        source_property_name: "(('%.8s' * #texture) = 'textures')",
+        target_property_name: "#visible",
+      }
+    )
+  );
 
   // Inventory button amount display
   ns.addRaw("inventory_button_amount", {
@@ -98,33 +161,6 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // Non-renderer item (texture-based items)
-  ns.addRaw("non_renderer_item", {
-    type: "image",
-    size: [16, 16],
-    bindings: [
-      {
-        binding_name: "#form_button_texture",
-        binding_name_override: "#texture",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name:
-          "(not ((#texture = '') or (#texture = 'loading')))",
-        target_property_name: "#visible",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.8s' * #texture) = 'textures')",
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
   // Default control state
   ns.addRaw("default_control", {
     type: "panel",
@@ -138,15 +174,11 @@ export default defineUI("chest_ui", (ns) => {
           bindings: "$texture_bindings",
         },
       },
-      {
-        "non_renderer_item@chest_ui.non_renderer_item": {
-          offset: "$offset",
-        },
-      },
+      { "non_renderer_item@chest_ui.non_renderer_item": { offset: "$offset" } },
     ],
   });
 
-  // Hover control state with tooltip
+  // Hover control with tooltip
   ns.addRaw("hover_control", {
     type: "panel",
     size: ["100%c", "100%c"],
@@ -192,11 +224,7 @@ export default defineUI("chest_ui", (ns) => {
                 offset: [1, 1],
               },
             },
-            {
-              "non_renderer_item@chest_ui.non_renderer_item": {
-                layer: 3,
-              },
-            },
+            { "non_renderer_item@chest_ui.non_renderer_item": { layer: 3 } },
             {
               highlight_slot: {
                 type: "image",
@@ -219,7 +247,7 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // Pressed control state
+  // Pressed control
   ns.addRaw("pressed_control", {
     type: "panel",
     size: ["100%c", "100%c"],
@@ -231,39 +259,9 @@ export default defineUI("chest_ui", (ns) => {
           bindings: "$texture_bindings",
         },
       },
-      {
-        "non_renderer_item@chest_ui.non_renderer_item": {
-          offset: "$offset",
-        },
-      },
+      { "non_renderer_item@chest_ui.non_renderer_item": { offset: "$offset" } },
     ],
   });
-
-  // Texture bindings for item renderer
-  const textureBindings = [
-    {
-      binding_name: "#form_button_texture",
-      binding_type: "collection",
-      binding_collection_name: "form_buttons",
-    },
-    {
-      binding_type: "view",
-      source_property_name:
-        "(not (('%.8s' * #form_button_texture) = 'textures'))",
-      target_property_name: "#visible",
-    },
-    {
-      binding_type: "view",
-      source_property_name:
-        "(not ((#form_button_texture = '') or (#form_button_texture = 'loading')))",
-      target_property_name: "#visible",
-    },
-    {
-      binding_type: "view",
-      source_property_name: "(#form_button_texture * 1)",
-      target_property_name: "#item_id_aux",
-    },
-  ];
 
   // Inventory button base
   ns.addRaw("inventory_button@common.button", {
@@ -281,7 +279,7 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // UI chest item button
+  // UI item buttons with visibility filters
   ns.addRaw("ui_chest_item@chest_ui.inventory_button", {
     $offset: [0, 0],
     bindings: [
@@ -310,7 +308,6 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // UI inventory item button
   ns.addRaw("ui_inventory_item@chest_ui.inventory_button", {
     $offset: [0, 8],
     bindings: [
@@ -339,7 +336,6 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // UI hotbar item button
   ns.addRaw("ui_hot_bar_item@chest_ui.inventory_button", {
     $offset: [0, 8],
     bindings: [
@@ -368,39 +364,27 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // Chest item (stack panel containing all item types)
-  ns.addRaw("chest_item", {
-    type: "stack_panel",
-    "$item_size|default": [16, 16],
-    size: "$item_size",
-    layer: 2,
-    controls: [
-      { "chest_item@chest_ui.ui_chest_item": {} },
-      { "inventory_item@chest_ui.ui_inventory_item": {} },
-      { "hot_bar_item@chest_ui.ui_hot_bar_item": {} },
-    ],
-  });
-
-  // Helper function to create visibility bindings for chest type
-  const chestVisibilityBindings = (flag: string) => [
-    { binding_name: "#title_text" },
-    {
-      binding_name: "#null",
-      binding_type: "view",
-      source_property_name: contains("#title_text", flag),
-      target_property_name: "#visible",
-    },
-  ];
+  // Chest item stack panel
+  ns.add(
+    stackPanel("chest_item")
+      .rawProp("$item_size|default", [16, 16])
+      .rawProp("size", "$item_size")
+      .layer(2)
+      .controls(
+        { "chest_item@chest_ui.ui_chest_item": {} },
+        { "inventory_item@chest_ui.ui_inventory_item": {} },
+        { "hot_bar_item@chest_ui.ui_hot_bar_item": {} }
+      )
+  );
 
   // Inventory chest grid (4 rows)
   ns.addRaw("inventory_chest_grid_image", {
     type: "image",
     size: [176, 96],
     texture: "textures/ui/gui/inventory",
-    $single_chest_flag: FLAGS.inventoryChest,
     layer: 0,
     controls: [
-      { "title_label@chest_ui.chest_label": { $offset: [7, 5] } },
+      { "chest_label@chest_ui.chest_label": { offset: [7, 5] } },
       { "close_button@common.close_button": { $close_button_offset: [-2, 1] } },
       {
         inventory_grid: {
@@ -411,7 +395,6 @@ export default defineUI("chest_ui", (ns) => {
           anchor_from: "top_left",
           anchor_to: "top_left",
           grid_item_template: "chest_ui.chest_item",
-          $button: "chest_ui.chest_item",
           collection_name: "form_buttons",
           layer: 1,
         },
@@ -425,10 +408,9 @@ export default defineUI("chest_ui", (ns) => {
     type: "image",
     size: [176, 130],
     texture: "textures/ui/gui/generic_1",
-    $single_chest_flag: FLAGS.singleChest,
     layer: 0,
     controls: [
-      { "title_label@chest_ui.chest_label": {} },
+      { "chest_label@chest_ui.chest_label": {} },
       { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
       {
         single_chest_grid: {
@@ -444,16 +426,7 @@ export default defineUI("chest_ui", (ns) => {
         },
       },
       {
-        inventory_text: {
-          type: "label",
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          offset: [7, "100% - 90px"],
-          size: ["90%", "default"],
-          layer: 2,
-          color: "$title_text_color",
-          text: "container.inventory",
-        },
+        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
       },
     ],
     bindings: chestVisibilityBindings(FLAGS.singleChest),
@@ -464,10 +437,9 @@ export default defineUI("chest_ui", (ns) => {
     type: "image",
     size: [176, 130],
     texture: "textures/ui/gui/generic_9",
-    $small_chest_flag: FLAGS.tinyChest,
     layer: 0,
     controls: [
-      { "title_label@chest_ui.chest_label": {} },
+      { "chest_label@chest_ui.chest_label": {} },
       { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
       {
         small_chest_grid: {
@@ -483,36 +455,26 @@ export default defineUI("chest_ui", (ns) => {
         },
       },
       {
-        inventory_text: {
-          type: "label",
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          offset: [7, "100% - 90px"],
-          size: ["90%", "default"],
-          layer: 2,
-          color: "$title_text_color",
-          text: "container.inventory",
-        },
+        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
       },
     ],
     bindings: chestVisibilityBindings(FLAGS.tinyChest),
   });
 
-  // Small chest grid (8 rows, actually fits 27 items over multiple grid cells)
+  // Small chest grid (8 rows)
   ns.addRaw("small_chest_grid_image", {
     type: "image",
     size: [176, 166],
     texture: "textures/ui/gui/generic_27",
-    $small_chest_flag: FLAGS.smallChest,
     layer: 0,
     controls: [
-      { "title_label@chest_ui.chest_label": {} },
+      { "chest_label@chest_ui.chest_label": {} },
       { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
       {
         small_chest_grid: {
           type: "grid",
           grid_dimensions: [9, 8],
-          size: ["100% - 14px", "100%  - 27px"],
+          size: ["100% - 14px", "100% - 27px"],
           offset: [7, 21],
           anchor_from: "top_left",
           anchor_to: "top_left",
@@ -522,16 +484,7 @@ export default defineUI("chest_ui", (ns) => {
         },
       },
       {
-        inventory_text: {
-          type: "label",
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          offset: [7, "100% - 90px"],
-          size: ["90%", "default"],
-          layer: 2,
-          color: "$title_text_color",
-          text: "container.inventory",
-        },
+        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
       },
     ],
     bindings: chestVisibilityBindings(FLAGS.smallChest),
@@ -542,7 +495,6 @@ export default defineUI("chest_ui", (ns) => {
     type: "image",
     size: [176, 220],
     texture: "textures/ui/gui/generic_54",
-    $large_chest_flag: FLAGS.largeChest,
     layer: 0,
     controls: [
       { "chest_label@chest_ui.chest_label": {} },
@@ -565,16 +517,7 @@ export default defineUI("chest_ui", (ns) => {
         },
       },
       {
-        inventory_text: {
-          type: "label",
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          offset: [7, "100% - 90px"],
-          size: ["90%", "default"],
-          layer: 2,
-          color: "$title_text_color",
-          text: "container.inventory",
-        },
+        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
       },
     ],
     bindings: chestVisibilityBindings(FLAGS.largeChest),
@@ -586,7 +529,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [185, 128],
     offset: [0, -5],
     texture: "textures/ui/quests/chest_screen",
-    $quest_chest_flag: FLAGS.questChest,
     layer: 0,
     controls: [
       {
@@ -615,7 +557,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [185, 179],
     offset: [0, -5],
     texture: "textures/ui/quests/chest_screen_large",
-    $quest_chest_flag: FLAGS.questChestLarge,
     layer: 0,
     controls: [
       {
@@ -644,7 +585,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [200, 200],
     offset: [0, -5],
     texture: "textures/ui/pokebuilder/27_slot_pokebuilder",
-    $quest_chest_flag: FLAGS.pokebuilder,
     layer: 0,
     controls: [
       {
@@ -673,7 +613,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [200, 200],
     offset: [0, -5],
     texture: "textures/ui/pokebuilder/45_slot_pokebuilder",
-    $pokebuilder_chest_flag: FLAGS.pokebuilderLarge,
     layer: 0,
     controls: [
       {
@@ -702,7 +641,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [245, 216],
     offset: [0, -5],
     texture: "textures/ui/gui/backpack",
-    $quest_chest_flag: FLAGS.backpack,
     layer: 0,
     controls: [
       {
@@ -731,7 +669,6 @@ export default defineUI("chest_ui", (ns) => {
     size: [206, 186],
     offset: [0, -5],
     texture: "textures/ui/gui/auction",
-    $auction_house_chest_flag: FLAGS.auctionHouse,
     layer: 0,
     controls: [
       {

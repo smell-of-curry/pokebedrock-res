@@ -5,8 +5,14 @@
  * Uses a styled background similar to vanilla tip text.
  */
 
-import { defineMain, image, label, panel } from "mcbe-ts-ui";
-import { phudVisibility, phudText } from "./_helpers";
+import {
+  defineMain,
+  image,
+  label,
+  panel,
+  phudVisibility,
+  phudText,
+} from "mcbe-ts-ui";
 
 // Label that displays the actionbar text
 const actionbarLabel = phudText(

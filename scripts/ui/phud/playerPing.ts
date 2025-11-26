@@ -5,8 +5,7 @@
  * Shows text parsed from the #player_ping_text binding from the elements control.
  */
 
-import { defineMain, image, label } from "mcbe-ts-ui";
-import { phudVisibility, phudText } from "./_helpers";
+import { defineMain, image, label, phudVisibility, phudText } from "mcbe-ts-ui";
 
 // Inner label that displays the ping text
 const playerPositionText = phudText(

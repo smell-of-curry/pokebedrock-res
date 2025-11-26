@@ -5,8 +5,16 @@
  * transparent background. Shows battle text and subtitle information.
  */
 
-import { defineMain, image, label, stackPanel, panel } from "mcbe-ts-ui";
-import { phudVisibility, phudRead } from "./_helpers";
+import {
+  defineMain,
+  image,
+  label,
+  stackPanel,
+  phudVisibility,
+  phudRead,
+  viewBinding,
+  hudSubtitleBinding,
+} from "mcbe-ts-ui";
 
 // Battle log text label
 const battleLogText = label("text")
@@ -18,12 +26,7 @@ const battleLogText = label("text")
   .textAlignment("center")
   .bindings(
     phudRead("#battleLog", "#log_text"),
-    {
-      binding_name: "#null",
-      binding_type: "view",
-      source_property_name: "#log_text",
-      target_property_name: "#text",
-    }
+    viewBinding("#log_text", "#text")
   );
 
 // Menu extra panel - dark background for battle text
@@ -49,11 +52,7 @@ const infoLabel = label("info_label")
   .size("fill", "100%")
   .layer(3)
   .shadow(false)
-  .bindings({
-    binding_name: "#hud_subtitle_text_string",
-    binding_name_override: "#text",
-    binding_type: "global",
-  });
+  .bindings(hudSubtitleBinding());
 
 // Main holder stack panel
 const mainHolder = stackPanel("main_holder")
@@ -77,4 +76,3 @@ export default defineMain(
     .bindings(...phudVisibility("#battleLog")),
   { subdir: "phud" }
 );
-

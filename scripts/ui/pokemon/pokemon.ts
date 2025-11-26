@@ -1,61 +1,56 @@
 /**
  * Pokemon Starter Selection UI
  *
- * Pokemon starter picker interface with:
- * - Welcome message
- * - Starter Pokemon grid
- * - Selection buttons (back, accept)
- * - Pokemon icon display
+ * Pokemon starter picker interface.
  */
 
-import { defineUI, image, label, panel, stackPanel, grid } from "mcbe-ts-ui";
-import { contains, equals } from "../phud/_string_parser";
+import {
+  defineUI,
+  image,
+  label,
+  panel,
+  stackPanel,
+  contains,
+  equals,
+  collectionBinding,
+  factoryBindings,
+  viewBinding,
+  collectionDetailsBinding,
+  imageTextureBindings,
+  globalBinding,
+} from "mcbe-ts-ui";
 
 export default defineUI("pokemon", (ns) => {
   // Button stack factory
-  ns.addRaw("button_stack", {
-    type: "stack_panel",
-    size: ["100%", "100%c"],
-    orientation: "vertical",
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    "$button|default": "default_form.button",
-    factory: {
-      name: "buttons",
-      control_name: "$button",
-    },
-    collection_name: "form_buttons",
-    bindings: [
-      {
-        binding_name: "#form_button_length",
-        binding_name_override: "#collection_length",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#title_text", "§s"),
-        target_property_name: "#visible",
-      },
-    ],
-  });
+  ns.add(
+    stackPanel("button_stack")
+      .size("100%", "100%c")
+      .vertical()
+      .anchor("top_left")
+      .rawProp("$button|default", "default_form.button")
+      .rawProp("factory", { name: "buttons", control_name: "$button" })
+      .rawProp("collection_name", "form_buttons")
+      .bindings(
+        ...factoryBindings(),
+        viewBinding(contains("#title_text", "§s"), "#visible")
+      )
+  );
 
   // Pokemon text display
-  ns.addRaw("pokemon_text", {
-    type: "label",
-    font_type: "MinecraftTen",
-    text: "#title_text",
-    text_alignment: "left",
-    line_padding: 2,
-    font_scale_factor: 1,
-    size: ["100%", "default"],
-    anchor_from: "top_middle",
-    anchor_to: "top_middle",
-    offset: ["42%", -10],
-    layer: 5,
-    shadow: true,
-    bindings: [{ binding_name: "#title_text", binding_type: "global" }],
-    controls: [
-      {
+  ns.add(
+    label("pokemon_text")
+      .fontType("MinecraftTen")
+      .text("#title_text")
+      .textAlignment("left")
+      .rawProp("line_padding", 2)
+      .fontScaleFactor(1)
+      .size("100%", "default")
+      .anchor("top_middle")
+      .offset("42%", -10)
+      .layer(5)
+      .rawProp("shadow", true)
+      .bindings(globalBinding("#title_text"))
+      .controls({
         data: {
           type: "label",
           font_type: "default",
@@ -71,17 +66,16 @@ export default defineUI("pokemon", (ns) => {
           layer: 5,
           shadow: true,
         },
-      },
-    ],
-  });
+      })
+  );
 
-  // Button action template (default/hover states)
+  // Button action template (raw needed for complex $variable states)
   ns.addRaw("button_action", {
     type: "stack_panel",
+    orientation: "vertical",
     anchor_from: "top_left",
     anchor_to: "top_left",
     size: ["100%", "100%"],
-    orientation: "vertical",
     "$color|default": "default",
     controls: [
       {
@@ -90,13 +84,7 @@ export default defineUI("pokemon", (ns) => {
           layer: 2,
           type: "image",
           "$alpha|default": 0,
-          variables: [
-            {
-              requires: "($state = 'hover')",
-              $alpha: 0.3,
-              $color: "black",
-            },
-          ],
+          variables: [{ requires: "($state = 'hover')", $alpha: 0.3, $color: "black" }],
           alpha: "$alpha",
           keep_ratio: false,
           controls: [
@@ -104,27 +92,7 @@ export default defineUI("pokemon", (ns) => {
               entry_description_label: {
                 type: "image",
                 color: "$color",
-                bindings: [
-                  {
-                    binding_name: "#form_button_texture",
-                    binding_name_override: "#texture",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#form_button_texture_file_system",
-                    binding_name_override: "#texture_file_system",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name:
-                      "(not ((#texture = '') or (#texture = 'loading')))",
-                    target_property_name: "#visible",
-                  },
-                ],
+                bindings: imageTextureBindings(),
               },
             },
           ],
@@ -133,63 +101,33 @@ export default defineUI("pokemon", (ns) => {
     ],
   });
 
-  // Picker button template
-  ns.addRaw("button", {
-    type: "panel",
-    size: ["15%", 30],
-    controls: [
-      {
+  // Picker button
+  ns.add(
+    panel("button")
+      .size("15%", 30)
+      .controls({
         "button@common.button": {
           size: ["45%", "100%"],
           anchor_from: "top_middle",
           anchor_to: "top_middle",
           layer: 1,
           $pressed_button_name: "button.form_button_click",
-          controls: [
-            { "default@pokemon.button_action": { $state: "default" } },
-            { "hover@pokemon.button_action": { $state: "hover" } },
-          ],
+          controls: [{ "default@pokemon.button_action": { $state: "default" } }, { "hover@pokemon.button_action": { $state: "hover" } }],
           bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "(not ((#form_button_text = '') or (#form_button_text = 'loading')))",
-              target_property_name: "#visible",
-            },
+            collectionDetailsBinding(),
+            collectionBinding("#form_button_text"),
+            viewBinding("(not ((#form_button_text = '') or (#form_button_text = 'loading')))", "#visible"),
           ],
         },
-      },
-    ],
-    bindings: [
-      {
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-        binding_condition: "none",
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-      },
-    ],
-  });
+      })
+      .bindings(collectionBinding("#form_button_text"))
+  );
 
   // Icon (large pokemon display)
-  ns.addRaw("icon", {
-    type: "panel",
-    size: ["100%", "8%x"],
-    controls: [
-      {
+  ns.add(
+    panel("icon")
+      .size("100%", "8%x")
+      .controls({
         "form_button@common.button": {
           "$default_state|default": false,
           "$hover_state|default": false,
@@ -206,48 +144,20 @@ export default defineUI("pokemon", (ns) => {
                 anchor_from: "top_middle",
                 layer: 5,
                 size: ["400%y", "400%"],
-                bindings: [
-                  {
-                    binding_name: "#form_button_texture",
-                    binding_name_override: "#texture",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#form_button_texture_file_system",
-                    binding_name_override: "#texture_file_system",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name:
-                      "(not ((#texture = '') or (#texture = 'loading')))",
-                    target_property_name: "#visible",
-                  },
-                ],
+                bindings: imageTextureBindings(),
               },
             },
           ],
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-          ],
+          bindings: [collectionDetailsBinding()],
         },
-      },
-    ],
-  });
+      })
+  );
 
   // Back button
-  ns.addRaw("back_button", {
-    type: "panel",
-    size: ["100%", "8%x"],
-    controls: [
-      {
+  ns.add(
+    panel("back_button")
+      .size("100%", "8%x")
+      .controls({
         "form_button@common.button": {
           $pressed_button_name: "button.form_button_click",
           "$default_state|default": false,
@@ -257,42 +167,19 @@ export default defineUI("pokemon", (ns) => {
           anchor_to: "middle_left",
           offset: ["-40%", "25%"],
           controls: [
-            {
-              arrow: {
-                type: "image",
-                size: ["50%", "100%x"],
-                texture: "textures/ui/chevron_left",
-                layer: 2,
-              },
-            },
-            {
-              hover: {
-                type: "image",
-                size: ["50%", "100%x"],
-                texture: "textures/ui/chevron_left",
-                layer: 2,
-                color: "black",
-              },
-            },
+            { arrow: { type: "image", size: ["50%", "100%x"], texture: "textures/ui/chevron_left", layer: 2 } },
+            { hover: { type: "image", size: ["50%", "100%x"], texture: "textures/ui/chevron_left", layer: 2, color: "black" } },
           ],
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-          ],
+          bindings: [collectionDetailsBinding()],
         },
-      },
-    ],
-  });
+      })
+  );
 
   // Accept button
-  ns.addRaw("accept_button", {
-    type: "panel",
-    size: ["100%", "8%x"],
-    controls: [
-      {
+  ns.add(
+    panel("accept_button")
+      .size("100%", "8%x")
+      .controls({
         "form_button@common.button": {
           $pressed_button_name: "button.form_button_click",
           "$default_state|default": false,
@@ -308,24 +195,7 @@ export default defineUI("pokemon", (ns) => {
                 size: ["100%", "100%"],
                 texture: "textures/ui/pokemon/background_default",
                 layer: 2,
-                controls: [
-                  {
-                    text: {
-                      type: "label",
-                      font_type: "MinecraftTen",
-                      localize: false,
-                      text: "Start adventure !",
-                      color: "white",
-                      text_alignment: "center",
-                      font_scale_factor: 1,
-                      size: ["100%", "100%"],
-                      anchor_from: "center",
-                      anchor_to: "center",
-                      offset: [0, 5],
-                      layer: 10000,
-                    },
-                  },
-                ],
+                controls: [{ text: { type: "label", font_type: "MinecraftTen", localize: false, text: "Start adventure !", color: "white", text_alignment: "center", font_scale_factor: 1, size: ["100%", "100%"], anchor_from: "center", anchor_to: "center", offset: [0, 5], layer: 10000 } }],
               },
             },
             {
@@ -334,94 +204,27 @@ export default defineUI("pokemon", (ns) => {
                 size: ["100%", "100%"],
                 texture: "textures/ui/pokemon/background_hover",
                 layer: 2,
-                controls: [
-                  {
-                    text: {
-                      type: "label",
-                      font_type: "MinecraftTen",
-                      localize: false,
-                      text: "Start adventure !",
-                      color: "white",
-                      text_alignment: "center",
-                      font_scale_factor: 1,
-                      size: ["100%", "100%"],
-                      anchor_from: "center",
-                      anchor_to: "center",
-                      offset: [0, 5],
-                      layer: 10000,
-                    },
-                  },
-                ],
+                controls: [{ text: { type: "label", font_type: "MinecraftTen", localize: false, text: "Start adventure !", color: "white", text_alignment: "center", font_scale_factor: 1, size: ["100%", "100%"], anchor_from: "center", anchor_to: "center", offset: [0, 5], layer: 10000 } }],
               },
             },
           ],
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-          ],
+          bindings: [collectionDetailsBinding()],
         },
-      },
-    ],
-  });
+      })
+  );
 
   // Select button (switches between back, accept, icon)
-  ns.addRaw("select_button", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    controls: [
-      {
-        "back_button@pokemon.back_button": {
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_control_name: "image",
-              resolve_sibling_scope: true,
-              source_property_name: equals("#texture", "back"),
-              target_property_name: "#visible",
-            },
-          ],
-        },
-      },
-      {
-        "accept_button@pokemon.accept_button": {
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_control_name: "image",
-              resolve_sibling_scope: true,
-              source_property_name: equals("#texture", "accept"),
-              target_property_name: "#visible",
-            },
-          ],
-        },
-      },
-      {
-        "pokemon_icon@pokemon.icon": {
-          bindings: [
-            {
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: equals("#form_button_text", "§i§m§g"),
-              target_property_name: "#visible",
-            },
-          ],
-        },
-      },
-    ],
-  });
+  ns.add(
+    panel("select_button")
+      .size("100%", "100%c")
+      .controls(
+        { "back_button@pokemon.back_button": { bindings: [viewBinding(equals("#texture", "back"), "#visible", "image")] } },
+        { "accept_button@pokemon.accept_button": { bindings: [viewBinding(equals("#texture", "accept"), "#visible", "image")] } },
+        { "pokemon_icon@pokemon.icon": { bindings: [collectionBinding("#form_button_text"), viewBinding(equals("#form_button_text", "§i§m§g"), "#visible")] } }
+      )
+  );
 
-  // Picker panel grid
+  // Picker panel grid (raw needed for grid_item_template and grid_rescaling_type)
   ns.addRaw("picker_panel_grid", {
     type: "grid",
     size: ["100%", "100%c"],
@@ -431,39 +234,20 @@ export default defineUI("pokemon", (ns) => {
     grid_item_template: "pokemon.button",
     grid_rescaling_type: "horizontal",
     collection_name: "form_buttons",
-    bindings: [
-      {
-        binding_name: "#form_button_length",
-        binding_name_override: "#maximum_grid_items",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#title_text", "§1"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: [...factoryBindings(), viewBinding(contains("#title_text", "§1"), "#visible")],
   });
 
-  // Pokemon panel grid (for selection screens)
-  ns.addRaw("pokemon_panel_grid@pokemon.button_stack", {
-    size: ["98%", "100%c"],
-    $button: "pokemon.select_button",
-  });
+  // Pokemon panel grid
+  ns.addRaw("pokemon_panel_grid@pokemon.button_stack", { size: ["98%", "100%c"], $button: "pokemon.select_button" });
 
   // Common panel
-  ns.addRaw("common_panel", {
-    type: "panel",
-    anchor_from: "middle",
-    anchor_to: "middle",
-    offset: [0, 5],
-    size: ["100% - 5px", "100%c"],
-    controls: [
-      { "picker_panel_grid@pokemon.picker_panel_grid": {} },
-      { "pokemon_panel_grid@pokemon.pokemon_panel_grid": {} },
-      { "pokemon_text@pokemon.pokemon_text": {} },
-    ],
-  });
+  ns.add(
+    panel("common_panel")
+      .anchor("middle")
+      .offset(0, 5)
+      .size("100% - 5px", "100%c")
+      .controls({ "picker_panel_grid@pokemon.picker_panel_grid": {} }, { "pokemon_panel_grid@pokemon.pokemon_panel_grid": {} }, { "pokemon_text@pokemon.pokemon_text": {} })
+  );
 
   // Main panel
   ns.add(
@@ -475,7 +259,6 @@ export default defineUI("pokemon", (ns) => {
       .anchor("center")
       .fullSize()
       .controls(
-        // Welcome text panel
         {
           text_common: {
             type: "panel",
@@ -485,54 +268,12 @@ export default defineUI("pokemon", (ns) => {
             offset: [0, "15%"],
             layer: 2,
             controls: [
-              {
-                hello: {
-                  type: "label",
-                  font_type: "default",
-                  localize: false,
-                  text: "Welcome to PokéBedrock !",
-                  color: "white",
-                  text_alignment: "center",
-                  font_scale_factor: 1,
-                  anchor_from: "top_middle",
-                  anchor_to: "top_middle",
-                  size: ["90%", 20],
-                  offset: [0, 0],
-                },
-              },
-              {
-                pick: {
-                  type: "label",
-                  font_type: "default",
-                  localize: false,
-                  text: "Now, please pick your desired starter Pokémon !",
-                  color: "white",
-                  text_alignment: "center",
-                  font_scale_factor: 1,
-                  anchor_from: "top_middle",
-                  anchor_to: "top_middle",
-                  size: ["90%", 20],
-                  offset: [0, 10],
-                },
-              },
+              { hello: { type: "label", font_type: "default", localize: false, text: "Welcome to PokéBedrock !", color: "white", text_alignment: "center", font_scale_factor: 1, anchor_from: "top_middle", anchor_to: "top_middle", size: ["90%", 20], offset: [0, 0] } },
+              { pick: { type: "label", font_type: "default", localize: false, text: "Now, please pick your desired starter Pokémon !", color: "white", text_alignment: "center", font_scale_factor: 1, anchor_from: "top_middle", anchor_to: "top_middle", size: ["90%", 20], offset: [0, 10] } },
             ],
           },
         },
-        // Button panel
-        {
-          button_panel: {
-            type: "image",
-            texture: "textures/ui/pokemon/background",
-            color: "black",
-            anchor_from: "bottom",
-            anchor_to: "bottom",
-            size: ["80%", "60%"],
-            alpha: 0,
-            offset: [0, 0],
-            controls: [{ "common_panel@pokemon.common_panel": {} }],
-          },
-        }
+        { button_panel: { type: "image", texture: "textures/ui/pokemon/background", color: "black", anchor_from: "bottom", anchor_to: "bottom", size: ["80%", "60%"], alpha: 0, offset: [0, 0], controls: [{ "common_panel@pokemon.common_panel": {} }] } }
       )
   );
 });
-

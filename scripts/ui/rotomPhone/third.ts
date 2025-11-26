@@ -1,12 +1,21 @@
 /**
  * Rotom Phone Third Page UI
  *
- * Third page of the Rotom Phone interface - similar to previous pages with different layout.
- * Includes special left big buttons and different value label positions.
+ * Third page of the Rotom Phone interface with special left big buttons.
  */
 
-import { defineUI, image, label, panel, stackPanel } from "mcbe-ts-ui";
-import { contains } from "../phud/_string_parser";
+import {
+  defineUI,
+  panel,
+  stackPanel,
+  contains,
+  collectionBinding,
+  factoryBindings,
+  viewBinding,
+  collectionDetailsBinding,
+  imageTextureBindings,
+  globalBinding,
+} from "mcbe-ts-ui";
 
 // Button flag prefixes
 const FLAGS = {
@@ -21,20 +30,12 @@ const FLAGS = {
   bottomRight: "§b§s§r",
 } as const;
 
-// Create button factory binding
-const buttonFactoryBinding = () => [
-  {
-    binding_name: "#form_button_length",
-    binding_name_override: "#collection_length",
-  },
-];
-
 export default defineUI("rotom_phone_third", (ns) => {
-  // Base button template
+  // Base button template (raw needed for complex $variable defaults and extends)
   ns.addRaw("button", {
     type: "stack_panel",
-    size: "$size",
     orientation: "vertical",
+    size: "$size",
     "$size|default": [14, 8],
     "$size_img|default": [8, 8],
     "$offset_img|default": [0, 0],
@@ -43,60 +44,22 @@ export default defineUI("rotom_phone_third", (ns) => {
     "$new_ui_label_offset_value|default": [0, 0],
     "$source_property_flag|default": "",
     bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "$source_property_flag",
-        target_property_name: "#visible",
-      },
+      collectionBinding("#form_button_text"),
+      viewBinding("$source_property_flag", "#visible"),
     ],
     controls: [
       {
         image_panel: {
           type: "panel",
           size: "$size_img",
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_control_name: "image",
-              resolve_sibling_scope: true,
-              source_property_name: "(not (#texture = ''))",
-              target_property_name: "#visible",
-            },
-          ],
+          bindings: [viewBinding("(not (#texture = ''))", "#visible", "image")],
           controls: [
             {
               image: {
                 type: "image",
                 layer: 99,
                 offset: "$offset_img",
-                bindings: [
-                  {
-                    binding_name: "#form_button_texture",
-                    binding_name_override: "#texture",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#form_button_texture_file_system",
-                    binding_name_override: "#texture_file_system",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name:
-                      "(not ((#texture = '') or (#texture = 'loading')))",
-                    target_property_name: "#visible",
-                  },
-                ],
+                bindings: imageTextureBindings(),
               },
             },
           ],
@@ -118,259 +81,63 @@ export default defineUI("rotom_phone_third", (ns) => {
           $anchor: "$anchor_value",
           $button_font_scale_factor: "$button_font_scale_factor_value",
           $new_ui_label_offset: "$new_ui_label_offset_value",
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-          ],
+          bindings: [collectionDetailsBinding()],
         },
       },
     ],
   });
 
-  // Image button panel
-  ns.addRaw("image_button_panel", {
-    type: "panel",
-    size: ["100%c", "100%"],
-    $flag: FLAGS.image,
-    $size: [21, 8],
-    $size_img: [50, 50],
-    $offset_img: [15, -11],
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
+  // Button panel templates
+  const buttonPanels = [
+    { name: "image_button_panel", flag: FLAGS.image, size: [21, 8], sizeImg: [50, 50], offsetImg: [15, -11] },
+    { name: "top_button_panel", flag: FLAGS.top },
+    { name: "left_big_button_panel", flag: FLAGS.leftBig, size: [100, 21], offsetImg: [0, 15], labelOffset: [-15, 0], fontScale: 0.7 },
+    { name: "left_big_special_button_panel", flag: FLAGS.leftBigSpecial, size: [100, 20], labelOffset: [-15, 3], fontScale: 0.7 },
+    { name: "middle_big_button_panel", flag: FLAGS.middleBig, size: [50, 20], labelOffset: [5, -3], fontScale: 0.6 },
+    { name: "middle_middle_button_panel", flag: FLAGS.middleMiddle, size: [50, 20], labelOffset: [5, -3], fontScale: 0.6 },
+    { name: "middle_small_button_panel", flag: FLAGS.middleSmall, size: [21, 8], sizeImg: [16, 16], offsetImg: [0, -2] },
+    { name: "bottom_buttons_panel", flag: FLAGS.bottom, size: [20, 22] },
+    { name: "bottom_right_button_panel", flag: FLAGS.bottomRight, size: [25, 17], fontScale: 0.5 },
+  ];
+
+  buttonPanels.forEach(({ name, flag, size, sizeImg, offsetImg, labelOffset, fontScale }) => {
+    const isVertical = ["left_big", "middle_big", "middle_middle", "bottom_right"].some((n) => name.includes(n));
+    const panelBuilder = panel(name).size(isVertical ? "100%" : "100%c", isVertical ? "100%c" : "100%").rawProp("$flag", flag);
+    if (size) panelBuilder.rawProp("$size", size);
+    if (sizeImg) panelBuilder.rawProp("$size_img", sizeImg);
+    if (offsetImg) panelBuilder.rawProp("$offset_img", offsetImg);
+    if (labelOffset) panelBuilder.rawProp("$new_ui_label_offset_value", labelOffset);
+    if (fontScale) panelBuilder.rawProp("$button_font_scale_factor_value", fontScale);
+    panelBuilder.controls({ "button@rotom_phone_third.button": { $source_property_flag: contains("#form_button_text", "$flag") } });
+    ns.add(panelBuilder);
   });
 
-  ns.addRaw("image_button", {
-    type: "stack_panel",
-    orientation: "horizontal",
-    size: ["100%c", "20%"],
-    offset: [65, 5],
-    factory: { name: "buttons", control_name: "rotom_phone_third.image_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
+  // Button stacks
+  const buttonStacks = [
+    { name: "image_button", panel: "image_button_panel", orientation: "horizontal", offset: [65, 5] },
+    { name: "top_buttons", panel: "top_button_panel", orientation: "horizontal", offset: [113, -27] },
+    { name: "left_big_buttons", panel: "left_big_button_panel", orientation: "vertical", offset: [-65, 3], size: ["20%", "100%c"] },
+    { name: "left_big_special_buttons", panel: "left_big_special_button_panel", orientation: "vertical", offset: [-57, 53], size: ["20%", "100%c"] },
+    { name: "middle_big_buttons", panel: "middle_big_button_panel", orientation: "vertical", offset: [25, 10], size: ["20%", "100%c"] },
+    { name: "middle_middle_buttons", panel: "middle_middle_button_panel", orientation: "vertical", offset: [-30, 53], size: ["20%", "100%c"] },
+    { name: "middle_small_buttons", panel: "middle_small_button_panel", orientation: "horizontal", offset: [40, 30] },
+    { name: "bottom_buttons", panel: "bottom_buttons_panel", orientation: "horizontal", offset: [-40, 70] },
+    { name: "bottom_right_buttons", panel: "bottom_right_button_panel", orientation: "vertical", offset: [46, 67], size: ["20%", "100%c"] },
+  ];
+
+  buttonStacks.forEach(({ name, panel: panelName, orientation, offset, size }) => {
+    ns.add(
+      stackPanel(name)
+        .rawProp("orientation", orientation)
+        .size(size ? size[0] : "100%c", size ? size[1] : "20%")
+        .offset(...offset)
+        .rawProp("factory", { name: "buttons", control_name: `rotom_phone_third.${panelName}` })
+        .rawProp("collection_name", "form_buttons")
+        .bindings(...factoryBindings())
+    );
   });
 
-  // Top button panel
-  ns.addRaw("top_button_panel", {
-    type: "panel",
-    size: ["100%c", "100%"],
-    $flag: FLAGS.top,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("top_buttons", {
-    type: "stack_panel",
-    orientation: "horizontal",
-    size: ["100%c", "20%"],
-    offset: [113, -27],
-    factory: { name: "buttons", control_name: "rotom_phone_third.top_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Left big button panel
-  ns.addRaw("left_big_button_panel", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $flag: FLAGS.leftBig,
-    $size: [100, 21],
-    $offset_img: [0, 15],
-    $new_ui_label_offset_value: [-15, 0],
-    $button_font_scale_factor_value: 0.7,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("left_big_buttons", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["20%", "100%c"],
-    offset: [-65, 3],
-    factory: { name: "buttons", control_name: "rotom_phone_third.left_big_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Left big special button panel
-  ns.addRaw("left_big_special_button_panel", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $flag: FLAGS.leftBigSpecial,
-    $size: [100, 20],
-    $new_ui_label_offset_value: [-15, 3],
-    $button_font_scale_factor_value: 0.7,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("left_big_special_buttons", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["20%", "100%c"],
-    offset: [-57, 53],
-    factory: { name: "buttons", control_name: "rotom_phone_third.left_big_special_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Middle big button panel
-  ns.addRaw("middle_big_button_panel", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $flag: FLAGS.middleBig,
-    $size: [50, 20],
-    $offset_img: [0, 0],
-    $new_ui_label_offset_value: [5, -3],
-    $button_font_scale_factor_value: 0.6,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("middle_big_buttons", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["20%", "100%c"],
-    offset: [25, 10],
-    factory: { name: "buttons", control_name: "rotom_phone_third.middle_big_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Middle middle button panel
-  ns.addRaw("middle_middle_button_panel", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $flag: FLAGS.middleMiddle,
-    $size: [50, 20],
-    $offset_img: [0, 0],
-    $new_ui_label_offset_value: [5, -3],
-    $button_font_scale_factor_value: 0.6,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("middle_middle_buttons", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["20%", "100%c"],
-    offset: [-30, 53],
-    factory: { name: "buttons", control_name: "rotom_phone_third.middle_middle_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Middle small button panel
-  ns.addRaw("middle_small_button_panel", {
-    type: "panel",
-    size: ["100%c", "100%"],
-    $flag: FLAGS.middleSmall,
-    $size: [21, 8],
-    $size_img: [16, 16],
-    $offset_img: [0, -2],
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("middle_small_buttons", {
-    type: "stack_panel",
-    orientation: "horizontal",
-    size: ["100%c", "20%"],
-    offset: [40, 30],
-    factory: { name: "buttons", control_name: "rotom_phone_third.middle_small_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Bottom button panel
-  ns.addRaw("bottom_buttons_panel", {
-    type: "panel",
-    size: ["100%c", "100%"],
-    $flag: FLAGS.bottom,
-    $size: [20, 22],
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("bottom_buttons", {
-    type: "stack_panel",
-    orientation: "horizontal",
-    size: ["100%c", "20%"],
-    offset: [-40, 70],
-    factory: { name: "buttons", control_name: "rotom_phone_third.bottom_buttons_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Bottom right button panel
-  ns.addRaw("bottom_right_button_panel", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $flag: FLAGS.bottomRight,
-    $size: [25, 17],
-    $button_font_scale_factor_value: 0.5,
-    controls: [
-      {
-        "button@rotom_phone_third.button": {
-          $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      },
-    ],
-  });
-
-  ns.addRaw("bottom_right_buttons", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["20%", "100%c"],
-    offset: [46, 67],
-    factory: { name: "buttons", control_name: "rotom_phone_third.bottom_right_button_panel" },
-    collection_name: "form_buttons",
-    bindings: buttonFactoryBinding(),
-  });
-
-  // Button controller
+  // Button controller (raw needed for complex nested structure)
   ns.addRaw("button_controller", {
     type: "panel",
     controls: [
@@ -390,10 +157,7 @@ export default defineUI("rotom_phone_third", (ns) => {
       {
         left_big_special: {
           type: "panel",
-          controls: [
-            { idk: { type: "label", text: "§fIDKKKK", size: [50, 20], offset: [-65, 49], font_scale_factor: 0.7 } },
-            { "left_big_special_buttons@rotom_phone_third.left_big_special_buttons": {} },
-          ],
+          controls: [{ idk: { type: "label", text: "§fIDKKKK", size: [50, 20], offset: [-65, 49], font_scale_factor: 0.7 } }, { "left_big_special_buttons@rotom_phone_third.left_big_special_buttons": {} }],
         },
       },
       { bottom: { type: "panel", controls: [{ "bottom_buttons@rotom_phone_third.bottom_buttons": {} }] } },
@@ -411,10 +175,7 @@ export default defineUI("rotom_phone_third", (ns) => {
       {
         middle_middle: {
           type: "panel",
-          controls: [
-            { value7: { type: "label", text: "§fValue 7", size: [50, 20], offset: [-16, 45], font_scale_factor: 0.65 } },
-            { "middle_middle_buttons@rotom_phone_third.middle_middle_buttons": {} },
-          ],
+          controls: [{ value7: { type: "label", text: "§fValue 7", size: [50, 20], offset: [-16, 45], font_scale_factor: 0.65 } }, { "middle_middle_buttons@rotom_phone_third.middle_middle_buttons": {} }],
         },
       },
       { middle_small: { type: "panel", controls: [{ "middle_small_buttons@rotom_phone_third.middle_small_buttons": {} }] } },
@@ -422,31 +183,8 @@ export default defineUI("rotom_phone_third", (ns) => {
         top: {
           type: "panel",
           controls: [
-            {
-              title: {
-                type: "label",
-                layer: 99,
-                size: [30, 15],
-                anchor_from: "top_middle",
-                anchor_to: "top_middle",
-                offset: [47, "39%"],
-                text: "#title_text",
-                font_scale_factor: 0.55,
-                bindings: [{ binding_name: "#title_text", binding_type: "global" }],
-              },
-            },
-            {
-              label: {
-                type: "label",
-                layer: 99,
-                size: [70, 20],
-                anchor_from: "top_middle",
-                anchor_to: "top_middle",
-                offset: [93, "39.5%"],
-                font_scale_factor: 0.8,
-                text: "#form_text",
-              },
-            },
+            { title: { type: "label", layer: 99, size: [30, 15], anchor_from: "top_middle", anchor_to: "top_middle", offset: [47, "39%"], text: "#title_text", font_scale_factor: 0.55, bindings: [globalBinding("#title_text")] } },
+            { label: { type: "label", layer: 99, size: [70, 20], anchor_from: "top_middle", anchor_to: "top_middle", offset: [93, "39.5%"], font_scale_factor: 0.8, text: "#form_text" } },
             { "top_buttons@rotom_phone_third.top_buttons": {} },
           ],
         },
@@ -458,15 +196,7 @@ export default defineUI("rotom_phone_third", (ns) => {
   ns.add(
     panel("blackbarbar_third").controls(
       { "close_button@common.light_close_button": { $close_button_offset: [-10, 111] } },
-      {
-        content: {
-          type: "image",
-          texture: "textures/ui/gui/rotom_phone/third",
-          keep_ratio: true,
-          controls: [{ "button_controller@rotom_phone_third.button_controller": {} }],
-        },
-      }
+      { content: { type: "image", texture: "textures/ui/gui/rotom_phone/third", keep_ratio: true, controls: [{ "button_controller@rotom_phone_third.button_controller": {} }] } }
     )
   );
 });
-

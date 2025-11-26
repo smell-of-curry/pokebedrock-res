@@ -1,37 +1,41 @@
 /**
  * Battle UI
  *
- * Pokemon battle interface with:
- * - Battle action buttons (bag, pokemon, run)
- * - Move selection grid
- * - Actor details (opponent and ally pokemon info)
- * - HP bars with dynamic coloring
+ * Pokemon battle interface with action buttons, move selection, and actor details.
  */
 
-import { defineUI, image, label, panel, stackPanel } from "mcbe-ts-ui";
-import { skip, first, strip, contains } from "../phud/_string_parser";
+import {
+  defineUI,
+  image,
+  panel,
+  stackPanel,
+  collectionBinding,
+  viewBinding,
+  factoryBindings,
+  buttonFlagVisibility,
+  skip,
+  first,
+  strip,
+  type Binding,
+  type Offset,
+} from "mcbe-ts-ui";
+
+// Visibility binding helper for button ID
+const visibilityForId = (id: string): Binding[] =>
+  buttonFlagVisibility(id, "form_buttons");
 
 export default defineUI("battle", (ns) => {
   // Button stack panel factory
-  ns.addRaw("button_stack", {
-    type: "stack_panel",
-    size: ["100%", "100%c"],
-    orientation: "vertical",
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    "$button|default": "default_form.button",
-    factory: {
-      name: "buttons",
-      control_name: "$button",
-    },
-    collection_name: "form_buttons",
-    bindings: [
-      {
-        binding_name: "#form_button_length",
-        binding_name_override: "#collection_length",
-      },
-    ],
-  });
+  ns.add(
+    stackPanel("button_stack")
+      .size("100%", "100%c")
+      .vertical()
+      .anchor("top_left")
+      .rawProp("$button|default", "default_form.button")
+      .rawProp("factory", { name: "buttons", control_name: "$button" })
+      .rawProp("collection_name", "form_buttons")
+      .bindings(...factoryBindings())
+  );
 
   // Button hover control with tooltip
   ns.addRaw("button_hover_control", {
@@ -46,18 +50,11 @@ export default defineUI("battle", (ns) => {
           allow_clipping: false,
           layer: 30,
           bindings: [
-            {
-              binding_name: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "(#form_button_text - (('%.' + $hover_text_index + 's') * #form_button_text))",
-              target_property_name: "#hover_text",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding(
+              "(#form_button_text - (('%.' + $hover_text_index + 's') * #form_button_text))",
+              "#hover_text"
+            ),
             {
               binding_name: "#null",
               binding_type: "collection_details",
@@ -140,149 +137,69 @@ export default defineUI("battle", (ns) => {
         binding_type: "collection_details",
         binding_collection_name: "form_buttons",
       },
-      {
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-        binding_condition: "none",
-        binding_name: "#form_button_texture",
-        binding_name_override: "#form_button_texture",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(not((%.1s * #form_button_texture) = 'f'))",
-        target_property_name: "#enabled",
-      },
+      collectionBinding("#form_button_texture"),
+      viewBinding("(not((%.1s * #form_button_texture) = 'f'))", "#enabled"),
     ],
   });
 
-  // Bag button
-  ns.addRaw("bag_button", {
-    type: "panel",
-    size: ["100%", "7%x"],
-    offset: ["-45.5%", "-13%"],
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    controls: [
-      {
+  // Action buttons (bag, pokemon, run)
+  const createActionButton = (
+    name: string,
+    texture: string,
+    offset: Offset,
+    hoverIdx: number
+  ) =>
+    panel(name)
+      .size("100%", "7%x")
+      .offset(...offset)
+      .anchor("top_left")
+      .controls({
         "form_button@battle.simple_button": {
-          $default_button_texture: "textures/ui/battle/menu_bag",
-          $hover_button_texture: "textures/ui/battle/menu_bag_hover",
-          $pressed_button_texture: "textures/ui/battle/menu_bag",
-          $locked_button_texture: "textures/ui/battle/menu_bag_disabled",
-          $hover_text_index: 16,
+          $default_button_texture: `textures/ui/battle/${texture}`,
+          $hover_button_texture: `textures/ui/battle/${texture}_hover`,
+          $pressed_button_texture: `textures/ui/battle/${texture}`,
+          $locked_button_texture: `textures/ui/battle/${texture}_disabled`,
+          $hover_text_index: hoverIdx,
           $size: ["25%", "80%"],
         },
-      },
-    ],
-  });
+      });
 
-  // Party pokemon button
-  ns.addRaw("party_pokemon_button", {
-    type: "panel",
-    size: ["100%", "7%x"],
-    offset: ["-45.5%", "-26%"],
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    controls: [
-      {
-        "form_button@battle.simple_button": {
-          $default_button_texture: "textures/ui/battle/menu_poke",
-          $hover_button_texture: "textures/ui/battle/menu_poke_hover",
-          $pressed_button_texture: "textures/ui/battle/menu_poke",
-          $locked_button_texture: "textures/ui/battle/menu_poke_disabled",
-          $hover_text_index: 20,
-          $size: ["25%", "80%"],
-        },
-      },
-    ],
-  });
-
-  // Run button
-  ns.addRaw("run_button", {
-    type: "panel",
-    size: ["100%", "7%x"],
-    offset: ["-45.5%", "-38%"],
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    controls: [
-      {
-        "form_button@battle.simple_button": {
-          $default_button_texture: "textures/ui/battle/menu_run",
-          $hover_button_texture: "textures/ui/battle/menu_run_hover",
-          $pressed_button_texture: "textures/ui/battle/menu_run",
-          $locked_button_texture: "textures/ui/battle/menu_run_disabled",
-          $hover_text_index: 16,
-          $size: ["25%", "80%"],
-        },
-      },
-    ],
-  });
+  ns.add(createActionButton("bag_button", "menu_bag", ["-45.5%", "-13%"], 16));
+  ns.add(
+    createActionButton(
+      "party_pokemon_button",
+      "menu_poke",
+      ["-45.5%", "-26%"],
+      20
+    )
+  );
+  ns.add(createActionButton("run_button", "menu_run", ["-45.5%", "-38%"], 16));
 
   // Battle action button (switches between bag, pokemon, run)
-  ns.addRaw("battle_action_button", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    $bag_button_id: "battleButton:bag",
-    $pokemon_button_id: "battleButton:pokemon",
-    $run_button_id: "battleButton:run",
-    controls: [
-      {
-        "bag_button@battle.bag_button": {
-          bindings: [
-            {
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: contains("#form_button_text", "$bag_button_id"),
-              target_property_name: "#visible",
-            },
-          ],
+  ns.add(
+    panel("battle_action_button")
+      .size("100%", "100%c")
+      .rawProp("$bag_button_id", "battleButton:bag")
+      .rawProp("$pokemon_button_id", "battleButton:pokemon")
+      .rawProp("$run_button_id", "battleButton:run")
+      .controls(
+        {
+          "bag_button@battle.bag_button": {
+            bindings: visibilityForId("$bag_button_id"),
+          },
         },
-      },
-      {
-        "poke_button@battle.party_pokemon_button": {
-          bindings: [
-            {
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: contains("#form_button_text", "$pokemon_button_id"),
-              target_property_name: "#visible",
-            },
-          ],
+        {
+          "poke_button@battle.party_pokemon_button": {
+            bindings: visibilityForId("$pokemon_button_id"),
+          },
         },
-      },
-      {
-        "run_button@battle.run_button": {
-          bindings: [
-            {
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: contains("#form_button_text", "$run_button_id"),
-              target_property_name: "#visible",
-            },
-          ],
-        },
-      },
-    ],
-  });
+        {
+          "run_button@battle.run_button": {
+            bindings: visibilityForId("$run_button_id"),
+          },
+        }
+      )
+  );
 
   // Move selection button
   ns.addRaw("move_selection_button", {
@@ -294,10 +211,13 @@ export default defineUI("battle", (ns) => {
     controls: [
       {
         "button@battle.simple_button": {
-          $default_button_texture: "textures/ui/battle/moveSelectionBadges/background",
+          $default_button_texture:
+            "textures/ui/battle/moveSelectionBadges/background",
           $hover_button_texture: "textures/ui/battle/moveSelection_blank_badge",
-          $pressed_button_texture: "textures/ui/battle/moveSelection_blank_badge",
-          $locked_button_texture: "textures/ui/battle/moveSelectionBadges/background",
+          $pressed_button_texture:
+            "textures/ui/battle/moveSelection_blank_badge",
+          $locked_button_texture:
+            "textures/ui/battle/moveSelectionBadges/background",
           $border_visible: false,
           $hover_text_index: 27,
         },
@@ -317,84 +237,47 @@ export default defineUI("battle", (ns) => {
               binding_type: "collection_details",
               binding_collection_name: "form_buttons",
             },
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_texture",
-              binding_name_override: "#form_button_texture",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: `('textures/ui/battle/moveSelectionBadges/' + ${skip(
+            collectionBinding("#form_button_texture"),
+            viewBinding(
+              `('textures/ui/battle/moveSelectionBadges/' + ${skip(
                 3,
                 "#form_button_texture"
               )})`,
-              target_property_name: "#texture",
-            },
+              "#texture"
+            ),
           ],
         },
       },
     ],
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "battleButton:move_selection"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("battleButton:move_selection"),
   });
 
   // PP bar for move display
-  ns.addRaw("pp_bar", {
-    "$bar|default": "",
-    type: "image",
-    texture: "textures/ui/battle/white_shaded",
-    color: [0.1, 0.6, 1],
-    layer: 10,
-    anchor_from: "bottom_left",
-    anchor_to: "bottom_left",
-    fill: true,
-    size: ["40%", "29%"],
-    offset: ["30.3%", "19%"],
-    bindings: [
-      {
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-        binding_condition: "none",
-        binding_name: "#form_button_texture",
-        binding_name_override: "#form_button_texture",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: `(${skip(2, "#form_button_texture")} = $bar)`,
-        target_property_name: "#visible",
-      },
-    ],
-  });
+  ns.add(
+    image("pp_bar")
+      .texture("textures/ui/battle/white_shaded")
+      .color([0.1, 0.6, 1])
+      .layer(10)
+      .anchor("bottom_left")
+      .fill(true)
+      .size("40%", "29%")
+      .offset("30.3%", "19%")
+      .rawProp("$bar|default", "")
+      .bindings(
+        collectionBinding("#form_button_texture"),
+        viewBinding(`(${skip(2, "#form_button_texture")} = $bar)`, "#visible")
+      )
+  );
 
-  // Generate PP bar variants (0-20)
-  for (let i = 0; i <= 20; i++) {
-    const sizePercent = i === 0 ? "0%" : `${(i * 1.965).toFixed(3)}%`;
+  // Generate PP bar variants (0-20) + null
+  ["null", ...Array.from({ length: 21 }, (_, i) => i)].forEach((i) => {
+    const barVal = i === "null" ? "_null" : `_${i}`;
+    const sizePercent =
+      i === "null" || i === 0 ? "0%" : `${(Number(i) * 1.965).toFixed(3)}%`;
     ns.addRaw(`${i}@battle.pp_bar`, {
-      $bar: i === 0 ? "_0" : `_${i}`,
+      $bar: barVal,
       size: [sizePercent, "29%"],
     });
-  }
-
-  // Also add null PP bar
-  ns.addRaw("null@battle.pp_bar", {
-    $bar: "_null",
-    size: ["0%", "29%"],
   });
 
   // Move button
@@ -417,7 +300,8 @@ export default defineUI("battle", (ns) => {
                 $default_button_texture: "textures/ui/battle/moveSelection",
                 $hover_button_texture: "textures/ui/battle/moveSelection_hover",
                 $pressed_button_texture: "textures/ui/battle/moveSelection",
-                $locked_button_texture: "textures/ui/battle/moveSelection_locked",
+                $locked_button_texture:
+                  "textures/ui/battle/moveSelection_locked",
                 $hover_text_index: 98,
               },
             },
@@ -436,21 +320,16 @@ export default defineUI("battle", (ns) => {
           localize: true,
           color: "black",
           bindings: [
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: `(${strip(
-                `(('showdown.moves' + ${first(30, skip(36, "#form_button_text"))}))`
+            collectionBinding("#form_button_text"),
+            viewBinding(
+              `(${strip(
+                `(('showdown.moves' + ${first(
+                  30,
+                  skip(36, "#form_button_text")
+                )}))`
               )} + '.name')`,
-              target_property_name: "#text",
-            },
+              "#text"
+            ),
           ],
         },
       },
@@ -462,21 +341,16 @@ export default defineUI("battle", (ns) => {
           offset: "$icon_offset",
           texture: "#texture",
           bindings: [
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: `${strip(
-                `('textures/ui/gui/attacks/' + ${first(8, skip(4, "#form_button_text"))})`
-              )}`,
-              target_property_name: "#texture",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding(
+              strip(
+                `('textures/ui/gui/attacks/' + ${first(
+                  8,
+                  skip(4, "#form_button_text")
+                )})`
+              ),
+              "#texture"
+            ),
           ],
         },
       },
@@ -492,19 +366,11 @@ export default defineUI("battle", (ns) => {
           font_scale_factor: 0.8,
           color: "white",
           bindings: [
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: strip(first(7, skip(66, "#form_button_text"))),
-              target_property_name: "#text",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding(
+              strip(first(7, skip(66, "#form_button_text"))),
+              "#text"
+            ),
           ],
         },
       },
@@ -514,102 +380,93 @@ export default defineUI("battle", (ns) => {
   // Grid button check ID template
   ns.addRaw("grid_button_check_id@battle.move_button", {
     "$button_id|default": "b:1_",
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "$button_id"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("$button_id"),
   });
 
   // Grid button (4 move slots)
-  ns.addRaw("grid_button", {
-    type: "panel",
-    size: ["100%", "100%c"],
-    controls: [
-      {
-        "1@battle.grid_button_check_id": {
-          $icon_offset: ["-15%", "-14%"],
-          $offset: ["-19%", "25%"],
-          $button_id: "b:1_",
+  ns.add(
+    panel("grid_button")
+      .size("100%", "100%c")
+      .controls(
+        {
+          "1@battle.grid_button_check_id": {
+            $icon_offset: ["-15%", "-14%"],
+            $offset: ["-19%", "25%"],
+            $button_id: "b:1_",
+          },
         },
-      },
-      {
-        "2@battle.grid_button_check_id": {
-          $icon_offset: ["-15%", "-14%"],
-          $offset: ["-19%", "80%"],
-          $button_id: "b:2_",
+        {
+          "2@battle.grid_button_check_id": {
+            $icon_offset: ["-15%", "-14%"],
+            $offset: ["-19%", "80%"],
+            $button_id: "b:2_",
+          },
         },
-      },
-      {
-        "3@battle.grid_button_check_id": {
-          $icon_offset: ["15%", "-14%"],
-          $offset: ["21.5%", "-175%"],
-          $button_id: "b:3_",
+        {
+          "3@battle.grid_button_check_id": {
+            $icon_offset: ["15%", "-14%"],
+            $offset: ["21.5%", "-175%"],
+            $button_id: "b:3_",
+          },
         },
-      },
-      {
-        "4@battle.grid_button_check_id": {
-          $icon_offset: ["15%", "-14%"],
-          $offset: ["21.5%", "-120%"],
-          $button_id: "b:4_",
-        },
-      },
-    ],
-  });
+        {
+          "4@battle.grid_button_check_id": {
+            $icon_offset: ["15%", "-14%"],
+            $offset: ["21.5%", "-120%"],
+            $button_id: "b:4_",
+          },
+        }
+      )
+  );
 
   // Variable progress bar for HP
-  ns.addRaw("variable_progress_bar", {
-    layer: 2,
-    clip_pixelperfect: false,
-    type: "image",
-    texture: "textures/ui/filled_progress_bar",
-    clip_direction: "left",
-    "$color_id|default": "G",
-    bindings: [
-      {
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-        binding_condition: "none",
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: `( ${first(3, skip(60, "#form_button_text"))} * 1 )`,
-        target_property_name: "#clip_ratio",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: `(${first(1, skip(58, "#form_button_text"))} = $color_id)`,
-        target_property_name: "#visible",
-      },
-    ],
-  });
+  ns.add(
+    image("variable_progress_bar")
+      .layer(2)
+      .rawProp("clip_pixelperfect", false)
+      .texture("textures/ui/filled_progress_bar")
+      .rawProp("clip_direction", "left")
+      .rawProp("$color_id|default", "G")
+      .bindings(
+        collectionBinding("#form_button_text"),
+        viewBinding(
+          `( ${first(3, skip(60, "#form_button_text"))} * 1 )`,
+          "#clip_ratio"
+        ),
+        viewBinding(
+          `(${first(1, skip(58, "#form_button_text"))} = $color_id)`,
+          "#visible"
+        )
+      )
+  );
 
   // Dynamic progress bar with color variants
-  ns.addRaw("dynamic_progress_bar", {
-    type: "panel",
-    size: ["100%", "100%"],
-    anchor_from: "center",
-    anchor_to: "center",
-    controls: [
-      { "empty_progress_bar@common.empty_progress_bar": { layer: 1 } },
-      { "green@battle.variable_progress_bar": { color: [0.5, 1.0, 0.5, 1.0], $color_id: "G" } },
-      { "yellow@battle.variable_progress_bar": { color: [1, 0.9, 0, 1.0], $color_id: "Y" } },
-      { "red@battle.variable_progress_bar": { color: [1, 0, 0, 1.0], $color_id: "R" } },
-    ],
-  });
+  ns.add(
+    panel("dynamic_progress_bar")
+      .fullSize()
+      .anchor("center")
+      .controls(
+        { "empty_progress_bar@common.empty_progress_bar": { layer: 1 } },
+        {
+          "green@battle.variable_progress_bar": {
+            color: [0.5, 1.0, 0.5, 1.0],
+            $color_id: "G",
+          },
+        },
+        {
+          "yellow@battle.variable_progress_bar": {
+            color: [1, 0.9, 0, 1.0],
+            $color_id: "Y",
+          },
+        },
+        {
+          "red@battle.variable_progress_bar": {
+            color: [1, 0, 0, 1.0],
+            $color_id: "R",
+          },
+        }
+      )
+  );
 
   // Battle actor entity icon overlay
   ns.addRaw("battle_actor_entity_icon_overlay", {
@@ -633,25 +490,23 @@ export default defineUI("battle", (ns) => {
               binding_type: "collection_details",
               binding_collection_name: "form_buttons",
             },
-            {
-              binding_name: "#form_button_texture_file_system",
-              binding_name_override: "#texture_file_system",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#form_button_texture",
-              binding_name_override: "#texture",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
+            collectionBinding(
+              "#form_button_texture_file_system",
+              "form_buttons",
+              "#texture_file_system"
+            ),
+            collectionBinding(
+              "#form_button_texture",
+              "form_buttons",
+              "#texture"
+            ),
           ],
         },
       },
     ],
   });
 
-  // Battle actor description (name + HP bar)
+  // Battle actor description
   ns.addRaw("battle_actor_description", {
     type: "stack_panel",
     orientation: "vertical",
@@ -670,19 +525,8 @@ export default defineUI("battle", (ns) => {
           size: ["100%", "65%"],
           text_alignment: "$text_alignment",
           bindings: [
-            {
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-              binding_condition: "none",
-              binding_name: "#form_button_text",
-              binding_name_override: "#form_button_text",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name: strip(first(58, "#form_button_text")),
-              target_property_name: "#text",
-            },
+            collectionBinding("#form_button_text"),
+            viewBinding(strip(first(58, "#form_button_text")), "#text"),
           ],
         },
       },
@@ -707,19 +551,8 @@ export default defineUI("battle", (ns) => {
                 text_alignment: "center",
                 layer: 32,
                 bindings: [
-                  {
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                    binding_condition: "none",
-                    binding_name: "#form_button_text",
-                    binding_name_override: "#form_button_text",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name: skip(62, "#form_button_text"),
-                    target_property_name: "#text",
-                  },
+                  collectionBinding("#form_button_text"),
+                  viewBinding(skip(62, "#form_button_text"), "#text"),
                 ],
               },
             },
@@ -741,7 +574,7 @@ export default defineUI("battle", (ns) => {
     size: [90, 42],
   });
 
-  // Ally actor button
+  // Ally/opponent actor buttons
   ns.addRaw("ally_actor_button@battle.battle_actor_button", {
     controls: [
       {
@@ -754,7 +587,8 @@ export default defineUI("battle", (ns) => {
             { spacing: { type: "panel", size: ["5%", "100%"] } },
             {
               "entity_icon_overlay@battle.battle_actor_entity_icon_overlay": {
-                $actor_icon_overlay_texture: "textures/ui/battle/pokemon_healthy",
+                $actor_icon_overlay_texture:
+                  "textures/ui/battle/pokemon_healthy",
               },
             },
           ],
@@ -763,7 +597,6 @@ export default defineUI("battle", (ns) => {
     ],
   });
 
-  // Opponent actor button
   ns.addRaw("opponent_actor_button@battle.battle_actor_button", {
     controls: [
       {
@@ -772,7 +605,9 @@ export default defineUI("battle", (ns) => {
           orientation: "horizontal",
           size: ["100%", "100%"],
           controls: [
-            { "entity_icon_overlay@battle.battle_actor_entity_icon_overlay": {} },
+            {
+              "entity_icon_overlay@battle.battle_actor_entity_icon_overlay": {},
+            },
             { "actor_description@battle.battle_actor_description": {} },
           ],
         },
@@ -783,201 +618,207 @@ export default defineUI("battle", (ns) => {
   // Actor button check ID templates
   ns.addRaw("ally_actor_details_button_check_id@battle.ally_actor_button", {
     "$button_id|default": "b:opponent_1_",
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "$button_id"),
-        target_property_name: "#visible",
-      },
-    ],
+    bindings: visibilityForId("$button_id"),
   });
+  ns.addRaw(
+    "opponent_actor_details_button_check_id@battle.opponent_actor_button",
+    {
+      "$button_id|default": "b:opponent_1_",
+      bindings: visibilityForId("$button_id"),
+    }
+  );
 
-  ns.addRaw("opponent_actor_details_button_check_id@battle.opponent_actor_button", {
-    "$button_id|default": "b:opponent_1_",
-    bindings: [
-      {
-        binding_name: "#form_button_text",
-        binding_name_override: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: contains("#form_button_text", "$button_id"),
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
-  // Opponent actor details button (up to 4 opponents)
-  ns.addRaw("opponent_actor_details_button", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["100%", "100%c"],
-    offset: ["-50%", "10%"],
-    controls: [
-      { "1@battle.opponent_actor_details_button_check_id": { $button_id: "§0§0§1" } },
-      { "2@battle.opponent_actor_details_button_check_id": { $button_id: "§0§0§2" } },
-      { "3@battle.opponent_actor_details_button_check_id": { $button_id: "§0§0§3" } },
-      { "4@battle.opponent_actor_details_button_check_id": { $button_id: "§0§0§4" } },
-    ],
-  });
-
-  // Ally actor details button (up to 4 allies)
-  ns.addRaw("ally_actor_details_button", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: ["100%", "100%c"],
-    offset: ["50%", "10%"],
-    controls: [
-      { "1@battle.ally_actor_details_button_check_id": { $button_id: "§0§a§1" } },
-      { "2@battle.ally_actor_details_button_check_id": { $button_id: "§0§a§2" } },
-      { "3@battle.ally_actor_details_button_check_id": { $button_id: "§0§a§3" } },
-      { "4@battle.ally_actor_details_button_check_id": { $button_id: "§0§a§4" } },
-    ],
-  });
-
-  // Main battle UI
+  // Actor details stacks (up to 4 each)
   ns.add(
-    panel("main")
-      .fullSize()
+    stackPanel("opponent_actor_details_button")
+      .vertical()
+      .size("100%", "100%c")
+      .offset("-50%", "10%")
       .controls(
-        // Battle menu at bottom
         {
-          battle_menu: {
-            type: "image",
-            texture: "textures/ui/battle/white_transparency",
-            color: [0.749, 0.168, 0.211],
-            layer: 1,
-            keep_ratio: true,
-            fill: true,
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-            size: ["100%", "29%"],
-            controls: [
-              {
-                main_buttons_holder: {
-                  type: "stack_panel",
-                  size: ["100%", "95%"],
-                  orientation: "horizontal",
-                  anchor_from: "bottom_left",
-                  anchor_to: "bottom_left",
-                  controls: [
-                    {
-                      menu_extra: {
-                        type: "image",
-                        texture: "textures/ui/battle/white_transparency",
-                        color: [0.137, 0.125, 0.125],
-                        layer: 2,
-                        keep_ratio: true,
-                        fill: true,
-                        anchor_from: "bottom_left",
-                        anchor_to: "bottom_left",
-                        size: ["85%", "100%"],
-                        controls: [
-                          {
-                            "left_button_panel@battle.button_stack": {
-                              size: ["100%", "100%"],
-                              layer: 3,
-                              $button: "battle.battle_action_button",
-                            },
-                          },
-                          {
-                            "move_selection_button@battle.button_stack": {
-                              size: ["100%", "100%"],
-                              layer: 3,
-                              offset: ["55%", "20%"],
-                              anchor_from: "center",
-                              anchor_to: "center",
-                              $button: "battle.move_selection_button",
-                            },
-                          },
-                          {
-                            button_grid_middle: {
-                              type: "image",
-                              texture: "textures/ui/battle/white_transparency",
-                              color: ["black"],
-                              alpha: 0,
-                              layer: 1,
-                              keep_ratio: true,
-                              fill: true,
-                              anchor_from: "center",
-                              anchor_to: "center",
-                              size: ["80%", "95%"],
-                              offset: ["9%", 0],
-                              controls: [
-                                {
-                                  "grid_panel@battle.button_stack": {
-                                    size: ["100%", "100%"],
-                                    layer: 4,
-                                    $button: "battle.grid_button",
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                        ],
-                      },
-                    },
-                    {
-                      info_label: {
-                        type: "label",
-                        localize: false,
-                        text: "#form_text",
-                        color: "default",
-                        alpha: 1,
-                        text_alignment: "center",
-                        font_scale_factor: 1,
-                        anchor_from: "center",
-                        anchor_to: "center",
-                        size: ["fill", "100%"],
-                        layer: 3,
-                        shadow: false,
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
+          "1@battle.opponent_actor_details_button_check_id": {
+            $button_id: "§0§0§1",
           },
         },
-        // Actor details at top
         {
-          actors_details_selection: {
-            type: "stack_panel",
-            orientation: "horizontal",
-            size: ["100%", "71%"],
-            offset: ["0%", "25%"],
-            anchor_from: "top_middle",
-            anchor_to: "top_middle",
-            controls: [
-              {
-                "opponent_actors@battle.button_stack": {
-                  size: ["25%", "100%"],
-                  layer: 21,
-                  $button: "battle.opponent_actor_details_button",
-                },
-              },
-              { spacing: { type: "panel", size: ["50%", "100%"] } },
-              {
-                "ally_actors@battle.button_stack": {
-                  size: ["25%", "100%"],
-                  layer: 21,
-                  $button: "battle.ally_actor_details_button",
-                },
-              },
-            ],
+          "2@battle.opponent_actor_details_button_check_id": {
+            $button_id: "§0§0§2",
+          },
+        },
+        {
+          "3@battle.opponent_actor_details_button_check_id": {
+            $button_id: "§0§0§3",
+          },
+        },
+        {
+          "4@battle.opponent_actor_details_button_check_id": {
+            $button_id: "§0§0§4",
           },
         }
       )
   );
-});
 
+  ns.add(
+    stackPanel("ally_actor_details_button")
+      .vertical()
+      .size("100%", "100%c")
+      .offset("50%", "10%")
+      .controls(
+        {
+          "1@battle.ally_actor_details_button_check_id": {
+            $button_id: "§0§a§1",
+          },
+        },
+        {
+          "2@battle.ally_actor_details_button_check_id": {
+            $button_id: "§0§a§2",
+          },
+        },
+        {
+          "3@battle.ally_actor_details_button_check_id": {
+            $button_id: "§0§a§3",
+          },
+        },
+        {
+          "4@battle.ally_actor_details_button_check_id": {
+            $button_id: "§0§a§4",
+          },
+        }
+      )
+  );
+
+  // Main battle UI
+  ns.addRaw("main", {
+    type: "panel",
+    size: ["100%", "100%"],
+    controls: [
+      // Battle menu at bottom
+      {
+        battle_menu: {
+          type: "image",
+          texture: "textures/ui/battle/white_transparency",
+          color: [0.749, 0.168, 0.211],
+          layer: 1,
+          keep_ratio: true,
+          fill: true,
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
+          size: ["100%", "29%"],
+          controls: [
+            {
+              main_buttons_holder: {
+                type: "stack_panel",
+                size: ["100%", "95%"],
+                orientation: "horizontal",
+                anchor_from: "bottom_left",
+                anchor_to: "bottom_left",
+                controls: [
+                  {
+                    menu_extra: {
+                      type: "image",
+                      texture: "textures/ui/battle/white_transparency",
+                      color: [0.137, 0.125, 0.125],
+                      layer: 2,
+                      keep_ratio: true,
+                      fill: true,
+                      anchor_from: "bottom_left",
+                      anchor_to: "bottom_left",
+                      size: ["85%", "100%"],
+                      controls: [
+                        {
+                          "left_button_panel@battle.button_stack": {
+                            size: ["100%", "100%"],
+                            layer: 3,
+                            $button: "battle.battle_action_button",
+                          },
+                        },
+                        {
+                          "move_selection_button@battle.button_stack": {
+                            size: ["100%", "100%"],
+                            layer: 3,
+                            offset: ["55%", "20%"],
+                            anchor_from: "center",
+                            anchor_to: "center",
+                            $button: "battle.move_selection_button",
+                          },
+                        },
+                        {
+                          button_grid_middle: {
+                            type: "image",
+                            texture: "textures/ui/battle/white_transparency",
+                            color: "black",
+                            alpha: 0,
+                            layer: 1,
+                            keep_ratio: true,
+                            fill: true,
+                            anchor_from: "center",
+                            anchor_to: "center",
+                            size: ["80%", "95%"],
+                            offset: ["9%", 0],
+                            controls: [
+                              {
+                                "grid_panel@battle.button_stack": {
+                                  size: ["100%", "100%"],
+                                  layer: 4,
+                                  $button: "battle.grid_button",
+                                },
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    info_label: {
+                      type: "label",
+                      localize: false,
+                      text: "#form_text",
+                      color: "default",
+                      alpha: 1,
+                      text_alignment: "center",
+                      font_scale_factor: 1,
+                      anchor_from: "center",
+                      anchor_to: "center",
+                      size: ["fill", "100%"],
+                      layer: 3,
+                      shadow: false,
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+      // Actor details at top
+      {
+        actors_details_selection: {
+          type: "stack_panel",
+          orientation: "horizontal",
+          size: ["100%", "71%"],
+          offset: ["0%", "25%"],
+          anchor_from: "top_middle",
+          anchor_to: "top_middle",
+          controls: [
+            {
+              "opponent_actors@battle.button_stack": {
+                size: ["25%", "100%"],
+                layer: 21,
+                $button: "battle.opponent_actor_details_button",
+              },
+            },
+            { spacing: { type: "panel", size: ["50%", "100%"] } },
+            {
+              "ally_actors@battle.button_stack": {
+                size: ["25%", "100%"],
+                layer: 21,
+                $button: "battle.ally_actor_details_button",
+              },
+            },
+          ],
+        },
+      },
+    ],
+  });
+});
