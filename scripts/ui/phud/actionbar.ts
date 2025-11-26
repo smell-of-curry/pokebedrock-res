@@ -1,35 +1,21 @@
-/**
- * Actionbar HUD Element
- *
- * Custom actionbar display that shows text from #fake_actionbar binding.
- * Uses a styled background similar to vanilla tip text.
- */
-
 import {
+  boundLabel,
   defineMain,
   image,
-  label,
   panel,
-  phudVisibility,
   phudText,
+  phudVisibility,
 } from "mcbe-ts-ui";
 
 // Label that displays the actionbar text
 const actionbarLabel = phudText(
-  label("label")
-    .anchor("center")
-    .fontScaleFactor("$font_scale")
-    .color("$color")
-    .layer(3)
-    .localize(false)
-    .alpha(1),
+  boundLabel("label").fontScaleFactor("$font_scale").color("$color").layer(3),
   "#fake_actionbar"
 );
 
 // Background image that sizes to content
-const textBg = image("text_bg")
-  .texture("textures/ui/hud_tip_text_background")
-  .size("100%c + 12px", "100%c + 5px")
+const textBg = image("text_bg", "textures/ui/hud_tip_text_background")
+  .padChildren(12, 5)
   .alpha(0.6)
   .controls(actionbarLabel);
 
@@ -37,9 +23,7 @@ const textBg = image("text_bg")
 export default defineMain(
   "phud_actionbar",
   panel("main")
-    .fullSize()
     .layer(41)
     .controls(textBg)
-    .bindings(...phudVisibility("#fake_actionbar")),
-  { subdir: "phud" }
+    .bindings(...phudVisibility("#fake_actionbar"))
 );

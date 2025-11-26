@@ -1,35 +1,27 @@
-/**
- * Evolution Wait HUD Element
- *
- * Displays an evolution wait overlay with a styled box.
- * Shows text centered within the evolution box texture.
- */
+import {
+  defineMain,
+  image,
+  phudVisibility,
+  phudRead,
+  fromRGB,
+  boundLabel,
+} from "mcbe-ts-ui";
 
-import { defineMain, image, label, phudVisibility, phudRead } from "mcbe-ts-ui";
-
-// Evolution text label
-const evolutionText = label("text")
-  .anchor("center")
-  .text("#text")
-  .color([0.502, 0.502, 0.502])
+const evolutionText = boundLabel("text")
+  .color(fromRGB(128, 128, 128))
   .layer(1002)
-  .localize(true)
-  .fontSize("normal")
+  .localize()
   .fontType("MinecraftTen")
   .textAlignment("center")
   .bindings(phudRead("#evolutionWait", "#text"));
 
-// Main evolution wait container
 export default defineMain(
   "phud_evolutionWait",
-  image("main")
-    .texture("textures/ui/evolution_box")
+  image("main", "textures/ui/evolution_box")
     .layer(1000)
-    .keepRatio(true)
     .anchor("bottom_middle")
     .size("70%", "100%")
     .offset(0, "32%")
     .controls(evolutionText)
-    .bindings(...phudVisibility("#evolutionWait")),
-  { subdir: "phud" }
+    .bindings(...phudVisibility("#evolutionWait"))
 );

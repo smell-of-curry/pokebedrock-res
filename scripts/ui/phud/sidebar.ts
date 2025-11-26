@@ -16,7 +16,6 @@ import {
   varRef,
   panel,
   image,
-  label,
   stackPanel,
   extend,
   phudVisibility,
@@ -25,35 +24,21 @@ import {
   variableParserBindings,
   sourceControlBinding,
   viewBinding,
+  boundLabel,
+  boundImage,
+  ElementBuilder,
 } from "mcbe-ts-ui";
 
-/**
- * Gets the indices for the pokemon slot data.
- * @param slotIndex - The index of the pokemon slot.
- * @returns The indices for the pokemon slot data.
- */
-function getPokemonSlotIndices(slotIndex: number) {
-  // Pokemon slot indices - each pokemon has 6 data points
-  const POKEMON_DATA_SIZE = 6;
-  const pokemonIndexMap = {
-    stats: 0,
-    name: 1,
-    id: 2,
-    active: 3,
-    caughtWith: 4,
-    icon: 5,
-  } as const;
-
-  const base = slotIndex * POKEMON_DATA_SIZE;
-  return {
-    $pokemon_stats_index: base + pokemonIndexMap.stats,
-    $pokemon_name_index: base + pokemonIndexMap.name,
-    $pokemon_id_index: base + pokemonIndexMap.id,
-    $pokemon_active_index: base + pokemonIndexMap.active,
-    $pokemon_caughtWith_index: base + pokemonIndexMap.caughtWith,
-    $pokemon_icon_index: base + pokemonIndexMap.icon,
-  };
-}
+// Pokemon slot indices - each pokemon has 6 data points
+const POKEMON_DATA_SIZE = 6;
+const pokemonIndexMap = {
+  stats: 0,
+  name: 1,
+  id: 2,
+  active: 3,
+  caughtWith: 4,
+  icon: 5,
+} as const;
 
 export default defineUI(
   "phud_sidebar",
@@ -66,30 +51,27 @@ export default defineUI(
     ns.add(variableParser);
 
     // Pokemon name label (extends variable_parser)
-    const pokemonNameLabel = label("pokemon_name")
+    const pokemonNameLabel = boundLabel("pokemon_name", "var")
       .extends(variableParser.getName())
       .enableProfanityFilter()
       .textAlignment("right")
       .linePadding(2)
       .layer(5)
       .color("$color")
-      .alpha(1)
-      .text("#var")
       .fontScale(0.7);
 
     // Pokemon name wrapper panel
     const pokemonNameWrapper = panel("pokemon_name_wrapper")
       .variable("var_index", varRef("pokemon_name_index"))
-      .size("100%", 5)
+      .size("default", 5)
       .controls(pokemonNameLabel);
 
     // Padding between name and stats
-    const namePadding = panel("padding").size("100%", 3);
+    const namePadding = panel("padding").size("default", 3);
 
     // Pokemon stats label (extends variable_parser)
-    const pokemonStatsLabel = label("pokemon_stats")
+    const pokemonStatsLabel = boundLabel("pokemon_stats", "var")
       .extends(variableParser.getName())
-      .text("#var")
       .layer(5)
       .textAlignment("right")
       .linePadding(2)
@@ -99,59 +81,52 @@ export default defineUI(
     // Pokemon stats wrapper panel
     const pokemonStatsWrapper = panel("pokemon_stats_wrapper")
       .variable("var_index", varRef("pokemon_stats_index"))
-      .size("100%", 5)
+      .size("default", 5)
       .controls(pokemonStatsLabel);
 
     // Stack panel for name and stats
-    const pokemonDataStack = stackPanel("pokemon_data_stack")
-      .vertical()
-      .size("100%", "90%c")
+    const pokemonDataStack = stackPanel("pokemon_data_stack", "vertical")
+      .size("default", "90%c")
       .controls(pokemonNameWrapper, namePadding, pokemonStatsWrapper);
 
     // Pokemon data image (extends variable_parser)
-    const pokemonDataImage = image("pokemon_data")
+    const pokemonDataImage = image("pokemon_data", "textures/ui/sidebar/data")
       .extends(variableParser.getName())
       .offset("-7%", "0%")
-      .texture("textures/ui/sidebar/data")
       .size("80%", "90%")
       .layer(2)
       .variable("visible", "(not(#var = 'null'))")
       .controls(pokemonDataStack);
 
     // Pokemon sprite icon
-    const pokemonIcon = image("pokemon_icon")
+    const pokemonIcon = boundImage("pokemon_icon")
       .offset("0%", "-15%")
-      .size(40, "100%")
+      .size(40)
       .variable("var_index", varRef("pokemon_icon_index"))
-      .layer(4)
-      .texture("#texture")
-      .bindings(
-        sourceControlBinding("elements", "#sidebar", "#string"),
-        viewBinding("$string_parser", "#pokemon_icon"),
-        viewBinding(
-          texturePath("textures/sprites/", "#pokemon_icon"),
-          "#texture"
-        ),
-        viewBinding(
-          notEmpty("#pokemon_icon").replace("''", "'null'"),
-          "#visible"
-        )
-      );
+      .layer(4);
+    pokemonIcon.bindings(
+      sourceControlBinding("elements", "#sidebar", "#string"),
+      viewBinding("$string_parser", "#pokemon_icon"),
+      viewBinding(
+        texturePath("textures/sprites/", "#pokemon_icon"),
+        `#${pokemonIcon.bindingName}`
+      ),
+      viewBinding(notEmpty("#pokemon_icon").replace("''", "'null'"), "#visible")
+    );
 
     // Ball icon image
-    const ballIcon = image("ball_icon")
-      .size(40, "100%")
+    const ballIcon = boundImage("ball_icon")
+      .size(40)
       .layer(3)
-      .texture("#texture")
-      .bindings(
-        sourceControlBinding("elements", "#sidebar", "#string"),
-        viewBinding("$string_parser", "#ball_type"),
-        viewBinding(
-          texturePath("textures/ui/sidebar/balls/", "#ball_type"),
-          "#texture"
-        )
-      )
       .controls(pokemonIcon);
+    ballIcon.bindings(
+      sourceControlBinding("elements", "#sidebar", "#string"),
+      viewBinding("$string_parser", "#ball_type"),
+      viewBinding(
+        texturePath("textures/ui/sidebar/balls/", "#ball_type"),
+        `#${ballIcon.bindingName}`
+      )
+    );
 
     // Pokemon icon wrapper panel
     const pokemonIconWrapper = panel("pokemon_icon_wrapper")
@@ -159,11 +134,10 @@ export default defineUI(
       .controls(ballIcon);
 
     // Active indicator ring (extends variable_parser)
-    const activeIcon = image("active_icon")
+    const activeIcon = image("active_icon", "textures/ui/sidebar/ring")
       .extends(variableParser.getName())
-      .size(40, "100%")
+      .size(40)
       .layer(5)
-      .texture("textures/ui/sidebar/ring")
       .variable("visible", "#var");
 
     // Pokemon selected indicator panel
@@ -173,7 +147,7 @@ export default defineUI(
 
     // Pokemon sidebar slot template
     const pokemonSlotTemplate = panel("pokemon_sidebar_pokemon")
-      .size("100%", 30)
+      .size("default", 30)
       .variableDefaults({
         pokemon_stats_index: 0,
         pokemon_id_index: 1,
@@ -188,40 +162,46 @@ export default defineUI(
     ns.add(pokemonSlotTemplate);
 
     // Slot padding template
-    const slotPaddingTemplate = panel("slot_padding").size("100%", 1);
+    const slotPaddingTemplate = panel("slot_padding").size("default", 1);
     ns.add(slotPaddingTemplate);
 
     // Pokemon holder stack panel with slots
-    const pokemonHolder = stackPanel("pokemon_holder")
-      .vertical()
-      .size("100%", "100%c");
+    const pokemonHolder = stackPanel("pokemon_holder", "vertical").size(
+      "default",
+      "100%c"
+    );
 
     // Add pokemon slots with padding between them
+    let controls: ElementBuilder[] = [];
     for (let slotIndex = 0; slotIndex < 6; slotIndex++) {
-      pokemonHolder.controls(
-        extend(
-          `pokemon${slotIndex + 1}`,
-          pokemonSlotTemplate.getName(),
-          getPokemonSlotIndices(slotIndex)
-        )
+      const slotTemplate = extend(
+        `pokemon_${slotIndex + 1}`,
+        pokemonSlotTemplate
       );
+
+      // Append variables to the slot template
+      const base = slotIndex * POKEMON_DATA_SIZE;
+      for (const key in pokemonIndexMap)
+        slotTemplate.variable(
+          `pokemon_${key}_index`,
+          base + pokemonIndexMap[key]
+        );
+      controls.push(slotTemplate);
 
       // Add padding after each slot (except last)
       if (slotIndex >= 5) continue;
-      pokemonHolder.controls(
-        extend(`padding_${slotIndex + 1}`, slotPaddingTemplate.getName())
-      );
+      controls.push(extend(`padding_${slotIndex + 1}`, slotPaddingTemplate));
     }
+
+    pokemonHolder.controls(...controls);
 
     // Main sidebar container
     ns.add(
-      image("main")
-        .texture("textures/ui/sidebar/dock")
+      image("main", "textures/ui/sidebar/dock")
         .anchor("right_middle")
-        .size("100%", "80%")
+        .size("default", "80%")
         .offset("47%", "0%")
         .layer(1)
-        .alpha(1)
         .variable("var_size", 121)
         .controls(pokemonHolder)
         .bindings(...phudVisibility("#sidebar"))
