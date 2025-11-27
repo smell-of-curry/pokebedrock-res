@@ -10,7 +10,6 @@ import {
   viewBinding,
 } from "mcbe-ts-ui";
 
-// Battle log text label
 const battleLogText = boundLabel("text")
   .anchor("top_middle")
   .layer(1002)
@@ -21,7 +20,6 @@ const battleLogText = boundLabel("text")
     viewBinding("#log_text", "#text")
   );
 
-// Menu extra panel - dark background for battle text
 const menuExtra = image("menu_extra", "textures/ui/battle/white_transparency")
   .color(fromRGB(35, 32, 32))
   .layer(2)
@@ -30,7 +28,6 @@ const menuExtra = image("menu_extra", "textures/ui/battle/white_transparency")
   .size("85%")
   .controls(battleLogText);
 
-// Info label - displays subtitle text
 const infoLabel = boundLabel("info_label")
   .color("default")
   .alpha(1)
@@ -39,13 +36,11 @@ const infoLabel = boundLabel("info_label")
   .layer(3)
   .bindings(hudSubtitleBinding());
 
-// Main holder stack panel
 const mainHolder = stackPanel("main_holder", "horizontal")
   .size("default", "95%")
   .anchor("bottom_left")
   .controls(menuExtra, infoLabel);
 
-// Main battle wait container
 export default defineMain(
   "phud_battleWait",
   image("main", "textures/ui/battle/white_transparency")
