@@ -7,22 +7,26 @@ import {
   phudVisibility,
 } from "mcbe-ts-ui";
 
-// Label that displays the actionbar text
+const FONT_SCALE = 1;
+
 const actionbarLabel = phudText(
-  boundLabel("label").fontScaleFactor("$font_scale").color("$color").layer(3),
+  boundLabel("label")
+    .fontScaleFactor(FONT_SCALE)
+    .color([1, 1, 0.52, 1])
+    .layer(3),
   "#fake_actionbar"
 );
 
-// Background image that sizes to content
 const textBg = image("text_bg", "textures/ui/hud_tip_text_background")
   .padChildren(12, 5)
   .alpha(0.6)
   .controls(actionbarLabel);
 
-// Main panel container
 export default defineMain(
   "phud_actionbar",
   panel("main")
+    .anchor("top_middle")
+    .offset(0, "50% - 70px")
     .layer(41)
     .controls(textBg)
     .bindings(...phudVisibility("#fake_actionbar"))

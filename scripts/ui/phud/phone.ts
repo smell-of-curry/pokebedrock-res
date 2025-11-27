@@ -1,12 +1,3 @@
-/**
- * Phone HUD Element
- *
- * Displays a rotom phone icon with various animation states:
- * - Ringing: Animated flip-book for incoming calls
- * - Standby: Static standby icon
- * - Loop: Jeb-style animated loop for special states
- */
-
 import {
   defineUI,
   panel,
@@ -126,6 +117,10 @@ export default defineUI("phud_phone", (ns) => {
     abstractPhoneConditional,
     jebIcon,
     icon,
-    panel("main").controls(icons, backgrounds, jebBackground)
+    panel("main")
+      .anchor("left_middle")
+      .offset(8, 0)
+      .size(64, 64)
+      .controls(icons, backgrounds, jebBackground)
   );
 });
