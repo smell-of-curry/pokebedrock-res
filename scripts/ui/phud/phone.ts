@@ -115,12 +115,11 @@ export default defineUI("phud_phone", (ns) => {
     .anims(animRef("phud_phone", "anim__jeb_loop_show__0"))
     .variable("$condition", prefix(4, "#value", "loop"));
 
-  const [, finalNs] = ns.add(
+  return ns.setMain(
     panel("main")
       .anchor("left_middle")
       .offset(8, 0)
       .size(64, 64)
       .controls(icons, backgrounds, jebBackground)
   );
-  return finalNs;
 });

@@ -250,8 +250,7 @@ export default defineUI("pc", (ns) => {
     .size(71, "100%c")
     .controls(iconBox, panel("spacer").size("default", 0.5), actionButtonBox);
 
-  // Main PC layout
-  const [, finalNs] = ns.add(
+  return ns.setMain(
     stackPanel("main", "horizontal")
       .offset("25%", "25%")
       .controls(
@@ -262,5 +261,4 @@ export default defineUI("pc", (ns) => {
         rightContentNs
       )
   );
-  return finalNs;
 });
