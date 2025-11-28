@@ -116,8 +116,5 @@ export default defineUI("phud", (ns) => {
     .bindings(...siblingBindings())
     .controls(...elementRefs());
 
-  const [, finalNs] = ns1.add(
-    panel("main").fullSize().controls(renderers, elements)
-  );
-  return finalNs;
+  return ns1.setMain(panel("main").fullSize().controls(renderers, elements));
 });

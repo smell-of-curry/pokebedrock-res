@@ -121,7 +121,7 @@ export default defineUI("phud_sidebar", (ns) => {
     .variable("var_index", varRef("pokemon_active_index"))
     .controls(activeIcon);
 
-  const [pokemonSlotTemplate] = ns1.add(
+  const [pokemonSlotTemplate, ns2] = ns1.add(
     panel("pokemon_sidebar_pokemon")
       .size("default", 30)
       .variableDefaults({
@@ -164,7 +164,7 @@ export default defineUI("phud_sidebar", (ns) => {
 
   pokemonHolder.controls(...controls);
 
-  const [, finalNs] = ns1.add(
+  return ns2.setMain(
     image("main", "textures/ui/sidebar/dock")
       .anchor("right_middle")
       .size("default", "80%")
@@ -175,5 +175,4 @@ export default defineUI("phud_sidebar", (ns) => {
       .controls(pokemonHolder)
       .bindings(...phudVisibility("#sidebar"))
   );
-  return finalNs;
 });
