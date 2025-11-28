@@ -12,6 +12,7 @@ const FONT_SCALE = 1;
 const actionbarLabel = phudText(
   boundLabel("label")
     .fontScaleFactor(FONT_SCALE)
+    // TODO: Convert to `fromRGB` helper
     .color([1, 1, 0.52, 1])
     .layer(3),
   "#fake_actionbar"

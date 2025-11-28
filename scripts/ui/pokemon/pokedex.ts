@@ -4,33 +4,20 @@
  * Pokedex interface with grid view, search, navigation, and detail view.
  */
 
-import {
-  defineUI,
-  stackPanel,
-  collectionBinding,
-  viewBinding,
-  factoryBindings,
-  buttonFlagVisibility,
-  globalBinding,
-} from "mcbe-ts-ui";
-import { skip, first, strip, type Binding } from "mcbe-ts-ui";
+import { defineUI, viewBinding, globalBinding, first, strip } from "mcbe-ts-ui";
 
-// Visibility binding helper for button ID
-const visibilityForId = (id: string): Binding[] =>
-  buttonFlagVisibility(id, "form_buttons");
+import {
+  visibilityForId,
+  buttonStack,
+  formButtonEnabledBindings,
+  formButtonTextLabelBindings,
+  formButtonImageBindings,
+  buttonTextureProps,
+} from "./shared";
 
 export default defineUI("pokedex", (ns) => {
   // Button stack factory
-  ns.add(
-    stackPanel("button_stack")
-      .size("100%", "100%c")
-      .vertical()
-      .anchor("top_left")
-      .rawProp("$button|default", "default_form.button")
-      .rawProp("factory", { name: "buttons", control_name: "$button" })
-      .rawProp("collection_name", "form_buttons")
-      .bindings(...factoryBindings())
-  );
+  ns.add(buttonStack);
 
   // Base button template
   ns.addRaw("button", {
@@ -49,15 +36,7 @@ export default defineUI("pokedex", (ns) => {
           anchor_to: "center",
           size: ["100%", "100%"],
           offset: "$offset",
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-            collectionBinding("#form_button_text"),
-            viewBinding("((%.1s * #form_button_text) = 't')", "#enabled"),
-          ],
+          bindings: formButtonEnabledBindings(),
         },
       },
       {
@@ -71,10 +50,7 @@ export default defineUI("pokedex", (ns) => {
           text: "#text",
           font_scale_factor: 0.6,
           color: "white",
-          bindings: [
-            collectionBinding("#form_button_text"),
-            viewBinding(strip(skip(25, "#form_button_text")), "#text"),
-          ],
+          bindings: formButtonTextLabelBindings(),
         },
       },
       {
@@ -83,18 +59,7 @@ export default defineUI("pokedex", (ns) => {
           size: "$image_size",
           offset: "$image_offset",
           layer: 11,
-          bindings: [
-            collectionBinding(
-              "#form_button_texture",
-              "form_buttons",
-              "#texture"
-            ),
-            collectionBinding(
-              "#form_button_texture_file_system",
-              "form_buttons",
-              "#texture_file_system"
-            ),
-          ],
+          bindings: formButtonImageBindings(),
         },
       },
     ],
@@ -102,10 +67,12 @@ export default defineUI("pokedex", (ns) => {
 
   // Button variants
   ns.addRaw("search_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_6",
-    $hover_button_texture: "textures/ui/pokedex/Button_6_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_6",
-    $locked_button_texture: "textures/ui/pokedex/Button_6_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_6",
+      hover: "textures/ui/pokedex/Button_6_green",
+      pressed: "textures/ui/pokedex/Button_6",
+      locked: "textures/ui/pokedex/Button_6_disabled",
+    }),
     $button_image_fill: true,
     $text_anchor_location: "left_middle",
     $text_offset: ["3%", "20%"],
@@ -113,38 +80,46 @@ export default defineUI("pokedex", (ns) => {
   });
 
   ns.addRaw("back_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_7",
-    $hover_button_texture: "textures/ui/pokedex/Button_7_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_7",
-    $locked_button_texture: "textures/ui/pokedex/Button_7_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_7",
+      hover: "textures/ui/pokedex/Button_7_green",
+      pressed: "textures/ui/pokedex/Button_7",
+      locked: "textures/ui/pokedex/Button_7_disabled",
+    }),
     $button_image_fill: true,
     bindings: visibilityForId("btn:back"),
   });
 
   ns.addRaw("previous_page_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_1",
-    $hover_button_texture: "textures/ui/pokedex/Button_1_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_1",
-    $locked_button_texture: "textures/ui/pokedex/Button_1_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_1",
+      hover: "textures/ui/pokedex/Button_1_green",
+      pressed: "textures/ui/pokedex/Button_1",
+      locked: "textures/ui/pokedex/Button_1_disabled",
+    }),
     $button_image_fill: true,
     bindings: visibilityForId("btn:previous_page"),
   });
 
   ns.addRaw("next_page_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_2",
-    $hover_button_texture: "textures/ui/pokedex/Button_2_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_2",
-    $locked_button_texture: "textures/ui/pokedex/Button_2_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_2",
+      hover: "textures/ui/pokedex/Button_2_green",
+      pressed: "textures/ui/pokedex/Button_2",
+      locked: "textures/ui/pokedex/Button_2_disabled",
+    }),
     $button_image_fill: true,
     $offset: ["0px", "-5%"],
     bindings: visibilityForId("btn:next_page"),
   });
 
   ns.addRaw("caught_pokemon_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_5",
-    $hover_button_texture: "textures/ui/pokedex/Button_5_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_5",
-    $locked_button_texture: "textures/ui/pokedex/Button_5_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_5",
+      hover: "textures/ui/pokedex/Button_5_green",
+      pressed: "textures/ui/pokedex/Button_5",
+      locked: "textures/ui/pokedex/Button_5_disabled",
+    }),
     $button_image_fill: true,
     $text_anchor_location: "right_middle",
     $text_offset: ["25%", "27%"],
@@ -152,10 +127,12 @@ export default defineUI("pokedex", (ns) => {
   });
 
   ns.addRaw("seen_pokemon_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_4",
-    $hover_button_texture: "textures/ui/pokedex/Button_4_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_4",
-    $locked_button_texture: "textures/ui/pokedex/Button_4_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_4",
+      hover: "textures/ui/pokedex/Button_4_green",
+      pressed: "textures/ui/pokedex/Button_4",
+      locked: "textures/ui/pokedex/Button_4_disabled",
+    }),
     $button_image_fill: true,
     $text_anchor_location: "right_middle",
     $text_offset: ["25%", "27%"],
@@ -163,10 +140,12 @@ export default defineUI("pokedex", (ns) => {
   });
 
   ns.addRaw("completion_button@pokedex.button", {
-    $default_button_texture: "textures/ui/pokedex/Button_3",
-    $hover_button_texture: "textures/ui/pokedex/Button_3_green",
-    $pressed_button_texture: "textures/ui/pokedex/Button_3",
-    $locked_button_texture: "textures/ui/pokedex/Button_3_disabled",
+    ...buttonTextureProps({
+      default: "textures/ui/pokedex/Button_3",
+      hover: "textures/ui/pokedex/Button_3_green",
+      pressed: "textures/ui/pokedex/Button_3",
+      locked: "textures/ui/pokedex/Button_3_disabled",
+    }),
     $button_image_fill: true,
     $text_anchor_location: "right_middle",
     $text_offset: ["25%", "27%"],

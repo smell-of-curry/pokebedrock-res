@@ -5,9 +5,9 @@
  * and adjust default HUD positioning.
  */
 
-import { defineUI, panel } from "mcbe-ts-ui";
+import { redefineUI, panel } from "mcbe-ts-ui";
 
-export default defineUI("hud", (ns) => {
+export default redefineUI("hud_screen", (ns) => {
   // Modify hud title text positioning
   ns.addRaw("hud_title_text", {
     size: ["100%", "100%"],
