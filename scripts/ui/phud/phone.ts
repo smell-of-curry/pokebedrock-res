@@ -11,7 +11,7 @@ import {
   image,
 } from "mcbe-ts-ui";
 
-// TODO: Remove extensions
+// TODO: We could make this without extending anything.
 
 const animations = [
   animation("anim__ringing")

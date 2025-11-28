@@ -19,6 +19,7 @@ import {
  */
 const VARIABLE_SIZE = 80;
 const FONT_SCALE = 1;
+// TODO: Convert to `fromRGB` helper
 const COLOR: ColorWithAlpha = [1, 1, 0.52, 1];
 
 const questLabel = boundLabel("quest_label")
