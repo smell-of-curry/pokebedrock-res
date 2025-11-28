@@ -1,5 +1,5 @@
 import {
-  defineMain,
+  defineUI,
   image,
   boundLabel,
   panel,
@@ -52,7 +52,7 @@ const stackPanelElement = stackPanel("stack_panel", "horizontal")
   .wrapChildren()
   .controls(quest, panel("separator").size(3, 0), currency);
 
-export default defineMain(
+export default defineUI(
   "phud_currency",
   panel("main")
     .size("100%cm", "100%cm")

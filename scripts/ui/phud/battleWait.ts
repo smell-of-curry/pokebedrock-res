@@ -1,5 +1,5 @@
 import {
-  defineMain,
+  defineUI,
   fromRGB,
   hudSubtitleBinding,
   image,
@@ -41,7 +41,7 @@ const mainHolder = stackPanel("main_holder", "horizontal")
   .anchor("bottom_left")
   .controls(menuExtra, infoLabel);
 
-export default defineMain(
+export default defineUI(
   "phud_battleWait",
   image("main", "textures/ui/battle/white_transparency")
     .color(fromRGB(191, 43, 54))

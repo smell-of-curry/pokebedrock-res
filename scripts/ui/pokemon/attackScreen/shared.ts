@@ -10,7 +10,8 @@ import {
   custom,
   collectionBinding,
   viewBinding,
-  type ElementBuilder,
+  type NamespaceBuilder,
+  type NamespaceElement,
 } from "mcbe-ts-ui";
 
 // Re-export common utilities from parent shared module
@@ -19,7 +20,6 @@ export {
   formButtonsDetailsBinding,
   formButtonTextBinding,
   formButtonTextureBinding,
-  buttonStack,
   createButtonStack,
   formButtonEnabledBindings,
   formButtonTextLabelBindings,
@@ -33,7 +33,7 @@ export {
   type ButtonTextureConfig,
 } from "../shared";
 
-import { formButtonsDetailsBinding } from "../shared";
+import { buttonStack, formButtonsDetailsBinding } from "../shared";
 
 /** Namespace constant for battle UI */
 export const NS = "battle";
@@ -64,12 +64,18 @@ export const buttonHoverControl = image(
   .variableDefault("hover_text_index", 0)
   .controls(hoverTextTooltip);
 
+// Store registered namespace elements for cross-module access
+export interface SharedElements {
+  buttonStack: NamespaceElement;
+  buttonHoverControl: NamespaceElement;
+}
+
 /**
- * Helper to add all shared elements to namespace
+ * Register all shared elements to namespace and return references
  */
-export function addSharedElements(
-  add: (builder: ElementBuilder) => void
-): void {
-  add(buttonStack);
-  add(buttonHoverControl);
+export function registerSharedElements(ns: NamespaceBuilder): SharedElements {
+  return {
+    buttonStack: buttonStack.addToNamespace(ns),
+    buttonHoverControl: buttonHoverControl.addToNamespace(ns),
+  };
 }

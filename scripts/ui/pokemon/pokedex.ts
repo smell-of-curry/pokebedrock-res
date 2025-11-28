@@ -4,7 +4,14 @@
  * Pokedex interface with grid view, search, navigation, and detail view.
  */
 
-import { defineUI, viewBinding, globalBinding, first, strip } from "mcbe-ts-ui";
+import {
+  defineUI,
+  viewBinding,
+  globalBinding,
+  first,
+  strip,
+  image,
+} from "mcbe-ts-ui";
 
 import {
   visibilityForId,
@@ -17,7 +24,7 @@ import {
 
 export default defineUI("pokedex", (ns) => {
   // Button stack factory
-  ns.add(buttonStack);
+  buttonStack.addToNamespace(ns);
 
   // Base button template
   ns.addRaw("button", {
@@ -163,100 +170,6 @@ export default defineUI("pokedex", (ns) => {
     bindings: visibilityForId("btn:icon"),
   });
 
-  // Main grid view
-  ns.addRaw("main_grid", {
-    type: "image",
-    texture: "textures/ui/pokedex/Orange_gui_resized_and_removed",
-    size: [233, 299],
-    anchor_from: "center",
-    anchor_to: "center",
-    controls: [
-      {
-        "close_button@common.light_close_button": {
-          $close_button_offset: [-10, 111],
-        },
-      },
-      {
-        "search_button@pokedex.button_stack": {
-          size: [163, 12],
-          offset: [32, 116],
-          layer: 4,
-          $button: "pokedex.search_button",
-        },
-      },
-      {
-        page_management_buttons: {
-          type: "stack_panel",
-          orientation: "vertical",
-          size: ["100%", "100%"],
-          offset: [196, 144],
-          controls: [
-            {
-              "page_management@pokedex.button_stack": {
-                size: [11, 26],
-                layer: 4,
-                $button: "pokedex.previous_page_button",
-              },
-            },
-            {
-              "page_management@pokedex.button_stack": {
-                size: [11, 26],
-                layer: 4,
-                $button: "pokedex.next_page_button",
-              },
-            },
-          ],
-        },
-      },
-      {
-        pokedex_info_buttons: {
-          type: "stack_panel",
-          orientation: "horizontal",
-          size: ["100%", "100%"],
-          offset: [32, 207],
-          controls: [
-            {
-              "caught_pokemon@pokedex.button_stack": {
-                size: [54, 17],
-                layer: 4,
-                $button: "pokedex.caught_pokemon_button",
-              },
-            },
-            { spacer: { type: "panel", size: [0.5, 17] } },
-            {
-              "seen_pokemon@pokedex.button_stack": {
-                size: [54, 17],
-                layer: 4,
-                $button: "pokedex.seen_pokemon_button",
-              },
-            },
-            { spacer_2: { type: "panel", size: [0.5, 17] } },
-            {
-              "completion@pokedex.button_stack": {
-                size: [54, 17],
-                layer: 4,
-                $button: "pokedex.completion_button",
-              },
-            },
-          ],
-        },
-      },
-      {
-        small_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 4],
-          size: [159.8, 73],
-          offset: [34, 132],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-  });
-
   // Pokemon details view
   ns.addRaw("pokemon_details", {
     type: "image",
@@ -385,4 +298,96 @@ export default defineUI("pokedex", (ns) => {
       },
     ],
   });
+
+  const [, finalNs] = ns.add(
+    image("main", "textures/ui/pokedex/Orange_gui_resized_and_removed")
+      .size(233, 299)
+      .controls(
+        {
+          "close_button@common.light_close_button": {
+            $close_button_offset: [-10, 111],
+          },
+        },
+        {
+          "search_button@pokedex.button_stack": {
+            size: [163, 12],
+            offset: [32, 116],
+            layer: 4,
+            $button: "pokedex.search_button",
+          },
+        },
+        {
+          page_management_buttons: {
+            type: "stack_panel",
+            orientation: "vertical",
+            size: ["100%", "100%"],
+            offset: [196, 144],
+            controls: [
+              {
+                "page_management@pokedex.button_stack": {
+                  size: [11, 26],
+                  layer: 4,
+                  $button: "pokedex.previous_page_button",
+                },
+              },
+              {
+                "page_management@pokedex.button_stack": {
+                  size: [11, 26],
+                  layer: 4,
+                  $button: "pokedex.next_page_button",
+                },
+              },
+            ],
+          },
+        },
+        {
+          pokedex_info_buttons: {
+            type: "stack_panel",
+            orientation: "horizontal",
+            size: ["100%", "100%"],
+            offset: [32, 207],
+            controls: [
+              {
+                "caught_pokemon@pokedex.button_stack": {
+                  size: [54, 17],
+                  layer: 4,
+                  $button: "pokedex.caught_pokemon_button",
+                },
+              },
+              { spacer: { type: "panel", size: [0.5, 17] } },
+              {
+                "seen_pokemon@pokedex.button_stack": {
+                  size: [54, 17],
+                  layer: 4,
+                  $button: "pokedex.seen_pokemon_button",
+                },
+              },
+              { spacer_2: { type: "panel", size: [0.5, 17] } },
+              {
+                "completion@pokedex.button_stack": {
+                  size: [54, 17],
+                  layer: 4,
+                  $button: "pokedex.completion_button",
+                },
+              },
+            ],
+          },
+        },
+        {
+          small_chest_grid: {
+            type: "grid",
+            // @ts-ignore
+            grid_dimensions: [9, 4],
+            size: [159.8, 73],
+            offset: [34, 132],
+            anchor_from: "top_left",
+            anchor_to: "top_left",
+            grid_item_template: "chest_ui.chest_item",
+            collection_name: "form_buttons",
+            layer: 1,
+          },
+        }
+      )
+  );
+  return finalNs;
 });

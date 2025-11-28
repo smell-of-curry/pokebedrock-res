@@ -4,7 +4,7 @@
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [
-      "100%",
+      "default",
       "100%c"
     ],
     "anchor_from": "top_left",
@@ -24,10 +24,6 @@
   },
   "button": {
     "type": "panel",
-    "size": [
-      "100%",
-      "100%"
-    ],
     "$offset|default": [
       "0%",
       "0%"
@@ -51,12 +47,6 @@
       {
         "form_button@common_buttons.light_text_button": {
           "$pressed_button_name": "button.form_button_click",
-          "anchor_from": "center",
-          "anchor_to": "center",
-          "size": [
-            "100%",
-            "100%"
-          ],
           "offset": "$offset",
           "bindings": [
             {
@@ -82,15 +72,11 @@
       {
         "text": {
           "type": "label",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "offset": "$text_offset",
+          "text": "#text",
           "layer": 10,
+          "offset": "$text_offset",
           "anchor_from": "$text_anchor_location",
           "anchor_to": "$text_anchor_location",
-          "text": "#text",
           "font_scale_factor": "$text_font_scale_factor",
           "text_alignment": "$text_alignment",
           "color": "white",
@@ -113,6 +99,7 @@
       {
         "image": {
           "type": "image",
+          "texture": "#texture",
           "size": "$image_size",
           "offset": "$image_offset",
           "layer": 11,
@@ -134,7 +121,7 @@
       }
     ]
   },
-  "left_arrow_button@pc.button": {
+  "left_arrow_button@button": {
     "$default_button_texture": "textures/ui/pc/left_arrow",
     "$hover_button_texture": "textures/ui/pc/left_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/left_arrow",
@@ -156,7 +143,7 @@
       }
     ]
   },
-  "right_arrow_button@pc.button": {
+  "right_arrow_button@button": {
     "$default_button_texture": "textures/ui/pc/right_arrow",
     "$hover_button_texture": "textures/ui/pc/right_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/right_arrow",
@@ -178,7 +165,7 @@
       }
     ]
   },
-  "icon_button@pc.button": {
+  "icon_button@button": {
     "$default_button_texture": "textures/ui/pc/icon_box",
     "$hover_button_texture": "textures/ui/pc/icon_box",
     "$pressed_button_texture": "textures/ui/pc/icon_box",
@@ -208,11 +195,11 @@
       }
     ]
   },
-  "action_button@pc.button": {
+  "action_button@button": {
     "$default_button_texture": "textures/ui/pc/action_button",
     "$hover_button_texture": "textures/ui/pc/action_button_hover",
     "$pressed_button_texture": "textures/ui/pc/action_button",
-    "$locked_button_texture": "textures/ui/pc/action_button",
+    "$locked_button_texture": "textures/ui/pc/action_button_disabled",
     "$text_offset": [
       0,
       -3
@@ -237,25 +224,19 @@
   "main": {
     "type": "stack_panel",
     "orientation": "horizontal",
-    "size": [
-      "100%",
-      "100%"
-    ],
     "offset": [
       "25%",
       "25%"
     ],
-    "anchor_from": "center",
-    "anchor_to": "center",
     "controls": [
       {
         "left_content_box": {
           "type": "image",
+          "texture": "textures/ui/pc/content_box",
           "size": [
             73,
             115
           ],
-          "texture": "textures/ui/pc/content_box",
           "controls": [
             {
               "close_button@common.light_close_button": {
@@ -269,10 +250,6 @@
               "content_stack": {
                 "type": "stack_panel",
                 "orientation": "vertical",
-                "size": [
-                  "100%",
-                  "100%"
-                ],
                 "offset": [
                   5,
                   4
@@ -281,6 +258,7 @@
                   {
                     "header_text": {
                       "type": "label",
+                      "text": "#text",
                       "size": [
                         64,
                         8
@@ -293,7 +271,6 @@
                       ],
                       "anchor_from": "top_left",
                       "anchor_to": "top_left",
-                      "text": "#text",
                       "text_alignment": "center",
                       "bindings": [
                         {
@@ -314,6 +291,7 @@
                   {
                     "body_text": {
                       "type": "label",
+                      "text": "#text",
                       "size": [
                         64,
                         95
@@ -322,7 +300,6 @@
                       "color": "white",
                       "anchor_from": "top_left",
                       "anchor_to": "top_left",
-                      "text": "#text",
                       "bindings": [
                         {
                           "binding_type": "global",
@@ -350,7 +327,7 @@
           "type": "panel",
           "size": [
             2,
-            "100%"
+            "default"
           ]
         }
       },
@@ -366,39 +343,33 @@
             {
               "title_box": {
                 "type": "image",
+                "texture": "textures/ui/pc/title_box",
                 "size": [
-                  "100%",
+                  "default",
                   17
                 ],
-                "texture": "textures/ui/pc/title_box",
                 "controls": [
                   {
                     "box_details": {
                       "type": "stack_panel",
                       "orientation": "horizontal",
-                      "size": [
-                        "100%",
-                        "100%"
-                      ],
                       "controls": [
                         {
                           "start_padding": {
                             "type": "panel",
                             "size": [
                               5,
-                              "100%"
+                              "default"
                             ]
                           }
                         },
                         {
-                          "left_button@pc.button_stack": {
+                          "left_button@button_stack": {
                             "size": [
                               11,
-                              "100%"
+                              "default"
                             ],
                             "layer": 3,
-                            "anchor_from": "center",
-                            "anchor_to": "center",
                             "$button": "pc.left_arrow_button"
                           }
                         },
@@ -407,7 +378,7 @@
                             "type": "panel",
                             "size": [
                               84,
-                              "100%"
+                              "default"
                             ],
                             "offset": [
                               0,
@@ -427,14 +398,12 @@
                           }
                         },
                         {
-                          "right_button@pc.button_stack": {
+                          "right_button@button_stack": {
                             "size": [
                               11,
-                              "100%"
+                              "default"
                             ],
                             "layer": 3,
-                            "anchor_from": "center",
-                            "anchor_to": "center",
                             "$button": "pc.right_arrow_button"
                           }
                         },
@@ -443,7 +412,7 @@
                             "type": "panel",
                             "size": [
                               5,
-                              "100%"
+                              "default"
                             ]
                           }
                         }
@@ -457,7 +426,7 @@
               "spacer1": {
                 "type": "panel",
                 "size": [
-                  "100%",
+                  "default",
                   1
                 ]
               }
@@ -465,11 +434,11 @@
             {
               "container_slots": {
                 "type": "image",
+                "texture": "textures/ui/pc/container_slots",
                 "size": [
-                  "100%",
+                  "default",
                   105
                 ],
-                "texture": "textures/ui/pc/container_slots",
                 "controls": [
                   {
                     "small_chest_grid": {
@@ -500,7 +469,7 @@
               "spacer2": {
                 "type": "panel",
                 "size": [
-                  "100%",
+                  "default",
                   1.5
                 ]
               }
@@ -508,11 +477,11 @@
             {
               "party_slots": {
                 "type": "image",
+                "texture": "textures/ui/pc/party_slots",
                 "size": [
-                  "100%",
+                  "default",
                   26
-                ],
-                "texture": "textures/ui/pc/party_slots"
+                ]
               }
             }
           ]
@@ -523,7 +492,7 @@
           "type": "panel",
           "size": [
             1,
-            "100%"
+            "default"
           ]
         }
       },
@@ -537,14 +506,12 @@
           ],
           "controls": [
             {
-              "icon_box@pc.button_stack": {
+              "icon_box@button_stack": {
                 "size": [
-                  "100%",
+                  "default",
                   70
                 ],
                 "layer": 3,
-                "anchor_from": "center",
-                "anchor_to": "center",
                 "$button": "pc.icon_button"
               }
             },
@@ -552,20 +519,18 @@
               "spacer": {
                 "type": "panel",
                 "size": [
-                  "100%",
+                  "default",
                   0.5
                 ]
               }
             },
             {
-              "action_button@pc.button_stack": {
+              "action_button@button_stack": {
                 "size": [
-                  "100%",
+                  "default",
                   18
                 ],
                 "layer": 3,
-                "anchor_from": "center",
-                "anchor_to": "center",
                 "$button": "pc.action_button"
               }
             }

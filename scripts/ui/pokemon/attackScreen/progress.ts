@@ -5,7 +5,6 @@
  */
 
 import {
-  element,
   panel,
   image,
   extendRaw,
@@ -13,13 +12,13 @@ import {
   viewBinding,
   skip,
   first,
-  type ElementBuilder,
-  type SizeValue,
-  type NamespaceBuilder,
   extend,
+  type NamespaceElement,
+  type SizeValue,
+  ImageBuilder,
+  PanelBuilder,
+  NamespaceBuilder,
 } from "mcbe-ts-ui";
-
-import { NS } from "./shared";
 
 /** Base PP bar for move display */
 export const ppBar = image("pp_bar", "textures/ui/battle/white_shaded")
@@ -34,31 +33,6 @@ export const ppBar = image("pp_bar", "textures/ui/battle/white_shaded")
     collectionBinding("#form_button_texture"),
     viewBinding(`(${skip(2, "#form_button_texture")} = $bar)`, "#visible")
   );
-
-/**
- * Generates PP bar variant elements (0-20 + null)
- * @param ns - The namespace builder to add elements to
- */
-export function addPpBarVariants(ns: NamespaceBuilder): void {
-  ["null", ...Array.from({ length: 21 }, (_, i) => i)].forEach((i) => {
-    const barVal = i === "null" ? "_null" : `_${i}`;
-    const sizePercent: SizeValue =
-      i === "null" || i === 0
-        ? "0%"
-        : (`${(Number(i) * 1.965).toFixed(3)}%` as SizeValue);
-
-    ns.add(
-      element(String(i))
-        .extends(`${NS}.pp_bar`)
-        .variable("bar", barVal)
-        .size(sizePercent, "29%")
-    );
-  });
-}
-
-// =============================================================================
-// HP Progress Bar
-// =============================================================================
 
 /** Variable progress bar for HP display */
 export const variableProgressBar = image(
@@ -81,28 +55,87 @@ export const variableProgressBar = image(
     )
   );
 
-/** Dynamic progress bar with color variants (green/yellow/red) */
-export const dynamicProgressBar = panel("dynamic_progress_bar").controls(
-  // Standardize common extensions.
-  extendRaw("empty_progress_bar", "common.empty_progress_bar", { layer: 1 }),
-  extend("green", variableProgressBar)
-    .variable("color_id", "G")
-    .color([0.5, 1.0, 0.5, 1.0]),
-  extend("yellow", variableProgressBar)
-    .variable("color_id", "Y")
-    .color([1, 0.9, 0, 1.0]),
-  extend("red", variableProgressBar)
-    .variable("color_id", "R")
-    .color([1, 0, 0, 1.0])
-);
+// Store registered namespace elements for cross-module access
+export interface ProgressElements {
+  ppBar: NamespaceElement<ImageBuilder<string>>;
+  variableProgressBar: NamespaceElement<ImageBuilder<string>>;
+  dynamicProgressBar: NamespaceElement<PanelBuilder<string>>;
+}
 
 /**
- * Helper to add all progress elements to namespace
+ * Register all progress elements to namespace and return references
  */
-export function addProgressElements(
-  add: (builder: ElementBuilder) => void
+export function registerProgressElements(
+  ns: NamespaceBuilder
+): ProgressElements {
+  const ppBarNs = ppBar.addToNamespace(ns);
+  const variableProgressBarNs = variableProgressBar.addToNamespace(ns);
+
+  // Dynamic progress bar with color variants (green/yellow/red)
+  const dynamicProgressBarNs = panel("dynamic_progress_bar")
+    .controls(
+      extendRaw("empty_progress_bar", "common.empty_progress_bar", {
+        layer: 1,
+      }),
+      extend("green", variableProgressBarNs)
+        .variable("color_id", "G")
+        .color([0.5, 1.0, 0.5, 1.0]),
+      extend("yellow", variableProgressBarNs)
+        .variable("color_id", "Y")
+        .color([1, 0.9, 0, 1.0]),
+      extend("red", variableProgressBarNs)
+        .variable("color_id", "R")
+        .color([1, 0, 0, 1.0])
+    )
+    .addToNamespace(ns);
+
+  return {
+    ppBar: ppBarNs,
+    variableProgressBar: variableProgressBarNs,
+    dynamicProgressBar: dynamicProgressBarNs,
+  };
+}
+
+/**
+ * Generates PP bar variant elements (0-20 + null)
+ * @param ns - The namespace builder to add elements to
+ * @param ppBarNs - The registered ppBar namespace element
+ */
+export function registerPpBarVariants(
+  ns: NamespaceBuilder,
+  ppBarNs: NamespaceElement
 ): void {
-  add(ppBar);
-  add(variableProgressBar);
-  add(dynamicProgressBar);
+  ["null", ...Array.from({ length: 21 }, (_, i) => i)].forEach((i) => {
+    const barVal = i === "null" ? "_null" : `_${i}`;
+    const sizePercent: SizeValue =
+      i === "null" || i === 0
+        ? "0%"
+        : (`${(Number(i) * 1.965).toFixed(3)}%` as SizeValue);
+
+    extend(String(i), ppBarNs)
+      .variable("bar", barVal)
+      .size(sizePercent, "29%")
+      .addToNamespace(ns);
+  });
+}
+
+/**
+ * Get the dynamic progress bar builder for use in other modules.
+ * Note: Must be called after registerProgressElements to get the registered version.
+ */
+export function createDynamicProgressBar(
+  variableProgressBarNs: NamespaceElement<ImageBuilder<string>>
+) {
+  return panel("dynamic_progress_bar").controls(
+    extendRaw("empty_progress_bar", "common.empty_progress_bar", { layer: 1 }),
+    extend("green", variableProgressBarNs)
+      .variable("color_id", "G")
+      .color([0.5, 1.0, 0.5, 1.0]),
+    extend("yellow", variableProgressBarNs)
+      .variable("color_id", "Y")
+      .color([1, 0.9, 0, 1.0]),
+    extend("red", variableProgressBarNs)
+      .variable("color_id", "R")
+      .color([1, 0, 0, 1.0])
+  );
 }

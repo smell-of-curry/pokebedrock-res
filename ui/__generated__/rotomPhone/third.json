@@ -415,7 +415,7 @@
       }
     ]
   },
-  "blackbarbar_third": {
+  "main": {
     "type": "panel",
     "controls": [
       {
@@ -473,7 +473,7 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "$source_property_flag",
+        "source_property_name": "(not ((#form_button_text - '$flag') = #form_button_text))",
         "target_property_name": "#visible"
       }
     ],
@@ -486,9 +486,10 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
+              "source_control_name": "image",
+              "resolve_sibling_scope": true,
               "source_property_name": "(not (#texture = ''))",
-              "target_property_name": "#visible",
-              "source_control_name": "image"
+              "target_property_name": "#visible"
             }
           ],
           "controls": [

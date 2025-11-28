@@ -75,7 +75,7 @@ export const formButtonTextureFileSystemBinding = (): Binding =>
 export const createButtonStack = (
   name = "button_stack",
   defaultButton = "default_form.button"
-): ElementBuilder =>
+): ElementBuilder<string> =>
   stackPanel(name, "vertical")
     .size("default", "100%c")
     .anchor("top_left")
@@ -227,7 +227,7 @@ export const lockedStateVars = {
  * Helper to add all shared elements to a namespace.
  */
 export function addSharedElements(
-  add: (builder: ElementBuilder) => void
+  add: (builder: ElementBuilder<string>) => void
 ): void {
   add(buttonStack);
 }
