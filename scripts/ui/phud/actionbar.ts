@@ -1,6 +1,6 @@
 import {
   boundLabel,
-  defineMain,
+  defineUI,
   image,
   panel,
   phudText,
@@ -23,7 +23,7 @@ const textBg = image("text_bg", "textures/ui/hud_tip_text_background")
   .alpha(0.6)
   .controls(actionbarLabel);
 
-export default defineMain(
+export default defineUI(
   "phud_actionbar",
   panel("main")
     .anchor("top_middle")

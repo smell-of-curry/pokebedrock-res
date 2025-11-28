@@ -23,159 +23,6 @@
       }
     ]
   },
-  "renderers": {
-    "type": "panel",
-    "controls": [
-      {
-        "currency_data_control@phud.data_control": {
-          "$update_string": "&_currency:"
-        }
-      },
-      {
-        "phone_data_control@phud.data_control": {
-          "$update_string": "&_phone:"
-        }
-      },
-      {
-        "battle_wait_control@phud.data_control": {
-          "$update_string": "&_battleWait:"
-        }
-      },
-      {
-        "loading_screen_control@phud.data_control": {
-          "$update_string": "&_loadingScreen:"
-        }
-      },
-      {
-        "evolution_wait_control@phud.data_control": {
-          "$update_string": "&_evolutionWait:"
-        }
-      },
-      {
-        "sidebar_control@phud.data_control": {
-          "$update_string": "&_sidebar:"
-        }
-      },
-      {
-        "actionbar_control@phud.data_control": {
-          "$update_string": "&_actionbar:"
-        }
-      },
-      {
-        "player_ping_control@phud.data_control": {
-          "$update_string": "&_playerPing:"
-        }
-      }
-    ]
-  },
-  "elements": {
-    "type": "panel",
-    "$offset": [
-      0,
-      0
-    ],
-    "offset": "$offset",
-    "variables": [
-      {
-        "requires": "$pocket_screen",
-        "$offset": [
-          0,
-          10
-        ]
-      }
-    ],
-    "bindings": [
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "currency_data_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_currency:')",
-        "target_property_name": "#level_number"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "phone_data_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_phone:')",
-        "target_property_name": "#phone"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "battle_wait_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_battleWait:')",
-        "target_property_name": "#battleLog"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "loading_screen_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_loadingScreen:')",
-        "target_property_name": "#loadingScreen"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "evolution_wait_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_evolutionWait:')",
-        "target_property_name": "#evolutionWait"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "sidebar_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_sidebar:')",
-        "target_property_name": "#sidebar"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "actionbar_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_actionbar:')",
-        "target_property_name": "#fake_actionbar"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_control_name": "player_ping_control",
-        "resolve_sibling_scope": true,
-        "source_property_name": "(#preserved_text - '&_playerPing:')",
-        "target_property_name": "#player_ping_text"
-      }
-    ],
-    "controls": [
-      {
-        "currency@phud_currency.main": {}
-      },
-      {
-        "phone@phud_phone.main": {}
-      },
-      {
-        "battle_wait@phud_battleWait.main": {}
-      },
-      {
-        "loading_screen@phud_loadingScreen.main": {}
-      },
-      {
-        "evolution_wait@phud_evolutionWait.main": {}
-      },
-      {
-        "sidebar@phud_sidebar.main": {
-          "$color": "white"
-        }
-      },
-      {
-        "actionbar@phud_actionbar.main": {}
-      }
-    ]
-  },
   "main": {
     "type": "panel",
     "size": [
@@ -188,42 +35,42 @@
           "type": "panel",
           "controls": [
             {
-              "currency_data_control@phud.data_control": {
+              "currency_control@data_control": {
                 "$update_string": "&_currency:"
               }
             },
             {
-              "phone_data_control@phud.data_control": {
+              "phone_control@data_control": {
                 "$update_string": "&_phone:"
               }
             },
             {
-              "battle_wait_control@phud.data_control": {
+              "battleWait_control@data_control": {
                 "$update_string": "&_battleWait:"
               }
             },
             {
-              "loading_screen_control@phud.data_control": {
+              "loadingScreen_control@data_control": {
                 "$update_string": "&_loadingScreen:"
               }
             },
             {
-              "evolution_wait_control@phud.data_control": {
+              "evolutionWait_control@data_control": {
                 "$update_string": "&_evolutionWait:"
               }
             },
             {
-              "sidebar_control@phud.data_control": {
+              "sidebar_control@data_control": {
                 "$update_string": "&_sidebar:"
               }
             },
             {
-              "actionbar_control@phud.data_control": {
+              "actionbar_control@data_control": {
                 "$update_string": "&_actionbar:"
               }
             },
             {
-              "player_ping_control@phud.data_control": {
+              "player_ping_control@data_control": {
                 "$update_string": "&_playerPing:"
               }
             }
@@ -251,7 +98,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_control_name": "currency_data_control",
+              "source_control_name": "currency_control",
               "resolve_sibling_scope": true,
               "source_property_name": "(#preserved_text - '&_currency:')",
               "target_property_name": "#level_number"
@@ -259,7 +106,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_control_name": "phone_data_control",
+              "source_control_name": "phone_control",
               "resolve_sibling_scope": true,
               "source_property_name": "(#preserved_text - '&_phone:')",
               "target_property_name": "#phone"
@@ -267,7 +114,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_control_name": "battle_wait_control",
+              "source_control_name": "battleWait_control",
               "resolve_sibling_scope": true,
               "source_property_name": "(#preserved_text - '&_battleWait:')",
               "target_property_name": "#battleLog"
@@ -275,7 +122,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_control_name": "loading_screen_control",
+              "source_control_name": "loadingScreen_control",
               "resolve_sibling_scope": true,
               "source_property_name": "(#preserved_text - '&_loadingScreen:')",
               "target_property_name": "#loadingScreen"
@@ -283,7 +130,7 @@
             {
               "binding_name": "#null",
               "binding_type": "view",
-              "source_control_name": "evolution_wait_control",
+              "source_control_name": "evolutionWait_control",
               "resolve_sibling_scope": true,
               "source_property_name": "(#preserved_text - '&_evolutionWait:')",
               "target_property_name": "#evolutionWait"
@@ -315,27 +162,25 @@
           ],
           "controls": [
             {
-              "currency@phud_currency.main": {}
+              "currency_control@phud_currency.main": {}
             },
             {
-              "phone@phud_phone.main": {}
+              "phone_control@phud_phone.main": {}
             },
             {
-              "battle_wait@phud_battleWait.main": {}
+              "battleWait_control@phud_battleWait.main": {}
             },
             {
-              "loading_screen@phud_loadingScreen.main": {}
+              "loadingScreen_control@phud_loadingScreen.main": {}
             },
             {
-              "evolution_wait@phud_evolutionWait.main": {}
+              "evolutionWait_control@phud_evolutionWait.main": {}
             },
             {
-              "sidebar@phud_sidebar.main": {
-                "$color": "white"
-              }
+              "sidebar_control@phud_sidebar.main": {}
             },
             {
-              "actionbar@phud_actionbar.main": {}
+              "actionbar_control@phud_actionbar.main": {}
             }
           ]
         }

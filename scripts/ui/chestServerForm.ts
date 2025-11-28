@@ -4,7 +4,15 @@
  * Custom chest-like form interfaces with multiple layout variants.
  */
 
-import { defineUI, image, panel, stackPanel, contains } from "mcbe-ts-ui";
+import {
+  defineUI,
+  panel,
+  stackPanel,
+  contains,
+  boundImage,
+  collectionBinding,
+  viewBinding,
+} from "mcbe-ts-ui";
 
 // Flag constants for chest type detection
 const FLAGS = {
@@ -84,29 +92,17 @@ export default defineUI("chest_ui", (ns) => {
   });
 
   // Non-renderer item (texture-based)
-  ns.add(
-    image("non_renderer_item").size(16, 16).bindings(
-      {
-        binding_name: "#form_button_texture",
-        binding_name_override: "#texture",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name:
-          "(not ((#texture = '') or (#texture = 'loading')))",
-        target_property_name: "#visible",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.8s' * #texture) = 'textures')",
-        target_property_name: "#visible",
-      }
+  boundImage("non_renderer_item", "#texture")
+    .size(16, 16)
+    .bindings(
+      collectionBinding("#form_button_texture"),
+      viewBinding(
+        "(not ((#texture = '') or (#texture = 'loading')))",
+        "#visible"
+      ),
+      viewBinding("(('%.8s' * #texture) = 'textures')", "#visible")
     )
-  );
+    .addToNamespace(ns);
 
   // Inventory button amount display
   ns.addRaw("inventory_button_amount", {
@@ -364,18 +360,16 @@ export default defineUI("chest_ui", (ns) => {
     ],
   });
 
-  // Chest item stack panel
-  ns.add(
-    stackPanel("chest_item")
-      .rawProp("$item_size|default", [16, 16])
-      .rawProp("size", "$item_size")
-      .layer(2)
-      .controls(
-        { "chest_item@chest_ui.ui_chest_item": {} },
-        { "inventory_item@chest_ui.ui_inventory_item": {} },
-        { "hot_bar_item@chest_ui.ui_hot_bar_item": {} }
-      )
-  );
+  stackPanel("chest_item", "vertical")
+    .rawProp("$item_size|default", [16, 16])
+    .rawProp("size", "$item_size")
+    .layer(2)
+    .controls(
+      { "chest_item@chest_ui.ui_chest_item": {} },
+      { "inventory_item@chest_ui.ui_inventory_item": {} },
+      { "hot_bar_item@chest_ui.ui_hot_bar_item": {} }
+    )
+    .addToNamespace(ns);
 
   // Inventory chest grid (4 rows)
   ns.addRaw("inventory_chest_grid_image", {
@@ -692,8 +686,9 @@ export default defineUI("chest_ui", (ns) => {
   });
 
   // Main chest panel containing all variants
-  ns.add(
-    panel("chest_panel").size("100%c", "100%c").controls(
+
+  const [, finalNs] = ns.add(
+    panel("main").size("100%c", "100%c").controls(
       {
         "inventory_chest_grid_image@chest_ui.inventory_chest_grid_image": {},
       },
@@ -712,4 +707,5 @@ export default defineUI("chest_ui", (ns) => {
       { "auction_house_grid@chest_ui.auction_house_grid": {} }
     )
   );
+  return finalNs;
 });

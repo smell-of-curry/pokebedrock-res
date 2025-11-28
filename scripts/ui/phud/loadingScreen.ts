@@ -1,5 +1,5 @@
 import {
-  defineMain,
+  defineUI,
   phudVisibility,
   phudRead,
   viewBinding,
@@ -16,7 +16,7 @@ const loadingText = boundLabel("text")
     viewBinding("(#loadingScreenText)", "#text")
   );
 
-export default defineMain(
+export default defineUI(
   "phud_loadingScreen",
   image("main", "textures/ui/background")
     .tiled()

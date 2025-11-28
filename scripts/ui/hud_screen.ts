@@ -83,64 +83,67 @@ export default redefineUI("hud_screen", (ns) => {
   });
 
   // Custom HUD elements at bottom middle
-  ns.add(
-    panel("centered_gui_elements_at_bottom_middle")
-      .anchor("bottom_middle")
-      .size(180, 50)
-      .controls(
-        {
-          "heart_rend@heart_renderer": {
-            offset: [-1, -40],
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-          },
+
+  panel("centered_gui_elements_at_bottom_middle")
+    .anchor("bottom_middle")
+    .size(180, 50)
+    .controls(
+      {
+        "heart_rend@heart_renderer": {
+          offset: [-1, -40],
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
         },
-        {
-          "armor_rend@armor_renderer": {
-            offset: [-1, -40],
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-          },
+      },
+      {
+        "armor_rend@armor_renderer": {
+          offset: [-1, -40],
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
         },
-        {
-          "hunger_rend@hunger_renderer": {
-            offset: [180, -40],
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-          },
+      },
+      {
+        "hunger_rend@hunger_renderer": {
+          offset: [180, -40],
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
         },
-        {
-          "bubbles_rend_0@bubbles_renderer": {
-            offset: [180, -50],
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-            bindings: [
-              {
-                binding_name: "#is_not_riding",
-                binding_name_override: "#visible",
-              },
-            ],
-          },
+      },
+      {
+        "bubbles_rend_0@bubbles_renderer": {
+          offset: [180, -50],
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
+          bindings: [
+            {
+              binding_name: "#is_not_riding",
+              binding_name_override: "#visible",
+            },
+          ],
         },
-        {
-          "bubbles_rend_1@bubbles_renderer": {
-            offset: [180, -70],
-            anchor_from: "bottom_left",
-            anchor_to: "bottom_left",
-            bindings: [
-              {
-                binding_name: "#is_riding",
-                binding_name_override: "#visible",
-              },
-            ],
-          },
+      },
+      {
+        "bubbles_rend_1@bubbles_renderer": {
+          offset: [180, -70],
+          anchor_from: "bottom_left",
+          anchor_to: "bottom_left",
+          bindings: [
+            {
+              binding_name: "#is_riding",
+              binding_name_override: "#visible",
+            },
+          ],
         },
-        { "exp_rend@exp_progress_bar_and_hotbar": {} }
-      )
-      .bindings({
-        binding_name: "#hud_visible_centered",
-        binding_name_override: "#visible",
-        binding_type: "global",
-      })
-  );
+      },
+      { "exp_rend@exp_progress_bar_and_hotbar": {} }
+    )
+    .bindings({
+      binding_name: "#hud_visible_centered",
+      binding_name_override: "#visible",
+      binding_type: "global",
+    })
+    .addToNamespace(ns);
+
+  // TODO: on conversion, make this proper mapped.
+  return ns;
 });

@@ -56,6 +56,267 @@
       }
     ]
   },
+  "pp_bar": {
+    "type": "image",
+    "texture": "textures/ui/battle/white_shaded",
+    "color": [
+      0.1,
+      0.6,
+      1
+    ],
+    "layer": 10,
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "fill": true,
+    "size": [
+      "40%",
+      "29%"
+    ],
+    "offset": [
+      "30.3%",
+      "19%"
+    ],
+    "$bar|default": "",
+    "bindings": [
+      {
+        "binding_name": "#form_button_texture",
+        "binding_name_override": "#form_button_texture",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "((#form_button_texture - (%.2s * #form_button_texture)) = $bar)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "variable_progress_bar": {
+    "type": "image",
+    "texture": "textures/ui/filled_progress_bar",
+    "layer": 2,
+    "clip_pixelperfect": false,
+    "clip_direction": "left",
+    "$color_id|default": "G",
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "( %.3s * (#form_button_text - (%.60s * #form_button_text)) * 1 )",
+        "target_property_name": "#clip_ratio"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(%.1s * (#form_button_text - (%.58s * #form_button_text)) = $color_id)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "dynamic_progress_bar": {
+    "type": "panel",
+    "controls": [
+      {
+        "empty_progress_bar@common.empty_progress_bar": {
+          "layer": 1
+        }
+      },
+      {
+        "green@variable_progress_bar": {
+          "$color_id": "G",
+          "color": [
+            0.5,
+            1,
+            0.5,
+            1
+          ]
+        }
+      },
+      {
+        "yellow@variable_progress_bar": {
+          "$color_id": "Y",
+          "color": [
+            1,
+            0.9,
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "red@variable_progress_bar": {
+          "$color_id": "R",
+          "color": [
+            1,
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "null@pp_bar": {
+    "$bar": "_null",
+    "size": [
+      "0%",
+      "29%"
+    ]
+  },
+  "0@pp_bar": {
+    "$bar": "_0",
+    "size": [
+      "0%",
+      "29%"
+    ]
+  },
+  "1@pp_bar": {
+    "$bar": "_1",
+    "size": [
+      "1.965%",
+      "29%"
+    ]
+  },
+  "2@pp_bar": {
+    "$bar": "_2",
+    "size": [
+      "3.930%",
+      "29%"
+    ]
+  },
+  "3@pp_bar": {
+    "$bar": "_3",
+    "size": [
+      "5.895%",
+      "29%"
+    ]
+  },
+  "4@pp_bar": {
+    "$bar": "_4",
+    "size": [
+      "7.860%",
+      "29%"
+    ]
+  },
+  "5@pp_bar": {
+    "$bar": "_5",
+    "size": [
+      "9.825%",
+      "29%"
+    ]
+  },
+  "6@pp_bar": {
+    "$bar": "_6",
+    "size": [
+      "11.790%",
+      "29%"
+    ]
+  },
+  "7@pp_bar": {
+    "$bar": "_7",
+    "size": [
+      "13.755%",
+      "29%"
+    ]
+  },
+  "8@pp_bar": {
+    "$bar": "_8",
+    "size": [
+      "15.720%",
+      "29%"
+    ]
+  },
+  "9@pp_bar": {
+    "$bar": "_9",
+    "size": [
+      "17.685%",
+      "29%"
+    ]
+  },
+  "10@pp_bar": {
+    "$bar": "_10",
+    "size": [
+      "19.650%",
+      "29%"
+    ]
+  },
+  "11@pp_bar": {
+    "$bar": "_11",
+    "size": [
+      "21.615%",
+      "29%"
+    ]
+  },
+  "12@pp_bar": {
+    "$bar": "_12",
+    "size": [
+      "23.580%",
+      "29%"
+    ]
+  },
+  "13@pp_bar": {
+    "$bar": "_13",
+    "size": [
+      "25.545%",
+      "29%"
+    ]
+  },
+  "14@pp_bar": {
+    "$bar": "_14",
+    "size": [
+      "27.510%",
+      "29%"
+    ]
+  },
+  "15@pp_bar": {
+    "$bar": "_15",
+    "size": [
+      "29.475%",
+      "29%"
+    ]
+  },
+  "16@pp_bar": {
+    "$bar": "_16",
+    "size": [
+      "31.440%",
+      "29%"
+    ]
+  },
+  "17@pp_bar": {
+    "$bar": "_17",
+    "size": [
+      "33.405%",
+      "29%"
+    ]
+  },
+  "18@pp_bar": {
+    "$bar": "_18",
+    "size": [
+      "35.370%",
+      "29%"
+    ]
+  },
+  "19@pp_bar": {
+    "$bar": "_19",
+    "size": [
+      "37.335%",
+      "29%"
+    ]
+  },
+  "20@pp_bar": {
+    "$bar": "_20",
+    "size": [
+      "39.300%",
+      "29%"
+    ]
+  },
   "simple_button@common_buttons.light_text_button": {
     "$pressed_button_name": "button.form_button_click",
     "$size|default": "default",
@@ -233,7 +494,6 @@
     "controls": [
       {
         "bag_button@bag_button": {
-          "type": "panel",
           "bindings": [
             {
               "binding_name": "#form_button_text",
@@ -252,7 +512,6 @@
       },
       {
         "poke_button@party_pokemon_button": {
-          "type": "panel",
           "bindings": [
             {
               "binding_name": "#form_button_text",
@@ -271,7 +530,6 @@
       },
       {
         "run_button@run_button": {
-          "type": "panel",
           "bindings": [
             {
               "binding_name": "#form_button_text",
@@ -466,7 +724,7 @@
       }
     ]
   },
-  "grid_button_check_id@battle.move_button": {
+  "grid_button_check_id@move_button": {
     "$button_id|default": "b:1_",
     "bindings": [
       {
@@ -542,270 +800,6 @@
           "$button_id": "b:4_"
         }
       }
-    ]
-  },
-  "pp_bar": {
-    "type": "image",
-    "texture": "textures/ui/battle/white_shaded",
-    "color": [
-      0.1,
-      0.6,
-      1
-    ],
-    "layer": 10,
-    "anchor_from": "bottom_left",
-    "anchor_to": "bottom_left",
-    "fill": true,
-    "size": [
-      "40%",
-      "29%"
-    ],
-    "offset": [
-      "30.3%",
-      "19%"
-    ],
-    "$bar|default": "",
-    "bindings": [
-      {
-        "binding_name": "#form_button_texture",
-        "binding_name_override": "#form_button_texture",
-        "binding_type": "collection",
-        "binding_collection_name": "form_buttons"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_property_name": "((#form_button_texture - (%.2s * #form_button_texture)) = $bar)",
-        "target_property_name": "#visible"
-      }
-    ]
-  },
-  "variable_progress_bar": {
-    "type": "image",
-    "texture": "textures/ui/filled_progress_bar",
-    "layer": 2,
-    "clip_pixelperfect": false,
-    "clip_direction": "left",
-    "$color_id|default": "G",
-    "bindings": [
-      {
-        "binding_name": "#form_button_text",
-        "binding_name_override": "#form_button_text",
-        "binding_type": "collection",
-        "binding_collection_name": "form_buttons"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_property_name": "( %.3s * (#form_button_text - (%.60s * #form_button_text)) * 1 )",
-        "target_property_name": "#clip_ratio"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_property_name": "(%.1s * (#form_button_text - (%.58s * #form_button_text)) = $color_id)",
-        "target_property_name": "#visible"
-      }
-    ]
-  },
-  "dynamic_progress_bar": {
-    "type": "panel",
-    "controls": [
-      {
-        "empty_progress_bar@common.empty_progress_bar": {
-          "layer": 1
-        }
-      },
-      {
-        "green@variable_progress_bar": {
-          "type": "image",
-          "$color_id": "G",
-          "color": [
-            0.5,
-            1,
-            0.5,
-            1
-          ]
-        }
-      },
-      {
-        "yellow@variable_progress_bar": {
-          "type": "image",
-          "$color_id": "Y",
-          "color": [
-            1,
-            0.9,
-            0,
-            1
-          ]
-        }
-      },
-      {
-        "red@variable_progress_bar": {
-          "type": "image",
-          "$color_id": "R",
-          "color": [
-            1,
-            0,
-            0,
-            1
-          ]
-        }
-      }
-    ]
-  },
-  "null@battle.pp_bar": {
-    "$bar": "_null",
-    "size": [
-      "0%",
-      "29%"
-    ]
-  },
-  "0@battle.pp_bar": {
-    "$bar": "_0",
-    "size": [
-      "0%",
-      "29%"
-    ]
-  },
-  "1@battle.pp_bar": {
-    "$bar": "_1",
-    "size": [
-      "1.965%",
-      "29%"
-    ]
-  },
-  "2@battle.pp_bar": {
-    "$bar": "_2",
-    "size": [
-      "3.930%",
-      "29%"
-    ]
-  },
-  "3@battle.pp_bar": {
-    "$bar": "_3",
-    "size": [
-      "5.895%",
-      "29%"
-    ]
-  },
-  "4@battle.pp_bar": {
-    "$bar": "_4",
-    "size": [
-      "7.860%",
-      "29%"
-    ]
-  },
-  "5@battle.pp_bar": {
-    "$bar": "_5",
-    "size": [
-      "9.825%",
-      "29%"
-    ]
-  },
-  "6@battle.pp_bar": {
-    "$bar": "_6",
-    "size": [
-      "11.790%",
-      "29%"
-    ]
-  },
-  "7@battle.pp_bar": {
-    "$bar": "_7",
-    "size": [
-      "13.755%",
-      "29%"
-    ]
-  },
-  "8@battle.pp_bar": {
-    "$bar": "_8",
-    "size": [
-      "15.720%",
-      "29%"
-    ]
-  },
-  "9@battle.pp_bar": {
-    "$bar": "_9",
-    "size": [
-      "17.685%",
-      "29%"
-    ]
-  },
-  "10@battle.pp_bar": {
-    "$bar": "_10",
-    "size": [
-      "19.650%",
-      "29%"
-    ]
-  },
-  "11@battle.pp_bar": {
-    "$bar": "_11",
-    "size": [
-      "21.615%",
-      "29%"
-    ]
-  },
-  "12@battle.pp_bar": {
-    "$bar": "_12",
-    "size": [
-      "23.580%",
-      "29%"
-    ]
-  },
-  "13@battle.pp_bar": {
-    "$bar": "_13",
-    "size": [
-      "25.545%",
-      "29%"
-    ]
-  },
-  "14@battle.pp_bar": {
-    "$bar": "_14",
-    "size": [
-      "27.510%",
-      "29%"
-    ]
-  },
-  "15@battle.pp_bar": {
-    "$bar": "_15",
-    "size": [
-      "29.475%",
-      "29%"
-    ]
-  },
-  "16@battle.pp_bar": {
-    "$bar": "_16",
-    "size": [
-      "31.440%",
-      "29%"
-    ]
-  },
-  "17@battle.pp_bar": {
-    "$bar": "_17",
-    "size": [
-      "33.405%",
-      "29%"
-    ]
-  },
-  "18@battle.pp_bar": {
-    "$bar": "_18",
-    "size": [
-      "35.370%",
-      "29%"
-    ]
-  },
-  "19@battle.pp_bar": {
-    "$bar": "_19",
-    "size": [
-      "37.335%",
-      "29%"
-    ]
-  },
-  "20@battle.pp_bar": {
-    "$bar": "_20",
-    "size": [
-      "39.300%",
-      "29%"
     ]
   },
   "battle_actor_entity_icon_overlay": {
@@ -966,7 +960,6 @@
                   },
                   {
                     "green@variable_progress_bar": {
-                      "type": "image",
                       "$color_id": "G",
                       "color": [
                         0.5,
@@ -978,7 +971,6 @@
                   },
                   {
                     "yellow@variable_progress_bar": {
-                      "type": "image",
                       "$color_id": "Y",
                       "color": [
                         1,
@@ -990,7 +982,6 @@
                   },
                   {
                     "red@variable_progress_bar": {
-                      "type": "image",
                       "$color_id": "R",
                       "color": [
                         1,
@@ -1020,7 +1011,7 @@
       42
     ]
   },
-  "ally_actor_button@battle.battle_actor_button": {
+  "ally_actor_button@battle_actor_button": {
     "controls": [
       {
         "details_overlay": {
@@ -1028,160 +1019,7 @@
           "orientation": "horizontal",
           "controls": [
             {
-              "battle_actor_description": {
-                "type": "stack_panel",
-                "orientation": "vertical",
-                "size": [
-                  "default",
-                  40
-                ],
-                "$text_alignment|default": "left",
-                "$text_offset|default": [
-                  0,
-                  0
-                ],
-                "controls": [
-                  {
-                    "spacer": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "3%"
-                      ]
-                    }
-                  },
-                  {
-                    "details_text": {
-                      "type": "label",
-                      "text": "#text",
-                      "color": [
-                        0.768,
-                        0.768,
-                        0.768
-                      ],
-                      "font_scale_factor": 1,
-                      "offset": "$text_offset",
-                      "size": [
-                        "default",
-                        "65%"
-                      ],
-                      "text_alignment": "$text_alignment",
-                      "bindings": [
-                        {
-                          "binding_name": "#form_button_text",
-                          "binding_name_override": "#form_button_text",
-                          "binding_type": "collection",
-                          "binding_collection_name": "form_buttons"
-                        },
-                        {
-                          "binding_name": "#null",
-                          "binding_type": "view",
-                          "source_property_name": "(%.58s * #form_button_text - '_')",
-                          "target_property_name": "#text"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "spacer": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "3%"
-                      ]
-                    }
-                  },
-                  {
-                    "hp_bar": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "21%"
-                      ],
-                      "layer": 30,
-                      "controls": [
-                        {
-                          "health_text": {
-                            "type": "label",
-                            "text": "#text",
-                            "color": "white",
-                            "font_scale_factor": 0.8,
-                            "offset": [
-                              "0%",
-                              "0%"
-                            ],
-                            "font_type": "smooth",
-                            "text_alignment": "center",
-                            "layer": 32,
-                            "bindings": [
-                              {
-                                "binding_name": "#form_button_text",
-                                "binding_name_override": "#form_button_text",
-                                "binding_type": "collection",
-                                "binding_collection_name": "form_buttons"
-                              },
-                              {
-                                "binding_name": "#null",
-                                "binding_type": "view",
-                                "source_property_name": "(#form_button_text - (%.62s * #form_button_text))",
-                                "target_property_name": "#text"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "dynamic_progress_bar": {
-                            "type": "panel",
-                            "controls": [
-                              {
-                                "empty_progress_bar@common.empty_progress_bar": {
-                                  "layer": 1
-                                }
-                              },
-                              {
-                                "green@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "G",
-                                  "color": [
-                                    0.5,
-                                    1,
-                                    0.5,
-                                    1
-                                  ]
-                                }
-                              },
-                              {
-                                "yellow@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "Y",
-                                  "color": [
-                                    1,
-                                    0.9,
-                                    0,
-                                    1
-                                  ]
-                                }
-                              },
-                              {
-                                "red@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "R",
-                                  "color": [
-                                    1,
-                                    0,
-                                    0,
-                                    1
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
+              "description@battle_actor_description": {}
             },
             {
               "spacing": {
@@ -1194,7 +1032,6 @@
             },
             {
               "entity_icon_overlay@battle_actor_entity_icon_overlay": {
-                "type": "image",
                 "$actor_icon_overlay_texture": "textures/ui/battle/pokemon_healthy"
               }
             }
@@ -1203,7 +1040,7 @@
       }
     ]
   },
-  "opponent_actor_button@battle.battle_actor_button": {
+  "opponent_actor_button@battle_actor_button": {
     "controls": [
       {
         "details_overlay": {
@@ -1211,215 +1048,17 @@
           "orientation": "horizontal",
           "controls": [
             {
-              "battle_actor_entity_icon_overlay": {
-                "type": "image",
-                "texture": "$actor_icon_overlay_texture",
-                "size": [
-                  40,
-                  40
-                ],
-                "$actor_icon_overlay_texture|default": "textures/ui/battle/pokemon_warning",
-                "$actor_icon_offset|default": [
-                  0,
-                  0
-                ],
-                "offset": "$actor_icon_offset",
-                "controls": [
-                  {
-                    "entity_icon": {
-                      "type": "image",
-                      "texture": "#texture",
-                      "size": [
-                        40,
-                        40
-                      ],
-                      "layer": 25,
-                      "bindings": [
-                        {
-                          "binding_name": "#null",
-                          "binding_type": "collection_details",
-                          "binding_collection_name": "form_buttons"
-                        },
-                        {
-                          "binding_name": "#form_button_texture_file_system",
-                          "binding_name_override": "#texture_file_system",
-                          "binding_type": "collection",
-                          "binding_collection_name": "form_buttons"
-                        },
-                        {
-                          "binding_name": "#form_button_texture",
-                          "binding_name_override": "#texture",
-                          "binding_type": "collection",
-                          "binding_collection_name": "form_buttons"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
+              "icon@battle_actor_entity_icon_overlay": {}
             },
             {
-              "battle_actor_description": {
-                "type": "stack_panel",
-                "orientation": "vertical",
-                "size": [
-                  "default",
-                  40
-                ],
-                "$text_alignment|default": "left",
-                "$text_offset|default": [
-                  0,
-                  0
-                ],
-                "controls": [
-                  {
-                    "spacer": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "3%"
-                      ]
-                    }
-                  },
-                  {
-                    "details_text": {
-                      "type": "label",
-                      "text": "#text",
-                      "color": [
-                        0.768,
-                        0.768,
-                        0.768
-                      ],
-                      "font_scale_factor": 1,
-                      "offset": "$text_offset",
-                      "size": [
-                        "default",
-                        "65%"
-                      ],
-                      "text_alignment": "$text_alignment",
-                      "bindings": [
-                        {
-                          "binding_name": "#form_button_text",
-                          "binding_name_override": "#form_button_text",
-                          "binding_type": "collection",
-                          "binding_collection_name": "form_buttons"
-                        },
-                        {
-                          "binding_name": "#null",
-                          "binding_type": "view",
-                          "source_property_name": "(%.58s * #form_button_text - '_')",
-                          "target_property_name": "#text"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "spacer": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "3%"
-                      ]
-                    }
-                  },
-                  {
-                    "hp_bar": {
-                      "type": "panel",
-                      "size": [
-                        "default",
-                        "21%"
-                      ],
-                      "layer": 30,
-                      "controls": [
-                        {
-                          "health_text": {
-                            "type": "label",
-                            "text": "#text",
-                            "color": "white",
-                            "font_scale_factor": 0.8,
-                            "offset": [
-                              "0%",
-                              "0%"
-                            ],
-                            "font_type": "smooth",
-                            "text_alignment": "center",
-                            "layer": 32,
-                            "bindings": [
-                              {
-                                "binding_name": "#form_button_text",
-                                "binding_name_override": "#form_button_text",
-                                "binding_type": "collection",
-                                "binding_collection_name": "form_buttons"
-                              },
-                              {
-                                "binding_name": "#null",
-                                "binding_type": "view",
-                                "source_property_name": "(#form_button_text - (%.62s * #form_button_text))",
-                                "target_property_name": "#text"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "dynamic_progress_bar": {
-                            "type": "panel",
-                            "controls": [
-                              {
-                                "empty_progress_bar@common.empty_progress_bar": {
-                                  "layer": 1
-                                }
-                              },
-                              {
-                                "green@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "G",
-                                  "color": [
-                                    0.5,
-                                    1,
-                                    0.5,
-                                    1
-                                  ]
-                                }
-                              },
-                              {
-                                "yellow@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "Y",
-                                  "color": [
-                                    1,
-                                    0.9,
-                                    0,
-                                    1
-                                  ]
-                                }
-                              },
-                              {
-                                "red@variable_progress_bar": {
-                                  "type": "image",
-                                  "$color_id": "R",
-                                  "color": [
-                                    1,
-                                    0,
-                                    0,
-                                    1
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
+              "description@battle_actor_description": {}
             }
           ]
         }
       }
     ]
   },
-  "ally_actor_details_button_check_id@battle.ally_actor_button": {
+  "ally_actor_details_button_check_id@ally_actor_button": {
     "$button_id|default": "b:opponent_1_",
     "bindings": [
       {
@@ -1436,7 +1075,7 @@
       }
     ]
   },
-  "opponent_actor_details_button_check_id@battle.opponent_actor_button": {
+  "opponent_actor_details_button_check_id@opponent_actor_button": {
     "$button_id|default": "b:opponent_1_",
     "bindings": [
       {
@@ -1573,13 +1212,13 @@
                       ],
                       "controls": [
                         {
-                          "left_button_panel@battle.button_stack": {
+                          "left_button_panel@button_stack": {
                             "layer": 3,
                             "$button": "battle.battle_action_button"
                           }
                         },
                         {
-                          "move_selection_button@battle.button_stack": {
+                          "move_selection_button@button_stack": {
                             "layer": 3,
                             "offset": [
                               "55%",
@@ -1607,7 +1246,7 @@
                             ],
                             "controls": [
                               {
-                                "grid_panel@battle.button_stack": {
+                                "grid_panel@button_stack": {
                                   "layer": 4,
                                   "$button": "battle.grid_button"
                                 }
@@ -1654,7 +1293,7 @@
           "anchor_to": "top_middle",
           "controls": [
             {
-              "opponent_actors@battle.button_stack": {
+              "opponent_actors@button_stack": {
                 "size": [
                   "25%",
                   "default"
@@ -1673,7 +1312,7 @@
               }
             },
             {
-              "ally_actors@battle.button_stack": {
+              "ally_actors@button_stack": {
                 "size": [
                   "25%",
                   "default"

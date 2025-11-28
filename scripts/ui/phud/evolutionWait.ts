@@ -1,5 +1,5 @@
 import {
-  defineMain,
+  defineUI,
   image,
   phudVisibility,
   phudRead,
@@ -15,7 +15,7 @@ const evolutionText = boundLabel("text")
   .textAlignment("center")
   .bindings(phudRead("#evolutionWait", "#text"));
 
-export default defineMain(
+export default defineUI(
   "phud_evolutionWait",
   image("main", "textures/ui/evolution_box")
     .layer(1000)

@@ -103,7 +103,6 @@
     ]
   },
   "icon@abstract_phone_conditional": {
-    "type": "image",
     "texture": "('textures/ui/phud/' + $name)"
   },
   "main": {
@@ -147,13 +146,11 @@
             },
             {
               "jeb_icon_wrapper@abstract_phone_conditional": {
-                "type": "image",
                 "texture": "#texture",
                 "$condition": "((%.4s * #value) = 'loop')",
                 "controls": [
                   {
                     "start@jeb_icon": {
-                      "type": "image",
                       "uv": "@phud_phone.anim__jeb_start_flipbook",
                       "anims": [
                         "@phud_phone.anim__jeb_start_destroy"
@@ -163,7 +160,6 @@
                   },
                   {
                     "loop@jeb_icon": {
-                      "type": "image",
                       "uv": "@phud_phone.anim__jeb_loop_flipbook",
                       "anims": [
                         "@phud_phone.anim__jeb_loop_show__0"
@@ -184,7 +180,6 @@
           "controls": [
             {
               "phone_background@abstract_phone_conditional": {
-                "type": "image",
                 "texture": "textures/ui/phud/box_small",
                 "$condition": "((#value = 'ring') or (#value = 'standby'))"
               }
@@ -194,7 +189,6 @@
       },
       {
         "jeb_background@abstract_phone_conditional": {
-          "type": "image",
           "texture": "textures/ui/phud/box_wide",
           "alpha": 0,
           "anims": [

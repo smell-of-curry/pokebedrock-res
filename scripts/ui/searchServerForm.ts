@@ -4,14 +4,10 @@
  * Extends the standard long form with a search bar for filtering buttons.
  */
 
-import { defineUI, panel, stackPanel, label, notPrefix } from "mcbe-ts-ui";
+import { defineUI, stackPanel, notPrefix, extend } from "mcbe-ts-ui";
+import ServerForm from "./serverForm";
 
 export default defineUI("search_server_form", (ns) => {
-  // Long form extension
-  ns.addRaw("long_form@server_form.long_form", {
-    $child_control: "search_server_form.long_form_panel",
-  });
-
   // Long form panel with scrolling
   ns.addRaw("long_form_panel@server_form.long_form_panel", {
     controls: [
@@ -32,68 +28,75 @@ export default defineUI("search_server_form", (ns) => {
   });
 
   // Scrolling content with search bar
-  ns.add(
-    stackPanel("long_form_scrolling_content")
-      .size("100% - 4px", "100%c")
-      .vertical()
-      .anchor("top_left")
-      .controls(
-        {
-          label_offset_panel: {
-            type: "panel",
-            size: ["100%", "100%c"],
-            controls: [
-              {
-                main_label: {
-                  type: "label",
-                  offset: [2, 2],
-                  color: "$main_header_text_color",
-                  size: ["100%", "default"],
-                  anchor_from: "top_left",
-                  anchor_to: "top_left",
-                  text: "#form_text",
-                },
+  stackPanel("long_form_scrolling_content", "vertical")
+    .size("100% - 4px", "100%c")
+    .anchor("top_left")
+    .controls(
+      {
+        label_offset_panel: {
+          type: "panel",
+          size: ["100%", "100%c"],
+          controls: [
+            {
+              main_label: {
+                type: "label",
+                offset: [2, 2],
+                color: "$main_header_text_color",
+                size: ["100%", "default"],
+                anchor_from: "top_left",
+                anchor_to: "top_left",
+                text: "#form_text",
               },
-            ],
-          },
+            },
+          ],
         },
-        {
-          "search_bar@common.text_edit_box": {
-            $text_edit_text_control: "search_buttons",
-            $place_holder_text: "Search...",
-            max_length: 100,
-            size: ["100%", 18],
-            $text_edit_box_hovered_button_id: "button.search_bar_hovered",
-            $text_edit_box_clear_to_button_id: "button.search_bar_clear",
-            $text_edit_box_selected_to_button_id: "button.search_bar_selected",
-            $text_edit_box_deselected_to_button_id: "button.search_bar_deselected",
-            focus_wrap_enabled: true,
-          },
+      },
+      {
+        "search_bar@common.text_edit_box": {
+          $text_edit_text_control: "search_buttons",
+          $place_holder_text: "Search...",
+          // @ts-ignore
+          max_length: 100,
+          size: ["100%", 18],
+          $text_edit_box_hovered_button_id: "button.search_bar_hovered",
+          $text_edit_box_clear_to_button_id: "button.search_bar_clear",
+          $text_edit_box_selected_to_button_id: "button.search_bar_selected",
+          $text_edit_box_deselected_to_button_id:
+            "button.search_bar_deselected",
+          focus_wrap_enabled: true,
         },
-        { padding: { type: "panel", size: ["100%", 4] } },
-        {
-          wrapping_panel: {
-            type: "panel",
-            size: ["100%", "100%c"],
-            controls: [
-              { "long_form_dynamic_buttons_panel@search_server_form.long_form_dynamic_buttons_panel": {} },
-            ],
-          },
-        }
-      )
-  );
+      },
+      { padding: { type: "panel", size: ["100%", 4] } },
+      {
+        wrapping_panel: {
+          type: "panel",
+          size: ["100%", "100%c"],
+          controls: [
+            {
+              "long_form_dynamic_buttons_panel@search_server_form.long_form_dynamic_buttons_panel":
+                {},
+            },
+          ],
+        },
+      }
+    )
+    .addToNamespace(ns);
 
   // Dynamic buttons panel with factory
-  ns.add(
-    stackPanel("long_form_dynamic_buttons_panel")
-      .size("100% - 4px", "100%c")
-      .offset(2, 0)
-      .vertical()
-      .anchor("top_middle")
-      .rawProp("factory", { name: "buttons", control_name: "search_server_form.search_template" })
-      .rawProp("collection_name", "form_buttons")
-      .bindings({ binding_name: "#form_button_length", binding_name_override: "#collection_length" })
-  );
+  stackPanel("long_form_dynamic_buttons_panel", "vertical")
+    .size("100% - 4px", "100%c")
+    .offset(2, 0)
+    .anchor("top_middle")
+    .rawProp("factory", {
+      name: "buttons",
+      control_name: "search_server_form.search_template",
+    })
+    .rawProp("collection_name", "form_buttons")
+    .bindings({
+      binding_name: "#form_button_length",
+      binding_name_override: "#collection_length",
+    })
+    .addToNamespace(ns);
 
   // Search template button - filtered by search input
   ns.addRaw("search_template@common_buttons.light_text_button", {
@@ -104,9 +107,25 @@ export default defineUI("search_server_form", (ns) => {
     $button_text_grid_collection_name: "form_buttons",
     $button_text_max_size: ["100%", 30],
     bindings: [
-      { binding_name: "#null", binding_type: "collection_details", binding_collection_name: "form_buttons" },
-      { binding_type: "collection", binding_collection_name: "form_buttons", binding_condition: "none", binding_name: "#form_button_text", binding_name_override: "#form_button_text" },
-      { binding_name: "#null", binding_type: "view", source_control_name: "search_buttons", source_property_name: "#item_name", target_property_name: "#search_em" },
+      {
+        binding_name: "#null",
+        binding_type: "collection_details",
+        binding_collection_name: "form_buttons",
+      },
+      {
+        binding_type: "collection",
+        binding_collection_name: "form_buttons",
+        binding_condition: "none",
+        binding_name: "#form_button_text",
+        binding_name_override: "#form_button_text",
+      },
+      {
+        binding_name: "#null",
+        binding_type: "view",
+        source_control_name: "search_buttons",
+        source_property_name: "#item_name",
+        target_property_name: "#search_em",
+      },
       {
         binding_name: "#null",
         binding_type: "view",
@@ -114,7 +133,21 @@ export default defineUI("search_server_form", (ns) => {
           "(((%.1s * #search_em) = '') or ((%.4s * #form_button_text) = 'Back') or (not ((#form_button_text - #search_em) = #form_button_text)))",
         target_property_name: "#visible",
       },
-      { binding_name: "#null", binding_type: "view", source_property_name: notPrefix(1, "#form_button_text", " "), target_property_name: "#enabled" },
+      {
+        binding_name: "#null",
+        binding_type: "view",
+        source_property_name: notPrefix(1, "#form_button_text", " "),
+        target_property_name: "#enabled",
+      },
     ],
   });
+
+  // Long form extension
+  const [, finalNs] = ns.add(
+    extend("main", ServerForm.elements["long_form"]!).variable(
+      "child_control",
+      "search_server_form.long_form_panel"
+    )
+  );
+  return finalNs;
 });

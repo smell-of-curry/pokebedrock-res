@@ -1,5 +1,5 @@
 import {
-  defineMain,
+  defineUI,
   image,
   phudVisibility,
   phudText,
@@ -16,7 +16,7 @@ const playerPositionText = phudText(
   "#player_ping_text"
 );
 
-export default defineMain(
+export default defineUI(
   "player_ping",
   image("main", "textures/ui/Black")
     .size("100%c + 6px", "100%c + 2px")
