@@ -87,6 +87,76 @@ const imageSets: ImageFuseItem[] = [
       `${vanillaTexturesUrl}/blocks/stripped_oak_log.png`,
     ],
   },
+  {
+    outputPath: "textures/ui/icons/spruce_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_spruce.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_spruce_log.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/birch_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_birch.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_birch_log.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/jungle_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_jungle.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_jungle_log.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/acacia_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_acacia.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_acacia_log.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/dark_oak_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_big_oak.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_dark_oak_log.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/mangrove_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/mangrove_log_side.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_mangrove_log_side.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/cherry_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/cherry_log_side.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_cherry_log_side.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/crimson_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/huge_fungus/crimson_log_side.png`,
+      `${vanillaTexturesUrl}/blocks/huge_fungus/stripped_crimson_stem_side.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/warped_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/huge_fungus/warped_stem_side.png`,
+      `${vanillaTexturesUrl}/blocks/huge_fungus/stripped_warped_stem_side.png`,
+    ],
+  },
+  {
+    outputPath: "textures/ui/icons/pale_oak_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/pale_oak_log_side.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_pale_oak_log_side.png`,
+    ],
+  },
 ];
 
 /**
@@ -103,13 +173,9 @@ async function fuseItem(item: ImageFuseItem) {
   // Load all images
   const images = await Promise.all(item.imageInputs.map((p) => Jimp.read(p)));
 
-  // Reference image for dimensions
-  const referenceImage = images[0];
-  if (!referenceImage) throw new Error("Failed to load reference image");
-
-  // Use first image dimensions as reference
-  const w = referenceImage.bitmap.width ?? 0;
-  const h = referenceImage.bitmap.height ?? 0;
+  // Get the smallest width and height among images
+  const w = Math.min(...images.map((img) => img.bitmap.width ?? 0));
+  const h = Math.min(...images.map((img) => img.bitmap.height ?? 0));
 
   // Resize all images to match first image
   for (let i = 1; i < images.length; i++) images[i]?.resize({ w, h });
