@@ -5,7 +5,7 @@ import type { MaterialId } from "./data/material.types";
 export type {
   VanillaMaterial,
   CustomMaterial,
-  MaterialId,
+  MaterialId
 } from "./data/material.types";
 
 export interface PokemonJsonContent {
@@ -136,7 +136,7 @@ export const PokemonAnimationTypes = [
   "sleeping",
   "blink",
   "attack",
-  "faint",
+  "faint"
 ] as const;
 
 export type PokemonAnimationKey =
@@ -335,4 +335,16 @@ export interface RenderController {
       };
     }>;
   };
+}
+
+export interface ImageFuseItem {
+  /**
+   * The output path for the fused image.
+   */
+  outputPath: string;
+  /**
+   * The input image paths to fuse.
+   * Url or local file paths.
+   */
+  imageInputs: string[];
 }
