@@ -1,12 +1,27 @@
 import { Jimp, JimpMime } from "jimp";
-import { ImageFuseItem } from "./types";
 import { writeImageIfChanged } from "./utils";
+import { Range } from "./types";
+
+/**
+ * Represents an item containing images to be fused and the output path.
+ */
+export interface ImageFuseItem {
+  /**
+   * The output path for the fused image.
+   */
+  outputPath: string;
+  /**
+   * The input image paths to fuse.
+   * Url or local file paths.
+   */
+  imageInputs: string[];
+}
 
 // URL to vanilla Minecraft Bedrock textures repository
 const vanillaTexturesUrl =
   "https://raw.githubusercontent.com/Mojang/bedrock-samples/main/resource_pack/textures";
 
-// Your array of image sets (2, 3, or 4 images each)
+// Define image sets to be fused
 const imageSets: ImageFuseItem[] = [
   {
     outputPath: "textures/ui/icons/coal_ores.png",
@@ -65,20 +80,36 @@ const imageSets: ImageFuseItem[] = [
       `${vanillaTexturesUrl}/blocks/deepslate/deepslate_redstone_ore.png`,
     ],
   },
+  {
+    outputPath: "textures/ui/icons/oak_logs.png",
+    imageInputs: [
+      `${vanillaTexturesUrl}/blocks/log_oak.png`,
+      `${vanillaTexturesUrl}/blocks/stripped_oak_log.png`,
+    ],
+  },
 ];
 
+/**
+ * Fuses images in the specified item and writes to output path
+ * @param item ImageFuseItem containing output path and input images
+ */
 async function fuseItem(item: ImageFuseItem) {
-  const count = item.imageInputs.length;
+  const imageCount: Range<2, 4> = item.imageInputs.length as Range<2, 4>;
 
-  if (count < 2 || count > 4)
+  // Validate image count range
+  if (imageCount < 2 || imageCount > 4)
     throw new Error("Please provide 2, 3, or 4 images to fuse");
 
   // Load all images
   const images = await Promise.all(item.imageInputs.map((p) => Jimp.read(p)));
 
+  // Reference image for dimensions
+  const referenceImage = images[0];
+  if (!referenceImage) throw new Error("Failed to load reference image");
+
   // Use first image dimensions as reference
-  const w = images[0]?.bitmap.width ?? 0;
-  const h = images[0]?.bitmap.height ?? 0;
+  const w = referenceImage.bitmap.width ?? 0;
+  const h = referenceImage.bitmap.height ?? 0;
 
   // Resize all images to match first image
   for (let i = 1; i < images.length; i++) images[i]?.resize({ w, h });
@@ -100,14 +131,14 @@ async function fuseItem(item: ImageFuseItem) {
       // - Optional rotation so 4→X shape and 2→diagonal split are aligned
       const cx = 0.5,
         cy = 0.5;
-      const angle = Math.atan2(ny - cy, nx - cx);
+      const angle = Math.atan2(ny - cy, 1 - nx - cx);
       const twoPi = Math.PI * 2;
-      const sectorAngle = twoPi / count;
+      const sectorAngle = twoPi / imageCount;
       // Rotate so index 0 is "top"; extra 45° when count==2 to match a diagonal split
-      const offset = -Math.PI / 2 - (Number(count === 2) * Math.PI) / 4;
+      const offset = -Math.PI / 2 - (Number(imageCount === 2) * Math.PI) / 4;
       const angleNorm = (((angle - offset) % twoPi) + twoPi) % twoPi; // normalize to [0, 2π)
-      const region = Math.floor(angleNorm / sectorAngle) % count;
-      const weights = Array.from({ length: count }, (_, i) =>
+      const region = Math.floor(angleNorm / sectorAngle) % imageCount;
+      const weights = Array.from({ length: imageCount }, (_, i) =>
         i === region ? 1 : 0
       );
 
@@ -116,7 +147,7 @@ async function fuseItem(item: ImageFuseItem) {
         g = 0,
         b = 0,
         a = 0;
-      for (let i = 0; i < count; i++) {
+      for (let i = 0; i < imageCount; i++) {
         const data = images[i]!.bitmap.data;
         const wgt = weights[i] ?? 0;
         const d0 = data[idx + 0] ?? 0;
@@ -137,14 +168,12 @@ async function fuseItem(item: ImageFuseItem) {
   }
 
   const imageBuffer = await fused.getBuffer(JimpMime.png);
-  writeImageIfChanged(item.outputPath, imageBuffer);
-  console.log("Created:", item.outputPath);
+  const didWrite = await writeImageIfChanged(item.outputPath, imageBuffer);
+  console.log(didWrite ? "Created:" : "Unchanged:", item.outputPath);
 }
 
 (async () => {
-  for (const key in imageSets) {
-    const item = imageSets[key];
-    if (!item) continue;
+  for (const item of Object.values(imageSets)) {
     await fuseItem(item);
   }
 })();

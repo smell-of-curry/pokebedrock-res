@@ -5,7 +5,7 @@ import type { MaterialId } from "./data/material.types";
 export type {
   VanillaMaterial,
   CustomMaterial,
-  MaterialId
+  MaterialId,
 } from "./data/material.types";
 
 export interface PokemonJsonContent {
@@ -136,7 +136,7 @@ export const PokemonAnimationTypes = [
   "sleeping",
   "blink",
   "attack",
-  "faint"
+  "faint",
 ] as const;
 
 export type PokemonAnimationKey =
@@ -337,14 +337,19 @@ export interface RenderController {
   };
 }
 
-export interface ImageFuseItem {
-  /**
-   * The output path for the fused image.
-   */
-  outputPath: string;
-  /**
-   * The input image paths to fuse.
-   * Url or local file paths.
-   */
-  imageInputs: string[];
-}
+/**
+ * Utility type that generates a sequence of numbers from 0 to N-1
+ */
+type Enumerate<
+  N extends number,
+  Acc extends number[] = []
+> = Acc["length"] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc["length"]]>;
+
+/**
+ * Utility type representing a range of numbers from F to T inclusive
+ */
+export type Range<F extends number, T extends number> =
+  | Exclude<Enumerate<T>, Enumerate<F>>
+  | T;
