@@ -192,13 +192,13 @@ export const PokemonCustomizations: Partial<{
 
   spinda: {
     skins: {
-      bowties: ["texture", "shiny_texture"],
-      facescar: ["texture", "shiny_texture"],
-      doubleganger: ["texture", "shiny_texture"],
+      bow_ties: ["texture", "shiny_texture"],
+      face_scar: ["texture", "shiny_texture"],
+      doublegangar: ["texture", "shiny_texture"],
       dots: ["texture", "shiny_texture"],
       glasses: ["texture", "shiny_texture"],
       eyebrows: ["texture", "shiny_texture"],
-      smallking: ["texture", "shiny_texture"],
+      small_king: ["texture", "shiny_texture"],
       heart: ["texture", "shiny_texture"],
     },
   },
