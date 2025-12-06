@@ -630,6 +630,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model"],
   },
 
+  sableye: {
+    skins: {
+      sculk: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 4 ========================
 
   /** Male has a notched dorsal fin */
@@ -1071,6 +1077,12 @@ export const PokemonCustomizations: Partial<{
 
   marowakalola: {
     animatedTextureConfig: [2, 8],
+  },
+
+  zeraora: {
+    skins: {
+      mjolnirsoul: ["model", "texture", "shiny_texture", "animations"],
+    },
   },
 
   // ======================== GEN 8 ========================

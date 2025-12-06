@@ -4,25 +4,65 @@
 		"description": {
 			"identifier": "pokemon:zygarde",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/zygarde",
-				"shiny_default": "textures/sprites/default/zygarde",
-				"default_male": "textures/sprites/default/zygarde",
-				"default_female": "textures/sprites/default/zygarde",
-				"shiny_male": "textures/sprites/default/zygarde",
-				"shiny_female": "textures/sprites/default/zygarde"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/zygarde/zygarde.png",
+				"shiny_default": "textures/entity/pokemon/zygarde/shiny_zygarde.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.zygarde.ground_idle",
+				"default_air_idle": "animation.zygarde.ground_idle",
+				"default_water_idle": "animation.zygarde.water_idle",
+				"default_walking": "animation.zygarde.walking",
+				"default_flying": "animation.zygarde.ground_idle",
+				"default_swimming": "animation.zygarde.swimming",
+				"default_sleeping": "animation.zygarde.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.zygarde.attack",
+				"blink": "animation.zygarde.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "zygarde",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.zygarde"
 			}
 		}
 	}
