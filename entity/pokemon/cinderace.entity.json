@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/cinderace/cinderace.png",
-				"shiny_default": "textures/entity/pokemon/cinderace/shiny_cinderace.png"
+				"shiny_default": "textures/entity/pokemon/cinderace/shiny_cinderace.png",
+				"christmas": "textures/entity/pokemon/cinderace/cinderace_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/cinderace/shiny_cinderace_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:cinderace": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:cinderace.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.cinderace"
+				"default": "geometry.cinderace",
+				"christmas": "geometry.cinderace_christmas"
 			}
 		}
 	}

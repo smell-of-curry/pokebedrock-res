@@ -320,6 +320,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  dragonite: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 2 ========================
 
   celebi: {
@@ -525,6 +531,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  azumarill: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 3 ========================
 
   /** Female has smaller head feathers */
@@ -628,6 +640,12 @@ export const PokemonCustomizations: Partial<{
   /** Female has a shorter jaw guard */
   relicanth: {
     genderDifferences: ["model"],
+  },
+
+  jirachi: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
   },
 
   // ======================== GEN 4 ========================
@@ -830,6 +848,7 @@ export const PokemonCustomizations: Partial<{
   mamoswine: {
     skins: {
       appa: ["model", "texture", "shiny_texture", "animations"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
     genderDifferences: ["model", "texture"],
   },
@@ -847,6 +866,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  lucario: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 5 ========================
   golett: {
     skins: {
@@ -857,6 +882,7 @@ export const PokemonCustomizations: Partial<{
     skins: {
       halloween: ["model", "texture", "shiny_texture", "animations"],
       fullmetal: ["model", "texture", "shiny_texture", "animations"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -971,12 +997,19 @@ export const PokemonCustomizations: Partial<{
   meloetta: {
     skins: {
       diva: ["model", "texture", "shiny_texture"],
+      christmas: ["model", "texture", "shiny_texture"],
     },
   },
 
   meloettapirouette: {
     skins: {
       diva: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  hydreigon: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -1026,6 +1059,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model", "texture"],
   },
 
+  tyrantrum: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 7 ========================
 
   gastly: {
@@ -1073,6 +1112,12 @@ export const PokemonCustomizations: Partial<{
     animatedTextureConfig: [2, 8],
   },
 
+  toxapex: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 8 ========================
 
   alcremie: {
@@ -1087,6 +1132,25 @@ export const PokemonCustomizations: Partial<{
       rainbow_swirl: ["texture"],
     },
   },
+
+  cinderace: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  rillaboom: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  maushold: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
 
   // ======================== GEN 9 ========================
 
