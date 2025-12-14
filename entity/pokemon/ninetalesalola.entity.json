@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/ninetalesalola/ninetalesalola.png",
-				"shiny_default": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola.png"
+				"shiny_default": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola.png",
+				"christmas": "textures/entity/pokemon/ninetalesalola/ninetalesalola_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.ninetalesalola.blink",
 				"default_ground_idle": "animation.ninetalesalola.ground_idle",
 				"default_air_idle": "animation.ninetalesalola.ground_idle",
 				"default_water_idle": "animation.ninetalesalola.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.ninetalesalola.ground_idle",
 				"default_swimming": "animation.ninetalesalola.swimming",
 				"default_sleeping": "animation.ninetalesalola.sleeping",
+				"default_attack": "animation.ninetalesalola.attack",
+				"christmas_flying": "animation.ninetalesalola_christmas.flying",
+				"christmas_air_idle": "animation.ninetalesalola_christmas.air_idle",
+				"christmas_swimming": "animation.ninetalesalola_christmas.swimming",
+				"christmas_water_idle": "animation.ninetalesalola_christmas.water_idle",
+				"christmas_walking": "animation.ninetalesalola_christmas.walking",
+				"christmas_ground_idle": "animation.ninetalesalola_christmas.ground_idle",
+				"christmas_sleeping": "animation.ninetalesalola_christmas.sleeping",
+				"christmas_blink": "animation.ninetalesalola_christmas.blink",
+				"christmas_attack": "animation.ninetalesalola_christmas.attack",
+				"christmas_faint": "animation.ninetalesalola_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.ninetalesalola.attack",
-				"blink": "animation.ninetalesalola.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.ninetalesalola_attack",
+				"blink": "controller.animation.pokemon.ninetalesalola_blink",
+				"controller": "controller.animation.pokemon.ninetalesalola"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:ninetalesalola": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:ninetalesalola.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.ninetalesalola"
+				"default": "geometry.ninetalesalola",
+				"christmas": "geometry.ninetalesalola_christmas"
 			}
 		}
 	}

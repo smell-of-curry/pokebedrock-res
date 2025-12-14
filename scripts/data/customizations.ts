@@ -537,7 +537,7 @@ export const PokemonCustomizations: Partial<{
       tophat: ["model", "texture", "shiny_texture"],
     }
   },
-  
+
   azumarill: {
     skins: {
       christmas: ["model", "texture", "shiny_texture"],
@@ -654,7 +654,7 @@ export const PokemonCustomizations: Partial<{
       christmas: ["model", "texture", "shiny_texture"],
     }
   },
-  
+
   sableye: {
     skins: {
       sculk: ["model", "texture", "shiny_texture"],
@@ -957,7 +957,8 @@ export const PokemonCustomizations: Partial<{
 
   victini: {
     skins: {
-      valentine: ["model", "texture"],
+      valentine: ["model", "texture", "shiny_texture", "animations"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -1078,6 +1079,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  yveltal: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 7 ========================
 
   gastly: {
@@ -1130,10 +1137,16 @@ export const PokemonCustomizations: Partial<{
       christmas: ["model", "texture", "shiny_texture"],
     }
   },
-  
+
   zeraora: {
     skins: {
       mjolnirsoul: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  ninetalesalola: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -1170,6 +1183,17 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  darmanitangalar: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  darmanitangalarzen: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
 
   // ======================== GEN 9 ========================
 

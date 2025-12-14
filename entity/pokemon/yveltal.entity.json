@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/yveltal/yveltal.png",
-				"shiny_default": "textures/entity/pokemon/yveltal/shiny_yveltal.png"
+				"shiny_default": "textures/entity/pokemon/yveltal/shiny_yveltal.png",
+				"christmas": "textures/entity/pokemon/yveltal/yveltal_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/yveltal/shiny_yveltal_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:yveltal": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:yveltal.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.yveltal"
+				"default": "geometry.yveltal",
+				"christmas": "geometry.yveltal_christmas"
 			}
 		}
 	}

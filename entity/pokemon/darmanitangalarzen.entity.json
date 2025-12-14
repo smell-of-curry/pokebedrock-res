@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/darmanitangalarzen/darmanitangalarzen.png",
-				"shiny_default": "textures/entity/pokemon/darmanitangalarzen/shiny_darmanitangalarzen.png"
+				"shiny_default": "textures/entity/pokemon/darmanitangalarzen/shiny_darmanitangalarzen.png",
+				"christmas": "textures/entity/pokemon/darmanitangalarzen/darmanitangalarzen_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/darmanitangalarzen/shiny_darmanitangalarzen_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.darmanitangalarzen.blink",
 				"default_ground_idle": "animation.darmanitangalarzen.ground_idle",
 				"default_air_idle": "animation.darmanitangalarzen.ground_idle",
 				"default_water_idle": "animation.darmanitangalarzen.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.darmanitangalarzen.ground_idle",
 				"default_swimming": "animation.darmanitangalarzen.swimming",
 				"default_sleeping": "animation.darmanitangalarzen.sleeping",
+				"default_attack": "animation.darmanitangalarzen.attack",
+				"christmas_flying": "animation.darmanitangalarzen_christmas.flying",
+				"christmas_air_idle": "animation.darmanitangalarzen_christmas.air_idle",
+				"christmas_swimming": "animation.darmanitangalarzen_christmas.swimming",
+				"christmas_water_idle": "animation.darmanitangalarzen_christmas.water_idle",
+				"christmas_walking": "animation.darmanitangalarzen_christmas.walking",
+				"christmas_ground_idle": "animation.darmanitangalarzen_christmas.ground_idle",
+				"christmas_sleeping": "animation.darmanitangalarzen_christmas.sleeping",
+				"christmas_blink": "animation.darmanitangalarzen_christmas.blink",
+				"christmas_attack": "animation.darmanitangalarzen_christmas.attack",
+				"christmas_faint": "animation.darmanitangalarzen_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.darmanitangalarzen.attack",
-				"blink": "animation.darmanitangalarzen.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.darmanitangalarzen_attack",
+				"blink": "controller.animation.pokemon.darmanitangalarzen_blink",
+				"controller": "controller.animation.pokemon.darmanitangalarzen"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:darmanitangalarzen": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:darmanitangalarzen.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.darmanitangalarzen"
+				"default": "geometry.darmanitangalarzen",
+				"christmas": "geometry.darmanitangalarzen_christmas"
 			}
 		}
 	}

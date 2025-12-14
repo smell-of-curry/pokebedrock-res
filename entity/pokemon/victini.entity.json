@@ -11,7 +11,10 @@
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/victini/victini.png",
 				"shiny_default": "textures/entity/pokemon/victini/shiny_victini.png",
-				"valentine": "textures/entity/pokemon/victini/victini_valentine.png"
+				"valentine": "textures/entity/pokemon/victini/victini_valentine.png",
+				"shiny_valentine": "textures/entity/pokemon/victini/shiny_victini_valentine.png",
+				"christmas": "textures/entity/pokemon/victini/victini_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/victini/shiny_victini_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -38,6 +41,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.victini.blink",
 				"default_ground_idle": "animation.victini.ground_idle",
 				"default_air_idle": "animation.victini.ground_idle",
 				"default_water_idle": "animation.victini.water_idle",
@@ -45,10 +49,31 @@
 				"default_flying": "animation.victini.ground_idle",
 				"default_swimming": "animation.victini.swimming",
 				"default_sleeping": "animation.victini.sleeping",
+				"default_attack": "animation.victini.attack",
+				"valentine_flying": "animation.victini_valentine.flying",
+				"valentine_air_idle": "animation.victini_valentine.air_idle",
+				"valentine_swimming": "animation.victini_valentine.swimming",
+				"valentine_water_idle": "animation.victini_valentine.water_idle",
+				"valentine_walking": "animation.victini_valentine.walking",
+				"valentine_ground_idle": "animation.victini_valentine.ground_idle",
+				"valentine_sleeping": "animation.victini_valentine.sleeping",
+				"valentine_blink": "animation.victini_valentine.blink",
+				"valentine_attack": "animation.victini_valentine.attack",
+				"valentine_faint": "animation.victini_valentine.faint",
+				"christmas_flying": "animation.victini_christmas.flying",
+				"christmas_air_idle": "animation.victini_christmas.air_idle",
+				"christmas_swimming": "animation.victini_christmas.swimming",
+				"christmas_water_idle": "animation.victini_christmas.water_idle",
+				"christmas_walking": "animation.victini_christmas.walking",
+				"christmas_ground_idle": "animation.victini_christmas.ground_idle",
+				"christmas_sleeping": "animation.victini_christmas.sleeping",
+				"christmas_blink": "animation.victini_christmas.blink",
+				"christmas_attack": "animation.victini_christmas.attack",
+				"christmas_faint": "animation.victini_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.victini.attack",
-				"blink": "animation.victini.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.victini_attack",
+				"blink": "controller.animation.pokemon.victini_blink",
+				"controller": "controller.animation.pokemon.victini"
 			},
 			"render_controllers": [
 				{
@@ -64,7 +89,8 @@
 			},
 			"geometry": {
 				"default": "geometry.victini",
-				"valentine": "geometry.victini_valentine"
+				"valentine": "geometry.victini_valentine",
+				"christmas": "geometry.victini_christmas"
 			}
 		}
 	}
