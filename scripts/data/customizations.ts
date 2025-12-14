@@ -645,6 +645,12 @@ export const PokemonCustomizations: Partial<{
   jirachi: {
     skins: {
       christmas: ["model", "texture", "shiny_texture"],
+    }
+  },
+  
+  sableye: {
+    skins: {
+      sculk: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -1115,6 +1121,12 @@ export const PokemonCustomizations: Partial<{
   toxapex: {
     skins: {
       christmas: ["model", "texture", "shiny_texture"],
+    }
+  },
+  
+  zeraora: {
+    skins: {
+      mjolnirsoul: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
