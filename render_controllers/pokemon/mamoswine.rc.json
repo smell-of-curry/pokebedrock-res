@@ -13,7 +13,9 @@
 						"Geometry.male_default",
 						"Geometry.female_default",
 						"Geometry.male_appa",
-						"Geometry.female_appa"
+						"Geometry.female_appa",
+						"Geometry.male_christmas",
+						"Geometry.female_christmas"
 					]
 				},
 				"textures": {
@@ -25,7 +27,11 @@
 						"Texture.male_appa",
 						"Texture.shiny_male_appa",
 						"Texture.female_appa",
-						"Texture.shiny_female_appa"
+						"Texture.shiny_female_appa",
+						"Texture.male_christmas",
+						"Texture.shiny_male_christmas",
+						"Texture.female_christmas",
+						"Texture.shiny_female_christmas"
 					]
 				}
 			},
@@ -34,9 +40,9 @@
 					"*": "Material.default"
 				}
 			],
-			"geometry": "Array.geometryVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male') ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='female') ? 1:(v.skin_index==1 && query.property('pokeb:gender')=='male') ? 2:(v.skin_index==1 && query.property('pokeb:gender')=='female') ? 3:0]",
+			"geometry": "Array.geometryVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male') ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='female') ? 1:(v.skin_index==1 && query.property('pokeb:gender')=='male') ? 2:(v.skin_index==1 && query.property('pokeb:gender')=='female') ? 3:(v.skin_index==2 && query.property('pokeb:gender')=='male') ? 4:(v.skin_index==2 && query.property('pokeb:gender')=='female') ? 5:0]",
 			"textures": [
-				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:(v.skin_index==1 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 4:(v.skin_index==1 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 5:(v.skin_index==1 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 6:(v.skin_index==1 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 7:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==0 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 3:(v.skin_index==1 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 4:(v.skin_index==1 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 5:(v.skin_index==1 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 6:(v.skin_index==1 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 7:(v.skin_index==2 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == false) ? 8:(v.skin_index==2 && query.property('pokeb:gender')=='male' && query.property('pokeb:shiny') == true) ? 9:(v.skin_index==2 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == false) ? 10:(v.skin_index==2 && query.property('pokeb:gender')=='female' && query.property('pokeb:shiny') == true) ? 11:0]"
 			]
 		},
 		"controller.render.pokemon:mamoswine.evolve": {
@@ -46,11 +52,13 @@
 						"Geometry.male_default",
 						"Geometry.female_default",
 						"Geometry.male_appa",
-						"Geometry.female_appa"
+						"Geometry.female_appa",
+						"Geometry.male_christmas",
+						"Geometry.female_christmas"
 					]
 				}
 			},
-			"geometry": "Array.geometryVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male') ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='female') ? 1:(v.skin_index==1 && query.property('pokeb:gender')=='male') ? 2:(v.skin_index==1 && query.property('pokeb:gender')=='female') ? 3:0]",
+			"geometry": "Array.geometryVariants[(v.skin_index==0 && query.property('pokeb:gender')=='male') ? 0:(v.skin_index==0 && query.property('pokeb:gender')=='female') ? 1:(v.skin_index==1 && query.property('pokeb:gender')=='male') ? 2:(v.skin_index==1 && query.property('pokeb:gender')=='female') ? 3:(v.skin_index==2 && query.property('pokeb:gender')=='male') ? 4:(v.skin_index==2 && query.property('pokeb:gender')=='female') ? 5:0]",
 			"materials": [
 				{
 					"*": "Material.aura"

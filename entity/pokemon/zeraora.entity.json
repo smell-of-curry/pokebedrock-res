@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/zeraora/zeraora.png",
-				"shiny_default": "textures/entity/pokemon/zeraora/shiny_zeraora.png"
+				"shiny_default": "textures/entity/pokemon/zeraora/shiny_zeraora.png",
+				"mjolnirsoul": "textures/entity/pokemon/zeraora/zeraora_mjolnirsoul.png",
+				"shiny_mjolnirsoul": "textures/entity/pokemon/zeraora/shiny_zeraora_mjolnirsoul.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -22,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.zeraora.blink",
 				"default_ground_idle": "animation.zeraora.ground_idle",
 				"default_air_idle": "animation.zeraora.ground_idle",
 				"default_water_idle": "animation.zeraora.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.zeraora.ground_idle",
 				"default_swimming": "animation.zeraora.swimming",
 				"default_sleeping": "animation.zeraora.sleeping",
+				"default_attack": "animation.zeraora.attack",
+				"mjolnirsoul_flying": "animation.zeraora_mjolnirsoul.flying",
+				"mjolnirsoul_air_idle": "animation.zeraora_mjolnirsoul.air_idle",
+				"mjolnirsoul_swimming": "animation.zeraora_mjolnirsoul.swimming",
+				"mjolnirsoul_water_idle": "animation.zeraora_mjolnirsoul.water_idle",
+				"mjolnirsoul_walking": "animation.zeraora_mjolnirsoul.walking",
+				"mjolnirsoul_ground_idle": "animation.zeraora_mjolnirsoul.ground_idle",
+				"mjolnirsoul_sleeping": "animation.zeraora_mjolnirsoul.sleeping",
+				"mjolnirsoul_blink": "animation.zeraora_mjolnirsoul.blink",
+				"mjolnirsoul_attack": "animation.zeraora_mjolnirsoul.attack",
+				"mjolnirsoul_faint": "animation.zeraora_mjolnirsoul.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.zeraora.attack",
-				"blink": "animation.zeraora.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.zeraora_attack",
+				"blink": "controller.animation.pokemon.zeraora_blink",
+				"controller": "controller.animation.pokemon.zeraora"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:zeraora": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:zeraora.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.zeraora"
+				"default": "geometry.zeraora",
+				"mjolnirsoul": "geometry.zeraora_mjolnirsoul"
 			}
 		}
 	}

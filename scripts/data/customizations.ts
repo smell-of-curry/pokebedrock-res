@@ -4,8 +4,8 @@ import type {
   PokemonTypeId,
   ParticleEffectId,
   PokemonSkinOptionObject,
+  MaterialId,
 } from "../types";
-import { getSkinDifferences, skinOptionIncludes } from "../utils";
 
 /**
  * Defines customization options for a Pokémon skin.
@@ -39,6 +39,16 @@ export interface PokemonCustomization {
    * This applies to the default form and all skins unless a skin defines its own animatedTextureConfig.
    */
   animatedTextureConfig?: AnimatedTextureConfig;
+  /**
+   * The material to use for this Pokémon's default appearance.
+   * Accepts any vanilla material or a custom material id defined in materials/*.material.
+   * Skins may override this with their own material.
+   *
+   * NOTE: If this Pokémon also uses an animated texture {@link animatedTextureConfig}, and you
+   * set a custom material here, that custom material must support animated textures.
+   * To do so, inherit/add the animated texture define 'USE_UV_ANIM' in your material.
+   */
+  material?: MaterialId;
   /**
    * An array of particle effects this pokemon uses in its animations
    * Where the effect ID will be the second string after the split of ":"
@@ -182,13 +192,13 @@ export const PokemonCustomizations: Partial<{
 
   spinda: {
     skins: {
-      bowties: ["texture", "shiny_texture"],
-      facescar: ["texture", "shiny_texture"],
-      doubleganger: ["texture", "shiny_texture"],
+      bow_ties: ["texture", "shiny_texture"],
+      face_scar: ["texture", "shiny_texture"],
+      doublegangar: ["texture", "shiny_texture"],
       dots: ["texture", "shiny_texture"],
       glasses: ["texture", "shiny_texture"],
       eyebrows: ["texture", "shiny_texture"],
-      smallking: ["texture", "shiny_texture"],
+      small_king: ["texture", "shiny_texture"],
       heart: ["texture", "shiny_texture"],
     },
   },
@@ -311,6 +321,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  dragonite: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 2 ========================
 
   celebi: {
@@ -391,7 +407,7 @@ export const PokemonCustomizations: Partial<{
   scizor: {
     genderDifferences: ["model", "texture", "shiny_texture"],
     skins: {
-      ranger: ["model", "texture", "shiny_texture", "animations"]
+      ranger: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -519,6 +535,12 @@ export const PokemonCustomizations: Partial<{
   shuckle: {
     skins: {
       tophat: ["model", "texture", "shiny_texture"],
+    }
+  },
+  
+  azumarill: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -625,6 +647,18 @@ export const PokemonCustomizations: Partial<{
   /** Female has a shorter jaw guard */
   relicanth: {
     genderDifferences: ["model"],
+  },
+
+  jirachi: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    }
+  },
+  
+  sableye: {
+    skins: {
+      sculk: ["model", "texture", "shiny_texture"],
+    },
   },
 
   // ======================== GEN 4 ========================
@@ -827,6 +861,7 @@ export const PokemonCustomizations: Partial<{
   mamoswine: {
     skins: {
       appa: ["model", "texture", "shiny_texture", "animations"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
     genderDifferences: ["model", "texture"],
   },
@@ -844,6 +879,12 @@ export const PokemonCustomizations: Partial<{
     },
   },
 
+  lucario: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 5 ========================
   golett: {
     skins: {
@@ -854,6 +895,7 @@ export const PokemonCustomizations: Partial<{
     skins: {
       halloween: ["model", "texture", "shiny_texture", "animations"],
       fullmetal: ["model", "texture", "shiny_texture", "animations"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -968,12 +1010,19 @@ export const PokemonCustomizations: Partial<{
   meloetta: {
     skins: {
       diva: ["model", "texture", "shiny_texture"],
+      christmas: ["model", "texture", "shiny_texture"],
     },
   },
 
   meloettapirouette: {
     skins: {
       diva: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  hydreigon: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
     },
   },
 
@@ -1023,6 +1072,12 @@ export const PokemonCustomizations: Partial<{
     genderDifferences: ["model", "texture"],
   },
 
+  tyrantrum: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
   // ======================== GEN 7 ========================
 
   gastly: {
@@ -1070,6 +1125,18 @@ export const PokemonCustomizations: Partial<{
     animatedTextureConfig: [2, 8],
   },
 
+  toxapex: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    }
+  },
+  
+  zeraora: {
+    skins: {
+      mjolnirsoul: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
   // ======================== GEN 8 ========================
 
   alcremie: {
@@ -1084,6 +1151,25 @@ export const PokemonCustomizations: Partial<{
       rainbow_swirl: ["texture"],
     },
   },
+
+  cinderace: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  rillaboom: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  maushold: {
+    skins: {
+      christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
 
   // ======================== GEN 9 ========================
 

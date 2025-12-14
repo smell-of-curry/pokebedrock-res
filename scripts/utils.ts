@@ -1,8 +1,6 @@
-import * as fs from "fs";
-import * as path from "path";
+import path from "path";
 import fsExtra from "fs-extra";
 import { PokemonSkinOption } from "./data/customizations";
-import { isEqual } from "lodash";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -143,14 +141,15 @@ export function removeCommentsFromLang(langData: string): string {
   const cleanedLines = lines
     .map((line) => {
       // Remove any in-line comments that have two or more # (e.g., ##, ###, etc.)
-      const noInlineComments = line.split(/#{2,}/)[0].trim();
+      const [firstSegment] = line.split(/#{2,}/);
+      const noInlineComments = (firstSegment ?? "").trim();
 
       // Return the line only if it's not empty and not a full-line comment (starting with ## or more #)
       return noInlineComments.length > 0 && !noInlineComments.match(/^#{2,}/)
         ? noInlineComments
         : null;
     })
-    .filter(Boolean); // Remove null values
+    .filter((v): v is string => typeof v === "string" && v.length > 0); // Remove null values
 
   // Join the cleaned lines with CRLF (\r\n) to maintain Windows-style line breaks
   return cleanedLines.join("\r\n");
@@ -161,10 +160,10 @@ export function removeCommentsFromLang(langData: string): string {
  */
 export function countFilesRecursively(directory: string): number {
   let count = 0;
-  const items = fs.readdirSync(directory);
+  const items = fsExtra.readdirSync(directory);
   for (const item of items) {
     const fullPath = path.join(directory, item);
-    if (fs.lstatSync(fullPath).isDirectory()) {
+    if (fsExtra.lstatSync(fullPath).isDirectory()) {
       count += countFilesRecursively(fullPath);
     } else {
       count += 1;
@@ -186,9 +185,9 @@ export function editLangSection(
   header: string,
   content: string
 ) {
-  if (!fs.existsSync(filePath))
-    fs.writeFileSync(filePath, `##${header}\n\n${content}`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+  if (!fsExtra.existsSync(filePath))
+    fsExtra.writeFileSync(filePath, `##${header}\n\n${content}`);
+  const fileContent = fsExtra.readFileSync(filePath, "utf-8");
   const lines = fileContent.split(/\r?\n/);
 
   // Find the start of the section
@@ -216,7 +215,7 @@ export function editLangSection(
     );
   }
 
-  fs.writeFileSync(filePath, lines.join("\r\n"));
+  fsExtra.writeFileSync(filePath, lines.join("\r\n"));
 }
 
 /**
@@ -282,9 +281,9 @@ export function skinOptionIncludes(
  */
 export function writeFileIfChanged(filePath: string, data: string): boolean {
   // Check if file exists and read current content
-  if (fs.existsSync(filePath)) {
+  if (fsExtra.existsSync(filePath)) {
     try {
-      const currentContent = fs.readFileSync(filePath, "utf8");
+      const currentContent = fsExtra.readFileSync(filePath, "utf8");
       if (currentContent === data) {
         return false; // No change needed
       }
@@ -294,7 +293,7 @@ export function writeFileIfChanged(filePath: string, data: string): boolean {
   }
 
   // Write the file since content has changed or file doesn't exist
-  fs.writeFileSync(filePath, data, "utf8");
+  fsExtra.writeFileSync(filePath, data, "utf8");
   return true; // File was written
 }
 
@@ -306,9 +305,9 @@ export async function writeImageIfChanged(
   imageBuffer: Buffer
 ): Promise<boolean> {
   // Check if file exists and compare content
-  if (fs.existsSync(filePath)) {
+  if (fsExtra.existsSync(filePath)) {
     try {
-      const currentBuffer = fs.readFileSync(filePath);
+      const currentBuffer = fsExtra.readFileSync(filePath);
       if (currentBuffer.equals(imageBuffer)) {
         return false; // No change needed
       }
@@ -318,6 +317,6 @@ export async function writeImageIfChanged(
   }
 
   // Write the file since content has changed or file doesn't exist
-  fs.writeFileSync(filePath, imageBuffer);
+  fsExtra.writeFileSync(filePath, imageBuffer);
   return true; // File was written
 }

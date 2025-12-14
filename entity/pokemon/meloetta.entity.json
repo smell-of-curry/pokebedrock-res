@@ -12,7 +12,9 @@
 				"default": "textures/entity/pokemon/meloetta/meloetta.png",
 				"shiny_default": "textures/entity/pokemon/meloetta/shiny_meloetta.png",
 				"diva": "textures/entity/pokemon/meloetta/meloetta_diva.png",
-				"shiny_diva": "textures/entity/pokemon/meloetta/shiny_meloetta_diva.png"
+				"shiny_diva": "textures/entity/pokemon/meloetta/shiny_meloetta_diva.png",
+				"christmas": "textures/entity/pokemon/meloetta/meloetta_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/meloetta/shiny_meloetta_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -24,7 +26,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -65,7 +67,8 @@
 			},
 			"geometry": {
 				"default": "geometry.meloetta",
-				"diva": "geometry.meloetta_diva"
+				"diva": "geometry.meloetta_diva",
+				"christmas": "geometry.meloetta_christmas"
 			}
 		}
 	}

@@ -163,9 +163,11 @@ async function pipeToFiles(outputFileNames: string[]) {
   for (const path of paths) {
     if (exclude.includes(path)) continue;
     if (
-      outputFileNames.some((outputFileName) =>
-        path.startsWith(outputFileName.split(".")[0])
-      )
+      outputFileNames.some((outputFileName) => {
+        const [stem] = outputFileName.split(".");
+        const prefix = stem && stem.length > 0 ? stem : outputFileName;
+        return path.startsWith(prefix);
+      })
     )
       continue;
 

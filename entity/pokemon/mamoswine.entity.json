@@ -16,7 +16,11 @@
 				"male_appa": "textures/entity/pokemon/mamoswine/male_mamoswine_appa.png",
 				"shiny_male_appa": "textures/entity/pokemon/mamoswine/shiny_male_mamoswine_appa.png",
 				"female_appa": "textures/entity/pokemon/mamoswine/female_mamoswine_appa.png",
-				"shiny_female_appa": "textures/entity/pokemon/mamoswine/shiny_female_mamoswine_appa.png"
+				"shiny_female_appa": "textures/entity/pokemon/mamoswine/shiny_female_mamoswine_appa.png",
+				"male_christmas": "textures/entity/pokemon/mamoswine/male_mamoswine_christmas.png",
+				"shiny_male_christmas": "textures/entity/pokemon/mamoswine/shiny_male_mamoswine_christmas.png",
+				"female_christmas": "textures/entity/pokemon/mamoswine/female_mamoswine_christmas.png",
+				"shiny_female_christmas": "textures/entity/pokemon/mamoswine/shiny_female_mamoswine_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -28,7 +32,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -62,6 +66,16 @@
 				"appa_blink": "animation.mamoswine_appa.blink",
 				"appa_attack": "animation.mamoswine_appa.attack",
 				"appa_faint": "animation.mamoswine_appa.faint",
+				"christmas_flying": "animation.mamoswine_christmas.flying",
+				"christmas_air_idle": "animation.mamoswine_christmas.air_idle",
+				"christmas_swimming": "animation.mamoswine_christmas.swimming",
+				"christmas_water_idle": "animation.mamoswine_christmas.water_idle",
+				"christmas_walking": "animation.mamoswine_christmas.walking",
+				"christmas_ground_idle": "animation.mamoswine_christmas.ground_idle",
+				"christmas_sleeping": "animation.mamoswine_christmas.sleeping",
+				"christmas_blink": "animation.mamoswine_christmas.blink",
+				"christmas_attack": "animation.mamoswine_christmas.attack",
+				"christmas_faint": "animation.mamoswine_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"attack": "controller.animation.pokemon.mamoswine_attack",
 				"blink": "controller.animation.pokemon.mamoswine_blink",
@@ -83,7 +97,9 @@
 				"male_default": "geometry.male_mamoswine",
 				"female_default": "geometry.female_mamoswine",
 				"male_appa": "geometry.male_mamoswine_appa",
-				"female_appa": "geometry.female_mamoswine_appa"
+				"female_appa": "geometry.female_mamoswine_appa",
+				"male_christmas": "geometry.male_mamoswine_christmas",
+				"female_christmas": "geometry.female_mamoswine_christmas"
 			}
 		}
 	}

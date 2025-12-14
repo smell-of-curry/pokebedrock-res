@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/maushold/maushold.png",
-				"shiny_default": "textures/entity/pokemon/maushold/shiny_maushold.png"
+				"shiny_default": "textures/entity/pokemon/maushold/shiny_maushold.png",
+				"christmas": "textures/entity/pokemon/maushold/maushold_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/maushold/shiny_maushold_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -22,7 +24,7 @@
 					"v.skin_index = query.property('pokeb:skin_index');",
 					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
 					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
 					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:maushold": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:maushold.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.maushold"
+				"default": "geometry.maushold",
+				"christmas": "geometry.maushold_christmas"
 			}
 		}
 	}

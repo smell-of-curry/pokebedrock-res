@@ -1,6 +1,12 @@
 import type pokemonJson from "../pokemon.json";
 export type PokemonTypeId = keyof (typeof pokemonJson)["pokemon"];
 import type { PokemonCustomization } from "./data/customizations";
+import type { MaterialId } from "./data/material.types";
+export type {
+  VanillaMaterial,
+  CustomMaterial,
+  MaterialId,
+} from "./data/material.types";
 
 export interface PokemonJsonContent {
   /**
@@ -285,6 +291,15 @@ export interface PokemonSkinOptionObject {
    * This will override or supplement the parent's animationParticleEffects when this skin is selected.
    */
   animationParticleEffects?: ParticleEffectId[];
+  /**
+   * Overrides the material used when this skin is selected.
+   * If omitted, will fall back to parent material or animated texture material.
+   *
+   * NOTE: If this skin also uses an animated texture {@link animatedTextureConfig}, and you
+   * set a custom material here, that custom material must support animated textures.
+   * To do so, inherit/add the animated texture define 'USE_UV_ANIM' in your material.
+   */
+  material?: MaterialId;
 }
 
 export type GeometryFileName =
@@ -321,3 +336,20 @@ export interface RenderController {
     }>;
   };
 }
+
+/**
+ * Utility type that generates a sequence of numbers from 0 to N-1
+ */
+type Enumerate<
+  N extends number,
+  Acc extends number[] = []
+> = Acc["length"] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc["length"]]>;
+
+/**
+ * Utility type representing a range of numbers from F to T inclusive
+ */
+export type Range<F extends number, T extends number> =
+  | Exclude<Enumerate<T>, Enumerate<F>>
+  | T;
