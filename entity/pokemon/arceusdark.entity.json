@@ -4,25 +4,67 @@
 		"description": {
 			"identifier": "pokemon:arceusdark",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/arceusdark",
-				"shiny_default": "textures/sprites/default/arceusdark",
-				"default_male": "textures/sprites/default/arceusdark",
-				"default_female": "textures/sprites/default/arceusdark",
-				"shiny_male": "textures/sprites/default/arceusdark",
-				"shiny_female": "textures/sprites/default/arceusdark"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/arceusdark/arceusdark.png",
+				"shiny_default": "textures/entity/pokemon/arceusdark/shiny_arceusdark.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.arceusdark.blink",
+				"default_ground_idle": "animation.arceusdark.ground_idle",
+				"default_air_idle": "animation.arceusdark.air_idle",
+				"default_water_idle": "animation.arceusdark.water_idle",
+				"default_walking": "animation.arceusdark.walking",
+				"default_flying": "animation.arceusdark.flying",
+				"default_swimming": "animation.arceusdark.swimming",
+				"default_sleeping": "animation.arceusdark.sleeping",
+				"default_attack": "animation.arceusdark.attack",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.arceusdark_attack",
+				"blink": "controller.animation.pokemon.arceusdark_blink",
+				"controller": "controller.animation.pokemon.arceusdark"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "arceusdark",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.arceusdark"
 			}
 		}
 	}
