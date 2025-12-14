@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/oinkolognef/oinkolognef.png",
-				"shiny_default": "textures/entity/pokemon/oinkolognef/shiny_oinkolognef.png"
+				"shiny_default": "textures/entity/pokemon/oinkolognef/shiny_oinkolognef.png",
+				"halloween": "textures/entity/pokemon/oinkolognef/oinkolognef_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/oinkolognef/shiny_oinkolognef_halloween.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.oinkolognef.blink",
 				"default_ground_idle": "animation.oinkolognef.ground_idle",
 				"default_air_idle": "animation.oinkolognef.ground_idle",
 				"default_water_idle": "animation.oinkolognef.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.oinkolognef.ground_idle",
 				"default_swimming": "animation.oinkolognef.swimming",
 				"default_sleeping": "animation.oinkolognef.sleeping",
+				"default_attack": "animation.oinkolognef.attack",
+				"halloween_flying": "animation.oinkolognef_halloween.flying",
+				"halloween_air_idle": "animation.oinkolognef_halloween.air_idle",
+				"halloween_swimming": "animation.oinkolognef_halloween.swimming",
+				"halloween_water_idle": "animation.oinkolognef_halloween.water_idle",
+				"halloween_walking": "animation.oinkolognef_halloween.walking",
+				"halloween_ground_idle": "animation.oinkolognef_halloween.ground_idle",
+				"halloween_sleeping": "animation.oinkolognef_halloween.sleeping",
+				"halloween_blink": "animation.oinkolognef_halloween.blink",
+				"halloween_attack": "animation.oinkolognef_halloween.attack",
+				"halloween_faint": "animation.oinkolognef_halloween.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.oinkolognef.attack",
-				"blink": "animation.oinkolognef.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.oinkolognef_attack",
+				"blink": "controller.animation.pokemon.oinkolognef_blink",
+				"controller": "controller.animation.pokemon.oinkolognef"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:oinkolognef": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:oinkolognef.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.oinkolognef"
+				"default": "geometry.oinkolognef",
+				"halloween": "geometry.oinkolognef_halloween"
 			}
 		}
 	}
