@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/maushold/maushold.png",
-				"shiny_default": "textures/entity/pokemon/maushold/shiny_maushold.png"
+				"shiny_default": "textures/entity/pokemon/maushold/shiny_maushold.png",
+				"christmas": "textures/entity/pokemon/maushold/maushold_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/maushold/shiny_maushold_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:maushold": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:maushold.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.maushold"
+				"default": "geometry.maushold",
+				"christmas": "geometry.maushold_christmas"
 			}
 		}
 	}

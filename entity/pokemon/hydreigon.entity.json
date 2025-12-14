@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/hydreigon/hydreigon.png",
-				"shiny_default": "textures/entity/pokemon/hydreigon/shiny_hydreigon.png"
+				"shiny_default": "textures/entity/pokemon/hydreigon/shiny_hydreigon.png",
+				"christmas": "textures/entity/pokemon/hydreigon/hydreigon_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/hydreigon/shiny_hydreigon_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:hydreigon": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:hydreigon.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.hydreigon"
+				"default": "geometry.hydreigon",
+				"christmas": "geometry.hydreigon_christmas"
 			}
 		}
 	}

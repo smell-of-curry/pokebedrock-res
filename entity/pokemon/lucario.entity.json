@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/lucario/lucario.png",
-				"shiny_default": "textures/entity/pokemon/lucario/shiny_lucario.png"
+				"shiny_default": "textures/entity/pokemon/lucario/shiny_lucario.png",
+				"christmas": "textures/entity/pokemon/lucario/lucario_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/lucario/shiny_lucario_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:lucario": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:lucario.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.lucario"
+				"default": "geometry.lucario",
+				"christmas": "geometry.lucario_christmas"
 			}
 		}
 	}

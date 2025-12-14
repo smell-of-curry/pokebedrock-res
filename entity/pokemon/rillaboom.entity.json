@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/rillaboom/rillaboom.png",
-				"shiny_default": "textures/entity/pokemon/rillaboom/shiny_rillaboom.png"
+				"shiny_default": "textures/entity/pokemon/rillaboom/shiny_rillaboom.png",
+				"christmas": "textures/entity/pokemon/rillaboom/rillaboom_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/rillaboom/shiny_rillaboom_christmas.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -51,10 +53,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:rillaboom": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:rillaboom.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +64,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.rillaboom"
+				"default": "geometry.rillaboom",
+				"christmas": "geometry.rillaboom_christmas"
 			}
 		}
 	}

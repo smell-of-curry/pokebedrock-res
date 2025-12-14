@@ -11,7 +11,8 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.diva"
+						"Geometry.diva",
+						"Geometry.christmas"
 					]
 				},
 				"textures": {
@@ -19,7 +20,9 @@
 						"Texture.default",
 						"Texture.shiny_default",
 						"Texture.diva",
-						"Texture.shiny_diva"
+						"Texture.shiny_diva",
+						"Texture.christmas",
+						"Texture.shiny_christmas"
 					]
 				}
 			},
@@ -30,7 +33,7 @@
 			],
 			"geometry": "Array.geometryVariants[v.skin_index]",
 			"textures": [
-				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1 && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==1 && query.property('pokeb:shiny') == true) ? 3:0]"
+				"Array.textureVariants[(v.skin_index==0 && query.property('pokeb:shiny') == false) ? 0:(v.skin_index==0 && query.property('pokeb:shiny') == true) ? 1:(v.skin_index==1 && query.property('pokeb:shiny') == false) ? 2:(v.skin_index==1 && query.property('pokeb:shiny') == true) ? 3:(v.skin_index==2 && query.property('pokeb:shiny') == false) ? 4:(v.skin_index==2 && query.property('pokeb:shiny') == true) ? 5:0]"
 			]
 		},
 		"controller.render.pokemon:meloetta.evolve": {
@@ -38,7 +41,8 @@
 				"geometries": {
 					"Array.geometryVariants": [
 						"Geometry.default",
-						"Geometry.diva"
+						"Geometry.diva",
+						"Geometry.christmas"
 					]
 				}
 			},
