@@ -12,11 +12,20 @@
       "geometry": {
         "default": "geometry.item_holder"
       },
-      "animations": {
-        "shake": "animation.item_holder.shake"
+      "scripts": {
+        "scale": "q.property('pokeb:scale')",
+        "animate": [
+          "idle"
+        ]
       },
-      "render_controllers": ["controller.render.default"],
-      "enable_attachables": false
+      "animations": {
+        "shake": "animation.item_holder.shake",
+        "idle": "animation.item_holder.idle"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "enable_attachables": true
     }
   }
 }

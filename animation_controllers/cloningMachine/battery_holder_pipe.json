@@ -1,0 +1,74 @@
+{
+    "format_version": "1.18.3",
+    "animation_controllers": {
+        "controller.animation.battery_holder_pipe": {
+            "initial_state": "idle",
+            "states": {
+                "idle": {
+                    "animations": [
+                        "idle"
+                    ],
+                    "transitions": [
+                        {
+                            "run1": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "run2": "q.property('pokeb:batteries') == 2"
+                        },
+                        {
+                            "run3": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "run1": {
+                    "animations": [
+                        "run1"
+                    ],
+                    "transitions": [
+                        {
+                            "idle": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "run2": "q.property('pokeb:batteries') == 2"
+                        },
+                        {
+                            "run3": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "run2": {
+                    "animations": [
+                        "run2"
+                    ],
+                    "transitions": [
+                        {
+                            "idle": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "run1": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "run3": "q.property('pokeb:batteries') == 3"
+                        }
+                    ]
+                },
+                "run3": {
+                    "animations": [
+                        "run3"
+                    ],
+                    "transitions": [
+                        {
+                            "idle": "q.property('pokeb:batteries') == 0"
+                        },
+                        {
+                            "run1": "q.property('pokeb:batteries') == 1"
+                        },
+                        {
+                            "run2": "q.property('pokeb:batteries') == 2"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
