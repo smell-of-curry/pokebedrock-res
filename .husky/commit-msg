@@ -42,7 +42,8 @@ check_file_version() {
     ;;
   "lang_pack_name")
     # Extract version from pack.name line in .lang file
-    found_version=$(head -n 1 "$file_path" | sed -n 's/.*v\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
+    # Use -E for extended regex (required for macOS BSD sed)
+    found_version=$(head -n 1 "$file_path" | sed -E -n 's/.*v([0-9]+\.[0-9]+\.[0-9]+).*/\1/p')
     ;;
   esac
 
