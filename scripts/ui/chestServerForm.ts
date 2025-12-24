@@ -50,7 +50,7 @@ const textureBindings = [
   },
   {
     binding_type: "view",
-    source_property_name: "(#form_button_texture * 1)",
+    source_property_name: "(1 * (#form_button_texture - ']'))",
     target_property_name: "#item_id_aux",
   },
 ];
@@ -148,7 +148,7 @@ export default defineUI("chest_ui", (ns) => {
               binding_name: "#null",
               binding_type: "view",
               source_property_name:
-                "(('§z') + (('%.12s' * #form_button_text) - ('%.10s' * #form_button_text)))",
+                "(('§z') + (('%.14s' * #form_button_text) - ('%.12s' * #form_button_text)))",
               target_property_name: "#stack_size",
             },
           ],
@@ -199,15 +199,15 @@ export default defineUI("chest_ui", (ns) => {
                   },
                   {
                     binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name:
-                      "(#form_button_text - ('%.12s' * #form_button_text))",
-                    target_property_name: "#hover_text",
+                    binding_type: "collection_details",
+                    binding_collection_name: "form_buttons",
                   },
                   {
                     binding_name: "#null",
-                    binding_type: "collection_details",
-                    binding_collection_name: "form_buttons",
+                    binding_type: "view",
+                    source_property_name:
+                      "(#form_button_text - ('%.14s' * #form_button_text))",
+                    target_property_name: "#hover_text",
                   },
                 ],
               },

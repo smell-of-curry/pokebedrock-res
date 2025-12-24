@@ -53,10 +53,71 @@ const buttonImage = boundImage("image")
   .bindings(...formButtonImageBindings());
 
 const actionButtonTextures = simpleButtonTextures(
-  "textures/ui/pc",
+  "textures/ui/pc/buttons",
   "action_button"
 );
 
+const filterButtonTextures = simpleButtonTextures(
+  "textures/ui/pc/buttons",
+  "filter_button"
+);
+
+const searchButtonTextures = simpleButtonTextures(
+  "textures/ui/pc/buttons",
+  "search_button"
+);
+
+const settingsButtonTextures = simpleButtonTextures(
+  "textures/ui/pc/buttons",
+  "settings_button"
+);
+
+// Container slots with grid
+const smallChestGrid = grid("small_chest_grid")
+  .gridDimensions(6, 6)
+  .size(108, 118)
+  .offset(5, 5)
+  .anchor("top_left")
+  .gridItemTemplate("chest_ui.chest_item")
+  .collectionName("form_buttons")
+  .layer(1);
+
+const partySlots = image("party_slots", "textures/ui/pc/party_slots").size(
+  "default",
+  26
+);
+
+const titleLabel = boundLabel("text", "text")
+  .textAlignment("center")
+  .fontScaleFactor(0.95)
+  .bindings(
+    globalBinding("#title_text"),
+    viewBinding(strip(first(22, skip(22, "#title_text"))), "#text")
+  );
+
+const title = panel("title")
+  .size(84)
+  .offset(0, 7)
+  .layer(3)
+  .controls(titleLabel);
+
+// Search field label in details bar
+const searchFieldText = boundLabel("text")
+  .offset(-8, 0.5)
+  .textAlignment("left")
+  .fontScaleFactor(0.85)
+  .bindings(
+    globalBinding("#title_text"),
+    viewBinding(strip("%.22s * #title_text"), "#text")
+  );
+
+const searchField = panel("search_field")
+  .size(66)
+  .offset(0, 1)
+  .layer(3)
+  .controls(searchFieldText);
+
+// Left content box with close button, header and body text
 const leftContentBoxHeader = boundLabel("header_text")
   .size(64, 8)
   .fontScaleFactor(0.7)
@@ -91,38 +152,6 @@ const leftContentBox = image("left_content_box", "textures/ui/pc/content_box")
   .size(73, 115)
   .controls(closeButton, leftContentStack);
 
-// Container slots with grid
-const smallChestGrid = grid("small_chest_grid")
-  .gridDimensions(6, 6)
-  .size(108, 118)
-  .offset(5, 5)
-  .anchor("top_left")
-  .gridItemTemplate("chest_ui.chest_item")
-  .collectionName("form_buttons")
-  .layer(1);
-
-const containerSlotsBackground = image(
-  "container_slots",
-  "textures/ui/pc/container_slots"
-)
-  .size("default", 105)
-  .controls(smallChestGrid);
-
-const partySlots = image("party_slots", "textures/ui/pc/party_slots").size(
-  "default",
-  26
-);
-
-const titleLabel = boundLabel("text", "title_text")
-  .textAlignment("center")
-  .fontScaleFactor(0.95);
-
-const title = panel("title")
-  .size(84)
-  .offset(0, 7)
-  .layer(3)
-  .controls(titleLabel);
-
 export default defineUI("pc", (ns) => {
   // Register button stack factory from shared module
   const buttonStackNs = buttonStack.addToNamespace(ns);
@@ -141,7 +170,7 @@ export default defineUI("pc", (ns) => {
 
   // Button variants - extending base button with different textures
   const leftArrowTextures = simpleButtonTextures(
-    "textures/ui/pc",
+    "textures/ui/pc/buttons",
     "left_arrow"
   );
   const leftArrowButtonNs = panel("left_arrow_button")
@@ -156,7 +185,7 @@ export default defineUI("pc", (ns) => {
     .addToNamespace(ns);
 
   const rightArrowTextures = simpleButtonTextures(
-    "textures/ui/pc",
+    "textures/ui/pc/buttons",
     "right_arrow"
   );
   const rightArrowButtonNs = panel("right_arrow_button")
@@ -170,6 +199,39 @@ export default defineUI("pc", (ns) => {
     .bindings(...visibilityForId("btn:right_arrow"))
     .addToNamespace(ns);
 
+  const filterButtonNs = panel("filter_button")
+    .extendsFrom(buttonNs)
+    .variable("default_button_texture", filterButtonTextures.default)
+    .variable("hover_button_texture", filterButtonTextures.hover)
+    .variable("pressed_button_texture", filterButtonTextures.pressed)
+    .variable("locked_button_texture", filterButtonTextures.locked)
+    .variable("button_image_fill", false)
+    .variable("border_visible", false)
+    .bindings(...visibilityForId("btn:filter_button"))
+    .addToNamespace(ns);
+
+  const searchButtonNs = panel("search_button")
+    .extendsFrom(buttonNs)
+    .variable("default_button_texture", searchButtonTextures.default)
+    .variable("hover_button_texture", searchButtonTextures.hover)
+    .variable("pressed_button_texture", searchButtonTextures.pressed)
+    .variable("locked_button_texture", searchButtonTextures.locked)
+    .variable("button_image_fill", false)
+    .variable("border_visible", false)
+    .bindings(...visibilityForId("btn:search_button"))
+    .addToNamespace(ns);
+
+  const settingsButtonNs = panel("settings_button")
+    .extendsFrom(buttonNs)
+    .variable("default_button_texture", settingsButtonTextures.default)
+    .variable("hover_button_texture", settingsButtonTextures.hover)
+    .variable("pressed_button_texture", settingsButtonTextures.pressed)
+    .variable("locked_button_texture", settingsButtonTextures.locked)
+    .variable("button_image_fill", false)
+    .variable("border_visible", false)
+    .bindings(...visibilityForId("btn:settings_button"))
+    .addToNamespace(ns);
+
   // TODO: Make textures type safe.
   const iconBoxTexture = "textures/ui/pc/icon_box";
   const iconButtonNs = panel("icon_button")
@@ -178,9 +240,8 @@ export default defineUI("pc", (ns) => {
     .variable("hover_button_texture", iconBoxTexture)
     .variable("pressed_button_texture", iconBoxTexture)
     .variable("locked_button_texture", iconBoxTexture)
-    .variable("image_size", [54, 54])
-    .variable("image_offset", [0, -7])
-    .variable("button_image_fill", false)
+    .variable("image_size", ["100%", "100%"])
+    .variable("button_image_fill", true)
     .variable("border_visible", false)
     .bindings(...visibilityForId("btn:icon"))
     .addToNamespace(ns);
@@ -191,26 +252,66 @@ export default defineUI("pc", (ns) => {
     .variable("hover_button_texture", actionButtonTextures.hover)
     .variable("pressed_button_texture", actionButtonTextures.pressed)
     .variable("locked_button_texture", actionButtonTextures.locked)
-    .variable("text_offset", [0, -3])
     .variable("button_image_fill", false)
     .variable("border_visible", false)
-    .bindings(...visibilityForId("btn:action"))
+    .variable("text_alignment", "center")
+    .variable("text_font_scale_factor", 0.8)
+    .variable("text_offset", ["0px", "5px"])
+    .bindings(...visibilityForId("btn:action_button"))
     .addToNamespace(ns);
+
+  // Details bar buttons
+  const filterButton = panel("filter_button")
+    .extendsFrom(buttonStackNs)
+    .size(14)
+    .layer(3)
+    .anchor("center")
+    .variable("button", filterButtonNs.getQualifiedName());
+
+  const searchButton = panel("search_button")
+    .extendsFrom(buttonStackNs)
+    .size(14)
+    .layer(3)
+    .anchor("center")
+    .variable("button", searchButtonNs.getQualifiedName());
+
+  const settingsButton = panel("settings_button")
+    .extendsFrom(buttonStackNs)
+    .size(14)
+    .offset(0, 3)
+    .layer(3)
+    .anchor("center")
+    .variable("button", settingsButtonNs.getQualifiedName());
+
+  const detailsBarContent = stackPanel("box_details", "horizontal").controls(
+    panel("start_padding").size(5),
+    filterButton,
+    searchButton,
+    searchField,
+    settingsButton,
+    panel("end_padding").size(5)
+  );
+
+  const detailsBar = image("details_bar", "textures/ui/pc/details_bar")
+    .size("default", 17)
+    .controls(detailsBarContent);
 
   // Title box with navigation arrows
   const leftButton = panel("left_button")
     .extendsFrom(buttonStackNs)
     .size(11)
     .layer(3)
+    .anchor("center")
     .variable("button", leftArrowButtonNs.getQualifiedName());
 
   const rightButton = panel("right_button")
     .extendsFrom(buttonStackNs)
     .size(11)
     .layer(3)
+    .anchor("center")
     .variable("button", rightArrowButtonNs.getQualifiedName());
 
-  const boxDetails = stackPanel("box_details", "horizontal").controls(
+  const titleBoxContent = stackPanel("box_details", "horizontal").controls(
     panel("start_padding").size(5),
     leftButton,
     title,
@@ -220,16 +321,30 @@ export default defineUI("pc", (ns) => {
 
   const titleBox = image("title_box", "textures/ui/pc/title_box")
     .size("default", 17)
-    .controls(boxDetails);
+    .controls(titleBoxContent);
+
+  // Container slots with dynamic background texture
+  const containerSlotsBackground = boundImage("container_slots")
+    .size("default", 105)
+    .controls(smallChestGrid)
+    .bindings(
+      globalBinding("#title_text"),
+      viewBinding(
+        "(('textures/ui/pc/backgrounds/' + (#title_text - (%.44s * #title_text))) - '_')",
+        "#texture"
+      )
+    );
 
   // Center grid stack
   const centerGridNs = stackPanel("center_grid", "vertical")
     .size(116, "100%c")
     .controls(
-      titleBox,
+      detailsBar,
       panel("spacer1").size("default", 1),
+      titleBox,
+      panel("spacer2").size("default", 1),
       containerSlotsBackground,
-      panel("spacer2").size("default", 1.5),
+      panel("spacer3").size("default", 1.5),
       partySlots
     );
 
@@ -238,15 +353,17 @@ export default defineUI("pc", (ns) => {
     .extendsFrom(buttonStackNs)
     .size("default", 70)
     .layer(3)
+    .anchor("center")
     .variable("button", iconButtonNs.getQualifiedName());
 
   const actionButtonBox = panel("action_button")
     .extendsFrom(buttonStackNs)
     .size("default", 18)
     .layer(3)
+    .anchor("center")
     .variable("button", actionButtonTemplateNs.getQualifiedName());
 
-  const rightContentNs = stackPanel("right_content", "vertical")
+  const rightContent = stackPanel("right_content", "vertical")
     .size(71, "100%c")
     .controls(iconBox, panel("spacer").size("default", 0.5), actionButtonBox);
 
@@ -258,7 +375,7 @@ export default defineUI("pc", (ns) => {
         panel("spacer1").size(2),
         centerGridNs,
         panel("spacer2").size(1),
-        rightContentNs
+        rightContent
       )
   );
 });
