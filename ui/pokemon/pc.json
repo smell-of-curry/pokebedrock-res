@@ -289,6 +289,33 @@
     ]
   },
 
+  "trash_button@pc.button": {
+    "$default_button_texture": "textures/ui/trash",
+    "$hover_button_texture": "textures/ui/trash",
+    "$pressed_button_texture": "textures/ui/trash",
+    "$locked_button_texture": "textures/ui/trash",
+    "$button_image_fill": false,
+    "$border_visible": false,
+    "$text_alignment": "center",
+    "$text_font_scale_factor": 0.6,
+    "$text_offset": ["0px", "12px"],
+
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not((#form_button_text - 'btn:trash_button') = #form_button_text))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
   "main": {
     "type": "stack_panel",
     "orientation": "horizontal",
@@ -364,6 +391,17 @@
                     }
                   }
                 ]
+              }
+            },
+            {
+              "trash_button@pc.button_stack": {
+                "size": [18, 18],
+                "layer": 5,
+                "anchor_from": "bottom_left",
+                "anchor_to": "bottom_left",
+                "offset": [3, -3],
+
+                "$button": "pc.trash_button"
               }
             }
           ]
