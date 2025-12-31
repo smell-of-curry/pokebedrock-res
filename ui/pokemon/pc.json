@@ -30,6 +30,7 @@
     "$text_anchor_location|default": "center",
     "$text_alignment|default": "left",
     "$text_font_scale_factor|default": 0.6,
+    "$text_shadow|default": false,
     "$image_size|default": ["0%", "0%"],
     "$image_offset|default": ["0%", "0%"],
 
@@ -76,6 +77,7 @@
           "font_scale_factor": "$text_font_scale_factor",
           "text_alignment": "$text_alignment",
           "color": "white",
+          "shadow": "$text_shadow",
           "bindings": [
             {
               "binding_type": "collection",
@@ -297,8 +299,9 @@
     "$button_image_fill": false,
     "$border_visible": false,
     "$text_alignment": "center",
-    "$text_font_scale_factor": 0.6,
-    "$text_offset": ["0px", "12px"],
+    "$text_font_scale_factor": 1,
+    "$text_offset": ["6px", "-1px"],
+    "$text_shadow": true,
 
     "bindings": [
       {
@@ -397,9 +400,9 @@
               "trash_button@pc.button_stack": {
                 "size": [18, 18],
                 "layer": 5,
-                "anchor_from": "bottom_left",
-                "anchor_to": "bottom_left",
-                "offset": [3, -3],
+                "anchor_from": "bottom_right",
+                "anchor_to": "bottom_right",
+                "offset": [2, 48],
 
                 "$button": "pc.trash_button"
               }
