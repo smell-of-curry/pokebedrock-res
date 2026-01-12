@@ -1,0 +1,105 @@
+{
+    "format_version": "1.18.3",
+    "animation_controllers": {
+        "controller.animation.dna_scanner": {
+            "initial_state": "idle_closed",
+            "states": {
+                "idle_open": {
+                    "animations": [
+                        "idle_open"
+                    ],
+                    "transitions": [
+                        {
+                            "idle_closed": "q.property('pokeb:state') == 'idle_closed'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        },
+                        {
+                            "error": "q.property('pokeb:state') == 'error'"
+                        }
+                    ]
+                },
+                "idle_closed": {
+                    "animations": [
+                        "idle_closed"
+                    ],
+                    "transitions": [
+                        {
+                            "idle_open": "q.property('pokeb:state') == 'idle_open'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        },
+                        {
+                            "error": "q.property('pokeb:state') == 'error'"
+                        }
+                    ]
+                },
+                "opening": {
+                    "animations": [
+                        "opening"
+                    ],
+                    "transitions": [
+                        {
+                            "idle_open": "q.property('pokeb:state') == 'idle_open'"
+                        },
+                        {
+                            "idle_closed": "q.property('pokeb:state') == 'idle_closed'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        },
+                        {
+                            "error": "q.property('pokeb:state') == 'error'"
+                        }
+                    ]
+                },
+                "closing": {
+                    "animations": [
+                        "closing"
+                    ],
+                    "transitions": [
+                        {
+                            "idle_open": "q.property('pokeb:state') == 'idle_open'"
+                        },
+                        {
+                            "idle_closed": "q.property('pokeb:state') == 'idle_closed'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "error": "q.property('pokeb:state') == 'error'"
+                        }
+                    ]
+                },
+                "error": {
+                    "animations": [
+                        "error"
+                    ],
+                    "transitions": [
+                        {
+                            "idle_open": "q.property('pokeb:state') == 'idle_open'"
+                        },
+                        {
+                            "idle_closed": "q.property('pokeb:state') == 'idle_closed'"
+                        },
+                        {
+                            "opening": "q.property('pokeb:state') == 'opening'"
+                        },
+                        {
+                            "closing": "q.property('pokeb:state') == 'closing'"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
