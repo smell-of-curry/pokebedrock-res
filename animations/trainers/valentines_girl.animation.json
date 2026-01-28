@@ -1,0 +1,37 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.valentines_girl.idle": {
+      "loop": true,
+      "animation_length": 2,
+      "bones": {
+        "Head": {
+          "rotation": ["math.cos(query.anim_time*180)*2", 0, 0]
+        },
+        "Body": {
+          "rotation": ["math.cos(query.anim_time*180)*0.7", 0, 0]
+        },
+        "RightArm": {
+          "rotation": [0, 0, "12.5-math.cos(query.anim_time*180)*2"],
+          "position": [0.7, 0, 0]
+        },
+        "LeftArm": {
+          "rotation": [0, 0, "-12.5+math.cos(query.anim_time*180)*2"],
+          "position": [-0.7, 0, 0]
+        },
+        "RightLeg": {
+          "rotation": [0, 0, 2.5]
+        },
+        "LeftLeg": {
+          "rotation": [0, 0, -2.5]
+        },
+        "bone8": {
+          "rotation": ["-0-math.cos(query.anim_time*180)*2", 0, 0]
+        },
+        "bone10": {
+          "rotation": ["5-math.cos(query.anim_time*180)*2", 0, 0]
+        }
+      }
+    }
+  }
+}
