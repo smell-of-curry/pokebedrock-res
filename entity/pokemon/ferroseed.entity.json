@@ -4,25 +4,65 @@
 		"description": {
 			"identifier": "pokemon:ferroseed",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/ferroseed",
-				"shiny_default": "textures/sprites/default/ferroseed",
-				"default_male": "textures/sprites/default/ferroseed",
-				"default_female": "textures/sprites/default/ferroseed",
-				"shiny_male": "textures/sprites/default/ferroseed",
-				"shiny_female": "textures/sprites/default/ferroseed"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/ferroseed/ferroseed.png",
+				"shiny_default": "textures/entity/pokemon/ferroseed/shiny_ferroseed.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.ferroseed.ground_idle",
+				"default_air_idle": "animation.ferroseed.ground_idle",
+				"default_water_idle": "animation.ferroseed.water_idle",
+				"default_walking": "animation.ferroseed.walking",
+				"default_flying": "animation.ferroseed.ground_idle",
+				"default_swimming": "animation.ferroseed.swimming",
+				"default_sleeping": "animation.ferroseed.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.ferroseed.attack",
+				"blink": "animation.ferroseed.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "ferroseed",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.ferroseed"
 			}
 		}
 	}
