@@ -30,9 +30,17 @@ jobs:
                   name_is_regexp: true
                   path: artifact
 
+            - name: Find artifact directory
+              id: find-artifact
+              run: |
+                  # Find the subdirectory containing metadata.json
+                  ARTIFACT_DIR=$(dirname $(find artifact -name "metadata.json" -type f | head -1))
+                  echo "path=$ARTIFACT_DIR" >> $GITHUB_OUTPUT
+                  echo "Found artifact at: $ARTIFACT_DIR"
+
             - name: Post Model Preview Comment
               uses: smell-of-curry/mc-model-preview@latest
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   mode: post
-                  artifact-path: artifact
+                  artifact-path: ${{ steps.find-artifact.outputs.path }}
