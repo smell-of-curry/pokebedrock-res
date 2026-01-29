@@ -4,25 +4,65 @@
 		"description": {
 			"identifier": "pokemon:stufful",
 			"materials": {
-				"default": "zombie"
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
 			},
 			"textures": {
-				"default": "textures/sprites/default/stufful",
-				"shiny_default": "textures/sprites/default/stufful",
-				"default_male": "textures/sprites/default/stufful",
-				"default_female": "textures/sprites/default/stufful",
-				"shiny_male": "textures/sprites/default/stufful",
-				"shiny_female": "textures/sprites/default/stufful"
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/stufful/stufful.png",
+				"shiny_default": "textures/entity/pokemon/stufful/shiny_stufful.png"
 			},
-			"geometry": {
-				"default": "geometry.substitute"
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.stufful.ground_idle",
+				"default_air_idle": "animation.stufful.ground_idle",
+				"default_water_idle": "animation.stufful.water_idle",
+				"default_walking": "animation.stufful.walking",
+				"default_flying": "animation.stufful.ground_idle",
+				"default_swimming": "animation.stufful.swimming",
+				"default_sleeping": "animation.stufful.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "animation.stufful.attack",
+				"blink": "animation.stufful.blink",
+				"controller": "controller.animation.pokemon"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				{
+					"controller.render.pokemon": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
 			],
 			"spawn_egg": {
 				"texture": "stufful",
 				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.stufful"
 			}
 		}
 	}
