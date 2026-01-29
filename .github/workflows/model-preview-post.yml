@@ -1,0 +1,38 @@
+name: Model Preview Post
+
+on:
+    workflow_run:
+        workflows: ["Model Preview"]
+        types:
+            - completed
+
+permissions:
+    contents: write
+    pull-requests: write
+    actions: read
+
+jobs:
+    post-comment:
+        runs-on: ubuntu-latest
+        if: >
+            github.event.workflow_run.event == 'pull_request' &&
+            github.event.workflow_run.conclusion == 'success'
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Download artifact
+              uses: dawidd6/action-download-artifact@v6
+              with:
+                  workflow: model-preview.yml
+                  run_id: ${{ github.event.workflow_run.id }}
+                  name: model-preview-pr-*
+                  name_is_regexp: true
+                  path: artifact
+
+            - name: Post Model Preview Comment
+              uses: smell-of-curry/mc-model-preview@latest
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  mode: post
+                  artifact-path: artifact
