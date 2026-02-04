@@ -3,12 +3,20 @@ name: Model Preview
 on:
   pull_request:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   model-preview:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history needed for base branch comparison
+
       - name: Minecraft Model Preview
-        uses: smell-of-curry/mc-model-preview@v0.0.2
+        uses: smell-of-curry/mc-model-preview@latest
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
