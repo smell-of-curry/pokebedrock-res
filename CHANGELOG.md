@@ -1,4 +1,22 @@
-**Update v2.16.5**
+**Update v2.16.6**
 
-- Fixed parsing of chest GUI item amounts
-- Added new trash button to PC UI
+- Removed Frost NPC and Christmas Items
+- Added new PokeBuilder items for Increase, Decrease, and Neutral size buttons
+- Updated translations to fix a lot of the missing item groups and items
+- Fixed the `ninetalesalola_christmas` skin item
+- Added New Models:
+  - bewear line
+  - luvdics
+  - groudon primal
+  - goodra line
+  - maractus
+  - dedenne
+- Remodeled: Rayquaza
+- Fixed mess up the maractus model
+- Added new Booster Items
+- Added all the missing skin specific item lang
+- Updated `items.json` to match the current source
+- Added new Valentines Boy & Girl trainer models.
+- Added new Box Of Chocolate item
+- Added missing meowscarada valentine sprite texture
+- Fixed spanish translation of `item.pokeb:metagrossite`
