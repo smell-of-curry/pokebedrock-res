@@ -9,6 +9,8 @@ import {
   removeCommentsFromJSON,
   removeCommentsFromLang,
 } from "./utils";
+import { compileCombinedAssets } from "./combine/compileCombinedAssets";
+import type { CombineResult } from "./combine/compileCombinedAssets";
 
 /**
  * Files/Directories to exclude from build.
@@ -43,12 +45,12 @@ const textures: string[] = [];
 
 /**
  * Adds a path to a archive, and compressing files.
- * @param pathToAdd
- * @param archive
+ * Files present in `skipPaths` are skipped (handled by the combined-asset compiler).
  */
 async function addPathToArchive(
   pathToAdd: string,
   archive: archiver.Archiver,
+  skipPaths: Set<string>,
   progress?: ProgressBar
 ): Promise<void> {
   const pathStat = await fs.promises.lstat(pathToAdd);
@@ -57,9 +59,14 @@ async function addPathToArchive(
   if (pathStat.isDirectory()) {
     const items = await fs.promises.readdir(pathToAdd);
     for (const item of items) {
-      await addPathToArchive(path.join(pathToAdd, item), archive, progress);
+      await addPathToArchive(path.join(pathToAdd, item), archive, skipPaths, progress);
     }
   } else if (pathStat.isFile()) {
+    if (skipPaths.has(parsedPath)) {
+      progress?.tick();
+      return;
+    }
+
     contents.content.push({ path: parsedPath });
     const ext = pathToAdd.split(".").pop();
 
@@ -127,10 +134,14 @@ async function addPathToArchive(
 
 /**
  * Pipes all files in the current directory to a zip file.
- * @param fileName
+ * Runs the combined-asset compiler first to merge animations, models,
+ * render controllers, animation controllers, and materials into single files.
  */
 async function pipeToFiles(outputFileNames: string[]) {
   const archive = archiver("zip", { zlib: { level: 9 } });
+
+  // Run the combined-asset compiler before archiving
+  const combineResult: CombineResult = compileCombinedAssets();
 
   const outputs: fs.WriteStream[] = [];
   for (const outputFileName of outputFileNames) {
@@ -175,7 +186,6 @@ async function pipeToFiles(outputFileNames: string[]) {
       const totalFiles = countFilesRecursively(path);
       console.log(`Adding ${totalFiles}x files from '${path}' ...`);
 
-      // Initialize the progress bar
       const progress = new ProgressBar("Archiving [:bar] :percent :etas", {
         total: totalFiles,
         width: 40,
@@ -184,10 +194,16 @@ async function pipeToFiles(outputFileNames: string[]) {
         renderThrottle: 16,
       });
 
-      await addPathToArchive(path, archive, progress);
+      await addPathToArchive(path, archive, combineResult.skipPaths, progress);
     } else {
-      await addPathToArchive(path, archive);
+      await addPathToArchive(path, archive, combineResult.skipPaths);
     }
+  }
+
+  // Append generated combined + exception files
+  for (const entry of combineResult.generatedEntries) {
+    contents.content.push({ path: entry.archivePath });
+    archive.append(entry.content, { name: entry.archivePath });
   }
 
   archive.append(JSON.stringify(contents), { name: "contents.json" });
