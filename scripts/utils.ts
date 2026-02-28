@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import fsExtra from "fs-extra";
 import { PokemonSkinOption } from "./data/customizations";
@@ -319,4 +320,93 @@ export async function writeImageIfChanged(
   // Write the file since content has changed or file doesn't exist
   fsExtra.writeFileSync(filePath, imageBuffer);
   return true; // File was written
+}
+
+/**
+ * Recursively collects all file paths under a directory whose extension is in the given list.
+ *
+ * @param dir - Root directory to scan.
+ * @param extensions - Allowed extensions (lowercase, without leading dot), e.g. `["json", "material"]`.
+ * @returns Array of absolute file paths with matching extensions.
+ */
+export function collectFiles(dir: string, extensions: string[]): string[] {
+  const results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
+
+  const walk = (current: string) => {
+    for (const entry of fs.readdirSync(current)) {
+      const full = path.join(current, entry);
+      if (fs.lstatSync(full).isDirectory()) {
+        walk(full);
+        continue;
+      }
+      const ext = entry.split(".").pop()?.toLowerCase();
+      if (ext && extensions.includes(ext)) results.push(full);
+    }
+  };
+  walk(dir);
+  return results;
+}
+
+/**
+ * Reads a file as UTF-8, strips JSON comments, parses as JSON, and returns the result.
+ * On parse or read error, logs the error and returns `null`.
+ *
+ * @param filePath - Path to the JSON file.
+ * @returns Parsed value or `null` on error.
+ */
+export function readJsonFileStrippingComments(filePath: string): unknown | null {
+  try {
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const cleaned = removeCommentsFromJSON(raw);
+    return JSON.parse(cleaned);
+  } catch (err) {
+    Logger.error(`Failed to parse ${filePath}: ${err}`);
+    return null;
+  }
+}
+
+/**
+ * Normalizes a file path to use forward slashes (for archive-relative paths).
+ *
+ * @param filePath - Path that may use backslashes (e.g. on Windows).
+ * @returns The same path with backslashes replaced by forward slashes.
+ */
+export function toRelativePath(filePath: string): string {
+  return filePath.replace(/\\/g, "/");
+}
+
+/**
+ * Compares two semver-like strings (e.g. `"1.8.0"`, `"1.12.0"`) and returns the higher one.
+ *
+ * @param a - First version string.
+ * @param b - Second version string.
+ * @returns The version string that is greater, or `a` if equal.
+ */
+export function maxVersion(a: string, b: string): string {
+  const pa = a.split(".").map(Number);
+  const pb = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const va = pa[i] ?? 0;
+    const vb = pb[i] ?? 0;
+    if (va > vb) return a;
+    if (vb > va) return b;
+  }
+  return a;
+}
+
+/**
+ * Returns a copy of an object with its keys sorted alphabetically.
+ *
+ * @param obj - Object with string keys.
+ * @returns New object with same entries and sorted keys.
+ */
+export function sortObjectKeys(
+  obj: Record<string, unknown>
+): Record<string, unknown> {
+  const sorted: Record<string, unknown> = {};
+  for (const key of Object.keys(obj).sort()) {
+    sorted[key] = obj[key];
+  }
+  return sorted;
 }
