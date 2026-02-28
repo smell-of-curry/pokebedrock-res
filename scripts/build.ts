@@ -16,6 +16,7 @@ import type { CombineResult } from "./types";
  * Files/Directories to exclude from build.
  */
 const exclude = [
+  ".husky",
   ".github",
   ".vscode",
   ".git",
@@ -25,6 +26,8 @@ const exclude = [
   ".gitattributes",
   ".gitignore",
   ".mcattributes",
+  "items.json",
+  "jest.config.ts",
   "missing_info.md",
   "package-lock.json",
   "package.json",
@@ -51,7 +54,7 @@ async function addPathToArchive(
   pathToAdd: string,
   archive: archiver.Archiver,
   skipPaths: Set<string>,
-  progress?: ProgressBar
+  progress?: ProgressBar,
 ): Promise<void> {
   const pathStat = await fs.promises.lstat(pathToAdd);
   const parsedPath = pathToAdd.replace(/\\/g, "/");
@@ -59,7 +62,12 @@ async function addPathToArchive(
   if (pathStat.isDirectory()) {
     const items = await fs.promises.readdir(pathToAdd);
     for (const item of items) {
-      await addPathToArchive(path.join(pathToAdd, item), archive, skipPaths, progress);
+      await addPathToArchive(
+        path.join(pathToAdd, item),
+        archive,
+        skipPaths,
+        progress,
+      );
     }
   } else if (pathStat.isFile()) {
     if (skipPaths.has(parsedPath)) {
