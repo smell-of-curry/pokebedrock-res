@@ -2,11 +2,56 @@ import type pokemonJson from "../pokemon.json";
 export type PokemonTypeId = keyof (typeof pokemonJson)["pokemon"];
 import type { PokemonCustomization } from "./data/customizations";
 import type { MaterialId } from "./data/material.types";
+import type { CompileExceptionCategory } from "./data/compileExceptions";
 export type {
   VanillaMaterial,
   CustomMaterial,
   MaterialId,
 } from "./data/material.types";
+
+export interface GeneratedEntry {
+  /** Relative path inside the archive (forward-slash separated). */
+  archivePath: string;
+  /** Stringified content ready to append to the archive. */
+  content: string;
+}
+
+export interface CombineResult {
+  /** Virtual files to inject into the archive. */
+  generatedEntries: GeneratedEntry[];
+  /** Original on-disk paths (relative, forward-slash) the archiver must skip. */
+  skipPaths: Set<string>;
+}
+
+export interface KeyValueAssetConfig {
+  category: CompileExceptionCategory;
+  directory: string;
+  /** File extensions to consider (without leading dot). */
+  extensions: string[];
+  /** JSON root key that holds the key→value map. */
+  rootKey: string;
+  /** Output archive path for the combined file. */
+  outputPath: string;
+}
+
+export interface GeometryAssetConfig {
+  category: "models";
+  directory: string;
+  extensions: string[];
+  outputPath: string;
+}
+
+/** Single geometry entry in a minecraft:geometry array (minimal shape for combine step). */
+export interface GeometryEntry {
+  description: { identifier: string; [k: string]: unknown };
+  [k: string]: unknown;
+}
+
+/** JSON shape of a Bedrock geometry file as read by the combined-asset compiler. */
+export interface CombineGeometryFile {
+  format_version?: string;
+  "minecraft:geometry"?: GeometryEntry[];
+}
 
 export interface PokemonJsonContent {
   /**

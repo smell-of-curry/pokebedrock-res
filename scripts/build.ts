@@ -9,8 +9,8 @@ import {
   removeCommentsFromJSON,
   removeCommentsFromLang,
 } from "./utils";
-import { compileCombinedAssets } from "./combine/compileCombinedAssets";
-import type { CombineResult } from "./combine/compileCombinedAssets";
+import { compileCombinedAssets } from "./compileCombinedAssets";
+import type { CombineResult } from "./types";
 
 /**
  * Files/Directories to exclude from build.

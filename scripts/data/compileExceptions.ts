@@ -1,3 +1,7 @@
+import { KEY_VALUE_CATEGORIES } from "../compileCombinedAssets";
+
+export type CompileExceptionCategory = (typeof KEY_VALUE_CATEGORIES)[number] | "models";
+
 /**
  * Keys listed here will NOT be merged into the combined output file.
  * Instead, they will remain in their original source files (filtered to only
@@ -12,11 +16,11 @@
  *  - materials:              material ID (not "version"), e.g. "custom_animated:entity_emissive_alpha"
  */
 export const COMPILE_EXCEPTIONS = {
-  animations: [] as string[],
-  animation_controllers: [] as string[],
-  render_controllers: [] as string[],
-  models: [] as string[],
-  materials: [] as string[],
-} as const satisfies Record<string, readonly string[]>;
+  animations: [],
+  animation_controllers: [],
+  render_controllers: [],
+  models: [],
+  materials: [],
+} as const satisfies Record<CompileExceptionCategory, string[]>;
 
-export type CompileExceptionCategory = keyof typeof COMPILE_EXCEPTIONS;
+

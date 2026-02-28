@@ -1,4 +1,4 @@
-import { compileCombinedAssets } from "../combine/compileCombinedAssets";
+import { compileCombinedAssets } from "../compileCombinedAssets";
 
 describe("compileCombinedAssets", () => {
   let result: ReturnType<typeof compileCombinedAssets>;
@@ -9,7 +9,7 @@ describe("compileCombinedAssets", () => {
 
   it("should produce combined animation file", () => {
     const entry = result.generatedEntries.find(
-      (e) => e.archivePath === "animations/pokebedrock_animations.json"
+      (e) => e.archivePath === "animations/pokebedrock_animations.json",
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
@@ -22,7 +22,7 @@ describe("compileCombinedAssets", () => {
     const entry = result.generatedEntries.find(
       (e) =>
         e.archivePath ===
-        "animation_controllers/pokebedrock_animation_controllers.json"
+        "animation_controllers/pokebedrock_animation_controllers.json",
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
@@ -35,7 +35,7 @@ describe("compileCombinedAssets", () => {
     const entry = result.generatedEntries.find(
       (e) =>
         e.archivePath ===
-        "render_controllers/pokebedrock_render_controllers.json"
+        "render_controllers/pokebedrock_render_controllers.json",
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
@@ -46,8 +46,7 @@ describe("compileCombinedAssets", () => {
 
   it("should produce combined geometry file", () => {
     const entry = result.generatedEntries.find(
-      (e) =>
-        e.archivePath === "models/entity/pokebedrock_models.geo.json"
+      (e) => e.archivePath === "models/entity/pokebedrock_models.geo.json",
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
@@ -58,14 +57,14 @@ describe("compileCombinedAssets", () => {
 
   it("should produce combined materials file", () => {
     const entry = result.generatedEntries.find(
-      (e) => e.archivePath === "materials/pokebedrock.material"
+      (e) => e.archivePath === "materials/pokebedrock.material",
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
     expect(data.materials).toBeDefined();
     expect(data.materials.version).toBeDefined();
     const materialKeys = Object.keys(data.materials).filter(
-      (k) => k !== "version"
+      (k) => k !== "version",
     );
     expect(materialKeys.length).toBeGreaterThan(0);
   });
@@ -80,7 +79,7 @@ describe("compileCombinedAssets", () => {
 
   it("should sort animation keys alphabetically in combined output", () => {
     const entry = result.generatedEntries.find(
-      (e) => e.archivePath === "animations/pokebedrock_animations.json"
+      (e) => e.archivePath === "animations/pokebedrock_animations.json",
     );
     if (!entry) return;
     const data = JSON.parse(entry.content);
@@ -91,13 +90,12 @@ describe("compileCombinedAssets", () => {
 
   it("should sort geometry entries by identifier in combined output", () => {
     const entry = result.generatedEntries.find(
-      (e) =>
-        e.archivePath === "models/entity/pokebedrock_models.geo.json"
+      (e) => e.archivePath === "models/entity/pokebedrock_models.geo.json",
     );
     if (!entry) return;
     const data = JSON.parse(entry.content);
     const ids: string[] = data["minecraft:geometry"].map(
-      (g: { description: { identifier: string } }) => g.description.identifier
+      (g: { description: { identifier: string } }) => g.description.identifier,
     );
     const sorted = [...ids].sort((a, b) => {
       const al = a.toLowerCase();
