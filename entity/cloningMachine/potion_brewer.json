@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:potion_brewer",
+      "materials": {
+        "default": "zombie"
+      },
+      "textures": {
+        "default": "textures/entity/cloning_machine/potion_brewer"
+      },
+      "geometry": {
+        "default": "geometry.potion_brewer"
+      },
+      "scripts": {
+        "animate": ["controller"]
+      },
+      "animations": {
+        "controller": "controller.animation.potion_brewer",
+        "opened_idle": "animation.potion_brewer.opened_idle",
+        "closed_idle": "animation.potion_brewer.closed_idle",
+        "closing": "animation.potion_brewer.closing",
+        "opening": "animation.potion_brewer.opening"
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

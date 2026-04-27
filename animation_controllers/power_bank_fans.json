@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.power_bank_fans": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "fan_spin": "query.property('pokeb:power_bank_state') != 'failing' && query.property('pokeb:power_bank_charges') > 0"
+            }
+          ]
+        },
+        "fan_spin": {
+          "animations": ["fan_spin"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') == 'failing' || query.property('pokeb:power_bank_charges') == 0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

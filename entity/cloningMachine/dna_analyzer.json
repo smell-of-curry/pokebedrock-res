@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:dna_analyzer",
+      "materials": {
+        "default": "zombie"
+      },
+      "textures": {
+        "default": "textures/entity/cloning_machine/dna_analyzer"
+      },
+      "geometry": {
+        "default": "geometry.dna_analyzer"
+      },
+      "scripts": {
+        "animate": ["controller"]
+      },
+      "animations": {
+        "controller": "controller.animation.dna_analyzer",
+        "opened_idle": "animation.dna_analyzer.opened_idle",
+        "closed_idle": "animation.dna_analyzer.closed_idle",
+        "opening": "animation.dna_analyzer.opening",
+        "closing": "animation.dna_analyzer.closing",
+        "failing": "animation.dna_analyzer.failing",
+        "scanning": "animation.dna_analyzer.scanning"
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

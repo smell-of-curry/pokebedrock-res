@@ -1,0 +1,81 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.dna_analyzer": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["closed_idle"],
+          "transitions": [
+            {
+              "failing": "query.property('pokeb:dna_analyzer_state') == 'failing'"
+            },
+            {
+              "opening": "query.property('pokeb:dna_analyzer_state') == 'opening'"
+            },
+            {
+              "closing": "query.property('pokeb:dna_analyzer_state') == 'closing'"
+            },
+            {
+              "opened_idle": "query.property('pokeb:dna_analyzer_state') == 'opened'"
+            },
+            {
+              "closed_idle": "query.property('pokeb:dna_analyzer_state') == 'closed'"
+            },
+            {
+              "scanning": "query.property('pokeb:dna_analyzer_state') == 'scanning'"
+            }
+          ]
+        },
+        "opening": {
+          "animations": ["opening"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'opening'"
+            }
+          ]
+        },
+        "closing": {
+          "animations": ["closing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'closing'"
+            }
+          ]
+        },
+        "failing": {
+          "animations": ["failing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'failing'"
+            }
+          ]
+        },
+        "opened_idle": {
+          "animations": ["opened_idle"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'opened'"
+            }
+          ]
+        },
+        "closed_idle": {
+          "animations": ["closed_idle"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'closed'"
+            }
+          ]
+        },
+        "scanning": {
+          "animations": ["scanning"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:dna_analyzer_state') != 'scanning'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
