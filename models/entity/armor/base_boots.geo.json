@@ -1,0 +1,44 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.base_boots",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "leg_right",
+					"pivot": [-1.9, 12, 0]
+				},
+				{
+					"name": "boot_right",
+					"parent": "leg_right",
+					"pivot": [-1.9, 12, 0],
+					"binding": "'rightleg'",
+					"cubes": [
+						{"origin": [-3.9, 0, -2], "size": [4, 12, 4], "inflate": 1, "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "leg_left",
+					"pivot": [1.9, 12, 0],
+					"rotation": [-0.1, 0, 0]
+				},
+				{
+					"name": "boot_left",
+					"parent": "leg_left",
+					"pivot": [1.9, 12, 0],
+					"binding": "'leftleg'",
+					"cubes": [
+						{"origin": [-0.1, 0, -2], "size": [4, 12, 4], "inflate": 1, "uv": [0, 0], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}
