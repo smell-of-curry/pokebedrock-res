@@ -1,0 +1,117 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.cooling_station.idle": {
+			"loop": "hold_on_last_frame",
+			"override_previous_animation": true,
+			"bones": {
+				"water6": {
+					"scale": "variable.has_fluid"
+				},
+				"water7": {
+					"scale": ["variable.potion_amount > 0", "variable.potion_amount * (1/3)", "variable.potion_amount > 0"]
+				}
+			}
+		},
+		"animation.cooling_station.potion1": {
+			"animation_length": 2,
+			"override_previous_animation": true,
+			"bones": {
+				"bone50": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 90],
+						"0.5417": [0, 0, 92.5],
+						"0.5833": [0, 0, 90],
+						"1.5": [0, 0, 90],
+						"1.9167": [0, 0, 0],
+						"1.9583": [0, 0, 2.5],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"water6": {
+					"scale": {
+						"0.0": {
+							"post": ["variable.liquid_amount > 0", "variable.liquid_amount * (1/15)", "variable.liquid_amount > 0"],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water7": {
+					"scale": ["variable.potion_amount > 0", "variable.potion_amount * (1/3)", "variable.potion_amount > 0"]
+				}
+			}
+		},
+		"animation.cooling_station.potion2": {
+			"animation_length": 2,
+			"override_previous_animation": true,
+			"bones": {
+				"bone49": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, -90],
+						"0.5417": [0, 0, -92.5],
+						"0.5833": [0, 0, -90],
+						"1.5": [0, 0, -90],
+						"1.9167": [0, 0, 0],
+						"1.9583": [0, 0, -2.5],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"water6": {
+					"scale": {
+						"0.0": {
+							"post": ["variable.liquid_amount > 0", "variable.liquid_amount * (1/15)", "variable.liquid_amount > 0"],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water7": {
+					"scale": ["variable.potion_amount > 0", "variable.potion_amount * (1/3)", "variable.potion_amount > 0"]
+				}
+			}
+		},
+		"animation.cooling_station.potion3": {
+			"animation_length": 2,
+			"override_previous_animation": true,
+			"bones": {
+				"bone51": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, 0, 90],
+						"0.5417": [0, 0, 92.5],
+						"0.5833": [0, 0, 90],
+						"1.5": [0, 0, 90],
+						"1.9167": [0, 0, 0],
+						"1.9583": [0, 0, 2.5],
+						"2.0": [0, 0, 0]
+					}
+				},
+				"water6": {
+					"scale": {
+						"0.0": {
+							"post": ["variable.liquid_amount > 0", "variable.liquid_amount * (1/15)", "variable.liquid_amount > 0"],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"water7": {
+					"scale": ["variable.potion_amount > 0", "variable.potion_amount * (1/3)", "variable.potion_amount > 0"]
+				}
+			}
+		},
+		"animation.cooling_station.shake": {
+			"animation_length": 0.12,
+			"bones": {
+				"liquidGlass": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.04": [-0.1, 0, 0],
+						"0.08": [0, -0.1, 0],
+						"0.12": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}
