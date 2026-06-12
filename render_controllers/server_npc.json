@@ -1,25 +1,54 @@
 {
-    "format_version": "1.8.0",
-    "render_controllers": {
-      "controller.render.server_npc": {
-        "arrays": {
-          "textures": {
-            "Array.skins": [
-              "Texture.miner",
-              "Texture.pokemart",
-              "Texture.chef",
-              "Texture.knight",
-              "Texture.construction",
-              "Texture.dj",
-              "Texture.farmer",
-              "Texture.battleTower"
-            ]
-          }
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.server_npc": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.miner",
+            "Texture.pokemart",
+            "Texture.chef",
+            "Texture.knight",
+            "Texture.construction",
+            "Texture.dj",
+            "Texture.farmer",
+            "Texture.battleTower",
+            "Texture.pokeball_shop",
+            "Texture.pet_shop",
+            "Texture.bike_shop",
+            "Texture.cosmetic_shop",
+            "Texture.plushie_shop",
+            "Texture.potion_shop",
+            "Texture.pawn_shop",
+            "Texture.enchantment_shop",
+            "Texture.professor_maple"
+          ]
         },
-        "geometry": "Geometry.default",
-        "materials": [ { "*": "Material.default" } ],
-        "textures": [ "Array.skins[query.property('pokeb:skin_index')]" ]
-      }
+        "geometries": {
+          "Array.geos": [
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.default",
+            "Geometry.pokeball_shop",
+            "Geometry.pet_shop",
+            "Geometry.bike_shop",
+            "Geometry.cosmetic_shop",
+            "Geometry.plushie_shop",
+            "Geometry.potion_shop",
+            "Geometry.pawn_shop",
+            "Geometry.enchantment_shop",
+            "Geometry.professor_maple"
+          ]
+        }
+      },
+      "geometry": "Array.geos[query.property('pokeb:skin_index')]",
+      "materials": [ { "*": "Material.default" } ],
+      "textures": [ "Array.skins[query.property('pokeb:skin_index')]" ]
     }
   }
-  
+}
