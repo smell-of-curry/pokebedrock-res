@@ -320,13 +320,30 @@
   },
 
   "main": {
-    "type": "stack_panel",
-    "orientation": "horizontal",
+    "type": "panel",
     "size": ["100%", "100%"],
-    "offset": ["25%", "25%"],
-    "anchor_from": "center",
-    "anchor_to": "center",
     "controls": [
+      {
+        "background_fade": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "alpha": 0.5,
+          "size": ["300%", "300%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 0
+        }
+      },
+      {
+        "pc_layout": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%c", "100%c"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [0, 90],
+          "layer": 1,
+          "controls": [
       {
         "left_content_box": {
           "type": "image",
@@ -413,7 +430,7 @@
       {
         "spacer1": {
           "type": "panel",
-          "size": [2, "100%"]
+          "size": [2, "100%c"]
         }
       },
       {
@@ -659,7 +676,7 @@
       {
         "spacer2": {
           "type": "panel",
-          "size": [1, "100%"]
+          "size": [1, "100%c"]
         }
       },
       {
@@ -694,6 +711,9 @@
                 "$button": "pc.action_button"
               }
             }
+          ]
+        }
+      }
           ]
         }
       }

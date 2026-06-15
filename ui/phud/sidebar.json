@@ -28,7 +28,7 @@
 
   "pokemon_sidebar_pokemon": {
     "type": "panel",
-    "size": ["100%", 30],
+    "size": ["100%", 32],
     "$pokemon_stats_index|default": 0,
     "$pokemon_id_index|default": 1,
     "$pokemon_name_index|default": 2,
@@ -40,9 +40,9 @@
       {
         "pokemon_data@variable_parser": {
           "type": "image",
-          "offset": ["-7%", "0%"],
+          "offset": ["-11%", "0%"],
           "texture": "textures/ui/sidebar/data",
-          "size": ["80%", "90%"],
+          "size": ["80%", 27],
           "layer": 2,
           "$visible": "(not(#var = 'null'))",
           "controls": [
@@ -113,7 +113,7 @@
             {
               "ball_icon": {
                 "type": "image",
-                "size": [40, "100%"],
+                "size": ["100%y", "100%"],
                 "layer": 3,
                 "texture": "#texture",
                 "bindings": [
@@ -142,7 +142,7 @@
                     "pokemon_icon": {
                       "type": "image",
                       "offset": ["0%", "-15%"],
-                      "size": [40, "100%"],
+                      "size": ["100%y", "100%"],
                       "$var_index": "$pokemon_icon_index",
                       "layer": 4,
                       "bindings": [
@@ -188,7 +188,7 @@
             {
               "active_icon@variable_parser": {
                 "type": "image",
-                "size": [40, "100%"],
+                "size": ["100%y", "100%"],
                 "layer": 5,
                 "texture": "textures/ui/sidebar/ring",
                 "$visible": "#var"
@@ -204,7 +204,7 @@
     "type": "panel",
     "anchor_from": "right_middle",
     "anchor_to": "right_middle",
-    "size": ["222.22%y", "80%"],
+    "size": ["222.22%y", 192],
     "controls": [
       {
         "dock": {
@@ -235,12 +235,6 @@
                     }
                   },
                   {
-                    "padding_1": {
-                      "type": "panel",
-                      "size": ["100%", 1]
-                    }
-                  },
-                  {
                     "pokemon2@pokemon_sidebar_pokemon": {
                       "$pokemon_stats_index": 6,
                       "$pokemon_name_index": 7,
@@ -248,12 +242,6 @@
                       "$pokemon_active_index": 9,
                       "$pokemon_caughtWith_index": 10,
                       "$pokemon_icon_index": 11
-                    }
-                  },
-                  {
-                    "padding_2": {
-                      "type": "panel",
-                      "size": ["100%", 1]
                     }
                   },
                   {
@@ -267,12 +255,6 @@
                     }
                   },
                   {
-                    "padding_3": {
-                      "type": "panel",
-                      "size": ["100%", 1]
-                    }
-                  },
-                  {
                     "pokemon4@pokemon_sidebar_pokemon": {
                       "$pokemon_stats_index": 18,
                       "$pokemon_name_index": 19,
@@ -283,12 +265,6 @@
                     }
                   },
                   {
-                    "padding_4": {
-                      "type": "panel",
-                      "size": ["100%", 1]
-                    }
-                  },
-                  {
                     "pokemon5@pokemon_sidebar_pokemon": {
                       "$pokemon_stats_index": 24,
                       "$pokemon_name_index": 25,
@@ -296,12 +272,6 @@
                       "$pokemon_active_index": 27,
                       "$pokemon_caughtWith_index": 28,
                       "$pokemon_icon_index": 29
-                    }
-                  },
-                  {
-                    "padding_5": {
-                      "type": "panel",
-                      "size": ["100%", 1]
                     }
                   },
                   {

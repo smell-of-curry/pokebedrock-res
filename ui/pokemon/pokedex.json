@@ -310,11 +310,28 @@
   },
 
   "main_grid": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "background_fade": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "alpha": 0.5,
+          "size": ["300%", "300%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 0
+        }
+      },
+      {
+        "main_grid_window": {
     "type": "image",
     "texture": "textures/ui/pokedex/Orange_gui_resized_and_removed",
     "size": [233, 299],
     "anchor_from": "center",
     "anchor_to": "center",
+    "layer": 1,
 
     "controls": [
       {
@@ -417,14 +434,34 @@
         }
       }
     ]
+        }
+      }
+    ]
   },
 
   "pokemon_details": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "background_fade": {
+          "type": "image",
+          "texture": "textures/ui/Black",
+          "alpha": 0.5,
+          "size": ["300%", "300%"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 0
+        }
+      },
+      {
+        "pokemon_details_window": {
     "type": "image",
     "texture": "textures/ui/pokedex/Orange_gui_second_resized_and_removed",
     "size": [233, 299],
     "anchor_from": "center",
     "anchor_to": "center",
+    "layer": 1,
     "controls": [
       {
         "close_button@common.light_close_button": {
@@ -558,6 +595,9 @@
               }
             }
           ]
+        }
+      }
+    ]
         }
       }
     ]
