@@ -1,6 +1,9 @@
-**Update v2.17.1**
+**Update v2.17.2**
 
-- Add translations for `forms.party.setNickName.fail.empty`, `battle.playerActor.usedBagItemOnTarget` and `models.ShowdownInterpreter.pokemonUsedMoveOnTarget`
-- Updated de_DE.lang and en_ES.lang extensively by @TheblueJo
-- Massly update the lang files by AI to ensure things are in sync and fixed a HUGE amount of broken translations.
-- Added a huge amount of translations for missing pokebedrock-beh stuff.
+- Fixed Pokémon invisibility caused by broken custom entity material inheritance.
+- Added Elevator Block textures and translations.
+- Fixed PHUD sidebar and battle UI layout on large displays.
+- Updated PC and Pokédex screens with centered layout and faded backgrounds.
+- Fixed chest reward UI alignment and updated chest screen art.
+- Fixed Krampus NPC model bone pivots to resolve content log warnings.
+- Redone German translations and improved Czech, Brazilian Portuguese, and Spanish localization.
