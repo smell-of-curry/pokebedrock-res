@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.containment_chamber_dirty": {
+      "initial_state": "clean",
+      "states": {
+        "clean": {
+          "animations": ["is_clean"],
+          "transitions": [
+            {
+              "dirty": "query.property('pokeb:containment_chamber_dirty') == true"
+            }
+          ]
+        },
+        "dirty": {
+          "animations": ["is_dirty"],
+          "transitions": [
+            {
+              "clean": "query.property('pokeb:containment_chamber_dirty') != true"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

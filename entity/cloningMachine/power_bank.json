@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:power_bank",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/cloning_machine/power_bank"
+      },
+      "geometry": {
+        "default": "geometry.power_bank"
+      },
+      "scripts": {
+        "animate": ["fan_controller", "controller"]
+      },
+      "animations": {
+        "fan_controller": "controller.animation.power_bank_fans",
+        "controller": "controller.animation.power_bank",
+        "opened_idle": "animation.power_bank.opened_idle",
+        "closed_idle": "animation.power_bank.closed_idle",
+        "opening": "animation.power_bank.opening",
+        "closing": "animation.power_bank.closing",
+        "fan_spin": "animation.power_bank.fan_spin",
+        "failing": "animation.power_bank.failing",
+        "idle": "animation.power_bank.idle"
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

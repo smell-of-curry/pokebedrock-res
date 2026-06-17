@@ -1,0 +1,48 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.cooling_station_tank": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["empty"],
+          "transitions": [
+            {
+              "emptying": "query.property('pokeb:cooling_station_tank_state') == 'emptying'"
+            },
+            {
+              "empty": "query.property('pokeb:cooling_station_tank_state') == 'empty'"
+            },
+            {
+              "full": "query.property('pokeb:cooling_station_tank_state') == 'full'"
+            }
+          ]
+        },
+        "emptying": {
+          "animations": ["emptying"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_tank_state') != 'emptying'"
+            }
+          ]
+        },
+        "empty": {
+          "animations": ["empty"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_tank_state') != 'empty'"
+            }
+          ]
+        },
+        "full": {
+          "animations": ["full"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_tank_state') != 'full'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

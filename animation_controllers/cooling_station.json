@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.cooling_station": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "idle": "query.property('pokeb:cooling_station_state') == 'idle'"
+            },
+            {
+              "failing": "query.property('pokeb:cooling_station_state') == 'failing'"
+            }
+          ]
+        },
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_state') != 'idle'"
+            }
+          ]
+        },
+        "failing": {
+          "animations": ["failing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_state') != 'failing'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
