@@ -11,6 +11,9 @@
               "emptying": "query.property('pokeb:cooling_station_tank_state') == 'emptying'"
             },
             {
+              "filling": "query.property('pokeb:cooling_station_tank_state') == 'filling'"
+            },
+            {
               "empty": "query.property('pokeb:cooling_station_tank_state') == 'empty'"
             },
             {
@@ -23,6 +26,14 @@
           "transitions": [
             {
               "default": "query.property('pokeb:cooling_station_tank_state') != 'emptying'"
+            }
+          ]
+        },
+        "filling": {
+          "animations": ["filling"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:cooling_station_tank_state') != 'filling'"
             }
           ]
         },
