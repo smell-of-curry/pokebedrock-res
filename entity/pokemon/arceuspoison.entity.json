@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceuspoison/arceuspoison.png",
-				"shiny_default": "textures/entity/pokemon/arceuspoison/shiny_arceuspoison.png"
+				"shiny_default": "textures/entity/pokemon/arceuspoison/shiny_arceuspoison.png",
+				"omega": "textures/entity/pokemon/arceuspoison/arceuspoison_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceuspoison/shiny_arceuspoison_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceuspoison.blink",
 				"default_ground_idle": "animation.arceuspoison.ground_idle",
 				"default_air_idle": "animation.arceuspoison.ground_idle",
 				"default_water_idle": "animation.arceuspoison.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceuspoison.ground_idle",
 				"default_swimming": "animation.arceuspoison.swimming",
 				"default_sleeping": "animation.arceuspoison.sleeping",
+				"default_attack": "animation.arceuspoison.attack",
+				"omega_flying": "animation.arceuspoison_omega.flying",
+				"omega_air_idle": "animation.arceuspoison_omega.air_idle",
+				"omega_swimming": "animation.arceuspoison_omega.swimming",
+				"omega_water_idle": "animation.arceuspoison_omega.water_idle",
+				"omega_walking": "animation.arceuspoison_omega.walking",
+				"omega_ground_idle": "animation.arceuspoison_omega.ground_idle",
+				"omega_sleeping": "animation.arceuspoison_omega.sleeping",
+				"omega_blink": "animation.arceuspoison_omega.blink",
+				"omega_attack": "animation.arceuspoison_omega.attack",
+				"omega_faint": "animation.arceuspoison_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceuspoison.attack",
-				"blink": "animation.arceuspoison.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceuspoison_attack",
+				"blink": "controller.animation.pokemon.arceuspoison_blink",
+				"controller": "controller.animation.pokemon.arceuspoison"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceuspoison": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceuspoison.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceuspoison"
+				"default": "geometry.arceuspoison",
+				"omega": "geometry.arceuspoison_omega"
 			}
 		}
 	}

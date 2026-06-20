@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusbug/arceusbug.png",
-				"shiny_default": "textures/entity/pokemon/arceusbug/shiny_arceusbug.png"
+				"shiny_default": "textures/entity/pokemon/arceusbug/shiny_arceusbug.png",
+				"omega": "textures/entity/pokemon/arceusbug/arceusbug_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusbug/shiny_arceusbug_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusbug.blink",
 				"default_ground_idle": "animation.arceusbug.ground_idle",
 				"default_air_idle": "animation.arceusbug.ground_idle",
 				"default_water_idle": "animation.arceusbug.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusbug.ground_idle",
 				"default_swimming": "animation.arceusbug.swimming",
 				"default_sleeping": "animation.arceusbug.sleeping",
+				"default_attack": "animation.arceusbug.attack",
+				"omega_flying": "animation.arceusbug_omega.flying",
+				"omega_air_idle": "animation.arceusbug_omega.air_idle",
+				"omega_swimming": "animation.arceusbug_omega.swimming",
+				"omega_water_idle": "animation.arceusbug_omega.water_idle",
+				"omega_walking": "animation.arceusbug_omega.walking",
+				"omega_ground_idle": "animation.arceusbug_omega.ground_idle",
+				"omega_sleeping": "animation.arceusbug_omega.sleeping",
+				"omega_blink": "animation.arceusbug_omega.blink",
+				"omega_attack": "animation.arceusbug_omega.attack",
+				"omega_faint": "animation.arceusbug_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusbug.attack",
-				"blink": "animation.arceusbug.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusbug_attack",
+				"blink": "controller.animation.pokemon.arceusbug_blink",
+				"controller": "controller.animation.pokemon.arceusbug"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusbug": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusbug.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusbug"
+				"default": "geometry.arceusbug",
+				"omega": "geometry.arceusbug_omega"
 			}
 		}
 	}

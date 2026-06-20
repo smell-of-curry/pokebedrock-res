@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceuspsychic/arceuspsychic.png",
-				"shiny_default": "textures/entity/pokemon/arceuspsychic/shiny_arceuspsychic.png"
+				"shiny_default": "textures/entity/pokemon/arceuspsychic/shiny_arceuspsychic.png",
+				"omega": "textures/entity/pokemon/arceuspsychic/arceuspsychic_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceuspsychic/shiny_arceuspsychic_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceuspsychic.blink",
 				"default_ground_idle": "animation.arceuspsychic.ground_idle",
 				"default_air_idle": "animation.arceuspsychic.ground_idle",
 				"default_water_idle": "animation.arceuspsychic.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceuspsychic.ground_idle",
 				"default_swimming": "animation.arceuspsychic.swimming",
 				"default_sleeping": "animation.arceuspsychic.sleeping",
+				"default_attack": "animation.arceuspsychic.attack",
+				"omega_flying": "animation.arceuspsychic_omega.flying",
+				"omega_air_idle": "animation.arceuspsychic_omega.air_idle",
+				"omega_swimming": "animation.arceuspsychic_omega.swimming",
+				"omega_water_idle": "animation.arceuspsychic_omega.water_idle",
+				"omega_walking": "animation.arceuspsychic_omega.walking",
+				"omega_ground_idle": "animation.arceuspsychic_omega.ground_idle",
+				"omega_sleeping": "animation.arceuspsychic_omega.sleeping",
+				"omega_blink": "animation.arceuspsychic_omega.blink",
+				"omega_attack": "animation.arceuspsychic_omega.attack",
+				"omega_faint": "animation.arceuspsychic_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceuspsychic.attack",
-				"blink": "animation.arceuspsychic.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceuspsychic_attack",
+				"blink": "controller.animation.pokemon.arceuspsychic_blink",
+				"controller": "controller.animation.pokemon.arceuspsychic"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceuspsychic": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceuspsychic.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceuspsychic"
+				"default": "geometry.arceuspsychic",
+				"omega": "geometry.arceuspsychic_omega"
 			}
 		}
 	}

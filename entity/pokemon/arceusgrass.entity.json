@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusgrass/arceusgrass.png",
-				"shiny_default": "textures/entity/pokemon/arceusgrass/shiny_arceusgrass.png"
+				"shiny_default": "textures/entity/pokemon/arceusgrass/shiny_arceusgrass.png",
+				"omega": "textures/entity/pokemon/arceusgrass/arceusgrass_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusgrass/shiny_arceusgrass_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusgrass.blink",
 				"default_ground_idle": "animation.arceusgrass.ground_idle",
 				"default_air_idle": "animation.arceusgrass.ground_idle",
 				"default_water_idle": "animation.arceusgrass.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusgrass.ground_idle",
 				"default_swimming": "animation.arceusgrass.swimming",
 				"default_sleeping": "animation.arceusgrass.sleeping",
+				"default_attack": "animation.arceusgrass.attack",
+				"omega_flying": "animation.arceusgrass_omega.flying",
+				"omega_air_idle": "animation.arceusgrass_omega.air_idle",
+				"omega_swimming": "animation.arceusgrass_omega.swimming",
+				"omega_water_idle": "animation.arceusgrass_omega.water_idle",
+				"omega_walking": "animation.arceusgrass_omega.walking",
+				"omega_ground_idle": "animation.arceusgrass_omega.ground_idle",
+				"omega_sleeping": "animation.arceusgrass_omega.sleeping",
+				"omega_blink": "animation.arceusgrass_omega.blink",
+				"omega_attack": "animation.arceusgrass_omega.attack",
+				"omega_faint": "animation.arceusgrass_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusgrass.attack",
-				"blink": "animation.arceusgrass.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusgrass_attack",
+				"blink": "controller.animation.pokemon.arceusgrass_blink",
+				"controller": "controller.animation.pokemon.arceusgrass"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusgrass": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusgrass.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusgrass"
+				"default": "geometry.arceusgrass",
+				"omega": "geometry.arceusgrass_omega"
 			}
 		}
 	}

@@ -273,8 +273,9 @@ export const PokemonCustomizations: Partial<{
 
   mew: {
     skins: {
-      christmas: ["model", "texture"],
-      shadow: ["model", "texture", "shiny_texture"],
+      christmas: ["model", "texture", "animations"],
+      shadow: ["model", "texture", "shiny_texture", "animations"],
+      princess: ["model", "texture", "shiny_texture", "animations"],
     },
   },
   mewtwo: {
@@ -529,14 +530,15 @@ export const PokemonCustomizations: Partial<{
 
   lugia: {
     skins: {
-      shadow: ["model", "texture", "shiny_texture"],
+      shadow: ["model", "texture", "shiny_texture", "animations"],
+      zohshia: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
   shuckle: {
     skins: {
       tophat: ["model", "texture", "shiny_texture"],
-    }
+    },
   },
 
   azumarill: {
@@ -835,7 +837,7 @@ export const PokemonCustomizations: Partial<{
 
   /** Female has one less light-colored spot on her back*/
   buizel: {
-    genderDifferences: ["texture"],
+    genderDifferences: ["texture", "shiny_texture"],
   },
 
   /** Female has one less light-colored bump on her back */
@@ -897,6 +899,114 @@ export const PokemonCustomizations: Partial<{
   lucario: {
     skins: {
       christmas: ["model", "texture", "shiny_texture"],
+    },
+  },
+
+  arceus: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusbug: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusdark: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusdragon: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceuselectric: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusfairy: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusfighting: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusfire: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusghost: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusgrass: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusground: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusice: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceuspoison: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceuspsychic: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusrock: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceussteel: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceuswater: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
+    },
+  },
+
+  arceusflying: {
+    skins: {
+      omega: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 
@@ -1102,7 +1212,9 @@ export const PokemonCustomizations: Partial<{
 
   yveltal: {
     skins: {
-      christmas: ["model", "texture", "shiny_texture"],
+      christmas: ["model", "texture", "shiny_texture", "animations"],
+      goremagala: ["model", "texture", "shiny_texture", "animations"],
+      alastor: ["model", "texture", "shiny_texture", "animations"],
     },
   },
 

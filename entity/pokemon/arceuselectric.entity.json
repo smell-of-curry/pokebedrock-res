@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceuselectric/arceuselectric.png",
-				"shiny_default": "textures/entity/pokemon/arceuselectric/shiny_arceuselectric.png"
+				"shiny_default": "textures/entity/pokemon/arceuselectric/shiny_arceuselectric.png",
+				"omega": "textures/entity/pokemon/arceuselectric/arceuselectric_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceuselectric/shiny_arceuselectric_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceuselectric.blink",
 				"default_ground_idle": "animation.arceuselectric.ground_idle",
 				"default_air_idle": "animation.arceuselectric.ground_idle",
 				"default_water_idle": "animation.arceuselectric.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceuselectric.ground_idle",
 				"default_swimming": "animation.arceuselectric.swimming",
 				"default_sleeping": "animation.arceuselectric.sleeping",
+				"default_attack": "animation.arceuselectric.attack",
+				"omega_flying": "animation.arceuselectric_omega.flying",
+				"omega_air_idle": "animation.arceuselectric_omega.air_idle",
+				"omega_swimming": "animation.arceuselectric_omega.swimming",
+				"omega_water_idle": "animation.arceuselectric_omega.water_idle",
+				"omega_walking": "animation.arceuselectric_omega.walking",
+				"omega_ground_idle": "animation.arceuselectric_omega.ground_idle",
+				"omega_sleeping": "animation.arceuselectric_omega.sleeping",
+				"omega_blink": "animation.arceuselectric_omega.blink",
+				"omega_attack": "animation.arceuselectric_omega.attack",
+				"omega_faint": "animation.arceuselectric_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceuselectric.attack",
-				"blink": "animation.arceuselectric.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceuselectric_attack",
+				"blink": "controller.animation.pokemon.arceuselectric_blink",
+				"controller": "controller.animation.pokemon.arceuselectric"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceuselectric": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceuselectric.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceuselectric"
+				"default": "geometry.arceuselectric",
+				"omega": "geometry.arceuselectric_omega"
 			}
 		}
 	}

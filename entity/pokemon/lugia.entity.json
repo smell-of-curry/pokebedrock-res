@@ -12,7 +12,9 @@
 				"default": "textures/entity/pokemon/lugia/lugia.png",
 				"shiny_default": "textures/entity/pokemon/lugia/shiny_lugia.png",
 				"shadow": "textures/entity/pokemon/lugia/lugia_shadow.png",
-				"shiny_shadow": "textures/entity/pokemon/lugia/shiny_lugia_shadow.png"
+				"shiny_shadow": "textures/entity/pokemon/lugia/shiny_lugia_shadow.png",
+				"zohshia": "textures/entity/pokemon/lugia/lugia_zohshia.png",
+				"shiny_zohshia": "textures/entity/pokemon/lugia/shiny_lugia_zohshia.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -39,6 +41,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.lugia.blink",
 				"default_ground_idle": "animation.lugia.ground_idle",
 				"default_air_idle": "animation.lugia.air_idle",
 				"default_water_idle": "animation.lugia.water_idle",
@@ -46,10 +49,31 @@
 				"default_flying": "animation.lugia.flying",
 				"default_swimming": "animation.lugia.swimming",
 				"default_sleeping": "animation.lugia.sleeping",
+				"default_attack": "animation.lugia.attack",
+				"shadow_flying": "animation.lugia_shadow.flying",
+				"shadow_air_idle": "animation.lugia_shadow.air_idle",
+				"shadow_swimming": "animation.lugia_shadow.swimming",
+				"shadow_water_idle": "animation.lugia_shadow.water_idle",
+				"shadow_walking": "animation.lugia_shadow.walking",
+				"shadow_ground_idle": "animation.lugia_shadow.ground_idle",
+				"shadow_sleeping": "animation.lugia_shadow.sleeping",
+				"shadow_blink": "animation.lugia_shadow.blink",
+				"shadow_attack": "animation.lugia_shadow.attack",
+				"shadow_faint": "animation.lugia_shadow.faint",
+				"zohshia_flying": "animation.lugia_zohshia.flying",
+				"zohshia_air_idle": "animation.lugia_zohshia.air_idle",
+				"zohshia_swimming": "animation.lugia_zohshia.swimming",
+				"zohshia_water_idle": "animation.lugia_zohshia.water_idle",
+				"zohshia_walking": "animation.lugia_zohshia.walking",
+				"zohshia_ground_idle": "animation.lugia_zohshia.ground_idle",
+				"zohshia_sleeping": "animation.lugia_zohshia.sleeping",
+				"zohshia_blink": "animation.lugia_zohshia.blink",
+				"zohshia_attack": "animation.lugia_zohshia.attack",
+				"zohshia_faint": "animation.lugia_zohshia.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.lugia.attack",
-				"blink": "animation.lugia.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.lugia_attack",
+				"blink": "controller.animation.pokemon.lugia_blink",
+				"controller": "controller.animation.pokemon.lugia"
 			},
 			"render_controllers": [
 				{
@@ -65,7 +89,8 @@
 			},
 			"geometry": {
 				"default": "geometry.lugia",
-				"shadow": "geometry.lugia_shadow"
+				"shadow": "geometry.lugia_shadow",
+				"zohshia": "geometry.lugia_zohshia"
 			}
 		}
 	}
