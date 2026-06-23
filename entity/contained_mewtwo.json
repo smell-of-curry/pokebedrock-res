@@ -7,17 +7,40 @@
         "default": "entity_alphatest"
       },
       "textures": {
-        "default": "textures/entity/pokemon/mewtwo/mewtwo_bnw"
+        "default": "textures/entity/cloning_machine/contained_mewtwo"
       },
       "geometry": {
-        "default": "geometry.mewtwo"
+        "default": "geometry.contained_mewtwo"
+      },
+      "particle_effects": {
+        "eyelash_idle": "pokeb:contained_mewtwo_eyelash_idle",
+        "eyelash_transition": "pokeb:contained_mewtwo_eyelash_transition",
+        "blastocyst": "pokeb:contained_mewtwo_blastocyst",
+        "blastocyst_transition": "pokeb:contained_mewtwo_blastocyst_transition",
+        "sphere_mew": "pokeb:contained_mewtwo_sphere_mew",
+        "mew_transition": "pokeb:contained_mewtwo_mew_transition",
+        "mewtwo_transition": "pokeb:contained_mewtwo_mewtwo_transition",
+        "mewtwo_failure": "pokeb:contained_mewtwo_failure"
       },
       "scripts": {
-        "scale": "q.property('pokeb:scale')",
-        "animate": ["ground_idle"]
+        "animate": ["controller"]
       },
       "animations": {
-        "ground_idle": "animation.mewtwo.ground_idle"
+        "controller": "controller.animation.contained_mewtwo",
+        "eyelash_idle": "animation.contained_mewtwo.eyelash_idle",
+        "eyelash_transition": "animation.contained_mewtwo.eyelash_transition",
+        "blastocsyt_idle": "animation.contained_mewtwo.blastocsyt_idle",
+        "blastocsyt_transition": "animation.contained_mewtwo.blastocsyt_transition",
+        "fetus_idle": "animation.contained_mewtwo.fetus_idle",
+        "fetus_transition": "animation.contained_mewtwo.fetus_transition",
+        "mew_idle": "animation.contained_mewtwo.mew_idle",
+        "mew_transition": "animation.contained_mewtwo.mew_transition",
+        "mewt_idle": "animation.contained_mewtwo.mewt_idle",
+        "mewt_transition": "animation.contained_mewtwo.mewt_transition",
+        "mewtw_idle": "animation.contained_mewtwo.mewtw_idle",
+        "mewtw_transition": "animation.contained_mewtwo.mewtw_transition",
+        "mewtwo_idle": "animation.contained_mewtwo.mewtwo_idle",
+        "mewtwo_failure": "animation.contained_mewtwo.mewtwo_failure"
       },
       "render_controllers": ["controller.render.contained_mewtwo"]
     }
