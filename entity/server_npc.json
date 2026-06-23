@@ -14,19 +14,55 @@
         "construction": "textures/entity/server_npc/construction",
         "dj": "textures/entity/server_npc/dj",
         "farmer": "textures/entity/server_npc/farmer",
-        "battleTower": "textures/entity/server_npc/battle_tower"
+        "battleTower": "textures/entity/server_npc/battle_tower",
+        "pokeball_shop": "textures/entity/server_npc/pokeball_shop",
+        "pet_shop": "textures/entity/server_npc/pet_shop",
+        "bike_shop": "textures/entity/server_npc/bike_shop",
+        "cosmetic_shop": "textures/entity/server_npc/cosmetic_shop",
+        "plushie_shop": "textures/entity/server_npc/plushie_shop",
+        "potion_shop": "textures/entity/server_npc/potion_shop",
+        "pawn_shop": "textures/entity/server_npc/pawn_shop",
+        "enchantment_shop": "textures/entity/server_npc/enchantment_shop",
+        "professor_maple": "textures/entity/server_npc/professor_maple"
       },
       "geometry": {
-        "default": "geometry.server_npc"
+        "default": "geometry.server_npc",
+        "pokeball_shop": "geometry.pokeball_shop",
+        "pet_shop": "geometry.pet_shop",
+        "bike_shop": "geometry.bike_shop",
+        "cosmetic_shop": "geometry.cosmetic_shop",
+        "plushie_shop": "geometry.plushie_shop",
+        "potion_shop": "geometry.potion_shop",
+        "pawn_shop": "geometry.pawn_shop",
+        "enchantment_shop": "geometry.enchantment_shop",
+        "professor_maple": "geometry.professor_maple"
       },
       "scripts": {
         "animate": [
-          "idle",
+          { "idle": "q.property('pokeb:skin_index') < 8" },
+          { "idle_pokeball_shop": "q.property('pokeb:skin_index') == 8" },
+          { "idle_pet_shop": "q.property('pokeb:skin_index') == 9" },
+          { "idle_bike_shop": "q.property('pokeb:skin_index') == 10" },
+          { "idle_cosmetic_shop": "q.property('pokeb:skin_index') == 11" },
+          { "idle_plushie_shop": "q.property('pokeb:skin_index') == 12" },
+          { "idle_potion_shop": "q.property('pokeb:skin_index') == 13" },
+          { "idle_pawn_shop": "q.property('pokeb:skin_index') == 14" },
+          { "idle_enchantment_shop": "q.property('pokeb:skin_index') == 15" },
+          { "idle_professor_maple": "q.property('pokeb:skin_index') == 16" },
           "look_at_target"
         ]
       },
       "animations": {
         "idle": "animation.server_npc.idle",
+        "idle_pokeball_shop": "animation.pokeball_shop.idle",
+        "idle_pet_shop": "animation.pet_shop.idle",
+        "idle_bike_shop": "animation.bike_shop.idle",
+        "idle_cosmetic_shop": "animation.cosmetic_shop.idle",
+        "idle_plushie_shop": "animation.plushie_shop.idle",
+        "idle_potion_shop": "animation.potion_shop.idle",
+        "idle_pawn_shop": "animation.pawn_shop.idle",
+        "idle_enchantment_shop": "animation.enchantment_shop.idle",
+        "idle_professor_maple": "animation.professor_maple.idle",
         "look_at_target": "animation.common.look_at_target"
       },
       "render_controllers": [
