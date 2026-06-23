@@ -16,6 +16,7 @@ pokeb:itemGroup.name.orbs=Orbs
 pokeb:itemGroup.name.boosters=Boosters
 pokeb:itemGroup.name.tradeMachineParts=Trade Machine Parts
 pokeb:itemGroup.name.fossilMachineParts=Fossil Machine Parts
+pokeb:itemGroup.name.cloningMachineParts=Cloning Machine Parts
 pokeb:itemGroup.name.pokedex=Pokedex
 pokeb:itemGroup.name.fossils=Fossils
 pokeb:itemGroup.name.stones=Stones
@@ -64,17 +65,35 @@ tile.pokeb:fiery_shrine.name=Fiery Shrine
 tile.pokeb:static_shrine.name=Static Shrine
 tile.pokeb:frozen_shrine.name=Frozen Shrine
 
+## Cloning Machine
+item.pokeb:containment_chamber=Containment Chamber
+item.pokeb:cooling_station=Cooling Station
+item.pokeb:cooling_station_tank=Cooling Station Tank
+item.pokeb:dna_analyzer=Dna Analyzer
+item.pokeb:potion_brewer=Potion Brewer
+item.pokeb:power_bank=Power Bank
+item.pokeb:cooling_pipes=Cooling Pipes
+item.pokeb:power_wires=Power Wires
+
+item.pokeb:damaged_mew_eyelash=Damaged Mew Eyelash
+item.pokeb:broken_mew_eyelash=Broken Mew Eyelash
+item.pokeb:mew_eyelash=Mew Eyelash
+
+item.pokeb:containment_fluid=Containment Fluid
+
+
+
 ## Fossil Machine
-item.pokeb:data_monitor_placer=Data Monitor
+item.pokeb:data_monitor=Data Monitor
 tile.pokeb:data_monitor.name=Data Monitor
-item.pokeb:fossil_analyzer_placer=Fossil Analyzer
+item.pokeb:fossil_analyzer=Fossil Analyzer
 tile.pokeb:fossil_analyzer.name=Fossil Analyzer
-item.pokeb:fossil_cleaner_placer=Fossil Cleaner
+item.pokeb:fossil_cleaner=Fossil Cleaner
 tile.pokeb:fossil_cleaner.name=Fossil Cleaner
 item.pokeb:fpr_tank_bottom=FPR Tank Bottom
 item.pokeb:fpr_tank_top=FPR Tank Top
 item.pokeb:fpr_water_tank=FPR Water Tank
-item.pokeb:fpr_tank_placer=FPR Tank
+item.pokeb:fpr_tank=FPR Tank
 tile.pokeb:fpr_tank.name=FPR Tank
 item.pokeb:battery=Battery
 
@@ -3837,6 +3856,15 @@ events.lagClear.broadcast.starting=[§fServer§r]§a Lag Clear Starting in %s!
 events.locationCheck.error.dimensionBorder=§cYou have reached the %s Dimension Border!
 events.mineManager.broadcast.regenerating=§a[SERVER] Re-Generating Mine...
 events.mineManager.error.regenerationFailed=§c[SERVER] Mine regeneration failed: %1
+events.entityBlock.error.noSpace=§cNot enough space to place this block!
+src.pokebedrock.modules.models.cloningMachine.containmentChamber.error.drainFirst=§cDrain the chamber before picking it up. Sneak right-click the cooling station to back-fill the tank.
+src.pokebedrock.modules.models.cloningMachine.containmentChamber.error.cleanFirst=§cClean the chamber with a disinfectant potion before picking it up.
+src.pokebedrock.modules.models.cloningMachine.coolingStation.error.notConnected=§cCooling station is not properly connected.
+src.pokebedrock.modules.models.cloningMachine.coolingStation.error.tankNotEmpty=§cThe cooling station tank must be empty to back-fill from the chamber.
+src.pokebedrock.modules.models.cloningMachine.coolingStation.error.chamberEmpty=§cThe containment chamber has no fluid to back-fill.
+src.pokebedrock.modules.models.cloningMachine.coolingStation.error.removeTankFirst=§cRemove the cooling station tank before taking the cooling station.
+src.pokebedrock.modules.models.cloningMachine.coolingStationTank.error.emptyFirst=§cEmpty the tank with a bucket before picking it up.
+src.pokebedrock.modules.models.fossilMachine.fossilAnalyzer.timeLeft=§eFossil analysis in progress: §f%s§es remaining.
 events.moderateManager.info.frozen=§bYou are frozen, Reason: %s
 events.onInteract.error.alreadyKnowsMove=§c%s§r§c Already Knows Move: %s!
 events.onInteract.error.alreadyMaxLevel=§c%s is already at level 100!

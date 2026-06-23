@@ -1,0 +1,70 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.power_bank": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "failing": "query.property('pokeb:power_bank_state') == 'failing'"
+            },
+            {
+              "opening": "query.property('pokeb:power_bank_state') == 'opening'"
+            },
+            {
+              "closing": "query.property('pokeb:power_bank_state') == 'closing'"
+            },
+            {
+              "open_idle": "query.property('pokeb:power_bank_state') == 'opened'"
+            },
+            {
+              "close_idle": "query.property('pokeb:power_bank_state') == 'closed'"
+            }
+          ]
+        },
+        "opening": {
+          "animations": ["opening"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') != 'opening'"
+            }
+          ]
+        },
+        "closing": {
+          "animations": ["closing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') != 'closing'"
+            }
+          ]
+        },
+        "failing": {
+          "animations": ["failing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') != 'failing'"
+            }
+          ]
+        },
+        "open_idle": {
+          "animations": ["opened_idle"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') != 'opened'"
+            }
+          ]
+        },
+        "close_idle": {
+          "animations": ["closed_idle"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:power_bank_state') != 'closed'"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

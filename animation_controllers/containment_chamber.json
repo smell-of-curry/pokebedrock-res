@@ -1,0 +1,224 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.containment_chamber": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["idle"],
+          "transitions": [
+            {
+              "breaking": "query.property('pokeb:containment_chamber_state') == 'breaking'"
+            },
+            {
+              "closing": "query.property('pokeb:containment_chamber_state') == 'closing'"
+            },
+            {
+              "opening": "query.property('pokeb:containment_chamber_state') == 'opening'"
+            },
+            {
+              "fill_level_0": "query.property('pokeb:containment_chamber_water_level') == 0"
+            },
+            {
+              "fill_level_1": "query.property('pokeb:containment_chamber_water_level') == 1"
+            },
+            {
+              "fill_level_2": "query.property('pokeb:containment_chamber_water_level') == 2"
+            },
+            {
+              "fill_level_3": "query.property('pokeb:containment_chamber_water_level') == 3"
+            },
+            {
+              "fill_level_4": "query.property('pokeb:containment_chamber_water_level') == 4"
+            },
+            {
+              "fill_level_5": "query.property('pokeb:containment_chamber_water_level') == 5"
+            },
+            {
+              "fill_level_6": "query.property('pokeb:containment_chamber_water_level') == 6"
+            },
+            {
+              "fill_level_7": "query.property('pokeb:containment_chamber_water_level') == 7"
+            },
+            {
+              "fill_level_8": "query.property('pokeb:containment_chamber_water_level') == 8"
+            },
+            {
+              "fill_level_9": "query.property('pokeb:containment_chamber_water_level') == 9"
+            },
+            {
+              "fill_level_10": "query.property('pokeb:containment_chamber_water_level') == 10"
+            },
+            {
+              "fill_level_11": "query.property('pokeb:containment_chamber_water_level') == 11"
+            },
+            {
+              "fill_level_12": "query.property('pokeb:containment_chamber_water_level') == 12"
+            },
+            {
+              "fill_level_13": "query.property('pokeb:containment_chamber_water_level') == 13"
+            },
+            {
+              "fill_level_14": "query.property('pokeb:containment_chamber_water_level') == 14"
+            },
+            {
+              "fill_level_15": "query.property('pokeb:containment_chamber_water_level') == 15"
+            }
+          ]
+        },
+        "opening": {
+          "animations": ["opening"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_state') != 'opening'"
+            }
+          ]
+        },
+        "closing": {
+          "animations": ["closing"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_state') != 'closing'"
+            }
+          ]
+        },
+        "breaking": {
+          "animations": ["breaking"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_state') != 'breaking'"
+            }
+          ]
+        },
+        "fill_level_0": {
+          "animations": ["water_idle0"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 0"
+            }
+          ]
+        },
+        "fill_level_1": {
+          "animations": ["water_idle1"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 1"
+            }
+          ]
+        },
+        "fill_level_2": {
+          "animations": ["water_idle2"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 2"
+            }
+          ]
+        },
+        "fill_level_3": {
+          "animations": ["water_idle3"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 3"
+            }
+          ]
+        },
+        "fill_level_4": {
+          "animations": ["water_idle4"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 4"
+            }
+          ]
+        },
+        "fill_level_5": {
+          "animations": ["water_idle5"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 5"
+            }
+          ]
+        },
+        "fill_level_6": {
+          "animations": ["water_idle6"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 6"
+            }
+          ]
+        },
+        "fill_level_7": {
+          "animations": ["water_idle7"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 7"
+            }
+          ]
+        },
+        "fill_level_8": {
+          "animations": ["water_idle8"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 8"
+            }
+          ]
+        },
+        "fill_level_9": {
+          "animations": ["water_idle9"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 9"
+            }
+          ]
+        },
+        "fill_level_10": {
+          "animations": ["water_idle10"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 10"
+            }
+          ]
+        },
+        "fill_level_11": {
+          "animations": ["water_idle11"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 11"
+            }
+          ]
+        },
+        "fill_level_12": {
+          "animations": ["water_idle12"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 12"
+            }
+          ]
+        },
+        "fill_level_13": {
+          "animations": ["water_idle13"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 13"
+            }
+          ]
+        },
+        "fill_level_14": {
+          "animations": ["water_idle14"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 14"
+            }
+          ]
+        },
+        "fill_level_15": {
+          "animations": ["water_idle15"],
+          "transitions": [
+            {
+              "default": "query.property('pokeb:containment_chamber_water_level') != 15"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
