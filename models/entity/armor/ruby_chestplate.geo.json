@@ -1,0 +1,73 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.ruby_chestplate",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 3,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "body",
+          "pivot": [0, 14, 0]
+        },
+        {
+          "name": "chestplate",
+          "parent": "body",
+          "pivot": [0, 0, 0],
+          "binding": "'body'",
+          "cubes": [
+            {
+              "origin": [-4, 2.8, -2],
+              "size": [8, 12, 4],
+              "inflate": 0.25,
+              "uv": [0, 0]
+            },
+            { "origin": [-4, 2.8, 2], "size": [3, 3, 3], "uv": [24, 0] },
+            { "origin": [-1, 2.8, 2], "size": [5, 2, 1], "uv": [24, 6] }
+          ]
+        },
+        {
+          "name": "arm_right",
+          "pivot": [-5, 12, 0]
+        },
+        {
+          "name": "arm_plate_right",
+          "parent": "arm_right",
+          "pivot": [-5, 12, 0],
+          "binding": "'rightarm'",
+          "cubes": [
+            {
+              "origin": [-8, 2.8, -2],
+              "size": [4, 12, 4],
+              "inflate": 0.25,
+              "uv": [0, 16]
+            }
+          ]
+        },
+        {
+          "name": "arm_left",
+          "pivot": [5, 12, 0]
+        },
+        {
+          "name": "arm_plate_left",
+          "parent": "arm_left",
+          "pivot": [5, 12, 0],
+          "binding": "'leftarm'",
+          "cubes": [
+            {
+              "origin": [4, 2.8, -2],
+              "size": [4, 12, 4],
+              "inflate": 0.25,
+              "uv": [16, 16]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
