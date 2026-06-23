@@ -1,12 +1,34 @@
 **Update v2.18.0**
 
-- Added 28 wearable head cosmetics (geometry models, attachables, worn textures, and item icons) under `models/entity/cosmetics/`, `attachables/cosmetics/`, `textures/attachables/cosmetics/`, and `textures/items/cosmetics/`: Berry Winter Hat, Cookie Jar, Cosmog Beanie & Hat, Japanese/Spartan/Thor Helmets, Libre Hat, Magikarp Hat, Meloetta Headwear, Pikachu Ears/Hat/Headphones, Quaxly Hair, Russian Eevee Hat, Sableye Glasses, Safety Goggles, Scorbunny Hat, Snorlax Beanie, Wizard Hat, Wooloo Hat, and trainer hats for Red, May, Brendan, Ethan, Lyra, Hilda, and Hilbert.
+- Added full Cloning Machine visuals: Containment Chamber, Cooling Station, Cooling Station Tank, DNA Analyzer, Potion Brewer, Power Bank, Cooling Pipes, and Power Wires entity models, textures, geometries, and animations.
+- Added contained Mewtwo entity with staged growth animations (eyelash, blastocyst, fetus, Mew, and Mewtwo states), transition/failure particles, and custom render controllers.
+- Added see-through water rendering and potion effect particles for the Cooling Station Tank.
+- Added Mew Eyelash, Damaged Mew Eyelash, Broken Mew Eyelash, and Containment Fluid item textures and translations.
+- Added cloning machine part item icons and a "Cloning Machine Parts" creative tab translation.
+- Added animated containment chamber states (clean/dirty fluid, fan spin, and chamber cycle animations).
+- Updated Item Holder animation.
+- Added Professor Oak NPC model, texture, and idle animation.
+- Added Trainer Marla NPC model, texture, and animation.
+- Added Train Conductor NPC entity for the tutorial subway scene.
+- Added crystal geode block textures and translations (Crystal Block, Budding Crystal, Small/Medium/Large Crystal Buds, Crystal Cluster).
+- Added new ore and block textures for Bauxite, Platinum, Silicon, Crystal, Ruby, and Sapphire, including deepslate variants.
+- Added metal storage block textures for Aluminum, Bauxite, Platinum, Silver, Ruby, and Sapphire.
+- Added Aluminum, Amethyst, Crystal, Platinum, Ruby, and Sapphire tool textures.
+- Added new armor sets with models and textures: Aquatic, Neo-Plasma, Plasma, Platinum, Ruby, Silicon, and Team Rocket.
+- Updated evolution stone armor wear textures and reorganized armor attachables into per-set folders with shared base geometries.
+- Reorganized evolution stone tool item textures into per-stone subfolders.
+- Added raw Platinum, raw Bauxite, and Bauxite material item textures.
+- Updated terrain_texture.json for the expanded ore and block set.
+- Added 28 wearable head cosmetics (geometry models, attachables, worn textures, and item icons): Berry Winter Hat, Cookie Jar, Cosmog Beanie & Hat, Japanese/Spartan/Thor Helmets, Libre Hat, Magikarp Hat, Meloetta Headwear, Pikachu Ears/Hat/Headphones, Quaxly Hair, Russian Eevee Hat, Sableye Glasses, Safety Goggles, Scorbunny Hat, Snorlax Beanie, Wizard Hat, Wooloo Hat, and trainer hats for Red, May, Brendan, Ethan, Lyra, Hilda, and Hilbert.
 - Full-head cosmetics hide the player's regular helmet layer while worn to prevent clipping.
-- Added the `Cosmetics` item group and item display names for all cosmetics across every language file.
-
-**Update v2.17.1**
-
-- Add translations for `forms.party.setNickName.fail.empty`, `battle.playerActor.usedBagItemOnTarget` and `models.ShowdownInterpreter.pokemonUsedMoveOnTarget`
-- Updated de_DE.lang and en_ES.lang extensively by @TheblueJo
-- Massly update the lang files by AI to ensure things are in sync and fixed a HUGE amount of broken translations.
-- Added a huge amount of translations for missing pokebedrock-beh stuff.
+- Added the Cosmetics item group and item display names for all cosmetics across every language file.
+- Added server shop NPC animations, models, and textures for Bike Shop, Cosmetic Shop, Enchantment Shop, Pawn Shop, Pet Shop, Plushie Shop, Pokeball Shop, Potion Shop, and Professor Maple.
+- Updated server NPC render controllers and entity model for per-shop geometry support.
+- Added new Pokémon models: Regidrago, Regieleki, Tapu Lele, Litwick line, Flutter Mane, Kyurem, Rotom forms, Great Tusk, Lillipup line, Mega Diancie, Electrike line, and Falinks.
+- Added new Pokémon skins: Mew Princess, Yveltal Goremagala, Yveltal Alastor, Lugia Zohshia, and Arceus Omega (all 18 type variants with new geometries, animations, and render controllers).
+- Recolored pbranni Rayquaza texture.
+- Added sparkle and sparkle_grey UI icons for Pokémon form selection.
+- Added chest form slot badge UI support for grayed party buttons.
+- Renamed fossil machine item translations from `*_placer` to match updated item IDs across all locales.
+- Fixed Leaf Stone Ore display name ("Leaf Ore" → "Leaf Stone Ore").
+- Added Spoiled Apricorn item translation.
