@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusice/arceusice.png",
-				"shiny_default": "textures/entity/pokemon/arceusice/shiny_arceusice.png"
+				"shiny_default": "textures/entity/pokemon/arceusice/shiny_arceusice.png",
+				"omega": "textures/entity/pokemon/arceusice/arceusice_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusice/shiny_arceusice_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusice.blink",
 				"default_ground_idle": "animation.arceusice.ground_idle",
 				"default_air_idle": "animation.arceusice.ground_idle",
 				"default_water_idle": "animation.arceusice.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusice.ground_idle",
 				"default_swimming": "animation.arceusice.swimming",
 				"default_sleeping": "animation.arceusice.sleeping",
+				"default_attack": "animation.arceusice.attack",
+				"omega_flying": "animation.arceusice_omega.flying",
+				"omega_air_idle": "animation.arceusice_omega.air_idle",
+				"omega_swimming": "animation.arceusice_omega.swimming",
+				"omega_water_idle": "animation.arceusice_omega.water_idle",
+				"omega_walking": "animation.arceusice_omega.walking",
+				"omega_ground_idle": "animation.arceusice_omega.ground_idle",
+				"omega_sleeping": "animation.arceusice_omega.sleeping",
+				"omega_blink": "animation.arceusice_omega.blink",
+				"omega_attack": "animation.arceusice_omega.attack",
+				"omega_faint": "animation.arceusice_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusice.attack",
-				"blink": "animation.arceusice.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusice_attack",
+				"blink": "controller.animation.pokemon.arceusice_blink",
+				"controller": "controller.animation.pokemon.arceusice"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusice": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusice.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusice"
+				"default": "geometry.arceusice",
+				"omega": "geometry.arceusice_omega"
 			}
 		}
 	}

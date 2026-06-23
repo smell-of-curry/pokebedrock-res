@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusfighting/arceusfighting.png",
-				"shiny_default": "textures/entity/pokemon/arceusfighting/shiny_arceusfighting.png"
+				"shiny_default": "textures/entity/pokemon/arceusfighting/shiny_arceusfighting.png",
+				"omega": "textures/entity/pokemon/arceusfighting/arceusfighting_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusfighting/shiny_arceusfighting_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusfighting.blink",
 				"default_ground_idle": "animation.arceusfighting.ground_idle",
 				"default_air_idle": "animation.arceusfighting.ground_idle",
 				"default_water_idle": "animation.arceusfighting.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusfighting.ground_idle",
 				"default_swimming": "animation.arceusfighting.swimming",
 				"default_sleeping": "animation.arceusfighting.sleeping",
+				"default_attack": "animation.arceusfighting.attack",
+				"omega_flying": "animation.arceusfighting_omega.flying",
+				"omega_air_idle": "animation.arceusfighting_omega.air_idle",
+				"omega_swimming": "animation.arceusfighting_omega.swimming",
+				"omega_water_idle": "animation.arceusfighting_omega.water_idle",
+				"omega_walking": "animation.arceusfighting_omega.walking",
+				"omega_ground_idle": "animation.arceusfighting_omega.ground_idle",
+				"omega_sleeping": "animation.arceusfighting_omega.sleeping",
+				"omega_blink": "animation.arceusfighting_omega.blink",
+				"omega_attack": "animation.arceusfighting_omega.attack",
+				"omega_faint": "animation.arceusfighting_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusfighting.attack",
-				"blink": "animation.arceusfighting.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusfighting_attack",
+				"blink": "controller.animation.pokemon.arceusfighting_blink",
+				"controller": "controller.animation.pokemon.arceusfighting"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusfighting": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusfighting.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusfighting"
+				"default": "geometry.arceusfighting",
+				"omega": "geometry.arceusfighting_omega"
 			}
 		}
 	}

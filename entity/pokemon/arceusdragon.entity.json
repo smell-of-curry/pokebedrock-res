@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusdragon/arceusdragon.png",
-				"shiny_default": "textures/entity/pokemon/arceusdragon/shiny_arceusdragon.png"
+				"shiny_default": "textures/entity/pokemon/arceusdragon/shiny_arceusdragon.png",
+				"omega": "textures/entity/pokemon/arceusdragon/arceusdragon_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusdragon/shiny_arceusdragon_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusdragon.blink",
 				"default_ground_idle": "animation.arceusdragon.ground_idle",
 				"default_air_idle": "animation.arceusdragon.ground_idle",
 				"default_water_idle": "animation.arceusdragon.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusdragon.ground_idle",
 				"default_swimming": "animation.arceusdragon.swimming",
 				"default_sleeping": "animation.arceusdragon.sleeping",
+				"default_attack": "animation.arceusdragon.attack",
+				"omega_flying": "animation.arceusdragon_omega.flying",
+				"omega_air_idle": "animation.arceusdragon_omega.air_idle",
+				"omega_swimming": "animation.arceusdragon_omega.swimming",
+				"omega_water_idle": "animation.arceusdragon_omega.water_idle",
+				"omega_walking": "animation.arceusdragon_omega.walking",
+				"omega_ground_idle": "animation.arceusdragon_omega.ground_idle",
+				"omega_sleeping": "animation.arceusdragon_omega.sleeping",
+				"omega_blink": "animation.arceusdragon_omega.blink",
+				"omega_attack": "animation.arceusdragon_omega.attack",
+				"omega_faint": "animation.arceusdragon_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusdragon.attack",
-				"blink": "animation.arceusdragon.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusdragon_attack",
+				"blink": "controller.animation.pokemon.arceusdragon_blink",
+				"controller": "controller.animation.pokemon.arceusdragon"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusdragon": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusdragon.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusdragon"
+				"default": "geometry.arceusdragon",
+				"omega": "geometry.arceusdragon_omega"
 			}
 		}
 	}

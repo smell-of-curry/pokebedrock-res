@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusfairy/arceusfairy.png",
-				"shiny_default": "textures/entity/pokemon/arceusfairy/shiny_arceusfairy.png"
+				"shiny_default": "textures/entity/pokemon/arceusfairy/shiny_arceusfairy.png",
+				"omega": "textures/entity/pokemon/arceusfairy/arceusfairy_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusfairy/shiny_arceusfairy_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusfairy.blink",
 				"default_ground_idle": "animation.arceusfairy.ground_idle",
 				"default_air_idle": "animation.arceusfairy.ground_idle",
 				"default_water_idle": "animation.arceusfairy.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusfairy.ground_idle",
 				"default_swimming": "animation.arceusfairy.swimming",
 				"default_sleeping": "animation.arceusfairy.sleeping",
+				"default_attack": "animation.arceusfairy.attack",
+				"omega_flying": "animation.arceusfairy_omega.flying",
+				"omega_air_idle": "animation.arceusfairy_omega.air_idle",
+				"omega_swimming": "animation.arceusfairy_omega.swimming",
+				"omega_water_idle": "animation.arceusfairy_omega.water_idle",
+				"omega_walking": "animation.arceusfairy_omega.walking",
+				"omega_ground_idle": "animation.arceusfairy_omega.ground_idle",
+				"omega_sleeping": "animation.arceusfairy_omega.sleeping",
+				"omega_blink": "animation.arceusfairy_omega.blink",
+				"omega_attack": "animation.arceusfairy_omega.attack",
+				"omega_faint": "animation.arceusfairy_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusfairy.attack",
-				"blink": "animation.arceusfairy.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusfairy_attack",
+				"blink": "controller.animation.pokemon.arceusfairy_blink",
+				"controller": "controller.animation.pokemon.arceusfairy"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusfairy": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusfairy.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusfairy"
+				"default": "geometry.arceusfairy",
+				"omega": "geometry.arceusfairy_omega"
 			}
 		}
 	}

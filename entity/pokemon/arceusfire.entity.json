@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusfire/arceusfire.png",
-				"shiny_default": "textures/entity/pokemon/arceusfire/shiny_arceusfire.png"
+				"shiny_default": "textures/entity/pokemon/arceusfire/shiny_arceusfire.png",
+				"omega": "textures/entity/pokemon/arceusfire/arceusfire_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusfire/shiny_arceusfire_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusfire.blink",
 				"default_ground_idle": "animation.arceusfire.ground_idle",
 				"default_air_idle": "animation.arceusfire.ground_idle",
 				"default_water_idle": "animation.arceusfire.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusfire.ground_idle",
 				"default_swimming": "animation.arceusfire.swimming",
 				"default_sleeping": "animation.arceusfire.sleeping",
+				"default_attack": "animation.arceusfire.attack",
+				"omega_flying": "animation.arceusfire_omega.flying",
+				"omega_air_idle": "animation.arceusfire_omega.air_idle",
+				"omega_swimming": "animation.arceusfire_omega.swimming",
+				"omega_water_idle": "animation.arceusfire_omega.water_idle",
+				"omega_walking": "animation.arceusfire_omega.walking",
+				"omega_ground_idle": "animation.arceusfire_omega.ground_idle",
+				"omega_sleeping": "animation.arceusfire_omega.sleeping",
+				"omega_blink": "animation.arceusfire_omega.blink",
+				"omega_attack": "animation.arceusfire_omega.attack",
+				"omega_faint": "animation.arceusfire_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusfire.attack",
-				"blink": "animation.arceusfire.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusfire_attack",
+				"blink": "controller.animation.pokemon.arceusfire_blink",
+				"controller": "controller.animation.pokemon.arceusfire"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusfire": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusfire.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusfire"
+				"default": "geometry.arceusfire",
+				"omega": "geometry.arceusfire_omega"
 			}
 		}
 	}

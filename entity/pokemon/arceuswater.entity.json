@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceuswater/arceuswater.png",
-				"shiny_default": "textures/entity/pokemon/arceuswater/shiny_arceuswater.png"
+				"shiny_default": "textures/entity/pokemon/arceuswater/shiny_arceuswater.png",
+				"omega": "textures/entity/pokemon/arceuswater/arceuswater_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceuswater/shiny_arceuswater_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceuswater.blink",
 				"default_ground_idle": "animation.arceuswater.ground_idle",
 				"default_air_idle": "animation.arceuswater.ground_idle",
 				"default_water_idle": "animation.arceuswater.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceuswater.ground_idle",
 				"default_swimming": "animation.arceuswater.swimming",
 				"default_sleeping": "animation.arceuswater.sleeping",
+				"default_attack": "animation.arceuswater.attack",
+				"omega_flying": "animation.arceuswater_omega.flying",
+				"omega_air_idle": "animation.arceuswater_omega.air_idle",
+				"omega_swimming": "animation.arceuswater_omega.swimming",
+				"omega_water_idle": "animation.arceuswater_omega.water_idle",
+				"omega_walking": "animation.arceuswater_omega.walking",
+				"omega_ground_idle": "animation.arceuswater_omega.ground_idle",
+				"omega_sleeping": "animation.arceuswater_omega.sleeping",
+				"omega_blink": "animation.arceuswater_omega.blink",
+				"omega_attack": "animation.arceuswater_omega.attack",
+				"omega_faint": "animation.arceuswater_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceuswater.attack",
-				"blink": "animation.arceuswater.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceuswater_attack",
+				"blink": "controller.animation.pokemon.arceuswater_blink",
+				"controller": "controller.animation.pokemon.arceuswater"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceuswater": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceuswater.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceuswater"
+				"default": "geometry.arceuswater",
+				"omega": "geometry.arceuswater_omega"
 			}
 		}
 	}

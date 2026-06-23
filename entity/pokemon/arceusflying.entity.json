@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusflying/arceusflying.png",
-				"shiny_default": "textures/entity/pokemon/arceusflying/shiny_arceusflying.png"
+				"shiny_default": "textures/entity/pokemon/arceusflying/shiny_arceusflying.png",
+				"omega": "textures/entity/pokemon/arceusflying/arceusflying_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusflying/shiny_arceusflying_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusflying.blink",
 				"default_ground_idle": "animation.arceusflying.ground_idle",
 				"default_air_idle": "animation.arceusflying.ground_idle",
 				"default_water_idle": "animation.arceusflying.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusflying.ground_idle",
 				"default_swimming": "animation.arceusflying.swimming",
 				"default_sleeping": "animation.arceusflying.sleeping",
+				"default_attack": "animation.arceusflying.attack",
+				"omega_flying": "animation.arceusflying_omega.flying",
+				"omega_air_idle": "animation.arceusflying_omega.air_idle",
+				"omega_swimming": "animation.arceusflying_omega.swimming",
+				"omega_water_idle": "animation.arceusflying_omega.water_idle",
+				"omega_walking": "animation.arceusflying_omega.walking",
+				"omega_ground_idle": "animation.arceusflying_omega.ground_idle",
+				"omega_sleeping": "animation.arceusflying_omega.sleeping",
+				"omega_blink": "animation.arceusflying_omega.blink",
+				"omega_attack": "animation.arceusflying_omega.attack",
+				"omega_faint": "animation.arceusflying_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusflying.attack",
-				"blink": "animation.arceusflying.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusflying_attack",
+				"blink": "controller.animation.pokemon.arceusflying_blink",
+				"controller": "controller.animation.pokemon.arceusflying"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusflying": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusflying.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusflying"
+				"default": "geometry.arceusflying",
+				"omega": "geometry.arceusflying_omega"
 			}
 		}
 	}

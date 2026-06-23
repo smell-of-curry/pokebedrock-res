@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceussteel/arceussteel.png",
-				"shiny_default": "textures/entity/pokemon/arceussteel/shiny_arceussteel.png"
+				"shiny_default": "textures/entity/pokemon/arceussteel/shiny_arceussteel.png",
+				"omega": "textures/entity/pokemon/arceussteel/arceussteel_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceussteel/shiny_arceussteel_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceussteel.blink",
 				"default_ground_idle": "animation.arceussteel.ground_idle",
 				"default_air_idle": "animation.arceussteel.ground_idle",
 				"default_water_idle": "animation.arceussteel.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceussteel.ground_idle",
 				"default_swimming": "animation.arceussteel.swimming",
 				"default_sleeping": "animation.arceussteel.sleeping",
+				"default_attack": "animation.arceussteel.attack",
+				"omega_flying": "animation.arceussteel_omega.flying",
+				"omega_air_idle": "animation.arceussteel_omega.air_idle",
+				"omega_swimming": "animation.arceussteel_omega.swimming",
+				"omega_water_idle": "animation.arceussteel_omega.water_idle",
+				"omega_walking": "animation.arceussteel_omega.walking",
+				"omega_ground_idle": "animation.arceussteel_omega.ground_idle",
+				"omega_sleeping": "animation.arceussteel_omega.sleeping",
+				"omega_blink": "animation.arceussteel_omega.blink",
+				"omega_attack": "animation.arceussteel_omega.attack",
+				"omega_faint": "animation.arceussteel_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceussteel.attack",
-				"blink": "animation.arceussteel.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceussteel_attack",
+				"blink": "controller.animation.pokemon.arceussteel_blink",
+				"controller": "controller.animation.pokemon.arceussteel"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceussteel": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceussteel.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceussteel"
+				"default": "geometry.arceussteel",
+				"omega": "geometry.arceussteel_omega"
 			}
 		}
 	}

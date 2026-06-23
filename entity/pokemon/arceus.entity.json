@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceus/arceus.png",
-				"shiny_default": "textures/entity/pokemon/arceus/shiny_arceus.png"
+				"shiny_default": "textures/entity/pokemon/arceus/shiny_arceus.png",
+				"omega": "textures/entity/pokemon/arceus/arceus_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceus/shiny_arceus_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceus.blink",
 				"default_ground_idle": "animation.arceus.ground_idle",
 				"default_air_idle": "animation.arceus.ground_idle",
 				"default_water_idle": "animation.arceus.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceus.ground_idle",
 				"default_swimming": "animation.arceus.swimming",
 				"default_sleeping": "animation.arceus.sleeping",
+				"default_attack": "animation.arceus.attack",
+				"omega_flying": "animation.arceus_omega.flying",
+				"omega_air_idle": "animation.arceus_omega.air_idle",
+				"omega_swimming": "animation.arceus_omega.swimming",
+				"omega_water_idle": "animation.arceus_omega.water_idle",
+				"omega_walking": "animation.arceus_omega.walking",
+				"omega_ground_idle": "animation.arceus_omega.ground_idle",
+				"omega_sleeping": "animation.arceus_omega.sleeping",
+				"omega_blink": "animation.arceus_omega.blink",
+				"omega_attack": "animation.arceus_omega.attack",
+				"omega_faint": "animation.arceus_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceus.attack",
-				"blink": "animation.arceus.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceus_attack",
+				"blink": "controller.animation.pokemon.arceus_blink",
+				"controller": "controller.animation.pokemon.arceus"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceus": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceus.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceus"
+				"default": "geometry.arceus",
+				"omega": "geometry.arceus_omega"
 			}
 		}
 	}

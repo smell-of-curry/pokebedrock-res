@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusdark/arceusdark.png",
-				"shiny_default": "textures/entity/pokemon/arceusdark/shiny_arceusdark.png"
+				"shiny_default": "textures/entity/pokemon/arceusdark/shiny_arceusdark.png",
+				"omega": "textures/entity/pokemon/arceusdark/arceusdark_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusdark/shiny_arceusdark_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -53,10 +55,10 @@
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusdark": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusdark.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -64,7 +66,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusdark"
+				"default": "geometry.arceusdark",
+				"omega": "geometry.arceusdark_omega"
 			}
 		}
 	}

@@ -10,7 +10,9 @@
 			"textures": {
 				"evo_aura": "textures/entity/evolving",
 				"default": "textures/entity/pokemon/arceusrock/arceusrock.png",
-				"shiny_default": "textures/entity/pokemon/arceusrock/shiny_arceusrock.png"
+				"shiny_default": "textures/entity/pokemon/arceusrock/shiny_arceusrock.png",
+				"omega": "textures/entity/pokemon/arceusrock/arceusrock_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusrock/shiny_arceusrock_omega.png"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -37,6 +39,7 @@
 				]
 			},
 			"animations": {
+				"default_blink": "animation.arceusrock.blink",
 				"default_ground_idle": "animation.arceusrock.ground_idle",
 				"default_air_idle": "animation.arceusrock.ground_idle",
 				"default_water_idle": "animation.arceusrock.water_idle",
@@ -44,17 +47,28 @@
 				"default_flying": "animation.arceusrock.ground_idle",
 				"default_swimming": "animation.arceusrock.swimming",
 				"default_sleeping": "animation.arceusrock.sleeping",
+				"default_attack": "animation.arceusrock.attack",
+				"omega_flying": "animation.arceusrock_omega.flying",
+				"omega_air_idle": "animation.arceusrock_omega.air_idle",
+				"omega_swimming": "animation.arceusrock_omega.swimming",
+				"omega_water_idle": "animation.arceusrock_omega.water_idle",
+				"omega_walking": "animation.arceusrock_omega.walking",
+				"omega_ground_idle": "animation.arceusrock_omega.ground_idle",
+				"omega_sleeping": "animation.arceusrock_omega.sleeping",
+				"omega_blink": "animation.arceusrock_omega.blink",
+				"omega_attack": "animation.arceusrock_omega.attack",
+				"omega_faint": "animation.arceusrock_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.arceusrock.attack",
-				"blink": "animation.arceusrock.blink",
-				"controller": "controller.animation.pokemon"
+				"attack": "controller.animation.pokemon.arceusrock_attack",
+				"blink": "controller.animation.pokemon.arceusrock_blink",
+				"controller": "controller.animation.pokemon.arceusrock"
 			},
 			"render_controllers": [
 				{
-					"controller.render.pokemon": "query.variant==0"
+					"controller.render.pokemon:arceusrock": "query.variant==0"
 				},
 				{
-					"controller.render.evolve": "query.variant==1"
+					"controller.render.pokemon:arceusrock.evolve": "query.variant==1"
 				}
 			],
 			"spawn_egg": {
@@ -62,7 +76,8 @@
 				"texture_index": 0
 			},
 			"geometry": {
-				"default": "geometry.arceusrock"
+				"default": "geometry.arceusrock",
+				"omega": "geometry.arceusrock_omega"
 			}
 		}
 	}
