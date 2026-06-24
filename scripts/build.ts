@@ -16,6 +16,7 @@ import type { CombineResult } from "./types";
  * Files/Directories to exclude from build.
  */
 const exclude = [
+  ".cursor",
   ".husky",
   ".github",
   ".vscode",
