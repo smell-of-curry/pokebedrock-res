@@ -13,14 +13,12 @@ export type CompileExceptionCategory = (typeof KEY_VALUE_CATEGORIES)[number] | "
  *  - animation_controllers:  e.g. "controller.animation.pokemon.clodsire"
  *  - render_controllers:     e.g. "controller.render.pokemon:aipom"
  *  - models:                 geometry identifier, e.g. "geometry.mew"
- *  - materials:              material ID (not "version"), e.g. "custom_animated:entity_emissive_alpha"
  */
 export const COMPILE_EXCEPTIONS = {
   animations: [],
   animation_controllers: [],
   render_controllers: [],
   models: [],
-  materials: [],
 } as const satisfies Record<CompileExceptionCategory, string[]>;
 
 

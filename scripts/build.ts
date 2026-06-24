@@ -20,6 +20,7 @@ const exclude = [
   ".github",
   ".vscode",
   ".git",
+  "_build_check",
   "logs",
   "node_modules",
   "scripts",
@@ -89,7 +90,7 @@ async function addPathToArchive(
         // Add the compressed JSON content as a temporary file
         archive.append(compressedContents, { name: pathToAdd });
       } catch (error) {
-        console.error(`Error compressing JSON: ${pathToAdd}:`, error);
+        throw new Error(`Error compressing JSON: ${pathToAdd}: ${error}`);
       }
     } else if (ext === "png") {
       if (pathToAdd.startsWith("textures")) textures.push(parsedPath);
@@ -143,7 +144,7 @@ async function addPathToArchive(
 /**
  * Pipes all files in the current directory to a zip file.
  * Runs the combined-asset compiler first to merge animations, models,
- * render controllers, animation controllers, and materials into single files.
+ * render controllers, and animation controllers into single files.
  */
 async function pipeToFiles(outputFileNames: string[]) {
   const archive = archiver("zip", { zlib: { level: 9 } });

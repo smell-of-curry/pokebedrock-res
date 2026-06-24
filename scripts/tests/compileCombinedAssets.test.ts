@@ -58,18 +58,14 @@ describe("compileCombinedAssets", () => {
     expect(data["minecraft:geometry"].length).toBeGreaterThan(0);
   });
 
-  it("should produce combined materials file", () => {
-    const entry = result.generatedEntries.find(
-      (e) => e.archivePath === "materials/pokebedrock.material",
+  it("should not bundle materials", () => {
+    const combinedMaterials = result.generatedEntries.find((e) =>
+      e.archivePath.endsWith(".material"),
     );
-    expect(entry).toBeDefined();
-    const data = JSON.parse(entry!.content);
-    expect(data.materials).toBeDefined();
-    expect(data.materials.version).toBeDefined();
-    const materialKeys = Object.keys(data.materials).filter(
-      (k) => k !== "version",
-    );
-    expect(materialKeys.length).toBeGreaterThan(0);
+    expect(combinedMaterials).toBeUndefined();
+    for (const p of result.skipPaths) {
+      expect(p.endsWith(".material")).toBe(false);
+    }
   });
 
   it("should skip all original files that were combined", () => {

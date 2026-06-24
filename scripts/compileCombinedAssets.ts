@@ -23,7 +23,6 @@ export const KEY_VALUE_CATEGORIES = [
   "animations",
   "animation_controllers",
   "render_controllers",
-  "materials",
 ] as const;
 
 const GEOMETRY_OUTPUT_PATH = "models/entity/pokebedrock_models.geo.json";
@@ -32,23 +31,18 @@ const GEOMETRY_OUTPUT_PATH = "models/entity/pokebedrock_models.geo.json";
  * Builds a key-value asset config from a category name.
  * Directory, rootKey, extensions and output path are derived from the category.
  *
- * @param category - One of the key-value asset categories (animations, animation_controllers, render_controllers, materials).
+ * @param category - One of the key-value asset categories (animations, animation_controllers, render_controllers).
  * @returns Full config used by the key-value merge logic.
  */
 function getKeyValueConfig(
   category: (typeof KEY_VALUE_CATEGORIES)[number],
 ): KeyValueAssetConfig {
-  const ext = category === "materials" ? "material" : "json";
-  const outputName =
-    category === "materials"
-      ? "pokebedrock.material"
-      : `pokebedrock_${category}.json`;
   return {
     category,
     directory: category,
-    extensions: [ext],
+    extensions: ["json"],
     rootKey: category,
-    outputPath: `${category}/${outputName}`,
+    outputPath: `${category}/pokebedrock_${category}.json`,
   };
 }
 
@@ -163,99 +157,6 @@ function compileKeyValueAssets(
     archivePath: config.outputPath,
     content: JSON.stringify(combined),
   });
-}
-
-/**
- * Merges all `.material` files into a single combined material file.
- * Handles the `materials.version` field and outputs CRLF line endings.
- * Keys listed in {@link COMPILE_EXCEPTIONS}.materials remain in filtered per-source files.
- *
- * @param skipPaths - Set to which original file paths are added so the archiver skips them.
- * @param generated - Array to which combined and exception-file entries are pushed.
- */
-function compileMaterials(skipPaths: Set<string>, generated: GeneratedEntry[]) {
-  const config = getKeyValueConfig("materials");
-  const exceptions = new Set<string>(COMPILE_EXCEPTIONS.materials);
-  const foundExceptions = new Set<string>();
-
-  const files = collectFiles(config.directory, config.extensions);
-  if (files.length === 0) return;
-
-  const merged: Record<string, unknown> = {};
-  const keyOrigins: Record<string, string> = {};
-  let bestVersion = "1.0.0";
-
-  for (const filePath of files) {
-    const relPath = toRelativePath(filePath);
-    const data = readJsonFileStrippingComments(filePath) as Record<
-      string,
-      unknown
-    > | null;
-    if (!data || typeof data !== "object") continue;
-
-    const materials = data["materials"] as Record<string, unknown> | undefined;
-    if (!materials || typeof materials !== "object") continue;
-
-    skipPaths.add(relPath);
-
-    const exceptedForFile: Record<string, unknown> = {};
-    let hasExcepted = false;
-
-    for (const [key, value] of Object.entries(materials)) {
-      if (key === "version") {
-        if (typeof value === "string")
-          bestVersion = maxVersion(bestVersion, value);
-        continue;
-      }
-
-      if (exceptions.has(key)) {
-        exceptedForFile[key] = value;
-        hasExcepted = true;
-        foundExceptions.add(key);
-        continue;
-      }
-
-      if (key in merged) {
-        if (!isEqual(merged[key], value)) {
-          Logger.warn(
-            `[combine] Duplicate material key "${key}" with differing values.\n` +
-              `  Keeping version from: ${keyOrigins[key]}\n` +
-              `  Discarding version from: ${relPath}`,
-          );
-        }
-        continue;
-      }
-
-      merged[key] = value;
-      keyOrigins[key] = relPath;
-    }
-
-    if (hasExcepted) {
-      const filtered: Record<string, unknown> = {
-        materials: { version: bestVersion, ...exceptedForFile },
-      };
-      let content = JSON.stringify(filtered, null, 2);
-      content = content.replace(/\n/g, "\r\n");
-      generated.push({ archivePath: relPath, content });
-    }
-  }
-
-  for (const key of exceptions) {
-    if (foundExceptions.has(key)) continue;
-    Logger.warn(
-      `[combine] Exception material key "${key}" was never found in any source file.`,
-    );
-  }
-
-  if (Object.keys(merged).length === 0) return;
-
-  const combined: Record<string, unknown> = {
-    materials: { version: bestVersion, ...sortObjectKeys(merged) },
-  };
-
-  let content = JSON.stringify(combined, null, 2);
-  content = content.replace(/\n/g, "\r\n");
-  generated.push({ archivePath: config.outputPath, content });
 }
 
 /**
@@ -389,8 +290,9 @@ function compileGeometry(skipPaths: Set<string>, generated: GeneratedEntry[]) {
 
 /**
  * Compiles combined asset files for the resource pack build.
- * Walks animations, animation_controllers, render_controllers, materials, and models,
+ * Walks animations, animation_controllers, render_controllers, and models,
  * merges them into one file per type, and returns virtual entries plus paths to skip during archiving.
+ * Material files are left unchanged and are not merged.
  *
  * @returns Object with `generatedEntries` (combined + exception files to inject) and `skipPaths` (original paths the archiver must not include).
  */
@@ -402,9 +304,7 @@ export function compileCombinedAssets(): CombineResult {
 
   for (const category of KEY_VALUE_CATEGORIES) {
     const config = getKeyValueConfig(category);
-    if (category === "materials") compileMaterials(skipPaths, generatedEntries);
-    else compileKeyValueAssets(config, skipPaths, generatedEntries);
-
+    compileKeyValueAssets(config, skipPaths, generatedEntries);
     Logger.info(`[combine]  ✓ ${config.category}`);
   }
 
