@@ -1,0 +1,190 @@
+{
+  "namespace": "phud",
+  "data_control": {
+    "type": "panel",
+    "size": [
+      0,
+      0
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string"
+      },
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#preserved_text",
+        "binding_condition": "visibility_changed"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "main": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "renderers": {
+          "type": "panel",
+          "controls": [
+            {
+              "currency_control@data_control": {
+                "$update_string": "&_currency:"
+              }
+            },
+            {
+              "phone_control@data_control": {
+                "$update_string": "&_phone:"
+              }
+            },
+            {
+              "battleWait_control@data_control": {
+                "$update_string": "&_battleWait:"
+              }
+            },
+            {
+              "loadingScreen_control@data_control": {
+                "$update_string": "&_loadingScreen:"
+              }
+            },
+            {
+              "evolutionWait_control@data_control": {
+                "$update_string": "&_evolutionWait:"
+              }
+            },
+            {
+              "sidebar_control@data_control": {
+                "$update_string": "&_sidebar:"
+              }
+            },
+            {
+              "actionbar_control@data_control": {
+                "$update_string": "&_actionbar:"
+              }
+            },
+            {
+              "player_ping_control@data_control": {
+                "$update_string": "&_playerPing:"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "elements": {
+          "type": "panel",
+          "$offset": [
+            0,
+            0
+          ],
+          "offset": "$offset",
+          "variables": [
+            {
+              "requires": "$pocket_screen",
+              "$offset": [
+                0,
+                10
+              ]
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "currency_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_currency:')",
+              "target_property_name": "#level_number"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "phone_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_phone:')",
+              "target_property_name": "#phone"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "battleWait_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_battleWait:')",
+              "target_property_name": "#battleLog"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "loadingScreen_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_loadingScreen:')",
+              "target_property_name": "#loadingScreen"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "evolutionWait_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_evolutionWait:')",
+              "target_property_name": "#evolutionWait"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "sidebar_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_sidebar:')",
+              "target_property_name": "#sidebar"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "actionbar_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_actionbar:')",
+              "target_property_name": "#fake_actionbar"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_control_name": "player_ping_control",
+              "resolve_sibling_scope": true,
+              "source_property_name": "(#preserved_text - '&_playerPing:')",
+              "target_property_name": "#player_ping_text"
+            }
+          ],
+          "controls": [
+            {
+              "currency_control@phud_currency.main": {}
+            },
+            {
+              "phone_control@phud_phone.main": {}
+            },
+            {
+              "battleWait_control@phud_battleWait.main": {}
+            },
+            {
+              "loadingScreen_control@phud_loadingScreen.main": {}
+            },
+            {
+              "evolutionWait_control@phud_evolutionWait.main": {}
+            },
+            {
+              "sidebar_control@phud_sidebar.main": {}
+            },
+            {
+              "actionbar_control@phud_actionbar.main": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

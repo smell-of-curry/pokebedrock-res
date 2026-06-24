@@ -1,43 +1,23 @@
 {
   "namespace": "server_form",
   "long_form@common_dialogs.main_panel_no_buttons": {
-    "size": [260, 210]
+    "size": [
+      260,
+      210
+    ]
   },
-
   "custom_form@common_dialogs.main_panel_no_buttons": {
-    "size": [260, 210]
-  },
-
-  "third_party_server_screen@common.base_screen": {
-    "$screen_content": "server_form.ng_main_screen_content",
-    "button_mappings": [
-      {
-        "from_button_id": "button.menu_cancel",
-        "to_button_id": "button.menu_exit",
-        "mapping_type": "global"
-      }
+    "size": [
+      260,
+      210
     ]
   },
-
-  "ng_main_screen_content": {
-    "type": "panel",
-    "size": ["100%", "100%"],
-    "controls": [
-      {
-        "server_form_factory": {
-          "type": "factory",
-          "control_ids": {
-            "long_form": "@server_form.ng_long_form",
-            "custom_form": "@server_form.custom_form"
-          }
-        }
-      }
-    ]
-  },
-
   "ng_long_form": {
     "type": "panel",
-    "$flag_pokemon": "§p§o§k§e",
+    "size": [
+      "100%",
+      "100%"
+    ],
     "$flag_pokedex": "§d§e§k§x",
     "$flag_pokedex_details": "§d§e§d§e§t§k",
     "$flag_battle": "§b§a§t§l§e",
@@ -47,8 +27,6 @@
     "$flag_rotom_phone_second": "§2§r",
     "$flag_rotom_phone_third": "§3§r",
     "$flag_pc": "§p§c",
-    "size": ["100%", "100%"],
-
     "controls": [
       {
         "long_form@long_form": {
@@ -63,13 +41,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_pokedex - $flag_pokedex_details - $flag_pc - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
+              "source_property_name": "((#title_text - '§p§o§k§e§1' - '§p§o§k§e§s' - '§d§e§k§x' - '§d§e§d§e§t§k' - '§b§a§t§l§e' - '§c§h§e§s§t' - '§s§e§a§r§c' - '§1§r' - '§2§r' - '§3§r' - '§p§c') = #title_text)",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(((#title_text - $flag_pokemon - $flag_pokedex - $flag_pokedex_details - $flag_pc - $flag_battle - $flag_chestGui - $flag_searchUi - $flag_rotom_phone_first - $flag_rotom_phone_second - $flag_rotom_phone_third ) = #title_text) )",
+              "source_property_name": "((#title_text - '§p§o§k§e§1' - '§p§o§k§e§s' - '§d§e§k§x' - '§d§e§d§e§t§k' - '§b§a§t§l§e' - '§c§h§e§s§t' - '§s§e§a§r§c' - '§1§r' - '§2§r' - '§3§r' - '§p§c') = #title_text)",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -89,13 +67,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_battle) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§b§a§t§l§e') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_battle) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§b§a§t§l§e') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -115,13 +93,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokemon) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§p§o§k§e§1') = #title_text)) or (not ((#title_text - '§p§o§k§e§s') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokemon) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§p§o§k§e§1') = #title_text)) or (not ((#title_text - '§p§o§k§e§s') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -141,13 +119,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokedex) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§d§e§k§x') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokedex) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§d§e§k§x') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -167,13 +145,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pc) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§p§c') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pc) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§p§c') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -193,13 +171,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokedex_details) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§d§e§d§e§t§k') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_pokedex_details) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§d§e§d§e§t§k') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -219,13 +197,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_chestGui) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§c§h§e§s§t') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_chestGui) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§c§h§e§s§t') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -245,13 +223,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_searchUi) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§s§e§a§r§c') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_searchUi) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§s§e§a§r§c') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -271,13 +249,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_first) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§1§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_first) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§1§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -297,13 +275,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_second) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§2§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_first) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§2§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -323,13 +301,13 @@
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_third) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§3§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#visible"
             },
             {
               "binding_name": "#null",
-              "source_property_name": "(not ((#title_text - $flag_rotom_phone_first) = #title_text))",
+              "source_property_name": "(not ((#title_text - '§3§r') = #title_text))",
               "binding_type": "view",
               "target_property_name": "#enabled"
             }
@@ -338,16 +316,49 @@
       }
     ]
   },
-
+  "ng_main_screen_content": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "server_form_factory": {
+          "type": "factory",
+          "control_ids": {
+            "long_form": "@server_form.ng_long_form",
+            "custom_form": "@server_form.custom_form"
+          }
+        }
+      }
+    ]
+  },
+  "third_party_server_screen@common.base_screen": {
+    "$screen_content": "server_form.ng_main_screen_content",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      }
+    ]
+  },
   "dynamic_button": {
     "type": "stack_panel",
-    "size": ["100%", 32],
+    "size": [
+      "100%",
+      32
+    ],
     "orientation": "horizontal",
     "controls": [
       {
         "panel_name": {
           "type": "panel",
-          "size": [34, "100%c"],
+          "size": [
+            34,
+            "100%c"
+          ],
           "bindings": [
             {
               "binding_name": "#null",
@@ -358,14 +369,19 @@
               "target_property_name": "#visible"
             }
           ],
-
           "controls": [
             {
               "image": {
                 "type": "image",
                 "layer": 2,
-                "size": [32, 32],
-                "offset": [-2, 0],
+                "size": [
+                  32,
+                  32
+                ],
+                "offset": [
+                  -2,
+                  0
+                ],
                 "bindings": [
                   {
                     "binding_name": "#form_button_texture",
@@ -390,8 +406,14 @@
             },
             {
               "progress@progress.progress_loading_bars": {
-                "size": [30, 4],
-                "offset": [-2, 16],
+                "size": [
+                  30,
+                  4
+                ],
+                "offset": [
+                  -2,
+                  16
+                ],
                 "bindings": [
                   {
                     "binding_name": "#null",
@@ -412,11 +434,17 @@
           "$pressed_button_name": "button.form_button_click",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
-          "size": ["fill", 32],
+          "size": [
+            "fill",
+            32
+          ],
           "$button_text": "#form_button_text",
           "$button_text_binding_type": "collection",
           "$button_text_grid_collection_name": "form_buttons",
-          "$button_text_max_size": ["100%", 20],
+          "$button_text_max_size": [
+            "100%",
+            20
+          ],
           "bindings": [
             {
               "binding_name": "#null",
