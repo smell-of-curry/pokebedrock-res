@@ -29,6 +29,19 @@ const FLAGS = {
   auctionHouse: "§c§h§e§s§t§a§u§c§t§i§o§n",
 } as const;
 
+const inventoryTextLabel = {
+  inventory_text: {
+    type: "label",
+    anchor_from: "top_left",
+    anchor_to: "top_left",
+    offset: [7, "100% - 90px"],
+    size: ["90%", "default"],
+    layer: 2,
+    color: "$title_text_color",
+    text: "container.inventory",
+  },
+} as const;
+
 // Texture bindings for item renderer
 const textureBindings = [
   {
@@ -79,19 +92,7 @@ export default defineUI("chest_ui", (ns) => {
     layer: 2,
   });
 
-  // Inventory text
-  ns.addRaw("inventory_text", {
-    type: "label",
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    offset: [7, "$y_offset"],
-    size: ["90%", "default"],
-    layer: 2,
-    color: "$title_text_color",
-    text: "container.inventory",
-  });
-
-  // Non-renderer item (texture-based)
+  // Inventory text (inline per chest — $y_offset variable breaks Bedrock size parsing)
   boundImage("non_renderer_item", "#texture")
     .size(16, 16)
     .bindings(
@@ -510,9 +511,7 @@ export default defineUI("chest_ui", (ns) => {
           layer: 1,
         },
       },
-      {
-        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
-      },
+      inventoryTextLabel,
     ],
     bindings: chestVisibilityBindings(FLAGS.singleChest),
   });
@@ -539,9 +538,7 @@ export default defineUI("chest_ui", (ns) => {
           layer: 1,
         },
       },
-      {
-        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
-      },
+      inventoryTextLabel,
     ],
     bindings: chestVisibilityBindings(FLAGS.tinyChest),
   });
@@ -568,9 +565,7 @@ export default defineUI("chest_ui", (ns) => {
           layer: 1,
         },
       },
-      {
-        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
-      },
+      inventoryTextLabel,
     ],
     bindings: chestVisibilityBindings(FLAGS.smallChest),
   });
@@ -601,9 +596,7 @@ export default defineUI("chest_ui", (ns) => {
           layer: 1,
         },
       },
-      {
-        "inventory_text@chest_ui.inventory_text": { $y_offset: "100% - 90px" },
-      },
+      inventoryTextLabel,
     ],
     bindings: chestVisibilityBindings(FLAGS.largeChest),
   });

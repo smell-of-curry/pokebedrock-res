@@ -4,6 +4,7 @@ import {
   prefix,
   phudPhoneBinding,
   conditionalBindings,
+  phudVisibility,
   animation,
   animRef,
   boundImage,
@@ -121,5 +122,6 @@ export default defineUI("phud_phone", (ns) => {
       .offset(8, 0)
       .size(64, 64)
       .controls(icons, backgrounds, jebBackground)
+      .bindings(...phudVisibility("#phone"))
   );
 });

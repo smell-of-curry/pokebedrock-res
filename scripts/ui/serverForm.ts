@@ -25,8 +25,9 @@ import RotomPhoneSecond from "./rotomPhone/second";
 import RotomPhoneThird from "./rotomPhone/third";
 import PcForm from "./pokemon/pc";
 
+const POKEMON_FLAGS = ["§p§o§k§e§1", "§p§o§k§e§s"] as const;
+
 const FLAGS = {
-  pokemon: "§p§o§k§e",
   pokedex: "§d§e§k§x",
   pokedexDetails: "§d§e§d§e§t§k",
   battle: "§b§a§t§l§e",
@@ -38,9 +39,35 @@ const FLAGS = {
   pc: "§p§c",
 } as const;
 
-const ALL_FLAGS_EXPR = Object.values(FLAGS)
-  .map((flag) => `'${flag}'`)
-  .join(" - ");
+const ALL_FLAGS_EXPR = [
+  ...POKEMON_FLAGS.map((flag) => `'${flag}'`),
+  ...Object.values(FLAGS).map((flag) => `'${flag}'`),
+].join(" - ");
+
+const pokemonFlagBindings = () => [
+  {
+    binding_type: "global" as const,
+    binding_condition: "none" as const,
+    binding_name: "#title_text",
+    binding_name_override: "#title_text",
+  },
+  {
+    binding_name: "#null",
+    source_property_name: POKEMON_FLAGS.map(
+      (flag) => `(not ((#title_text - '${flag}') = #title_text))`
+    ).join(" or "),
+    binding_type: "view" as const,
+    target_property_name: "#visible",
+  },
+  {
+    binding_name: "#null",
+    source_property_name: POKEMON_FLAGS.map(
+      (flag) => `(not ((#title_text - '${flag}') = #title_text))`
+    ).join(" or "),
+    binding_type: "view" as const,
+    target_property_name: "#enabled",
+  },
+];
 
 const flagBindings = (flag: string, flip = false) => [
   {
@@ -80,7 +107,6 @@ export default redefineUI("server_form", (ns) => {
 
   const longFormPanel = panel("ng_long_form")
     .fullSize()
-    .variable("flag_pokemon", FLAGS.pokemon)
     .variable("flag_pokedex", FLAGS.pokedex)
     .variable("flag_pokedex_details", FLAGS.pokedexDetails)
     .variable("flag_battle", FLAGS.battle)
@@ -119,7 +145,7 @@ export default redefineUI("server_form", (ns) => {
       extendExternal("pokemon", PokemonForm.elements["main_panel"]!)
         .enabled(false)
         .visible(false)
-        .bindings(...flagBindings(FLAGS.pokemon)),
+        .bindings(...pokemonFlagBindings()),
       extendExternal("pokedex", PokedexForm.elements["main_grid"]!)
         .enabled(false)
         .visible(false)

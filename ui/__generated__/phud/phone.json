@@ -197,6 +197,27 @@
           "$condition": "((%.4s * #value) = 'loop')"
         }
       }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#phone",
+        "target_property_name": "#phone"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#phone = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#phone = ''))",
+        "target_property_name": "#enabled"
+      }
     ]
   }
 }
