@@ -1,0 +1,202 @@
+{
+  "namespace": "phud_phone",
+  "anim__ringing": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 11,
+    "fps": 11,
+    "frame_step": 64
+  },
+  "anim__active": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 4,
+    "fps": 4,
+    "frame_step": 64
+  },
+  "anim__jeb_start_flipbook": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 12,
+    "fps": 12,
+    "frame_step": 64
+  },
+  "anim__jeb_start_destroy": {
+    "anim_type": "wait",
+    "duration": 0.97,
+    "destroy_at_end": "start"
+  },
+  "anim__jeb_loop_flipbook": {
+    "anim_type": "flip_book",
+    "initial_uv": [
+      0,
+      0
+    ],
+    "frame_count": 8,
+    "fps": 12,
+    "frame_step": 64
+  },
+  "anim__jeb_loop_show__0": {
+    "anim_type": "wait",
+    "duration": 0.97,
+    "next": "@phud_phone.anim__jeb_loop_show__1"
+  },
+  "anim__jeb_loop_show__1": {
+    "anim_type": "alpha",
+    "from": 1,
+    "to": 1,
+    "duration": 0
+  },
+  "abstract_phone_conditional": {
+    "type": "image",
+    "texture": "#texture",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#phone",
+        "target_property_name": "#texture"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "$condition",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "$condition",
+        "target_property_name": "#enabled"
+      }
+    ]
+  },
+  "jeb_icon": {
+    "type": "image",
+    "texture": "('textures/ui/phud/maple_' + $name))",
+    "uv_size": [
+      64,
+      64
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#phone",
+        "target_property_name": "#value"
+      }
+    ]
+  },
+  "icon@abstract_phone_conditional": {
+    "texture": "('textures/ui/phud/' + $name)"
+  },
+  "main": {
+    "type": "panel",
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [
+      8,
+      0
+    ],
+    "size": [
+      64,
+      64
+    ],
+    "controls": [
+      {
+        "icons": {
+          "type": "panel",
+          "layer": 1,
+          "controls": [
+            {
+              "ringing@icon": {
+                "type": "image",
+                "texture": "#texture",
+                "uv": "@phud_phone.anim__ringing",
+                "uv_size": [
+                  64,
+                  64
+                ],
+                "$name": "ringing",
+                "$condition": "(#value = 'ring')"
+              }
+            },
+            {
+              "standby@icon": {
+                "type": "image",
+                "texture": "#texture",
+                "$name": "standby",
+                "$condition": "(#value = 'standby')"
+              }
+            },
+            {
+              "jeb_icon_wrapper@abstract_phone_conditional": {
+                "texture": "#texture",
+                "$condition": "((%.4s * #value) = 'loop')",
+                "controls": [
+                  {
+                    "start@jeb_icon": {
+                      "uv": "@phud_phone.anim__jeb_start_flipbook",
+                      "anims": [
+                        "@phud_phone.anim__jeb_start_destroy"
+                      ],
+                      "$name": "start"
+                    }
+                  },
+                  {
+                    "loop@jeb_icon": {
+                      "uv": "@phud_phone.anim__jeb_loop_flipbook",
+                      "anims": [
+                        "@phud_phone.anim__jeb_loop_show__0"
+                      ],
+                      "alpha": 0,
+                      "$name": "loop"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "backgrounds": {
+          "type": "panel",
+          "controls": [
+            {
+              "phone_background@abstract_phone_conditional": {
+                "texture": "textures/ui/phud/box_small",
+                "$condition": "((#value = 'ring') or (#value = 'standby'))"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "jeb_background@abstract_phone_conditional": {
+          "texture": "textures/ui/phud/box_wide",
+          "alpha": 0,
+          "anims": [
+            "@phud_phone.anim__jeb_loop_show__0"
+          ],
+          "$condition": "((%.4s * #value) = 'loop')"
+        }
+      }
+    ]
+  }
+}

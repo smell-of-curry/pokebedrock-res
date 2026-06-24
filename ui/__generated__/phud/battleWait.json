@@ -1,0 +1,125 @@
+{
+  "namespace": "phud_battleWait",
+  "main": {
+    "type": "image",
+    "texture": "textures/ui/battle/white_transparency",
+    "color": [
+      0.75,
+      0.17,
+      0.21
+    ],
+    "layer": 1000,
+    "fill": true,
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "size": [
+      "default",
+      "30%"
+    ],
+    "controls": [
+      {
+        "main_holder": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [
+            "default",
+            "95%"
+          ],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "controls": [
+            {
+              "menu_extra": {
+                "type": "image",
+                "texture": "textures/ui/battle/white_transparency",
+                "color": [
+                  0.14,
+                  0.13,
+                  0.13
+                ],
+                "layer": 2,
+                "fill": true,
+                "anchor_from": "bottom_left",
+                "anchor_to": "bottom_left",
+                "size": [
+                  "85%",
+                  "default"
+                ],
+                "controls": [
+                  {
+                    "text": {
+                      "type": "label",
+                      "text": "#text",
+                      "anchor_from": "top_middle",
+                      "anchor_to": "top_middle",
+                      "layer": 1002,
+                      "localize": true,
+                      "text_alignment": "center",
+                      "bindings": [
+                        {
+                          "binding_name": "#null",
+                          "binding_type": "view",
+                          "source_control_name": "elements",
+                          "source_property_name": "#battleLog",
+                          "target_property_name": "#log_text"
+                        },
+                        {
+                          "binding_name": "#null",
+                          "binding_type": "view",
+                          "source_property_name": "#log_text",
+                          "target_property_name": "#text"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "info_label": {
+                "type": "label",
+                "text": "#text",
+                "color": "default",
+                "alpha": 1,
+                "text_alignment": "center",
+                "size": [
+                  "fill",
+                  "default"
+                ],
+                "layer": 3,
+                "bindings": [
+                  {
+                    "binding_name": "#hud_subtitle_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_control_name": "elements",
+        "source_property_name": "#battleLog",
+        "target_property_name": "#battleLog"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#battleLog = ''))",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "(not (#battleLog = ''))",
+        "target_property_name": "#enabled"
+      }
+    ]
+  }
+}
