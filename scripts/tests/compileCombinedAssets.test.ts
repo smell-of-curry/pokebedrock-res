@@ -1,4 +1,5 @@
 import { compileCombinedAssets } from "../compileCombinedAssets";
+import { REQUIRED_FORMAT_VERSIONS } from "../validateFormatVersions";
 
 describe("compileCombinedAssets", () => {
   let result: ReturnType<typeof compileCombinedAssets>;
@@ -13,7 +14,7 @@ describe("compileCombinedAssets", () => {
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
-    expect(data.format_version).toBeDefined();
+    expect(data.format_version).toBe(REQUIRED_FORMAT_VERSIONS.animations);
     expect(typeof data.animations).toBe("object");
     expect(Object.keys(data.animations).length).toBeGreaterThan(0);
   });
@@ -26,7 +27,9 @@ describe("compileCombinedAssets", () => {
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
-    expect(data.format_version).toBeDefined();
+    expect(data.format_version).toBe(
+      REQUIRED_FORMAT_VERSIONS.animation_controllers,
+    );
     expect(typeof data.animation_controllers).toBe("object");
     expect(Object.keys(data.animation_controllers).length).toBeGreaterThan(0);
   });
@@ -39,7 +42,7 @@ describe("compileCombinedAssets", () => {
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
-    expect(data.format_version).toBeDefined();
+    expect(data.format_version).toBe(REQUIRED_FORMAT_VERSIONS.render_controllers);
     expect(typeof data.render_controllers).toBe("object");
     expect(Object.keys(data.render_controllers).length).toBeGreaterThan(0);
   });
@@ -50,7 +53,7 @@ describe("compileCombinedAssets", () => {
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
-    expect(data.format_version).toBeDefined();
+    expect(data.format_version).toBe(REQUIRED_FORMAT_VERSIONS.geometry);
     expect(Array.isArray(data["minecraft:geometry"])).toBe(true);
     expect(data["minecraft:geometry"].length).toBeGreaterThan(0);
   });

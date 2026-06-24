@@ -8,6 +8,7 @@ import {
   sortObjectKeys,
 } from "./utils";
 import { COMPILE_EXCEPTIONS } from "./data/compileExceptions";
+import { REQUIRED_FORMAT_VERSIONS } from "./validateFormatVersions";
 import type {
   CombineGeometryFile,
   CombineResult,
@@ -137,7 +138,10 @@ function compileKeyValueAssets(
   if (Object.keys(merged).length === 0) return;
 
   // Resolve format_version
-  let bestVersion = "1.8.0";
+  let bestVersion: string =
+    REQUIRED_FORMAT_VERSIONS[
+      config.category as keyof typeof REQUIRED_FORMAT_VERSIONS
+    ] ?? "1.8.0";
   for (const v of formatVersions.keys()) {
     bestVersion = maxVersion(bestVersion, v);
   }
@@ -359,7 +363,7 @@ function compileGeometry(skipPaths: Set<string>, generated: GeneratedEntry[]) {
     return a.description.identifier < b.description.identifier ? -1 : 1;
   });
 
-  let bestVersion = "1.12.0";
+  let bestVersion: string = REQUIRED_FORMAT_VERSIONS.geometry;
   for (const v of formatVersions.keys()) {
     bestVersion = maxVersion(bestVersion, v);
   }

@@ -32,5 +32,8 @@ jobs:
           fi
           npm install
 
+      - name: Validate format versions
+        run: npm run validate:formatVersions
+
       - name: Run tests
         run: npm test
