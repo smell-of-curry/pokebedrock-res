@@ -8,15 +8,15 @@
     "type": "panel",
     "controls": [
       { "phone@phone_background": {} },
-      { "jeb_background@jeb_background": {} }
+      { "oak_talk_bg@oak_talk_bg": {} }
     ]
   },
   "icon@abstract_phone_conditional": {
     "texture": "('textures/ui/phud/' + $name)"
   },
-  "jeb_icon": {
+  "oak_icon": {
     "type": "image",
-    "texture": "('textures/ui/phud/maple_' + $name))",
+    "texture": "('textures/ui/phud/oak_' + $name))",
     "uv_size": [64, 64],
     "bindings": [
       {
@@ -45,7 +45,7 @@
           "$name": "standby"
         }
       },
-      { "jeb_icon_wrapper@jeb_icon_wrapper": {} }
+      { "oak_talk@oak_talk": {} }
     ],
     "layer": 1
   },
@@ -53,31 +53,30 @@
     "texture": "textures/ui/phud/box_small",
     "$condition": "((#value = 'ring') or (#value = 'standby')"
   },
-  "jeb_background@abstract_phone_conditional": {
+  "oak_talk_bg@abstract_phone_conditional": {
     "type": "image",
     "$condition": "((%.4s * #value) = 'loop')",
     "size": ["100%", "100%"],
     "texture": "textures/ui/phud/box_wide",
     "alpha": 0,
-    "anims": ["@phud_phone.anim__jeb_loop_show__0"]
+    "anims": ["@phud_phone.anim__oak_loop_show__0"]
   },
-  "jeb_icon_wrapper@abstract_phone_conditional": {
+  "oak_talk@abstract_phone_conditional": {
     "type": "panel",
     "size": ["100%", "100%"],
-    // Starts with loop. Should be `loop_jade`...
     "$condition": "((%.4s * #value) = 'loop')",
     "controls": [
       {
-        "start@jeb_icon": {
-          "uv": "@phud_phone.anim__jeb_start_flipbook",
-          "anims": ["@phud_phone.anim__jeb_start_destroy"],
+        "start@oak_icon": {
+          "uv": "@phud_phone.anim__oak_start_flipbook",
+          "anims": ["@phud_phone.anim__oak_start_destroy"],
           "$name": "start"
         }
       },
       {
-        "loop@jeb_icon": {
-          "uv": "@phud_phone.anim__jeb_loop_flipbook",
-          "anims": ["@phud_phone.anim__jeb_loop_show__0"],
+        "loop@oak_icon": {
+          "uv": "@phud_phone.anim__oak_loop_flipbook",
+          "anims": ["@phud_phone.anim__oak_loop_show__0"],
           "alpha": 0,
           "$name": "loop"
         }
@@ -116,38 +115,31 @@
     "fps": 11,
     "frame_step": 64
   },
-  "anim__active": {
-    "anim_type": "flip_book",
-    "initial_uv": [0, 0],
-    "frame_count": 4,
-    "fps": 4,
-    "frame_step": 64
-  },
-  "anim__jeb_start_flipbook": {
+  "anim__oak_start_flipbook": {
     "anim_type": "flip_book",
     "initial_uv": [0, 0],
     "frame_count": 12,
     "fps": 12,
     "frame_step": 64
   },
-  "anim__jeb_start_destroy": {
+  "anim__oak_start_destroy": {
     "anim_type": "wait",
     "duration": 0.97,
     "destroy_at_end": "start"
   },
-  "anim__jeb_loop_flipbook": {
+  "anim__oak_loop_flipbook": {
     "anim_type": "flip_book",
     "initial_uv": [0, 0],
     "frame_count": 8,
     "fps": 12,
     "frame_step": 64
   },
-  "anim__jeb_loop_show__0": {
+  "anim__oak_loop_show__0": {
     "anim_type": "wait",
     "duration": 0.97,
-    "next": "@phud_phone.anim__jeb_loop_show__1"
+    "next": "@phud_phone.anim__oak_loop_show__1"
   },
-  "anim__jeb_loop_show__1": {
+  "anim__oak_loop_show__1": {
     "anim_type": "alpha",
     "duration": 0,
     "from": 1,

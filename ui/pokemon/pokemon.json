@@ -553,6 +553,41 @@
                   }
                 ]
               }
+            },
+            {
+              "hover_text": {
+                "type": "custom",
+                "renderer": "hover_text_renderer",
+                "allow_clipping": false,
+                "layer": 30,
+                "size": ["100%", "100%"],
+                "$visible|default": false,
+                "variables": [
+                  {
+                    "requires": "($state = 'hover')",
+                    "$visible": true
+                  }
+                ],
+                "visible": "$visible",
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_text",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "collection_details",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "#form_button_text",
+                    "target_property_name": "#hover_text"
+                  }
+                ]
+              }
             }
           ]
         }
