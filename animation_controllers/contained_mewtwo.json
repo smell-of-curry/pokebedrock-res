@@ -12,7 +12,7 @@
           ],
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
-            { "stage_1": "query.property('pokeb:development_stage') == 1" }
+            { "stage_1": "query.property('pokeb:development_stage') >= 1" }
           ]
         },
         "stage_1": {
@@ -24,7 +24,7 @@
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
             { "stage_0": "query.property('pokeb:development_stage') == 0" },
-            { "stage_2": "query.property('pokeb:development_stage') == 2" }
+            { "stage_2": "query.property('pokeb:development_stage') >= 2" }
           ]
         },
         "stage_2": {
@@ -36,7 +36,7 @@
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
             { "stage_1": "query.property('pokeb:development_stage') == 1" },
-            { "stage_3": "query.property('pokeb:development_stage') == 3" }
+            { "stage_3": "query.property('pokeb:development_stage') >= 3" }
           ]
         },
         "stage_3": {
@@ -48,7 +48,7 @@
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
             { "stage_2": "query.property('pokeb:development_stage') == 2" },
-            { "stage_4": "query.property('pokeb:development_stage') == 4" }
+            { "stage_4": "query.property('pokeb:development_stage') >= 4" }
           ]
         },
         "stage_4": {
@@ -60,7 +60,7 @@
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
             { "stage_3": "query.property('pokeb:development_stage') == 3" },
-            { "stage_5": "query.property('pokeb:development_stage') == 5" }
+            { "stage_5": "query.property('pokeb:development_stage') >= 5" }
           ]
         },
         "stage_5": {
@@ -72,7 +72,7 @@
           "transitions": [
             { "failing": "query.property('pokeb:failing')" },
             { "stage_4": "query.property('pokeb:development_stage') == 4" },
-            { "stage_6": "query.property('pokeb:development_stage') == 6" }
+            { "stage_6": "query.property('pokeb:development_stage') >= 6" }
           ]
         },
         "stage_6": {
