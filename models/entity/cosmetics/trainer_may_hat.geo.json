@@ -6,109 +6,42 @@
         "identifier": "geometry.cosmetic_trainer_may_hat",
         "texture_width": 128,
         "texture_height": 128,
-        "visible_bounds_width": 4,
-        "visible_bounds_height": 4.5,
-        "visible_bounds_offset": [
-          0,
-          2,
-          0
-        ]
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
       },
       "bones": [
         {
-          "name": "head",
-          "pivot": [
-            0,
-            24,
-            0
-          ]
+          "name": "root",
+          "pivot": [0, 0, 0]
         },
         {
-          "name": "hat",
-          "pivot": [
-            0,
-            -3,
-            0
-          ],
+          "name": "head",
+          "parent": "root",
+          "pivot": [0, 0, 0],
+          "binding": "'head'"
+        },
+        {
+          "name": "root2",
           "parent": "head",
+          "pivot": [0, 3.2, 0],
           "cubes": [
             {
-              "origin": [
-                -6,
-                27.599999999999994,
-                -4.6999999999999975
-              ],
-              "size": [
-                12,
-                6.0,
-                0.0
-              ],
+              "origin": [-6, 6.8, -4.7],
+              "size": [12, 6, 0],
               "inflate": 0.005,
               "uv": {
-                "north": {
-                  "uv": [
-                    103,
-                    12
-                  ],
-                  "uv_size": [
-                    12,
-                    6
-                  ]
-                }
+                "north": { "uv": [103, 12], "uv_size": [12, 6] }
               }
             },
             {
-              "origin": [
-                -4.700000000000001,
-                26.29999999999999,
-                -4.699999999999999
-              ],
-              "size": [
-                9.4,
-                2.0,
-                1.9999999999999978
-              ],
+              "origin": [-4.7, 5.5, -4.7],
+              "size": [9.4, 2, 2],
               "uv": {
-                "north": {
-                  "uv": [
-                    69,
-                    0
-                  ],
-                  "uv_size": [
-                    9,
-                    2
-                  ]
-                },
-                "east": {
-                  "uv": [
-                    82,
-                    0
-                  ],
-                  "uv_size": [
-                    2,
-                    2
-                  ]
-                },
-                "west": {
-                  "uv": [
-                    100,
-                    0
-                  ],
-                  "uv_size": [
-                    2,
-                    2
-                  ]
-                },
-                "down": {
-                  "uv": [
-                    122.4,
-                    6
-                  ],
-                  "uv_size": [
-                    -8.400000000000006,
-                    -2
-                  ]
-                }
+                "north": { "uv": [69, 0], "uv_size": [9, 2] },
+                "east": { "uv": [82, 0], "uv_size": [2, 2] },
+                "west": { "uv": [100, 0], "uv_size": [2, 2] },
+                "down": { "uv": [122.4, 6], "uv_size": [-8.4, -2] }
               }
             }
           ]
